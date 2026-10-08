@@ -344,3 +344,39 @@ select {
   border: 1px solid var(--borde);
   justify-self: start;
 }
+
+.concesiones {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.concesiones summary {
+  cursor: pointer;
+  color: var(--texto-suave);
+}
+
+.concesiones ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  background: none;
+}
+
+.paginacion button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pie {
+  margin-top: 48px;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  text-align: center;
+}

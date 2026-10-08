@@ -11,7 +11,7 @@ export type Linea =
   | 'formacion'
   | 'equipamiento';
 export type Administracion = 'estatal' | 'autonomica' | 'local' | 'otra';
-export type Plazo = 'abierta' | 'cerrada' | 'desconocido';
+export type Plazo = 'abierta' | 'proxima' | 'cerrada' | 'desconocido';
 export type FormaJuridica = 'autonomo' | 'sociedad' | 'asociacion' | 'fundacion';
 
 export interface Clasificacion {
@@ -25,15 +25,24 @@ export interface Clasificacion {
   evidencias: string[];
 }
 
+export interface ResumenConcesiones {
+  numero: number;
+  importeTotal: number;
+  ultimaFecha: string | null;
+  entidades: { nombre: string; importe: number; fecha: string | null }[];
+}
+
 export interface Convocatoria {
   id: string;
-  origen: 'bdns' | 'demo';
-  tipo: 'convocatoria' | 'nominativa' | 'convenio';
-  codigoBdns: string | null;
+  origen: 'bdns';
+  tipo: 'concurrencia' | 'directa';
+  tipoConvocatoria: string | null;
+  codigoBdns: string;
   titulo: string;
   organo: string;
   organoNiveles: string[];
   administracion: Administracion;
+  ambitoNacional: boolean;
   ccaa: string[];
   provincias: string[];
   presupuesto: number | null;
@@ -41,7 +50,11 @@ export interface Convocatoria {
   fechaInicioSolicitud: string | null;
   fechaFinSolicitud: string | null;
   urlBases: string | null;
-  urlDetalle: string | null;
+  urlDetalle: string;
+  textoInicio: string | null;
+  textoFin: string | null;
+  finalidad: string | null;
+  concesiones: ResumenConcesiones | null;
   clasificacion: Clasificacion;
   plazo: Plazo;
 }
@@ -77,8 +90,8 @@ export interface Meta {
   lineas: Linea[];
   total: number;
   musicales: number;
-  demo: boolean;
   ultimaActualizacion: string | null;
+  fuente: string;
 }
 
 export const NOMBRE_ESTILO: Record<Estilo, string> = { jazz: 'Jazz', clasica: 'Clásica', opera: 'Ópera y lírica' };

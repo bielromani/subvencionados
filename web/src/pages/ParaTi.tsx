@@ -3,8 +3,29 @@ import { api } from '../api';
 import { TarjetaConvocatoria } from '../components/TarjetaConvocatoria';
 import type { Coincidencia } from '../tipos';
 
+type Recomendaciones = Awaited<ReturnType<typeof api.paraTi>>;
+
+const SECCIONES: [keyof Omit<Recomendaciones, 'perfilCompleto'>, string, string][] = [
+  ['abiertas', 'Puedes pedirlas ahora', 'Concursos con el plazo abierto o a punto de abrir a los que puedes presentarte.'],
+  [
+    'recurrentes',
+    'Prepara las próximas',
+    'Concursos que encajan contigo y cerraron en los últimos 18 meses: la mayoría se convocan cada año.',
+  ],
+  [
+    'indirectas',
+    'Oportunidades indirectas',
+    'Ayudas que cobran ayuntamientos u otras entidades para programar cultura: clientes potenciales para vender conciertos de tus grupos.',
+  ],
+  [
+    'precedentes',
+    'Precedentes',
+    'Concesiones directas o nominativas de los últimos 3 años a proyectos parecidos: muestran qué administraciones pagan estos conciertos y cuánto, y sirven para negociar una propia.',
+  ],
+];
+
 export function ParaTi({ irAPerfil }: { irAPerfil: () => void }) {
-  const [datos, setDatos] = useState<{ perfilCompleto: boolean; items: Coincidencia[] } | null>(null);
+  const [datos, setDatos] = useState<Recomendaciones | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,7 +39,10 @@ export function ParaTi({ irAPerfil }: { irAPerfil: () => void }) {
     return (
       <div className="vacio">
         <h2>Cuéntanos qué grupos mueves</h2>
-        <p>Con tu forma jurídica, dónde trabajas y los estilos de tus grupos te mostramos solo las ayudas a las que puedes optar, y por qué.</p>
+        <p>
+          Con tu forma jurídica, dónde trabajas y los estilos de tus grupos te mostramos solo las ayudas a las que puedes
+          optar, y por qué.
+        </p>
         <button className="boton-principal" onClick={irAPerfil}>
           Completar mi perfil
         </button>
@@ -26,49 +50,23 @@ export function ParaTi({ irAPerfil }: { irAPerfil: () => void }) {
     );
   }
 
-  const directas = datos.items.filter((m) => m.encaje === 'directo');
-  const indirectas = datos.items.filter((m) => m.encaje === 'indirecto');
-  const precedentes = datos.items.filter((m) => m.encaje === 'precedente');
-
   return (
     <section>
-      <h2>Puedes pedirlas tú ({directas.length})</h2>
-      {directas.length === 0 && <p className="ayuda">Ninguna convocatoria encaja todavía con tu perfil.</p>}
-      <div className="lista">
-        {directas.map((m) => (
-          <Recomendacion key={m.convocatoria.id} m={m} />
-        ))}
-      </div>
-
-      {indirectas.length > 0 && (
-        <>
-          <h2>Oportunidades indirectas ({indirectas.length})</h2>
-          <p className="ayuda">
-            Ayudas que cobran ayuntamientos u otras entidades para programar cultura: son clientes potenciales para vender
-            conciertos de tus grupos.
-          </p>
+      {SECCIONES.map(([clave, titulo, explicacion]) => (
+        <div key={clave}>
+          <h2>
+            {titulo} ({datos[clave].length}
+            {datos[clave].length === 50 ? '+' : ''})
+          </h2>
+          <p className="ayuda">{explicacion}</p>
+          {datos[clave].length === 0 && <p className="ayuda">Nada por ahora.</p>}
           <div className="lista">
-            {indirectas.map((m) => (
+            {datos[clave].map((m) => (
               <Recomendacion key={m.convocatoria.id} m={m} />
             ))}
           </div>
-        </>
-      )}
-
-      {precedentes.length > 0 && (
-        <>
-          <h2>Precedentes ({precedentes.length})</h2>
-          <p className="ayuda">
-            Ayudas concedidas sin concurso (nominativas o convenios) a proyectos parecidos al tuyo: muestran qué
-            administraciones financian estos conciertos y sirven para negociar una propia.
-          </p>
-          <div className="lista">
-            {precedentes.map((m) => (
-              <Recomendacion key={m.convocatoria.id} m={m} />
-            ))}
-          </div>
-        </>
-      )}
+        </div>
+      ))}
     </section>
   );
 }

@@ -26,7 +26,10 @@ export interface Filtros {
   administracion?: string;
   linea?: string;
   plazo?: string;
+  tipo?: string;
+  orden?: string;
   todas?: boolean;
+  pagina?: number;
 }
 
 export const api = {
@@ -34,9 +37,16 @@ export const api = {
   convocatorias: (f: Filtros) => {
     const params = new URLSearchParams();
     for (const [k, v] of Object.entries(f)) if (v) params.set(k, String(v));
-    return pedir<{ total: number; items: Convocatoria[] }>(`/api/convocatorias?${params}`);
+    return pedir<{ total: number; pagina: number; porPagina: number; items: Convocatoria[] }>(`/api/convocatorias?${params}`);
   },
   perfil: () => pedir<Perfil>('/api/perfil'),
   guardarPerfil: (p: Perfil) => pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) }),
-  paraTi: () => pedir<{ perfilCompleto: boolean; items: Coincidencia[] }>('/api/para-ti'),
+  paraTi: () =>
+    pedir<{
+      perfilCompleto: boolean;
+      abiertas: Coincidencia[];
+      recurrentes: Coincidencia[];
+      indirectas: Coincidencia[];
+      precedentes: Coincidencia[];
+    }>('/api/para-ti'),
 };

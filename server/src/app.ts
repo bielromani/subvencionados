@@ -1,7 +1,7 @@
 import express, { type Request } from 'express';
 import { normalizar } from './clasificacion/musica.js';
 import type { Repositorio } from './db.js';
-import { emparejar, plazo } from './emparejamiento.js';
+import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
 import { LINEAS, PERFIL_POR_DEFECTO, validarPerfil } from './perfil.js';
 import { CCAA } from './regiones.js';
 import { ESTILOS, type Convocatoria } from './tipos.js';
@@ -109,14 +109,26 @@ export function crearApp(repo: Repositorio) {
   app.get('/api/para-ti', (_req, res) => {
     const perfil = repo.obtenerPerfil();
     if (!perfil) {
-      res.json({ perfilCompleto: false, items: [] });
+      res.json({ perfilCompleto: false, abiertas: [], recurrentes: [], indirectas: [], precedentes: [] });
       return;
     }
-    const items = emparejar(repo.listarConvocatorias(), perfil).map((m) => ({
-      ...m,
-      convocatoria: vista(m.convocatoria),
-    }));
-    res.json({ perfilCompleto: perfil.grupos.length > 0, items });
+    const hoy = new Date();
+    const haceMeses = (meses: number) =>
+      new Date(hoy.getFullYear(), hoy.getMonth() - meses, hoy.getDate()).toISOString().slice(0, 10);
+    const recientes = (m: Coincidencia, meses: number) => (m.convocatoria.fechaPublicacion ?? '') >= haceMeses(meses);
+    const vigente = (m: Coincidencia) => m.plazo === 'abierta' || m.plazo === 'proxima';
+    const salida = (ms: Coincidencia[]) => ms.slice(0, 50).map((m) => ({ ...m, convocatoria: vista(m.convocatoria) }));
+
+    const todas = emparejar(repo.listarConvocatorias(), perfil, hoy);
+    const directas = todas.filter((m) => m.encaje === 'directo');
+    res.json({
+      perfilCompleto: perfil.grupos.length > 0,
+      abiertas: salida(directas.filter(vigente)),
+      // Cerradas en los últimos 18 meses: la mayoría se convocan cada año.
+      recurrentes: salida(directas.filter((m) => m.plazo === 'cerrada' && recientes(m, 18))),
+      indirectas: salida(todas.filter((m) => m.encaje === 'indirecto' && (vigente(m) || recientes(m, 12)))),
+      precedentes: salida(todas.filter((m) => m.encaje === 'precedente' && recientes(m, 36))),
+    });
   });
 
   return app;

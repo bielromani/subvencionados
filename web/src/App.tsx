@@ -37,15 +37,10 @@ export function App() {
         </nav>
       </header>
 
-      {meta?.demo && (
-        <p className="aviso-demo">
-          Estás viendo convocatorias de <strong>ejemplo</strong>, sacadas de prensa y boletines con su fuente enlazada. Ejecuta{' '}
-          <code>npm run sync</code> con acceso a la BDNS para cargar los datos oficiales.
-        </p>
-      )}
       {meta && meta.total === 0 && (
         <p className="aviso-demo">
-          La base de datos está vacía. Ejecuta <code>npm run sync</code> (BDNS) o <code>npm run seed:demo</code> (ejemplos).
+          La base de datos está vacía. Ejecuta <code>npm run importar</code> para cargar lo descargado en{' '}
+          <code>datos/bdns/</code>.
         </p>
       )}
 
@@ -55,6 +50,14 @@ export function App() {
         {meta && pestana === 'explorar' && <Explorar meta={meta} />}
         {meta && pestana === 'perfil' && <Perfil meta={meta} alGuardar={() => setPestana('para-ti')} />}
       </main>
+
+      {meta && (
+        <footer className="pie">
+          {meta.musicales.toLocaleString('es-ES')} convocatorias de música de {meta.total.toLocaleString('es-ES')}{' '}
+          descargadas · Fuente: {meta.fuente}
+          {meta.ultimaActualizacion && ` · Actualizado el ${new Date(meta.ultimaActualizacion).toLocaleDateString('es-ES')}`}
+        </footer>
+      )}
     </div>
   );
 }

@@ -82,7 +82,7 @@ describe('GET /api/convocatorias', () => {
 describe('perfil y recomendaciones', () => {
   it('sin perfil no hay recomendaciones', async () => {
     const res = await request(app).get('/api/para-ti').expect(200);
-    expect(res.body).toEqual({ perfilCompleto: false, items: [] });
+    expect(res.body).toEqual({ perfilCompleto: false, abiertas: [], recurrentes: [], indirectas: [], precedentes: [] });
   });
 
   it('valida el perfil', async () => {
@@ -108,6 +108,6 @@ describe('perfil y recomendaciones', () => {
 
     const res = await request(app).get('/api/para-ti').expect(200);
     expect(res.body.perfilCompleto).toBe(true);
-    expect(res.body.items.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-100']);
+    expect(res.body.abiertas.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-100']);
   });
 });
