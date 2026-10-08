@@ -1,0 +1,45 @@
+# Diagnóstico: consulta la API de la BDNS y muestra las respuestas en bruto,
+# para comprobar dominios, endpoints y nombres de campos.
+name: Explorar API BDNS
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/explorar-bdns.yml
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Consultar endpoints
+        run: |
+          pedir() {
+            echo "::group::$1"
+            curl -sS -m 40 -A "subvencionados/0.1" -H "Accept: application/json" -w "\nHTTP %{http_code} · %{content_type}\n" "$1" | head -c 6000
+            echo
+            echo "::endgroup::"
+          }
+          for base in https://www.pap.hacienda.gob.es/bdnstrans https://www.infosubvenciones.es/bdnstrans; do
+            pedir "$base/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=3&descripcion=jazz&descripcionTipoBusqueda=0"
+          done
+          B=https://www.pap.hacienda.gob.es/bdnstrans
+          pedir "$B/doc/swagger"
+          pedir "$B/api/v3/api-docs"
+          pedir "$B/v3/api-docs"
+          pedir "$B/api/api-docs"
+          pedir "$B/api/v2/api-docs"
+          pedir "$B/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=2"
+          pedir "$B/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=2&fechaDesde=01/09/2026&fechaHasta=30/09/2026"
+          NUM=$(curl -sS -m 40 "$B/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=1&descripcion=jazz" | jq -r '.content[0].numeroConvocatoria // empty')
+          echo "Convocatoria de ejemplo: $NUM"
+          pedir "$B/api/convocatorias?vpd=GE&numConv=$NUM"
+          pedir "$B/api/concesiones/busqueda?vpd=GE&page=0&pageSize=2&numeroConvocatoria=$NUM"
+          pedir "$B/api/concesiones/busqueda?vpd=GE&page=0&pageSize=2"
+          pedir "$B/api/finalidades?vpd=GE"
+          pedir "$B/api/regiones?vpd=GE"
+          pedir "$B/api/beneficiarios?vpd=GE"
+          pedir "$B/api/instrumentos?vpd=GE"
+          pedir "$B/api/organos?vpd=GE&idAdmon=C"
+          pedir "$B/api/actividades?vpd=GE"
