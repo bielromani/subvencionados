@@ -21,25 +21,42 @@ jobs:
             echo
             echo "::endgroup::"
           }
-          for base in https://www.pap.hacienda.gob.es/bdnstrans https://www.infosubvenciones.es/bdnstrans; do
-            pedir "$base/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=3&descripcion=jazz&descripcionTipoBusqueda=0"
+          B=https://www.pap.hacienda.gob.es/bdnstrans/api/convocatorias/busqueda?vpd=GE
+          resumen() {
+            echo "::group::$1"
+            curl -sS -m 60 -H "Accept: application/json" "$1" | jq -c '{total: .totalElements, size: .size, n: .numberOfElements, primeros: [.content[:3][] | {numeroConvocatoria, fechaRecepcion, descripcion: .descripcion[:90], nivel1, nivel2}]}' || true
+            echo "::endgroup::"
+          }
+          resumen "$B&page=0&pageSize=5&finalidad=11"
+          resumen "$B&page=0&pageSize=5&finalidades=11"
+          resumen "$B&page=0&pageSize=5&finalidad=11&fechaDesde=01/01/2025&fechaHasta=31/12/2025"
+          resumen "$B&page=0&pageSize=5&order=fechaRecepcion&direccion=asc"
+          resumen "$B&page=0&pageSize=1000&finalidad=11"
+          resumen "$B&page=0&pageSize=10000&finalidad=11"
+          resumen "$B&page=0&pageSize=5&descripcion=musica"
+          resumen "$B&page=0&pageSize=5&descripcion=música"
+          resumen "$B&page=0&pageSize=5&descripcion=concierto"
+          resumen "$B&page=0&pageSize=5&descripcion=opera"
+          resumen "$B&page=0&pageSize=5&descripcion=lírica"
+          resumen "$B&page=0&pageSize=5&descripcion=orquesta"
+          resumen "$B&page=0&pageSize=5&tipoAdministracion=L&finalidad=11"
+          resumen "$B&page=0&pageSize=5&tipoAdministracion=A&finalidad=11"
+          resumen "$B&page=0&pageSize=5&tipoAdministracion=C&finalidad=11"
+          for y in 2008 2012 2014 2015 2016 2017 2018 2020 2022 2024; do
+            resumen "$B&page=0&pageSize=1&finalidad=11&fechaDesde=01/01/$y&fechaHasta=31/12/$y"
           done
-          B=https://www.pap.hacienda.gob.es/bdnstrans
-          pedir "$B/doc/swagger"
-          pedir "$B/api/v3/api-docs"
-          pedir "$B/v3/api-docs"
-          pedir "$B/api/api-docs"
-          pedir "$B/api/v2/api-docs"
-          pedir "$B/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=2"
-          pedir "$B/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=2&fechaDesde=01/09/2026&fechaHasta=30/09/2026"
-          NUM=$(curl -sS -m 40 "$B/api/convocatorias/busqueda?vpd=GE&page=0&pageSize=1&descripcion=jazz" | jq -r '.content[0].numeroConvocatoria // empty')
-          echo "Convocatoria de ejemplo: $NUM"
-          pedir "$B/api/convocatorias?vpd=GE&numConv=$NUM"
-          pedir "$B/api/concesiones/busqueda?vpd=GE&page=0&pageSize=2&numeroConvocatoria=$NUM"
-          pedir "$B/api/concesiones/busqueda?vpd=GE&page=0&pageSize=2"
-          pedir "$B/api/finalidades?vpd=GE"
-          pedir "$B/api/regiones?vpd=GE"
-          pedir "$B/api/beneficiarios?vpd=GE"
-          pedir "$B/api/instrumentos?vpd=GE"
-          pedir "$B/api/organos?vpd=GE&idAdmon=C"
-          pedir "$B/api/actividades?vpd=GE"
+          C=https://www.pap.hacienda.gob.es/bdnstrans/api
+          echo "::group::concesiones de la convocatoria 932065 (Festival Jazz Figueres)"
+          curl -sS -m 60 "$C/concesiones/busqueda?vpd=GE&page=0&pageSize=5&numeroConvocatoria=932065" | jq -c '{total: .totalElements, content: [.content[] | del(.idPersona)]}'
+          echo "::endgroup::"
+          echo "::group::concesiones sin filtro con numeroConvocatoria inexistente"
+          curl -sS -m 60 "$C/concesiones/busqueda?vpd=GE&page=0&pageSize=1&numeroConvocatoria=1" | jq -c '{total: .totalElements}'
+          echo "::endgroup::"
+          echo "::group::detalle con documentos (INAEM música)"
+          NUM=$(curl -sS -m 60 "$B&page=0&pageSize=1&descripcion=ayudas%20a%20la%20m%C3%BAsica%20y%20a%20la%20l%C3%ADrica" | jq -r '.content[0].numeroConvocatoria')
+          echo "num=$NUM"
+          curl -sS -m 60 "$C/convocatorias?vpd=GE&numConv=$NUM" | jq -c '.'
+          echo "::endgroup::"
+          echo "::group::cabeceras de límite de uso"
+          curl -sS -m 60 -D - -o /dev/null "$B&page=0&pageSize=1"
+          echo "::endgroup::"
