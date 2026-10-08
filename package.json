@@ -1,0 +1,23 @@
+{
+  "name": "subvencionados",
+  "private": true,
+  "description": "Buscador de subvenciones públicas para promotores de música (jazz, clásica y ópera)",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w web\"",
+    "test": "npm test -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
+    "build": "npm run build -w web",
+    "sync": "npm run sync -w server --",
+    "seed:demo": "npm run seed:demo -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
