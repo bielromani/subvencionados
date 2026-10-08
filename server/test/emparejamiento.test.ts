@@ -98,10 +98,20 @@ describe('evaluar', () => {
     expect(evaluar(beca, { ...perfil, actividades: ['formacion'] }, hoy)).not.toBeNull();
   });
 
-  it('las concesiones directas son precedentes', () => {
+  it('las concesiones directas son precedentes, sea cual sea el beneficiario', () => {
     const m = evaluar({ ...cicloJazz, tipo: 'directa' }, perfil, hoy)!;
     expect(m.encaje).toBe('precedente');
     expect(m.motivos).not.toContain('Plazo abierto');
+    // Nominativa a una asociación: también sirve de precedente a un autónomo.
+    const aAsociacion = {
+      ...cicloJazz,
+      tipo: 'directa' as const,
+      clasificacion: {
+        ...cicloJazz.clasificacion,
+        beneficiarios: { empresas: false, sinAnimoLucro: true, entidadesLocales: false, personasFisicas: false },
+      },
+    };
+    expect(evaluar(aAsociacion, perfil, hoy)?.encaje).toBe('precedente');
   });
 });
 

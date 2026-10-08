@@ -1,26 +1,27 @@
 # Hoja de ruta
 
-## Fase 0: medir el nicho (ahora)
+## Fase 0: medir el nicho
 
-- [x] Cliente de la BDNS, clasificador de música por reglas, perfil del promotor y recomendaciones.
-- [x] Web: *Para ti*, *Explorar* y *Mi perfil*.
-- [ ] Ejecutar `npm run sync -- --desde=2023-01-01` con acceso a la BDNS y ajustar el cliente a la respuesta real.
-- [ ] Revisar a mano unas 200 convocatorias clasificadas para medir la precisión y corregir las reglas.
-- [ ] Con las estadísticas del sync, decidir si el nicho da para un negocio: cuántas ayudas útiles al año, de qué
-      importe y en qué comunidades.
+- [x] Cliente de la BDNS comprobado contra la API real.
+- [x] Recolector con histórico desde 2014 y actualización diaria en GitHub Actions.
+- [x] Concesiones (quién cobró y cuánto), con personas físicas anonimizadas.
+- [x] Clasificador de música ajustado con títulos reales y perfil del promotor con recomendaciones.
+- [ ] Terminar la descarga del histórico y revisar a mano una muestra para medir la precisión del clasificador.
+- [ ] Con las estadísticas por año, comunidad e importe, decidir si el nicho da para un negocio.
 
 ## Fase 1: datos de calidad
 
-- [ ] Descargar el PDF de las bases y extraer con un LLM los requisitos, gastos subvencionables, importe máximo,
+- [ ] Leer el PDF de las bases con un LLM para extraer requisitos, gastos subvencionables, importe máximo,
       criterios de valoración y documentación exigida.
-- [ ] Ingesta diaria programada y detección de convocatorias nuevas (el campo `vistaPorPrimeraVez` ya existe).
-- [ ] Histórico de concesiones de la BDNS para predecir cuándo se repite cada ayuda y cuánto se suele conceder.
+- [ ] Incluir las convocatorias genéricas de cultura que admiten conciertos.
+- [ ] Predecir cuándo se repite cada ayuda y cuánto se suele conceder, a partir del histórico.
 - [ ] Contratos públicos de conciertos (Plataforma de Contratación).
 
 ## Fase 2: producto
 
-- [ ] Cuentas de usuario (varios promotores) y migración a PostgreSQL.
-- [ ] Alertas por email y por WhatsApp (WhatsApp Business API con plantillas aprobadas).
+- [ ] Cuentas de usuario y migración a PostgreSQL.
+- [ ] Alertas por email y WhatsApp con las convocatorias nuevas que encajan con cada perfil (el campo
+      `primeraDescarga` ya marca cuándo apareció cada una).
 - [ ] Servicio de tramitación con cobro a éxito: definir «éxito» como ayuda cobrada, incluir la justificación y fijar
       un importe mínimo por expediente.
 

@@ -90,12 +90,15 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
     }
   }
 
-  // Quién puede pedirla
+  // Quién puede pedirla. En las concesiones directas no se pide nada: son precedentes de
+  // quién cobra por conciertos parecidos, sea cual sea su forma jurídica.
   const b = cl.beneficiarios;
   const esEmpresa = perfil.formaJuridica === 'autonomo' || perfil.formaJuridica === 'sociedad';
   const admitido = esEmpresa ? b.empresas : b.sinAnimoLucro;
   let encaje: Coincidencia['encaje'] = 'directo';
-  if (admitido === true) {
+  if (c.tipo === 'directa') {
+    encaje = 'precedente';
+  } else if (admitido === true) {
     puntuacion += 30;
     motivos.push(esEmpresa ? 'Admite autónomos y empresas' : 'Admite entidades sin ánimo de lucro');
   } else if (b.entidadesLocales) {
@@ -123,9 +126,10 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
 
   const estado = plazo(c, hoy);
   if (c.tipo === 'directa') {
-    // Concesiones directas, nominativas y convenios: no hay plazo de solicitud, son precedentes.
-    encaje = 'precedente';
     avisos.push('Concesión directa: se pacta con la administración, sin concurso');
+    if (c.concesiones && c.concesiones.importeTotal > 0) {
+      motivos.push(`Concedido: ${Math.round(c.concesiones.importeTotal).toLocaleString('es-ES')} €`);
+    }
   } else if (estado === 'abierta') {
     puntuacion += 10;
     motivos.push('Plazo abierto');
