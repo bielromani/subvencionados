@@ -4,9 +4,6 @@ name: Explorar API BDNS
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - .github/workflows/explorar-bdns.yml
 
 jobs:
   explorar:

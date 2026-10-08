@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "id": 157555722,
+      "codConcesion": "SB157555722",
+      "fechaConcesion": "2026-03-18",
+      "beneficiario": "G17057910 CASINO MENESTRAL FIGUERENC",
+      "instrumento": "SUBVENCIÓN y ENTREGA DINERARIA SIN CONTRAPRESTACIÓN ",
+      "importe": 28000,
+      "ayudaEquivalente": 28000,
+      "urlBR": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2003-20977",
+      "tieneProyecto": false,
+      "numeroConvocatoria": "932065",
+      "idConvocatoria": 1133626,
+      "convocatoria": "Convenio entre el Ayuntamiento de Figueres y el Casino Menestral De Figueres regulador del otorgamiento de una subvención directa para la organización del XXXè Festival de Jazz de Figueres",
+      "descripcionCooficial": "Conveni entre l'Ajuntament de Figueres i el Casino Menestral De Figueres regulador de l'atorgament d'una subvenció directa per a l'organització del XXXè Festival de Jazz de Figueres",
+      "nivel1": "LOCAL",
+      "nivel2": "FIGUERES",
+      "nivel3": "AYUNTAMIENTO DE FIGUERES",
+      "codigoInvente": null,
+      "fechaAlta": "2026-09-28"
+    }
+  ],
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 1,
+  "number": 0,
+  "size": 10000
+}

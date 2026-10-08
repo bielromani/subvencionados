@@ -1,78 +1,147 @@
 import { clasificar } from '../clasificacion/musica.js';
-import { ambitoDesdeRegiones } from '../regiones.js';
-import type { Administracion, Convocatoria } from '../tipos.js';
+import { ambitoDesdeRegiones, ccaaDesdeNombre } from '../regiones.js';
+import type { Administracion, Convocatoria, ResumenConcesiones } from '../tipos.js';
 import { urlFichaBdns } from './cliente.js';
-import type { BdnsConvocatoria } from './tipos.js';
+import type { BdnsConcesion, BdnsConvocatoria } from './tipos.js';
 
 function administracionDesdeNivel1(nivel1: string | undefined): Administracion {
-  const n = (nivel1 ?? '').trim().toUpperCase();
-  if (!n) return 'otra';
-  if (n === 'ESTADO') return 'estatal';
-  if (n === 'LOCAL') return 'local';
-  if (n === 'OTROS') return 'otra';
-  // El resto de valores de nivel1 son los nombres de las comunidades autónomas.
-  return 'autonomica';
+  switch ((nivel1 ?? '').trim().toUpperCase()) {
+    case 'ESTADO':
+      return 'estatal';
+    case 'AUTONOMICA':
+      return 'autonomica';
+    case 'LOCAL':
+      return 'local';
+    default:
+      return 'otra';
+  }
 }
 
-/** Fechas de la BDNS ("2026-03-26" o "2026-03-26T00:00:00") a ISO aaaa-mm-dd. */
+/** Fechas de la BDNS ("2026-03-26" o "2026-03-26T00:00:00") a aaaa-mm-dd. */
 function fechaIso(valor: string | null | undefined): string | null {
   if (!valor) return null;
-  const m = /^(\d{4}-\d{2}-\d{2})/.exec(valor) ?? null;
-  if (m) return m[1]!;
-  const dmy = /^(\d{2})\/(\d{2})\/(\d{4})/.exec(valor);
-  return dmy ? `${dmy[3]}-${dmy[2]}-${dmy[1]}` : null;
+  return /^(\d{4}-\d{2}-\d{2})/.exec(valor)?.[1] ?? null;
 }
 
 const descripciones = (xs: { descripcion?: string }[] | undefined) =>
   (xs ?? []).map((x) => x.descripcion?.trim()).filter((x): x is string => !!x);
 
-/** Convierte el detalle de la BDNS en nuestra Convocatoria ya clasificada. */
-export function desdeBdns(c: BdnsConvocatoria, ahora = new Date()): Convocatoria {
+const DIRECTA_EN_TITULO = /nominativ|convenio|conveni\b|subvenci[oó]n directa|concesi[oó]n directa|subv\. directa/i;
+
+function tipoDesde(c: BdnsConvocatoria, titulo: string): Convocatoria['tipo'] {
+  if (c.tipoConvocatoria) return /directa/i.test(c.tipoConvocatoria) ? 'directa' : 'concurrencia';
+  return DIRECTA_EN_TITULO.test(titulo) ? 'directa' : 'concurrencia';
+}
+
+/** CIF de persona jurídica: letra inicial A-H, J, N, P-S, U-W y 7 dígitos más control. */
+const CIF = /^[ABCDEFGHJNPQRSUVW]\d{7}[0-9A-J]\s+/;
+
+/** Separa el NIF del nombre y oculta a las personas físicas. */
+export function beneficiarioPublico(beneficiario: string | undefined): string | null {
+  const b = (beneficiario ?? '').trim();
+  if (!CIF.test(b)) return null;
+  return b.replace(CIF, '').trim();
+}
+
+/** Resume las concesiones guardando solo personas jurídicas con nombre. */
+export function resumirConcesiones(concesiones: BdnsConcesion[]): ResumenConcesiones {
+  const entidades = concesiones
+    .map((c) => ({
+      nombre: beneficiarioPublico(c.beneficiario),
+      importe: c.importe ?? 0,
+      fecha: fechaIso(c.fechaConcesion),
+    }))
+    .filter((e): e is { nombre: string; importe: number; fecha: string | null } => e.nombre !== null)
+    .sort((a, b) => b.importe - a.importe);
+  const fechas = concesiones.map((c) => fechaIso(c.fechaConcesion)).filter((f): f is string => !!f).sort();
+  return {
+    numero: concesiones.length,
+    importeTotal: Math.round(concesiones.reduce((t, c) => t + (c.importe ?? 0), 0) * 100) / 100,
+    ultimaFecha: fechas.at(-1) ?? null,
+    entidades,
+  };
+}
+
+export interface RegistroBdns {
+  /** Respuesta íntegra de GET /convocatorias. */
+  detalle: BdnsConvocatoria;
+  /** Concesiones de GET /concesiones/busqueda, con las personas físicas ya anonimizadas. */
+  concesiones: BdnsConcesion[] | null;
+  primeraDescarga: string;
+  actualizado: string;
+}
+
+/** Convierte un registro descargado de la BDNS en nuestra Convocatoria ya clasificada. */
+export function desdeBdns(registro: RegistroBdns): Convocatoria {
+  const c = registro.detalle;
   const codigo = c.codigoBDNS ?? (c.id != null ? String(c.id) : null);
   if (!codigo) throw new Error('Convocatoria de la BDNS sin código');
 
   const niveles = [c.organo?.nivel1, c.organo?.nivel2, c.organo?.nivel3]
     .map((x) => x?.trim())
     .filter((x): x is string => !!x);
-  const ambito = ambitoDesdeRegiones(descripciones(c.regiones));
+  const administracion = administracionDesdeNivel1(c.organo?.nivel1);
+  const regiones = descripciones(c.regiones);
+  const ambito = ambitoDesdeRegiones(regiones);
+  let ambitoNacional = regiones.length > 0 && ambito.nacional && ambito.ccaa.length === 0;
+  let ccaa = ambito.ccaa;
+  if (regiones.length === 0) {
+    // Sin regiones: una comunidad autónoma convoca para su territorio; el Estado, para toda España.
+    const propia = administracion === 'autonomica' ? ccaaDesdeNombre(c.organo?.nivel2) : null;
+    if (propia) ccaa = [propia];
+    ambitoNacional = administracion === 'estatal';
+  }
+
   const tiposBeneficiario = descripciones(c.tiposBeneficiarios);
   const titulo = (c.descripcion ?? c.descripcionLeng ?? '').trim() || `Convocatoria ${codigo}`;
-
   const texto = [
     titulo,
     c.descripcionLeng,
-    c.descripcionFinalidad,
     c.descripcionBasesReguladoras,
-    ...descripciones(c.sectores),
     ...(c.anuncios ?? []).map((a) => [a.titulo, a.texto].filter(Boolean).join(' ')),
   ]
     .filter(Boolean)
     .join('\n');
 
-  const marca = ahora.toISOString();
   return {
     id: `bdns-${codigo}`,
     origen: 'bdns',
-    tipo: 'convocatoria',
+    tipo: tipoDesde(c, titulo),
+    tipoConvocatoria: c.tipoConvocatoria?.trim() || null,
     codigoBdns: codigo,
     titulo,
     organo: niveles.at(-1) ?? 'Desconocido',
     organoNiveles: niveles,
-    administracion: administracionDesdeNivel1(c.organo?.nivel1),
-    ccaa: ambito.nacional ? [] : ambito.ccaa,
-    provincias: ambito.nacional ? [] : ambito.provincias,
+    administracion,
+    ambitoNacional,
+    ccaa,
+    provincias: ambito.provincias,
     finalidad: c.descripcionFinalidad ?? null,
+    sectores: descripciones(c.sectores),
+    instrumentos: descripciones(c.instrumentos),
     tiposBeneficiario,
     presupuesto: typeof c.presupuestoTotal === 'number' ? c.presupuestoTotal : null,
     fechaPublicacion: fechaIso(c.fechaRecepcion),
     fechaInicioSolicitud: fechaIso(c.fechaInicioSolicitud),
     fechaFinSolicitud: fechaIso(c.fechaFinSolicitud),
     abierta: typeof c.abierto === 'boolean' ? c.abierto : null,
-    urlBases: c.urlBasesReguladoras ?? null,
+    urlBases: c.urlBasesReguladoras?.trim() || null,
     urlDetalle: urlFichaBdns(codigo),
+    textoInicio: c.textInicio?.trim() || null,
+    textoFin: c.textFin?.trim() || null,
+    concesiones: registro.concesiones ? resumirConcesiones(registro.concesiones) : null,
     texto,
     clasificacion: clasificar({ texto, tiposBeneficiario }),
-    vistaPorPrimeraVez: marca,
-    actualizada: marca,
+    vistaPorPrimeraVez: registro.primeraDescarga,
+    actualizada: registro.actualizado,
   };
+}
+
+/**
+ * Lo que guardamos de cada concesión: sin el identificador interno de la persona y,
+ * si el beneficiario es una persona física, sin su nombre ni su DNI parcial.
+ */
+export function anonimizarConcesion(c: BdnsConcesion): BdnsConcesion {
+  const { idPersona: _idPersona, ...resto } = c;
+  return beneficiarioPublico(c.beneficiario) === null ? { ...resto, beneficiario: 'PERSONA FÍSICA' } : resto;
 }

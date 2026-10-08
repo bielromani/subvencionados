@@ -1,0 +1,65 @@
+{
+  "content": [
+    {
+      "id": 1135939,
+      "mrr": false,
+      "numeroConvocatoria": "934378",
+      "descripcion": "Concurso para la selección de proyectos fotográficos a exhibir en el marco de la XIII EDICIÓN DEL FESTIVAL INTERNACIONAL DE JAZZ Y FOTOGRAFÍA DE LA NATURALEZA. Naturajazz 2026",
+      "descripcionLeng": null,
+      "fechaRecepcion": "2026-10-08",
+      "nivel1": "LOCAL",
+      "nivel2": "CABILDO INSULAR DE TENERIFE",
+      "nivel3": "ORGANISMO AUTÓNOMO DE MUSEOS Y CENTROS",
+      "codigoInvente": "INV00004096"
+    },
+    {
+      "id": 1134011,
+      "mrr": false,
+      "numeroConvocatoria": "932450",
+      "descripcion": "Sunset jazz club 2026",
+      "descripcionLeng": "Sunset jazz club 2026",
+      "fechaRecepcion": "2026-09-30",
+      "nivel1": "LOCAL",
+      "nivel2": "GIRONA",
+      "nivel3": "AYUNTAMIENTO DE GIRONA",
+      "codigoInvente": null
+    },
+    {
+      "id": 1133626,
+      "mrr": false,
+      "numeroConvocatoria": "932065",
+      "descripcion": "Convenio entre el Ayuntamiento de Figueres y el Casino Menestral De Figueres regulador del otorgamiento de una subvención directa para la organización del XXXè Festival de Jazz de Figueres",
+      "descripcionLeng": "Conveni entre l'Ajuntament de Figueres i el Casino Menestral De Figueres regulador de l'atorgament d'una subvenció directa per a l'organització del XXXè Festival de Jazz de Figueres",
+      "fechaRecepcion": "2026-09-28",
+      "nivel1": "LOCAL",
+      "nivel2": "FIGUERES",
+      "nivel3": "AYUNTAMIENTO DE FIGUERES",
+      "codigoInvente": null
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "sorted": true,
+      "unsorted": false,
+      "empty": false
+    },
+    "pageNumber": 0,
+    "pageSize": 3,
+    "offset": 0,
+    "unpaged": false,
+    "paged": true
+  },
+  "last": false,
+  "totalPages": 151,
+  "totalElements": 453,
+  "sort": {
+    "sorted": true,
+    "unsorted": false,
+    "empty": false
+  },
+  "first": true,
+  "numberOfElements": 3,
+  "size": 3,
+  "number": 0,
+  "empty": false
+}

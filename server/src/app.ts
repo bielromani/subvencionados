@@ -23,13 +23,17 @@ function filtrar(convocatorias: Convocatoria[], q: Request['query']): Convocator
   const texto = typeof q.q === 'string' ? normalizar(q.q.trim()) : '';
   const plazoBuscado = typeof q.plazo === 'string' ? q.plazo : '';
   const incluirNoMusicales = q.todas === 'true';
+  const tipo = typeof q.tipo === 'string' ? q.tipo : '';
+  const desde = typeof q.desde === 'string' ? q.desde : '';
 
   return convocatorias.filter((c) => {
     const cl = c.clasificacion;
     if (!incluirNoMusicales && !cl.musical) return false;
     if (estilos.length && !estilos.some((e) => cl.estilosCompatibles.includes(e as never))) return false;
-    // Una convocatoria estatal (sin CCAA) aplica a cualquier comunidad.
-    if (ccaa.length && c.ccaa.length && !ccaa.some((x) => c.ccaa.includes(x))) return false;
+    // Una convocatoria sin restricción territorial aplica a cualquier comunidad.
+    if (ccaa.length && !c.ambitoNacional && !ccaa.some((x) => c.ccaa.includes(x))) return false;
+    if (tipo && c.tipo !== tipo) return false;
+    if (desde && (c.fechaPublicacion ?? '') < desde) return false;
     if (administraciones.length && !administraciones.includes(c.administracion)) return false;
     if (lineas.length && !lineas.some((l) => cl.lineas.includes(l as never))) return false;
     if (plazoBuscado && plazo(c) !== plazoBuscado) return false;
@@ -38,6 +42,16 @@ function filtrar(convocatorias: Convocatoria[], q: Request['query']): Convocator
     }
     return true;
   });
+}
+
+/** recientes: por fecha de publicación; cierre: las que cierran antes primero (solo con plazo abierto o próximo). */
+function ordenar(convocatorias: Convocatoria[], orden: unknown): Convocatoria[] {
+  if (orden !== 'cierre') return convocatorias;
+  const clave = (c: Convocatoria) => {
+    const p = plazo(c);
+    return p === 'abierta' || p === 'proxima' ? (c.fechaFinSolicitud ?? '9999') : '~';
+  };
+  return [...convocatorias].sort((a, b) => clave(a).localeCompare(clave(b)));
 }
 
 export function crearApp(repo: Repositorio) {
@@ -56,14 +70,17 @@ export function crearApp(repo: Repositorio) {
       lineas: LINEAS,
       total: todas.length,
       musicales: todas.filter((c) => c.clasificacion.musical).length,
-      demo: todas.some((c) => c.origen === 'demo'),
       ultimaActualizacion: todas.map((c) => c.actualizada).sort().at(-1) ?? null,
+      fuente: 'Base de Datos Nacional de Subvenciones (BDNS) · IGAE, Ministerio de Hacienda',
     });
   });
 
   app.get('/api/convocatorias', (req, res) => {
-    const resultado = filtrar(repo.listarConvocatorias(), req.query);
-    res.json({ total: resultado.length, items: resultado.map(vista) });
+    const resultado = ordenar(filtrar(repo.listarConvocatorias(), req.query), req.query.orden);
+    const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 500);
+    const pagina = Math.max(Number(req.query.pagina) || 1, 1);
+    const items = resultado.slice((pagina - 1) * porPagina, pagina * porPagina);
+    res.json({ total: resultado.length, pagina, porPagina, items: items.map(vista) });
   });
 
   app.get('/api/convocatorias/:id', (req, res) => {

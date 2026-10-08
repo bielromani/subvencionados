@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "start": "tsx src/index.ts",
-    "sync": "tsx src/scripts/sync.ts",
-    "seed:demo": "tsx src/scripts/seed-demo.ts",
+    "dev": "npm run importar && tsx watch src/index.ts",
+    "start": "npm run importar && tsx src/index.ts",
+    "recolectar": "tsx src/scripts/recolectar.ts",
+    "importar": "tsx src/scripts/importar.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },

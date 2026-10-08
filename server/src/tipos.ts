@@ -53,29 +53,50 @@ export interface Clasificacion {
   evidencias: string[];
 }
 
+/** Resumen de lo concedido en una convocatoria (concesiones registradas en la BDNS). */
+export interface ResumenConcesiones {
+  numero: number;
+  importeTotal: number;
+  /** Fecha de la concesión más reciente. */
+  ultimaFecha: string | null;
+  /** Personas jurídicas beneficiarias (las personas físicas no se guardan por privacidad). */
+  entidades: { nombre: string; importe: number; fecha: string | null }[];
+}
+
 export interface Convocatoria {
   id: string;
-  origen: 'bdns' | 'demo';
-  tipo: 'convocatoria' | 'nominativa' | 'convenio';
-  codigoBdns: string | null;
+  origen: 'bdns';
+  /** concurrencia: hay que presentarse y competir; directa: concesión directa o nominativa, sin concurso. */
+  tipo: 'concurrencia' | 'directa';
+  /** Texto original de la BDNS ("Concurrencia competitiva - canónica", "Concesión directa - instrumental"...). */
+  tipoConvocatoria: string | null;
+  codigoBdns: string;
   titulo: string;
   organo: string;
   /** Jerarquía del órgano convocante tal como la da la BDNS (nivel1 > nivel2 > nivel3). */
   organoNiveles: string[];
   administracion: Administracion;
-  /** Comunidades autónomas del ámbito; vacío = todo el territorio nacional. */
+  /** Sin restricción territorial (España entera o "todo el mundo"). */
+  ambitoNacional: boolean;
+  /** Comunidades autónomas del ámbito. Vacío y sin ámbito nacional = la BDNS no lo indica. */
   ccaa: string[];
   provincias: string[];
   finalidad: string | null;
+  sectores: string[];
+  instrumentos: string[];
   tiposBeneficiario: string[];
   presupuesto: number | null;
   fechaPublicacion: string | null;
   fechaInicioSolicitud: string | null;
   fechaFinSolicitud: string | null;
-  /** true/false según la BDNS; null si no se sabe. */
+  /** Indicador "abierto" de la BDNS; manda menos que las fechas de solicitud. */
   abierta: boolean | null;
   urlBases: string | null;
-  urlDetalle: string | null;
+  urlDetalle: string;
+  /** Texto del inicio del plazo cuando no hay fecha ("A partir del día siguiente de la publicación..."). */
+  textoInicio: string | null;
+  textoFin: string | null;
+  concesiones: ResumenConcesiones | null;
   /** Texto libre usado para clasificar (título, objeto, finalidad...). */
   texto: string;
   clasificacion: Clasificacion;

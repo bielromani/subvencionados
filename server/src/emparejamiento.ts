@@ -2,18 +2,24 @@
 
 import type { Convocatoria, Estilo, Linea, Perfil } from './tipos.js';
 
-export type Plazo = 'abierta' | 'cerrada' | 'desconocido';
+export type Plazo = 'abierta' | 'proxima' | 'cerrada' | 'desconocido';
 
-/** Las fechas de solicitud mandan sobre el indicador "abierto" de la BDNS. */
+/**
+ * Estado del plazo de solicitud. Las fechas mandan sobre el indicador "abierto" de la
+ * BDNS, que a veces vale false en convocatorias recién registradas cuyo plazo aún no
+ * ha empezado ("a partir del día siguiente de la publicación en el boletín").
+ */
 export function plazo(c: Convocatoria, hoy = new Date()): Plazo {
   const dia = hoy.toISOString().slice(0, 10);
+  if (c.tipo === 'directa') return 'desconocido';
+  if (c.fechaInicioSolicitud && c.fechaInicioSolicitud > dia) return 'proxima';
   if (c.fechaFinSolicitud) {
     if (c.fechaFinSolicitud < dia) return 'cerrada';
-    if (!c.fechaInicioSolicitud || c.fechaInicioSolicitud <= dia) return 'abierta';
-    return 'cerrada';
+    // Hay fecha de fin pero el plazo depende de una publicación pendiente.
+    if (!c.fechaInicioSolicitud && c.abierta === false && c.textoInicio) return 'proxima';
+    return 'abierta';
   }
   if (c.abierta === true) return 'abierta';
-  if (c.abierta === false) return 'cerrada';
   return 'desconocido';
 }
 
@@ -21,7 +27,7 @@ export interface Coincidencia {
   convocatoria: Convocatoria;
   puntuacion: number;
   /** directo: puede pedirla; indirecto: la cobran ayuntamientos (clientes potenciales);
-   *  precedente: nominativa ya concedida, sirve de referencia para negociar una propia. */
+   *  precedente: concesión directa o nominativa, sirve de referencia para negociar una propia. */
   encaje: 'directo' | 'indirecto' | 'precedente';
   plazo: Plazo;
   motivos: string[];
@@ -67,9 +73,11 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
   }
 
   // Territorio: ámbito nacional, o alguna comunidad donde el promotor tiene sede o actúa.
-  if (c.ccaa.length === 0) {
+  if (c.ambitoNacional) {
     puntuacion += 15;
-    motivos.push('Ámbito estatal');
+    motivos.push('Sin restricción territorial');
+  } else if (c.ccaa.length === 0) {
+    avisos.push('La BDNS no indica el ámbito territorial: revisa las bases');
   } else {
     const comunidades = new Set([perfil.ccaaSede, ...perfil.ccaaActuacion].filter(Boolean));
     const enZona = c.ccaa.filter((x) => comunidades.has(x));
@@ -107,13 +115,16 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
   }
 
   const estado = plazo(c, hoy);
-  if (c.tipo !== 'convocatoria') {
-    // Nominativas y convenios no tienen plazo de solicitud: son precedentes.
+  if (c.tipo === 'directa') {
+    // Concesiones directas, nominativas y convenios: no hay plazo de solicitud, son precedentes.
     encaje = 'precedente';
-    avisos.push('Sin concurso: se pacta directamente con la administración');
+    avisos.push('Concesión directa: se pacta con la administración, sin concurso');
   } else if (estado === 'abierta') {
     puntuacion += 10;
     motivos.push('Plazo abierto');
+  } else if (estado === 'proxima') {
+    puntuacion += 10;
+    motivos.push('Plazo a punto de abrir');
   } else if (estado === 'cerrada') {
     avisos.push('Plazo cerrado: suele repetirse cada año, prepárala para la próxima');
   }

@@ -11,8 +11,8 @@
     "test": "npm test -w server",
     "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
     "build": "npm run build -w web",
-    "sync": "npm run sync -w server --",
-    "seed:demo": "npm run seed:demo -w server"
+    "recolectar": "npm run recolectar -w server --",
+    "importar": "npm run importar -w server"
   },
   "devDependencies": {
     "concurrently": "^10.0.6"

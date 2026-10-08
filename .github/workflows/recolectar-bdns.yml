@@ -1,0 +1,76 @@
+# Descarga de la BDNS las convocatorias de música y sus concesiones y las guarda en datos/bdns/.
+# - Cada día: busca las nuevas y refresca las de los últimos 60 días.
+# - A mano (Actions > Recolectar BDNS > Run workflow): histórico desde la fecha que se indique.
+# Si se agota el tiempo con trabajo pendiente, se vuelve a lanzar sola para continuar.
+name: Recolectar BDNS
+
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+    inputs:
+      desde:
+        description: 'Fecha de publicación inicial (aaaa-mm-dd). Vacío = desde la última ejecución'
+        required: false
+      minutos:
+        description: 'Tiempo máximo de descarga'
+        default: '330'
+      refrescar_dias:
+        description: 'Volver a descargar las publicadas en los últimos N días'
+        default: '60'
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: recolectar-bdns
+  cancel-in-progress: false
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Recolectar
+        id: recolectar
+        env:
+          DESDE: ${{ inputs.desde }}
+          MINUTOS: ${{ inputs.minutos || '330' }}
+          REFRESCAR: ${{ inputs.refrescar_dias || '60' }}
+        run: |
+          args=(--minutos="$MINUTOS" --refrescar-dias="$REFRESCAR")
+          if [ -n "$DESDE" ]; then args+=(--desde="$DESDE"); fi
+          npm run recolectar -- "${args[@]}"
+
+      - name: Guardar los datos en el repositorio
+        if: always()
+        run: |
+          git config user.name "recolector-bdns"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos
+          if git diff --cached --quiet; then
+            echo "Sin cambios en los datos."
+            exit 0
+          fi
+          git commit -m "Datos BDNS $(date -u +%Y-%m-%d): ${{ steps.recolectar.outputs.nuevas || 0 }} nuevas, ${{ steps.recolectar.outputs.pendientes || 0 }} pendientes"
+          for i in 1 2 3 4; do
+            git push && exit 0
+            git pull --rebase
+          done
+          exit 1
+
+      - name: Continuar si queda trabajo pendiente
+        if: steps.recolectar.outputs.pendientes != '0' && steps.recolectar.outputs.nuevas != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run recolectar-bdns.yml --ref "${{ github.ref_name }}" -f minutos="${{ inputs.minutos || '330' }}"

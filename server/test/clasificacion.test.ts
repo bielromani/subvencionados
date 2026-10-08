@@ -77,3 +77,19 @@ describe('beneficiarios', () => {
     expect(c('Ayudas a la música en vivo').encajePromotor).toBe('desconocido');
   });
 });
+
+describe('títulos reales de la BDNS', () => {
+  it('clasifica bien una muestra', () => {
+    expect(c('Sunset jazz club 2026').estilosExplicitos).toEqual(['jazz']);
+    expect(c('SUBVENCIÓN NOMINATIVA CAPILLA DE MÚSICA BURÉS 2026').generica).toBe(true);
+    expect(c('SUBVENCION NOMINATIVA 2026. JOVEN ORQUESTA CUENCA').estilosExplicitos).toEqual(['clasica']);
+    expect(c('CONV. ASOC. CULTURAL TAURINA EGATAURO').musical).toBe(false);
+    expect(c('CONVOCATORIA INSTRUMENTAL SUBVENCIÓN DE COOPERACIÓN INTERNACIONAL. Bolivia 2026').musical).toBe(false);
+    expect(
+      c('Concurso para la selección de proyectos fotográficos a exhibir en el marco de la XIII EDICIÓN DEL FESTIVAL INTERNACIONAL DE JAZZ').musical,
+    ).toBe(false);
+    expect(c("Conveni per a l'organització del Festival de Jazz de Figueres").estilosExplicitos).toEqual(['jazz']);
+    expect(c('Ajuts a la temporada d’òpera').estilosExplicitos).toEqual(['opera']);
+    expect(c('Organización Festival Nowa Reggae 2024').otrosGeneros).toEqual(['reggae']);
+  });
+});

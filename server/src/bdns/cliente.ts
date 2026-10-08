@@ -1,11 +1,14 @@
-import type { BdnsConvocatoria, BdnsPagina, BdnsResultadoBusqueda } from './tipos.js';
+import type { BdnsConcesion, BdnsConvocatoria, BdnsPagina, BdnsResultadoBusqueda } from './tipos.js';
 
 // La BDNS se publica bajo dos dominios del Ministerio de Hacienda. Probamos ambos
 // y nos quedamos con el primero que responda.
 export const URLS_BASE_POR_DEFECTO = [
-  'https://www.infosubvenciones.es/bdnstrans/api',
   'https://www.pap.hacienda.gob.es/bdnstrans/api',
+  'https://www.infosubvenciones.es/bdnstrans/api',
 ];
+
+/** Identificador de la finalidad "CULTURA" en GET /finalidades. */
+export const FINALIDAD_CULTURA = 11;
 
 /** Ficha pública de una convocatoria, para enlazarla desde la web. */
 export const urlFichaBdns = (codigo: string) =>
@@ -16,6 +19,9 @@ export interface OpcionesCliente {
   /** Pausa entre peticiones, para no saturar un servicio público. */
   pausaMs?: number;
   timeoutMs?: number;
+  /** Reintentos ante errores de red o respuestas 5xx, con espera exponencial. */
+  reintentos?: number;
+  esperaBaseMs?: number;
   fetch?: typeof fetch;
 }
 
@@ -25,7 +31,10 @@ export interface FiltrosBusqueda {
   tipoBusquedaTexto?: 0 | 1 | 2;
   fechaDesde?: Date;
   fechaHasta?: Date;
+  /** Id de GET /finalidades (11 = Cultura). */
+  finalidad?: number;
   page?: number;
+  /** La API admite hasta 10.000 resultados por página. */
   pageSize?: number;
 }
 
@@ -36,20 +45,34 @@ export function fechaBdns(fecha: Date): string {
   return `${dd}/${mm}/${fecha.getFullYear()}`;
 }
 
-export class ErrorBdns extends Error {}
+export class ErrorBdns extends Error {
+  /** true si reintentar no servirá (p. ej. 404). */
+  constructor(
+    message: string,
+    readonly permanente = false,
+  ) {
+    super(message);
+  }
+}
+
+const esperar = (ms: number) => (ms > 0 ? new Promise((r) => setTimeout(r, ms)) : Promise.resolve());
 
 export class ClienteBdns {
   private readonly urlsBase: string[];
   private readonly pausaMs: number;
   private readonly timeoutMs: number;
   private readonly fetchFn: typeof fetch;
+  private readonly reintentos: number;
+  private readonly esperaBaseMs: number;
   private ultimaPeticion = 0;
 
   constructor(opciones: OpcionesCliente = {}) {
-    this.urlsBase = opciones.urlsBase ?? URLS_BASE_POR_DEFECTO;
-    this.pausaMs = opciones.pausaMs ?? 1000;
-    this.timeoutMs = opciones.timeoutMs ?? 30_000;
+    this.urlsBase = [...(opciones.urlsBase ?? URLS_BASE_POR_DEFECTO)];
+    this.pausaMs = opciones.pausaMs ?? 500;
+    this.timeoutMs = opciones.timeoutMs ?? 60_000;
     this.fetchFn = opciones.fetch ?? fetch;
+    this.reintentos = opciones.reintentos ?? 3;
+    this.esperaBaseMs = opciones.esperaBaseMs ?? 5000;
   }
 
   async buscarConvocatorias(filtros: FiltrosBusqueda): Promise<BdnsPagina<BdnsResultadoBusqueda>> {
@@ -66,7 +89,33 @@ export class ClienteBdns {
     }
     if (filtros.fechaDesde) params.fechaDesde = fechaBdns(filtros.fechaDesde);
     if (filtros.fechaHasta) params.fechaHasta = fechaBdns(filtros.fechaHasta);
+    if (filtros.finalidad != null) params.finalidad = String(filtros.finalidad);
     return this.get('/convocatorias/busqueda', params);
+  }
+
+  /** Todas las páginas de una búsqueda. */
+  async buscarTodas(filtros: Omit<FiltrosBusqueda, 'page'>): Promise<BdnsResultadoBusqueda[]> {
+    const resultados: BdnsResultadoBusqueda[] = [];
+    for (let page = 0; ; page++) {
+      const pagina = await this.buscarConvocatorias({ pageSize: 10_000, ...filtros, page });
+      resultados.push(...(pagina.content ?? []));
+      if (pagina.last !== false || (pagina.content ?? []).length === 0) return resultados;
+    }
+  }
+
+  /** Concesiones (pagos a beneficiarios) de una convocatoria. */
+  async concesionesDe(numeroConvocatoria: string): Promise<BdnsConcesion[]> {
+    const resultados: BdnsConcesion[] = [];
+    for (let page = 0; ; page++) {
+      const pagina = await this.get<BdnsPagina<BdnsConcesion>>('/concesiones/busqueda', {
+        vpd: 'GE',
+        numeroConvocatoria,
+        page: String(page),
+        pageSize: '10000',
+      });
+      resultados.push(...(pagina.content ?? []));
+      if (pagina.last !== false || (pagina.content ?? []).length === 0) return resultados;
+    }
   }
 
   async obtenerConvocatoria(numeroConvocatoria: string): Promise<BdnsConvocatoria> {
@@ -74,26 +123,37 @@ export class ClienteBdns {
   }
 
   private async get<T>(ruta: string, params: Record<string, string>): Promise<T> {
-    await this.respetarPausa();
     const query = new URLSearchParams(params).toString();
     const errores: string[] = [];
 
-    for (const base of this.urlsBase) {
-      const url = `${base}${ruta}?${query}`;
-      try {
-        const res = await this.fetchFn(url, {
-          headers: { Accept: 'application/json' },
-          signal: AbortSignal.timeout(this.timeoutMs),
-        });
-        if (!res.ok) {
-          errores.push(`${url} -> HTTP ${res.status}`);
-          continue;
+    for (let intento = 0; intento <= this.reintentos; intento++) {
+      if (intento > 0) await esperar(this.esperaBaseMs * 2 ** (intento - 1));
+      for (const base of this.urlsBase) {
+        await this.respetarPausa();
+        const url = `${base}${ruta}?${query}`;
+        try {
+          const res = await this.fetchFn(url, {
+            headers: {
+              Accept: 'application/json',
+              'User-Agent': 'subvencionados (github.com/bielromani/subvencionados)',
+            },
+            signal: AbortSignal.timeout(this.timeoutMs),
+          });
+          if (!res.ok) {
+            errores.push(`${url} -> HTTP ${res.status}`);
+            // Un 4xx (salvo 429) no se arregla reintentando.
+            if (res.status >= 400 && res.status < 500 && res.status !== 429) {
+              throw new ErrorBdns(errores.join('\n  '), true);
+            }
+            continue;
+          }
+          // El dominio que funciona pasa a ser el primero para las siguientes peticiones.
+          this.priorizar(base);
+          return (await res.json()) as T;
+        } catch (error) {
+          if (error instanceof ErrorBdns) throw error;
+          errores.push(`${url} -> ${(error as Error).message}`);
         }
-        // El dominio que funciona pasa a ser el primero para las siguientes peticiones.
-        this.priorizar(base);
-        return (await res.json()) as T;
-      } catch (error) {
-        errores.push(`${url} -> ${(error as Error).message}`);
       }
     }
     throw new ErrorBdns(`No se pudo consultar la BDNS:\n  ${errores.join('\n  ')}`);
@@ -105,8 +165,7 @@ export class ClienteBdns {
   }
 
   private async respetarPausa() {
-    const espera = this.ultimaPeticion + this.pausaMs - Date.now();
-    if (espera > 0) await new Promise((r) => setTimeout(r, espera));
+    await esperar(this.ultimaPeticion + this.pausaMs - Date.now());
     this.ultimaPeticion = Date.now();
   }
 }

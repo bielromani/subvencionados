@@ -40,6 +40,17 @@ const SENALES_MUSICA: Patron[] = [
   ['coro', /\b(coros?|corales?)\b/],
   ['recital', /\brecitales?\b/],
   ['conservatorio', /\bconservatorios?\b/],
+  // Catalán, gallego y euskera (la BDNS incluye el título en la lengua cooficial).
+  ['orquestra', /\borquestr(a|es)\b/],
+  ['concert', /\bconcerts?\b/],
+  ['musika', /\bmusik(a|ak|al)\b/],
+  ['filarmónica', /\bfilarmonic[oa]s?\b/],
+  ['orfeón', /\borfeo(n|i)?s?\b/],
+  ['escolanía', /\bescolani(a|es)\b/],
+  ['cobla', /\bcoblas?\b/],
+  ['charanga', /\bcharangas?\b/],
+  ['rondalla', /\brondallas?\b/],
+  ['cantautor', /\bcantautor(es|a|as)?\b/],
 ];
 
 // "Concierto" tiene acepciones que no son musicales.
@@ -48,7 +59,7 @@ const FALSOS_CONCIERTO =
 
 // "Ópera" sin tilde coincide con el verbo "opera"; solo la aceptamos con tilde
 // o en contextos inequívocos.
-const OPERA_CON_TILDE = /(^|[^\p{L}])óperas?(?![\p{L}])/iu;
+const OPERA_CON_TILDE = /(^|[^\p{L}])[óò]peras?(?![\p{L}])/iu;
 const OPERA_CONTEXTO =
   /\b(temporadas? (de |lirica y de )?opera|opera y zarzuela|zarzuela y opera|festival(es)? de opera|produccion(es)? de opera|opera barroca|teatro de la opera|de opera y)\b/;
 
@@ -62,6 +73,10 @@ const ESTILOS_PATRONES: Record<Estilo, Patron[]> = {
   clasica: [
     ['música clásica', /\bmusica clasica\b/],
     ['orquesta', /\borquestas?\b/],
+    ['orquestra', /\borquestr(a|es)\b/],
+    ['camerata', /\bcamerata\b/],
+    ['orfeón', /\borfeo(n|i)?s?\b/],
+    ['escolanía', /\bescolani(a|es)\b/],
     ['sinfónica', /\bsinfonic[oa]s?\b/],
     ['filarmónica', /\bfilarmonic[oa]s?\b/],
     ['música de cámara', /\bmusica de camara\b/],
@@ -88,7 +103,20 @@ const OTROS_GENEROS: Patron[] = [
   ['electrónica', /\bmusica electronica\b/],
   ['hip hop', /\bhip ?hop\b/],
   ['copla', /\bcopla\b/],
+  ['reggae', /\breggae\b/],
+  ['sardana', /\b(sardanas?|coblas?)\b/],
+  ['dolçaina', /\bdolcain(a|es)\b/],
+  ['txistu', /\btxistu/],
+  ['gaita', /\bgaitas?\b/],
+  ['charanga', /\bcharangas?\b/],
+  ['rondalla', /\brondallas?\b/],
+  ['cantautor', /\bcantautor(es|a|as)?\b/],
 ];
+
+// Concursos de fotografía, carteles, pintura o relatos asociados a un festival de música:
+// el objeto no es la música aunque el título la nombre.
+const OBJETO_NO_MUSICAL =
+  /\b(concurso|certamen|premios?|seleccion) (para la seleccion )?(de |del )?(proyectos )?(fotografic|fotografia|carteles?|cartel|pintura|literari|relatos?|dibujo|poesia|cortometrajes?)/;
 
 // Menciones a la música como campo general ("ayudas a la música y a la lírica",
 // "música en vivo"): aunque también se cite un estilo, la ayuda no se limita a él.
@@ -158,7 +186,12 @@ export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificaci
   const operaExplicita = OPERA_CON_TILDE.test(texto) || OPERA_CONTEXTO.test(t);
   if (operaExplicita) evidencias.push('ópera');
 
-  const musical = evidencias.length > 0;
+  // Un género concreto (rock, flamenco...) también indica que es de música.
+  const otrosGeneros = coincidencias(t, OTROS_GENEROS);
+  evidencias.push(...otrosGeneros);
+  const objetoNoMusical = OBJETO_NO_MUSICAL.test(t);
+  const musical = evidencias.length > 0 && !objetoNoMusical;
+  if (objetoNoMusical) evidencias.push('objeto no musical (concurso de fotografía, carteles...)');
 
   const estilosExplicitos: Estilo[] = [];
   for (const [estilo, patrones] of Object.entries(ESTILOS_PATRONES) as [Estilo, Patron[]][]) {
@@ -167,7 +200,6 @@ export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificaci
     }
   }
 
-  const otrosGeneros = musical ? coincidencias(t, OTROS_GENEROS) : [];
   const generica =
     musical && otrosGeneros.length === 0 && (estilosExplicitos.length === 0 || MUSICA_GENERAL.test(t));
   const estilosCompatibles: Estilo[] = generica ? ['jazz', 'clasica', 'opera'] : estilosExplicitos;

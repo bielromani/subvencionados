@@ -63,7 +63,7 @@ export function ambitoDesdeRegiones(regiones: string[]): AmbitoTerritorial {
   for (const region of regiones) {
     const codigo = /^\s*(ES\d*)/i.exec(region)?.[1]?.toUpperCase();
     if (!codigo || codigo === 'ES') {
-      // Sin código reconocible o ámbito "ES - ESPAÑA": no restringe el territorio.
+      // "ES - ESPAÑA", "XXXX - TODO EL MUNDO", "ESZ - EXTRA-REGIO": no restringe el territorio.
       nacional = true;
       continue;
     }
@@ -81,4 +81,47 @@ export function ambitoDesdeRegiones(regiones: string[]): AmbitoTerritorial {
   }
 
   return { nacional, ccaa: [...ccaa], provincias: [...provincias] };
+}
+
+const sinTildes = (s: string) =>
+  s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z ]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+// Variantes con que la BDNS nombra a las comunidades en nivel2 ("COMUNIDAD VALENCIANA",
+// "CIUDAD AUTONOMA DE CEUTA", "ANDALUCÍA"...).
+const ALIAS_CCAA: [string, string][] = [
+  ['galicia', 'Galicia'],
+  ['asturias', 'Principado de Asturias'],
+  ['cantabria', 'Cantabria'],
+  ['pais vasco', 'País Vasco'],
+  ['euskadi', 'País Vasco'],
+  ['navarra', 'Comunidad Foral de Navarra'],
+  ['rioja', 'La Rioja'],
+  ['aragon', 'Aragón'],
+  ['madrid', 'Comunidad de Madrid'],
+  ['castilla y leon', 'Castilla y León'],
+  ['castilla la mancha', 'Castilla-La Mancha'],
+  ['extremadura', 'Extremadura'],
+  ['cataluna', 'Cataluña'],
+  ['catalunya', 'Cataluña'],
+  ['valencia', 'Comunitat Valenciana'],
+  ['balears', 'Illes Balears'],
+  ['baleares', 'Illes Balears'],
+  ['andalucia', 'Andalucía'],
+  ['murcia', 'Región de Murcia'],
+  ['ceuta', 'Ceuta'],
+  ['melilla', 'Melilla'],
+  ['canarias', 'Canarias'],
+];
+
+/** Comunidad autónoma a partir del nombre que usa la BDNS en organo.nivel2. */
+export function ccaaDesdeNombre(nombre: string | undefined): string | null {
+  if (!nombre) return null;
+  const n = sinTildes(nombre);
+  return ALIAS_CCAA.find(([alias]) => n.includes(alias))?.[1] ?? null;
 }
