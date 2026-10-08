@@ -46,6 +46,7 @@ export const api = {
       perfilCompleto: boolean;
       abiertas: Coincidencia[];
       recurrentes: Coincidencia[];
+      artistas: Coincidencia[];
       indirectas: Coincidencia[];
       precedentes: Coincidencia[];
     }>('/api/para-ti'),

@@ -109,7 +109,7 @@ export function crearApp(repo: Repositorio) {
   app.get('/api/para-ti', (_req, res) => {
     const perfil = repo.obtenerPerfil();
     if (!perfil) {
-      res.json({ perfilCompleto: false, abiertas: [], recurrentes: [], indirectas: [], precedentes: [] });
+      res.json({ perfilCompleto: false, abiertas: [], recurrentes: [], artistas: [], indirectas: [], precedentes: [] });
       return;
     }
     const hoy = new Date();
@@ -126,6 +126,7 @@ export function crearApp(repo: Repositorio) {
       abiertas: salida(directas.filter(vigente)),
       // Cerradas en los últimos 18 meses: la mayoría se convocan cada año.
       recurrentes: salida(directas.filter((m) => m.plazo === 'cerrada' && recientes(m, 18))),
+      artistas: salida(todas.filter((m) => m.encaje === 'artistas' && (vigente(m) || recientes(m, 12)))),
       indirectas: salida(todas.filter((m) => m.encaje === 'indirecto' && (vigente(m) || recientes(m, 12)))),
       precedentes: salida(todas.filter((m) => m.encaje === 'precedente' && recientes(m, 36))),
     });

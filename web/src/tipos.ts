@@ -21,7 +21,7 @@ export interface Clasificacion {
   generica: boolean;
   otrosGeneros: string[];
   lineas: Linea[];
-  encajePromotor: 'si' | 'indirecto' | 'no' | 'desconocido';
+  encajePromotor: 'si' | 'indirecto' | 'artistas' | 'no' | 'desconocido';
   evidencias: string[];
 }
 
@@ -62,7 +62,7 @@ export interface Convocatoria {
 export interface Coincidencia {
   convocatoria: Convocatoria;
   puntuacion: number;
-  encaje: 'directo' | 'indirecto' | 'precedente';
+  encaje: 'directo' | 'indirecto' | 'precedente' | 'artistas';
   plazo: Plazo;
   motivos: string[];
   avisos: string[];

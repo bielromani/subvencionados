@@ -13,6 +13,11 @@ const SECCIONES: [keyof Omit<Recomendaciones, 'perfilCompleto'>, string, string]
     'Concursos que encajan contigo y cerraron en los últimos 18 meses: la mayoría se convocan cada año.',
   ],
   [
+    'artistas',
+    'Para tus músicos',
+    'Premios, concursos y certámenes para personas físicas: no los pide el promotor, pero pueden presentarse tus artistas.',
+  ],
+  [
     'indirectas',
     'Oportunidades indirectas',
     'Ayudas que cobran ayuntamientos u otras entidades para programar cultura: clientes potenciales para vender conciertos de tus grupos.',

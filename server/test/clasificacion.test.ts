@@ -59,7 +59,7 @@ describe('líneas', () => {
 describe('beneficiarios', () => {
   it('usa los tipos de beneficiario de la BDNS', () => {
     const r = c('Ayudas a la música', ['PYME Y PERSONAS FÍSICAS QUE DESARROLLAN ACTIVIDAD ECONÓMICA']);
-    expect(r.beneficiarios).toEqual({ empresas: true, sinAnimoLucro: false, entidadesLocales: false });
+    expect(r.beneficiarios).toEqual({ empresas: true, sinAnimoLucro: false, entidadesLocales: false, personasFisicas: false });
     expect(r.encajePromotor).toBe('si');
   });
 
@@ -70,6 +70,14 @@ describe('beneficiarios', () => {
     expect(r.beneficiarios.entidadesLocales).toBe(true);
     expect(r.beneficiarios.sinAnimoLucro).toBe(false);
     expect(r.encajePromotor).toBe('indirecto');
+  });
+
+  it('premios y concursos para personas físicas son para los músicos', () => {
+    const r = c('PREMIOS DE INTERPRETACIÓN MUSICAL VICENT GALBIS (XXVI)', [
+      'PERSONAS FÍSICAS QUE NO DESARROLLAN ACTIVIDAD ECONÓMICA',
+    ]);
+    expect(r.beneficiarios.personasFisicas).toBe(true);
+    expect(r.encajePromotor).toBe('artistas');
   });
 
   it('sin tipos de beneficiario, deduce del texto o queda desconocido', () => {

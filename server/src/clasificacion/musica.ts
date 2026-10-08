@@ -151,6 +151,7 @@ export function detectarBeneficiarios(texto: string, tipos: string[] = []): Bene
   const entidadesLocales = DESTINO_LOCAL.test(t);
   let empresas: boolean | null = null;
   let sinAnimoLucro: boolean | null = null;
+  let personasFisicas: boolean | null = null;
 
   // La BDNS usa una lista cerrada de tipos de beneficiario.
   const conInfo = tiposN.filter((x) => !x.includes('sin informacion'));
@@ -164,17 +165,19 @@ export function detectarBeneficiarios(texto: string, tipos: string[] = []): Bene
     sinAnimoLucro =
       conInfo.some((x) => x.includes('juridicas que no desarrollan')) &&
       (!entidadesLocales || TEXTO_SIN_ANIMO.test(t));
+    personasFisicas = conInfo.some((x) => x.includes('fisicas que no desarrollan'));
   } else {
     if (TEXTO_EMPRESAS.test(t)) empresas = true;
     if (TEXTO_SIN_ANIMO.test(t)) sinAnimoLucro = true;
   }
 
-  return { empresas, sinAnimoLucro, entidadesLocales };
+  return { empresas, sinAnimoLucro, entidadesLocales, personasFisicas };
 }
 
 export function encajeParaPromotor(b: Beneficiarios): EncajePromotor {
   if (b.empresas || b.sinAnimoLucro) return 'si';
   if (b.entidadesLocales) return 'indirecto';
+  if (b.personasFisicas) return 'artistas';
   if (b.empresas === false && b.sinAnimoLucro === false) return 'no';
   return 'desconocido';
 }

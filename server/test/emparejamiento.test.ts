@@ -75,10 +75,27 @@ describe('evaluar', () => {
   it('las ayudas a ayuntamientos salen como indirectas solo si el perfil lo pide', () => {
     const local = {
       ...cicloJazz,
-      clasificacion: { ...cicloJazz.clasificacion, beneficiarios: { empresas: false, sinAnimoLucro: false, entidadesLocales: true } },
+      clasificacion: { ...cicloJazz.clasificacion, beneficiarios: { empresas: false, sinAnimoLucro: false, entidadesLocales: true, personasFisicas: false } },
     };
     expect(evaluar(local, perfil, hoy)?.encaje).toBe('indirecto');
     expect(evaluar(local, { ...perfil, incluirIndirectas: false }, hoy)).toBeNull();
+  });
+
+  it('los premios para personas físicas son para sus músicos', () => {
+    const premio = {
+      ...cicloJazz,
+      clasificacion: {
+        ...cicloJazz.clasificacion,
+        beneficiarios: { empresas: false, sinAnimoLucro: false, entidadesLocales: false, personasFisicas: true },
+      },
+    };
+    expect(evaluar(premio, perfil, hoy)?.encaje).toBe('artistas');
+  });
+
+  it('las becas de formación solo si las busca', () => {
+    const beca = { ...cicloJazz, clasificacion: { ...cicloJazz.clasificacion, lineas: ['formacion' as const] } };
+    expect(evaluar(beca, perfil, hoy)).toBeNull();
+    expect(evaluar(beca, { ...perfil, actividades: ['formacion'] }, hoy)).not.toBeNull();
   });
 
   it('las concesiones directas son precedentes', () => {

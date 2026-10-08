@@ -28,7 +28,8 @@ export interface Coincidencia {
   puntuacion: number;
   /** directo: puede pedirla; indirecto: la cobran ayuntamientos (clientes potenciales);
    *  precedente: concesión directa o nominativa, sirve de referencia para negociar una propia. */
-  encaje: 'directo' | 'indirecto' | 'precedente';
+  /** artistas: premios, concursos o becas para personas físicas, a los que se presentan sus músicos. */
+  encaje: 'directo' | 'indirecto' | 'precedente' | 'artistas';
   plazo: Plazo;
   motivos: string[];
   avisos: string[];
@@ -101,11 +102,17 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
     if (!perfil.incluirIndirectas) return null;
     encaje = 'indirecto';
     motivos.push('La cobran ayuntamientos: oportunidad para venderles programación');
+  } else if (b.personasFisicas) {
+    encaje = 'artistas';
+    motivos.push('Para personas físicas: pueden presentarse tus músicos');
   } else if (admitido === false) {
     return null;
   } else {
     avisos.push('No consta qué tipo de beneficiario admite: revisa las bases');
   }
+
+  // Las becas y ayudas de formación solo si las busca.
+  if (cl.lineas.includes('formacion') && !perfil.actividades.includes('formacion')) return null;
 
   // Actividades que le interesan
   const lineas = cl.lineas.filter((l) => perfil.actividades.includes(l));

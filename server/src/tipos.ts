@@ -21,10 +21,11 @@ export type Administracion = 'estatal' | 'autonomica' | 'local' | 'otra';
  * - si: el promotor es beneficiario directo.
  * - indirecto: la cobran otros (p. ej. ayuntamientos) para contratar programación,
  *   así que es una oportunidad comercial para vender conciertos.
+ * - artistas: solo personas físicas (premios, concursos, becas): sirve a los músicos del promotor.
  * - no: excluye a promotores privados.
  * - desconocido: no hay datos suficientes.
  */
-export type EncajePromotor = 'si' | 'indirecto' | 'no' | 'desconocido';
+export type EncajePromotor = 'si' | 'indirecto' | 'artistas' | 'no' | 'desconocido';
 
 /** Quién puede pedir la ayuda. null = no consta. */
 export interface Beneficiarios {
@@ -34,6 +35,8 @@ export interface Beneficiarios {
   sinAnimoLucro: boolean | null;
   /** Va dirigida a ayuntamientos, diputaciones u otras entidades locales. */
   entidadesLocales: boolean;
+  /** Personas físicas sin actividad económica: músicos que se presentan a premios, concursos o becas. */
+  personasFisicas: boolean | null;
 }
 
 export interface Clasificacion {

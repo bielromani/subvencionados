@@ -82,7 +82,7 @@ describe('GET /api/convocatorias', () => {
 describe('perfil y recomendaciones', () => {
   it('sin perfil no hay recomendaciones', async () => {
     const res = await request(app).get('/api/para-ti').expect(200);
-    expect(res.body).toEqual({ perfilCompleto: false, abiertas: [], recurrentes: [], indirectas: [], precedentes: [] });
+    expect(res.body).toEqual({ perfilCompleto: false, abiertas: [], recurrentes: [], artistas: [], indirectas: [], precedentes: [] });
   });
 
   it('valida el perfil', async () => {
