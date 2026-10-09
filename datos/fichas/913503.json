@@ -1,0 +1,366 @@
+{
+ "version": 1,
+ "codigoBdns": "913503",
+ "generada": "2026-10-09T19:06:41.950Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1477080,
+   "nombre": "GALEGO_BASES SUBVS ASOCS LÚDICAS E CULTURAIS 2026.pdf",
+   "paginas": 6,
+   "huella": "2387574f0458eb68"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Concello de Monforte de Lemos para actividades de asociaciones culturales, lúdicas, recreativas o formativas en 2026.",
+   "Solo para asociaciones sin ánimo de lucro inscritas en el registro municipal.",
+   "Crédito de 15.000 euros; como máximo 1.000 euros y el 70 % del coste por subvención.",
+   "Plazo: 15 días hábiles desde la publicación en el BOP.",
+   "Justificación hasta el 27 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Programas, proyectos o actividades culturales, lúdicas, recreativas o formativas de entidades sin ánimo de lucro en Monforte de Lemos en 2026",
+   "cita": {
+    "documento": 1477080,
+    "pagina": 1,
+    "texto": "culturais, lúdicas, recreativas ou formativas levadas a cabo por Entidades e Asociacións sen ánimo de lucro no Concello de Monforte de Lemos no exercicio 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones legalmente constituidas, sin ánimo de lucro, con domicilio en Monforte de Lemos e inscritas en el Registro Municipal de Asociaciones; quedan fuera las deportivas y las de servicios sociales",
+   "cita": {
+    "documento": 1477080,
+    "pagina": 1,
+    "texto": "Poderán solicitar as subvencións reguladas nas presente bases da convocatoria as asociacións legalmente constituídas que desenvolvan actividades de interese xeral para o municipio",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días hábiles desde el día siguiente a la publicación del anuncio en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "O prazo de presentación de solicitudes será de 15 días hábiles contados a partir do día seguinte á publicación do anuncio",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "El plazo máximo del artículo 25.4 de la Ley General de Subvenciones; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 4,
+     "texto": "O prazo máximo de resolución será o establecido no artigo 25.4 da Lei Xeral de Subvencións.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades realizadas durante 2026",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "que se atopen inscritas no rexistro de asociacións, para as actividades a desenvolver no exercicio 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 27 de noviembre de 2026 con cuenta justificativa: memoria, facturas pagadas, declaración jurada y relación de gastos e ingresos",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 5,
+     "texto": "O prazo de xustificación é ata o día 27 de novembro de 2026 incluído.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 15000,
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Para o financiamento destas subvencións destínase un crédito máximo de 15.000,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 1000,
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "O importe de cada subvención non poderá superar os 1.000 euros, nin o 70% do importe subvencionable.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 70,
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "O importe de cada subvención non poderá superar os 1.000 euros, nin o 70% do importe subvencionable.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Por transferencia bancaria tras la justificación",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 5,
+     "texto": "O pagamento realizarase mediante transferencia bancaria, previa presentación do certificado bancario con número da conta do titular e xustificación",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas si en conjunto no se supera el coste de la actividad; excluidas las entidades con nominativa municipal para lo mismo",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "En ningún caso, illadamente ou en concorrencia con outras Administracións públicas ou entes públicos ou privados, poderá superar o custo da actividade",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "No tener ánimo de lucro",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "a) Carecer de ánimo de lucro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar inscrita en el Registro Municipal de Asociaciones al presentar la solicitud",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "Estar debidamente inscrita no Rexistro Municipal de Asociacións do Concello de Monforte de Lemos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener deudas con el Concello, Hacienda ni Seguridad Social",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "Non ser debedor co Concello por calquera tipo de débeda de dereito público",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber justificado las subvenciones municipales anteriores",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Ter xustificado debidamente as subvencións municipais recibidas con anterioridade",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No recibir una nominativa del Concello para las mismas actividades",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "reciban no exercicio subvencións de carácter nominativo do Concello de Monforte de Lemos para as mesmas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas fechadas en el año de concesión; pagos a profesionales con retención de IRPF",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 6,
+     "texto": "3.- As facturas deberán estar datadas no ano no que se concedeu a subvención.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos de gestión y funcionamiento ligados a la actividad (teléfono, papelería, internet, material fungible)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "Gastos de Xestión, Funcionamento, (Teléfono, papelería, internet,",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Reforma y acondicionamiento de locales y vestuario",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "Non serán subvencionables os gastos de reforma e acondicionamento de locais, vestiario, actividades con ánimo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fiestas patronales, actividades deportivas, comidas y eventos religiosos",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "as axudas a festas patronais, actividades deportivas, comidas e eventos relixiosos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos no relacionados con el proyecto presentado",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 1,
+     "texto": "de lucro ou calquera outro gasto non relacionado co proxecto presentado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Tipo de actividad (actuaciones, teatro, danza y conciertos: 7 puntos fijos)",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "Actuacións, teatro, danza, concertos 7 puntos fixos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de socios de la entidad",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "NÚMERO DE SOCIOS DA ENTIDADE 5 puntos máximo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Repercusión social (para todo el público: 4; solo socios: 2)",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "REPERCUSIÓN SOCIAL 4 puntos máximo",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud (anexo I)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "1. Solicitude segundo Anexo I das presentes bases.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "NIF de la persona que representa a la entidad (anexo II)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "NIF en vigor da persoa física que actúen en representación a presentar co Anexo II.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria del programa de actividades de 2026 (anexo III)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Memoria explicativa detallada do programa de actividades que se pretenden realizar durante o 2026",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto de ingresos y gastos con otras ayudas (anexo IV)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Orzamento de ingresos e gastos da actividade con expresión das axudas solicitadas ou concedidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de la cuenta bancaria (anexo V)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Datos bancarios da conta á que se transferirá o importe da subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de otras ayudas solicitadas (anexo VI)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Declaración responsable da entidade solicitante no que conste as subvencións e/ou axudas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de no estar en prohibiciones ni tener deudas (anexo VII)",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 2,
+     "texto": "Declaración responsable de non estar incurso nas prohibicións para obter a condición de beneficiario",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Electrónicamente, según el artículo 14.2 de la Ley 39/2015",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "presentarase electrónicamente según o artigo 14.2 da Lei 39/2015",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1477080,
+     "pagina": 3,
+     "texto": "presentarase electrónicamente según o artigo 14.2 da Lei 39/2015",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento está en gallego.",
+   "La cuantía se calcula por puntos (máximo 16) sobre el coste del proyecto menos sus ingresos, con los topes de 1.000 euros y 70 %.",
+   "Solo para asociaciones de Monforte de Lemos; a un promotor solo le sirve como proveedor de una asociación local."
+  ]
+ },
+ "citas": {
+  "verificadas": 33,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}
