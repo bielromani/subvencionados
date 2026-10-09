@@ -1,0 +1,163 @@
+{
+ "version": 1,
+ "codigoBdns": "872317",
+ "generada": "2026-10-09T19:08:02.364Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1463201,
+   "nombre": "Anticipada 26_AR Festivals + modcast.pdf",
+   "paginas": 3,
+   "huella": "6ad033b1ee4a8849"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Instituto Catalán de las Empresas Culturales (ICEC) a festivales o ciclos musicales, como aportaciones reintegrables y subvenciones.",
+   "Dotación de 3.813.000 euros tras la ampliación.",
+   "Solicitudes del 15 de diciembre de 2025 al 15 de enero de 2026 (ya cerrado).",
+   "El festival o ciclo debe celebrarse entre el 1 de enero de 2026 y el 30 de junio de 2027.",
+   "Tramitación telemática obligatoria en Gencat."
+  ],
+  "objeto": {
+   "valor": "Festivales o ciclos musicales, en las modalidades de aportaciones reintegrables y subvenciones",
+   "cita": {
+    "documento": 1463201,
+    "pagina": 1,
+    "texto": "Abrir la convocatoria anticipada para la concesión de ayudas a festivales o ciclos musicales, en régimen de concurrencia competitiva",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 15 de diciembre de 2025 al 15 de enero de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes es del 15 de diciembre de 2025 al 15 de enero de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2025-12-15",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes es del 15 de diciembre de 2025 al 15 de enero",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-01-15",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 2,
+     "texto": "del 15 de diciembre de 2025 al 15 de enero de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde la publicación de la convocatoria; sin resolución, desestimada por silencio",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 2,
+     "texto": "en el plazo máximo de seis meses a contar desde el día siguiente al de la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Entre el 1 de enero de 2026 y el 30 de junio de 2027",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 2,
+     "texto": "Que el festival o el ciclo debe tener lugar entre el 1 de enero de 2026 y el 30 de junio de 2027, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 3813000,
+    "cita": {
+     "documento": 1463201,
+     "pagina": 3,
+     "texto": "queda fijada en un máximo de 3.813.000,00 de euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Por medios telemáticos en el portal Gencat.cat (trámites), accesible desde la ventanilla única de subvenciones de Cultura",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 1,
+     "texto": "a través del portal Gencat.cat, apartado Información, trámites y servicios de la Generalitat de Catalunya (http://web.gencat.cat/es/tramits).",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://cultura.gencat.cat/subvencions",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 1,
+     "texto": "Desde la ventanilla única de subvenciones del Departamento de Cultura (http://cultura.gencat.cat/subvencions) se puede",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación telemática obligatoria",
+    "cita": {
+     "documento": 1463201,
+     "pagina": 1,
+     "texto": "se deben efectuar y enviar por medios telemáticos, de acuerdo con la Orden CLT/4/2013",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Es la resolución de convocatoria y su ampliación de dotación; los beneficiarios, requisitos, gastos, criterios y cuantías están en las bases específicas (Resolución CLT/1086/2023, modificada por CLT/270/2025) y las bases generales (CLT/3142/2020), que no se incluyen.",
+   "Parte de la dotación son aportaciones reintegrables, es decir, préstamos que hay que devolver.",
+   "Muy relevante para un promotor de festivales o ciclos en Cataluña; la convocatoria se repite cada año (esta edición ya cerró)."
+  ]
+ },
+ "citas": {
+  "verificadas": 10,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

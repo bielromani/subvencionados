@@ -1,0 +1,180 @@
+{
+ "version": 1,
+ "codigoBdns": "915520",
+ "generada": "2026-10-09T19:08:02.358Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1482443,
+   "nombre": "Acuerdo JGL 11_06_ 2026 aprobación convocatoria.pdf",
+   "paginas": 3,
+   "huella": "632f3b4538b1bacd"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Carreño (Asturias) para actividades y eventos musicales entre diciembre de 2025 y noviembre de 2026.",
+   "Para asociaciones y entidades culturales sin ánimo de lucro que programen música en Carreño.",
+   "Crédito total de 30.000 euros.",
+   "Plazo: quince días hábiles desde la publicación del extracto en el BOPA.",
+   "Justificación hasta el 30 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Actividades, proyectos o eventos musicales de asociaciones y entidades de Carreño entre diciembre de 2025 y noviembre de 2026",
+   "cita": {
+    "documento": 1482443,
+    "pagina": 1,
+    "texto": "para la realización de actividades/proyectos/eventos musicales durante el período comprendido entre diciembre de 2025 y noviembre de 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones o entidades culturales sin ánimo de lucro que programen actividades musicales en Carreño",
+   "cita": {
+    "documento": 1482443,
+    "pagina": 1,
+    "texto": "Podrán ser beneficiarias las asociaciones y/o entidades culturales sin ánimo de lucro que programen y realicen actividades musicales dentro del término municipal",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial del Principado de Asturias",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 2,
+     "texto": "El plazo de presentación será de quince días hábiles a partir del siguiente al de la publicación del extracto de la convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Entre diciembre de 2025 y noviembre de 2026",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 1,
+     "texto": "durante el período comprendido entre diciembre de 2025 y noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 3,
+     "texto": "El plazo de presentación de la justificación de la subvención será de finalizará el 30 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 30000,
+    "cita": {
+     "documento": 1482443,
+     "pagina": 2,
+     "texto": "El importe total de la convocatoria de subvención asciende a 30.000,00-€",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar inscrita en el Registro Municipal de Asociaciones de Carreño y en el autonómico",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 1,
+     "texto": "Que se encuentren debidamente inscrito/a en el Registro Municipal de Asociaciones del Ayuntamiento de Carreño y autonómico.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener actualizados sus datos en el registro municipal",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 1,
+     "texto": "Que las asociaciones/entidades solicitantes se hallen al día de la fecha de la convocatoria, al corriente de la obligación de modificación de datos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Domicilio y actividad principal en Carreño, salvo entidades que organicen el evento sin interrupción desde hace al menos 5 años",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 2,
+     "texto": "ininterrumpidamente durante al menos 5 años y no tengan su domicilio social en Carreño.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro Electrónico del Ayuntamiento de Carreño (sede electrónica, información pública, subvenciones) u otros registros de la Ley 39/2015",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 2,
+     "texto": "se presentarán a través del Registro Electrónico del Ayuntamiento de Carreño, mediante el procedimiento habilitado en la web municipal",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.ayto-carreno.es",
+    "cita": {
+     "documento": 1482443,
+     "pagina": 2,
+     "texto": "habilitado en la web municipal https://www.ayto-carreno.es (sede electrónica/información pública/subvenciones)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es el acuerdo de aprobación de la convocatoria; los criterios de valoración, la cuantía por entidad, los gastos y la documentación están en las bases publicadas en el BOPA n.º 97 de 22 de mayo de 2026, que no se incluyen.",
+   "Una entidad de fuera de Carreño puede pedirla si lleva al menos 5 años seguidos organizando el evento allí."
+  ]
+ },
+ "citas": {
+  "verificadas": 11,
+  "revisar": 0,
+  "noConsta": 9
+ }
+}
