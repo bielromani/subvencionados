@@ -16,3 +16,18 @@ Solo se guardan las convocatorias cuyo título parece de música (ver `server/sr
 Fuente: SNPSAP – https://www.pap.hacienda.gob.es/bdnstrans/GE/es/index · Aviso legal sobre la
 reutilización: https://www.infosubvenciones.es/bdnstrans/GE/es/avisolegal. Los datos son dinámicos:
 la BDNS puede corregirlos después de su descarga.
+
+## Directorio de ayuntamientos y responsables de cultura
+
+`directorio/` lo genera el workflow `.github/workflows/directorio-cultura.yml` (día 3 de cada mes):
+
+- `directorio/fuentes/`: las descargas de cada fuente oficial tal cual, con `estado.json` (fecha, URL, licencia
+  y resultado de cada una). Las hace `server/scripts/directorio_descargar.py`.
+- `directorio/ayuntamientos.csv`: los 8.132 municipios del INE por comunidad y provincia, con teléfono, email y web
+  del ayuntamiento, alcalde/sa y, si se conoce, el responsable de cultura.
+- `directorio/cultura.csv`: concejales y consejeros cuya área de gobierno incluye cultura (solo Cataluña publica
+  este dato).
+- `directorio/directorio-cultura.xlsx`: lo mismo en Excel, con resumen por provincia y la lista de fuentes.
+
+`server/scripts/directorio_construir.py` cruza las fuentes con el nomenclátor del INE; se puede volver a ejecutar en
+local sin red: `python3 server/scripts/directorio_construir.py datos`.

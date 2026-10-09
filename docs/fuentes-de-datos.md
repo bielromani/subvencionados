@@ -78,3 +78,29 @@ cabildos y consejos insulares en su provincia).
 | Diarios oficiales autonómicos | Por si alguna comunidad publica fuera de la BDNS (STC 33/2018) | Media |
 | AIE, SGAE y fundaciones | No son públicas, pero los promotores las piden | Baja |
 | Europa Creativa e Ibermúsicas | Giras internacionales | Baja |
+
+## 4. Directorio de ayuntamientos y responsables de cultura (en uso)
+
+No hay ninguna lista oficial de concejales de cultura de toda España: el Ministerio solo publica nombres de alcaldes
+y concejales (concejales.redsara.es), sin área ni contacto. Lo que sí está en abierto (comprobado el 9 de octubre
+de 2026):
+
+| Ámbito | Fuente | Datos |
+|---|---|---|
+| Cataluña | Municat (Generalitat): `m5nd-xjza` cargos electos y `vevv-8fvw` ayuntamientos | **Área de gobierno de cada concejal**, teléfono, email, web, alcalde |
+| Provincia de Barcelona | Diputació de Barcelona, dataset `electes` | Área («àmbit de treball») de cada concejal |
+| País Vasco | Registro de entidades locales (Open Data Euskadi) | Web, alcalde |
+| Galicia | Casas dos concellos (Abertos Xunta) | Teléfono, email, web |
+| Castilla-La Mancha | Directorio de Ayuntamientos (junio 2025) | Teléfono, email, web, alcalde |
+| Comunitat Valenciana | Recursos de gobierno abierto de las EELL (GVA) y Ayuntamientos (Diputación de Castellón) | Teléfono, email; web y alcalde en Castellón |
+| Navarra | Guía de entidades locales | Teléfono, email, web, alcalde |
+| Andalucía | Registro Andaluz de Entidades Locales (RAEL, API) | Teléfono, email, web, alcalde |
+| Aragón | Información general de los municipios | Teléfono, email, alcalde |
+| Salamanca | Diputación: alcaldes de la provincia | Alcalde |
+| Resto | Wikidata (P856 y P1082 por código INE) | Web y población |
+
+Sin directorio abierto encontrado: Madrid, Murcia, Canarias, Baleares, Asturias, Cantabria, La Rioja, Extremadura,
+Castilla y León (salvo Salamanca), Ceuta y Melilla. Para ellas queda la web del ayuntamiento.
+
+Los teléfonos y emails son los institucionales del ayuntamiento. Para enviar comunicaciones comerciales por email
+hay que cumplir la LSSI y el RGPD.

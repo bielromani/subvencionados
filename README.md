@@ -28,6 +28,9 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
 - **Fase 1 en marcha**: textos de las bases, series año a año, ubicación por municipio, directorio de
   organismos (`GET /api/organismos`), concursos generales de cultura y vigilancia del formato. Cifras del nicho en
   [docs/informe-nicho.md](docs/informe-nicho.md).
+- **Directorio de cultura** (`datos/directorio/directorio-cultura.xlsx`): los 8.132 ayuntamientos por comunidad y
+  provincia con su contacto y alcalde, y los concejales de cultura donde una fuente oficial los publica (Cataluña).
+  Se actualiza cada mes; ver [docs/fuentes-de-datos.md](docs/fuentes-de-datos.md#4-directorio-de-ayuntamientos-y-responsables-de-cultura-en-uso).
 - **Web** (React) con tres pestañas:
   - *Para ti*: las recomendaciones;
   - *Explorar*: filtros por plazo, tipo, estilo, comunidad, administración y actividad, con paginación;

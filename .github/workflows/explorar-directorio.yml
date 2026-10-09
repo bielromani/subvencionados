@@ -3,9 +3,6 @@
 name: Explorar fuentes del directorio
 
 on:
-  push:
-    branches: ['claude/**']
-    paths: ['.github/workflows/explorar-directorio.yml']
   workflow_dispatch:
 
 jobs:
