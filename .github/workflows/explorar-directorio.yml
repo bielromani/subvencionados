@@ -1,5 +1,5 @@
 # Diagnóstico: qué fuentes oficiales publican el directorio de ayuntamientos (contacto, alcalde)
-# y los concejales con su área (cultura). Muestra las respuestas en bruto.
+# y los concejales con su área (cultura). Muestra cabecera y primeras filas de cada fuente.
 name: Explorar fuentes del directorio
 
 on:
@@ -13,99 +13,63 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
-      - name: Catálogos de datos abiertos (datos.gob.es y portales autonómicos)
-        continue-on-error: true
-        shell: python3 {0}
-        run: |
-          import json, re, urllib.request, urllib.parse
-          def get(u, t=60):
-              try:
-                  r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}), timeout=t)
-                  return r.read()
-              except Exception as e:
-                  print("  ERROR", u, e); return None
-          INTERES = re.compile(r"alcald|concejal|regidor|electo|corporaci|ayuntamiento|ajuntament|concello|udal|directorio|municipios? de|entidades locales|ens locals|cargos", re.I)
-          vistos = set()
-          print("== datos.gob.es ==")
-          for t in ["alcaldes", "concejales", "cargos electos", "electos", "corporación", "directorio", "ayuntamientos", "ajuntaments", "concellos", "entidades locales", "ens locals", "DIR3", "regidors", "municipios"]:
-              d = get("https://datos.gob.es/apidata/catalog/dataset/title/" + urllib.parse.quote(t) + ".json?_pageSize=500")
-              if not d: continue
-              for it in json.loads(d).get("result", {}).get("items", []):
-                  tit = it.get("title")
-                  if isinstance(tit, list):
-                      tit = next((x.get("_value") for x in tit if isinstance(x, dict) and x.get("_lang") == "es"), None) or next((x.get("_value") if isinstance(x, dict) else str(x) for x in tit), "")
-                  elif isinstance(tit, dict): tit = tit.get("_value", "")
-                  tit = str(tit)
-                  if tit in vistos or not re.search(r"alcald|concejal|regidor|electo|corporaci|directorio de ayunt|directorio de munic|directori|cargos|ayuntamientos de|ajuntaments|concellos de|DIR3|entidades locales|ens locals", tit, re.I): continue
-                  vistos.add(tit)
-                  dist = it.get("distribution") or []
-                  if not isinstance(dist, list): dist = [dist]
-                  urls = []
-                  for x in dist:
-                      if isinstance(x, dict):
-                          f = x.get("format"); f = f.get("value") if isinstance(f, dict) else f
-                          urls.append(f"{f} {x.get('accessURL')}")
-                      else: urls.append(str(x))
-                  pub = str(it.get("publisher", "")).rsplit("/", 1)[-1]
-                  mod = it.get("modified", "")
-                  print(f"* {tit} [{pub}] mod={mod}\n    " + "\n    ".join(urls[:6]))
-
-          print("\n== CKAN autonómicos ==")
-          CKAN = ["https://datosabiertos.castillalamancha.es", "https://opendata.aragon.es/ckan", "https://dadesobertes.gva.es",
-                  "https://catalegdades.caib.es", "https://www.juntadeandalucia.es/datosabiertos/portal", "https://datos.comunidad.madrid/catalogo",
-                  "https://datosabiertos.navarra.es", "https://datosabiertos.regiondemurcia.es", "https://datos.canarias.es/catalogos/general",
-                  "https://datos.canarias.es", "https://datosabiertos.juntaex.es", "https://datos.cantabria.es", "https://ckan.larioja.org",
-                  "https://datos.larioja.org", "https://datosabiertossalamanca.es", "https://opendata.euskadi.eus", "https://datosabiertos.dipucadiz.es",
-                  "https://datos.dipgra.es", "https://datosabiertos.malaga.eu", "https://datos.jerez.es", "https://datosabiertos.dipcas.es"]
-          for base in CKAN:
-              for q in ["alcaldes", "concejales", "ayuntamientos", "cargos electos", "directorio"]:
-                  d = get(f"{base}/api/3/action/package_search?rows=50&q=" + urllib.parse.quote(q), 40)
-                  if not d: break
-                  try: res = json.loads(d)["result"]["results"]
-                  except Exception: print("  no CKAN", base); break
-                  for p in res:
-                      tit = p.get("title") or ""
-                      if isinstance(tit, dict): tit = tit.get("es") or next(iter(tit.values()), "")
-                      if (base, tit) in vistos or not INTERES.search(tit): continue
-                      vistos.add((base, tit))
-                      print(f"* [{base}] {tit} (mod {p.get('metadata_modified','')[:10]})")
-                      for r in p.get("resources", [])[:5]:
-                          print(f"    {r.get('format')} {r.get('url')}")
-
-          print("\n== Opendatasoft (JCyL y diputaciones) ==")
-          for base in ["https://analisis.datosabiertos.jcyl.es", "https://datosabiertos.dipcas.es", "https://opendata.dipalicante.es", "https://datosabiertos.dipuleon.es", "https://datos.dipucordoba.es", "https://datosabiertos.dipusevilla.es", "https://opendata.dival.es", "https://datosabiertos.diputaciondezaragoza.es"]:
-              for q in ["alcaldes", "ayuntamientos", "concejales", "cargos"]:
-                  d = get(f"{base}/api/explore/v2.1/catalog/datasets?limit=50&where=" + urllib.parse.quote(f'search("{q}")'), 40)
-                  if not d: break
-                  try: res = json.loads(d).get("results", [])
-                  except Exception: print("  no ODS", base); break
-                  for r in res:
-                      tit = r.get("metas", {}).get("default", {}).get("title", "")
-                      if (base, r["dataset_id"]) in vistos: continue
-                      vistos.add((base, r["dataset_id"]))
-                      cols = [f["name"] for f in r.get("fields", [])]
-                      print(f"* [{base}] {r['dataset_id']} · {tit} · cols={cols[:30]}")
-
-          print("\n== Socrata Cataluña ==")
-          d = get("https://analisi.transparenciacatalunya.cat/api/catalog/v1?limit=60&q=" + urllib.parse.quote("ens locals"))
-          if d:
-              for r in json.loads(d).get("results", []):
-                  res = r["resource"]; print(f"* {res['id']} · {res['name']} · cols={res.get('columns_field_name', [])[:30]}")
-
-      - name: Cataluña (Socrata y Municat)
+      - name: Muestras de cada fuente
         continue-on-error: true
         run: |
-          S=https://analisi.transparenciacatalunya.cat/resource
-          curl -sS -m 120 "$S/m5nd-xjza.json?\$limit=8" | head -c 4000; echo
-          curl -sS -m 120 "$S/m5nd-xjza.json?\$select=count(*)" ; echo
-          curl -sS -m 120 "$S/m5nd-xjza.json?\$select=count(*)&\$where=upper(carrec)%20like%20'%25CULTURA%25'" ; echo
-          echo "-- Municat descàrregues"
-          curl -sSL -m 60 "https://municat.gencat.cat/ca/Temes/els-ens-locals-de-catalunya/descarrega_fitxers/" -o /tmp/m
-          grep -oiE 'href="[^"]*\.(csv|xlsx?|zip|json)[^"]*"' /tmp/m | sort -u | head -40
+          muestra() {
+            echo "::group::$1"
+            curl -sSL -m 180 -A "Mozilla/5.0" -o /tmp/f -w "HTTP %{http_code} · %{size_download} bytes · %{content_type}\n" "$2" || true
+            if file -b /tmp/f | grep -qiE 'zip|excel|ooxml|microsoft'; then
+              python3 -c "
+          import openpyxl,sys
+          try:
+              wb=openpyxl.load_workbook('/tmp/f',read_only=True)
+              for ws in wb.worksheets[:3]:
+                  print('hoja',ws.title)
+                  for i,r in enumerate(ws.iter_rows(values_only=True)):
+                      print(r)
+                      if i>4: break
+          except Exception as e: print('no xlsx',e)"
+            else
+              head -c 2500 /tmp/f; echo; echo "líneas: $(wc -l < /tmp/f)"
+            fi
+            echo "::endgroup::"
+          }
+          pip install -q openpyxl
+          S=https://analisi.transparenciacatalunya.cat
+          muestra "CAT cargos (área)" "$S/resource/m5nd-xjza.json?\$limit=6&\$where=area%20is%20not%20null"
+          muestra "CAT cargos cultura" "$S/resource/m5nd-xjza.json?\$limit=6&\$where=upper(area)%20like%20'%25CULTUR%25'"
+          muestra "CAT cargos cultura (n)" "$S/resource/m5nd-xjza.json?\$select=count(*)&\$where=upper(area)%20like%20'%25CULTUR%25'"
+          muestra "CAT cargos con email (n)" "$S/resource/m5nd-xjza.json?\$select=count(*)&\$where=e_mail%20is%20not%20null"
+          muestra "CAT ajuntaments" "$S/resource/vevv-8fvw.json?\$limit=2"
+          muestra "Euskadi directorio API" "https://api.euskadi.eus/directory/entities?subType=PUBLIC_SECTOR&publicSectorScope=LOCAL&sector=r01epd01247c8e1e65dd55724fc88144718e5803f%2F1&lang=SPANISH&fromItemAt=0&pageSize=3"
+          muestra "Euskadi registro EELL" "https://opendata.euskadi.eus/contenidos/ds_registros/registro_entidades_locales/opendata/entidades.json"
+          muestra "Bizkaia ayuntamientos" "https://www.opendatabizkaia.eus/es/datastore/dump/24a15c1c-0225-4d15-becb-4bfa90c13910/ayuntamientos?format=json"
+          muestra "Galicia casas dos concellos" "https://abertos.xunta.gal/catalogo/administracion-publica/-/dataset/0301/casas-dos-concellos-galicia/102/acceso-aos-datos.csv"
+          muestra "Galicia rexistro EELL" "https://abertos.xunta.gal/catalogo/administracion-publica/-/dataset/0264/rexistro-entidades-locais-galicia/001/descarga-directa-ficheiro.csv"
+          muestra "CLM directorio" "https://datosabiertos.castillalamancha.es/sites/datosabiertos.castillalamancha.es/files/Entidades_Locales_CLM%20%28Junio_2025%29.csv"
+          muestra "Castellón alcaldes" "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/alcaldes/exports/csv"
+          muestra "Castellón ayuntamientos" "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/ayuntamientos/exports/csv"
+          muestra "Alicante directorio local" "https://datosabiertos.diputacionalicante.es/resource/csv/directorio-local"
+          muestra "Navarra guía EELL" "https://datosabiertos.navarra.es/dataset/ebce4d71-a914-46ed-b7c6-d7e73046b511/resource/621b149e-4410-4353-b7d1-b08e3ff5d1e2/download/2025-municipios.csv"
+          muestra "Andalucía RAEL" "https://datos.juntadeandalucia.es/api/v0/rael/all?format=csv"
+          muestra "Aragón municipios" "https://opendata.aragon.es/GA_OD_Core/download?resource_id=11&formato=csv"
+          muestra "Salamanca alcaldes" "https://datosabiertossalamanca.es/dataset/55683da4-954e-4b34-8ab2-bc4a97e70682/resource/204dceb7-50fd-42a7-9aa9-4a4d61f951e9/download/sp02.csv"
+          muestra "Málaga alcaldes (página)" "https://opendata.malaga.es/dataset/alcaldesmalaga"
+          muestra "Valladolid ayuntamientos" "https://datos.diputaciondevalladolid.es/dataset/e31a3edc-62b5-4c1a-b5ca-ffcc18462775/resource/64ed751d-1da7-49ed-a22d-ce1b03f472af/download/datosgeneralesayuntamientos.xml"
+          muestra "Córdoba eprinsa" "https://enlaza.eprinsa.es/file/datahub/00af650c-1f30-4e88-8dc7-8d17851b04da.csv"
+          muestra "GVA gobierno abierto EELL" "https://dadesobertes.gva.es/dataset/93721b0e-3a83-4108-a7b5-040058c5d6c6/resource/29864181-c7b1-470c-a4e6-e5958ead7c4a/download/mapets.csv"
+          muestra "Registro de alcaldes (redsara)" "https://concejales.redsara.es/consulta/"
+          muestra "BDGEL" "https://serviciostelematicosext.hacienda.gob.es/sgcief/InventarioBDGEL/Home/ConsultaBDGEL"
 
-      - name: Castilla-La Mancha, Castellón y Aragón
+      - name: Wikidata (web, teléfono, email y alcalde de cada municipio)
         continue-on-error: true
         run: |
-          curl -sS -m 60 "https://datosabiertos.castillalamancha.es/api/3/action/package_show?id=directorio-de-ayuntamientos-de-castilla-la-mancha" | jq -c '.result.resources[]? | {format, url}'
-          curl -sS -m 60 "https://datosabiertos.dipcas.es/api/explore/v2.1/catalog/datasets/ayuntamientos/exports/csv?delimiter=%3B" | head -5
-          curl -sS -m 60 "https://opendata.aragon.es/ckan/api/3/action/package_show?id=informacion-general-de-los-municipios-de-aragon" | jq -c '.result.resources[]? | {format, url, last_modified}'
+          Q='SELECT ?ine ?web ?tel ?email ?alcaldeLabel WHERE { ?m wdt:P772 ?ine . OPTIONAL{?m wdt:P856 ?web} OPTIONAL{?m wdt:P1329 ?tel} OPTIONAL{?m wdt:P968 ?email} OPTIONAL{?m wdt:P6 ?alcalde} SERVICE wikibase:label { bd:serviceParam wikibase:language "es". } }'
+          curl -sS -m 300 -A "subvencionados/1.0 (https://github.com/bielromani/subvencionados)" -H "Accept: text/csv" --data-urlencode "query=$Q" https://query.wikidata.org/sparql -o /tmp/wd.csv
+          wc -l /tmp/wd.csv; head -5 /tmp/wd.csv
+          python3 -c "
+          import csv
+          r=list(csv.DictReader(open('/tmp/wd.csv')))
+          ine={x['ine'] for x in r}
+          for k in ['web','tel','email','alcaldeLabel']: print(k, len({x['ine'] for x in r if x[k]}), 'de', len(ine))"
