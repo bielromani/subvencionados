@@ -76,7 +76,7 @@
    "url": "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
    "descripcion": "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)",
    "licencia": "CC BY 4.0",
-   "resultado": "5373773 bytes"
+   "resultado": "5373803 bytes"
   },
   {
    "fichero": "ine-poblacion.xlsx",
@@ -98,9 +98,9 @@
   {
    "fichero": "wikidata-webs.csv",
    "url": "https://query.wikidata.org/sparql",
-   "descripcion": "Wikidata · web oficial de cada municipio (P856 por código INE P772)",
+   "descripcion": "Wikidata · web oficial y población de cada municipio (P856 y P1082 por código INE P772)",
    "licencia": "CC0",
-   "resultado": "226607 bytes"
+   "resultado": "291567 bytes"
   }
  ]
 }
