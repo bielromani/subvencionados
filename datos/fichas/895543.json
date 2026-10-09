@@ -1,0 +1,359 @@
+{
+ "version": 1,
+ "codigoBdns": "895543",
+ "generada": "2026-10-09T19:02:56.175Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1424534,
+   "nombre": "BOFr_41.pdf",
+   "paginas": 8,
+   "huella": "5ed9a6a22603e859"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Gobierno de La Rioja para los gastos de funcionamiento de las Escuelas Municipales de Música, curso 2025/2026.",
+   "Para entidades locales municipales de La Rioja con escuela de música inscrita en el registro.",
+   "Crédito de 45.000 euros; máximo 5.500 euros por entidad.",
+   "Plazo: 12 días hábiles desde la publicación del extracto en el Boletín Oficial de La Rioja.",
+   "Justificación hasta el 30 de septiembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Financiación parcial de los gastos generales de funcionamiento de las Escuelas Municipales de Música en el curso 2025/2026",
+   "cita": {
+    "documento": 1424534,
+    "pagina": 2,
+    "texto": "para la financiación parcial de los gastos generales de funcionamiento de las Escuelas Municipales de Música que estén constituidas de acuerdo a la legislación vigente e inscritas en el Registro correspondiente",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades locales municipales de la Comunidad Autónoma de La Rioja",
+   "cita": {
+    "documento": 1424534,
+    "pagina": 2,
+    "texto": "Convocar en régimen de concurrencia competitiva, subvenciones dirigidas a Entidades Locales Municipales de la Comunidad Autónoma de La Rioja",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "12 días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de La Rioja",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 4,
+     "texto": "El plazo de presentación de solicitudes será de 12 días hábiles a partir del día siguiente al de la publicación del extracto de la presente Resolución de convocatoria en el Boletín Oficial de La Rioja.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses desde la publicación de la convocatoria en el Boletín Oficial de La Rioja; sin resolución, desestimada",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 4,
+     "texto": "El plazo máximo para la notificación de esta Resolución será de seis meses contados a partir del día siguiente a la publicación de la Resolución anual de convocatoria en el Boletín Oficial de La Rioja.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Curso 2025/2026, del 1 de septiembre de 2025 al 30 de junio de 2026",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "en el curso escolar 2025/2026, en el período comprendido entre el 1 de septiembre de 2025 y el 30 de junio de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Justificación económica de los gastos en la oficina electrónica del Gobierno de La Rioja hasta el 30 de septiembre de 2026",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 5,
+     "texto": "o por cualquiera de los medios previstos en la legislación vigente, siendo la fecha límite el 30 de septiembre de 2026, incluido.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 45000,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Aprobar el gasto para la convocatoria de subvenciones por un importe de 45.000,00 euros disponibles en la partida presupuestaria 2026.GG.08.04.3211.461.00.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 5500,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "La cuantía máxima de la subvención que puede obtener cada entidad beneficiaria es de 5.500,00 euros, y nunca podrá ser superior al coste de los gastos de funcionamiento",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "asignándose, dentro de los límites máximos establecidos, un 80% del presupuesto subvencionable a la mayor puntuación y porcentajes proporcionales al resto de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras presentar la justificación económica de los gastos",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 5,
+     "texto": "Para la percepción de la ayuda económica concedida, las entidades beneficiarias deberán presentar la justificación económica de los gastos ocasionados",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad local municipal de La Rioja titular de una Escuela Municipal de Música constituida legalmente e inscrita en el registro",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Escuelas Municipales de Música que estén constituidas de acuerdo a la legislación vigente e inscritas en el Registro correspondiente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitud aprobada por el órgano competente de la entidad local y acreditada por su Secretario",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Solicitud de participación que deberá ser aprobada por el órgano competente de la Entidad local municipal y acreditada por el Secretario de dicha Entidad Local",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13 de la Ley General de Subvenciones ni tener deudas por reintegro",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 6,
+     "texto": "no está incurso en las prohibiciones para obtener la condición de beneficiario señaladas en el artículo 13 de la Ley 38/2003, de 17 de noviembre, General de Subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Exentas de acreditar estar al corriente con Hacienda y Seguridad Social (se consulta de oficio)",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 4,
+     "texto": "A las entidades beneficiarias de estas subvenciones no se les exigirá acreditar que se hallan al corriente en el cumplimiento de sus obligaciones tributarias y con la Seguridad Social",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos generales de funcionamiento de la Escuela Municipal de Música",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "para la financiación parcial de los gastos generales de funcionamiento de las Escuelas Municipales de Música",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA solo cuando la entidad local no pueda recuperarlo",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "En caso de que la Entidad Local Municipal no pueda recuperar el Impuesto sobre el Valor Añadido por la actividad de la Escuela Municipal de Música",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "IVA recuperable por la entidad local",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 7,
+     "texto": "no está exento de IVA y éste es recuperable por parte de la Entidad local municipal, por lo que el valor de este Impuesto no podrá ser considerado subvencionable.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Número de alumnado matriculado",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "Número de alumnado matriculado (hasta 3 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Enseñanzas impartidas por la Escuela Municipal de Música",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "Enseñanzas impartidas por la Escuela Municipal de Música (hasta 3 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Otras actividades desarrolladas o a desarrollar por la escuela",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "Otras actividades desarrolladas o a desarrollar por la Escuela Municipal de Música (hasta 2 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "No haber obtenido subvención en el ejercicio anterior",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "Por no haber obtenido subvención en el ejercicio anterior (2 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Haber obtenido subvención el ejercicio anterior y haberla justificado",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "Por haber obtenido subvención en el ejercicio anterior y haber cumplido el deber de justificación derivado de la concesión de subvenciones (hasta 1 punto).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud según el modelo del anexo, aprobada por el órgano competente y acreditada por el Secretario",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "y se presentará según el modelo que aparece como Anexo a esta Resolución.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Autorización del órgano competente para el desarrollo de la actividad",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Documento de autorización del Órgano competente para el desarrollo de la actividad o programa para el que se solicita subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Número de alumnado y su distribución por materias",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Número de alumnado de la Escuela Municipal de Música y su distribución por materias, durante el curso correspondiente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de fechas de inicio y fin, enseñanzas impartidas y actividades del curso",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Fecha de inicio y finalización de las actividades de la Escuela de Música.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto económico de gastos de la escuela",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Presupuesto económico de gastos de la Escuela Municipal de Música.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable sobre la no recuperabilidad del IVA, si procede",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "En caso de que la Entidad Local Municipal no pueda recuperar el Impuesto sobre el Valor Añadido por la actividad de la Escuela Municipal de Música, declaración responsable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de Alta de Terceros si hay cambios o es entidad nueva",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 3,
+     "texto": "Ficha de Alta de Terceros normalizada en caso de haberse producido cambios respecto de la existente en el Gobierno de La Rioja o en caso de nuevas entidades locales.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Oficina electrónica del Gobierno de La Rioja, procedimiento «Subvenciones a Entidades Locales para el funcionamiento de las Escuelas Municipales de Música»",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 4,
+     "texto": "la solicitud se presentará, junto con la documentación, en la oficina electrónica del Gobierno de La Rioja, en el procedimiento habilitado al efecto",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://web.larioja.org/oficina-electronica/tramite?n=11128",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 2,
+     "texto": "Dicha solicitud estará a disposición de los interesados en la oficina electrónica del Gobierno de La Rioja https://web.larioja.org/oficina-electronica/tramite?n=11128.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria (artículo 14.2 de la Ley 39/2015)",
+    "cita": {
+     "documento": 1424534,
+     "pagina": 4,
+     "texto": "Conforme a lo dispuesto en el artículo 14.2 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas, la solicitud se presentará, junto con la documentación, en la oficina electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo para ayuntamientos y entidades locales municipales de La Rioja con escuela municipal de música: no sirve a un promotor de conciertos.",
+   "El 80 % se aplica al presupuesto subvencionable de la solicitud con mayor puntuación; el resto recibe porcentajes proporcionales, siempre con el tope de 5.500 euros.",
+   "Las bases reguladoras son la Orden 3/2007, de 7 de febrero, a la que remite la convocatoria y que no se incluye."
+  ]
+ },
+ "citas": {
+  "verificadas": 32,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

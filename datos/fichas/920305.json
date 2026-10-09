@@ -1,0 +1,177 @@
+{
+ "version": 1,
+ "codigoBdns": "920305",
+ "generada": "2026-10-09T19:03:15.301Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1500445,
+   "nombre": "CrrgtConvoCLT537ES_1.pdf",
+   "paginas": 3,
+   "huella": "4d09686f9a2e40de"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Oficina de Apoyo a la Iniciativa Cultural (Generalitat de Catalunya) al sector cultural por el servicio de acompañamiento y asesoramiento en casos de violencias machistas y LGTBI-fóbicas en 2026.",
+   "Concurrencia no competitiva; dotación máxima de 20.000 euros.",
+   "Solicitudes del 28 de julio al 29 de octubre de 2026.",
+   "Tramitación exclusivamente electrónica por Trámites gencat o Canal Empresa."
+  ],
+  "objeto": {
+   "valor": "Subvenciones al sector cultural por el servicio de acompañamiento y asesoramiento en la gestión de casos de violencias machistas y por razón de orientación sexual, identidad y expresión de género (2026)",
+   "cita": {
+    "documento": 1500445,
+    "pagina": 2,
+    "texto": "Abrir la convocatoria para la concesión de subvenciones, en régimen de concurrencia no competitiva, al sector cultural por el servicio de acompañamiento y asesoramiento en la gestión de casos de violencias machistas",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Sector cultural (según las bases específicas, no incluidas)",
+   "cita": {
+    "documento": 1500445,
+    "pagina": 2,
+    "texto": "subvenciones, en régimen de concurrencia no competitiva, al sector cultural por el servicio de acompañamiento y asesoramiento",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 28 de julio de 2026 (desde las 9:00) al 29 de octubre de 2026 (hasta las 14:00)",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "El periodo para presentar las solicitudes es del 28 de julio de 2026 al 29 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-07-28",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "El día 28 de julio de 2026 se pueden presentar solicitudes a partir de las 9:00:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-10-29",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "El día 29 de octubre de 2026 se pueden presentar solicitudes hasta las 14:00:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Cuatro meses desde el registro de la solicitud; sin resolución expresa, se entiende desestimada",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "que se debe dictar y notificar en el plazo máximo de cuatro meses a contar desde la fecha de registro de la presentación de la solicitud de subvención.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Año 2026",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 2,
+     "texto": "identidad de género y expresión de género para el año 2026 (CLT537).",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 20000,
+    "cita": {
+     "documento": 1500445,
+     "pagina": 2,
+     "texto": "La dotación máxima de la convocatoria es de 20.000,00 euros, distribuidos entre las siguientes anualidades",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Disponer de un mecanismo de identificación y firma electrónica admitido",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "Las personas solicitantes deben disponer de alguno de los mecanismos de identificación y signatura electrónica que prevé la Orden VPD/93/2022",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Trámites gencat o, para empresas, Canal Empresa",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "se deben realizar exclusivamente por vía electrónica a través de Trámites gencat (https://web.gencat.cat/ca/tramits/) o, en el caso de las empresas, estas también pueden hacerlo a través del Canal Empresa",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://web.gencat.cat/ca/tramits/",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "exclusivamente por vía electrónica a través de Trámites gencat (https://web.gencat.cat/ca/tramits/)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación exclusivamente electrónica con firma electrónica",
+    "cita": {
+     "documento": 1500445,
+     "pagina": 3,
+     "texto": "utilizando el sistema de firma electrónica de acuerdo con la Orden CLT/4/2013, de 2 de enero",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto es la convocatoria 2026 (CLT537); los requisitos, gastos, importes, documentación y justificación están en las bases específicas (Resolución CLT/579/2025) y generales (Resolución CLT/961/2024), que no se incluyen.",
+   "La dotación se reparte en 16.000 euros con cargo a 2026 y 4.000 euros con cargo a 2027, y puede ampliarse.",
+   "Ayuda muy específica (servicio de acompañamiento en casos de violencias machistas y LGTBI-fóbicas en el sector cultural): no financia conciertos."
+  ]
+ },
+ "citas": {
+  "verificadas": 12,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

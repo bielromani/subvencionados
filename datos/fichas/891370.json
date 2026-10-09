@@ -1,0 +1,192 @@
+{
+ "version": 1,
+ "codigoBdns": "891370",
+ "generada": "2026-10-09T19:02:56.486Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1420680,
+   "nombre": "MCATS_Internacionalització de la música_cast.pdf",
+   "paginas": 2,
+   "huella": "d7a878a30e0c9f90"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Instituto Catalán de las Empresas Culturales para proyectos de distribución internacional del catálogo artístico de empresas y entidades de la música.",
+   "Dotación máxima de 280.000 euros.",
+   "Proyectos realizados entre el 1 de septiembre de 2025 y el 31 de agosto de 2026.",
+   "Solicitudes del 23 de marzo al 9 de abril de 2026, por medios telemáticos."
+  ],
+  "objeto": {
+   "valor": "Proyectos de distribución internacional del catálogo artístico de empresas y entidades del sector de la música",
+   "cita": {
+    "documento": 1420680,
+    "pagina": 1,
+    "texto": "Abrir la convocatoria para la concesión de subvenciones, en régimen de concurrencia competitiva, a proyectos de distribución internacional del catálogo artístico de empresas y entidades del sector de la música.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Empresas y entidades del sector de la música",
+   "cita": {
+    "documento": 1420680,
+    "pagina": 1,
+    "texto": "a proyectos de distribución internacional del catálogo artístico de empresas y entidades del sector de la música",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 23 de marzo al 9 de abril de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes es del 23 de marzo al 9 de abril de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-03-23",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes es del 23 de marzo al 9 de abril de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-04-09",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes es del 23 de marzo al 9 de abril de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el día siguiente a la publicación de la convocatoria; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 2,
+     "texto": "resolución que debe dictarse y publicarse en el plazo máximo de seis meses a contar desde el día siguiente al de la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de septiembre de 2025 al 31 de agosto de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 2,
+     "texto": "Que el periodo para realizar el proyecto de distribución internacional del catálogo artístico es del 1 de septiembre de 2025 al 31 de agosto de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Por medios telemáticos (plazo y forma en las bases específicas)",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 1,
+     "texto": "Que las solicitudes de subvenciones y otros trámites asociados al procedimiento de concesión, justificación, modificación y revocación de estas subvenciones deben efectuarse y enviarse por medios telemáticos",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 280000,
+    "cita": {
+     "documento": 1420680,
+     "pagina": 2,
+     "texto": "Que la dotación máxima de las subvenciones previstas en esta convocatoria es de 280.000,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser empresa o entidad del sector de la música con un proyecto de distribución internacional de su catálogo artístico",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 1,
+     "texto": "a proyectos de distribución internacional del catálogo artístico de empresas y entidades del sector de la música",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tramitación telemática obligatoria de solicitud, justificación, modificación y revocación",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 1,
+     "texto": "deben efectuarse y enviarse por medios telemáticos, de acuerdo con la Orden CLT/4/2013, de 2 de enero, por la que se aprueba la tramitación telemática obligatoria",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Portal Gencat.cat (trámites de la Generalitat), accesible desde la ventanilla única de subvenciones del Departamento de Cultura",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 1,
+     "texto": "a través del portal Gencat.cat: información, trámites y servicios de la Generalitat de Catalunya (http://web.gencat.cat/es/tramits).",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://web.gencat.cat/es/tramits",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 1,
+     "texto": "a través del portal Gencat.cat: información, trámites y servicios de la Generalitat de Catalunya (http://web.gencat.cat/es/tramits).",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática obligatoria",
+    "cita": {
+     "documento": 1420680,
+     "pagina": 1,
+     "texto": "deben efectuarse y enviarse por medios telemáticos, de acuerdo con la Orden CLT/4/2013, de 2 de enero, por la que se aprueba la tramitación telemática obligatoria",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es solo la resolución de convocatoria: los requisitos, gastos subvencionables, importes máximos, criterios de valoración, documentación y justificación están en las bases específicas (Resolución CLT/664/2023 y modificaciones CLT/672/2024 y CLT/634/2025) y en las bases generales (Resolución CLT/3142/2020), que no se incluyen.",
+   "La dotación de 280.000 euros se reparte en 260.000 euros (partida 470.0001) y 20.000 euros (partida 482.0001) y puede ampliarse según las solicitudes y la disponibilidad presupuestaria.",
+   "El número de la resolución aparece en blanco (CLT/      /2026): parece un borrador o versión previa a la publicación en el DOGC.",
+   "Pensada para empresas y entidades musicales con catálogo artístico propio que distribuyen internacionalmente; útil para un promotor solo si gestiona giras o distribución internacional de artistas."
+  ]
+ },
+ "citas": {
+  "verificadas": 14,
+  "revisar": 0,
+  "noConsta": 5
+ }
+}

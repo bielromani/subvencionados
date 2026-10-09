@@ -1,0 +1,121 @@
+{
+ "version": 1,
+ "codigoBdns": "892168",
+ "generada": "2026-10-09T19:02:56.241Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1493090,
+   "nombre": "Com Redistribucion Credito FESTIVALES 26.pdf",
+   "paginas": 2,
+   "huella": "e886963fa00a1b54"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Resolución de la Diputación de Cáceres que redistribuye el crédito de la subvención a entidades locales para festivales y certámenes 2026.",
+   "Mueve 4.357 euros de una partida a otra; no abre plazo ni contiene las bases.",
+   "Dirigida a entidades locales de la provincia de Cáceres."
+  ],
+  "objeto": {
+   "valor": "Subvención a entidades locales de la provincia para la realización de festivales y certámenes culturales 2026 (este documento solo redistribuye su crédito)",
+   "cita": {
+    "documento": 1493090,
+    "pagina": 1,
+    "texto": "Aprobar la redistribución del crédito de las partidas destinadas a la Subvención a Entidades Locales de la Provincia para realización de Festivales y Certámenes Culturales 2026",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades locales de la provincia de Cáceres",
+   "cita": {
+    "documento": 1493090,
+    "pagina": 1,
+    "texto": "las bases de la convocatoria de la subvención a entidades locales de la provincia para la realización de festivales y Certámenes",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento no son las bases: es una resolución de 13/07/2026 que redistribuye el crédito entre partidas una vez concretados los beneficiarios. Las bases (aprobadas por resolución de 10 de marzo de 2026) no se incluyen.",
+   "Según el documento, las bases preveían 148.000 euros en la partida 05.3340.46212 y 2.000 euros en la 05.3340.46812; tras la redistribución quedan 143.643 euros y 6.357 euros respectivamente.",
+   "La convocatoria ya está en fase de reparto entre beneficiarios; además, es para entidades locales (ayuntamientos y ELM), no para promotores privados."
+  ]
+ },
+ "citas": {
+  "verificadas": 2,
+  "revisar": 0,
+  "noConsta": 15
+ }
+}

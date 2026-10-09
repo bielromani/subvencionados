@@ -1,0 +1,336 @@
+{
+ "version": 1,
+ "codigoBdns": "865649",
+ "generada": "2026-10-09T19:02:56.445Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1345611,
+   "nombre": "Convocatòria_castellà_24-25.pdf",
+   "paginas": 5,
+   "huella": "64826c79169ae4a9"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Becas del Ayuntamiento de Arenys de Mar para el alumnado de la Escuela Municipal de Música, curso 2024-2025.",
+   "Para alumnos de 3 a 18 años empadronados en Arenys de Mar, con ingresos familiares bajo los umbrales fijados.",
+   "Cubren como máximo el 50 % de las cuotas mensuales; dotación total de 3.000 euros.",
+   "Plazo: 10 días hábiles desde la publicación de la convocatoria en el BOP."
+  ],
+  "objeto": {
+   "valor": "Becas individuales para pagar el coste mensual de la Escuela Municipal de Música en el curso 2024-2025",
+   "cita": {
+    "documento": 1345611,
+    "pagina": 1,
+    "texto": "El objeto de esta convocatoria es la concesión de becas individuales para los alumnos de la escuela Municipal de Música que estén empadronados en Arenys de Mar",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Alumnado de la Escuela Municipal de Música empadronado en Arenys de Mar (solicitan padres, madres o tutores legales)",
+   "cita": {
+    "documento": 1345611,
+    "pagina": 2,
+    "texto": "Pueden solicitar las ayudas las personas con capacidad de obrar, los padres, las madres, los tutores legales o las personas encargadas temporalmente o definitivamente de la guarda legal de los beneficiarios.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "10 días hábiles a partir del día siguiente a la publicación de la convocatoria en el BOP",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "El plazo de presentación de la solicitud y de la documentación será de 10 días hábiles a partir del día siguiente de la publicación de esta convocatoria en el Boletín Oficial de la Provincia",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "3 meses desde el fin del plazo de presentación; sin resolución expresa, se entiende desestimada",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 5,
+     "texto": "El plazo máximo para resolver la solicitud es de 3 meses a contar desde la finalización de presentación de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Mensualidades del curso 2024-2025",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "Las prestaciones económicas objetos de esta convocatoria son de aplicación a las mensualidades correspondientes al curso 2024-2025",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Junto con la solicitud: recibos mensuales del curso con su comprobante de pago",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 5,
+     "texto": "La documentación justificativa del gasto realizado por los conceptos subvencionados deberá presentarse junto con la solicitud de la subvención.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 3000,
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "con cargo a la aplicación presupuestaria 70 3262 48000, hasta un límite de 3.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 50,
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "Estas ayudas económicas serán como máximo el 50% de las cuotas mensuales de la escuela de música municipal y las matrículas no se subvencionan.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras el otorgamiento, por transferencia bancaria al solicitante",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 5,
+     "texto": "El pago de las subvenciones se realizará con posterioridad a su otorgamiento, por transferencia bancaria al solicitante.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar empadronado en Arenys de Mar",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "Pueden optar a estas becas los alumnos / as que cumplan los siguientes requisitos generales: 1- Estar empadronado en Arenys de Mar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener entre 3 y 18 años",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "2- Tener entre 3 y 18 años de edad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar matriculado en la escuela de música municipal en el periodo establecido",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "3- Estar matriculado en la escuela de música municipal dentro del periodo establecido.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber cursado con aprovechamiento el curso anterior, salvo nuevos alumnos",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "4- Haber cursado con aprovechamiento el curso anterior, salvo los alumnos de nueva incorporación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ingresos familiares del último ejercicio por debajo de los umbrales según miembros de la unidad familiar",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "Los ingresos familiares no deben superar en el último ejercicio fiscal liquidado, una renta superior a los umbrales máximos que se establecen a continuación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener deudas pendientes con el Ayuntamiento",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 2,
+     "texto": "Será motivo de denegación de la beca solicitada tener deudas pendientes con el Ayuntamiento de Arenys de Mar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 2,
+     "texto": "no deberán estar incursos en el que cualquiera de las prohibiciones previstas en el artículo 13.2 de Ley 38/2003",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Cuotas mensuales del servicio de la escuela de música municipal efectivamente pagadas",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "La beca se aplica sobre el importe de las cuotas mensuales correspondientes al servicio en el que esté matriculado de la escuela de música municipal",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Matrículas",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 1,
+     "texto": "como máximo el 50% de las cuotas mensuales de la escuela de música municipal y las matrículas no se subvencionan.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Capacidad económica: 10 puntos menos el porcentaje de la renta familiar sobre el umbral",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1345611,
+     "pagina": 3,
+     "texto": "Del porcentaje resultante se extraerá el número a restar de un total de 10 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Un punto adicional por situación familiar acreditada (familia numerosa, monoparental, acogida, discapacidad superior al 33 %)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1345611,
+     "pagina": 3,
+     "texto": "Se otorgará un punto de más por cada una de las situaciones que la unidad familiar pueda acreditar",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en modelo normalizado con declaración responsable y autorización para consulta de datos",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "Solicitud de beca según modelo normalizado, acompañado de la declaración responsable y de la autorización al Ayuntamiento de Arenys de Mar para la obtención de datos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado negativo de la Agencia Tributaria si no hay obligación de declarar la renta",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "En caso de no estar obligado a hacer la declaración de la renta, se aportará el certificado negativo emitido por la Agencia Tributaria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de ingresos si no constan datos en la Agencia Tributaria",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "En caso de no constar ningún dato a la Agencia Tributaria, se firmará la Declaración responsable de ingresos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En caso de separación o divorcio, documentos que lo acrediten con pensión alimenticia y custodia",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "En caso de separación o divorcio, documento notarial, justificantes de interposición de la demanda, sentencia judicial, convenio regulador u otros documentos que demuestren esta situación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Título de familia numerosa o monoparental, si procede",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "Fotocopia del título de familia numerosa o de familia monoparental, en el caso que corresponda.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de discapacidad de algún miembro de la unidad familiar, si procede",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "En caso de disminución o discapacidad física, psíquica o sensorial de algún miembro de la unidad familiar, certificados que acrediten estas circunstancias y su grado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Recibos mensuales del curso con comprobante de pago",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 5,
+     "texto": "Deberán presentarse los recibos mensuales del curso escolar correspondiente a la convocatoria con el comprobante de pago",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro del Ayuntamiento de Arenys de Mar, de forma presencial o telemática",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "registro de y el Ayuntamiento de Arenys de Mar, de y forma presencial o telemática.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "No obligatoria: presencial o telemática",
+    "cita": {
+     "documento": 1345611,
+     "pagina": 4,
+     "texto": "registro de y el Ayuntamiento de Arenys de Mar, de y forma presencial o telemática.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Son becas para alumnado de la escuela municipal de música de Arenys de Mar: no sirven a un promotor de conciertos.",
+   "Los importes máximos por beca se remiten al punto 8 de las bases reguladoras, que no se incluyen.",
+   "Convocatoria del curso 2024-2025; el texto es la traducción al castellano."
+  ]
+ },
+ "citas": {
+  "verificadas": 29,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

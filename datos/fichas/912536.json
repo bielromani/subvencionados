@@ -1,0 +1,188 @@
+{
+ "version": 1,
+ "codigoBdns": "912536",
+ "generada": "2026-10-09T19:02:46.860Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1531143,
+   "nombre": "Música en viu + modif cast.pdf",
+   "paginas": 4,
+   "huella": "41396c45add59f0c"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Instituto Catalán de las Empresas Culturales para la programación de música en vivo de carácter profesional.",
+   "Dotación máxima de 3.500.000 euros tras la ampliación.",
+   "Actividades iniciadas desde el 1 de junio de 2025 y finalizadas entre el 1 de octubre de 2025 y el 30 de septiembre de 2026.",
+   "Solicitudes del 23 de junio al 7 de julio de 2026, por medios telemáticos.",
+   "Resolución en un máximo de seis meses desde la publicación de la convocatoria."
+  ],
+  "objeto": {
+   "valor": "Programación de música en vivo de carácter profesional",
+   "cita": {
+    "documento": 1531143,
+    "pagina": 1,
+    "texto": "Abrir convocatoria para la concesión de subvenciones, en régimen de concurrencia competitiva, para la programación de música en vivo de carácter profesional.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 23 de junio al 7 de julio de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "El periodo para presentar solicitudes es del 23 de junio al 7 de julio de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-06-23",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "El periodo para presentar solicitudes es del 23 de junio al 7 de julio de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-07-07",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "El periodo para presentar solicitudes es del 23 de junio al 7 de julio de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde el día siguiente a la publicación de la convocatoria; sin resolución, se entiende desestimada. Se publica en el Tablón electrónico de la Generalitat",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "a través de una resolución que se dictará y se publicará en el plazo máximo de seis meses a contar desde el día siguiente al de la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividad iniciada a partir del 1 de junio de 2025 y finalizada entre el 1 de octubre de 2025 y el 30 de septiembre de 2026",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "La actividad se debe haber iniciado a partir del 1 de junio de 2025 y debe haber finalizado entre el 1 de octubre de 2025 y el 30 de septiembre de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "La justificación se tramita por medios telemáticos; el plazo y la forma están en las bases",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 1,
+     "texto": "Las solicitudes de subvenciones y otros trámites asociados al procedimiento de concesión, justificación, modificación y revocación de estas subvenciones deben efectuarse y enviarse por medios telemáticos",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 3500000,
+    "cita": {
+     "documento": 1531143,
+     "pagina": 4,
+     "texto": "profesional (ref. BDNS 912536), que queda fijada en un máximo de 3.500.000,00 euros, distribuidos en las siguientes anualidades:",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "La actividad debe haberse iniciado a partir del 1 de junio de 2025 y finalizado entre el 1 de octubre de 2025 y el 30 de septiembre de 2026",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "La actividad se debe haber iniciado a partir del 1 de junio de 2025 y debe haber finalizado entre el 1 de octubre de 2025 y el 30 de septiembre de 2026",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programación de música en vivo de carácter profesional",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 1,
+     "texto": "para la programación de música en vivo de carácter profesional.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Por medios telemáticos a través del portal Gencat.cat (trámites), accesible desde la ventanilla única de subvenciones del Departamento de Cultura",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 1,
+     "texto": "a través del portal Gencat.cat: información, trámites y servicios de la",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://web.gencat.cat/es/tramits",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 2,
+     "texto": "Generalitat de Catalunya (http://web.gencat.cat/es/tramits). Desde la ventanilla única de subvenciones del Departamento de Cultura (http://cultura.gencat.cat/subvencions)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación telemática obligatoria",
+    "cita": {
+     "documento": 1531143,
+     "pagina": 1,
+     "texto": "por la que se aprueba la tramitación telemática obligatoria de los procedimientos de concesión, justificación, modificación y revocación de ayudas de concurrencia pública",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto es la resolución de convocatoria más una resolución posterior que amplía la dotación de 1.800.000 a 3.500.000 euros (2.800.000 en 2026 y 700.000 en 2027).",
+   "Faltan las bases específicas (Resolución CLT/1682/2026, DOGC núm. 9676, de 1.6.2026) y las bases generales del ICEC: beneficiarios, importes máximos, gastos, criterios y documentación no constan aquí.",
+   "La dotación máxima puede ampliarse según las solicitudes recibidas y la disponibilidad presupuestaria.",
+   "Convocatoria muy relevante para un promotor de conciertos (música en vivo profesional en Cataluña)."
+  ]
+ },
+ "citas": {
+  "verificadas": 13,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

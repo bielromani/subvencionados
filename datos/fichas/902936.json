@@ -1,0 +1,141 @@
+{
+ "version": 1,
+ "codigoBdns": "902936",
+ "generada": "2026-10-09T19:03:15.304Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1446735,
+   "nombre": "Resolución Subvención EEMM.pdf",
+   "paginas": 3,
+   "huella": "56fdc7f21804b61d"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Resolución del Gobierno de Navarra que aprueba la convocatoria de subvenciones a las Escuelas Municipales de Música para 2026.",
+   "Ayuda a la financiación de las escuelas de música de titularidad municipal.",
+   "Gasto máximo autorizado de 3.400.000 euros.",
+   "Las bases reguladoras (Anexo I) no se incluyen en el texto."
+  ],
+  "objeto": {
+   "valor": "Financiación de las Escuelas de Música de titularidad municipal de Navarra durante 2026",
+   "cita": {
+    "documento": 1446735,
+    "pagina": 1,
+    "texto": "El Departamento de Educación dispone de una partida presupuestaria cuya finalidad es ayudar a la financiación de las Escuelas de Música de titularidad municipal.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Escuelas Municipales de Música de Navarra (titularidad municipal)",
+   "cita": {
+    "documento": 1446735,
+    "pagina": 2,
+    "texto": "Aprobar la Convocatoria de Subvenciones para la Escuelas Municipales de Música de Navarra de conformidad con las Bases Reguladoras",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Año 2026",
+    "cita": {
+     "documento": 1446735,
+     "pagina": 1,
+     "texto": "por la que se aprueba la Convocatoria de Subvenciones a las Escuelas Municipales de Música durante el año 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 3400000,
+    "cita": {
+     "documento": 1446735,
+     "pagina": 2,
+     "texto": "Autorizar un gasto máximo de 3.400.000,00 euros con cargo a la partida 420001-42400-4609-322502",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Escuelas de música de titularidad municipal",
+    "cita": {
+     "documento": 1446735,
+     "pagina": 1,
+     "texto": "ayudar a la financiación de las Escuelas de Música de titularidad municipal.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El texto es solo la Resolución 235/2026 que aprueba la convocatoria; las Bases Reguladoras (Anexo I) a las que remite no se incluyen, por lo que faltan plazos, importes por beneficiario, criterios y documentación.",
+   "Destinada a escuelas de música de titularidad municipal (ayuntamientos) de Navarra: no sirve a un promotor de conciertos privado."
+  ]
+ },
+ "citas": {
+  "verificadas": 5,
+  "revisar": 0,
+  "noConsta": 13
+ }
+}

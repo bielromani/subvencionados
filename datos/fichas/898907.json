@@ -1,0 +1,211 @@
+{
+ "version": 1,
+ "codigoBdns": "898907",
+ "generada": "2026-10-09T19:02:46.938Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1435509,
+   "nombre": "textoConvocatoria13800.pdf",
+   "paginas": 2,
+   "huella": "175c364fbbeff48c"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Subvenciones de la Diputación de Castellón para comprar instrumentos musicales y otros bienes inventariables en 2026.",
+   "Para sociedades musicales con banda y escuela de música de la provincia, y escuelas de música vinculadas o comarcales.",
+   "Crédito total de 100.000 euros; máximo 5.000 euros por beneficiario y hasta el 80 % del gasto.",
+   "Plazo: un mes desde el día siguiente a la publicación del extracto en el BOP de Castellón.",
+   "Solicitud solo telemática en la sede electrónica de la Diputación."
+  ],
+  "objeto": {
+   "valor": "Gastos de adquisición de instrumentos musicales, equipos informáticos y otros bienes inventariables necesarios para la actividad",
+   "cita": {
+    "documento": 1435509,
+    "pagina": 1,
+    "texto": "Subvenciones con destino a financiar los gastos de adquisición de instrumentos musicales, equipos informáticos y otros bienes inventariables necesarios para el desarrollo de la actividad",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Sociedades musicales con banda de música y escuela de educandos o de música, radicadas en la provincia de Castellón e inscritas en los registros indicados; escuelas de música vinculadas a ellas; escuelas de música comarcales o mancomunadas",
+   "cita": {
+    "documento": 1435509,
+    "pagina": 1,
+    "texto": "Las sociedades musicales con banda de música establecida que dispongan de escuela de educandos o de escuela de música, estén radicadas en la provincia de Castellón",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Castellón",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "Las solicitudes deberán presentarse en el plazo de un mes desde el día siguiente al de la publicación del presente extracto de la convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Gastos realizados del 1 de enero al 31 de octubre de 2026",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "proyectores), que se realicen del 1 de enero al 31 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 100000,
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "La cuantía total máxima fijada para la convocatoria es de 100.000,00 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 5000,
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "siendo la subvención máxima por beneficiario de 5.000,00€, salvo en aquellos casos especiales que, en su caso, sean apreciados por la comisión de valoración",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "La cuantía de la subvención no podrá superar el 80% del gasto subvencionable de la actividad",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Sociedad musical con banda de música establecida y escuela de educandos o de música",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "Las sociedades musicales con banda de música establecida que dispongan de escuela de educandos o de escuela de música",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar radicada en la provincia de Castellón e inscrita en el Registro de Entidades de Carácter Cultural de la Diputación y en la Federación de Sociedades Musicales de la Comunidad Valenciana",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "inscritas en el Registro de Entidades de Carácter Cultural de la Diputación Provincial de Castellón y en la Federación de Sociedades Musicales de la Comunidad Valenciana",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Escuelas de música comarcales o mancomunadas acreditadas por la Conselleria de Cultura",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "Las escuelas de música comarcales o mancomunadas debidamente acreditadas por la Conselleria de Cultura.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Instrumentos musicales",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "financiar los gastos de adquisición de instrumentos musicales, equipos informáticos y otros bienes inventariables",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Equipos informáticos y otros bienes inventariables: ordenadores, impresoras, fotocopiadoras, tabletas, pizarras digitales y proyectores",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "actividad (ordenadores, impresoras, fotocopiadoras, tabletas, pizarras digitales y proyectores)",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Solo por vía telemática en la sede electrónica de la Diputación de Castellón",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "Sólo se admitirá la presentación de solicitudes por vía telemática a través de la sede electrónica de la Diputación de Castellón",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://dipcas.sedelectronica.es/",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "a la cual podrá acceder a través del siguiente enlace https://dipcas.sedelectronica.es/",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1435509,
+     "pagina": 1,
+     "texto": "Sólo se admitirá la presentación de solicitudes por vía telemática",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto de la convocatoria; las bases reguladoras (BOP de Castellón núm. 45, de 14 de abril de 2026) no se incluyen, por lo que faltan criterios, documentación, justificación y pago.",
+   "Los créditos se reparten de forma ponderada según los puntos obtenidos con los criterios de las bases.",
+   "El límite de 5.000 euros puede superarse en casos especiales apreciados por la comisión de valoración.",
+   "Ayuda para sociedades musicales y escuelas de música (compra de instrumentos y equipos), no para programación de conciertos; poco útil para un promotor."
+  ]
+ },
+ "citas": {
+  "verificadas": 15,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

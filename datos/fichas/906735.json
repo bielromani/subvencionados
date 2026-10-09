@@ -1,0 +1,396 @@
+{
+ "version": 1,
+ "codigoBdns": "906735",
+ "generada": "2026-10-09T19:02:46.848Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1457779,
+   "nombre": "CONVOCATORIA ACTIVIDADES AYUNTAMIENTOS.pdf",
+   "paginas": 8,
+   "huella": "0e23916654235088"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas de la Comarca del Bajo Cinca/Baix Cinca para que sus ayuntamientos programen espectáculos de artes escénicas, musicales y audiovisuales en 2026.",
+   "Solo pueden pedirla los ayuntamientos de la comarca.",
+   "Crédito total de 14.000 euros; hasta el 30 % del gasto, con un máximo de 4.500 euros según población.",
+   "Plazo: 20 días hábiles desde el día siguiente a la publicación en el BOP.",
+   "Actuaciones entre el 1 de enero y el 31 de octubre de 2026; justificación hasta el 30 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales con espectáculos de artes escénicas, musicales y audiovisuales de compañías, grupos o artistas en los municipios de la comarca durante 2026",
+   "cita": {
+    "documento": 1457779,
+    "pagina": 1,
+    "texto": "concesión de ayudas para la realización de actividades culturales en las que se programen espectáculos de artes escénicas, musicales y audiovisuales de compañías, grupos o artistas",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos de la Comarca Bajo Cinca/Baix Cinca",
+   "cita": {
+    "documento": 1457779,
+    "pagina": 1,
+    "texto": "Podrán optar a estas subvenciones todos los ayuntamientos de la Comarca Bajo Cinca/Baix Cinca.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días hábiles a partir del día siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "El plazo de presentación de solicitudes será de 20 días hábiles contados a partir del día siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde el día siguiente a la presentación de la solicitud; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 5,
+     "texto": "se notificará a los interesados, en el plazo máximo de 6 meses desde el día siguiente a la fecha de presentación de la solicitud.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actuaciones realizadas entre el 1 de enero y el 31 de octubre de 2026",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Se financiarán actuaciones realizadas entre el 1 de enero y el 31 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 30 de noviembre de 2026, con anexo IV, certificado de secretaría con relación de gastos, facturas con justificante bancario, material gráfico y certificado de otras ayudas",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 6,
+     "texto": "El plazo de justificación finalizará el 30 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 14000,
+    "cita": {
+     "documento": 1457779,
+     "pagina": 1,
+     "texto": "La presente convocatoria está dotada con 14.000 € con cargo a la aplicación presupuestaria 3340.48001 del vigente presupuesto.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 4500,
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Municipios con una población superior a 2.001 habitantes: hasta un max. de 4.500 € de subvención",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 30,
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Se subvencionará un máximo de un 30% de los gastos de la actuación con los siguientes límites máximos en función de la población total del municipio",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras presentar los justificantes de gasto",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 6,
+     "texto": "Para el abono de las subvenciones concedidas, los beneficiarios deberán remitir los siguientes documentos justificantes de gasto:",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas de administraciones o entes públicos siempre que la suma no supere el coste total; hay que comunicarlas",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "podrá buscar financiación en cualquier otra administración o entes públicos nacionales o europeos, siempre y cuando la suma total de las subvenciones obtenidas no sea superior al coste total de la actividad.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser ayuntamiento de la Comarca Bajo Cinca/Baix Cinca",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 1,
+     "texto": "Podrán optar a estas subvenciones todos los ayuntamientos de la Comarca Bajo Cinca/Baix Cinca.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El ayuntamiento es el organizador y responsable de permisos, seguros, seguridad e impuestos, tasas y derechos de autor",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "Tendrá la condición de organizador del evento y será el responsable del cumplimiento de la legalidad, así como la obtención de autorizaciones, permisos o licencias necesarias, disponer de seguros",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El ayuntamiento gestiona la contratación y la facturación de las actuaciones",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "Se responsabilizará de las gestiones de contratación y tramitación de la facturación de las actuaciones contratadas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Debe estar presente un representante municipal para recibir al grupo y facilitar el montaje",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "deberá estar presente un representante del Ayuntamiento para recibir al grupo y facilitarle el montaje",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Como máximo una actuación coincidiendo con las fiestas locales",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "Sólo podrá incluirse una actuación como máximo coincidiendo con las fechas de cada uno de los periodos de las respectivas fiestas locales anuales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si se sustituye al grupo, el caché del nuevo debe ser igual o superior; si es inferior se reintegra la parte proporcional",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "podrá contratar otra actuación, teniendo en cuenta que el caché deberá ser igual o superior al previsto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la participación de la Comarca (logo) en todo el material gráfico o publicitario; si no, revocación total",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 3,
+     "texto": "En todo el material gráfico o publicitario de la actividad debe constar obligatoriamente la participación de la Comarca del Bajo Cinca/Baix Cinca.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cumplir el protocolo de colaboración de la Comarca (anexo VI)",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 5,
+     "texto": "Cumplir con el protocolo de colaboración de la Comarca del Bajo Cinca/ Baix Cinca en actividades y eventos deportivos, culturales, sociales, festivos o de otra índole.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Contratación de espectáculos y actividades de artes escénicas, musicales y audiovisuales de compañías, grupos o artistas (cachés)",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Se consideran gastos subvencionables aquellos derivados de la contratación de espectáculos y actividades de artes escénicas, musicales y audiovisuales llevados a cabo por compañías, grupos, artistas, entidades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratación de los equipos técnicos necesarios",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "así como la contratación de equipos técnicos necesarios para su realización.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pagos de impuestos relacionados con la actividad (como justificante)",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 6,
+     "texto": "Pagos de impuestos relacionadas con la actividad.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos de producción",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Se excluyen gastos de producción, así como gastos de dietas y kilometrajes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dietas y kilometrajes",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Se excluyen gastos de producción, así como gastos de dietas y kilometrajes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grupos del Catálogo Cultural de la Comarca del Bajo Cinca",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Quedan excluidas las contrataciones de las siguientes actividades: - Grupos del Catálogo Cultural de la Comarca del Bajo Cinca",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Orquestas, charangas, disco móvil y actividades similares de carácter festivo",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 2,
+     "texto": "Orquestas, charangas, disco móvil y otras actividades similares de carácter esencialmente festivo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impuestos indirectos recuperables o compensables e impuestos personales sobre la renta",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 7,
+     "texto": "En ningún caso se considerarán subvencionables los impuestos indirectos cuando sean susceptibles de recuperación o compensación ni los impuestos personales sobre la renta.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Anexo I: solicitud dirigida al Presidente de la Comarca",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "Anexo I: Solicitud de subvención dirigida al Sr. Presidente de la Comarca del Bajo Cinca/Baix Cinca.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo II: proyecto con las actuaciones detalladas y presupuesto, con orden de prioridad",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "Anexo II: Proyecto con las actuaciones detalladas en el apartado B)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo V: certificado de Secretaría sobre rendición de cuentas a la Cámara de Cuentas de Aragón",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "Anexo V: Certificado de Secretario EELL sobre rendición de cuentas a la Cámara de cuentas de Aragón",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de estar al corriente con la Seguridad Social",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "Certificado de estar al corriente en el cumplimiento de las obligaciones de Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de estar al corriente con la Agencia Tributaria o autorización para consultarlo",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "Certificado de estar al corriente con la Agencia tributaria o autorización para que la Comarca del Bajo Cinca/ Baix Cinca pueda solicitarlo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Borrador del material gráfico o publicitario con la colaboración de la Comarca",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "Borrador del Material gráfico o publicitario de la actividad en la que indique la colaboración de la Comarca del Bajo Cinca/Baix cinca",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de otras ayudas concurrentes",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "g) Certificado de otras ayudas concurrentes",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro electrónico correspondiente",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "siendo los ayuntamientos sujetos obligados a relacionarse a través de medios electrónicos, se presentará a través del correspondiente registro electrónico.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.bajocinca.es",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "en el tablón de anuncios de la Comarca y en su página web (www.bajocinca.es), así como en la",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria (ayuntamientos obligados a relacionarse por medios electrónicos)",
+    "cita": {
+     "documento": 1457779,
+     "pagina": 4,
+     "texto": "siendo los ayuntamientos sujetos obligados a relacionarse a través de medios electrónicos",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El importe máximo depende de la población del municipio: 4.500 € (más de 2.001 hab.), 1.950 € (1.501-2.000), 1.500 € (1.001-1.500), 1.050 € (501-1.000) y 600 € (hasta 500).",
+   "El importe puede reducirse según las solicitudes, el crédito disponible y el gasto.",
+   "No hay criterios de valoración con puntos en el documento.",
+   "Solo para ayuntamientos: al promotor le interesa como vía para ser contratado por los municipios de la comarca, no como solicitante.",
+   "La web www.bajocinca.es aparece como lugar de publicación de las bases, no como dirección de presentación."
+  ]
+ },
+ "citas": {
+  "verificadas": 37,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}
