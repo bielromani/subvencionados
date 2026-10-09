@@ -19,8 +19,8 @@ en los que puede encajar un concierto (ver `server/src/bdns/recolector.ts`).
 `referencia/` tiene el catálogo de entidades locales de la BDNS y el nomenclátor de municipios del INE
 (workflow `.github/workflows/referencias.yml`).
 
-`fichas/CODIGO.json` son las fichas que se extraen con IA (Claude) del texto de las bases
-(workflow `.github/workflows/fichas.yml`, `server/src/ficha/`). Cada dato lleva una cita literal con su página,
+`fichas/CODIGO.json` son las fichas que Claude extrae del texto de las bases (`npm run fichas`,
+`server/src/ficha/`). Cada dato lleva una cita literal con su página,
 comprobada contra el documento: lo que no se encuentra queda marcado para revisar y la web no lo enseña.
 No son datos oficiales: el texto de las bases prevalece siempre.
 

@@ -3,7 +3,7 @@ import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { desdeBdns } from '../src/bdns/normalizar.js';
 import type { FichaExtraida } from '../src/ficha/esquema.js';
-import { ErrorFicha, extraerFicha, MAX_CARACTERES, textoParaModelo, type LlamadaModelo } from '../src/ficha/extractor.js';
+import { construirFicha, ErrorFicha, esquemaJson, textoParaModelo } from '../src/ficha/extractor.js';
 import { fichaAlDia, seleccionarParaFicha } from '../src/ficha/fichas.js';
 import { comprobarCita, comprobarFicha, normalizarCita, type DocumentoTexto } from '../src/ficha/verificar.js';
 import { detalle, registro } from './ayudas.js';
@@ -100,24 +100,20 @@ describe('comprobación de citas', () => {
   });
 });
 
-describe('extracción', () => {
-  const llamada =
-    (datos: FichaExtraida | null, motivoFin = 'end_turn'): LlamadaModelo =>
-    async () => ({ datos, modelo: 'claude-opus-5-5', motivoFin, entrada: 10_000, salida: 2_000 });
-
-  it('marca documento y página en el texto que recibe el modelo', () => {
+describe('construcción de la ficha', () => {
+  it('marca documento y página en el texto que se lee', () => {
     const t = textoParaModelo([bases]);
     expect(t.startsWith('[[Documento 1519395: Bases2026_cast.pdf]]\n[[Página 1]]\nPALAU RESSONA')).toBe(true);
     expect(t).toContain('[[Página 7]]');
   });
 
-  it('guarda la ficha comprobada con los documentos usados y el coste', async () => {
-    const ficha = await extraerFicha('928556', [bases], llamada(fichaModelo()), { ahora: () => new Date('2026-10-09T12:00:00Z') });
+  it('guarda la ficha comprobada con los documentos usados', () => {
+    const ficha = construirFicha('928556', [bases], fichaModelo(), { ahora: () => new Date('2026-10-09T12:00:00Z') });
     expect(ficha).toMatchObject({
       codigoBdns: '928556',
       generada: '2026-10-09T12:00:00.000Z',
+      modelo: 'Claude (sesión de Claude Code)',
       citas: { verificadas: 8, revisar: 3, noConsta: 10 },
-      uso: { entrada: 10_000, salida: 2_000, costeUsd: 0.08 },
     });
     expect(ficha.documentos).toEqual([{ id: 1519395, nombre: 'Bases2026_cast.pdf', paginas: 7, huella: expect.any(String) }]);
     expect(fichaAlDia(ficha, [bases])).toBe(true);
@@ -125,10 +121,15 @@ describe('extracción', () => {
     expect(fichaAlDia({ ...ficha, version: 0 }, [bases])).toBe(false);
   });
 
-  it('no recorta documentos enormes ni acepta respuestas sin ficha', async () => {
-    const enorme: DocumentoTexto = { id: 1, nombre: 'x', paginas: ['a'.repeat(MAX_CARACTERES + 1)] };
-    await expect(extraerFicha('1', [enorme], llamada(fichaModelo()))).rejects.toThrow(ErrorFicha);
-    await expect(extraerFicha('1', [bases], llamada(null, 'refusal'))).rejects.toThrow('refusal');
+  it('rechaza lo que no cumple el esquema', () => {
+    const { dinero: _d, ...sinDinero } = fichaModelo();
+    expect(() => construirFicha('1', [bases], sinDinero)).toThrow(ErrorFicha);
+    expect(() => construirFicha('1', [bases], { ...fichaModelo(), resumen: 'una frase' })).toThrow('resumen');
+  });
+
+  it('el esquema JSON para las instrucciones exige todos los campos', () => {
+    const esquema = esquemaJson() as { required: string[] };
+    expect(esquema.required).toEqual(expect.arrayContaining(['plazos', 'dinero', 'criterios', 'presentacion']));
   });
 });
 

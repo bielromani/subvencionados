@@ -97,17 +97,17 @@ tienen territorio, y las series muestran el historial de las convocatorias recur
 **Objetivo:** extraer de las bases todo lo que el promotor necesita (bloques 2 a 8 de la ficha) sin leerse el PDF.
 
 Estado:
-- [x] Extractor (`server/src/ficha/`): Claude con salida estructurada (esquema de la ficha), texto marcado por
-      documento y página, y reintento automático en otro modelo si el primero rechaza la petición.
+- [x] Sin API de pago: las fichas las extrae Claude leyendo las bases en la sesión de trabajo. `npm run fichas --
+      --preparar=DIR` deja los textos (marcados por documento y página), las instrucciones y el esquema; `--importar=DIR`
+      valida cada ficha contra el esquema y comprueba sus citas antes de guardarla en `datos/fichas/`.
 - [x] Comprobación de cada cita contra el texto (normalizado, corrige la página, exige que las cifras estén en la
       cita). Lo no encontrado queda «pendiente de revisar» y **la web no lo enseña**; el resumen solo sale si todo
       está confirmado.
 - [x] Selección por prioridad: 171 convocatorias (23 abiertas, 11 por abrir, 137 recurrentes recientes), sin las de
       formación. `npm run fichas -- --simular` lo lista.
-- [x] Workflow manual `Fichas` con tope de gasto por ejecución; las fichas se guardan en `datos/fichas/`.
 - [x] Ficha en la API (`GET /api/convocatorias/:id`) y en la web (desplegable «Ficha completa de las bases»).
-- [ ] Muestra real de 5-10 fichas para medir coste y calidad (falta el secreto `ANTHROPIC_API_KEY` en GitHub).
-- [ ] Validación con fichas revisadas a mano contra las bases y aciertos por campo.
+- [ ] Extraer las 171 fichas por lotes.
+- [ ] Validación con fichas revisadas contra las bases y aciertos por campo.
 - [ ] Encaje explicado con cada grupo del promotor.
 
 1. Extracción estructurada con un modelo de lenguaje (Claude) a partir del texto de las bases y el extracto:
@@ -116,8 +116,7 @@ Estado:
 2. **Cada dato con su cita**: fragmento y página del documento de origen. Si el documento no lo dice, se muestra
    «no consta», nunca una suposición.
 3. Validación: comparar con 50 fichas revisadas a mano, medir aciertos por campo y marcar como «revisar» lo dudoso.
-4. Coste controlado: solo convocatorias de música abiertas, próximas o recurrentes. Coste medido con una muestra antes
-   de procesar todo.
+4. Prioridad: primero las convocatorias de música abiertas, próximas o recurrentes.
 5. Resumen en 5 líneas y explicación del encaje con cada grupo del promotor.
 
 **Terminado cuando:** las convocatorias abiertas tienen ficha completa con citas, y los campos clave (plazos,

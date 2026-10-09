@@ -16,7 +16,6 @@
     "fichas": "tsx src/scripts/fichas.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.132.1",
     "express": "^5.2.1",
     "zod": "^4.6.5"
   },

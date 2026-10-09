@@ -96,7 +96,6 @@ export interface Ficha {
   datos: ConEstado<FichaExtraida>;
   /** Recuento de citas por estado. */
   citas: { verificadas: number; revisar: number; noConsta: number };
-  uso: { entrada: number; salida: number; costeUsd: number };
 }
 
 /** Sube cuando cambian el esquema o las instrucciones: obliga a regenerar las fichas. */
