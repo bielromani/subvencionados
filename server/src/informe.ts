@@ -32,6 +32,18 @@ function agrupar<T>(xs: T[], clave: (x: T) => string[]): Map<string, T[]> {
   return m;
 }
 
+const NOMBRE_LINEA: Record<string, string> = {
+  giras: 'Giras y circulación',
+  festivales: 'Festivales, ciclos y programación',
+  produccion: 'Producción y creación',
+  grabacion: 'Grabación',
+  internacional: 'Internacionalización',
+  composicion: 'Composición y encargos',
+  formacion: 'Formación (escuelas, conservatorios, becas)',
+  equipamiento: 'Equipamiento e inversiones',
+  'sin especificar': 'Sin especificar',
+};
+
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
 export function generarInforme(todas: Convocatoria[], hoy = new Date()): string {
@@ -41,6 +53,13 @@ export function generarInforme(todas: Convocatoria[], hoy = new Date()): string 
   const directas = objetivo.filter((c) => c.tipo === 'directa');
   const fechas = musica.map((c) => c.fechaPublicacion).filter((f): f is string => !!f).sort();
   const anioActual = String(hoy.getFullYear());
+  // La BDNS solo publica las concesiones de los últimos años: el concedido empieza en esta fecha.
+  const fechasConcesion = objetivo
+    .flatMap((c) => c.concesiones?.entidades.map((e) => e.fecha) ?? [])
+    .filter((f): f is string => !!f)
+    .sort();
+  const esFormacion = (c: Convocatoria) => c.clasificacion.lineas.includes('formacion');
+  const sinFormacion = objetivo.filter((c) => !esFormacion(c));
 
   // Por año
   const porAnio = [...agrupar(objetivo, (c) => [anioDe(c)]).entries()].sort((a, b) => a[0].localeCompare(b[0]));
@@ -79,7 +98,10 @@ export function generarInforme(todas: Convocatoria[], hoy = new Date()): string 
     `- Convocatorias de música: **${num(musica.length)}**; compatibles con jazz, clásica u ópera: **${num(objetivo.length)}**`,
     `  (${num(concursos.length)} concursos y ${num(directas.length)} concesiones directas o nominativas).`,
     `- Importe concedido registrado en las compatibles: **${euros(concedido(objetivo))}**`,
-    `  (${euros(concedido(concursos))} en concursos y ${euros(concedido(directas))} en concesiones directas).`,
+    `  (${euros(concedido(concursos))} en concursos y ${euros(concedido(directas))} en concesiones directas).` +
+      (fechasConcesion.length ? ` Concesiones registradas desde ${fechasConcesion[0]}: la BDNS solo publica las de los últimos cuatro años.` : ''),
+    `- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor:` +
+      ` ${num(sinFormacion.length)} convocatorias y ${euros(concedido(sinFormacion))} concedidos.`,
     `- Mencionan expresamente el estilo: jazz ${num(objetivo.filter((c) => c.clasificacion.estilosExplicitos.includes('jazz')).length)},` +
       ` clásica ${num(objetivo.filter((c) => c.clasificacion.estilosExplicitos.includes('clasica')).length)},` +
       ` ópera y lírica ${num(objetivo.filter((c) => c.clasificacion.estilosExplicitos.includes('opera')).length)}.` +
@@ -105,6 +127,20 @@ export function generarInforme(todas: Convocatoria[], hoy = new Date()): string 
     ),
     '',
     'El concedido de los años recientes crece con el tiempo: las concesiones se registran meses después de la convocatoria.',
+    '',
+    '## Qué financian (compatibles)',
+    '',
+    tabla(
+      ['Actividad', 'Convocatorias', 'Concursos', 'Concedido registrado'],
+      [
+        ...[...agrupar(objetivo, (c) => (c.clasificacion.lineas.length ? c.clasificacion.lineas : ['sin especificar'])).entries()]
+          .sort((a, b) => b[1].length - a[1].length)
+          .map(([k, cs]) => [NOMBRE_LINEA[k] ?? k, cs.length, cs.filter((c) => c.tipo === 'concurrencia').length, euros(concedido(cs))]),
+      ],
+    ),
+    '',
+    'Una convocatoria puede financiar varias actividades. La formación (escuelas de música y conservatorios) concentra',
+    'importes altos pero no es una oportunidad para el promotor.',
     '',
     '## Por comunidad autónoma',
     '',

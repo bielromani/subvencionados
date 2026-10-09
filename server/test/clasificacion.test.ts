@@ -149,3 +149,24 @@ describe('segunda ronda (muestra de validación, títulos reales)', () => {
     expect(c('Subvenciones para el despliegue de banda ancha en zonas rurales').musical).toBe(false);
   });
 });
+
+describe('histórico completo (títulos reales con «concierto» no musical)', () => {
+  it('conciertos educativos, sanitarios y de plazas no son música', () => {
+    for (const titulo of [
+      'S6738 - CONCIERTOS DE PLAZAS EN CENTROS DE ATENCIÓN SOCIAL A PERSONAS CON DIVERSIDAD FUNCIONAL - 2019',
+      'Resolución 24/05/2017, de la Consejería de Educación, por la que se conceden subvenciones a centros priv. concert. para el desarrollo de programas',
+      'Concesión de subvención en la escuela Sant Jordi para la financiación de las actividades complementarias al concierto educativo',
+      'Activitats complementàries al concert educatiu de l’escola',
+      'Orden de 2 de marzo de 2020, de la Consejería de Educación, de subvenciones para desarrollo de proyectos del programa Aula Empresa, en centros docentes de la Comunidad que impartan ciclos formativos de formación profesional en rég. de concierto 2019/2020',
+      'Actualización concierto enero - agosto 2017',
+      'ACTUALIZA. CONCIERTO EN-AG 2017',
+    ]) {
+      expect(c(titulo).musical, titulo).toBe(false);
+    }
+  });
+
+  it('los conciertos de música en centros sanitarios sí lo son', () => {
+    expect(c('Subvenció nominativa a Neandertal records per al finançament del cicle de concerts a centres sanitaris, socials i penitenciaris').musical).toBe(true);
+    expect(c('Convenio para el Ciclo de Conciertos de Órgano, año 2024').musical).toBe(true);
+  });
+});

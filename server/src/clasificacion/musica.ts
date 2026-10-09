@@ -66,8 +66,9 @@ const FALSOS_ORGANISMO = /\binstituto nacional de las artes escenicas y de la mu
 // Conservatorios y escuelas de danza: no son de música.
 const FALSOS_DANZA = /\b(conservatorios?|escuelas?) (profesional |superior |elemental |municipal )?de danza\b/g;
 
+// Conciertos educativos, sanitarios o de plazas en servicios sociales (también en catalán y abreviado).
 const FALSOS_CONCIERTO =
-  /\b(concierto|conciertos) (economico|educativo|educativos|sanitario|sanitarios|social|sociales)\b|\ben concierto con\b|\bregimen de concierto\b/g;
+  /\b(concierto|conciertos|concert|concerts) (economicos?|educativos?|educatius?|sanitarios?|sanitaris?|sociales?|socials?|de plazas|de places|de servicios|de serveis|de atencion)\b|\ben concierto con\b|\b(regimen|reg\.) de concierto\b|\bactualiza(cion|\.) (del )?concierto\b|\bconcert\.|\bconcertad[oa]s?\b|\bconcertats?\b|\bconcertades\b/g;
 
 // "Ópera" sin tilde coincide con el verbo "opera"; solo la aceptamos con tilde
 // o en contextos inequívocos.
