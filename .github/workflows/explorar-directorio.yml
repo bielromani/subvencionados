@@ -1,0 +1,52 @@
+# Diagnóstico: qué fuentes oficiales publican el directorio de ayuntamientos (contacto, alcalde)
+# y los concejales con su área (cultura). Muestra las respuestas en bruto.
+name: Explorar fuentes del directorio
+
+on:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/explorar-directorio.yml']
+  workflow_dispatch:
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Catálogo de datos.gob.es
+        run: |
+          A=https://datos.gob.es/apidata/catalog/dataset/title
+          for t in ayuntamientos alcaldes concejales "cargos electos" electos corporaciones "entidades locales" directorio municipios ajuntaments concellos udalak; do
+            q=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$t")
+            echo "::group::título: $t"
+            curl -sS -m 60 "$A/$q.json?_pageSize=200" -o /tmp/c.json -w "%{http_code} %{size_download}\n"
+            jq -r '.result.items[]? | [(.title|if type=="array" then (map(select(type=="object" and ._lang=="es")._value)[0] // .[0]) else . end|tostring), (.publisher|tostring), ((.distribution // []) | if type=="array" then map((.format.value // .format // "")|tostring + " " + ((.accessURL // "")|tostring)) | join(" | ") else (((.format.value // "")|tostring) + " " + ((.accessURL // "")|tostring)) end)] | @tsv' /tmp/c.json | head -120
+            echo "::endgroup::"
+          done
+
+      - name: Diputació de Barcelona (electes)
+        run: |
+          for u in "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/3" "https://do.diba.cat/api/dataset/electes/format/json"; do
+            echo "::group::$u"
+            curl -sS -m 120 -D - -o /tmp/d "$u" | head -15
+            echo "tamaño: $(stat -c %s /tmp/d)"; head -c 4000 /tmp/d; echo
+            echo "::endgroup::"
+          done
+
+      - name: Registro de Entidades Locales y alcaldes (Ministerio)
+        run: |
+          for u in \
+            "https://ssweb.seap.minhap.es/REL/frontend/inicio" \
+            "https://ssweb.seap.minhap.es/REL/frontend/inicio/municipios/all/all" \
+            "https://ssweb.seap.minhap.es/portalEELL/consulta_alcaldes" \
+            "https://ssweb.mpt.es/REL/frontend/inicio" \
+            "https://ssweb.mpt.es/portalEELL/consulta_alcaldes" \
+            "https://sede.administracionespublicas.gob.es/ayuda/consulta/Concejales" \
+            "https://serviciostelematicosext.hacienda.gob.es/SGFAL/BDGEL/aspx/default.aspx"; do
+            echo "::group::$u"
+            curl -sSL -m 60 -D - -o /tmp/r "$u" | grep -iE '^(HTTP|location|content-type)'
+            echo "tamaño: $(stat -c %s /tmp/r)"
+            grep -oiE '(href|action|src)="[^"]*(export|excel|xls|csv|descarg|download|alcald|concejal|electo)[^"]*"' /tmp/r | sort -u | head -40
+            sed -e 's/<[^>]*>/ /g' /tmp/r | tr -s ' \n' | head -c 1500; echo
+            echo "::endgroup::"
+          done
