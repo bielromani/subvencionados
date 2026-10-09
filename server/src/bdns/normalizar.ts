@@ -1,4 +1,5 @@
 import { clasificar } from '../clasificacion/musica.js';
+import { codigosProvinciaDe, type Referencias } from '../referencias.js';
 import { ambitoDesdeRegiones, ccaaDesdeNombre } from '../regiones.js';
 import type { Administracion, Convocatoria, ResumenConcesiones } from '../tipos.js';
 import { urlFichaBdns } from './cliente.js';
@@ -89,8 +90,11 @@ export interface RegistroBdns {
   actualizado: string;
 }
 
-/** Convierte un registro descargado de la BDNS en nuestra Convocatoria ya clasificada. */
-export function desdeBdns(registro: RegistroBdns): Convocatoria {
+/**
+ * Convierte un registro descargado de la BDNS en nuestra Convocatoria ya clasificada.
+ * Con `referencias` se ubica además al organismo convocante en su municipio y provincia.
+ */
+export function desdeBdns(registro: RegistroBdns, referencias?: Referencias | null): Convocatoria {
   const c = registro.detalle;
   const codigo = c.codigoBDNS ?? (c.id != null ? String(c.id) : null);
   if (!codigo) throw new Error('Convocatoria de la BDNS sin código');
@@ -103,11 +107,25 @@ export function desdeBdns(registro: RegistroBdns): Convocatoria {
   const ambito = ambitoDesdeRegiones(regiones);
   let ambitoNacional = regiones.length > 0 && ambito.nacional && ambito.ccaa.length === 0;
   let ccaa = ambito.ccaa;
+  let provincias = ambito.provincias;
+
+  let ubicacion: Convocatoria['ubicacion'] = null;
+  if (administracion === 'autonomica') {
+    const propia = ccaaDesdeNombre(c.organo?.nivel2);
+    if (propia) ubicacion = { ccaa: propia, provincia: null, codigoProvincia: null, municipio: null, codigoMunicipio: null };
+  } else if (administracion === 'local' && referencias && c.organo?.nivel2) {
+    ubicacion = referencias.ubicarEntidadLocal(c.organo.nivel2, codigosProvinciaDe(ambito.provincias));
+  }
+
+  let ambitoDeducido = false;
   if (regiones.length === 0) {
-    // Sin regiones: una comunidad autónoma convoca para su territorio; el Estado, para toda España.
-    const propia = administracion === 'autonomica' ? ccaaDesdeNombre(c.organo?.nivel2) : null;
-    if (propia) ccaa = [propia];
+    // Sin regiones: el Estado convoca para toda España; una comunidad o un ayuntamiento, para su territorio.
     ambitoNacional = administracion === 'estatal';
+    if (ubicacion) {
+      ccaa = [ubicacion.ccaa];
+      provincias = ubicacion.provincia ? [ubicacion.provincia] : [];
+      ambitoDeducido = true;
+    }
   }
 
   const tiposBeneficiario = descripciones(c.tiposBeneficiarios);
@@ -140,7 +158,9 @@ export function desdeBdns(registro: RegistroBdns): Convocatoria {
     administracion,
     ambitoNacional,
     ccaa,
-    provincias: ambito.provincias,
+    ambitoDeducido,
+    ubicacion,
+    provincias,
     finalidad: c.descripcionFinalidad ?? null,
     sectores: descripciones(c.sectores),
     instrumentos: descripciones(c.instrumentos),
@@ -165,6 +185,7 @@ export function desdeBdns(registro: RegistroBdns): Convocatoria {
         fecha: fechaIso(d.datPublicacion),
         bytes: d.long ?? null,
       })),
+    serie: null,
     texto,
     clasificacion: clasificar({ texto, tiposBeneficiario }),
     vistaPorPrimeraVez: registro.primeraDescarga,

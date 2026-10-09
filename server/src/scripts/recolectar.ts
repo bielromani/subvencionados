@@ -10,6 +10,7 @@ import { Almacen } from '../bdns/almacen.js';
 import { ClienteBdns } from '../bdns/cliente.js';
 import { desdeBdns } from '../bdns/normalizar.js';
 import { recolectar, type ResultadoRecoleccion } from '../bdns/recolector.js';
+import { Referencias } from '../referencias.js';
 import { config } from '../config.js';
 import { plazo } from '../emparejamiento.js';
 import type { Convocatoria } from '../tipos.js';
@@ -45,7 +46,8 @@ const resultado = await recolectar({
   refrescarDias: Number(values['refrescar-dias']),
 });
 
-const resumen = resumir([...almacen.registros.values()].map(desdeBdns), resultado);
+const referencias = Referencias.cargar(config.rutaDatos);
+const resumen = resumir([...almacen.registros.values()].map((r) => desdeBdns(r, referencias)), resultado);
 console.log(`\n${resumen}`);
 // En GitHub Actions, el resumen aparece en la página de la ejecución y las cifras
 // sirven al workflow para decidir si relanzarse.

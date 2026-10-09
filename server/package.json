@@ -8,7 +8,8 @@
     "recolectar": "tsx src/scripts/recolectar.ts",
     "importar": "tsx src/scripts/importar.ts",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "referencias": "tsx src/scripts/actualizar-referencias.ts"
   },
   "dependencies": {
     "express": "^5.2.1"

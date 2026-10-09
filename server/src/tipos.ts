@@ -66,6 +66,14 @@ export interface ResumenConcesiones {
   entidades: { nombre: string; importe: number; fecha: string | null }[];
 }
 
+export interface Ubicacion {
+  provincia: string | null;
+  codigoProvincia: string | null;
+  ccaa: string;
+  municipio: string | null;
+  codigoMunicipio: string | null;
+}
+
 export interface Anuncio {
   titulo: string;
   diario: string | null;
@@ -81,6 +89,27 @@ export interface Documento {
   descripcion: string | null;
   fecha: string | null;
   bytes: number | null;
+}
+
+/** La misma convocatoria a lo largo de los años. */
+export interface Serie {
+  id: string;
+  anios: number[];
+  /** Mes (1-12) en que suele abrir el plazo o, si no consta, publicarse. */
+  mesHabitual: number | null;
+  /** Estimación aaaa-mm de la próxima, a partir del historial. No es un dato oficial. */
+  proximaPrevista: string | null;
+  /** Ya pasó su mes habitual y este año aún no se ha registrado. */
+  retrasada: boolean;
+  convocatorias: {
+    id: string;
+    anio: number | null;
+    titulo: string;
+    presupuesto: number | null;
+    concedido: number | null;
+    fechaInicioSolicitud: string | null;
+    fechaFinSolicitud: string | null;
+  }[];
 }
 
 export interface Convocatoria {
@@ -100,6 +129,10 @@ export interface Convocatoria {
   ambitoNacional: boolean;
   /** Comunidades autónomas del ámbito. Vacío y sin ámbito nacional = la BDNS no lo indica. */
   ccaa: string[];
+  /** El ámbito no lo da la BDNS: se ha deducido del territorio del organismo convocante. */
+  ambitoDeducido: boolean;
+  /** Dónde está el organismo convocante (para entidades locales y comunidades autónomas). */
+  ubicacion: Ubicacion | null;
   provincias: string[];
   finalidad: string | null;
   sectores: string[];
@@ -121,6 +154,8 @@ export interface Convocatoria {
   anuncios: Anuncio[];
   /** Documentos registrados en la BDNS (texto de la convocatoria, bases...). */
   documentos: Documento[];
+  /** Historial de la misma convocatoria en otros años (se calcula al importar). */
+  serie: Serie | null;
   /** Texto libre usado para clasificar (título, objeto, finalidad...). */
   texto: string;
   clasificacion: Clasificacion;

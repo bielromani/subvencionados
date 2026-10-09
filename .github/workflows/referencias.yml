@@ -1,0 +1,51 @@
+# Referencias territoriales: catálogo de entidades locales de la BDNS y nomenclátor de
+# municipios del INE. Cambian poco: se actualizan el día 2 de cada mes.
+name: Referencias territoriales
+
+on:
+  schedule:
+    - cron: '41 4 2 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: referencias
+  cancel-in-progress: false
+
+jobs:
+  referencias:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Entidades locales (BDNS)
+        run: npm run referencias -w server
+
+      - name: Municipios (INE)
+        run: |
+          pip install -q openpyxl
+          anio=$(date +%y)
+          for y in "$anio" "$((10#$anio - 1))"; do
+            if curl -sSf -m 60 -o /tmp/ine.xlsx "https://www.ine.es/daco/daco42/codmun/diccionario$y.xlsx"; then
+              echo "Nomenclátor: diccionario$y.xlsx"; break
+            fi
+          done
+          python3 server/scripts/ine_a_json.py /tmp/ine.xlsx datos/referencia/municipios-ine.json
+
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name "recolector-bdns"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/referencia
+          git diff --cached --quiet && { echo "Sin cambios."; exit 0; }
+          git commit -m "Referencias territoriales $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4; do git push && exit 0; git pull --rebase; done
+          exit 1

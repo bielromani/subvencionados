@@ -1,4 +1,4 @@
-import type { BdnsConcesion, BdnsConvocatoria, BdnsPagina, BdnsResultadoBusqueda } from './tipos.js';
+import type { BdnsConcesion, BdnsConvocatoria, BdnsNodoOrgano, BdnsPagina, BdnsResultadoBusqueda } from './tipos.js';
 
 // La BDNS se publica bajo dos dominios del Ministerio de Hacienda. Probamos ambos
 // y nos quedamos con el primero que responda.
@@ -118,11 +118,21 @@ export class ClienteBdns {
     }
   }
 
+  /** Catálogo de órganos. idAdmon: C (Estado), A (autonómica), L (local), O (otros). */
+  async organos(idAdmon: 'C' | 'A' | 'L' | 'O'): Promise<BdnsNodoOrgano[]> {
+    return this.get('/organos', { vpd: 'GE', idAdmon });
+  }
+
+  /** PDF de un documento de una convocatoria (bases, texto de la convocatoria...). */
+  async documento(idDocumento: number): Promise<Uint8Array> {
+    return this.get('/convocatorias/documentos', { idDocumento: String(idDocumento) }, 'binario');
+  }
+
   async obtenerConvocatoria(numeroConvocatoria: string): Promise<BdnsConvocatoria> {
     return this.get('/convocatorias', { vpd: 'GE', numConv: numeroConvocatoria });
   }
 
-  private async get<T>(ruta: string, params: Record<string, string>): Promise<T> {
+  private async get<T>(ruta: string, params: Record<string, string>, formato: 'json' | 'binario' = 'json'): Promise<T> {
     const query = new URLSearchParams(params).toString();
     const errores: string[] = [];
 
@@ -134,7 +144,7 @@ export class ClienteBdns {
         try {
           const res = await this.fetchFn(url, {
             headers: {
-              Accept: 'application/json',
+              Accept: formato === 'json' ? 'application/json' : '*/*',
               'User-Agent': 'subvencionados (github.com/bielromani/subvencionados)',
             },
             signal: AbortSignal.timeout(this.timeoutMs),
@@ -149,6 +159,7 @@ export class ClienteBdns {
           }
           // El dominio que funciona pasa a ser el primero para las siguientes peticiones.
           this.priorizar(base);
+          if (formato === 'binario') return new Uint8Array(await res.arrayBuffer()) as T;
           return (await res.json()) as T;
         } catch (error) {
           if (error instanceof ErrorBdns) throw error;

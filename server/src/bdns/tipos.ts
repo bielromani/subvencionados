@@ -98,3 +98,10 @@ export interface BdnsConcesion {
   idPersona?: number;
   fechaAlta?: string;
 }
+
+/** Nodo de GET /organos: entidades locales como provincia > municipio o diputación > órgano. */
+export interface BdnsNodoOrgano {
+  id?: number;
+  descripcion?: string;
+  children?: BdnsNodoOrgano[];
+}

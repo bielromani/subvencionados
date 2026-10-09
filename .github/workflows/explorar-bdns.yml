@@ -4,9 +4,6 @@ name: Explorar fuentes
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - .github/workflows/explorar-bdns.yml
 
 jobs:
   explorar:
@@ -26,7 +23,7 @@ jobs:
 
       - name: Texto extraído del PDF
         run: |
-          sudo apt-get update -qq >/dev/null && sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq poppler-utils >/dev/null
+          sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq poppler-utils >/dev/null
           C=https://www.pap.hacienda.gob.es/bdnstrans/api
           curl -sS -m 60 -o /tmp/doc.pdf "$C/convocatorias/documentos?idDocumento=1517570" || true
           if file -b /tmp/doc.pdf | grep -q PDF; then pdftotext -layout /tmp/doc.pdf - | head -80; pdfinfo /tmp/doc.pdf | head -12; else echo "No es PDF"; fi

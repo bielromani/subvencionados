@@ -38,7 +38,7 @@ beforeEach(() => {
           fechaFinSolicitud: '2025-04-01',
         }),
       ),
-    ].map(desdeBdns),
+    ].map((r) => desdeBdns(r)),
   );
   app = crearApp(repo);
 });
