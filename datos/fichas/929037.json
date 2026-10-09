@@ -1,0 +1,425 @@
+{
+ "version": 1,
+ "codigoBdns": "929037",
+ "generada": "2026-10-09T10:20:21.975Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1522100,
+   "nombre": "Bases y Convocatoria Iniciación a las Artes (Escénicas y Bellas Artes).pdf",
+   "paginas": 12,
+   "huella": "3c82726dc3757e1f"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Diputación de Toledo para que los municipios contraten cursos de formación en artes escénicas (teatro, danza y música) y bellas artes durante el curso 2026-2027.",
+   "Para ayuntamientos de la provincia de Toledo (salvo Illescas, Seseña, Talavera de la Reina y Toledo) y EATIM.",
+   "Crédito total de 250.000 euros; hasta 1.000, 2.000 o 3.000 euros por entidad según la población.",
+   "Solicitudes hasta el 15 de octubre de 2026, de forma telemática.",
+   "Actividades hasta el 30 de junio de 2027 y justificación hasta el 31 de agosto de 2027; pago único tras justificar."
+  ],
+  "objeto": {
+   "valor": "Contratación por las entidades locales de servicios de formación en artes escénicas (teatro, danza y música) y bellas artes (pintura, escultura, arquitectura, cine, fotografía, literatura y poesía)",
+   "cita": {
+    "documento": 1522100,
+    "pagina": 3,
+    "texto": "Serán subvencionables la contratación de servicios de formación en las diferentes artes escénicas (teatro, danza y música) y bellas artes",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Exclusivamente ayuntamientos de la provincia de Toledo (excepto Illescas, Seseña, Talavera de la Reina y Toledo) y EATIM",
+   "cita": {
+    "documento": 1522100,
+    "pagina": 2,
+    "texto": "Podrán acogerse a las bases y convocatoria de esta subvención, exclusivamente, los Ayuntamientos (excepto Illescas, Seseña, Talavera de la Reina y Toledo) y EATIM de la provincia.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia de Toledo hasta el 15 de octubre de 2026",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "El plazo para presentar la solicitud comenzará a contar a partir del día siguiente a aquel en que tenga lugar la publicación de la presente convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-10-15",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "en el Boletín Oficial de la Provincia de Toledo y finalizará el 15 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el día siguiente al fin del plazo de solicitudes; sin resolución expresa, se entienden desestimadas",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 5,
+     "texto": "El plazo máximo para resolver y notificar las solicitudes de la presente convocatoria será de seis meses",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Desde la presentación de la solicitud hasta el 30 de junio de 2027",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "Las actividades de formación deberán llevarse a cabo entre el día solicitud de la subvención y el 30 de junio de 2027.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 31 de agosto de 2027 (prorrogable excepcionalmente hasta el 31 de octubre de 2027), con solicitud de pago (Anexo II), certificación del secretario-interventor (Anexo III) y cuenta justificativa (Anexo IV)",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 6,
+     "texto": "Dicha justificación deberá presentarse en la Diputación, hasta el 31 de agosto de 2027",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 250000,
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "El presupuesto de gasto máximo a comprometer asciende a un importe de doscientos cincuenta mil euros (250.000,00 €)",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 3000,
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "Municipios de más de 5.000 habitantes, cuantía máxima e individualizada hasta 3.000 €, por Entidad Local.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago único previa justificación; si se justifica menos, se paga la parte justificada; sin pagos parciales ni anticipados",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 6,
+     "texto": "El abono de la subvención se efectuará mediante un pago único, previa justificación de haber realizado la/s inversión/es subvencionadas",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras aportaciones o subvenciones siempre que en conjunto no superen el gasto; deben comunicarse a la Diputación",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 10,
+     "texto": "ni en su caso, concurriendo con el importe de las restantes aportaciones o subvenciones concedidas de las diversas instituciones no ha superado la cuantía total de los gastos devengados",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser ayuntamiento (salvo Illescas, Seseña, Talavera de la Reina y Toledo) o EATIM de la provincia de Toledo",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 2,
+     "texto": "exclusivamente, los Ayuntamientos (excepto Illescas, Seseña, Talavera de la Reina y Toledo) y EATIM de la provincia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de reintegros y de obligaciones con la Diputación, la Agencia Tributaria, la Seguridad Social y otras administraciones",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 2,
+     "texto": "Hallarse al corriente en el cumplimiento de las obligaciones por reintegro de subvenciones, así como de cualquier otra de sus obligaciones con la Diputación Provincial de Toledo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13.2 y 13.3 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 2,
+     "texto": "No estar incursos en ninguna de las circunstancias establecidas en los apartados 2 y 3 del artículo 13 de la Ley 38/2003",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comunicar la solicitud u obtención de otras subvenciones, ingresos o recursos que financien el proyecto",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "Comunicar y documentar al órgano concedente la solicitud, y en su caso, la obtención y cobro",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad a la financiación de la Diputación con su logotipo en carteles y programas",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "estarán obligadas a hacer constar en las diferentes actuaciones, carteles, programas, el logotipo e información de la colaboración de la Diputación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La formación debe impartirse en municipios de la provincia de Toledo",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "y bellas artes (pintura, escultura, arquitectura, cine, fotografía, literatura y poesía) en los municipios de la provincia de Toledo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los cambios en las actividades requieren solicitud motivada y no pueden alterar el presupuesto ni la subvención; el cambio de finalidad, antes del 30 de junio de 2027",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 6,
+     "texto": "siempre que las modificaciones se ajusten a lo establecido en la presente convocatoria y no supongan alteración del presupuesto y de la subvención otorgada.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Contratación de servicios de formación en artes escénicas (teatro, danza y música) y bellas artes",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "Serán subvencionables la contratación de servicios de formación en las diferentes artes escénicas (teatro, danza y música)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Exclusivamente la contratación de profesorado, sea persona física, jurídica o entidad sin ánimo de lucro",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "Serán gastos subvencionables exclusivamente los gastos de contratación de servicios de profesorado que imparta la enseñanza de estas disciplinas realizada por personas físicas, jurídicas o entidades sin ánimo de lucro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos realizados desde la solicitud hasta el 30 de junio de 2027",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "que comprenderá desde la fecha de presentación de la solicitud de subvención hasta el día 30 de junio de 2027.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tributos efectivamente abonados por el beneficiario",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "Los tributos serán gasto financiable cuando el beneficiario de la subvención los abone efectivamente.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "IVA deducible para la entidad beneficiaria",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "En ningún caso se considerará gasto financiable el IVA cuando éste sea deducible para entidad beneficiaria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de personal propio",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "No se consideran gastos subvencionables los gastos de personal propio, regalos, atenciones protocolarias",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Regalos, atenciones protocolarias y gastos suntuarios",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "los gastos de personal propio, regalos, atenciones protocolarias, viajes no culturales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Viajes no culturales, alojamientos, alimentación, dietas y gratificaciones",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "viajes no culturales, alojamientos y alimentación, dietas, gratificaciones o similares",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Premios",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "dietas, gratificaciones o similares, premios, gastos suntuarios, material de oficina",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Material de oficina y adquisición de activos fijos (ordenadores, fotocopiadoras, monitores, tabletas...)",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "material de oficina, adquisición de activos fijos (ordenadores, fotocopiadoras, monitores, tablet, etc…)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Vestuario, attrezzo y cualquier material no relacionado con la actividad",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 3,
+     "texto": "vestuario, attrezzo y cualquier material no relacionado con la actividad subvencionada.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Reparto según la población del municipio (hasta 1.000 € en municipios de hasta 1.000 habitantes, 2.000 € entre 1.001 y 5.000, 3.000 € en más de 5.000), salvo que la actuación o lo solicitado sea menor",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "de acuerdo a la aplicación del criterio de reparto de asignar la cantidad a conceder en función de la población del municipio",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Si las solicitudes superan el crédito, prorrateo entre todos los beneficiarios",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1522100,
+     "pagina": 5,
+     "texto": "se prorrateará la cantidad global máxima incluida en la convocatoria entre los beneficiarios, reduciendo el importe a percibir por cada uno de los solicitantes",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud según el Anexo I, firmada por el alcalde o presidente de la entidad local",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "Las solicitudes se formalizarán mediante instancia Anexo I suscrita por el Alcalde o Presidente de la Entidad Local solicitante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuestos de los gastos de contratación del profesorado",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "junto a presupuestos de los gastos de contratación de servicios de profesorado que imparta la enseñanza",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si se han obtenido o solicitado otras ayudas para la misma finalidad, certificación de esas ayudas",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 8,
+     "texto": "deberá aportarse Certificación de las ayudas o subvenciones obtenidas o solicitadas para la misma finalidad que se solicita subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: solicitud de pago (Anexo II) con el número de cuenta",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 5,
+     "texto": "se hará mediante solicitud de pago de la subvención en el modelo que figura como Anexo II",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: certificación del secretario-interventor o interventor (Anexo III)",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 5,
+     "texto": "Anexo III: Certificación, conforme al modelo firmada por el Secretario–Interventor o Interventor de la entidad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: cuenta justificativa (Anexo IV) con memoria de actuaciones y publicidad, y relación certificada de facturas",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 6,
+     "texto": "La relación certificada de las facturas y documentos que acrediten los gastos realizados",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Telemáticamente: sede electrónica de la Diputación de Toledo («Solicitud de Propósito General»), ORVE u otro registro telemático",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "A través de la Sede Electrónica de la Diputación Provincial de Toledo (https://diputacion.toledo.gob.es/procedimientos_y_servicios), en el apartado “Solicitud de Propósito General”.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://diputacion.toledo.gob.es/procedimientos_y_servicios",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "A través de la Sede Electrónica de la Diputación Provincial de Toledo (https://diputacion.toledo.gob.es/procedimientos_y_servicios)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática obligatoria con firma electrónica",
+    "cita": {
+     "documento": 1522100,
+     "pagina": 4,
+     "texto": "Administrativo Común, de forma telemática, con firma electrónica:",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Los beneficiarios son solo ayuntamientos y EATIM; un promotor o un profesional de la música solo puede participar como proveedor contratado por el municipio para impartir la formación.",
+   "Solo cubre formación (cursos y talleres con profesorado), no conciertos ni programación de espectáculos.",
+   "Aunque se habla de comisión de evaluación, la concesión es directa una vez acreditados los requisitos; no hay criterios con puntos.",
+   "El documento es el certificado del acuerdo de la Junta de Gobierno de 11 de septiembre de 2026 que aprueba las bases y la convocatoria, con los anexos I a IV."
+  ]
+ },
+ "citas": {
+  "verificadas": 40,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

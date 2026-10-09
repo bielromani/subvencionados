@@ -1,7 +1,7 @@
 {
  "version": 1,
  "codigoBdns": "927281",
- "generada": "2026-10-09T10:18:53.212Z",
+ "generada": "2026-10-09T10:20:21.812Z",
  "modelo": "Claude (sesión de Claude Code)",
  "documentos": [
   {
@@ -134,9 +134,8 @@
     "cita": {
      "documento": 1521770,
      "pagina": 1,
-     "texto": "las personas que vayan a representar la maqueta musical en directo, deberán cumplir con el requisito de edad establecido.",
-     "estado": "revisar",
-     "motivo": "No aparece en el documento"
+     "texto": "En el caso de participar en el concurso como grupo musical, todos los miembros integrantes de la banda",
+     "estado": "verificada"
     }
    },
    {
@@ -322,8 +321,8 @@
   ]
  },
  "citas": {
-  "verificadas": 26,
-  "revisar": 1,
+  "verificadas": 27,
+  "revisar": 0,
   "noConsta": 8
  }
 }
