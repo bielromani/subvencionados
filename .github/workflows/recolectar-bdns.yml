@@ -70,9 +70,13 @@ jobs:
             exit 0
           fi
           git commit -m "Datos BDNS $(date -u +%Y-%m-%d): ${{ steps.recolectar.outputs.progreso || 0 }} descargas, ${{ steps.recolectar.outputs.pendientes || 0 }} pendientes"
+          # Si alguien ha subido cambios mientras tanto, se integran. En caso de conflicto (normalmente
+          # docs/informe-nicho.md) gana lo de esta ejecución: los datos solo los escribe este workflow.
+          rama="${GITHUB_REF_NAME}"
           for i in 1 2 3 4; do
-            git push && exit 0
-            git pull --rebase
+            git push origin "HEAD:$rama" && exit 0
+            git fetch origin "$rama"
+            git rebase -X theirs "origin/$rama" || { git rebase --abort; sleep $((i * 5)); }
           done
           exit 1
 
