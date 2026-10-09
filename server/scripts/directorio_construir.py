@@ -215,6 +215,7 @@ def main() -> None:
     municipios = Municipios(datos / "referencia" / "municipios-ine.json")
     estado = json.loads((fuentes / "estado.json").read_text(encoding="utf-8"))
     descripcion = {f["fichero"]: f["descripcion"].split(" · ")[0] for f in estado["fuentes"]}
+    url_fuente = {f["fichero"]: f["url"] if isinstance(f["url"], str) else "" for f in estado["fuentes"]}
 
     # Ficha de cada municipio: campo -> (valor, fichero de origen). La primera fuente que da un dato gana.
     ficha: dict[str, dict[str, tuple[str, str]]] = defaultdict(dict)
@@ -361,10 +362,30 @@ def main() -> None:
                             "cargo": r.get("carrec_persona", ""), "area": r.get("ambit_treball", ""),
                             "partido": r.get("sigles_partit_politic", ""), "desde": "", "fuente": "diba-electes.json"})
 
+    # --- Responsables de cultura investigados a mano (capitales y ciudades de más de 50.000 habitantes) ---
+    investigado = salida / "cultura-investigado.csv"
+    descripcion["investigacion"] = "Investigación en webs municipales y prensa"
+    if investigado.exists():
+        for r in leer_csv(investigado, ";"):
+            if r["codigo_ine"] not in municipios.por_codigo:
+                sin_ubicar["cultura-investigado.csv"] += 1
+                continue
+            cod = r["codigo_ine"]
+            cultura.append({"codigo": cod, "cpro": cod[:2], "entidad": f'Ayuntamiento de {municipios.por_codigo[cod]["nombre"]}',
+                            "tipo": "Ayuntamiento", "nombre": r["nombre"], "cargo": r["cargo"], "area": r["area"],
+                            "partido": r["partido"], "desde": "", "fuente": "investigacion", "email": emails(r["email"]),
+                            "telefono": telefono(r["telefono"]) or r["telefono"], "direccion": r["direccion"],
+                            "web_cultura": r["web_cultura"], "enlace": r["fuente"], "fecha_fuente": r["fecha_fuente"],
+                            "comprobado": r["comprobado"], "notas": r["notas"]})
+
     cultura_por_municipio: dict[str, list[dict]] = defaultdict(list)
     for c in cultura:
         if c["codigo"]:
             cultura_por_municipio[c["codigo"]].append(c)
+    # Donde hay responsable investigado (más reciente), es el que figura en la hoja de ayuntamientos.
+    for cod, lista in cultura_por_municipio.items():
+        if any(c["fuente"] == "investigacion" for c in lista):
+            cultura_por_municipio[cod] = [c for c in lista if c["fuente"] == "investigacion"]
 
     # --- Tablas de salida ---
     filas_ayto = []
@@ -392,10 +413,14 @@ def main() -> None:
             "Comunidad autónoma": ccaa, "Provincia": prov, "Entidad": c["entidad"], "Tipo de entidad": c["tipo"],
             "Municipio": f.get("Municipio", ""), "Código INE": c["codigo"] or "", "Población": f.get("Población", ""),
             "Nombre": c["nombre"], "Cargo": c["cargo"], "Área de gobierno": c["area"], "Partido": c["partido"],
-            "Nombramiento": c["desde"], "Teléfono ayuntamiento": f.get("Teléfono ayuntamiento", ""),
-            "Email ayuntamiento": f.get("Email ayuntamiento", ""), "Web": f.get("Web", ""), "Fuente": descripcion.get(c["fuente"], c["fuente"]),
+            "Nombramiento": c["desde"], "Email cultura": c.get("email", ""), "Teléfono cultura": c.get("telefono", ""),
+            "Web cultura": c.get("web_cultura", ""), "Dirección cultura": c.get("direccion", ""),
+            "Teléfono ayuntamiento": f.get("Teléfono ayuntamiento", ""),
+            "Email ayuntamiento": f.get("Email ayuntamiento", ""), "Web": f.get("Web", ""),
+            "Fuente": descripcion.get(c["fuente"], c["fuente"]), "Enlace a la fuente": c.get("enlace") or url_fuente.get(c["fuente"], ""),
+            "Año de la fuente": c.get("fecha_fuente") or estado["fecha"][:4], "Notas": c.get("notas", ""),
         })
-    filas_cultura.sort(key=lambda r: (normalizar(r["Provincia"]), r["Tipo de entidad"] != "Ayuntamiento",
+    filas_cultura.sort(key=lambda r: (normalizar(r["Comunidad autónoma"]), normalizar(r["Provincia"]), r["Tipo de entidad"] != "Ayuntamiento",
                                       normalizar(r["Municipio"] or r["Entidad"]), normalizar(r["Nombre"])))
 
     resumen = []
@@ -448,7 +473,7 @@ def escribir_excel(ruta: Path, cultura: list[dict], aytos: list[dict], resumen: 
             celda.font, celda.fill = cabecera, relleno
             celda.alignment = Alignment(vertical="center", wrap_text=True)
             ws.column_dimensions[get_column_letter(i)].width = anchos.get(c, 16)
-            if c == "Web":
+            if c in ("Web", "Web cultura", "Enlace a la fuente"):
                 for fila in range(2, len(filas) + 2):
                     v = ws.cell(row=fila, column=i).value
                     if v:
@@ -465,7 +490,21 @@ def escribir_excel(ruta: Path, cultura: list[dict], aytos: list[dict], resumen: 
     anchos = {"Comunidad autónoma": 20, "Provincia": 16, "Municipio": 24, "Entidad": 34, "Nombre": 28, "Cargo": 20,
               "Área de gobierno": 50, "Responsable de cultura": 28, "Cargo y área": 50, "Email ayuntamiento": 30, "Web": 30,
               "Alcalde/sa": 28, "Dirección": 36, "Fuentes": 40, "Fuente": 30, "Teléfono ayuntamiento": 16, "Código INE": 9}
-    hoja("Cultura", cultura, anchos, primera=True)
+    anchos.update({"Email cultura": 28, "Web cultura": 30, "Dirección cultura": 30, "Enlace a la fuente": 30, "Notas": 50,
+                   "Año de la fuente": 9, "Teléfono cultura": 16})
+    ws = hoja("Cultura", cultura, anchos, primera=True)
+    # Filas a comprobar: en naranja las dudosas; en amarillo las que tienen una fuente anterior a este año.
+    columnas = [c.value for c in ws[1]]
+    i_notas, i_anio = columnas.index("Notas"), columnas.index("Año de la fuente")
+    for fila in ws.iter_rows(min_row=2):
+        if str(fila[i_notas].value or "").startswith("DUDOSO"):
+            color = "F8CBAD"
+        elif str(fila[i_anio].value or "") < estado["fecha"][:4]:
+            color = "FFF2CC"
+        else:
+            continue
+        for celda in fila:
+            celda.fill = PatternFill("solid", fgColor=color)
     hoja("Ayuntamientos", aytos, anchos)
     ws = hoja("Resumen", resumen, {"Comunidad autónoma": 26, "Provincia": 24})
     for celda in ws[ws.max_row]:
@@ -479,7 +518,11 @@ def escribir_excel(ruta: Path, cultura: list[dict], aytos: list[dict], resumen: 
         ("", False),
         ("Qué hay y qué no", True),
         ("· No existe ninguna lista oficial de concejales de cultura de toda España. Solo Cataluña publica el área de gobierno de cada concejal "
-         "(Municat, Generalitat; y la Diputació de Barcelona para su provincia). Por eso la hoja «Cultura» solo tiene cargos de Cataluña.", False),
+         "(Municat, Generalitat; y la Diputació de Barcelona para su provincia).", False),
+        ("· Para las 52 capitales de provincia y las ciudades de más de 50.000 habitantes, el responsable de cultura se ha buscado uno a uno "
+         "en webs municipales, boletines oficiales y prensa local (octubre de 2026). Cada fila lleva el enlace a la fuente y su año. "
+         "En amarillo: la fuente más reciente es anterior a este año. En naranja: dato dudoso (fuentes contradictorias); comprobar antes de usar.", False),
+        ("· Los responsables investigados prevalecen en la hoja «Ayuntamientos» sobre los de Municat cuando ambos existen.", False),
         ("· Para el resto de España, la hoja «Ayuntamientos» da el contacto general del ayuntamiento (teléfono, email, web) y el alcalde/sa "
          "cuando la comunidad o la diputación lo publica en abierto. Desde ahí se pide «la concejalía de cultura».", False),
         ("· Comunidades con directorio oficial completo: Cataluña, País Vasco (web y alcalde), Galicia (sin alcalde), Castilla-La Mancha, "

@@ -31,3 +31,7 @@ la BDNS puede corregirlos después de su descarga.
 
 `server/scripts/directorio_construir.py` cruza las fuentes con el nomenclátor del INE; se puede volver a ejecutar en
 local sin red: `python3 server/scripts/directorio_construir.py datos`.
+
+`directorio/cultura-investigado.csv` se mantiene a mano (no lo toca el workflow): responsables de cultura de las capitales
+de provincia y las ciudades de más de 50.000 habitantes, buscados uno a uno en webs municipales, boletines y prensa, con
+el enlace a la fuente, el año de esa fuente y notas (`DUDOSO` cuando las fuentes se contradicen). Separador `;`.
