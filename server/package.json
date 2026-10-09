@@ -9,7 +9,8 @@
     "importar": "tsx src/scripts/importar.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "referencias": "tsx src/scripts/actualizar-referencias.ts"
+    "referencias": "tsx src/scripts/actualizar-referencias.ts",
+    "informe": "tsx src/scripts/informe.ts"
   },
   "dependencies": {
     "express": "^5.2.1"

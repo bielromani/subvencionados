@@ -55,12 +55,16 @@ jobs:
           if [ -n "$DESDE" ]; then args+=(--desde="$DESDE"); fi
           npm run recolectar -- "${args[@]}"
 
+      - name: Informe del nicho
+        if: always()
+        run: npm run informe -w server
+
       - name: Guardar los datos en el repositorio
         if: always()
         run: |
           git config user.name "recolector-bdns"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add datos
+          git add datos docs/informe-nicho.md
           if git diff --cached --quiet; then
             echo "Sin cambios en los datos."
             exit 0

@@ -12,7 +12,8 @@
     "typecheck": "npm run typecheck -w server && npm run typecheck -w web",
     "build": "npm run build -w web",
     "recolectar": "npm run recolectar -w server --",
-    "importar": "npm run importar -w server"
+    "importar": "npm run importar -w server",
+    "informe": "npm run informe -w server"
   },
   "devDependencies": {
     "concurrently": "^10.0.6"
