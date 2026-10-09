@@ -23,6 +23,24 @@ function fechaIso(valor: string | null | undefined): string | null {
   return /^(\d{4}-\d{2}-\d{2})/.exec(valor)?.[1] ?? null;
 }
 
+/** HTML de los extractos a texto plano, conservando los saltos de párrafo. */
+export function textoPlano(html: string | null | undefined): string {
+  if (!html) return '';
+  return html
+    .replace(/<\/(p|div|li|h\d)>|<br\s*\/?>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/ *\n */g, '\n')
+    .replace(/\n{2,}/g, '\n')
+    .trim();
+}
+
 const descripciones = (xs: { descripcion?: string }[] | undefined) =>
   (xs ?? []).map((x) => x.descripcion?.trim()).filter((x): x is string => !!x);
 
@@ -94,11 +112,18 @@ export function desdeBdns(registro: RegistroBdns): Convocatoria {
 
   const tiposBeneficiario = descripciones(c.tiposBeneficiarios);
   const titulo = (c.descripcion ?? c.descripcionLeng ?? '').trim() || `Convocatoria ${codigo}`;
+  const anuncios = (c.anuncios ?? []).map((a) => ({
+    titulo: a.titulo?.trim() ?? '',
+    diario: a.desDiarioOficial?.trim() || null,
+    fecha: fechaIso(a.datPublicacion),
+    url: a.url?.trim() || null,
+    texto: textoPlano(a.texto),
+  }));
   const texto = [
     titulo,
     c.descripcionLeng,
     c.descripcionBasesReguladoras,
-    ...(c.anuncios ?? []).map((a) => [a.titulo, a.texto].filter(Boolean).join(' ')),
+    ...anuncios.map((a) => `${a.titulo}\n${a.texto}`),
   ]
     .filter(Boolean)
     .join('\n');
@@ -130,6 +155,16 @@ export function desdeBdns(registro: RegistroBdns): Convocatoria {
     textoInicio: c.textInicio?.trim() || null,
     textoFin: c.textFin?.trim() || null,
     concesiones: registro.concesiones ? resumirConcesiones(registro.concesiones) : null,
+    anuncios,
+    documentos: (c.documentos ?? [])
+      .filter((d) => d.id != null)
+      .map((d) => ({
+        id: d.id!,
+        nombre: d.nombreFic?.trim() || `documento-${d.id}`,
+        descripcion: d.descripcion?.trim() || null,
+        fecha: fechaIso(d.datPublicacion),
+        bytes: d.long ?? null,
+      })),
     texto,
     clasificacion: clasificar({ texto, tiposBeneficiario }),
     vistaPorPrimeraVez: registro.primeraDescarga,

@@ -81,3 +81,23 @@ describe('concesiones', () => {
     expect(anonimizarConcesion(CONCESIONES_FIGUERES[0]!).beneficiario).toBe('G17057910 CASINO MENESTRAL FIGUERENC');
   });
 });
+
+describe('anuncios y documentos', () => {
+  it('pasa el extracto HTML a texto plano y lista los documentos', async () => {
+    const { textoPlano } = await import('../src/bdns/normalizar.js');
+    // Fragmento real del extracto de la convocatoria 928557 (BOP de Pontevedra).
+    expect(textoPlano('<p>Primero. Beneficiarias y requisitos</p><p>Serán beneficiarias las bandas de música &amp; agrupaciones</p>')).toBe(
+      'Primero. Beneficiarias y requisitos\nSerán beneficiarias las bandas de música & agrupaciones',
+    );
+    const c = desdeBdns(
+      registro(
+        detalle('1', {
+          anuncios: [{ titulo: 'Extracto', texto: '<p>Primero.</p>', desDiarioOficial: 'B.O.P. DE PONTEVEDRA', datPublicacion: '2026-09-14', url: 'https://boppo.depo.gal/x' }],
+          documentos: [{ id: 1517570, descripcion: 'Texto en castellano de la convocatoria', nombreFic: 'Acuerdo_Jazz.pdf', long: 83450, datPublicacion: '2026-09-04' }],
+        }),
+      ),
+    );
+    expect(c.anuncios).toEqual([{ titulo: 'Extracto', diario: 'B.O.P. DE PONTEVEDRA', fecha: '2026-09-14', url: 'https://boppo.depo.gal/x', texto: 'Primero.' }]);
+    expect(c.documentos).toEqual([{ id: 1517570, nombre: 'Acuerdo_Jazz.pdf', descripcion: 'Texto en castellano de la convocatoria', fecha: '2026-09-04', bytes: 83450 }]);
+  });
+});

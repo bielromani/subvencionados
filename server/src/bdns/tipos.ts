@@ -63,7 +63,18 @@ export interface BdnsConvocatoria {
   objetivos?: unknown[];
   sectoresProductos?: unknown[];
   documentos?: { id?: number; descripcion?: string; nombreFic?: string; long?: number; datMod?: string; datPublicacion?: string }[];
-  anuncios?: { numAnuncio?: number; titulo?: string; texto?: string; url?: string; des_diario_oficial?: string; datPublicacion?: string }[];
+  /** Extractos publicados en el boletín (BOE, BOP...). `texto` es HTML con el extracto completo. */
+  anuncios?: {
+    numAnuncio?: string;
+    titulo?: string;
+    tituloLeng?: string | null;
+    texto?: string;
+    textoLeng?: string | null;
+    url?: string;
+    cve?: string;
+    desDiarioOficial?: string;
+    datPublicacion?: string;
+  }[];
 }
 
 /** Elemento de GET /concesiones/busqueda */

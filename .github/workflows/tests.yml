@@ -1,0 +1,24 @@
+# Tests, comprobación de tipos y compilación de la web en cada cambio de código.
+name: Tests
+
+on:
+  push:
+    paths-ignore:
+      - 'datos/**'
+      - '**.md'
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build

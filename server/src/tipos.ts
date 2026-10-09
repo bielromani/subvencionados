@@ -66,6 +66,23 @@ export interface ResumenConcesiones {
   entidades: { nombre: string; importe: number; fecha: string | null }[];
 }
 
+export interface Anuncio {
+  titulo: string;
+  diario: string | null;
+  fecha: string | null;
+  url: string | null;
+  /** Extracto completo en texto plano (objeto, beneficiarios, cuantía, plazo...). */
+  texto: string;
+}
+
+export interface Documento {
+  id: number;
+  nombre: string;
+  descripcion: string | null;
+  fecha: string | null;
+  bytes: number | null;
+}
+
 export interface Convocatoria {
   id: string;
   origen: 'bdns';
@@ -100,6 +117,10 @@ export interface Convocatoria {
   textoInicio: string | null;
   textoFin: string | null;
   concesiones: ResumenConcesiones | null;
+  /** Extractos publicados en boletines oficiales, en texto plano. */
+  anuncios: Anuncio[];
+  /** Documentos registrados en la BDNS (texto de la convocatoria, bases...). */
+  documentos: Documento[];
   /** Texto libre usado para clasificar (título, objeto, finalidad...). */
   texto: string;
   clasificacion: Clasificacion;
