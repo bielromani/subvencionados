@@ -1,0 +1,400 @@
+{
+ "version": 1,
+ "codigoBdns": "919440",
+ "generada": "2026-10-09T19:05:48.255Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1494265,
+   "nombre": "2026.urtean Baztango elkarteendako dirulaguntzen araudiak ERDARAZ.pdf",
+   "paginas": 6,
+   "huella": "9fb516a90f4a95b7"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Baztan (Navarra) para actividades culturales de asociaciones en 2026.",
+   "Solo para asociaciones sin ánimo de lucro con domicilio en Baztan.",
+   "Crédito de 22.000 euros; hasta el 75 % del gasto y un máximo de 6.000 euros por entidad.",
+   "Solicitudes y justificación hasta el 6 de noviembre de 2026.",
+   "Excluye los gastos de grupos musicales (orquestas)."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales: uso del euskera, formativas, creativas, artísticas (teatro, vídeo, conciertos), abiertas a toda la población o de igualdad de género",
+   "cita": {
+    "documento": 1494265,
+    "pagina": 1,
+    "texto": "De carácter artístico (teatro, vídeo, conciertos) u otras de naturaleza semejantes.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones sin ánimo de lucro con domicilio social y fiscal en Baztan",
+   "cita": {
+    "documento": 1494265,
+    "pagina": 2,
+    "texto": "Ser una asociación sin ánimo de lucro.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Hasta el 6 de noviembre de 2026 inclusive",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "El plazo de presentación será hasta el 6 de noviembre de 2026 inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-11-06",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "El plazo de presentación será hasta el 6 de noviembre de 2026 inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Del 8 de noviembre de 2025 al 6 de noviembre de 2026",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "Las actividades deberán realizarse desde el 8 de noviembre de 2025 al 6 de noviembre de 2026 ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 6 de noviembre de 2026; hay que justificar el 100 % de los gastos admitidos",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 3,
+     "texto": "El plazo de justificación de los gastos será hasta el día 6 de noviembre de 2026 inclusive.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 22000,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "La dotación máxima de esta convocatoria es de 22.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 6000,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 3,
+     "texto": "Las entidades beneficiarias no podrán recibir más de 6.000 € de subvención.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 75,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 3,
+     "texto": "La cuantía máxima a conceder no rebasará el 75% del total de los gastos subvencionables y aceptados.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "En un único pago, previa justificación de los gastos",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 3,
+     "texto": "se abonará en un único plazo previa justificación de gastos",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con otras subvenciones del Ayuntamiento de Baztan; compatible con otras administraciones y entidades si no se supera el coste",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 3,
+     "texto": "La subvención concedida no será compatible con otras subvenciones del Ayuntamiento de Baztan",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser asociación sin ánimo de lucro y presentar sus estatutos",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "Ser una asociación sin ánimo de lucro. Deberá presentar los estatutos de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener domicilio social y fiscal en Baztan",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "2.2. Tener domicilio social y fiscal en Baztan.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda, la Seguridad Social y el Ayuntamiento",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "Estar al corriente de las obligaciones tributarias y de Seguridad Social y no estar en deuda con el Ayuntamiento de Baztan.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades dentro del municipio",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "d) Las actividades que tengan lugar fuera del ámbito territorial del municipio.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber sido sancionada por discriminación por razón de sexo",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "por vulneración del derecho a la igualdad y a la no discriminación por razón de sexo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar el símbolo del Ayuntamiento en la publicidad de la actividad",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "las actividades objeto de subvención el símbolo oficial del Ayuntamiento de Baztan.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Solo los gastos generados directamente por la realización del proyecto cultural",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "Únicamente serán subvencionables los gastos que genere directamente la realización y desarrollo del proyecto cultural",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos de grupos musicales (orquestas)",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "kilometrajes y los gastos de grupos musicales (orquestas).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de funcionamiento y estructura (alquiler, teléfono, luz, nóminas)",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "Los gastos derivados del funcionamiento (alquiler, teléfono, luz, nóminas de personal...)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Manutención (comidas, cenas) y kilometrajes",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "los gastos de manutención (comidas, cenas, “lunch”, etc.), kilometrajes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fiestas patronales y actividades asistenciales",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "c) Las fiestas patronales y actividades asistenciales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades docentes o deportivas",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "Las actividades de carácter docente, previstas o paralelas a programas de enseñanza.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades que compitan con la oferta municipal",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "i) Actividades que entren en competencia con la oferta municipal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades subvencionadas totalmente por el Gobierno de Navarra u otros organismos",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 1,
+     "texto": "Las actividades subvencionadas totalmente por el Gobierno de Navarra u otros",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Actividad organizada y desarrollada por la propia entidad y sus miembros (peso en %)",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "Se valorará que la actividad sea organizada y desarrollada por la entidad solicitante y sus miembros. 30%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Relación con la cultura local (peso en %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "Se priorizan las actividades que tengan relación con la cultura local. 10%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Uso y promoción del euskera (peso en %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "Favorecer el uso y la promoción del euskera. 10%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Participación ciudadana y voluntariado (peso en %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "Se tendrá en cuenta el trabajo del voluntariado. 10%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trabajo en común entre entidades de Baztan (peso en %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "Se valorará el trabajo en común entre diferentes entidades con sede social en Baztan. 10%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Actividades fuera de Elizondo, en el resto del valle (peso en %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "lugar en los restantes lugares del valle. 10%.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo del anexo I",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "las solicitudes deberán de cumplimentarse conforme al modelo facilitado. (Anexo I)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estatutos o declaración responsable de que no han cambiado (anexo III)",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "indicando que la misma no se ha modificado. (Anexo III)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de no estar sancionada por discriminación por razón de sexo",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "una declaración responsable de no estar cumpliendo sanciones administrativas firmes ni una sentencia firme",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acuerdo entre entidades si la actividad es conjunta (anexo IV)",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 4,
+     "texto": "así como el importe de subvención a aplicar por cada uno de ellos (Anexo IV).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro electrónico (sede electrónica) del Ayuntamiento de Baztan o cualquier registro oficial",
+    "cita": {
+     "documento": 1494265,
+     "pagina": 2,
+     "texto": "de manera telemática a través del Registro electrónico del Ayuntamiento de Baztan Sede Electrónica - BAZTAN o en cualquier registro oficial",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Los criterios de valoración vienen en porcentajes (suman 80 %), no en puntos; se indican como peso.",
+   "Excluye expresamente los gastos de grupos musicales (orquestas): no sirve para pagar cachés de músicos.",
+   "Solo para asociaciones de Baztan; a un promotor solo le sirve como proveedor de una asociación local."
+  ]
+ },
+ "citas": {
+  "verificadas": 36,
+  "revisar": 0,
+  "noConsta": 5
+ }
+}

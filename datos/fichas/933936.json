@@ -1,0 +1,345 @@
+{
+ "version": 1,
+ "codigoBdns": "933936",
+ "generada": "2026-10-09T19:05:48.217Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1533240,
+   "nombre": "BASES  CULTURA 2026.pdf",
+   "paginas": 9,
+   "huella": "cea1752337430810"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Zuera (Zaragoza) para actividades culturales de 2026.",
+   "Solo para entidades y asociaciones domiciliadas en Zuera e inscritas en el registro municipal.",
+   "Crédito total de 25.000 euros, repartido según la puntuación (máximo 15 puntos).",
+   "Plazo: quince días hábiles desde la publicación del extracto en el BOP.",
+   "Justificación hasta el 25 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Actividades y programas culturales de interés general de 2026 en Zuera: participación, difusión cultural, publicaciones, patrimonio y eventos culturales",
+   "cita": {
+    "documento": 1533240,
+    "pagina": 2,
+    "texto": "asociaciones culturales y entidades sin ánimo de lucro, para el desarrollo de actividades y programas de interés general relativos a la cultura",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades y asociaciones domiciliadas en Zuera e inscritas en el Registro municipal de asociaciones",
+   "cita": {
+    "documento": 1533240,
+    "pagina": 3,
+    "texto": "Podrán ser beneficiarios de la presente convocatoria las Entidades y asociaciones, públicas o privadas, domiciliadas en el término municipal de Zuera",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles desde la publicación del extracto en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 4,
+     "texto": "en el plazo de quince días hábiles desde la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Gastos con fecha entre el 1 de enero y el 15 de noviembre de 2026",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 8,
+     "texto": "con fecha comprendida entre el 1 de enero y el 15 de noviembre del año objeto de la convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 25 de noviembre del año de la convocatoria; fuera de plazo se pierde el derecho a la subvención",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 8,
+     "texto": "El plazo de presentación de la justificación será hasta el 25 de noviembre del año objeto de la convocatoria",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 25000,
+    "cita": {
+     "documento": 1533240,
+     "pagina": 2,
+     "texto": "la cuantía total máxima de las subvenciones convocadas es de 25.000 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Tras verificar la justificación total, por resolución de Alcaldía",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 8,
+     "texto": "Verificada por los servicios municipales y los instructores la justificación total presentada, mediante resolución de alcaldía se ordenará el pago",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas siempre que el total no supere el coste de la actividad; no se puede recibir a la vez una nominativa para el mismo objeto",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 9,
+     "texto": "aisladamente o en concurrencia con otras ayudas públicas o privadas, supere el coste de la actividad a desarrollar por el beneficiario",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar domiciliada en Zuera e inscrita en el Registro municipal de asociaciones",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "se encuentren debidamente inscritas en el Registro municipal de asociaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en las prohibiciones del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "alguna de las circunstancias previstas en el artículo 13.2 de la Ley 38/2003 General de Subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No recibir también una subvención nominativa para el mismo objeto",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "Un mismo beneficiario no podrá percibir una subvención directa de carácter nominativo y una subvención en concurrencia competitiva",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Concurrir solo a una de las convocatorias de participación ciudadana, deporte o cultura",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "Un mismo beneficiario solo podrá concurrir a una de las convocatorias de subvenciones destinadas al fomento de la participación ciudadana, Deporte o Cultura.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificar el importe total del proyecto presentado",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 8,
+     "texto": "Se justificará el importe total de los proyectos presentados.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Intereses deudores, recargos y sanciones",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 2,
+     "texto": "a) Los intereses deudores de las cuentas bancarias",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de procedimientos judiciales",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 2,
+     "texto": "c) Los gastos de procedimientos judiciales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impuestos indirectos recuperables e impuestos personales sobre la renta",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 2,
+     "texto": "e) Impuestos personales sobre la renta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Viajes y excursiones ajenos a la actividad principal o meramente recreativos",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "g) Los viajes y excursiones que no se correspondan con la actividad principal de la asociación ni que sean meramente recreativos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comidas o cenas",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "h) Comidas o cenas. i) Las que persigan ánimo de lucro",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades con ánimo de lucro",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 3,
+     "texto": "h) Comidas o cenas. i) Las que persigan ánimo de lucro",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Años de inscripción en el Registro Municipal de Asociaciones",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1533240,
+     "pagina": 6,
+     "texto": "Años de inscripción en el Registro Municipal de Asociaciones (máximo 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "La entidad: experiencia, trayectoria, capacidad organizativa y colaboración con el ayuntamiento",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1533240,
+     "pagina": 7,
+     "texto": "Respecto a la entidad: (máximo 5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "El programa: calidad, originalidad e incidencia social y cultural",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1533240,
+     "pagina": 7,
+     "texto": "Respecto al programa presentado (máximo 5 puntos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo del anexo I",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 4,
+     "texto": "Los/as solicitantes deberán presentar el modelo que figura como (anexo I) de las presentes bases",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de representante legal (anexo II)",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 4,
+     "texto": "a) Certificación expedida por el secretario de la entidad acreditativa de la condición de representante legal del firmante de la proposición (anexo II).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable y compromiso de comunicar otras ayudas (anexo III)",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 5,
+     "texto": "subvención, de entes públicos o privados, para la misma finalidad (anexo III).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyecto o memoria de la actividad con presupuesto de ingresos y gastos (anexo IV)",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 5,
+     "texto": "c) Proyecto de la actividad / memoria explicativa para el que se solicita subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del CIF o NIF",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 5,
+     "texto": "d) Fotocopia del CIF o NIF.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de terceros con los datos bancarios",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 5,
+     "texto": "e) Ficha a terceros en la que conste los datos bancarios para realizar la orden de transferencia bancaria",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro de entrada del Ayuntamiento o cualquier medio del artículo 16.4 de la Ley 39/2015",
+    "cita": {
+     "documento": 1533240,
+     "pagina": 4,
+     "texto": "se presentarán en el Registro de entrada del Ayuntamiento o por cualquiera de los medios señalados en el artículo 16.4 de la Ley 39/2015",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El importe de cada subvención se calcula con un coeficiente de reparto según los puntos y el importe pedido; no hay importe máximo fijo.",
+   "Las bases reguladoras están en la Ordenanza de subvenciones en materia de cultura (BOP de Zaragoza n.º 128, de 7 de junio de 2025), que no se incluye.",
+   "Solo sirve a un promotor de forma indirecta: los beneficiarios son entidades locales de Zuera."
+  ]
+ },
+ "citas": {
+  "verificadas": 29,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}
