@@ -133,3 +133,19 @@ describe('errores encontrados en la muestra de evaluación (títulos reales)', (
     ).toBe(false);
   });
 });
+
+describe('segunda ronda (muestra de validación, títulos reales)', () => {
+  it('moros y cristianos y la danza no son música', () => {
+    expect(c('SUBVENCIÓN NOMINATIVA A LA FEDERACIÓN FESTERA MOROS Y CRISTIANOS PARA EL DESARROLLO DE ACTIVIDADES DURANTE EL AÑO 2024').musical).toBe(false);
+    expect(c('Concesión de Subvención Nominativa a Agintzari dantza taldea para fomento de danza y folclore').musical).toBe(false);
+    expect(c('CONCESIÓN DE LA SUBVENCIÓN NOMINATIVA A LA ASOCIACIÓN NEIRA MARCOS DE SALTO PARA LA PROMOCIÓN DE DANZA TRADICIONAL EN VIMIANZO').musical).toBe(false);
+  });
+
+  it('cante, music, txaranga y música de banda', () => {
+    expect(c('SUBVENCION A LA FUNDACION CANTE DE LAS MINAS EJERCICIO 2022').otrosGeneros).toContain('flamenco');
+    expect(c('Subvención nominativa a la Asociación Músico Crisanto para "IV Lugo Music Festival"').generica).toBe(true);
+    expect(c('Subvención directa convenio colaboración Txaranga Galtzagorri, 2025').otrosGeneros).toContain('charanga');
+    expect(c('Convocatoria de concesión de subvenciones a sociedades musicales Excel·lent, Música de banda 2024').estilosCompatibles).toEqual([]);
+    expect(c('Subvenciones para el despliegue de banda ancha en zonas rurales').musical).toBe(false);
+  });
+});

@@ -46,16 +46,19 @@ const SENALES_MUSICA: Patron[] = [
   ['orquestra', /\borquestr(a|es)\b/],
   ['concert', /\bconcerts?\b/],
   ['musika', /\bmusik(a|ak|al)\b/],
+  ['music', /\bmusic\b/],
   ['filarmónica', /\bfilarmonic[oa]s?\b/],
   ['orfeón', /\borfeo(n|i)?s?\b/],
   ['escolanía', /\bescolani(a|es)\b/],
   ['cobla', /\bcoblas?\b/],
-  ['charanga', /\bcharangas?\b/],
+  ['charanga', /\b(charangas?|txarangas?)\b/],
   ['rondalla', /\brondallas?\b/],
   ['cantautor', /\bcantautor(es|a|as)?\b/],
 ];
 
 // "Concierto" tiene acepciones que no son musicales.
+const DANZA = /\b(danzas?|dantza|baile|bailes|balls?|esbart)\b/;
+
 // Conservatorios y escuelas de danza: no son de música.
 const FALSOS_DANZA = /\b(conservatorios?|escuelas?) (profesional |superior |elemental |municipal )?de danza\b/g;
 
@@ -101,15 +104,17 @@ const ESTILOS_PATRONES: Record<Estilo, Patron[]> = {
 };
 
 const OTROS_GENEROS: Patron[] = [
-  ['flamenco', /\bflamenc[oa]s?\b|\brocier[oa]s?\b|\bsevillanas\b/],
+  ['flamenco', /\bflamenc[oa]s?\b|\brocier[oa]s?\b|\bsevillanas\b|\bcante( jondo)?\b/],
   // Sin \b inicial: "Suberock", "Extremarock".
   ['rock', /rock\b/],
   ['pop', /\bpop\b/],
   ['folk', /\bfolk\b/],
-  ['música tradicional', /\bmusica (tradicional|popular|folk)\b|\b(baile|bailes|danza) tradicional|\bfol(k|c)lor(e|ico|ica)?\b/],
-  ['bandas de música', /\bbandas? (de (la )?(musica|escuela)|municipal(es)?|sinfonica|juvenil|musica)\b|\bmusika banda\b|\bcertamen de bandas\b/],
+  ['música tradicional', /\bmusica (tradicional|popular|folk)\b|\bfol(k|c)lor(e|ico|ica)?\b/],
+  // "Banda" en un texto de música es una banda (de música, de cornetas...): "banda ancha" ya no es música.
+  ['bandas de música', /\bbandas?\b(?! ancha)|\bmusica de banda\b/],
   ['cornetas y tambores', /\b(cornetas|tamborileros|tamborrada|tambores)\b/],
-  ['música festera', /\bmusica festera\b|\bmarchas? moras?\b|\bmoros y cristianos\b/],
+  // "Moros y cristianos" por sí solo son fiestas y comparsas, no música.
+  ['música festera', /\bmusica festera\b|\bmarchas? moras?\b/],
   ['electrónica', /\bmusica electronica\b/],
   ['hip hop', /\bhip ?hop\b/],
   ['copla', /\bcopla\b/],
@@ -118,7 +123,7 @@ const OTROS_GENEROS: Patron[] = [
   ['dolçaina', /\bdolcain(a|es)\b/],
   ['txistu', /\btxistu/],
   ['gaita', /\bgaitas?\b/],
-  ['charanga', /\bcharangas?\b/],
+  ['charanga', /\b(charangas?|txarangas?)\b/],
   ['rondalla', /\brondallas?\b/],
   ['cantautor', /\bcantautor(es|a|as)?\b/],
 ];
@@ -206,8 +211,10 @@ export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificaci
   const operaExplicita = OPERA_CON_TILDE.test(texto) || OPERA_CONTEXTO.test(t);
   if (operaExplicita) evidencias.push('ópera');
 
-  // Un género concreto (rock, flamenco...) también indica que es de música.
-  const otrosGeneros = coincidencias(t, OTROS_GENEROS);
+  // Un género concreto (rock, flamenco...) también indica que es de música. Pero un grupo de
+  // danza o baile folclórico sin mención a la música es baile, no música.
+  const soloDanza = DANZA.test(t) && evidencias.length === 0;
+  const otrosGeneros = coincidencias(t, OTROS_GENEROS).filter((g) => !(soloDanza && g === 'música tradicional'));
   evidencias.push(...otrosGeneros);
   const objetoNoMusical = OBJETO_NO_MUSICAL.test(t);
   const musical = evidencias.length > 0 && !objetoNoMusical;

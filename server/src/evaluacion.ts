@@ -108,4 +108,6 @@ export function evaluar(muestra: ElementoMuestra[], etiquetas: Etiqueta[], unive
   };
 }
 
+/** Tamaños de los estratos en cada muestra (salen en el log de muestra-evaluacion). */
 export const UNIVERSO_2024_2025: Universo = { aceptadas: 3174, rechazadas: 32111 };
+export const UNIVERSO_VALIDACION: Universo = { aceptadas: 3683, rechazadas: 31302 };

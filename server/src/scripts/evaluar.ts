@@ -2,22 +2,22 @@
 // etiquetada de test/evaluacion/ (muestraX.json + etiquetasX.json).
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { type ElementoMuestra, type Etiqueta, evaluar, UNIVERSO_2024_2025 } from '../evaluacion.js';
+import { type ElementoMuestra, type Etiqueta, evaluar, type Universo, UNIVERSO_2024_2025, UNIVERSO_VALIDACION } from '../evaluacion.js';
 
 const dir = new URL('../../test/evaluacion/', import.meta.url);
 const leer = <T>(f: string) => JSON.parse(readFileSync(new URL(f, dir), 'utf8')) as T;
 const pct = (x: number) => `${(x * 100).toFixed(1).replace('.', ',')} %`;
 
-const MUESTRAS: [nombre: string, muestra: string, etiquetas: string, nota: string][] = [
-  ['Muestra 1 (ajuste)', 'muestra.json', 'etiquetas.json', 'Usada para corregir el clasificador: sus cifras son optimistas.'],
-  ['Muestra 2 (validación)', 'muestra-validacion.json', 'etiquetas-validacion.json', 'Independiente: no se usó para ajustar. Es la cifra fiable.'],
+const MUESTRAS: [nombre: string, muestra: string, etiquetas: string, universo: Universo, nota: string][] = [
+  ['Muestra 1 (semilla 20261009)', 'muestra.json', 'etiquetas.json', UNIVERSO_2024_2025, 'Usada para la primera ronda de correcciones.'],
+  ['Muestra 2 (semilla 7771)', 'muestra-validacion.json', 'etiquetas-validacion.json', UNIVERSO_VALIDACION, 'Usada para validar la primera ronda y para la segunda ronda de correcciones.'],
 ];
 
 const secciones: string[] = [];
-for (const [nombre, fm, fe, nota] of MUESTRAS) {
+for (const [nombre, fm, fe, universo, nota] of MUESTRAS) {
   if (!existsSync(new URL(fm, dir)) || !existsSync(new URL(fe, dir))) continue;
   const etiquetas = leer<Etiqueta[]>(fe);
-  const r = evaluar(leer<ElementoMuestra[]>(fm), etiquetas, UNIVERSO_2024_2025);
+  const r = evaluar(leer<ElementoMuestra[]>(fm), etiquetas, universo);
   secciones.push(
     [
       `### ${nombre}`,
