@@ -72,6 +72,23 @@
    "resultado": "167076 bytes"
   },
   {
+   "fichero": "diba-electes.json",
+   "url": "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
+   "descripcion": "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)",
+   "licencia": "CC BY 4.0",
+   "resultado": "5373773 bytes"
+  },
+  {
+   "fichero": "ine-poblacion.xlsx",
+   "url": [
+    "https://www.ine.es/pob_xls/pobmun25.xlsx",
+    "https://www.ine.es/pob_xls/pobmun24.xlsx"
+   ],
+   "descripcion": "INE · Cifras oficiales de población de los municipios (padrón)",
+   "licencia": "INE: reutilización libre citando la fuente",
+   "resultado": "ERROR: HTTP Error 404: Not Found"
+  },
+  {
    "fichero": "salamanca-alcaldes.csv",
    "url": "https://datosabiertossalamanca.es/dataset/55683da4-954e-4b34-8ab2-bc4a97e70682/resource/204dceb7-50fd-42a7-9aa9-4a4d61f951e9/download/sp02.csv",
    "descripcion": "Diputación de Salamanca · Alcaldes de la provincia",
