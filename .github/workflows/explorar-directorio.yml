@@ -11,42 +11,101 @@ on:
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
-      - name: Catálogo de datos.gob.es
+      - name: Catálogos de datos abiertos (datos.gob.es y portales autonómicos)
+        continue-on-error: true
+        shell: python3 {0}
         run: |
-          A=https://datos.gob.es/apidata/catalog/dataset/title
-          for t in ayuntamientos alcaldes concejales "cargos electos" electos corporaciones "entidades locales" directorio municipios ajuntaments concellos udalak; do
-            q=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$t")
-            echo "::group::título: $t"
-            curl -sS -m 60 "$A/$q.json?_pageSize=200" -o /tmp/c.json -w "%{http_code} %{size_download}\n"
-            jq -r '.result.items[]? | [(.title|if type=="array" then (map(select(type=="object" and ._lang=="es")._value)[0] // .[0]) else . end|tostring), (.publisher|tostring), ((.distribution // []) | if type=="array" then map((.format.value // .format // "")|tostring + " " + ((.accessURL // "")|tostring)) | join(" | ") else (((.format.value // "")|tostring) + " " + ((.accessURL // "")|tostring)) end)] | @tsv' /tmp/c.json | head -120
-            echo "::endgroup::"
-          done
+          import json, re, urllib.request, urllib.parse
+          def get(u, t=60):
+              try:
+                  r = urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}), timeout=t)
+                  return r.read()
+              except Exception as e:
+                  print("  ERROR", u, e); return None
+          INTERES = re.compile(r"alcald|concejal|regidor|electo|corporaci|ayuntamiento|ajuntament|concello|udal|directorio|municipios? de|entidades locales|ens locals|cargos", re.I)
+          vistos = set()
+          print("== datos.gob.es ==")
+          for t in ["alcaldes", "concejales", "cargos electos", "electos", "corporación", "directorio", "ayuntamientos", "ajuntaments", "concellos", "entidades locales", "ens locals", "DIR3", "regidors", "municipios"]:
+              d = get("https://datos.gob.es/apidata/catalog/dataset/title/" + urllib.parse.quote(t) + ".json?_pageSize=500")
+              if not d: continue
+              for it in json.loads(d).get("result", {}).get("items", []):
+                  tit = it.get("title")
+                  if isinstance(tit, list):
+                      tit = next((x.get("_value") for x in tit if isinstance(x, dict) and x.get("_lang") == "es"), None) or next((x.get("_value") if isinstance(x, dict) else str(x) for x in tit), "")
+                  elif isinstance(tit, dict): tit = tit.get("_value", "")
+                  tit = str(tit)
+                  if tit in vistos or not re.search(r"alcald|concejal|regidor|electo|corporaci|directorio de ayunt|directorio de munic|directori|cargos|ayuntamientos de|ajuntaments|concellos de|DIR3|entidades locales|ens locals", tit, re.I): continue
+                  vistos.add(tit)
+                  dist = it.get("distribution") or []
+                  if not isinstance(dist, list): dist = [dist]
+                  urls = []
+                  for x in dist:
+                      if isinstance(x, dict):
+                          f = x.get("format"); f = f.get("value") if isinstance(f, dict) else f
+                          urls.append(f"{f} {x.get('accessURL')}")
+                      else: urls.append(str(x))
+                  pub = str(it.get("publisher", "")).rsplit("/", 1)[-1]
+                  mod = it.get("modified", "")
+                  print(f"* {tit} [{pub}] mod={mod}\n    " + "\n    ".join(urls[:6]))
 
-      - name: Diputació de Barcelona (electes)
-        run: |
-          for u in "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/3" "https://do.diba.cat/api/dataset/electes/format/json"; do
-            echo "::group::$u"
-            curl -sS -m 120 -D - -o /tmp/d "$u" | head -15
-            echo "tamaño: $(stat -c %s /tmp/d)"; head -c 4000 /tmp/d; echo
-            echo "::endgroup::"
-          done
+          print("\n== CKAN autonómicos ==")
+          CKAN = ["https://datosabiertos.castillalamancha.es", "https://opendata.aragon.es/ckan", "https://dadesobertes.gva.es",
+                  "https://catalegdades.caib.es", "https://www.juntadeandalucia.es/datosabiertos/portal", "https://datos.comunidad.madrid/catalogo",
+                  "https://datosabiertos.navarra.es", "https://datosabiertos.regiondemurcia.es", "https://datos.canarias.es/catalogos/general",
+                  "https://datos.canarias.es", "https://datosabiertos.juntaex.es", "https://datos.cantabria.es", "https://ckan.larioja.org",
+                  "https://datos.larioja.org", "https://datosabiertossalamanca.es", "https://opendata.euskadi.eus", "https://datosabiertos.dipucadiz.es",
+                  "https://datos.dipgra.es", "https://datosabiertos.malaga.eu", "https://datos.jerez.es", "https://datosabiertos.dipcas.es"]
+          for base in CKAN:
+              for q in ["alcaldes", "concejales", "ayuntamientos", "cargos electos", "directorio"]:
+                  d = get(f"{base}/api/3/action/package_search?rows=50&q=" + urllib.parse.quote(q), 40)
+                  if not d: break
+                  try: res = json.loads(d)["result"]["results"]
+                  except Exception: print("  no CKAN", base); break
+                  for p in res:
+                      tit = p.get("title") or ""
+                      if isinstance(tit, dict): tit = tit.get("es") or next(iter(tit.values()), "")
+                      if (base, tit) in vistos or not INTERES.search(tit): continue
+                      vistos.add((base, tit))
+                      print(f"* [{base}] {tit} (mod {p.get('metadata_modified','')[:10]})")
+                      for r in p.get("resources", [])[:5]:
+                          print(f"    {r.get('format')} {r.get('url')}")
 
-      - name: Registro de Entidades Locales y alcaldes (Ministerio)
+          print("\n== Opendatasoft (JCyL y diputaciones) ==")
+          for base in ["https://analisis.datosabiertos.jcyl.es", "https://datosabiertos.dipcas.es", "https://opendata.dipalicante.es", "https://datosabiertos.dipuleon.es", "https://datos.dipucordoba.es", "https://datosabiertos.dipusevilla.es", "https://opendata.dival.es", "https://datosabiertos.diputaciondezaragoza.es"]:
+              for q in ["alcaldes", "ayuntamientos", "concejales", "cargos"]:
+                  d = get(f"{base}/api/explore/v2.1/catalog/datasets?limit=50&where=" + urllib.parse.quote(f'search("{q}")'), 40)
+                  if not d: break
+                  try: res = json.loads(d).get("results", [])
+                  except Exception: print("  no ODS", base); break
+                  for r in res:
+                      tit = r.get("metas", {}).get("default", {}).get("title", "")
+                      if (base, r["dataset_id"]) in vistos: continue
+                      vistos.add((base, r["dataset_id"]))
+                      cols = [f["name"] for f in r.get("fields", [])]
+                      print(f"* [{base}] {r['dataset_id']} · {tit} · cols={cols[:30]}")
+
+          print("\n== Socrata Cataluña ==")
+          d = get("https://analisi.transparenciacatalunya.cat/api/catalog/v1?limit=60&q=" + urllib.parse.quote("ens locals"))
+          if d:
+              for r in json.loads(d).get("results", []):
+                  res = r["resource"]; print(f"* {res['id']} · {res['name']} · cols={res.get('columns_field_name', [])[:30]}")
+
+      - name: Cataluña (Socrata y Municat)
+        continue-on-error: true
         run: |
-          for u in \
-            "https://ssweb.seap.minhap.es/REL/frontend/inicio" \
-            "https://ssweb.seap.minhap.es/REL/frontend/inicio/municipios/all/all" \
-            "https://ssweb.seap.minhap.es/portalEELL/consulta_alcaldes" \
-            "https://ssweb.mpt.es/REL/frontend/inicio" \
-            "https://ssweb.mpt.es/portalEELL/consulta_alcaldes" \
-            "https://sede.administracionespublicas.gob.es/ayuda/consulta/Concejales" \
-            "https://serviciostelematicosext.hacienda.gob.es/SGFAL/BDGEL/aspx/default.aspx"; do
-            echo "::group::$u"
-            curl -sSL -m 60 -D - -o /tmp/r "$u" | grep -iE '^(HTTP|location|content-type)'
-            echo "tamaño: $(stat -c %s /tmp/r)"
-            grep -oiE '(href|action|src)="[^"]*(export|excel|xls|csv|descarg|download|alcald|concejal|electo)[^"]*"' /tmp/r | sort -u | head -40
-            sed -e 's/<[^>]*>/ /g' /tmp/r | tr -s ' \n' | head -c 1500; echo
-            echo "::endgroup::"
-          done
+          S=https://analisi.transparenciacatalunya.cat/resource
+          curl -sS -m 120 "$S/m5nd-xjza.json?\$limit=8" | head -c 4000; echo
+          curl -sS -m 120 "$S/m5nd-xjza.json?\$select=count(*)" ; echo
+          curl -sS -m 120 "$S/m5nd-xjza.json?\$select=count(*)&\$where=upper(carrec)%20like%20'%25CULTURA%25'" ; echo
+          echo "-- Municat descàrregues"
+          curl -sSL -m 60 "https://municat.gencat.cat/ca/Temes/els-ens-locals-de-catalunya/descarrega_fitxers/" -o /tmp/m
+          grep -oiE 'href="[^"]*\.(csv|xlsx?|zip|json)[^"]*"' /tmp/m | sort -u | head -40
+
+      - name: Castilla-La Mancha, Castellón y Aragón
+        continue-on-error: true
+        run: |
+          curl -sS -m 60 "https://datosabiertos.castillalamancha.es/api/3/action/package_show?id=directorio-de-ayuntamientos-de-castilla-la-mancha" | jq -c '.result.resources[]? | {format, url}'
+          curl -sS -m 60 "https://datosabiertos.dipcas.es/api/explore/v2.1/catalog/datasets/ayuntamientos/exports/csv?delimiter=%3B" | head -5
+          curl -sS -m 60 "https://opendata.aragon.es/ckan/api/3/action/package_show?id=informacion-general-de-los-municipios-de-aragon" | jq -c '.result.resources[]? | {format, url, last_modified}'
