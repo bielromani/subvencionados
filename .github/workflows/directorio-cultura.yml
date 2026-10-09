@@ -1,0 +1,45 @@
+# Directorio de ayuntamientos y concejales de cultura: descarga las fuentes oficiales y genera
+# datos/directorio/ (CSV y Excel). Se actualiza el día 3 de cada mes.
+name: Directorio de cultura
+
+on:
+  schedule:
+    - cron: '17 5 3 * *'
+  push:
+    branches: ['claude/**']
+    paths: ['server/scripts/directorio_*.py', '.github/workflows/directorio-cultura.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: directorio-cultura
+  cancel-in-progress: false
+
+jobs:
+  directorio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - run: pip install -q openpyxl
+
+      - name: Descargar fuentes
+        run: python3 server/scripts/directorio_descargar.py datos/directorio/fuentes
+
+      - name: Generar el directorio
+        run: |
+          if [ -f server/scripts/directorio_construir.py ]; then
+            python3 server/scripts/directorio_construir.py datos
+          fi
+
+      - name: Guardar en el repositorio
+        run: |
+          git config user.name "recolector-bdns"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/directorio
+          git diff --cached --quiet && { echo "Sin cambios."; exit 0; }
+          git commit -m "Directorio de cultura $(date -u +%Y-%m-%d)"
+          for i in 1 2 3 4; do git push && exit 0; git pull --rebase; done
+          exit 1
