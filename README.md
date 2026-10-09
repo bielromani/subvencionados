@@ -72,12 +72,12 @@ server/
   src/scripts/         recolectar (BDNS → datos/) e importar (datos/ → SQLite)
 datos/bdns/            lo descargado de la BDNS (lo actualiza el workflow)
 web/                   React + Vite
-docs/                  fuentes de datos y hoja de ruta
+docs/                  plan por fases y fuentes de datos
 ```
 
 Variables de entorno: `PORT` (API, 3001), `SUBV_DB` (SQLite), `SUBV_DATOS` (carpeta de datos) y `BDNS_URLS`.
 
-Más detalle en [docs/fuentes-de-datos.md](docs/fuentes-de-datos.md) y [docs/hoja-de-ruta.md](docs/hoja-de-ruta.md).
+Plan de trabajo por fases: [docs/plan.md](docs/plan.md). Fuentes de datos: [docs/fuentes-de-datos.md](docs/fuentes-de-datos.md).
 
 Fuente de los datos: Sistema Nacional de Publicidad de Subvenciones y Ayudas Públicas (BDNS), IGAE, Ministerio de
 Hacienda. Los datos de personas físicas beneficiarias no se guardan.
