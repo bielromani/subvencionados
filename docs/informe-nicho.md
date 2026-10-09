@@ -13,10 +13,10 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
   (527.608.733 € en concursos y 331.550.241 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
 - Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.093 convocatorias y 648.642.034 € concedidos.
 - Mencionan expresamente el estilo: jazz 426, clásica 3.251, ópera y lírica 427. El resto son ayudas de música en general.
-- Concursos con el plazo abierto hoy: **39**; por abrir: **10**.
+- Concursos con el plazo abierto hoy: **11**; por abrir: **10**.
 - Convocatorias que se repiten año tras año (series): 1.900; previstas en los próximos 3 meses según su
   historial (estimación): 68.
-- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.840.
+- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.314.
 
 ## Por año (compatibles con jazz, clásica u ópera)
 

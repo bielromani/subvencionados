@@ -170,3 +170,12 @@ describe('histórico completo (títulos reales con «concierto» no musical)', (
     expect(c('Convenio para el Ciclo de Conciertos de Órgano, año 2024').musical).toBe(true);
   });
 });
+
+describe('concursos generales de cultura (títulos reales desde 2023)', () => {
+  it('reconoce los que admiten conciertos y descarta los de carteles', () => {
+    expect(c('CONVOCATORIA DE SUBVENCIONES A ASOCIACIONES CULTURALES SIN ÁNIMO DE LUCRO AÑO 2023').culturaGeneral).toBe(true);
+    expect(c('AYUDAS A FESTIVALES Y CIRCUITOS 2023').culturaGeneral).toBe(true);
+    expect(c('Convocatoria del premio cartel Fiestas Mayores 2024').culturaGeneral).toBe(false);
+    expect(c('BASES REGULADORAS CONCURSO DE CARTEL DE FERIA Y FIESTAS PATRONALES 2023').culturaGeneral).toBe(false);
+  });
+});

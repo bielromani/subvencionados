@@ -44,6 +44,13 @@ describe('plazo', () => {
     expect(plazo({ ...sinFechas, abierta: true }, hoy)).toBe('abierta');
     expect(plazo({ ...sinFechas, abierta: false }, hoy)).toBe('desconocido');
   });
+
+  it('sin fecha de fin, una convocatoria antigua marcada como abierta no lo está (casos reales de 2017-2023)', () => {
+    const antigua = { ...cicloJazz, fechaInicioSolicitud: '2020-07-13', fechaFinSolicitud: null, fechaPublicacion: '2020-07-09', abierta: true };
+    expect(plazo(antigua, hoy)).toBe('desconocido');
+    const sinNada = { ...antigua, fechaInicioSolicitud: null, fechaPublicacion: '2017-05-10' };
+    expect(plazo(sinNada, hoy)).toBe('desconocido');
+  });
 });
 
 describe('evaluar', () => {

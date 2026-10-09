@@ -19,9 +19,18 @@ export function plazo(c: Convocatoria, hoy = new Date()): Plazo {
     if (!c.fechaInicioSolicitud && c.abierta === false && c.textoInicio) return 'proxima';
     return 'abierta';
   }
-  if (c.abierta === true) return 'abierta';
+  // Sin fecha de fin, el indicador "abierto" de la BDNS no se apaga nunca (hay convocatorias de 2017
+  // que siguen marcadas): solo se cree si la convocatoria es reciente.
+  if (c.abierta === true) {
+    const referencia = c.fechaInicioSolicitud ?? c.fechaPublicacion;
+    const limite = new Date(hoy.getTime() - DIAS_ABIERTA_SIN_FIN * 86_400_000).toISOString().slice(0, 10);
+    return referencia && referencia >= limite ? 'abierta' : 'desconocido';
+  }
   return 'desconocido';
 }
+
+/** Días que se da por abierta una convocatoria sin fecha de fin marcada como abierta en la BDNS. */
+const DIAS_ABIERTA_SIN_FIN = 120;
 
 export interface Coincidencia {
   convocatoria: Convocatoria;

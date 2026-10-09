@@ -110,7 +110,7 @@ export function generarInforme(todas: Convocatoria[], hoy = new Date()): string 
       ` por abrir: **${num(concursos.filter((c) => plazo(c, hoy) === 'proxima').length)}**.`,
     `- Convocatorias que se repiten año tras año (series): ${num(series.size)}; previstas en los próximos 3 meses según su`,
     `  historial (estimación): ${num(previstas.length)}.`,
-    `- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: ${num(todas.filter((c) => c.clasificacion.culturaGeneral).length)}.`,
+    `- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: ${num(todas.filter((c) => c.clasificacion.culturaGeneral && c.tipo === 'concurrencia').length)}.`,
     '',
     '## Por año (compatibles con jazz, clásica u ópera)',
     '',

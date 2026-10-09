@@ -45,7 +45,7 @@ Un promotor que mueve grupos de jazz, clásica u ópera entra y encuentra, orden
 
 ---
 
-## Fase 0 · Base y datos de la BDNS (en curso)
+## Fase 0 · Base y datos de la BDNS (casi terminada)
 
 **Objetivo:** tener todas las convocatorias de música de la BDNS, actualizadas a diario, y una primera web.
 
@@ -54,32 +54,38 @@ Un promotor que mueve grupos de jazz, clásica u ópera entra y encuentra, orden
 - [x] Concesiones (quién cobró y cuánto), con personas físicas anonimizadas.
 - [x] Clasificador de música por reglas ajustado con títulos reales.
 - [x] Perfil del promotor y recomendaciones por bloques; web con Para ti, Explorar y Mi perfil.
-- [ ] Terminar la descarga del histórico (en marcha en GitHub Actions).
+- [x] Descarga del histórico completa (9-oct-2026): 18.568 convocatorias desde 2014, 16.385 de música.
 - [x] Informe del nicho generado a partir de los datos (`npm run informe` → `docs/informe-nicho.md`, se regenera a
-      diario). Falta que incluya el histórico completo.
+      diario) con el histórico completo: por año, comunidad, administración, actividad, beneficiarios y organismos.
+- [ ] Comprobar que el workflow diario funciona varios días seguidos sin fallos (el guardado ya resiste pushes
+      simultáneos, que hicieron fallar una ejecución el 9-oct).
 
 **Terminado cuando:** el histórico está completo, el workflow diario funciona varios días seguidos sin fallos y el
 informe de cifras está en `docs/`.
 
 ---
 
-## Fase 1 · Datos fiables y completos (en curso)
+## Fase 1 · Datos fiables y completos (terminada)
 
 **Objetivo:** que no falte ninguna convocatoria relevante y que la clasificación sea medible.
 
 - [x] **Evaluación del clasificador.** Tres muestras de 300 convocatorias reales etiquetadas a mano, con métricas
       ponderadas por estrato (`docs/evaluacion-clasificador.md`). Cobertura inicial del 57,6 %; cifra fiable actual:
-      precisión 99,3 %, cobertura 84,9 % (88,2 % de lo compatible). Los tests impiden empeorar.
-- [x] **Convocatorias genéricas de cultura** (concursos desde 2023 en los que un concierto puede encajar). Falta
-      verificarlas con la descarga real.
+      precisión 99,3 %, cobertura 84,9 % (88,2 % de lo compatible). Los tests impiden empeorar. Revisado además con
+      el histórico completo (fuera los «conciertos» educativos, sanitarios y de plazas).
+- [x] **Convocatorias genéricas de cultura** (concursos desde 2023 en los que un concierto puede encajar):
+      1.314 concursos, revisados con una muestra real (fuera los concursos de carteles).
 - [x] **Documentos y extractos.** Texto de las bases por páginas (`datos/bdns/documentos/`) y extractos de los
-      boletines. Falta verificarlos con la descarga real.
+      boletines: 1.491 convocatorias con el texto de sus bases (mediana de 28.000 caracteres).
 - [x] **Series de convocatorias** año a año, con mes habitual y previsión de la próxima.
 - [x] **Territorio exacto** con el catálogo de entidades locales de la BDNS y el nomenclátor del INE
-      (134 de 134 organismos locales ubicados en la primera muestra).
+      (15.985 de 15.987 convocatorias locales ubicadas; 11.560 hasta el municipio).
 - [x] **Directorio de organismos** (`GET /api/organismos`).
 - [x] **Vigilancia**: integración continua en cada push y validación del formato de la BDNS en cada descarga.
-- [ ] Redescubrir el histórico desde 2014 con el clasificador nuevo (recoge lo que antes se escapaba).
+- [x] Histórico redescubierto desde 2014 con el clasificador nuevo: +3.090 convocatorias de música que antes se
+      escapaban (corales, sardanas, bandas…).
+- [x] Plazo fiable: el indicador «abierto» de la BDNS no se apaga en las convocatorias sin fecha de fin; solo se
+      cree si la convocatoria es reciente.
 
 **Terminado cuando:** el clasificador supera el mínimo fijado en el conjunto de evaluación, todas las convocatorias
 tienen territorio, y las series muestran el historial de las convocatorias recurrentes.

@@ -25,7 +25,7 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
   - premios y concursos para sus músicos (personas físicas);
   - ayudas a ayuntamientos, que son clientes potenciales;
   - precedentes: concesiones directas y nominativas, con lo concedido.
-- **Fase 1 en marcha**: textos de las bases, series año a año, ubicación por municipio, directorio de
+- **Fase 1 terminada**: textos de las bases, series año a año, ubicación por municipio, directorio de
   organismos (`GET /api/organismos`), concursos generales de cultura y vigilancia del formato. Cifras del nicho en
   [docs/informe-nicho.md](docs/informe-nicho.md).
 - **Web** (React) con tres pestañas:
