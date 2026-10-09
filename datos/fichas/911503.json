@@ -1,0 +1,479 @@
+{
+ "version": 1,
+ "codigoBdns": "911503",
+ "generada": "2026-10-09T10:24:51.907Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1471868,
+   "nombre": "CONVOCATORIA DE AYUDAS A ENTIDADES CULTURALES DE BURLADA 2026..pdf",
+   "paginas": 8,
+   "huella": "2d4dc242c0235ff8"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Ayuntamiento de Burlada a asociaciones culturales locales para actividades de danza, música, teatro, artes plásticas y fiestas tradicionales en Burlada.",
+   "Actividades realizadas entre el 1 de noviembre de 2025 y el 31 de octubre de 2026.",
+   "Crédito total de 18.000 euros; la ayuda no excede del 75 % del coste justificado.",
+   "Plazo de solicitud hasta el 6 de noviembre a las 14:00 h, con la justificación incluida.",
+   "Solicitud telemática en la sede electrónica del Ayuntamiento o en los registros admitidos."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales de danza, música, teatro, artes plásticas, fiestas y celebraciones tradicionales y análogas, organizadas por entidades culturales de Burlada en la localidad",
+   "cita": {
+    "documento": 1471868,
+    "pagina": 1,
+    "texto": "La presente convocatoria tiene por objeto apoyar económicamente las actividades culturales que\n     estén relacionadas con la danza, la música, el teatro, las artes plásticas, las fiestas y celebraciones\n     tradicionales",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones culturales locales sin ánimo de lucro con domicilio social y fiscal en Burlada",
+   "cita": {
+    "documento": 1471868,
+    "pagina": 1,
+    "texto": "El Ayuntamiento de Burlada propone la concesión de ayudas económicas a asociaciones culturales\n     locales que realicen en la localidad actividades culturales",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Hasta el 6 de noviembre a las 14:00 h; plazo improrrogable",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "El plazo de presentación de las solicitudes finalizará el 6 de\n         noviembre a las 14:00 h.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde el fin del plazo de presentación; sin resolución expresa, se entiende desestimada",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 5,
+     "texto": "El plazo máximo para resolver y notificar es de 3 meses desde el plazo límite de presentación\n        de solicitudes",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades realizadas entre el 1 de noviembre de 2025 y el 31 de octubre de 2026",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "Se podrán presentar a la convocatoria actividades realizadas entre el 1 de noviembre de 2025\n         y el 31 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Con la propia solicitud: memoria (Anexo IV), soportes de difusión, facturas y justificantes de pago",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 5,
+     "texto": "El importe de las ayudas concedidas se abonará al término del proyecto y previa su\n        justificación, en la forma prevista en el apartado 4 de la convocatoria.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 18000,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "La cuantía total máxima convocada es de 18.000 € con cargo a la partida presupuestaria",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 75,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 5,
+     "texto": "presupuesto debidamente justificado de la actividad (con factura y justificante del pago de la\n   misma) y no excederá del 75% del coste.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Al término del proyecto y previa justificación; exige estar al corriente con Hacienda y Seguridad Social",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 5,
+     "texto": "El importe de las ayudas concedidas se abonará al término del proyecto y previa su\n        justificación",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas e ingresos para la misma finalidad, siempre que el conjunto no supere el 100 % del coste",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 8,
+     "texto": "Se declara la compatibilidad de estas prestaciones económicas para actividades culturales con otras\n  ayudas de finalidad similar",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser una asociación sin ánimo de lucro",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "a)    Ser una asociación sin ánimo de lucro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar legalmente constituida con un año de antelación a la publicación de la convocatoria en el BON",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "Ser una asociación legalmente constituida con anterioridad de un año a la publicación en\n                el Boletín Oficial de Navarra de esta convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener domicilio social y fiscal en Burlada",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "c)    Tener domicilio social y fiscal en Burlada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13 de la Ley Foral 11/2005 de Subvenciones",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "No podrán obtener la condición de beneficiarias aquellas entidades en las que concurra\n                algunas delas circunstancias establecidas en el artículo 13",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar inscrita en el Registro Municipal de Asociaciones de Burlada con datos actualizados",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "Estar inscrita en el Registro Municipal de Asociaciones del ayuntamiento de Burlada y\n                tener sus datos actualizados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "f)    Estar al corriente de las obligaciones tributarias y con la seguridad social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades organizadas en la localidad de Burlada",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "organizadas por entidades culturales de\n     Burlada en la localidad de Burlada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cumplir el Decreto Foral 36/2024 de Eventos Públicos y Sostenibilidad",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "Cumplir con lo establecido en el Decreto Foral 36/2024, de 17 de abril, de Eventos\n            Públicos y Sostenibilidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Incluir los logotipos del Ayuntamiento (y de la Casa de Cultura, en su caso) en la publicidad; si no, se deniega o reintegra la ayuda",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 6,
+     "texto": "La no inclusión de los logotipos en la publicidad de las actividades dará lugar a la denegación\n       de la ayuda o, en su caso, al reintegro de la misma.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicidad redactada en euskera y castellano",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 7,
+     "texto": "La publicidad de las actividades deberá estar redactada en euskera y castellano",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Coste de las actividades culturales justificado con factura y justificante de pago",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 5,
+     "texto": "La cuantía máxima de las subvenciones concedidas será entendida como un porcentaje del\n   presupuesto debidamente justificado de la actividad (con factura y justificante del pago de la\n   misma)",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Aperitivos, comidas y actividades similares, salvo las de carácter marcadamente popular previa autorización",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "Los aperitivos, comidas y actividades similares, a excepción de aquellas que tengan un carácter\n        marcadamente popular",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Campamentos, cursos, estancias y viajes",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "- Los campamentos, cursos, estancias y viajes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Premios, trofeos y pagos en especie",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "- Los premios, trofeos y pagos en especie de las actividades culturales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades ya financiadas por el Ayuntamiento mediante convenios de colaboración",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 1,
+     "texto": "Actividades financiadas por el Ayuntamiento de Burlada a través de convenios de colaboración",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Trayectoria de la asociación y actividades de los últimos 5 años",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 4,
+     "texto": "Trayectoria de la Asociación y actividades realizadas en los últimos 5 años o desde\n              la constitución de la asociación si fuera menor de este plazo (15 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad del programa",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 4,
+     "texto": "-    Calidad del programa (25 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Coherencia entre objetivos y actividades propuestas",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 4,
+     "texto": "Coherencia entre los objetivos y las actividades propuestas (10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Impacto de la actividad en la ciudadanía",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 4,
+     "texto": "Impacto de la actividad en la ciudadanía (15 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad económica y capacidad de autofinanciación",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 4,
+     "texto": "Viabilidad económica del programa y capacidad de autofinanciación, indicándose si se\n              han obtenido los recursos económicos mediante barras, aportaciones de los y las\n              socias, etc. (25 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Publicidad conforme al punto 9 de la convocatoria",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1471868,
+     "pagina": 4,
+     "texto": "Publicidad cumpliendo con el punto 9 de la convocatoria (10 puntos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud según el modelo del Anexo I",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "Las solicitudes de ayuda se presentarán conforme al modelo de solicitud recogido en el\n       ANEXO I de esta convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estatutos (no necesario si ya participó o está inscrita en el Registro Municipal, salvo modificación)",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "a)    Un ejemplar de sus estatutos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del CIF (no necesaria si ya participó o está inscrita)",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Fotocopia del CIF de la asociación (NO necesario si ha participado en anteriores\n          convocatorias",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programa detallado y presupuesto desglosado de gastos e ingresos (Anexos II y III)",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Programa detallado y presupuesto (gastos e ingresos) desglosado de la actividad\n          conforme al modelo de solicitud recogido en el ANEXO II y ANEXO III",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de otras subvenciones solicitadas o declaración responsable de no tenerlas",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Certificado de la persona representante de la entidad en el que se incluya la relación de\n          las subvenciones que se hayan solicitado a otras entidades públicas o privadas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de estar al corriente de obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Certificado de encontrarse al corriente de las obligaciones tributarias y c o n           la\n          seguridad social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria de la actividad según el modelo de justificación del Anexo IV",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "f)    Memoria de la actividad conforme al modelo de justificación recogido en el ANEXO IV.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Un ejemplar de todos los soportes de difusión, incluidos los digitales",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Un ejemplar de todos los soportes de difusión que se hayan realizado, incluso los\n          digitales que se hayan difundido por redes sociales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas y justificantes de pago de los gastos realizados",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "h)    Facturas correspondientes, así como justificantes de pago de los gastos realizados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de titularidad de la cuenta bancaria de la asociación",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Certificado de titularidad de cuenta bancaria a nombre de la asociación solicitantes de la\n          ayuda.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Plan de medidas de sostenibilidad y gestión de residuos (Anexo V), si aplica el Decreto Foral 36/2024",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 3,
+     "texto": "Plan de medidas de sostenibilidad ambiental y prevención y separación y gestión de\n          residuos y medidas de comunicación y sensibilización",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Burlada; también Registro General Electrónico, lugares del art. 16.4 de la Ley 39/2015 u oficinas de Correos mediante ORVE",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "Las solicitudes se presentarán vía telemática en la sede electrónica del Ayuntamiento de\n         Burlada.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.burlada.es",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "Las bases estarán disponibles en la web municipal www.burlada.es y en la Base Nacional\n         de Subvenciones",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática en la sede electrónica",
+    "cita": {
+     "documento": 1471868,
+     "pagina": 2,
+     "texto": "Las solicitudes se presentarán vía telemática en la sede electrónica del Ayuntamiento de\n         Burlada.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo para asociaciones culturales sin ánimo de lucro con domicilio en Burlada e inscritas en el registro municipal; un promotor privado no puede pedirla salvo que actúe a través de una asociación local.",
+   "El fin de plazo es «el 6 de noviembre a las 14:00 h» sin año escrito; por el periodo de actividades, cabe suponer que es 2026, pero el documento no lo dice.",
+   "La solicitud incluye ya la justificación (memoria, facturas, justificantes de pago y soportes de difusión), porque se subvencionan actividades ya realizadas.",
+   "No se fija importe máximo por entidad; el límite es el 75 % del coste justificado.",
+   "No se incluyen los anexos (modelos de solicitud, programa, presupuesto y memoria)."
+  ]
+ },
+ "citas": {
+  "verificadas": 45,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

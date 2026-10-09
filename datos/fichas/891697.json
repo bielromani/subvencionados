@@ -1,0 +1,163 @@
+{
+ "version": 1,
+ "codigoBdns": "891697",
+ "generada": "2026-10-09T10:24:51.941Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1459212,
+   "nombre": "_ MU especial interes + modif dotacio cast.pdf",
+   "paginas": 3,
+   "huella": "d5f696c2c3680df1"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Instituto Catalán de las Empresas Culturales para la edición discográfica y videográfica de producciones musicales de especial interés cultural o patrimonial.",
+   "Concurrencia competitiva.",
+   "Dotación máxima de 135.000 euros tras la ampliación (inicialmente 100.000 euros).",
+   "Solicitudes del 17 al 31 de marzo de 2026, por vía telemática en Gencat.cat."
+  ],
+  "objeto": {
+   "valor": "Edición discográfica y videográfica de producciones musicales de especial interés cultural o patrimonial",
+   "cita": {
+    "documento": 1459212,
+    "pagina": 1,
+    "texto": "Abrir la convocatoria para la concesión de subvenciones, en régimen de concurrencia\ncompetitiva, para la edición discográfica y videográfica de producciones musicales de\nespecial interés cultural o patrimonial.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 17 al 31 de marzo de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes va del 17 al 31 de marzo de 2026, ambos\ninclusive.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-03-17",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes va del 17 al 31 de marzo de 2026, ambos\ninclusive.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-03-31",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 2,
+     "texto": "Que el periodo para presentar solicitudes va del 17 al 31 de marzo de 2026, ambos\ninclusive.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde el día siguiente a la publicación de la convocatoria; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 2,
+     "texto": "a través de una resolución que se dictará y se publicará en el plazo máximo de\nseis meses a contar desde el día siguiente al de la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": "La justificación se tramita por medios telemáticos (el plazo lo fijan las bases, no incluidas)",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 1,
+     "texto": "concesión, justificación, modificación y revocación de estas subvenciones deben efectuarse y\nenviarse por medios telemáticos",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 135000,
+    "cita": {
+     "documento": 1459212,
+     "pagina": 3,
+     "texto": "que queda\nfijada en un máximo de 135.000,00 euros, distribuidos en las siguientes anualidades",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Por medios telemáticos a través del portal Gencat.cat; acceso desde la ventanilla única de subvenciones del Departamento de Cultura",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 1,
+     "texto": "a través del portal Gencat.cat: información, trámites y servicios de la\nGeneralitat de Catalunya (http://web.gencat.cat/es/tramits).",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://web.gencat.cat/es/tramits",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 1,
+     "texto": "a través del portal Gencat.cat: información, trámites y servicios de la\nGeneralitat de Catalunya (http://web.gencat.cat/es/tramits).",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación telemática obligatoria",
+    "cita": {
+     "documento": 1459212,
+     "pagina": 1,
+     "texto": "por la\nque se aprueba la tramitación telemática obligatoria de los procedimientos de concesión",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto es la convocatoria y la resolución que amplía su dotación; los beneficiarios, requisitos, gastos, importes, criterios de valoración y documentación están en las bases específicas (Resolución CLT/656/2024, DOGC núm. 9116) y en las bases generales del ICEC, que no se incluyen.",
+   "La dotación inicial era de 100.000 euros (80.000 en 2026 y 20.000 en 2027) y se amplió a 135.000 euros (108.000 en 2026 y 27.000 en 2027).",
+   "Útil para un promotor que edite grabaciones (discos o vídeos) de música de especial interés cultural o patrimonial, no para la producción de conciertos.",
+   "El plazo de presentación (17-31 de marzo de 2026) ya ha pasado."
+  ]
+ },
+ "citas": {
+  "verificadas": 10,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

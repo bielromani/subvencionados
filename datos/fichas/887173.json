@@ -1,0 +1,193 @@
+{
+ "version": 1,
+ "codigoBdns": "887173",
+ "generada": "2026-10-09T10:24:51.944Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1401878,
+   "nombre": "FORMULARIO ALQUILER DE ESCENARIOS_castellano.pdf",
+   "paginas": 2,
+   "huella": "c76a49f667feefd9"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Subvención del Ayuntamiento de Arratzua-Ubarrundia para el alquiler de escenarios en las fiestas patronales de sus localidades.",
+   "El texto disponible es solo el formulario de solicitud (Anexo I), sin las bases.",
+   "Se presenta en el Ayuntamiento o por vía telemática en la sede electrónica."
+  ],
+  "objeto": {
+   "valor": "Sufragar el gasto de alquiler de escenarios para las fiestas patronales de las localidades de Arratzua-Ubarrundia",
+   "cita": {
+    "documento": 1401878,
+    "pagina": 1,
+    "texto": "SOLICITUD DE SUBVENCIÓN PARA SUFRAGAR EL GASTO DE ALQUILER DE\nESCENARIOS PARA SU USO EN LAS FIESTAS PATRONALES DE LAS LOCALIDADES DE\nARRATZUA-UBARRUNDIA",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": "El solicitante debe declarar si ha obtenido otras subvenciones para el mismo fin",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "Que SI/NO ha obtendido subvenciones destinadas al mismo fin.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Haber celebrado las fiestas patronales (se indica la fecha en la solicitud)",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "habiendo celebrado las fiestas patronales con\nfecha",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias con Hacienda, TGSS y Ayuntamiento",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "Que está al corriente en sus obligaciones tributarias con Hacienda TGSS y ayuntamiento.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Alquiler de escenarios para las fiestas patronales",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "convocatoria de subvenciones para sufragar el gasto de alquiler de escenarios para su uso en\nlas fiestas patronales",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Copia de la factura de la empresa de alquiler o, excepcionalmente, presupuesto",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "Copia de la factura expedida por la empresa de alquiler/ o excepcionalmente presupuesto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comprobante de pago de la factura",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "Comprobante de pago de la citada factura.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad e IBAN de la cuenta para el ingreso, con titular si es distinto del beneficiario",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 1,
+     "texto": "Entidad e IBAN de la cuenta en la que se desee que se realice el ingreso indicando titular",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Presencialmente en el Ayuntamiento (C/ Uribea, 12, Durana), en la sede electrónica o en Correos mediante ORVE",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 2,
+     "texto": "ESTA SOLICITUD SE PUEDE ENTREGAR EN:",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.arratzua-ubarrundia.eus",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 2,
+     "texto": "• Sede electrónica:\n         www.arratzua-ubarrundia.eus",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "No obligatoria: se admite presentación presencial o telemática",
+    "cita": {
+     "documento": 1401878,
+     "pagina": 2,
+     "texto": "Aurrez aurre: Udaletxean Presencialmente: En el Ayuntamiento",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto es solo el formulario de solicitud (Anexo I); faltan las bases o la convocatoria con importes, plazos, beneficiarios y criterios.",
+   "Es una ayuda para quien organiza fiestas patronales en las localidades del municipio (alquiler de escenarios); de interés muy limitado para un promotor de conciertos.",
+   "El formulario es bilingüe (euskera y castellano)."
+  ]
+ },
+ "citas": {
+  "verificadas": 11,
+  "revisar": 0,
+  "noConsta": 12
+ }
+}

@@ -1,0 +1,320 @@
+{
+ "version": 1,
+ "codigoBdns": "856356",
+ "generada": "2026-10-09T10:24:51.935Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1320439,
+   "nombre": "Bases de la Convocatoria del Concurso de Maquetas Musicales 2025.pdf",
+   "paginas": 5,
+   "huella": "6ae1db09997cf358"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Concurso de maquetas musicales «Sonido Juvenil 2025» de la Concejalía de Juventud del Ayuntamiento de Guadalajara.",
+   "Para solistas o grupos de 16 a 30 años sin contrato discográfico en vigor.",
+   "Premios de 950, 500 y 250 euros (1.700 euros en total); el primer premio puede actuar en un festival de la Concejalía.",
+   "Plazo: 20 días hábiles desde el día siguiente a la publicación de la convocatoria en el BOP de Guadalajara.",
+   "Solicitud (modelo 1205) y maqueta en USB en las oficinas de registro del Ayuntamiento."
+  ],
+  "objeto": {
+   "valor": "Concurso de maquetas musicales para incentivar la creación artística musical de jóvenes, con premios en metálico y opción de concierto",
+   "cita": {
+    "documento": 1320439,
+    "pagina": 1,
+    "texto": "Maquetas musicales “SONIDO JUVENIL 2025” cuyo objetivo es el de incentivar la creación\n y expresión artística a través de la música",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas de 16 a 30 años, solistas o grupos, sin contrato en vigor con una compañía discográfica",
+   "cita": {
+    "documento": 1320439,
+    "pagina": 1,
+    "texto": "Podrá participar cualquier persona, de forma individual como solista o en grupo siempre\n que no tenga/n contrato en vigor con una compañía discográfica",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días hábiles a partir del día siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia de Guadalajara",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "durante el plazo de 20 días hábiles a partir del\n  día siguiente a aquél en que aparezca publicada la respectiva convocatoria en el Boletín",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "El jurado elige a los ganadores el mismo día de la actuación en directo, salvo que la Concejalía fije otro día posterior",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 4,
+     "texto": "La elección de los ganadores premiados se llevará a cabo tras la valoración del jurado el\nmismo día en el que se realice la actuación en directo",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 1700,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 4,
+     "texto": "La dotación presupuestaria total se cifra en 1.700,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 950,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "- Primer premio, valorado en 950,00 euros.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Tener entre 16 y 30 años en el año de la convocatoria (nacidos entre 1995 y 2009); en grupos, todos los miembros",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 1,
+     "texto": "se entiende\n que reúne dicha condición el/la aspirante nacido entre los años 1.995 y 2.009.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener contrato en vigor con una compañía discográfica",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 1,
+     "texto": "siempre\n que no tenga/n contrato en vigor con una compañía discográfica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presentar una única propuesta",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 1,
+     "texto": "Los premios se concederán en régimen de concurrencia\n competitiva, pudiendo presentar una única propuesta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias, con la Seguridad Social y con el Ayuntamiento de Guadalajara",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 1,
+     "texto": "Los participantes deberán encontrarse al corriente de sus obligaciones tributarias y con la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 1,
+     "texto": "Tampoco podrán hallarse incursos en\n ninguna de las causas que impiden obtener la condición de beneficiario de subvenciones\n públicas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una única canción original, no editada, no publicada ni distribuida comercialmente",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "Las pistas musicales deberán ser composiciones originales, no\n editadas, no publicadas y no distribuidas comercialmente por ninguna compañía discográfica.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los participantes admitidos deben hacer una actuación en directo en el Espacio Tyce ante el jurado",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "se procederá a convocar\na los participantes admitidos para una actuación en directo en el Espacio Tyce.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cesión al Ayuntamiento de los derechos de reproducción y exhibición de las obras, sin retribución adicional",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 4,
+     "texto": "cederá a favor del\nAyuntamiento de Guadalajara los derechos de reproducción y/o exhibición de las mismas",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Pista de audio: calidad técnica y sonora del trabajo",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "Calidad técnica y sonora del trabajo presentado (hasta 30 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Pista de audio: originalidad y creatividad de la canción",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "Originalidad y creatividad de la canción (hasta 20 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Actuación musical en directo",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "Actuación musical en directo (hasta 30 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Puesta en escena de la actuación",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "Puesta en escena de la actuación (hasta 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Concordancia de la pista de audio con la actuación en directo",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1320439,
+     "pagina": 3,
+     "texto": "Concordancia de la pista de audio con la actuación en directo (hasta 10 puntos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo 1205",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "La solicitud se\n   presentará mediante el modelo 1205 que se encuentra disponible en la página web del\n   Ayuntamiento de Guadalajara",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Trabajo musical en audio .wav o .mp3, en memoria USB dentro de sobre cerrado anónimo",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "La pista de audio se deberá guardar en una memoria USB que\n   se incluirá en el interior del sobre.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del DNI o NIE del participante o participantes y del representante legal si son menores",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "Se deberá adjuntar fotocopia del DNI o NIE del participante/s y también del representante\n  legal en caso de menores de edad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente si el solicitante deniega la consulta de oficio",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "el solicitante podrá denegar expresamente este consentimiento, debiendo aportar los\n  certificados pertinentes",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Oficinas de registro del Ayuntamiento de Guadalajara, de 9:00 a 14:00 h, con cita previa",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "Las solicitudes y los trabajos artísticos se presentarán en las oficinas de registro del\n  Ayuntamiento de Guadalajara de 9 a 14:00 h",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.guadalajara.es/recursos/doc/portal/2018/02/15/mod-1205-inscripcion-en-concursos-del-area-de-infancia-adolescencia-y-juventud.pdf",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "Se podrán consultar las bases y descargar la solicitud en la página web del Ayuntamiento\n  www.guadalajara.es.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación presencial en registro (no electrónica)",
+    "cita": {
+     "documento": 1320439,
+     "pagina": 2,
+     "texto": "en las oficinas de\n   registro del Ayuntamiento de Guadalajara en horario de 9:00 a 14:00 h.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Es un concurso de premios para jóvenes músicos (maquetas), no una subvención a la programación de conciertos: solo interesa a un promotor si representa a artistas jóvenes que cumplan el requisito de edad.",
+   "Las bases corresponden a la edición 2025 («Sonido Juvenil 2025»).",
+   "Premios: primero 950 euros, segundo 500 euros y tercero 250 euros; además el primer premio tiene opción de actuar en un festival organizado por la Concejalía de Juventud.",
+   "Las obras ganadoras ceden al Ayuntamiento los derechos de reproducción y exhibición sin retribución adicional."
+  ]
+ },
+ "citas": {
+  "verificadas": 26,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}
