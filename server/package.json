@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "referencias": "tsx src/scripts/actualizar-referencias.ts",
     "informe": "tsx src/scripts/informe.ts",
-    "muestra-evaluacion": "tsx src/scripts/muestra-evaluacion.ts"
+    "muestra-evaluacion": "tsx src/scripts/muestra-evaluacion.ts",
+    "evaluar": "tsx src/scripts/evaluar.ts"
   },
   "dependencies": {
     "express": "^5.2.1"
