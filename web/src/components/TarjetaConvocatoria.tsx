@@ -44,6 +44,7 @@ export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children
           ) : (
             <Etiqueta tono={TONO_PLAZO[c.plazo]}>{TEXTO_PLAZO[c.plazo]}</Etiqueta>
           )}
+          {!cl.musical && cl.culturaGeneral && <Etiqueta tono="aviso">Cultura general</Etiqueta>}
           <Etiqueta>{NOMBRE_ADMINISTRACION[c.administracion]}</Etiqueta>
           <Etiqueta>{ambito(c)}</Etiqueta>
         </div>

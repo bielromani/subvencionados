@@ -91,6 +91,14 @@ export function Explorar({ meta }: { meta: Meta }) {
         <label className="casilla">
           <input
             type="checkbox"
+            checked={!!filtros.cultura}
+            onChange={(e) => setFiltros((f) => ({ ...f, cultura: e.target.checked || undefined, pagina: undefined }))}
+          />
+          Incluir ayudas generales de cultura en las que un concierto puede encajar
+        </label>
+        <label className="casilla">
+          <input
+            type="checkbox"
             checked={!!filtros.todas}
             onChange={(e) => setFiltros((f) => ({ ...f, todas: e.target.checked || undefined, pagina: undefined }))}
           />

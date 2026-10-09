@@ -118,6 +118,13 @@ const OTROS_GENEROS: Patron[] = [
 const OBJETO_NO_MUSICAL =
   /\b(concurso|certamen|premios?|seleccion) (para la seleccion )?(de |del )?(proyectos )?(fotografic|fotografia|carteles?|cartel|pintura|literari|relatos?|dibujo|poesia|cortometrajes?)/;
 
+// Ayudas generales de cultura que pueden financiar conciertos (sobre texto normalizado).
+const CULTURA_GENERAL =
+  /\b(actividades? culturales?|programacion cultural|proyectos? culturales?|promocion (de la )?cultura|promocion cultural|fomento de la cultura|difusion cultural|dinamizacion cultural|artes escenicas|espectaculos?|festivales|eventos culturales|industrias culturales|creacion artistica|entidades culturales|asociaciones culturales|fiestas? (patronales|populares|mayor(es)?)|festejos|en materia de cultura|ambito cultural|sector cultural|cultura popular)\b/;
+// Lo que, aunque sea cultura, no tiene que ver con conciertos (títulos reales frecuentes).
+const CULTURA_SIN_CONCIERTOS =
+  /\b(fotograf|pintura|literari|relatos?|poesia|narrativa|novela|carnaval|disfraces|carrozas?|comparsas|deport|bibliotecas?|lectura|ampas?|patrimonio|restauracion|rehabilitacion|investigacion|arqueolog|libros?|editorial|traduccion|ajedrez|taurin|belen|gastronom|reina y damas|cine|cortometraje|audiovisual)/;
+
 // Menciones a la música como campo general ("ayudas a la música y a la lírica",
 // "música en vivo"): aunque también se cite un estilo, la ayuda no se limita a él.
 const MUSICA_GENERAL =
@@ -213,8 +220,11 @@ export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificaci
 
   const beneficiarios = detectarBeneficiarios(texto, tiposBeneficiario);
 
+  const culturaGeneral = !musical && CULTURA_GENERAL.test(t) && !CULTURA_SIN_CONCIERTOS.test(t);
+
   return {
     musical,
+    culturaGeneral,
     estilosExplicitos,
     estilosCompatibles,
     generica,

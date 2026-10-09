@@ -123,3 +123,23 @@ describe('emparejar', () => {
     expect(ids).toEqual(['bdns-1', 'bdns-3']);
   });
 });
+
+describe('cultura general', () => {
+  it('encaja con poca puntuación y aviso de revisar las bases', () => {
+    const cultura = desdeBdns(
+      registro(
+        detalle('9', {
+          descripcion: 'Convocatoria de subvenciones para apoyar actividades culturales 2026',
+          regiones: [{ descripcion: 'ES511 - Barcelona' }],
+          fechaInicioSolicitud: '2026-10-01',
+          fechaFinSolicitud: '2026-10-31',
+        }),
+      ),
+    );
+    expect(cultura.clasificacion).toMatchObject({ musical: false, culturaGeneral: true });
+    const m = evaluar(cultura, perfil, hoy)!;
+    expect(m.encaje).toBe('directo');
+    expect(m.avisos).toContain('Ayuda general de cultura: los conciertos pueden encajar, revisa las bases');
+    expect(m.puntuacion).toBeLessThan(evaluar(cicloJazz, perfil, hoy)!.puntuacion);
+  });
+});

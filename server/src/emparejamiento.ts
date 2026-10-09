@@ -54,7 +54,7 @@ const NOMBRE_LINEA: Record<Linea, string> = {
 /** Devuelve null si la convocatoria no le sirve al promotor. */
 export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coincidencia | null {
   const cl = c.clasificacion;
-  if (!cl.musical) return null;
+  if (!cl.musical && !cl.culturaGeneral) return null;
 
   const motivos: string[] = [];
   const avisos: string[] = [];
@@ -69,6 +69,9 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
   } else if (cl.generica) {
     puntuacion += 20;
     motivos.push('Ayuda de música sin restricción de estilo');
+  } else if (cl.culturaGeneral) {
+    puntuacion += 5;
+    avisos.push('Ayuda general de cultura: los conciertos pueden encajar, revisa las bases');
   } else if (estilos.length > 0) {
     return null;
   }

@@ -16,6 +16,7 @@ export type FormaJuridica = 'autonomo' | 'sociedad' | 'asociacion' | 'fundacion'
 
 export interface Clasificacion {
   musical: boolean;
+  culturaGeneral: boolean;
   estilosExplicitos: Estilo[];
   estilosCompatibles: Estilo[];
   generica: boolean;
@@ -90,6 +91,7 @@ export interface Meta {
   lineas: Linea[];
   total: number;
   musicales: number;
+  culturaGeneral: number;
   ultimaActualizacion: string | null;
   fuente: string;
 }

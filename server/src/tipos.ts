@@ -41,6 +41,11 @@ export interface Beneficiarios {
 
 export interface Clasificacion {
   musical: boolean;
+  /**
+   * No es de música, pero es una ayuda general de cultura (actividades culturales, artes
+   * escénicas, fiestas...) en la que un concierto puede encajar.
+   */
+  culturaGeneral: boolean;
   /** Estilos mencionados de forma explícita en el texto. */
   estilosExplicitos: Estilo[];
   /** Estilos que pueden optar: los explícitos o, si es una ayuda genérica de música, los tres. */

@@ -9,6 +9,7 @@ import type { Almacen } from './almacen.js';
 import { type ClienteBdns, ErrorBdns, FINALIDAD_CULTURA } from './cliente.js';
 import { anonimizarConcesion, type RegistroBdns, tipoDesde } from './normalizar.js';
 import type { BdnsResultadoBusqueda } from './tipos.js';
+import { ErrorFormato, VigilanteFormato } from './validar.js';
 
 // La búsqueda de la BDNS no distingue tildes pero busca subcadenas ("opera" encuentra
 // "cooperación"): el clasificador descarta después el ruido mirando el título.
@@ -39,6 +40,13 @@ export function pareceMusical(r: BdnsResultadoBusqueda): boolean {
   return clasificar({ texto: [r.descripcion, r.descripcionLeng].filter(Boolean).join('\n') }).musical;
 }
 
+/** Concurso general de cultura (no directo) en el que un concierto puede encajar. */
+export function pareceCulturaGeneral(r: BdnsResultadoBusqueda): boolean {
+  const titulo = r.descripcion ?? '';
+  if (tipoDesde({ descripcion: titulo }) === 'directa') return false;
+  return clasificar({ texto: [titulo, r.descripcionLeng].filter(Boolean).join('\n') }).culturaGeneral;
+}
+
 export interface OpcionesRecoleccion {
   cliente: ClienteBdns;
   almacen: Almacen;
@@ -59,6 +67,8 @@ export interface OpcionesRecoleccion {
   extraerTexto?: (pdf: Uint8Array) => Promise<string | null>;
   /** Solo se descargan documentos de concursos registrados desde esta fecha (aaaa-mm-dd). */
   documentosDesde?: string;
+  /** Concursos generales de cultura: solo los registrados desde esta fecha (aaaa-mm-dd). */
+  culturaDesde?: string;
 }
 
 export interface ResultadoRecoleccion {
@@ -86,17 +96,25 @@ export function elegirDocumento(documentos: DocumentoBdns[]): DocumentoBdns | nu
   );
 }
 
-/** Concursos con documento y sin texto todavía: lo que necesita la ficha completa (Fase 2). */
-export function necesitaDocumento(r: RegistroBdns, desde: string): boolean {
+/**
+ * Concursos con documento y sin texto todavía: lo que necesita la ficha completa (Fase 2).
+ * `desde` para los de música; `desdeCultura` (más reciente) para los generales de cultura.
+ */
+export function necesitaDocumento(r: RegistroBdns, desde: string, desdeCultura = desde): boolean {
+  const titulo = [r.detalle.descripcion, r.detalle.descripcionLeng].filter(Boolean).join('\n');
+  const limite = clasificar({ texto: titulo }).musical ? desde : desdeCultura;
   return (
     tipoDesde(r.detalle) === 'concurrencia' &&
-    (r.detalle.fechaRecepcion ?? '') >= desde &&
+    (r.detalle.fechaRecepcion ?? '') >= limite &&
     !r.textos?.length &&
     elegirDocumento(r.detalle.documentos ?? []) !== null
   );
 }
 
 const dia = (d: Date) => d.toISOString().slice(0, 10);
+
+/** Los concursos generales de cultura son muchos: solo interesan los recientes. */
+export const CULTURA_DESDE = '2023-01-01';
 
 /** Ventanas de un año natural como máximo, para no superar los 10.000 resultados por página. */
 export function ventanasAnuales(desde: Date, hasta: Date): [Date, Date][] {
@@ -119,12 +137,21 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
 
   // 1. Descubrir
   const encontradas = new Map<string, BdnsResultadoBusqueda>();
-  const anotar = (resultados: BdnsResultadoBusqueda[]) => {
-    for (const r of resultados) if (r.numeroConvocatoria && pareceMusical(r)) encontradas.set(r.numeroConvocatoria, r);
+  const culturaDesde = o.culturaDesde ?? CULTURA_DESDE;
+  let culturaGeneral = 0;
+  const anotar = (resultados: BdnsResultadoBusqueda[], conCulturaGeneral = false) => {
+    for (const r of resultados) {
+      if (!r.numeroConvocatoria) continue;
+      if (pareceMusical(r)) encontradas.set(r.numeroConvocatoria, r);
+      else if (conCulturaGeneral && (r.fechaRecepcion ?? '') >= culturaDesde && pareceCulturaGeneral(r)) {
+        if (!encontradas.has(r.numeroConvocatoria)) culturaGeneral++;
+        encontradas.set(r.numeroConvocatoria, r);
+      }
+    }
   };
   for (const [desde, hasta] of ventanasAnuales(o.desde, o.hasta)) {
     const cultura = await o.cliente.buscarTodas({ finalidad: FINALIDAD_CULTURA, fechaDesde: desde, fechaHasta: hasta });
-    anotar(cultura);
+    anotar(cultura, true);
     log(`Cultura ${dia(desde)} → ${dia(hasta)}: ${cultura.length} convocatorias`);
   }
   for (const termino of TERMINOS) {
@@ -132,7 +159,7 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
     anotar(resultados);
     log(`«${termino}»: ${resultados.length} resultados`);
   }
-  log(`Con título musical: ${encontradas.size}`);
+  log(`De interés: ${encontradas.size} (${culturaGeneral} concursos generales de cultura)`);
 
   const estado = o.almacen.estado;
   const pendientes = new Set(estado.pendientes);
@@ -162,21 +189,34 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
     documentosPendientes: 0,
   };
   const guardarCada = o.guardarCada ?? 200;
+  const vigilante = new VigilanteFormato();
   let hechas = 0;
 
   for (const numero of cola) {
     if (!quedaTiempo()) break;
     try {
       const detalle = await o.cliente.obtenerConvocatoria(numero);
-      const concesiones = (await o.cliente.concesionesDe(numero)).map(anonimizarConcesion);
-      const marca = ahora().toISOString();
-      const registro: RegistroBdns = { detalle, concesiones, primeraDescarga: marca, actualizado: marca };
-      const eraNueva = !o.almacen.registros.has(numero);
-      o.almacen.guardar(registro);
-      if (eraNueva) resultado.nuevas++;
-      else resultado.refrescadas++;
-      pendientes.delete(numero);
+      if (vigilante.revisar(detalle, numero)) {
+        const concesiones = (await o.cliente.concesionesDe(numero)).map(anonimizarConcesion);
+        const marca = ahora().toISOString();
+        const registro: RegistroBdns = { detalle, concesiones, primeraDescarga: marca, actualizado: marca };
+        const eraNueva = !o.almacen.registros.has(numero);
+        o.almacen.guardar(registro);
+        if (eraNueva) resultado.nuevas++;
+        else resultado.refrescadas++;
+        pendientes.delete(numero);
+      } else {
+        // Formato inesperado en una convocatoria suelta: se reintenta en la próxima ejecución.
+        resultado.fallidas.push(numero);
+        log(`  ✗ ${numero}: formato inesperado (${vigilante.ejemplos.at(-1)})`);
+      }
     } catch (error) {
+      if (error instanceof ErrorFormato) {
+        // Guardar lo descargado hasta ahora y parar: el workflow fallará y avisará.
+        estado.pendientes = [...pendientes];
+        o.almacen.escribir();
+        throw error;
+      }
       resultado.fallidas.push(numero);
       log(`  ✗ ${numero}: ${(error as Error).message.split('\n').slice(0, 2).join(' ')}`);
       // Un error permanente (404...) se descarta; uno temporal se reintenta en la próxima ejecución.
@@ -192,8 +232,9 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
   // 4. Texto de las bases de los concursos (lo que quede de tiempo).
   if (o.extraerTexto) {
     const desde = o.documentosDesde ?? dia(new Date(ahora().getTime() - 3 * 365 * 86_400_000));
+    const desdeCultura = o.documentosDesde ?? dia(new Date(ahora().getTime() - 365 * 86_400_000));
     const conDocumento = [...o.almacen.registros.values()]
-      .filter((r) => necesitaDocumento(r, desde))
+      .filter((r) => necesitaDocumento(r, desde, desdeCultura))
       .sort((a, b) => (b.detalle.fechaRecepcion ?? '').localeCompare(a.detalle.fechaRecepcion ?? ''));
     log(`Documentos por descargar: ${conDocumento.length}`);
     for (const r of conDocumento) {
@@ -217,7 +258,9 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
       }
       if (++hechas % guardarCada === 0) o.almacen.escribir();
     }
-    resultado.documentosPendientes = [...o.almacen.registros.values()].filter((r) => necesitaDocumento(r, desde)).length;
+    resultado.documentosPendientes = [...o.almacen.registros.values()].filter((r) =>
+      necesitaDocumento(r, desde, desdeCultura),
+    ).length;
   }
 
   estado.pendientes = [...pendientes];

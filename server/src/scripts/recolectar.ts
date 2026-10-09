@@ -88,7 +88,7 @@ function resumir(todas: Convocatoria[], r: ResultadoRecoleccion): string {
     `- Esta ejecución: ${r.descubiertas} con título musical, ${r.nuevas} nuevas, ${r.refrescadas} refrescadas, ${r.fallidas.length} fallidas.`,
     `- Documentos con texto extraído: ${r.documentos} en esta ejecución, ${r.documentosPendientes} pendientes.`,
     `- Convocatorias pendientes para la próxima ejecución: ${r.pendientes}${r.completada ? ' (todo al día)' : ''}.`,
-    `- Total guardadas: ${todas.length} · de música: ${musicales.length} · compatibles con jazz, clásica u ópera: ${objetivo.length}.`,
+    `- Total guardadas: ${todas.length} · de música: ${musicales.length} · compatibles con jazz, clásica u ópera: ${objetivo.length} · concursos generales de cultura: ${todas.filter((c) => c.clasificacion.culturaGeneral).length}.`,
     `- Concursos abiertos hoy: ${objetivo.filter((c) => plazo(c) === 'abierta').length} · por abrir: ${objetivo.filter((c) => plazo(c) === 'proxima').length}.`,
     `- Importe concedido registrado en las compatibles: ${euros(objetivo.reduce((t, c) => t + (c.concesiones?.importeTotal ?? 0), 0))}.`,
     '',

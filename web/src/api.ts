@@ -29,6 +29,7 @@ export interface Filtros {
   tipo?: string;
   orden?: string;
   todas?: boolean;
+  cultura?: boolean;
   pagina?: number;
 }
 

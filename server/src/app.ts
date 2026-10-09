@@ -30,12 +30,13 @@ function filtrar(convocatorias: Convocatoria[], q: Request['query']): Convocator
   const texto = typeof q.q === 'string' ? normalizar(q.q.trim()) : '';
   const plazoBuscado = typeof q.plazo === 'string' ? q.plazo : '';
   const incluirNoMusicales = q.todas === 'true';
+  const incluirCultura = q.cultura === 'true';
   const tipo = typeof q.tipo === 'string' ? q.tipo : '';
   const desde = typeof q.desde === 'string' ? q.desde : '';
 
   return convocatorias.filter((c) => {
     const cl = c.clasificacion;
-    if (!incluirNoMusicales && !cl.musical) return false;
+    if (!incluirNoMusicales && !cl.musical && !(incluirCultura && cl.culturaGeneral)) return false;
     if (estilos.length && !estilos.some((e) => cl.estilosCompatibles.includes(e as never))) return false;
     // Una convocatoria sin restricción territorial aplica a cualquier comunidad.
     if (ccaa.length && !c.ambitoNacional && !ccaa.some((x) => c.ccaa.includes(x))) return false;
@@ -92,6 +93,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       lineas: LINEAS,
       total: todas.length,
       musicales: todas.filter((c) => c.clasificacion.musical).length,
+      culturaGeneral: todas.filter((c) => c.clasificacion.culturaGeneral).length,
       ultimaActualizacion: todas.map((c) => c.actualizada).sort().at(-1) ?? null,
       fuente: 'Base de Datos Nacional de Subvenciones (BDNS) · IGAE, Ministerio de Hacienda',
     });
@@ -195,15 +197,20 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       ms.slice(0, 50).map((m) => ({ ...m, convocatoria: vistaResumida(m.convocatoria) }));
 
     const todas = emparejar(repo.listarConvocatorias(), perfil, hoy);
-    const directas = todas.filter((m) => m.encaje === 'directo');
+    // Las ayudas generales de cultura solo interesan mientras se pueden pedir.
+    const musicales = todas.filter((m) => m.convocatoria.clasificacion.musical);
+    const directas = musicales.filter((m) => m.encaje === 'directo');
+    const culturaVigente = todas.filter(
+      (m) => !m.convocatoria.clasificacion.musical && m.encaje === 'directo' && vigente(m),
+    );
     res.json({
       perfilCompleto: perfil.grupos.length > 0,
-      abiertas: salida(directas.filter(vigente)),
+      abiertas: salida([...directas.filter(vigente), ...culturaVigente]),
       // Cerradas en los últimos 18 meses: la mayoría se convocan cada año.
       recurrentes: salida(directas.filter((m) => m.plazo === 'cerrada' && recientes(m, 18))),
-      artistas: salida(todas.filter((m) => m.encaje === 'artistas' && (vigente(m) || recientes(m, 12)))),
-      indirectas: salida(todas.filter((m) => m.encaje === 'indirecto' && (vigente(m) || recientes(m, 12)))),
-      precedentes: salida(todas.filter((m) => m.encaje === 'precedente' && recientes(m, 36))),
+      artistas: salida(musicales.filter((m) => m.encaje === 'artistas' && (vigente(m) || recientes(m, 12)))),
+      indirectas: salida(musicales.filter((m) => m.encaje === 'indirecto' && (vigente(m) || recientes(m, 12)))),
+      precedentes: salida(musicales.filter((m) => m.encaje === 'precedente' && recientes(m, 36))),
     });
   });
 

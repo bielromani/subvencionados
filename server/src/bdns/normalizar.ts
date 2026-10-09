@@ -45,7 +45,8 @@ export function textoPlano(html: string | null | undefined): string {
 const descripciones = (xs: { descripcion?: string }[] | undefined) =>
   (xs ?? []).map((x) => x.descripcion?.trim()).filter((x): x is string => !!x);
 
-const DIRECTA_EN_TITULO = /nominativ|convenio|conveni\b|subvenci[oó]n directa|concesi[oó]n directa|subv\. directa/i;
+const DIRECTA_EN_TITULO =
+  /nominativ|nominad[ao]|convenio|conveni\b|subvenci[oó]n directa|concesi[oó]n directa|subv\. directa|subv\.?\s*nom\b/i;
 
 export function tipoDesde(c: BdnsConvocatoria, titulo = c.descripcion ?? ''): Convocatoria['tipo'] {
   if (c.tipoConvocatoria) return /directa/i.test(c.tipoConvocatoria) ? 'directa' : 'concurrencia';

@@ -4,6 +4,7 @@
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, posix } from 'node:path';
+import { gunzipSync, gzipSync } from 'node:zlib';
 import type { RegistroBdns } from './normalizar.js';
 
 export interface EstadoRecoleccion {
@@ -52,15 +53,18 @@ export class Almacen {
 
   /** Guarda el texto de un documento y devuelve su ruta relativa a la raíz del almacén. */
   guardarTexto(registro: RegistroBdns, idDocumento: number, texto: string): string {
-    const relativa = posix.join('documentos', anioDe(registro), `${idDocumento}.txt`);
+    // Comprimidos: las bases ocupan mucho y solo se leen de una en una.
+    const relativa = posix.join('documentos', anioDe(registro), `${idDocumento}.txt.gz`);
     mkdirSync(join(this.raiz, 'documentos', anioDe(registro)), { recursive: true });
-    writeFileSync(join(this.raiz, relativa), `${texto}\n`);
+    writeFileSync(join(this.raiz, relativa), gzipSync(`${texto}\n`, { level: 9 }));
     return relativa;
   }
 
   leerTexto(relativa: string): string | null {
     const ruta = join(this.raiz, relativa);
-    return existsSync(ruta) ? readFileSync(ruta, 'utf8') : null;
+    if (!existsSync(ruta)) return null;
+    const contenido = readFileSync(ruta);
+    return (relativa.endsWith('.gz') ? gunzipSync(contenido) : contenido).toString('utf8');
   }
 
   /** Escribe todos los ficheros. Solo reescribe los años con contenido distinto. */

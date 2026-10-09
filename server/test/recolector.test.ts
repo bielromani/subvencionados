@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { Almacen } from '../src/bdns/almacen.js';
 import { type ClienteBdns, ErrorBdns } from '../src/bdns/cliente.js';
-import { elegirDocumento, pareceMusical, recolectar, ventanasAnuales } from '../src/bdns/recolector.js';
+import { elegirDocumento, pareceCulturaGeneral, pareceMusical, recolectar, ventanasAnuales } from '../src/bdns/recolector.js';
 import type { BdnsConcesion, BdnsResultadoBusqueda } from '../src/bdns/tipos.js';
 import { CONCESIONES_FIGUERES, detalle } from './ayudas.js';
 import busquedaJazz from './fixtures/bdns-busqueda-jazz.json' with { type: 'json' };
@@ -43,6 +43,22 @@ const base = { desde: new Date('2026-01-01'), hasta: new Date('2026-10-08'), lim
 describe('pareceMusical (títulos reales)', () => {
   it('filtra el listado por el título', () => {
     expect(LISTADO.map(pareceMusical)).toEqual([false, true, true]);
+  });
+});
+
+describe('pareceCulturaGeneral (títulos reales de 2026, finalidad Cultura)', () => {
+  const titulo = (descripcion: string) => ({ descripcion });
+  it('acepta concursos generales de actividades culturales', () => {
+    expect(pareceCulturaGeneral(titulo('Convocatoria de subvenciones, en régimen de concurrencia competitiva, para apoyar actividades culturales'))).toBe(true);
+    expect(pareceCulturaGeneral(titulo('SUBVENCION FIESTA MAYOR CASABLANCA EXERCICIO 2026'))).toBe(true);
+  });
+  it('descarta lo que no tiene que ver con conciertos y las concesiones directas', () => {
+    expect(pareceCulturaGeneral(titulo('Concurso de disfraces de carnaval del Ayuntamiento de Cospeito 2026'))).toBe(false);
+    expect(pareceCulturaGeneral(titulo('VII CONCURS DE FOTOGRAFIA DE SANTA EUGÈNIA DE BERGA'))).toBe(false);
+    expect(pareceCulturaGeneral(titulo('APROBACIÓN BASES Y CONVOCATORIA XXXIII CONCURSO - CERTAMEN LITERARIO DE RELATOS CORTOS 2026'))).toBe(false);
+    expect(pareceCulturaGeneral(titulo('Cultura2026_ Subv.Nom. Àliga de Vilafranca'))).toBe(false);
+    // Las de música no son "cultura general": van por su lado.
+    expect(pareceCulturaGeneral(titulo('SUBVENCIÓN ÓPERA MADAMA BUETTERFLY'))).toBe(false);
   });
 });
 
@@ -137,13 +153,13 @@ describe('documentos', () => {
 
     const almacen = new Almacen(dir);
     const registro = almacen.registros.get('932450')!;
-    expect(registro.textos).toMatchObject([{ idDocumento: 1517570, archivo: 'documentos/2026/1517570.txt', paginas: 2 }]);
-    expect(almacen.leerTexto('documentos/2026/1517570.txt')).toBe('Página 1\fPágina 2\n');
+    expect(registro.textos).toMatchObject([{ idDocumento: 1517570, archivo: 'documentos/2026/1517570.txt.gz', paginas: 2 }]);
+    expect(almacen.leerTexto('documentos/2026/1517570.txt.gz')).toBe('Página 1\fPágina 2\n');
 
     // Refrescar la convocatoria conserva el texto y no vuelve a pedir el documento.
     const segunda = clienteFalso();
     await recolectar({ ...base, cliente: segunda.cliente, almacen, extraerTexto, refrescarDias: 365, documentosDesde: '2026-01-01' });
     expect(segunda.pedidos.filter((p) => p.startsWith('doc-'))).toEqual([]);
-    expect(new Almacen(dir).registros.get('932450')!.textos?.[0]?.archivo).toBe('documentos/2026/1517570.txt');
+    expect(new Almacen(dir).registros.get('932450')!.textos?.[0]?.archivo).toBe('documentos/2026/1517570.txt.gz');
   });
 });
