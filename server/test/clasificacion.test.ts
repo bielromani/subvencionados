@@ -101,3 +101,35 @@ describe('títulos reales de la BDNS', () => {
     expect(c('Organización Festival Nowa Reggae 2024').otrosGeneros).toEqual(['reggae']);
   });
 });
+
+describe('errores encontrados en la muestra de evaluación (títulos reales)', () => {
+  it('reconoce coros, cantaires, ensembles y palabras compuestas', () => {
+    expect(c('Subvención nominativa a la Coral Sant Nicasi. año 2024').estilosExplicitos).toEqual(['clasica']);
+    expect(c('Convenio de promoción entre el Ayuntamiento de la Palma de Cervelló y el Grup de Cantaires la Palma').musical).toBe(true);
+    expect(c('Convenio de subvención nominativa a la Asociación DeMúsica Ensemble (MOMUA), 2024').musical).toBe(true);
+    expect(c('SUBVENCIÓN DIRECTA AL AYUNTAMIENTO DE VILLAFRANCA DE LOS BARROS. XVII FESTIVAL GRASTROMÚSICA.').musical).toBe(true);
+  });
+
+  it('reconoce otros géneros como música no compatible', () => {
+    for (const titulo of [
+      'Subvención nominativa a la ASOCIACIÓN BANDA DE CORNETAS Y TAMBORES DE LA PARROQUIA DE SAN JUAN BAUTISTA, 2023',
+      'SUBVENCIÓN NOMINATIVA AGRUPACIÓ SARDANISTA DE RODA DE TER',
+      'Subvención nominativa a la entidad GRUPO DE LA ESCUELA DE FOLKLORE DE ADEJE para el desarrollo del proyecto cultural 2024',
+      'ASOCIACIÓN CULTURAL EXTREMASOUND SUBEROCK',
+      'CONVENIO DE COLABORACIÓN ENTRE LA BANDA DE LA ESCUELA MUNICIPAL DE MÚSICA DE ASCÓ Y EL AYUNTAMIENTO DE ASCÓ',
+      'XXIII CONCURSO DE COMPOSICIÓN DE MÚSICA FESTERA "VILLA DE BENIDORM" 2024 MODALIDAD: MARCHA MORA',
+      'Concesión subvención de la IV edición del concurso de composición para Banda Sinfónica Arturo Balaguer',
+      'SUBVENCIÓN NOMINATIVA 2024: LEIOAKO MUSIKA BANDA 97',
+    ]) {
+      const r = c(titulo);
+      expect(r.musical, titulo).toBe(true);
+      expect(r.estilosCompatibles, titulo).toEqual([]);
+    }
+  });
+
+  it('un conservatorio de danza no es de música', () => {
+    expect(
+      c('Premios a la excelencia en la danza clásica del alumnado del conservatorio profesional de danza de la Diputación Provincial de A Coruña').musical,
+    ).toBe(false);
+  });
+});

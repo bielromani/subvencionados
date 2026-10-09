@@ -30,14 +30,16 @@ type Patron = [etiqueta: string, regex: RegExp];
 
 // Señales de que la convocatoria es de música (sobre texto normalizado).
 const SENALES_MUSICA: Patron[] = [
-  ['música', /\bmusica(s|l|les)?\b/],
+  // También palabras compuestas: "DeMúsica", "Gastromúsica".
+  ['música', /\b\w*musica(s|l|les)?\b/],
   ['concierto', /\bconciertos?\b/],
   ['orquesta', /\borquestas?\b/],
   ['sinfónica', /\bsinfonic[oa]s?\b/],
   ['lírica', /\bliric[oa]s?\b/],
   ['zarzuela', /\bzarzuelas?\b/],
   ['jazz', /\bjazz\b/],
-  ['coro', /\b(coros?|corales?)\b/],
+  ['coro', /\b(coros?|coral(es)?|cantaires|cantores|orfeones)\b/],
+  ['ensemble', /\bensembles?\b/],
   ['recital', /\brecitales?\b/],
   ['conservatorio', /\bconservatorios?\b/],
   // Catalán, gallego y euskera (la BDNS incluye el título en la lengua cooficial).
@@ -54,6 +56,9 @@ const SENALES_MUSICA: Patron[] = [
 ];
 
 // "Concierto" tiene acepciones que no son musicales.
+// Conservatorios y escuelas de danza: no son de música.
+const FALSOS_DANZA = /\b(conservatorios?|escuelas?) (profesional |superior |elemental |municipal )?de danza\b/g;
+
 const FALSOS_CONCIERTO =
   /\b(concierto|conciertos) (economico|educativo|educativos|sanitario|sanitarios|social|sociales)\b|\ben concierto con\b|\bregimen de concierto\b/g;
 
@@ -77,13 +82,15 @@ const ESTILOS_PATRONES: Record<Estilo, Patron[]> = {
     ['camerata', /\bcamerata\b/],
     ['orfeón', /\borfeo(n|i)?s?\b/],
     ['escolanía', /\bescolani(a|es)\b/],
-    ['sinfónica', /\bsinfonic[oa]s?\b/],
+    // "Banda sinfónica" es una banda de música, no una orquesta.
+    ['sinfónica', /(?<!banda )\bsinfonic[oa]s?\b/],
     ['filarmónica', /\bfilarmonic[oa]s?\b/],
     ['música de cámara', /\bmusica de camara\b/],
     ['música antigua', /\bmusica antigua\b/],
     ['barroco', /\bbarroc[oa]s?\b/],
     ['recital', /\brecitales?\b/],
-    ['coro', /\b(coros?|corales?)\b/],
+    ['coro', /\b(coros?|coral(es)?|cantaires|cantores|orfeones)\b/],
+    ['ensemble', /\bensembles?\b/],
     ['música culta', /\bmusica culta\b/],
   ],
   opera: [
@@ -94,17 +101,20 @@ const ESTILOS_PATRONES: Record<Estilo, Patron[]> = {
 };
 
 const OTROS_GENEROS: Patron[] = [
-  ['flamenco', /\bflamenc[oa]s?\b/],
-  ['rock', /\brock\b/],
+  ['flamenco', /\bflamenc[oa]s?\b|\brocier[oa]s?\b|\bsevillanas\b/],
+  // Sin \b inicial: "Suberock", "Extremarock".
+  ['rock', /rock\b/],
   ['pop', /\bpop\b/],
   ['folk', /\bfolk\b/],
-  ['música tradicional', /\bmusica (tradicional|popular|folk)\b/],
-  ['bandas de música', /\bbandas? (de musica|municipal(es)?)\b/],
+  ['música tradicional', /\bmusica (tradicional|popular|folk)\b|\b(baile|bailes|danza) tradicional|\bfol(k|c)lor(e|ico|ica)?\b/],
+  ['bandas de música', /\bbandas? (de (la )?(musica|escuela)|municipal(es)?|sinfonica|juvenil|musica)\b|\bmusika banda\b|\bcertamen de bandas\b/],
+  ['cornetas y tambores', /\b(cornetas|tamborileros|tamborrada|tambores)\b/],
+  ['música festera', /\bmusica festera\b|\bmarchas? moras?\b|\bmoros y cristianos\b/],
   ['electrónica', /\bmusica electronica\b/],
   ['hip hop', /\bhip ?hop\b/],
   ['copla', /\bcopla\b/],
   ['reggae', /\breggae\b/],
-  ['sardana', /\b(sardanas?|coblas?)\b/],
+  ['sardana', /\b(sardan(a|as|ista|istes|istas)|coblas?)\b/],
   ['dolçaina', /\bdolcain(a|es)\b/],
   ['txistu', /\btxistu/],
   ['gaita', /\bgaitas?\b/],
@@ -190,7 +200,7 @@ export function encajeParaPromotor(b: Beneficiarios): EncajePromotor {
 }
 
 export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificacion): Clasificacion {
-  const t = normalizar(texto).replace(FALSOS_CONCIERTO, ' ');
+  const t = normalizar(texto).replace(FALSOS_CONCIERTO, ' ').replace(FALSOS_DANZA, ' ');
   const evidencias = coincidencias(t, SENALES_MUSICA);
 
   const operaExplicita = OPERA_CON_TILDE.test(texto) || OPERA_CONTEXTO.test(t);
