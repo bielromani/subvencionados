@@ -28,6 +28,10 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
 - **Fase 1 terminada**: textos de las bases, series año a año, ubicación por municipio, directorio de
   organismos (`GET /api/organismos`), concursos generales de cultura y vigilancia del formato. Cifras del nicho en
   [docs/informe-nicho.md](docs/informe-nicho.md).
+- **Fase 2 en curso: ficha con IA.** Claude lee las bases y rellena plazos, dinero, requisitos, gastos,
+  criterios, documentación y cómo presentarla. Cada dato lleva la cita literal y la página, comprobadas contra el
+  documento; lo que no se encuentra no se enseña (`npm run fichas`, workflow *Fichas*, necesita el secreto
+  `ANTHROPIC_API_KEY`).
 - **Web** (React) con tres pestañas:
   - *Para ti*: las recomendaciones;
   - *Explorar*: filtros por plazo, tipo, estilo, comunidad, administración y actividad, con paginación;
@@ -51,6 +55,8 @@ npm run recolectar -- --desde=2014-01-01    # histórico
 npm run recolectar -- --minutos=30          # se para a los 30 minutos y deja el resto pendiente
 npm run importar                            # carga datos/bdns en la base de datos de la app
 npm run informe                             # regenera docs/informe-nicho.md con las cifras del nicho
+npm run fichas -- --simular                 # qué convocatorias tendrían ficha (sin llamar a la IA)
+npm run fichas -- --limite=5                # genera 5 fichas con Claude (necesita ANTHROPIC_API_KEY)
 ```
 
 Para lanzar el histórico o forzar una actualización desde GitHub: pestaña *Actions* → *Recolectar BDNS* →
@@ -77,9 +83,11 @@ server/
   src/organismos.ts    directorio de organismos que financian música
   src/referencias.ts   ubicación de cada organismo (catálogo BDNS + nomenclátor INE)
   src/informe.ts       informe del nicho
+  src/ficha/           ficha con IA: esquema, extractor (Claude), comprobación de citas y selección
   src/scripts/         recolectar, importar, informe, referencias y muestra de evaluación
 datos/bdns/            lo descargado de la BDNS (lo actualiza el workflow diario)
 datos/referencia/      entidades locales y municipios (workflow mensual)
+datos/fichas/          fichas extraídas de las bases con IA (workflow Fichas)
 web/                   React + Vite
 docs/                  plan por fases y fuentes de datos
 ```

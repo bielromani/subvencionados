@@ -58,6 +58,69 @@ export interface Convocatoria {
   concesiones: ResumenConcesiones | null;
   clasificacion: Clasificacion;
   plazo: Plazo;
+  /** Hay ficha extraída de las bases (solo en los listados). */
+  tieneFicha?: boolean;
+  /** Solo en el detalle (GET /api/convocatorias/:id). */
+  ficha?: Ficha | null;
+}
+
+/** Cita literal de las bases, comprobada contra el texto del documento. */
+export interface Cita {
+  documento: number;
+  pagina: number;
+  texto: string;
+  estado: 'verificada' | 'revisar';
+  motivo?: string;
+}
+
+export interface Dato<T = string> {
+  valor: T | null;
+  cita: Cita | null;
+  /** El modelo dio un valor sin cita: no se da por bueno. */
+  sinCita?: boolean;
+}
+
+export interface ElementoFicha {
+  texto: string;
+  cita: Cita | null;
+  sinCita?: boolean;
+}
+
+export interface Ficha {
+  codigoBdns: string;
+  generada: string;
+  modelo: string;
+  documentos: { id: number; nombre: string; paginas: number }[];
+  citas: { verificadas: number; revisar: number; noConsta: number };
+  datos: {
+    documentoEsBases: boolean;
+    resumen: string[];
+    objeto: Dato;
+    beneficiarios: Dato;
+    plazos: {
+      presentacion: Dato;
+      inicioPresentacion: Dato;
+      finPresentacion: Dato;
+      resolucion: Dato;
+      ejecucion: Dato;
+      justificacion: Dato;
+    };
+    dinero: {
+      presupuestoTotal: Dato<number>;
+      importeMaximo: Dato<number>;
+      porcentajeMaximo: Dato<number>;
+      pago: Dato;
+      compatibilidad: Dato;
+      minimis: Dato;
+    };
+    requisitos: ElementoFicha[];
+    gastosSubvencionables: ElementoFicha[];
+    gastosNoSubvencionables: ElementoFicha[];
+    criterios: { criterio: string; puntosMaximos: number | null; cita: Cita | null; sinCita?: boolean }[];
+    documentacion: ElementoFicha[];
+    presentacion: { lugar: Dato; url: Dato; certificadoDigital: Dato };
+    avisos: string[];
+  };
 }
 
 export interface Coincidencia {

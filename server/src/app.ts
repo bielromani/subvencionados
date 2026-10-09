@@ -5,6 +5,7 @@ import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
 import { agruparOrganismos, idOrganismo, type Organismo } from './organismos.js';
 import { LINEAS, PERFIL_POR_DEFECTO, validarPerfil } from './perfil.js';
 import { CCAA } from './regiones.js';
+import type { Ficha } from './ficha/esquema.js';
 import { ESTILOS, type Convocatoria } from './tipos.js';
 
 const lista = (valor: unknown): string[] =>
@@ -65,10 +66,13 @@ function ordenar(convocatorias: Convocatoria[], orden: unknown): Convocatoria[] 
 export interface OpcionesApp {
   /** Lee el texto extraído de un documento (ruta relativa a datos/bdns). */
   leerTexto?: (relativa: string) => string | null;
+  /** Ficha extraída de las bases (datos/fichas/), si la hay. */
+  fichas?: { leer: (codigoBdns: string) => Ficha | null; tiene: (codigoBdns: string) => boolean };
 }
 
 export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const app = express();
+  const resumida = (c: Convocatoria) => ({ ...vistaResumida(c), tieneFicha: opciones.fichas?.tiene(c.codigoBdns) ?? false });
 
   // Los organismos se recalculan solo cuando cambian las convocatorias.
   let organismosCache: { version: number; lista: Organismo[]; porId: Map<string, Organismo> } | null = null;
@@ -104,7 +108,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 500);
     const pagina = Math.max(Number(req.query.pagina) || 1, 1);
     const items = resultado.slice((pagina - 1) * porPagina, pagina * porPagina);
-    res.json({ total: resultado.length, pagina, porPagina, items: items.map(vistaResumida) });
+    res.json({ total: resultado.length, pagina, porPagina, items: items.map(resumida) });
   });
 
   app.get('/api/convocatorias/:id', (req, res) => {
@@ -113,7 +117,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       res.status(404).json({ error: 'Convocatoria no encontrada' });
       return;
     }
-    res.json({ ...vista(c), clasificacion: c.clasificacion });
+    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha: opciones.fichas?.leer(c.codigoBdns) ?? null });
   });
 
   app.get('/api/convocatorias/:id/documentos/:idDocumento', (req, res) => {
@@ -164,7 +168,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const convocatorias = idsConvocatorias
       .map((id) => repo.obtenerConvocatoria(id))
       .filter((c): c is Convocatoria => c !== null)
-      .map(vistaResumida);
+      .map(resumida);
     res.json({ ...resto, convocatorias });
   });
 
@@ -194,7 +198,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const recientes = (m: Coincidencia, meses: number) => (m.convocatoria.fechaPublicacion ?? '') >= haceMeses(meses);
     const vigente = (m: Coincidencia) => m.plazo === 'abierta' || m.plazo === 'proxima';
     const salida = (ms: Coincidencia[]) =>
-      ms.slice(0, 50).map((m) => ({ ...m, convocatoria: vistaResumida(m.convocatoria) }));
+      ms.slice(0, 50).map((m) => ({ ...m, convocatoria: resumida(m.convocatoria) }));
 
     const todas = emparejar(repo.listarConvocatorias(), perfil, hoy);
     // Las ayudas generales de cultura solo interesan mientras se pueden pedir.

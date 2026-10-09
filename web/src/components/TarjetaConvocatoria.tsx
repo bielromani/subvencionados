@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { FichaPlegable } from './FichaConvocatoria';
 import { NOMBRE_ADMINISTRACION, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Plazo } from '../tipos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
@@ -118,6 +119,8 @@ export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children
           </ul>
         </details>
       )}
+
+      {c.tieneFicha && <FichaPlegable id={c.id} />}
 
       {children}
 

@@ -380,3 +380,74 @@ select {
   font-size: 0.8rem;
   text-align: center;
 }
+
+/* Ficha extraída de las bases */
+.ficha {
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.ficha h4 {
+  margin: 16px 0 6px;
+  font-size: 0.95rem;
+}
+
+.ficha dl {
+  margin: 0;
+}
+
+.ficha-fila {
+  display: grid;
+  grid-template-columns: minmax(140px, 220px) 1fr;
+  gap: 4px 16px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.ficha-fila dt {
+  color: var(--texto-suave);
+}
+
+.ficha-fila dd {
+  margin: 0;
+}
+
+.ficha ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.ficha li {
+  margin-bottom: 4px;
+}
+
+.ficha-resumen {
+  background: var(--apagado-fondo);
+  border-radius: var(--radio);
+  padding: 10px 12px 10px 28px !important;
+}
+
+.fuente {
+  display: block;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+}
+
+.fuente q {
+  font-style: italic;
+}
+
+.fuente .etiqueta {
+  margin-right: 6px;
+}
+
+.no-consta {
+  color: var(--texto-suave);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .ficha-fila {
+    grid-template-columns: 1fr;
+  }
+}

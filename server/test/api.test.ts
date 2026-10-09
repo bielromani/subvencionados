@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { crearApp } from '../src/app.js';
+import type { Ficha } from '../src/ficha/esquema.js';
 import { desdeBdns } from '../src/bdns/normalizar.js';
 import { Repositorio } from '../src/db.js';
 import { CONCESIONES_FIGUERES, DETALLE_NATURAJAZZ, detalle, registro } from './ayudas.js';
@@ -44,7 +45,11 @@ beforeEach(() => {
       ),
     ].map((r) => desdeBdns(r)),
   );
-  app = crearApp(repo, { leerTexto: (r) => (r === 'documentos/2026/1.txt' ? 'Primera\fSegunda' : null) });
+  const ficha = { codigoBdns: '300', citas: { verificadas: 1, revisar: 0, noConsta: 0 } } as unknown as Ficha;
+  app = crearApp(repo, {
+    leerTexto: (r) => (r === 'documentos/2026/1.txt' ? 'Primera\fSegunda' : null),
+    fichas: { leer: (codigo) => (codigo === '300' ? ficha : null), tiene: (codigo) => codigo === '300' },
+  });
 });
 
 const ids = (res: request.Response) => res.body.items.map((c: { id: string }) => c.id);
@@ -87,8 +92,11 @@ describe('GET /api/convocatorias', () => {
     await request(app).get('/api/convocatorias/bdns-300/documentos/2').expect(404);
   });
 
-  it('detalle y 404', async () => {
-    await request(app).get('/api/convocatorias/bdns-100').expect(200);
+  it('detalle con la ficha de las bases cuando la hay, y 404', async () => {
+    expect((await request(app).get('/api/convocatorias/bdns-100').expect(200)).body.ficha).toBeNull();
+    expect((await request(app).get('/api/convocatorias/bdns-300').expect(200)).body.ficha.citas.verificadas).toBe(1);
+    const lista = await request(app).get('/api/convocatorias').expect(200);
+    expect(lista.body.items.filter((c: { tieneFicha: boolean }) => c.tieneFicha).map((c: { id: string }) => c.id)).toEqual(['bdns-300']);
     await request(app).get('/api/convocatorias/no-existe').expect(404);
   });
 });

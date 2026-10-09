@@ -12,10 +12,13 @@
     "referencias": "tsx src/scripts/actualizar-referencias.ts",
     "informe": "tsx src/scripts/informe.ts",
     "muestra-evaluacion": "tsx src/scripts/muestra-evaluacion.ts",
-    "evaluar": "tsx src/scripts/evaluar.ts"
+    "evaluar": "tsx src/scripts/evaluar.ts",
+    "fichas": "tsx src/scripts/fichas.ts"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "@anthropic-ai/sdk": "^0.132.1",
+    "express": "^5.2.1",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
