@@ -2,7 +2,8 @@
 // 150 que el clasificador acepta como música, 100 rechazados al azar y 50 rechazados
 // "difíciles" (con palabras cercanas a la música). Escribe test/evaluacion/muestra.json
 // para etiquetarla a mano.
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ClienteBdns, FINALIDAD_CULTURA } from '../bdns/cliente.js';
 import { TERMINOS } from '../bdns/recolector.js';
@@ -52,6 +53,7 @@ const salida = [...new Map(muestra.map((m) => [m.r.numeroConvocatoria, m])).valu
 }));
 
 const ruta = fileURLToPath(new URL('../../test/evaluacion/muestra.json', import.meta.url));
+mkdirSync(dirname(ruta), { recursive: true });
 writeFileSync(ruta, `[\n${salida.map((x) => JSON.stringify(x)).join(',\n')}\n]\n`);
 console.log(
   `${todos.length} convocatorias en los listados de 2024-2025: ${aceptados.length} aceptadas, ` +
