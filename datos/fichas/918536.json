@@ -1,0 +1,243 @@
+{
+ "version": 1,
+ "codigoBdns": "918536",
+ "generada": "2026-10-09T10:18:53.186Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1499761,
+   "nombre": "Extracto CORREGIDO Convocatoria de subvenciones destinadas a Asoc.Culturales de Mislata 25-26 - SEFYCU 8436555.pdf",
+   "paginas": 2,
+   "huella": "a56ded5c20b93e69"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Mislata para el funcionamiento de las sedes, los programas, las actividades culturales y los desplazamientos de las asociaciones culturales locales.",
+   "Para asociaciones culturales inscritas en el Registro Municipal de Asociaciones de Mislata y en el de la Generalitat Valenciana.",
+   "Dotación total de 48.500 euros repartida en tres módulos.",
+   "Actividades entre el 1 de octubre de 2025 y el 30 de septiembre de 2026.",
+   "Solicitudes del 1 al 16 de octubre de 2026, solo por vía telemática (trámite CUL.157)."
+  ],
+  "objeto": {
+   "valor": "Financiación del funcionamiento ordinario de las sedes sociales, de los programas y actividades culturales y de los desplazamientos necesarios de las asociaciones culturales locales",
+   "cita": {
+    "documento": 1499761,
+    "pagina": 1,
+    "texto": "para la financiación del funcionamiento ordinario de sus sedes sociales, así como de los programas y actividades culturales que desarrollen y de los desplazamientos necesarios para su ejecución",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones culturales locales legalmente constituidas e inscritas en el Registro Municipal de Asociaciones de Mislata y en el Registro de Asociaciones de la Generalitat Valenciana",
+   "cita": {
+    "documento": 1499761,
+    "pagina": 1,
+    "texto": "Podrán ser beneficiarias de las subvenciones las asociaciones culturales locales legalmente constituidas conforme a la Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 1 al 16 de octubre de 2026; si la publicación en el BOP de Valencia fuera posterior, quince días naturales desde el día siguiente a la publicación",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "La fase de presentación de la documentación administrativa y justificativa comprenderá desde el 1 hasta el 16 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-10-01",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "comprenderá desde el 1 hasta el 16 de octubre de 2026",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-10-16",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "comprenderá desde el 1 hasta el 16 de octubre de 2026",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Del 1 de octubre de 2025 al 30 de septiembre de 2026",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "durante el período comprendido entre el 1 de octubre de 2025 y el 30 de septiembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "La documentación justificativa se presenta en la misma fase que la administrativa, del 1 al 16 de octubre de 2026",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "La fase de presentación de la documentación administrativa y justificativa comprenderá desde el 1 hasta el 16 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 48500,
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "como financiación necesaria para poder llevar a cabo las diversas líneas o módulos inherentes a la presente convocatoria es de 48.500 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser asociación cultural local legalmente constituida conforme a la Ley Orgánica 1/2002",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "las asociaciones culturales locales legalmente constituidas conforme a la Ley Orgánica 1/2002, de 22 de marzo, reguladora del Derecho de Asociación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar inscrita en el Registro Municipal de Asociaciones de Mislata y en el Registro de Asociaciones de la Generalitat Valenciana",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "inscritas en el Registro Municipal de Asociaciones del Ayuntamiento de Mislata y en el Registro de Asociaciones de la Generalitat Valenciana",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fines estatutarios y actividad efectiva que correspondan a las competencias de la Concejalía de Cultura",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "cuyos fines estatutarios y actividad efectiva se correspondan con las competencias de la Concejalía de Cultura",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las entidades cuya finalidad principal no sea cultural o cuyos fines encajen mejor en otra concejalía",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "Quedan excluidas las entidades cuya finalidad principal no sea cultural, en particular aquellas entidades cuyos fines estatutarios o actividades se incardinen de forma más específica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de un sistema de identificación y firma electrónica admitido por la sede municipal",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "será indispensable que la entidad solicitante disponga de un sistema de identificación y firma electrónica admitido por la sede electrónica municipal.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Funcionamiento ordinario de las sedes sociales",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "para la financiación del funcionamiento ordinario de sus sedes sociales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programas y actividades culturales de la asociación",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "así como de los programas y actividades culturales que desarrollen",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamientos necesarios para ejecutar las actividades",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 1,
+     "texto": "y de los desplazamientos necesarios para su ejecución",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Exclusivamente por vía telemática, trámite CUL.157 de la sede electrónica del Ayuntamiento de Mislata",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "la presentación de las solicitudes se realizará exclusivamente por vía telemática mediante el trámite CUL.157 disponible al efecto en la sede electrónica del Ayuntamiento de Mislata (www.mislata.es)",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.mislata.es",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "trámite CUL.157 disponible al efecto en la sede electrónica del Ayuntamiento de Mislata (www.mislata.es)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria; solicitud y documentación firmadas con certificado digital de la entidad o de su representante legal",
+    "cita": {
+     "documento": 1499761,
+     "pagina": 2,
+     "texto": "deberán estar firmadas electrónicamente mediante el certificado digital de la propia entidad o de la persona física que ostente su representación legal.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto (corregido) de la convocatoria; las bases completas (criterios, documentación, gastos, pago, justificación) están en la web municipal y no se incluyen.",
+   "La dotación se reparte por módulos: Módulo I hasta 19.823 €, Módulo II hasta 26.429 € y Módulo III hasta 2.248 €; el extracto no explica qué cubre cada módulo.",
+   "Está orientada a asociaciones culturales con sede en Mislata, no a promotores privados.",
+   "Las actividades subvencionables son anteriores al plazo de solicitud (octubre 2025 a septiembre 2026): en la misma fase se presenta la documentación justificativa."
+  ]
+ },
+ "citas": {
+  "verificadas": 19,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

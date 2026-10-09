@@ -1,0 +1,176 @@
+{
+ "version": 1,
+ "codigoBdns": "933149",
+ "generada": "2026-10-09T10:15:15.780Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1531289,
+   "nombre": "Convocatòria concurrència competitiva activitats àmbit cultural any 2026.pdf",
+   "paginas": 3,
+   "huella": "ed05fab2f4dc6dbd"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Corbera de Llobregat para actividades culturales de 2026.",
+   "Para entidades sin ánimo de lucro.",
+   "Crédito total de 25.000 euros; la ayuda no puede superar el 50 % del coste de la actividad.",
+   "Plazo: diez días hábiles desde la publicación del extracto en el BOP de Barcelona.",
+   "Solicitud electrónica en la sede del Ayuntamiento."
+  ],
+  "objeto": {
+   "valor": "Actividades del ámbito cultural desarrolladas durante 2026: programación cultural, creación artística, cultura popular, patrimonio local, participación y promoción del catalán",
+   "cita": {
+    "documento": 1531289,
+    "pagina": 1,
+    "texto": "destinades a finançar activitats de l'àmbit cultural desenvolupades durant l'any 2026 per entitats sense ànim de lucre",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades sin ánimo de lucro que cumplan los requisitos de la base 6 de las bases específicas",
+   "cita": {
+    "documento": 1531289,
+    "pagina": 2,
+    "texto": "Podran presentar sol·licitud les entitats que compleixin els requisits establerts a la Base 6 de les Bases específiques.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Diez días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Barcelona",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 2,
+     "texto": "El termini de presentació de les sol·licituds serà de DEU DIES HÀBILS comptats des de l'endemà de la publicació de l'extracte de la convocatòria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde el fin del plazo de presentación; sin resolución expresa, se entiende desestimada",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 2,
+     "texto": "La resolució del procediment s'haurà d'adoptar en el termini màxim de tres mesos comptats des de l'endemà de la finalització del termini de presentació",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades desarrolladas durante el año 2026",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 1,
+     "texto": "destinades a finançar activitats de l'àmbit cultural desenvolupades durant l'any 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 25000,
+    "cita": {
+     "documento": 1531289,
+     "pagina": 1,
+     "texto": "L'import màxim destinat a aquesta convocatòria és de 25.000,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 50,
+    "cita": {
+     "documento": 1531289,
+     "pagina": 3,
+     "texto": "L'import de la subvenció no podrà superar, amb caràcter general, el 50 % del cost de l'activitat subvencionada",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad sin ánimo de lucro",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 1,
+     "texto": "activitats de l'àmbit cultural desenvolupades durant l'any 2026 per entitats sense ànim de lucre",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 4 puntos en la valoración",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 3,
+     "texto": "No seran subvencionables les propostes que obtinguin una valoració inferior a 4 punts.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento, con los formularios normalizados",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 2,
+     "texto": "Les sol·licituds es presentaran electrònicament mitjançant els formularis normalitzats disponibles a la seu electrònica de l'Ajuntament.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1531289,
+     "pagina": 2,
+     "texto": "Les sol·licituds es presentaran electrònicament mitjançant els formularis normalitzats",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Este documento es la convocatoria; los requisitos (base 6), las actuaciones subvencionables (base 2), la documentación (base 9), los criterios de valoración (base 13) y el reparto (base 8) están en las Bases específicas, que no se incluyen.",
+   "El documento está en catalán."
+  ]
+ },
+ "citas": {
+  "verificadas": 11,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}

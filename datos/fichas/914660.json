@@ -1,0 +1,475 @@
+{
+ "version": 1,
+ "codigoBdns": "914660",
+ "generada": "2026-10-09T10:18:53.175Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1480122,
+   "nombre": "20260616_Resolución_DECRETO 2026-1021 [Resolución PR_2026_654 - Actuación genérica con fiscalización].pdf",
+   "paginas": 16,
+   "huella": "0af0bf97731cf73a"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Sigüenza a las peñas por las actividades que realizan en las Fiestas de San Roque 2026 (11 al 16 de agosto).",
+   "Para peñas inscritas en el registro municipal de Peñas.",
+   "Crédito de 22.000 euros; la ayuda se calcula por puntos según las actividades realizadas (desfiles, charangas, conciertos o verbenas con orquesta...).",
+   "Las actividades se solicitan por escrito hasta el 10 de mayo y se justifican hasta el 15 de octubre.",
+   "Pago único tras justificar."
+  ],
+  "objeto": {
+   "valor": "Subvencionar las actividades que realizan las peñas durante las Fiestas Patronales de San Roque 2026 (desfiles, charangas, cabezudos, conciertos, verbenas y vermús)",
+   "cita": {
+    "documento": 1480122,
+    "pagina": 2,
+    "texto": "promover y apoyar las actividades que realizan las Peñas durante las Fiestas Patronales de San Roque, entendidas como una manifestación esencial de nuestra cultura y tradiciones.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Peñas registradas en el registro municipal de Peñas de Sigüenza",
+   "cita": {
+    "documento": 1480122,
+    "pagina": 7,
+    "texto": "a. Las peñas deben estar registradas en el registro municipal de Peñas",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Solicitud por escrito de las actividades en el Registro o sede electrónica hasta el 10 de mayo del año correspondiente, además de presentarlas en la reunión de la comisión de fiestas",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 2,
+     "texto": "Solicitud por escrito de las actividades a realizar, en el Registro o sede electrónica del Ayuntamiento, hasta el 10 de mayo del año correspondiente.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Durante las Fiestas de San Roque, del 11 al 16 de agosto de 2026",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 2,
+     "texto": "Con motivo de la próxima celebración de las Fiestas de San Roque en el municipio de Sigüenza, que se celebraran del 11 al 16 de agosto de 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 15 de octubre, en el Registro municipal o la sede electrónica, con facturas, justificante bancario de pago, documentos gráficos y certificado de actividades",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "El plazo de la justificación de las actividades realizadas deberá presentarse hasta del 15 de octubre del año de que se trate",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 22000,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 5,
+     "texto": "Autorizar y Disponer el gasto correspondiente con cargo a la aplicación presupuestaria 334-4800300, por un importe máximo de 22.000 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago único por el importe total, una vez justificada la realización de la actividad",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "Las subvenciones se harán efectivas en un pago único por importe total de la ayuda concedida.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "En la justificación se declara si se ha concedido otra ayuda pública con el mismo objeto",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 16,
+     "texto": "Que no se ha concedido ninguna ayuda o subvención de ninguna otra administración pública y cuyo objeto coincida con la subvención cuya cuenta justificativa se presenta",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar registrada en el registro municipal de Peñas",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "a. Las peñas deben estar registradas en el registro municipal de Peñas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presentar la actividad en la reunión de la comisión de fiestas que aprueba el programa",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Presentación de la actividad en la reunión de la comisión de fiestas donde se apruebe el programa para cada año.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitar por escrito las actividades hasta el 10 de mayo",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 2,
+     "texto": "Solicitud por escrito de las actividades a realizar, en el Registro o sede electrónica del Ayuntamiento, hasta el 10 de mayo del año correspondiente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo puntúan las actividades programadas y efectivamente desarrolladas",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Las actividades objetos, de subvención serán las que siguen con la siguiente puntuación por actividad programada y efectivamente desarrollada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los conciertos, verbenas o vermús con orquesta no deben coincidir con otra actividad programada y requieren los permisos legales",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "Estas actividades no deberán coincidir con ninguna otra actividad programada y deberán contar con los permisos necesarios según legislación vigente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presentar la relación de peñistas con nombre, apellidos y DNI (Anexo IV) en la solicitud o antes de las fiestas",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 4,
+     "texto": "Presentar, en el momento de la solicitud o antes del inicio de las fiestas, ante el Ayuntamiento una relación de peñistas indicando su nombre, apellidos y DNI.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Participar en el desfile inaugural de fiestas con o sin carroza",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 9,
+     "texto": "Participar en el Desfile inaugural de fiestas con o sin carroza.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Participar en el pregón, el desfile de peñas y los pasacalles, y colaborar con la organización de los espectáculos",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 9,
+     "texto": "Participar activa y plenamente en el Pregón oficial y Desfile de peñas inaugural de las fiestas, así como en los distintos pasacalles",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Asistir a conciertos, verbenas y actos deportivos, culturales y taurinos",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 9,
+     "texto": "Asistir activa y plenamente a conciertos y verbenas, así como actos deportivos, culturales y taurinos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Colaborar en la cena de hermandad y en la organización de las actividades cuando se les requiera",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 9,
+     "texto": "Colaborar y g. ayudar siempre que sean requeridas, en la organización de las distintas actividades programadas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Participar con dos representantes en la elección del cartel y del pregonero y, si se les pide, como jurado",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 9,
+     "texto": "Participar con dos representantes de todas las peñas en la elección del Cartel mural anunciador de las fiestas, así como en la elección del pregonero.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Nombrar comisiones que se integren en la Comisión de fiestas para espectáculos musicales, taurinos, deportivos o culturales",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 9,
+     "texto": "Nombrar comisiones individualizadas que se integren en la Comisión de fiestas o en las Comisiones que desde ésta se nombren, para espectáculos musicales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Participación de al menos 5 peñistas mayores de 16 años en las actividades, acreditada con documentos gráficos",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "de las peñas en las actividades realizadas, al menos 5 peñistas,",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos de las actividades subvencionadas, acreditados con facturas originales",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 14,
+     "texto": "Facturas originales correspondientes a los gastos de las actividades subvencionadas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Conciertos, verbenas o vermús con grupo orquesta",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "Celebración Conciertos / verbenas / vermús con grupo orquesta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Charangas (día completo o medio día, dianas, cabezudos, vermús o conciertos con charanga)",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Charanga por día completo: 2,5 puntos. Por medio día: 1pto.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Desfile inaugural de fiestas con carroza",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Con carroza: 1 punto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Desfile inaugural de fiestas sin carroza",
+    "puntosMaximos": 0.5,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Sin carroza: 0,5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Diana floreada hasta la Plaza de Toros (máximo dos charangas por día), punto a repartir",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Diana floreada por las calles de la ciudad, hasta la Plaza de Toros (máximo dos charangas por día): 1 punto a repartir.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Desfile de cabezudos con charanga (máximo dos charangas por día), a repartir",
+    "puntosMaximos": 0.5,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 2,
+     "texto": "Desfile de cabezudos, acompañados por charanga (máximo dos charangas por día): 0,5 puntos a repartir.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Toque de cambio de tercio en espectáculos taurinos (máximo una charanga por día)",
+    "puntosMaximos": 0.5,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 3,
+     "texto": "Toque de cambio de tercio, en espectáculos taurinos (máximo una charanga por día): 0,5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Charanga por día completo (medio día: 1 punto)",
+    "puntosMaximos": 2.5,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 7,
+     "texto": "Charanga por día completo: 2,5 puntos. Por medio día: 1pto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Otras actividades propuestas y autorizadas por la Comisión de Fiestas",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 3,
+     "texto": "Otras actividades que sean propuestas a la Comisión de Fiestas, y sean autorizadas por la misma: 1 punto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Conciertos, verbenas o vermús con grupo orquesta",
+    "puntosMaximos": 2.5,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "contar con los permisos necesarios según legislación vigente. 2,5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Vermús o conciertos con charanga (máximo 3 por día, mínimo una hora)",
+    "puntosMaximos": 0.5,
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "Vermús/Conciertos con charanga, (máximo 3 por día) Duración mínima de una hora en punto asignado): 0,5 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud de subvención de actividades (Anexo V)",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 12,
+     "texto": "SOLICITUD DE SUBVENCIÓN ACTIVIDADES - FIESTAS DE SAN ROQUE 20___",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Listado de peñistas (Anexo IV), obligatorio para todas las peñas",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 13,
+     "texto": "Listado de Peñistas (Anexo IV, obligatorio para todas las peñas)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si se solicita carroza: permiso de circulación, carné de conducir del conductor y seguro de los vehículos",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 13,
+     "texto": "Si solicita carroza: ☐Permiso Circulación Vehículo (Tractor Y Remolque) ☐Carné Conducir Conductor. ☐Seguro De Los Vehículos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de terceros con los datos bancarios, con visto bueno de la entidad bancaria",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 14,
+     "texto": "Ruego que, a todos los efectos, admitan los datos que a continuación se transcriben para su inclusión en la ficha de terceros correspondiente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: facturas originales del gasto",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "de la siguiente documentación en el Registro municipal o por sede electrónica del Ayuntamiento de Sigüenza: a) Facturas originales del gasto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: documento bancario del pago de las facturas",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 14,
+     "texto": "Documento bancario del pago de las facturas presentadas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: fotografías que acrediten la participación de la peña (mínimo cinco peñistas adultos)",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 14,
+     "texto": "Fotografías que dejen constancia fidedigna de la participación de la peña con un número significativo de los miembros de la Peña",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificación: certificado de actividades realizadas y declaración responsable de estar al corriente con Hacienda, Seguridad Social y Ayuntamiento (Anexo VI)",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 8,
+     "texto": "Certificado de la realización de actividades y declaración responsable sobre cumplimiento de obligaciones tributarias, con la Seguridad Social y con el",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro o sede electrónica del Ayuntamiento de Sigüenza",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 2,
+     "texto": "Solicitud por escrito de las actividades a realizar, en el Registro o sede electrónica del Ayuntamiento",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "No obligatorio: se admite el Registro presencial o la sede electrónica",
+    "cita": {
+     "documento": 1480122,
+     "pagina": 2,
+     "texto": "Solicitud por escrito de las actividades a realizar, en el Registro o sede electrónica del Ayuntamiento",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es el decreto de aprobación de la convocatoria con las bases específicas en su Anexo I y los modelos de solicitud y justificación.",
+   "Solo para peñas de Sigüenza inscritas en el registro municipal; no está pensada para promotores de conciertos.",
+   "El plazo para solicitar las actividades es «hasta el 10 de mayo del año correspondiente», pero el decreto que aprueba la convocatoria es del 16 de junio de 2026: el documento no fija otro plazo de solicitud.",
+   "No hay importe máximo por peña ni porcentaje: la cuantía depende de los puntos por actividad y del crédito disponible.",
+   "El texto incluye erratas y apartados mal numerados (por ejemplo, la documentación justificativa repite la letra a)."
+  ]
+ },
+ "citas": {
+  "verificadas": 43,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}
