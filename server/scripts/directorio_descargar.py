@@ -45,8 +45,6 @@ FUENTES = [
      "Gobierno de Aragón · Información general de los municipios de Aragón", "CC BY 4.0 (Aragón Open Data)"),
     ("diba-electes.json", "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
      "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)", "CC BY 4.0"),
-    ("ine-poblacion.xlsx", [f"https://www.ine.es/pob_xls/pobmun{a}.{e}" for a in (25, 24) for e in ("xlsx",)],
-     "INE · Cifras oficiales de población de los municipios (padrón)", "INE: reutilización libre citando la fuente"),
     ("salamanca-alcaldes.csv",
      "https://datosabiertossalamanca.es/dataset/55683da4-954e-4b34-8ab2-bc4a97e70682/resource/204dceb7-50fd-42a7-9aa9-4a4d61f951e9/download/sp02.csv",
      "Diputación de Salamanca · Alcaldes de la provincia", "CC BY 4.0"),

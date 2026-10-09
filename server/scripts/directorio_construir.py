@@ -232,15 +232,7 @@ def main() -> None:
     def existe(fichero: str) -> bool:
         return (fuentes / fichero).exists()
 
-    # --- Población (INE) ---
-    poblacion: dict[str, int] = {}
-    if existe("ine-poblacion.xlsx"):
-        hoja = openpyxl.load_workbook(fuentes / "ine-poblacion.xlsx", read_only=True).active
-        for fila in hoja.iter_rows(values_only=True):  # CPRO, PROVINCIA, CMUN, NOMBRE, POB...
-            if fila and len(fila) >= 5 and str(fila[0] or "").strip().isdigit() and str(fila[2] or "").strip().isdigit():
-                cod = str(fila[0]).zfill(2) + str(fila[2]).zfill(3)
-                if isinstance(fila[4], (int, float)):
-                    poblacion[cod] = int(fila[4])
+    poblacion: dict[str, int] = {}  # de Wikidata (P1082)
 
     # --- Cataluña (Municat): ayuntamientos ---
     provincia_comarca: dict[str, Counter] = defaultdict(Counter)  # para ubicar los consejos comarcales
@@ -329,8 +321,7 @@ def main() -> None:
     if existe("wikidata-webs.csv"):
         for r in leer_csv(fuentes / "wikidata-webs.csv", ","):
             anotar(r["ine"], "wikidata-webs.csv", web=web(r.get("web")))
-            # Población de Wikidata solo si falta la del padrón del INE.
-            if r["ine"] not in poblacion and re.fullmatch(r"\d+(\.0+)?", r.get("poblacion") or ""):
+            if re.fullmatch(r"\d+(\.0+)?", r.get("poblacion") or ""):
                 poblacion[r["ine"]] = int(float(r["poblacion"]))
 
     # --- Cargos con área de cultura ---
@@ -494,6 +485,7 @@ def escribir_excel(ruta: Path, cultura: list[dict], aytos: list[dict], resumen: 
         ("· Comunidades con directorio oficial completo: Cataluña, País Vasco (web y alcalde), Galicia (sin alcalde), Castilla-La Mancha, "
          "Comunitat Valenciana (sin alcalde salvo Castellón), Navarra, Andalucía y Aragón. Salamanca: solo alcaldes. "
          "Resto: solo la web del ayuntamiento (Wikidata).", False),
+        ("· La población es la última cifra de Wikidata (padrón del INE), solo orientativa para ordenar.", False),
         ("· Los teléfonos y emails son los institucionales del ayuntamiento, no de la persona. Los cargos cambian: comprobad antes de escribir.", False),
         ("· Uso: son datos públicos. Para enviar comunicaciones comerciales por email, tened en cuenta la LSSI y el RGPD "
          "(identificaros, explicar de dónde sale el contacto y ofrecer la baja).", False),
