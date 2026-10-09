@@ -89,6 +89,10 @@ export interface Documento {
   descripcion: string | null;
   fecha: string | null;
   bytes: number | null;
+  /** Descarga oficial del PDF en la BDNS. */
+  url: string;
+  /** Hay texto extraído del PDF (se sirve en /api/convocatorias/:id/documentos/:idDocumento). */
+  texto: { paginas: number; caracteres: number; archivo: string } | null;
 }
 
 /** La misma convocatoria a lo largo de los años. */

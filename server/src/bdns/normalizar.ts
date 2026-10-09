@@ -2,7 +2,7 @@ import { clasificar } from '../clasificacion/musica.js';
 import { codigosProvinciaDe, type Referencias } from '../referencias.js';
 import { ambitoDesdeRegiones, ccaaDesdeNombre } from '../regiones.js';
 import type { Administracion, Convocatoria, ResumenConcesiones } from '../tipos.js';
-import { urlFichaBdns } from './cliente.js';
+import { urlDocumentoBdns, urlFichaBdns } from './cliente.js';
 import type { BdnsConcesion, BdnsConvocatoria } from './tipos.js';
 
 function administracionDesdeNivel1(nivel1: string | undefined): Administracion {
@@ -47,7 +47,7 @@ const descripciones = (xs: { descripcion?: string }[] | undefined) =>
 
 const DIRECTA_EN_TITULO = /nominativ|convenio|conveni\b|subvenci[oó]n directa|concesi[oó]n directa|subv\. directa/i;
 
-function tipoDesde(c: BdnsConvocatoria, titulo: string): Convocatoria['tipo'] {
+export function tipoDesde(c: BdnsConvocatoria, titulo = c.descripcion ?? ''): Convocatoria['tipo'] {
   if (c.tipoConvocatoria) return /directa/i.test(c.tipoConvocatoria) ? 'directa' : 'concurrencia';
   return DIRECTA_EN_TITULO.test(titulo) ? 'directa' : 'concurrencia';
 }
@@ -81,6 +81,16 @@ export function resumirConcesiones(concesiones: BdnsConcesion[]): ResumenConcesi
   };
 }
 
+/** Texto extraído de un documento de la convocatoria (datos/bdns/documentos/...). */
+export interface TextoDocumento {
+  idDocumento: number;
+  /** Ruta relativa a datos/bdns, o null si el PDF no tiene texto (escaneado). */
+  archivo: string | null;
+  paginas: number;
+  caracteres: number;
+  descargado: string;
+}
+
 export interface RegistroBdns {
   /** Respuesta íntegra de GET /convocatorias. */
   detalle: BdnsConvocatoria;
@@ -88,6 +98,7 @@ export interface RegistroBdns {
   concesiones: BdnsConcesion[] | null;
   primeraDescarga: string;
   actualizado: string;
+  textos?: TextoDocumento[];
 }
 
 /**
@@ -184,6 +195,11 @@ export function desdeBdns(registro: RegistroBdns, referencias?: Referencias | nu
         descripcion: d.descripcion?.trim() || null,
         fecha: fechaIso(d.datPublicacion),
         bytes: d.long ?? null,
+        url: urlDocumentoBdns(d.id!),
+        texto: (() => {
+          const t = registro.textos?.find((x) => x.idDocumento === d.id);
+          return t?.archivo ? { paginas: t.paginas, caracteres: t.caracteres, archivo: t.archivo } : null;
+        })(),
       })),
     serie: null,
     texto,

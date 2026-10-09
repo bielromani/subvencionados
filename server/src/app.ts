@@ -2,6 +2,7 @@ import express, { type Request } from 'express';
 import { normalizar } from './clasificacion/musica.js';
 import type { Repositorio } from './db.js';
 import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
+import { agruparOrganismos, idOrganismo, type Organismo } from './organismos.js';
 import { LINEAS, PERFIL_POR_DEFECTO, validarPerfil } from './perfil.js';
 import { CCAA } from './regiones.js';
 import { ESTILOS, type Convocatoria } from './tipos.js';
@@ -12,7 +13,13 @@ const lista = (valor: unknown): string[] =>
 /** Lo que devolvemos al cliente: la convocatoria sin el texto bruto y con el plazo calculado hoy. */
 function vista(c: Convocatoria) {
   const { texto: _texto, ...resto } = c;
-  return { ...resto, plazo: plazo(c) };
+  return { ...resto, plazo: plazo(c), organismoId: idOrganismo(c.organoNiveles) };
+}
+
+/** En los listados no hace falta el texto completo de los extractos. */
+function vistaResumida(c: Convocatoria) {
+  const v = vista(c);
+  return { ...v, anuncios: v.anuncios.map(({ texto: _t, ...a }) => a) };
 }
 
 function filtrar(convocatorias: Convocatoria[], q: Request['query']): Convocatoria[] {
@@ -54,8 +61,23 @@ function ordenar(convocatorias: Convocatoria[], orden: unknown): Convocatoria[] 
   return [...convocatorias].sort((a, b) => clave(a).localeCompare(clave(b)));
 }
 
-export function crearApp(repo: Repositorio) {
+export interface OpcionesApp {
+  /** Lee el texto extraído de un documento (ruta relativa a datos/bdns). */
+  leerTexto?: (relativa: string) => string | null;
+}
+
+export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const app = express();
+
+  // Los organismos se recalculan solo cuando cambian las convocatorias.
+  let organismosCache: { version: number; lista: Organismo[]; porId: Map<string, Organismo> } | null = null;
+  const organismos = () => {
+    if (organismosCache?.version !== repo.version) {
+      const lista = agruparOrganismos(repo.listarConvocatorias());
+      organismosCache = { version: repo.version, lista, porId: new Map(lista.map((o) => [o.id, o])) };
+    }
+    return organismosCache;
+  };
   app.use(express.json({ limit: '100kb' }));
 
   app.get('/api/salud', (_req, res) => {
@@ -80,7 +102,7 @@ export function crearApp(repo: Repositorio) {
     const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 500);
     const pagina = Math.max(Number(req.query.pagina) || 1, 1);
     const items = resultado.slice((pagina - 1) * porPagina, pagina * porPagina);
-    res.json({ total: resultado.length, pagina, porPagina, items: items.map(vista) });
+    res.json({ total: resultado.length, pagina, porPagina, items: items.map(vistaResumida) });
   });
 
   app.get('/api/convocatorias/:id', (req, res) => {
@@ -90,6 +112,58 @@ export function crearApp(repo: Repositorio) {
       return;
     }
     res.json({ ...vista(c), clasificacion: c.clasificacion });
+  });
+
+  app.get('/api/convocatorias/:id/documentos/:idDocumento', (req, res) => {
+    const c = repo.obtenerConvocatoria(req.params.id);
+    const doc = c?.documentos.find((d) => String(d.id) === req.params.idDocumento);
+    const texto = doc?.texto && opciones.leerTexto ? opciones.leerTexto(doc.texto.archivo) : null;
+    if (!doc || !texto) {
+      res.status(404).json({ error: 'Texto del documento no disponible' });
+      return;
+    }
+    // Las páginas van separadas por saltos de página (\f), para poder citarlas.
+    res.json({ id: doc.id, nombre: doc.nombre, url: doc.url, paginas: texto.split('\f').map((p) => p.trim()) });
+  });
+
+  app.get('/api/organismos', (req, res) => {
+    const texto = typeof req.query.q === 'string' ? normalizar(req.query.q.trim()) : '';
+    const ccaa = lista(req.query.ccaa);
+    const administraciones = lista(req.query.administracion);
+    let resultado = organismos().lista.filter(
+      (o) =>
+        (!texto || normalizar(o.niveles.join(' ')).includes(texto)) &&
+        (!ccaa.length || (o.ubicacion && ccaa.includes(o.ubicacion.ccaa))) &&
+        (!administraciones.length || administraciones.includes(o.administracion)),
+    );
+    const orden = req.query.orden;
+    resultado = [...resultado].sort((a, b) =>
+      orden === 'convocatorias'
+        ? b.convocatorias - a.convocatorias
+        : orden === 'recientes'
+          ? (b.ultimoAnio ?? 0) - (a.ultimoAnio ?? 0) || b.concedidoTotal - a.concedidoTotal
+          : b.concedidoTotal - a.concedidoTotal || b.convocatorias - a.convocatorias,
+    );
+    const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 500);
+    const pagina = Math.max(Number(req.query.pagina) || 1, 1);
+    const items = resultado
+      .slice((pagina - 1) * porPagina, pagina * porPagina)
+      .map(({ idsConvocatorias: _ids, ...o }) => o);
+    res.json({ total: resultado.length, pagina, porPagina, items });
+  });
+
+  app.get('/api/organismos/:id', (req, res) => {
+    const o = organismos().porId.get(req.params.id);
+    if (!o) {
+      res.status(404).json({ error: 'Organismo no encontrado' });
+      return;
+    }
+    const { idsConvocatorias, ...resto } = o;
+    const convocatorias = idsConvocatorias
+      .map((id) => repo.obtenerConvocatoria(id))
+      .filter((c): c is Convocatoria => c !== null)
+      .map(vistaResumida);
+    res.json({ ...resto, convocatorias });
   });
 
   app.get('/api/perfil', (_req, res) => {
@@ -117,7 +191,8 @@ export function crearApp(repo: Repositorio) {
       new Date(hoy.getFullYear(), hoy.getMonth() - meses, hoy.getDate()).toISOString().slice(0, 10);
     const recientes = (m: Coincidencia, meses: number) => (m.convocatoria.fechaPublicacion ?? '') >= haceMeses(meses);
     const vigente = (m: Coincidencia) => m.plazo === 'abierta' || m.plazo === 'proxima';
-    const salida = (ms: Coincidencia[]) => ms.slice(0, 50).map((m) => ({ ...m, convocatoria: vista(m.convocatoria) }));
+    const salida = (ms: Coincidencia[]) =>
+      ms.slice(0, 50).map((m) => ({ ...m, convocatoria: vistaResumida(m.convocatoria) }));
 
     const todas = emparejar(repo.listarConvocatorias(), perfil, hoy);
     const directas = todas.filter((m) => m.encaje === 'directo');

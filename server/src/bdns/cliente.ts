@@ -10,6 +10,10 @@ export const URLS_BASE_POR_DEFECTO = [
 /** Identificador de la finalidad "CULTURA" en GET /finalidades. */
 export const FINALIDAD_CULTURA = 11;
 
+/** Descarga oficial de un documento (PDF) de una convocatoria. */
+export const urlDocumentoBdns = (idDocumento: number) =>
+  `https://www.pap.hacienda.gob.es/bdnstrans/api/convocatorias/documentos?idDocumento=${idDocumento}`;
+
 /** Ficha pública de una convocatoria, para enlazarla desde la web. */
 export const urlFichaBdns = (codigo: string) =>
   `https://www.pap.hacienda.gob.es/bdnstrans/GE/es/convocatorias/${encodeURIComponent(codigo)}`;

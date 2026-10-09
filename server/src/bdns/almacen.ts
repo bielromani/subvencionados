@@ -3,7 +3,7 @@
 // datos/bdns/estado.json con lo que queda pendiente de descargar.
 
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, posix } from 'node:path';
 import type { RegistroBdns } from './normalizar.js';
 
 export interface EstadoRecoleccion {
@@ -41,7 +41,26 @@ export class Almacen {
   guardar(registro: RegistroBdns) {
     const codigo = codigoDe(registro);
     const previo = this.registros.get(codigo);
-    this.registros.set(codigo, previo ? { ...registro, primeraDescarga: previo.primeraDescarga } : registro);
+    // Al refrescar una convocatoria se conservan la fecha de primera descarga y los textos ya extraídos.
+    this.registros.set(
+      codigo,
+      previo
+        ? { ...registro, primeraDescarga: previo.primeraDescarga, textos: registro.textos ?? previo.textos }
+        : registro,
+    );
+  }
+
+  /** Guarda el texto de un documento y devuelve su ruta relativa a la raíz del almacén. */
+  guardarTexto(registro: RegistroBdns, idDocumento: number, texto: string): string {
+    const relativa = posix.join('documentos', anioDe(registro), `${idDocumento}.txt`);
+    mkdirSync(join(this.raiz, 'documentos', anioDe(registro)), { recursive: true });
+    writeFileSync(join(this.raiz, relativa), `${texto}\n`);
+    return relativa;
+  }
+
+  leerTexto(relativa: string): string | null {
+    const ruta = join(this.raiz, relativa);
+    return existsSync(ruta) ? readFileSync(ruta, 'utf8') : null;
   }
 
   /** Escribe todos los ficheros. Solo reescribe los años con contenido distinto. */

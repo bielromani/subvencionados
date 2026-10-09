@@ -7,7 +7,7 @@
 import { clasificar } from '../clasificacion/musica.js';
 import type { Almacen } from './almacen.js';
 import { type ClienteBdns, ErrorBdns, FINALIDAD_CULTURA } from './cliente.js';
-import { anonimizarConcesion, type RegistroBdns } from './normalizar.js';
+import { anonimizarConcesion, type RegistroBdns, tipoDesde } from './normalizar.js';
 import type { BdnsResultadoBusqueda } from './tipos.js';
 
 // La búsqueda de la BDNS no distingue tildes pero busca subcadenas ("opera" encuentra
@@ -52,6 +52,13 @@ export interface OpcionesRecoleccion {
   guardarCada?: number;
   ahora?: () => Date;
   log?: (mensaje: string) => void;
+  /**
+   * Extrae el texto de un PDF (null si no tiene texto). Sin esta función no se descargan
+   * documentos (p. ej. en local sin pdftotext).
+   */
+  extraerTexto?: (pdf: Uint8Array) => Promise<string | null>;
+  /** Solo se descargan documentos de concursos registrados desde esta fecha (aaaa-mm-dd). */
+  documentosDesde?: string;
 }
 
 export interface ResultadoRecoleccion {
@@ -61,6 +68,32 @@ export interface ResultadoRecoleccion {
   fallidas: string[];
   pendientes: number;
   completada: boolean;
+  /** Documentos descargados y con texto extraído en esta ejecución. */
+  documentos: number;
+  documentosPendientes: number;
+}
+
+type DocumentoBdns = NonNullable<RegistroBdns['detalle']['documentos']>[number];
+
+/** Preferimos el texto en castellano de la convocatoria; si no, cualquiera que no sea la otra lengua. */
+export function elegirDocumento(documentos: DocumentoBdns[]): DocumentoBdns | null {
+  const conId = documentos.filter((d) => d.id != null);
+  return (
+    conId.find((d) => /castellano/i.test(d.descripcion ?? '')) ??
+    conId.find((d) => !/otra lengua/i.test(d.descripcion ?? '')) ??
+    conId[0] ??
+    null
+  );
+}
+
+/** Concursos con documento y sin texto todavía: lo que necesita la ficha completa (Fase 2). */
+export function necesitaDocumento(r: RegistroBdns, desde: string): boolean {
+  return (
+    tipoDesde(r.detalle) === 'concurrencia' &&
+    (r.detalle.fechaRecepcion ?? '') >= desde &&
+    !r.textos?.length &&
+    elegirDocumento(r.detalle.documentos ?? []) !== null
+  );
 }
 
 const dia = (d: Date) => d.toISOString().slice(0, 10);
@@ -125,6 +158,8 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
     fallidas: [],
     pendientes: 0,
     completada: false,
+    documentos: 0,
+    documentosPendientes: 0,
   };
   const guardarCada = o.guardarCada ?? 200;
   let hechas = 0;
@@ -154,10 +189,41 @@ export async function recolectar(o: OpcionesRecoleccion): Promise<ResultadoRecol
     }
   }
 
+  // 4. Texto de las bases de los concursos (lo que quede de tiempo).
+  if (o.extraerTexto) {
+    const desde = o.documentosDesde ?? dia(new Date(ahora().getTime() - 3 * 365 * 86_400_000));
+    const conDocumento = [...o.almacen.registros.values()]
+      .filter((r) => necesitaDocumento(r, desde))
+      .sort((a, b) => (b.detalle.fechaRecepcion ?? '').localeCompare(a.detalle.fechaRecepcion ?? ''));
+    log(`Documentos por descargar: ${conDocumento.length}`);
+    for (const r of conDocumento) {
+      if (!quedaTiempo()) break;
+      const doc = elegirDocumento(r.detalle.documentos ?? [])!;
+      try {
+        const texto = await o.extraerTexto(await o.cliente.documento(doc.id!));
+        const archivo = texto ? o.almacen.guardarTexto(r, doc.id!, texto) : null;
+        r.textos = [
+          {
+            idDocumento: doc.id!,
+            archivo,
+            paginas: texto ? texto.split('\f').length : 0,
+            caracteres: texto?.length ?? 0,
+            descargado: ahora().toISOString(),
+          },
+        ];
+        if (texto) resultado.documentos++;
+      } catch (error) {
+        log(`  ✗ documento ${doc.id} de ${r.detalle.codigoBDNS}: ${(error as Error).message.split('\n')[0]}`);
+      }
+      if (++hechas % guardarCada === 0) o.almacen.escribir();
+    }
+    resultado.documentosPendientes = [...o.almacen.registros.values()].filter((r) => necesitaDocumento(r, desde)).length;
+  }
+
   estado.pendientes = [...pendientes];
   estado.ultimaEjecucion = ahora().toISOString();
   o.almacen.escribir();
   resultado.pendientes = pendientes.size;
-  resultado.completada = pendientes.size === 0;
+  resultado.completada = pendientes.size === 0 && resultado.documentosPendientes === 0;
   return resultado;
 }

@@ -9,6 +9,7 @@ import { parseArgs } from 'node:util';
 import { Almacen } from '../bdns/almacen.js';
 import { ClienteBdns } from '../bdns/cliente.js';
 import { desdeBdns } from '../bdns/normalizar.js';
+import { extraerConPdftotext, pdftotextDisponible } from '../bdns/pdf.js';
 import { recolectar, type ResultadoRecoleccion } from '../bdns/recolector.js';
 import { Referencias } from '../referencias.js';
 import { config } from '../config.js';
@@ -26,6 +27,7 @@ const { values } = parseArgs({
 });
 
 const almacen = new Almacen(config.rutaDatosBdns);
+if (!pdftotextDisponible()) console.warn('pdftotext no está instalado: no se descargarán documentos.');
 
 // Por defecto retoma una semana antes de lo último buscado (la BDNS registra con retraso).
 let desde: Date;
@@ -44,6 +46,7 @@ const resultado = await recolectar({
   hasta,
   limiteMs: Number(values.minutos) * 60_000,
   refrescarDias: Number(values['refrescar-dias']),
+  extraerTexto: pdftotextDisponible() ? extraerConPdftotext : undefined,
 });
 
 const referencias = Referencias.cargar(config.rutaDatos);
@@ -53,7 +56,12 @@ console.log(`\n${resumen}`);
 // sirven al workflow para decidir si relanzarse.
 if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${resumen}\n`);
 if (process.env.GITHUB_OUTPUT) {
-  appendFileSync(process.env.GITHUB_OUTPUT, `nuevas=${resultado.nuevas}\npendientes=${resultado.pendientes}\n`);
+  // "pendientes" incluye los documentos: el workflow se relanza mientras quede algo y haya progreso.
+  const progreso = resultado.nuevas + resultado.documentos;
+  appendFileSync(
+    process.env.GITHUB_OUTPUT,
+    `progreso=${progreso}\npendientes=${resultado.pendientes + resultado.documentosPendientes}\n`,
+  );
 }
 
 function contar(valores: string[]): [string, number][] {
@@ -78,7 +86,8 @@ function resumir(todas: Convocatoria[], r: ResultadoRecoleccion): string {
     '## Recolección BDNS',
     '',
     `- Esta ejecución: ${r.descubiertas} con título musical, ${r.nuevas} nuevas, ${r.refrescadas} refrescadas, ${r.fallidas.length} fallidas.`,
-    `- Pendientes para la próxima ejecución: ${r.pendientes}${r.completada ? ' (al día)' : ''}.`,
+    `- Documentos con texto extraído: ${r.documentos} en esta ejecución, ${r.documentosPendientes} pendientes.`,
+    `- Convocatorias pendientes para la próxima ejecución: ${r.pendientes}${r.completada ? ' (todo al día)' : ''}.`,
     `- Total guardadas: ${todas.length} · de música: ${musicales.length} · compatibles con jazz, clásica u ópera: ${objetivo.length}.`,
     `- Concursos abiertos hoy: ${objetivo.filter((c) => plazo(c) === 'abierta').length} · por abrir: ${objetivo.filter((c) => plazo(c) === 'proxima').length}.`,
     `- Importe concedido registrado en las compatibles: ${euros(objetivo.reduce((t, c) => t + (c.concesiones?.importeTotal ?? 0), 0))}.`,

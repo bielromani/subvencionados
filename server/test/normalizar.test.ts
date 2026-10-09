@@ -98,6 +98,16 @@ describe('anuncios y documentos', () => {
       ),
     );
     expect(c.anuncios).toEqual([{ titulo: 'Extracto', diario: 'B.O.P. DE PONTEVEDRA', fecha: '2026-09-14', url: 'https://boppo.depo.gal/x', texto: 'Primero.' }]);
-    expect(c.documentos).toEqual([{ id: 1517570, nombre: 'Acuerdo_Jazz.pdf', descripcion: 'Texto en castellano de la convocatoria', fecha: '2026-09-04', bytes: 83450 }]);
+    expect(c.documentos).toEqual([
+      {
+        id: 1517570,
+        nombre: 'Acuerdo_Jazz.pdf',
+        descripcion: 'Texto en castellano de la convocatoria',
+        fecha: '2026-09-04',
+        bytes: 83450,
+        url: 'https://www.pap.hacienda.gob.es/bdnstrans/api/convocatorias/documentos?idDocumento=1517570',
+        texto: null,
+      },
+    ]);
   });
 });

@@ -30,6 +30,10 @@ beforeEach(() => {
         }),
         CONCESIONES_FIGUERES,
       ),
+      {
+        ...registro(detalle('300', { descripcion: 'Concurso de música 2026', fechaRecepcion: '2026-01-01', documentos: [{ id: 1, descripcion: 'Texto en castellano de la convocatoria', nombreFic: 'bases.pdf' }] })),
+        textos: [{ idDocumento: 1, archivo: 'documentos/2026/1.txt', paginas: 2, caracteres: 15, descargado: '2026-10-09' }],
+      },
       registro(
         detalle('200', {
           descripcion: 'Ayudas a la temporada de ópera y zarzuela',
@@ -40,7 +44,7 @@ beforeEach(() => {
       ),
     ].map((r) => desdeBdns(r)),
   );
-  app = crearApp(repo);
+  app = crearApp(repo, { leerTexto: (r) => (r === 'documentos/2026/1.txt' ? 'Primera\fSegunda' : null) });
 });
 
 const ids = (res: request.Response) => res.body.items.map((c: { id: string }) => c.id);
@@ -48,29 +52,39 @@ const ids = (res: request.Response) => res.body.items.map((c: { id: string }) =>
 describe('GET /api/convocatorias', () => {
   it('por defecto solo devuelve las de música, sin el texto bruto', async () => {
     const res = await request(app).get('/api/convocatorias').expect(200);
-    expect(ids(res)).toEqual(['bdns-932065', 'bdns-100', 'bdns-200']);
+    expect(ids(res)).toEqual(['bdns-932065', 'bdns-100', 'bdns-300', 'bdns-200']);
     expect(res.body.items[0].texto).toBeUndefined();
     expect(res.body.items[0].concesiones.importeTotal).toBe(28000);
   });
 
   it('todas=true incluye las no musicales', async () => {
     const res = await request(app).get('/api/convocatorias?todas=true').expect(200);
-    expect(res.body.total).toBe(4);
+    expect(res.body.total).toBe(5);
   });
 
   it('filtra por estilo, comunidad, tipo, plazo y texto', async () => {
-    expect(ids(await request(app).get('/api/convocatorias?estilo=opera'))).toEqual(['bdns-200']);
-    expect(ids(await request(app).get('/api/convocatorias?ccaa=Andalucía'))).toEqual(['bdns-200']);
+    // La 300 es de música en general: también es compatible con ópera.
+    expect(ids(await request(app).get('/api/convocatorias?estilo=opera'))).toEqual(['bdns-300', 'bdns-200']);
+    // La 300 no tiene restricción territorial («TODO EL MUNDO»): aparece en cualquier comunidad.
+    expect(ids(await request(app).get('/api/convocatorias?ccaa=Andalucía'))).toEqual(['bdns-300', 'bdns-200']);
     expect(ids(await request(app).get('/api/convocatorias?tipo=directa'))).toEqual(['bdns-932065']);
     expect(ids(await request(app).get('/api/convocatorias?plazo=abierta'))).toEqual(['bdns-100']);
+    expect(ids(await request(app).get('/api/convocatorias?q=concurso de musica'))).toEqual(['bdns-300']);
     expect(ids(await request(app).get('/api/convocatorias?q=figueres'))).toEqual(['bdns-932065']);
-    expect(ids(await request(app).get('/api/convocatorias?desde=2026-01-01'))).toEqual(['bdns-932065', 'bdns-100']);
+    expect(ids(await request(app).get('/api/convocatorias?desde=2026-01-01'))).toEqual(['bdns-932065', 'bdns-100', 'bdns-300']);
   });
 
   it('pagina', async () => {
     const res = await request(app).get('/api/convocatorias?porPagina=2&pagina=2').expect(200);
-    expect(res.body).toMatchObject({ total: 3, pagina: 2, porPagina: 2 });
-    expect(ids(res)).toEqual(['bdns-200']);
+    expect(res.body).toMatchObject({ total: 4, pagina: 2, porPagina: 2 });
+    expect(ids(res)).toEqual(['bdns-300', 'bdns-200']);
+  });
+
+  it('texto de un documento por páginas', async () => {
+    const res = await request(app).get('/api/convocatorias/bdns-300/documentos/1').expect(200);
+    expect(res.body).toMatchObject({ nombre: 'bases.pdf', paginas: ['Primera', 'Segunda'] });
+    expect(res.body.url).toBe('https://www.pap.hacienda.gob.es/bdnstrans/api/convocatorias/documentos?idDocumento=1');
+    await request(app).get('/api/convocatorias/bdns-300/documentos/2').expect(404);
   });
 
   it('detalle y 404', async () => {
@@ -108,6 +122,24 @@ describe('perfil y recomendaciones', () => {
 
     const res = await request(app).get('/api/para-ti').expect(200);
     expect(res.body.perfilCompleto).toBe(true);
-    expect(res.body.abiertas.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-100']);
+    expect(res.body.abiertas.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-100', 'bdns-300']);
+  });
+});
+
+describe('organismos', () => {
+  it('lista los organismos con convocatorias de música y su detalle', async () => {
+    const res = await request(app).get('/api/organismos').expect(200);
+    // Las cuatro convocatorias de prueba comparten organismo (detalle real 934378); la de
+    // fotografía no es de música y no cuenta.
+    expect(res.body.total).toBe(1);
+    const o = res.body.items[0];
+    expect(o).toMatchObject({ nombre: 'ORGANISMO AUTÓNOMO DE MUSEOS Y CENTROS', convocatorias: 4, directas: 1, concedidoTotal: 28000 });
+    expect(o.beneficiarios).toEqual([{ nombre: 'CASINO MENESTRAL FIGUERENC', importe: 28000, veces: 1 }]);
+    expect(o.porAnio.map((a: { anio: number }) => a.anio)).toEqual([2025, 2026]);
+
+    const detalle = await request(app).get(`/api/organismos/${o.id}`).expect(200);
+    expect(detalle.body.convocatorias.map((c: { id: string }) => c.id)).toEqual(['bdns-932065', 'bdns-100', 'bdns-300', 'bdns-200']);
+    expect(detalle.body.convocatorias[0].organismoId).toBe(o.id);
+    await request(app).get('/api/organismos/no-existe').expect(404);
   });
 });

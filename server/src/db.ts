@@ -11,6 +11,8 @@ export class Repositorio {
   private readonly db: DatabaseSync;
   /** Las lecturas son mucho más frecuentes que las escrituras: cacheamos la lista. */
   private cache: Convocatoria[] | null = null;
+  /** Cambia con cada escritura: sirve para invalidar cálculos derivados (organismos...). */
+  version = 0;
 
   constructor(ruta: string) {
     if (ruta !== ':memory:') mkdirSync(dirname(ruta), { recursive: true });
@@ -32,6 +34,7 @@ export class Repositorio {
   /** Inserta o actualiza. Conserva la fecha en que se vio por primera vez. Devuelve true si es nueva. */
   guardarConvocatoria(c: Convocatoria): boolean {
     this.cache = null;
+    this.version++;
     const previa = this.db
       .prepare('SELECT vista_por_primera_vez FROM convocatorias WHERE id = ?')
       .get(c.id) as { vista_por_primera_vez: string } | undefined;
