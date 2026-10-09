@@ -55,32 +55,31 @@ Un promotor que mueve grupos de jazz, clásica u ópera entra y encuentra, orden
 - [x] Clasificador de música por reglas ajustado con títulos reales.
 - [x] Perfil del promotor y recomendaciones por bloques; web con Para ti, Explorar y Mi perfil.
 - [ ] Terminar la descarga del histórico (en marcha en GitHub Actions).
-- [ ] Informe del nicho con las cifras reales: convocatorias por año, territorio, administración, importes, plazos.
+- [x] Informe del nicho generado a partir de los datos (`npm run informe` → `docs/informe-nicho.md`, se regenera a
+      diario). Falta que incluya el histórico completo.
 
 **Terminado cuando:** el histórico está completo, el workflow diario funciona varios días seguidos sin fallos y el
 informe de cifras está en `docs/`.
 
 ---
 
-## Fase 1 · Datos fiables y completos
+## Fase 1 · Datos fiables y completos (en curso)
 
 **Objetivo:** que no falte ninguna convocatoria relevante y que la clasificación sea medible.
 
-1. **Conjunto de evaluación.** Etiquetar a mano unas 300 convocatorias reales (¿es de música?, estilos, tipo de
-   beneficiario) y guardarlas en el repo. Medir precisión y cobertura del clasificador y fijar un mínimo (p. ej. 95 %
-   de precisión) que los tests comprueben siempre.
-2. **Convocatorias genéricas de cultura.** Muchas ayudas municipales «a actividades culturales» admiten conciertos
-   sin decirlo en el título. Descargar también las de finalidad Cultura que son concursos y marcarlas como «cultura
-   general».
-3. **Documentos y anuncios.** Comprobar el endpoint de documentos de la BDNS y descargar las bases reguladoras y el
-   extracto del boletín (texto extraído del PDF; el PDF se enlaza, no se copia).
-4. **Series de convocatorias.** Unir la misma convocatoria de distintos años (mismo órgano y título parecido) para
-   saber si se repite, cuándo abre normalmente y cómo evoluciona su presupuesto.
-5. **Territorio exacto.** Asociar cada ayuntamiento a su municipio, provincia y comunidad con el nomenclátor oficial
-   del INE, para que ninguna quede con «ámbito no indicado» y se puedan pintar en un mapa.
-6. **Directorio de organismos.** Normalizar los órganos convocantes (catálogo `/organos` de la BDNS) para tener
-   una ficha por organismo.
-7. **Vigilancia.** Aviso si el workflow diario falla o si la BDNS cambia el formato de sus respuestas.
+- [x] **Evaluación del clasificador.** Tres muestras de 300 convocatorias reales etiquetadas a mano, con métricas
+      ponderadas por estrato (`docs/evaluacion-clasificador.md`). Cobertura inicial del 57,6 %; cifra fiable actual:
+      precisión 99,3 %, cobertura 84,9 % (88,2 % de lo compatible). Los tests impiden empeorar.
+- [x] **Convocatorias genéricas de cultura** (concursos desde 2023 en los que un concierto puede encajar). Falta
+      verificarlas con la descarga real.
+- [x] **Documentos y extractos.** Texto de las bases por páginas (`datos/bdns/documentos/`) y extractos de los
+      boletines. Falta verificarlos con la descarga real.
+- [x] **Series de convocatorias** año a año, con mes habitual y previsión de la próxima.
+- [x] **Territorio exacto** con el catálogo de entidades locales de la BDNS y el nomenclátor del INE
+      (134 de 134 organismos locales ubicados en la primera muestra).
+- [x] **Directorio de organismos** (`GET /api/organismos`).
+- [x] **Vigilancia**: integración continua en cada push y validación del formato de la BDNS en cada descarga.
+- [ ] Redescubrir el histórico desde 2014 con el clasificador nuevo (recoge lo que antes se escapaba).
 
 **Terminado cuando:** el clasificador supera el mínimo fijado en el conjunto de evaluación, todas las convocatorias
 tienen territorio, y las series muestran el historial de las convocatorias recurrentes.
