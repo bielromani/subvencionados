@@ -15,7 +15,7 @@ from pathlib import Path
 
 SOCRATA = "https://analisi.transparenciacatalunya.cat/resource"
 
-# (fichero, url, descripción, licencia)
+# (fichero, url o lista de URL alternativas, descripción, licencia)
 FUENTES = [
     ("cat-carrecs.csv", f"{SOCRATA}/m5nd-xjza.csv?$limit=100000",
      "Generalitat de Catalunya · Càrrecs electes dels ens locals (Municat)", "CC BY 4.0 (dades obertes Generalitat)"),
@@ -43,6 +43,10 @@ FUENTES = [
      "Junta de Andalucía · Registro Andaluz de Entidades Locales (RAEL)", "CC BY 4.0 (datos abiertos Junta de Andalucía)"),
     ("aragon-municipios.csv", "https://opendata.aragon.es/GA_OD_Core/download?resource_id=11&formato=csv",
      "Gobierno de Aragón · Información general de los municipios de Aragón", "CC BY 4.0 (Aragón Open Data)"),
+    ("diba-electes.json", "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
+     "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)", "CC BY 4.0"),
+    ("ine-poblacion.xlsx", ["https://www.ine.es/pob_xls/pobmun25.xlsx", "https://www.ine.es/pob_xls/pobmun24.xlsx"],
+     "INE · Cifras oficiales de población de los municipios (padrón)", "INE: reutilización libre citando la fuente"),
     ("salamanca-alcaldes.csv",
      "https://datosabiertossalamanca.es/dataset/55683da4-954e-4b34-8ab2-bc4a97e70682/resource/204dceb7-50fd-42a7-9aa9-4a4d61f951e9/download/sp02.csv",
      "Diputación de Salamanca · Alcaldes de la provincia", "CC BY 4.0"),
@@ -83,7 +87,15 @@ def main() -> None:
                 cuerpo = urllib.parse.urlencode({"query": WIKIDATA_CONSULTA}).encode()
                 datos = descargar(url, cuerpo, {"Accept": "text/csv"})
             else:
-                datos = descargar(url)
+                # Varias URL: la primera que responda (p. ej. el padrón del último año publicado).
+                candidatas = [url] if isinstance(url, str) else url
+                for i, u in enumerate(candidatas):
+                    try:
+                        datos, url = descargar(u), u
+                        break
+                    except RuntimeError:
+                        if i == len(candidatas) - 1:
+                            raise
             if len(datos) < 2000 or datos.lstrip()[:15].lower().startswith((b"<!doctype", b"<html")):
                 raise RuntimeError(f"respuesta inesperada ({len(datos)} bytes)")
             (destino / fichero).write_bytes(datos)
