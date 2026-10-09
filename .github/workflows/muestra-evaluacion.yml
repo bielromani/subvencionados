@@ -1,0 +1,30 @@
+# Saca de la BDNS una muestra de títulos para evaluar el clasificador (se ejecuta a mano).
+name: Muestra de evaluación
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  muestra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run muestra-evaluacion -w server
+      - name: Guardar la muestra
+        run: |
+          git config user.name "recolector-bdns"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add server/test/evaluacion/muestra.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Muestra para evaluar el clasificador"
+          for i in 1 2 3 4; do git push && exit 0; git pull --rebase; done
+          exit 1
