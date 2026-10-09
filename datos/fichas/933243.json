@@ -1,0 +1,190 @@
+{
+ "version": 1,
+ "codigoBdns": "933243",
+ "generada": "2026-10-09T10:25:23.578Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1534095,
+   "nombre": "ConvoAnticipCLT028_ES.pdf",
+   "paginas": 3,
+   "huella": "de59db2e06737cb1"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Convocatoria anticipada de la Oficina de Apoyo a la Iniciativa Cultural (OSIC) para actividades de federaciones de asociacionismo y cultura popular y tradicional en 2027.",
+   "Para federaciones que programen actividades culturales de asociacionismo y cultura popular y tradicional.",
+   "Dotación máxima de 1.300.000 euros, ampliable.",
+   "Solicitudes del 9 al 27 de octubre de 2026 (el último día hasta las 14:00).",
+   "Tramitación exclusivamente electrónica en Trámites gencat."
+  ],
+  "objeto": {
+   "valor": "Subvenciones a federaciones que programen actividades culturales relacionadas con el asociacionismo y la cultura popular y tradicional en 2027",
+   "cita": {
+    "documento": 1534095,
+    "pagina": 2,
+    "texto": "Abrir la convocatoria anticipada para la concesión de subvenciones, en régimen de concurrencia competitiva, a federaciones que programen actividades culturales relacionadas con el asociacionismo y la cultura popular y tradicional para el año 2027",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Federaciones que programen actividades culturales relacionadas con el asociacionismo y la cultura popular y tradicional",
+   "cita": {
+    "documento": 1534095,
+    "pagina": 1,
+    "texto": "a federaciones que programen actividades culturales relacionadas con el asociacionismo y la cultura popular y tradicional para el año 2027",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 9 al 27 de octubre de 2026; el 27 de octubre hasta las 14:00 horas",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "El periodo para presentar las solicitudes es del 9 al 27 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-10-09",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "El periodo para presentar las solicitudes es del 9 al 27 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-10-27",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "El día 27 de octubre de 2026 se pueden presentar solicitudes hasta las 14:00:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Cuatro meses desde el día siguiente a la publicación de la convocatoria; sin acuerdo, se entienden desestimadas",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 3,
+     "texto": "a través de un acuerdo que se debe dictar y publicar en el plazo máximo de cuatro meses, a contar desde el día siguiente al de la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades del año 2027",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "relacionadas con el asociacionismo y la cultura popular y tradicional para el año 2027 (CLT028).",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 1300000,
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "La dotación máxima de la convocatoria es de 1.300.000,00 euros, distribuidos entre las siguientes anualidades",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser una federación que programe actividades culturales de asociacionismo y cultura popular y tradicional",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 1,
+     "texto": "a federaciones que programen actividades culturales relacionadas con el asociacionismo y la cultura popular y tradicional para el año 2027",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de un mecanismo de identificación y firma electrónica del catálogo de la Orden VPD/93/2022",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 3,
+     "texto": "Las personas solicitantes deben disponer de alguno de los mecanismos de identificación y firma electrónica que prevé la Orden VPD/93/2022, de 28 de abril",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Exclusivamente por vía electrónica en la web Trámites gencat",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "se deben realizar exclusivamente por vía electrónica, a través de la web Trámites gencat https://web.gencat.cat/ca/tramits/,",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://web.gencat.cat/ca/tramits/",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 2,
+     "texto": "exclusivamente por vía electrónica, a través de la web Trámites gencat https://web.gencat.cat/ca/tramits/,",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación electrónica obligatoria con sistema de firma electrónica",
+    "cita": {
+     "documento": 1534095,
+     "pagina": 3,
+     "texto": "utilizando el sistema de firma electrónica de acuerdo con la Orden CLT/4/2013, de 2 de enero",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es la convocatoria (resolución que publica el acuerdo de la OSIC); requisitos, actividades y gastos subvencionables, criterios de valoración, importes, documentación, pago y justificación están en las bases generales (Resolución CLT/961/2024, modificada por la CLT/970/2026) y en las bases específicas (Resolución CLT/3428/2026, DOGC núm. 9761, de 30.9.2026), que no se incluyen.",
+   "La dotación se reparte en 1.040.000,00 euros con cargo al presupuesto de 2027 y 260.000,00 euros con cargo al de 2028, y puede ampliarse hasta el triple según las solicitudes y la disponibilidad presupuestaria.",
+   "La concesión está condicionada a la existencia de crédito adecuado y suficiente en el momento de la resolución, que se realizará durante 2027.",
+   "Las propuestas y resoluciones se publican en el tablón electrónico de la Generalitat (https://tauler.seu-e.cat/inici?idEns=1), con efectos de notificación.",
+   "La referencia BDNS aparece sin completar («XXXXXX») y la resolución sin número; parece una versión previa a la publicación.",
+   "Solo para federaciones de cultura popular y tradicional: de interés limitado para un promotor de jazz, clásica u ópera."
+  ]
+ },
+ "citas": {
+  "verificadas": 13,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

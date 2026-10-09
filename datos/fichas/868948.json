@@ -1,0 +1,177 @@
+{
+ "version": 1,
+ "codigoBdns": "868948",
+ "generada": "2026-10-09T10:25:23.581Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1380139,
+   "nombre": "BOPA_19-11.pdf",
+   "paginas": 2,
+   "huella": "406391fdc2b71783"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Extracto de la convocatoria del Patronato de Turismo y Playas de Alicante para eventos musicales de relevancia turística, anualidad 2025.",
+   "Para empresas que realicen eventos de la industria musical en la ciudad de Alicante.",
+   "Cuantía total de 175.000 euros, en concurrencia competitiva.",
+   "Plazo: diez días naturales desde el día siguiente a la publicación del extracto en el BOP de Alicante.",
+   "Solicitud obligatoria por la Sede Electrónica con certificado digital de la entidad."
+  ],
+  "objeto": {
+   "valor": "Contribuir a sufragar parte de los gastos de empresas que realicen eventos de la industria musical en Alicante de relevancia turística que posicionen la ciudad como destino",
+   "cita": {
+    "documento": 1380139,
+    "pagina": 1,
+    "texto": "Contribuir a sufragar parte de los gastos derivados de su participación en la consecución de los objetivos contemplados en las Bases de la convocatoria.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Empresas que realicen eventos de la industria musical en la ciudad de Alicante de significada relevancia turística",
+   "cita": {
+    "documento": 1380139,
+    "pagina": 1,
+    "texto": "Empresas por la realización de eventos de la industria musical en la ciudad de Alicante, de significada relevancia para el sector turístico",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Diez días naturales desde el día siguiente a la publicación del extracto en el BOP de Alicante",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 2,
+     "texto": "Será de diez días naturales, contados a partir del día siguiente a la publicación del presente extracto en el B.O.P. de Alicante.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Anualidad 2025 (según el título; el extracto no detalla el periodo)",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 1,
+     "texto": "EMPRESAS PARA LA REALIZACIÓN DE EVENTOS MUSICALES DE RELEVANCIA TURÍSTICA, ANUALIDAD 2025",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 175000,
+    "cita": {
+     "documento": 1380139,
+     "pagina": 2,
+     "texto": "La cuantía total de la subvención será de ciento setenta y cinco mil euros (175.000 €)",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser empresa que realice eventos de la industria musical en la ciudad de Alicante",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 1,
+     "texto": "Empresas por la realización de eventos de la industria musical en la ciudad de Alicante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Eventos de significada relevancia turística que promuevan el posicionamiento de Alicante como destino",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 1,
+     "texto": "de significada relevancia para el sector turístico, que promuevan el posicionamiento de la ciudad de Alicante como destino.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las personas jurídicas deben relacionarse por medios electrónicos con el Ayuntamiento",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 2,
+     "texto": "las personas jurídicas están obligadas a relacionarse a través de medios electrónicos con el Ayuntamiento de Alicante.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede Electrónica del Ayuntamiento de Alicante, trámite habilitado al efecto",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 2,
+     "texto": "se presentará obligatoriamente a través de la Sede Electrónica mediante certificado digital de la entidad utilizando el trámite habilitado al efecto.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria con certificado digital de la entidad",
+    "cita": {
+     "documento": 1380139,
+     "pagina": 2,
+     "texto": "a través de la Sede Electrónica mediante certificado digital de la entidad",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto de la convocatoria publicado en el BOP de Alicante (n.º 221, de 19/11/2025), no las bases: faltan requisitos detallados, gastos subvencionables, criterios de valoración, importe máximo por beneficiario, documentación, plazos de ejecución y justificación y forma de pago.",
+   "Las bases reguladoras y sus anexos se pueden consultar en www.alicante.es y www.alicanteturismo.com; no se incluyen.",
+   "Concesión en régimen de concurrencia competitiva mediante convocatoria y procedimiento selectivo único.",
+   "Convocatoria de la anualidad 2025, publicada en noviembre de 2025: probablemente ya cerrada; útil como referencia de convocatorias futuras para promotores de eventos musicales en Alicante."
+  ]
+ },
+ "citas": {
+  "verificadas": 10,
+  "revisar": 0,
+  "noConsta": 10
+ }
+}
