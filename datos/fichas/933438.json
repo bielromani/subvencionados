@@ -1,0 +1,622 @@
+{
+ "version": 1,
+ "codigoBdns": "933438",
+ "generada": "2026-10-09T14:08:01.582Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1531957,
+   "nombre": "Bases concorrencia.pdf",
+   "paginas": 27,
+   "huella": "c7bb7546f964b951"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Concello de Ferrol para actividades de promoción y fomento de la cultura organizadas por asociaciones culturales en 2026.",
+   "Para asociaciones culturales y entidades sin ánimo de lucro con sede en Ferrol.",
+   "Crédito total de 48.000 euros; máximo de 6.000 euros por entidad y hasta el 80 % del presupuesto de cada actividad.",
+   "Plazo: 10 días hábiles desde el día siguiente a la publicación del extracto en el BOP de A Coruña.",
+   "Solicitud obligatoriamente electrónica en la sede del Concello de Ferrol."
+  ],
+  "objeto": {
+   "valor": "Promoción y fomento de la cultura desde las asociaciones culturales y entidades sin ánimo de lucro con sede en Ferrol (actividades culturales, tradiciones, festejos, premios)",
+   "cita": {
+    "documento": 1531957,
+    "pagina": 2,
+    "texto": "do programa de subvencións que convoca a Concellería de Cultura do Concello de Ferrol para a promoción e fomento da Cultura dende as asociacións culturais e entidades sen ánimo de lucro",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones culturales y entidades sin ánimo de lucro legalmente constituidas que fomenten la cultura en el término municipal de Ferrol",
+   "cita": {
+    "documento": 1531957,
+    "pagina": 2,
+    "texto": "Poderán concorrer a esta convocatoria todas as asociacións culturais e entidades sen ánimo de lucro que cumpran os requisitos e finalidades recollidos nestas bases",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "10 días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de A Coruña",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "O prazo de presentación será de 10 días hábiles contados a partir do día seguinte ao da publicación do extracto da convocatoria no Boletín Oficial da Provincia da Coruña",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Nueve meses como máximo desde la publicación de la convocatoria en el BOP; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 6,
+     "texto": "O prazo máximo para resolver será de 9 meses contados dende o día de publicación da convocatoria no Boletín Oficial da Provincia",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero al 31 de diciembre de 2026; facturas emitidas en 2026",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 11,
+     "texto": "O prazo para executar as actividades comeza o 1 de xaneiro e remata o 31 de decembro de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 31 de enero de 2027, con el anexo II.1 en la sede electrónica, memoria, relación clasificada de gastos y relación de gastos totales; si se justifica menos del 50 % no se paga nada",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 11,
+     "texto": "O prazo límite para a xustificación da subvención rematará o 31 de xaneiro de 2027.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 48000,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 8,
+     "texto": "O crédito total dispoñible para o financiamento destas axudas é de 48.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 6000,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 8,
+     "texto": "O importe da subvención será, co límite de 6.000 € por entidade, do 80% como máximo do orzamento de gastos presentados pola entidade",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 8,
+     "texto": "O importe da subvención será, co límite de 6.000 € por entidade, do 80% como máximo do orzamento de gastos presentados pola entidade",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras la justificación; si la entidad lo pide, anticipo del 50 % tras la concesión y el 50 % restante tras la justificación",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 13,
+     "texto": "Primeiro prazo: 50% do importe tras o acordo de concesión da subvención. - Segundo prazo: 50% do importe tras a correcta xustificación da subvención.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones, ingresos o recursos, sin superar el coste total de la actividad; hay que comunicar las ayudas obtenidas después",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 14,
+     "texto": "As subvencións reguladas nestas bases son compatibles coa percepción doutras subvencións, ingresos ou recursos para a mesma finalidade procedentes de calquera outra Administración ou ente público ou privado.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Tener sede social en el término municipal de Ferrol",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Que teñan sede social no termo municipal de Ferrol.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar legalmente constituida y con ámbito de actuación en Ferrol",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "con ámbito de actuación no termo municipal do Concello de Ferrol, e que estean legalmente constituídas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13 de la Ley 38/2003",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "en algún dos supostos de prohibición para obter a condición de beneficiario de subvencións, por incapacidade ou incompatibilidade, establecidos no artigo 13 da Lei 38/2003",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones tributarias y con la Seguridad Social (declaración responsable)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Estar ao corrente das súas obrigas tributarias (de carácter estatal, autonómica e local) e coa Seguridade Social, para o que deberán presentar unha declaración responsable.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber justificado subvenciones anteriores del Concello de Ferrol",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Ter xustificados debidamente os gastos correspondentes a subvencións concedidas con anterioridade polo Concello de Ferrol",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber sido sancionada con la pérdida del derecho a obtener subvenciones",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Non ser sancionado mediante resolución firme coa perda da posibilidade de obter subvencións",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si hay contacto habitual con menores, personal sin condenas por delitos sexuales o de trata",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "contacto habitual con menores deberá comprobar que o persoal ao seu cargo non foi condenado por sentenza firme",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No modificar la programación sin autorización expresa del Concello",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Non modificar a programación de actividades sen coñecemento e autorización expresa do Concello.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar el gallego en la publicidad, los programas y las actividades",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Empregar o idioma galego tanto na publicidade como nos programas e actividades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar lenguaje no sexista e inclusivo",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "Utilizar, con carácter xeral, unha linguaxe non sexista e inclusiva",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración del Concello de Ferrol e incluir su imagen institucional en toda la difusión",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "A entidade beneficiaria deberá facer constar a colaboración do Concello de Ferrol en toda a difusión que se faga das actividades subvencionadas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si se justifica menos del 50 % del importe concedido, no se paga nada",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 11,
+     "texto": "Se a cantidade correctamente xustificada non acadase o 50% do importe concedido, non se considerará cumprida a finalidade básica da subvención",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Solo gastos corrientes detallados en el presupuesto del proyecto admitido",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Só serán subvencionables os gastos correntes que se detallen no orzamento incluído no proxecto admitido polo órgano xestor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de personal (salarios y Seguridad Social)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Gastos de persoal, que incluirán as retribucións salariais e os gastos de Seguridade Social a cargo do beneficiario.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Suministros (electricidad, combustible, agua, material de oficina, teléfono, internet, limpieza)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Subministracións tales como electricidade, combustibles de calefacción e de vehículos, auga, material funxible de oficina, teléfono, internet",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Seguros de responsabilidad civil y/o de accidentes",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Seguros de responsabilidade civil e/ou de accidentes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Reparaciones, mantenimiento y conservación de los bienes utilizados",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Gastos de reparacións, mantemento e conservación dos bens utilizados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Servicios externos: asesoría, publicidad y comunicación, propaganda, reprografía y organización de reuniones y eventos",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "servizos de publicidade e comunicación, propaganda, reprografía e organización de reunións e eventos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alquiler de locales, construcciones provisionales y equipos de imagen y sonido durante la ejecución",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Aluguer de locais e/ou de construcións provisionais (por exemplo, casetas), de equipos de imaxe e son",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Honorarios de personas físicas que intervengan como relatores, conferenciantes, profesores, participantes, árbitros o monitores",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "Os honorarios de persoas físicas que interveñan como relatoras, conferenciantes, profesores, participantes, árbitros ou monitores nas actuacións do proxecto subvencionado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tributos efectivamente pagados; IVA si no es deducible",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 9,
+     "texto": "O IVE será subvencionable cando o beneficiario o aboase e non o deducise posteriormente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos financieros de los pagos (comisiones por transferencias, cheques, adeudos)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os gastos financeiros derivados da realización de operacións para o pago dos gastos subvencionables",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Costes indirectos hasta el 5 % del importe de la subvención",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "tendo como límite máximo o 5% do importe da subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Premios de certámenes o concursos incluidos en el proyecto, con acta del jurado",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "os premios que se outorguen aos gañadores serán gasto subvencionable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Otros gastos corrientes propios de la finalidad incluidos en el proyecto aprobado (p. ej., desplazamientos)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Calquera outro gasto corrente especificado no orzamento que se inclúa no proxecto admitido e aprobado na resolución de concesión",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Intereses deudores de cuentas bancarias",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os intereses debedores de contas bancarias.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Intereses, recargos y sanciones administrativas y penales",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os intereses, recargos e sancións administrativas e penais.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de procedimientos judiciales",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os gastos de procedementos xudiciais.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos fuera del plazo de ejecución o pagados tras el plazo de justificación",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os gastos realizados fóra do prazo de execución do proxecto nin aqueles gastos que se paguen unha vez finalizado o prazo de xustificación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos suntuarios, celebraciones gastronómicas y atenciones protocolarias salvo que sean necesarios y estén en el proyecto",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os gastos suntuarios (artigos de luxo) nin os derivados de celebracións gastronómicas ou atencións protocolarias",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de inversión (mobiliario, equipos informáticos, software, maquinaria, herramientas, vestuario, libros, inventariables)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Os gastos de inversión de calquera tipo: mobiliario, equipos informáticos, adquisición de software informático, maquinaria, ferramentas, vestiario, libros",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Indemnizaciones por despido",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 10,
+     "texto": "Indemnizacións por despedimentos. A entidade beneficiaria poderá subcontratar",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Interés del proyecto: motivación (20), contribución al fomento de la cultura ferrolana y gallega (10) y vocación de continuidad (10)",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 7,
+     "texto": "Interese do proxecto Motivación¹ 20 40",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de actividades (más de 15: 5; entre 6 y 15: 3; menos de 6: 2)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 7,
+     "texto": "Máis de 15 5 Nº de actividades 5",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Temporalización y duración del proyecto (inferior a mensual 1; mensual 2; trimestral 6; semestral 12; anual 24)",
+    "puntosMaximos": 24,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 7,
+     "texto": "Temporalización e duración do Trimestral 6 24",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Capacidad de autogestión con financiación propia (más del 75 %: 20; entre 50 y 75 %: 10; menos del 50 %: 5)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 7,
+     "texto": "Máis do 75% 20 Capacidade de autoxestión da 20",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Antigüedad y trayectoria de la entidad (más de 10 años: 5; entre 5 y 10: 3; menos de 5: 2)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 7,
+     "texto": "Máis de 10 anos 5 Antigüidade e traxectoria da entidade 5",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Colaboración con otras entidades: 2 puntos por entidad participante en cada actividad",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 7,
+     "texto": "Colaboración con outras entidades 2 puntos por cada entidade participante por cada actividade realizada 10",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de socios (más de 100: 5; de 50 a 100: 3; menos de 50: 2)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 8,
+     "texto": "Nº de socios De 50 a 100 3 persoas asociadas 5",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Empleo de la lengua gallega: 1 punto por actividad",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1531957,
+     "pagina": 8,
+     "texto": "Emprego da lingua galega nas Uso da lingua 1 punto por cada 10",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud (anexo I.1)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "Á solicitude (ANEXO I.1) deberá achegarse a seguinte documentación:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "CIF de la entidad y documentos de identidad y representación de quien firma",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "CIF da entidade solicitante e documentos que acrediten a identidade da persoa solicitante e, no seu caso, a representación de quen asine a solicitude",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de obligaciones tributarias y con la Seguridad Social y de no estar incursa en prohibiciones (anexo I.2); certificados oficiales si se piden más de 3.000 euros",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "No suposto de solicitude de subvención superior a 3.000 euros, a entidade beneficiaria afectada deberá presentar os correspondentes certificados oficiais.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable sobre personal en contacto con menores (anexo I.3), si procede",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "contacto habitual con menores, declaración responsable de que o persoal que presta servizos no desenvolvemento das actividades obxecto da subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programa detallado de actividades (anexo I.4): descripción, público, localización, objetivos, número de beneficiarios y fechas",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "Programa detallado (ANEXO I.4) das actividades que se prevén realizar co seguinte contido, como mínimo:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estado de gastos e ingresos de la actividad (anexo I.5)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "Estado de gastos e ingresos imputados á actividade subvencionada (ANEXO I.5).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Datos bancarios certificados por la entidad bancaria (anexo I.6)",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 4,
+     "texto": "Datos bancarios da conta á que se poderá transferir o importe da subvención, debidamente certificada pola entidade bancaria (ANEXO I.6).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Concello de Ferrol, con los modelos normalizados",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "As solicitudes de subvención deberán presentarse obrigatoriamente por medios electrónicos a través da Sede Electrónica do Concello de Ferrol: https://www.ferrol.gal/Sede.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.ferrol.gal/Sede",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "a través da Sede Electrónica do Concello de Ferrol: https://www.ferrol.gal/Sede.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1531957,
+     "pagina": 3,
+     "texto": "As solicitudes de subvención deberán presentarse obrigatoriamente por medios electrónicos",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Las bases están en gallego.",
+   "El importe se reparte por puntos: 48.000 euros divididos entre la suma de puntos de todas las entidades; nunca se concede más de lo solicitado.",
+   "Si los gastos totales justificados son menores que el presupuesto inicial, la ayuda se reduce proporcionalmente.",
+   "Sanciones por justificar tarde: 20 % (máx. 450 euros) hasta un mes, 30 % (máx. 800 euros) hasta tres meses y 40 % (máx. 900 euros) más de tres meses.",
+   "Solo pueden pedirla asociaciones y entidades sin ánimo de lucro con sede en Ferrol; un promotor con empresa no es beneficiario, aunque los honorarios de participantes y el alquiler de equipos de sonido son gastos subvencionables para la asociación.",
+   "Las comunicaciones con el Concello y la difusión de las actividades deben hacerse en gallego."
+  ]
+ },
+ "citas": {
+  "verificadas": 61,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

@@ -1,0 +1,367 @@
+{
+ "version": 1,
+ "codigoBdns": "899916",
+ "generada": "2026-10-09T14:10:21.880Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1438476,
+   "nombre": "RR_00893_2026 BOUMH.pdf",
+   "paginas": 15,
+   "huella": "d9a165aff8a96d22"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "XXIII Concurso de Grupos de Música de la Universidad Miguel Hernández (UMH) 2026, para fomentar la cultura musical universitaria.",
+   "Para grupos de cualquier estilo en los que la persona solicitante pertenezca a la comunidad universitaria de la UMH.",
+   "Tres premios por 1.800 euros en total: 800, 600 y 400 euros, sujetos a retención.",
+   "Plazo: desde el día siguiente a la publicación en el DOGV hasta el 31 de mayo de 2026."
+  ],
+  "objeto": {
+   "valor": "Premios del XXIII Concurso de Grupos de Música de la UMH 2026 para fomentar la cultura musical en el entorno universitario; se preseleccionan cinco grupos que actúan y se premia a los tres mejores",
+   "cita": {
+    "documento": 1438476,
+    "pagina": 3,
+    "texto": "bases es otorgar los premios del XXIII Concurso de",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Grupos de música en los que la persona solicitante pertenezca a la comunidad universitaria de la UMH (PTGAS, PDI, estudiantado o alumni)",
+   "cita": {
+    "documento": 1438476,
+    "pagina": 3,
+    "texto": "- Pertenecer a la comunidad universitaria de la UMH y",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación en el DOGV hasta el 31 de mayo de 2026",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "iniciará el día siguiente al de publicación en el Diari",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-05-31",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "finalización del mismo será el 31 de mayo de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Máximo seis meses; resuelve el rector y se publica en el BOUMH y en la web de Cultura UMH",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 8,
+     "texto": "podrá exceder de seis meses, de conformidad con lo",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": "Se justifica con las maquetas recibidas",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 10,
+     "texto": "10.1 La justificación se documentará con las maquetas",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 1800,
+    "cita": {
+     "documento": 1438476,
+     "pagina": 4,
+     "texto": "1.800,00 euros, repartidos en un primer premio de",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 800,
+    "cita": {
+     "documento": 1438476,
+     "pagina": 4,
+     "texto": "ochocientos euros (800 €), un segundo premio de",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Transferencia a la cuenta bancaria facilitada, de la que el beneficiario debe acreditar ser titular o cotitular, previo certificado de cumplimiento de requisitos",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 10,
+     "texto": "beneficiarias, en la cuenta bancaria que haya",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con cualquier otra ayuda para la misma finalidad, sin superar el coste de la actividad; hay que comunicarlas a la UMH",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 4,
+     "texto": "El premio es compatible con cualquier otra",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "La persona solicitante debe pertenecer a la comunidad universitaria de la UMH (PTGAS, PDI, estudiantado o alumni) y al grupo",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "- Pertenecer a la comunidad universitaria de la UMH y",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No es necesario que todo el grupo pertenezca a la comunidad universitaria, solo quien presenta la solicitud",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "universitaria, únicamente la persona que presenta la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El grupo puede tener un solo integrante como mínimo",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "El número mínimo de integrantes del grupo será de un",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las piezas pueden ser de cualquier estilo musical",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "presenten poden pertànyer a qualsevol estil musical.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No puede participar el grupo ganador del primer premio en la última edición",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "No podrá participar el grupo que hubiera obtenido el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No pueden participar grupos con contrato vigente con una compañía discográfica",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "que tengan actualmente un contrato con alguna",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en las circunstancias del art. 13.2 de la Ley 38/2003",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 3,
+     "texto": "concurra alguna de las circunstancias previstas en el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social antes de la propuesta de resolución",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 11,
+     "texto": "de resolución de concesión que se halla al corriente en",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los grupos preseleccionados actúan con un mínimo de tres canciones o un máximo de 15 minutos, de forma presencial o telepresencial",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 7,
+     "texto": "actuación de tres canciones, como mínimo, o en su",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los premiados con canciones originales e inéditas ceden a la UMH los derechos de propiedad intelectual para su difusión",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 11,
+     "texto": "esta distinción, cederán los derechos de propiedad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Participar implica autorizar de forma gratuita y no exclusiva la reproducción y difusión de las canciones originales",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 11,
+     "texto": "autorización gratuita y no exclusiva para la",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Repertorio elegido e instrumentación (más puntuación si hay alguna canción propia)",
+    "puntosMaximos": 2.5,
+    "cita": {
+     "documento": 1438476,
+     "pagina": 7,
+     "texto": "Repertorio elegido e instrumentación (2,5 puntos):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Técnica: afinación vocal e instrumental, ritmo, coordinación y dominio del instrumento",
+    "puntosMaximos": 2.5,
+    "cita": {
+     "documento": 1438476,
+     "pagina": 7,
+     "texto": "Técnica (2,5 puntos): Afinación vocal e instrumental,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interpretación: musicalidad, calidad interpretativa y carácter",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1438476,
+     "pagina": 7,
+     "texto": "Interpretación (2 puntos): Musicalidad y calidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Presentación: disposición de instrumentos, vestuario, comportamiento en directo, entusiasmo y manejo del escenario",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1438476,
+     "pagina": 7,
+     "texto": "Presentación (3 puntos): Disposición de instrumentos,",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Copia del DNI o pasaporte de los integrantes del grupo",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "1. Copia del DNI o pasaporte de los integrantes del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Formulario de solicitud del anexo II cumplimentado y firmado",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "2. Formulario de solicitud del anexo II cumplimentado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Maqueta con la grabación de 3 canciones en MP3, WAV o MP4A",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "3. Maqueta con la grabación de 3 canciones en",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Imagen del grupo (PDF según el apartado 5.4; JPG según el apartado 5.1)",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "4. Imagen del grupo en formato PDF.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Biografía del grupo en PDF",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 6,
+     "texto": "5. Biografía del grupo en formato PDF.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro electrónico de la sede de la UMH (instancia general dirigida a la Oficina de Cultura, Igualdad y Diversidad), otros registros electrónicos, Correos, oficinas de asistencia en registro o consulados",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 4,
+     "texto": "A. En el registro electrónico de la Sede electrónica de",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sede.umh.es/procedimientos/instancia-general/",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 4,
+     "texto": "Elche, utilizando el procedimiento de instancia general",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Para el registro electrónico hace falta certificado electrónico o cuenta de usuario UMH; también se admite la presentación en Correos y oficinas de registro",
+    "cita": {
+     "documento": 1438476,
+     "pagina": 4,
+     "texto": "Si el solicitante dispone de certificado electrónico o de",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Es un concurso con premios para grupos vinculados a la comunidad universitaria de la UMH, no una subvención a proyectos: no hay gastos subvencionables.",
+   "Premios: 800 euros el primero, 600 euros el segundo y 400 euros el tercero, con retenciones fiscales.",
+   "Si el concierto no puede celebrarse por causa mayor, no se valora la Presentación y la puntuación es sobre 7 puntos.",
+   "Contradicción en las bases: la imagen del grupo se pide en JPG (apartado 5.1) y en PDF (apartado 5.4).",
+   "Documento bilingüe valenciano-castellano a dos columnas.",
+   "No sirve a un promotor de conciertos de jazz, clásica u ópera."
+  ]
+ },
+ "citas": {
+  "verificadas": 33,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

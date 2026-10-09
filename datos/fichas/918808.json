@@ -1,0 +1,514 @@
+{
+ "version": 1,
+ "codigoBdns": "918808",
+ "generada": "2026-10-09T14:09:54.925Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1492507,
+   "nombre": "01 RESOLUCIÓN AYUDAS MOVILIDAD 2026.pdf",
+   "paginas": 13,
+   "huella": "96e73450103f0c94"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Instituto de las Industrias Culturales y las Artes de la Región de Murcia (ICA) para que profesionales de la cultura (música, teatro, artes plásticas, diseño...) viajen fuera de la Región a exposiciones, residencias, ferias u otros eventos.",
+   "Solo para personas físicas con residencia fiscal en la Región de Murcia o naturales de ella; no pueden pedirla empresas ni asociaciones.",
+   "Crédito total de 30.000 €; importes fijos de hasta 5.000 € según el gasto, por orden de llegada.",
+   "Solicitudes desde el día siguiente al extracto en el BORM hasta el 30 de junio de 2027 como máximo.",
+   "Pago anticipado único; justificación en un mes desde el fin del plazo de ejecución."
+  ],
+  "objeto": {
+   "valor": "Ayudas a artistas y profesionales de las industrias culturales y creativas (artes plásticas, música, teatro, diseño, etc.) para asistir fuera de la Región de Murcia a exposiciones propias, residencias, ferias u otros eventos",
+   "cita": {
+    "documento": 1492507,
+    "pagina": 1,
+    "texto": "a artistas y profesionales en materia de artes plásticas, música, teatro, diseño o cualquier otra modalidad de las industrias culturales y creativas con motivo de su asistencia, fuera de la Región de Murcia",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Profesionales de las industrias culturales y creativas, personas físicas (solas o en agrupación); excluidas personas jurídicas, administraciones y entidades sin ánimo de lucro",
+   "cita": {
+    "documento": 1492507,
+    "pagina": 2,
+    "texto": "Podrán beneficiarse de las ayudas que contempla esta convocatoria aquellos profesionales de las industrias culturales y creativas",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación del extracto en el BORM hasta, como máximo, el 30 de junio de 2027 (o hasta agotar el crédito)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "El plazo de presentación de solicitudes comenzará a partir del día siguiente a la publicación del extracto de esta Resolución en el Boletín Oficial de la Región de Murcia (BORM) y finalizará, como máximo, el día 30 de junio de 2027.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2027-06-30",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "(BORM) y finalizará, como máximo, el día 30 de junio de 2027.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Siete días hábiles desde la propuesta y, como máximo, 6 meses desde la publicación del extracto en el BORM; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 8,
+     "texto": "Dicha Resolución se dictará en el plazo máximo de 6 meses, contados a partir del día siguiente a la fecha de publicación del extracto de la presente Resolución en el BORM",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero de 2026 al 30 de junio de 2027",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 3,
+     "texto": "El periodo de ejecución para el desarrollo del proyecto objeto de la subvención será a desde el 1 de enero de 2026 hasta el 30 de junio de 2027.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Un mes desde el fin del plazo de ejecución, mediante cuenta justificativa simplificada (memoria, publicidad y memoria económica, anexo IV) de todos los gastos del proyecto",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 11,
+     "texto": "Las personas beneficiarias quedan obligadas a justificar, en el plazo de UN MES a contar desde la fecha de finalización del plazo de ejecución",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 30000,
+    "cita": {
+     "documento": 1492507,
+     "pagina": 3,
+     "texto": "siendo la cuantía total destinada al efecto de TREINTA MIL EUROS (30.000,00€).",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 5000,
+    "cita": {
+     "documento": 1492507,
+     "pagina": 3,
+     "texto": "De 3.000,00€ a 4.999,00€ 3.000,00€ De 5.000,00€ en adelante 5.000,00€",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago anticipado en un único libramiento por el total, antes de justificar y sin garantías",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 10,
+     "texto": "El pago del importe de la ayuda concedida se realizará en un único libramiento por la totalidad del importe de la misma y con carácter previo a la justificación",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con otras ayudas del ICA; compatible con ayudas de otras administraciones para el mismo proyecto, sin financiar el mismo coste dos veces",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "Las ayudas contenidas en esta Resolución no resultarán compatibles con otras ayudas otorgadas por el ICA, si resultando compatibles con otras concedida por otras administraciones públicas",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Tener residencia fiscal en la Región de Murcia y/o ser natural de ella",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 2,
+     "texto": "Poseer la residencia fiscal en la Región de Murcia y/o ser natural de la Región de Murcia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social desde la solicitud y durante todo el procedimiento",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 2,
+     "texto": "Hallarse al corriente de sus obligaciones fiscales y tributarias, así como con la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No trabajar ni tener relación de empleo con el ICA",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 2,
+     "texto": "No encontrarse en situación de servicio activo o mantener una relación profesional de empleo con el Instituto de las Industrias Culturales y las Artes de la Región de Murcia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No pueden concurrir personas jurídicas privadas, administraciones públicas ni entidades sin ánimo de lucro",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 2,
+     "texto": "No podrán concurrir a la presente convocatoria personas jurídicas privadas, administraciones públicas estatales, autonómicas o locales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las personas físicas que codesarrollen un proyecto deben constituir una agrupación con representante",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 2,
+     "texto": "decidan codesarrollar un proyecto, podrán obtener la condición de beneficiarias debiendo constituir una agrupación de titulares",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Un único proyecto por solicitante",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 3,
+     "texto": "Se admitirá un único proyecto por solicitante, sin que un mismo solicitante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La aportación propia no puede ser en especie ni mediante cesión gratuita de espacios, equipos, transporte o alojamiento",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 3,
+     "texto": "no podrán ser aportadas ni cuantificadas en especie o mediante la cesión gratuita de espacios, equipos, material, transporte, alojamiento, etc.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En exposiciones, el centro no puede ser de la galería o representante del artista ni tener relación mercantil con él",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "En el caso de exposiciones, el centro expositivo no podrá ser de la galería,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad del apoyo del ICA y de la Región de Murcia con su imagen institucional",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 9,
+     "texto": "la colaboración del ICA mediante la publicidad de la imagen institucional de la Comunidad Autónoma de la Región de Murcia",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Desplazamiento en vehículo propio: 0,29 €/km en turismo o 0,40 €/km en furgoneta o camión, más peajes y aparcamiento",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "En el supuesto de vehículo turismo: veintinueve céntimos de euro (0,29 €) por Km, más peaje de autopista y aparcamiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Vehículo alquilado: alquiler, combustible y autopista",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "En el supuesto de vehículo alquilado: coste de alquiler, combustible y gastos de autopista.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Transporte público (avión, tren o autobús) en clase turista",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "En supuesto de transporte público (avión, tren o autobús). se abonará el billete en",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alojamiento: hasta 80 € por noche en España y 120 € fuera de España (no en residencias)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "En España, ochenta euros (80 €) por noche. • Fuera de España, ciento veinte euros (120 €) por noche",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Seguro médico en residencias internacionales en países sin cobertura de la tarjeta sanitaria europea",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 4,
+     "texto": "Seguro médico únicamente para Residencias internacionales a celebrar en países",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Matrícula o tasas de residencias",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "d) En el caso de residencias: matrícula o tasas.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Participación en ferias a través de una galería o institución",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "No se aceptarán gastos derivados de participación en Ferias, cuando el/la profesional participe a través de una galería o institución.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Inversiones y material inventariable",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "Las inversiones y adquisiciones de material inventariable tales como mobiliario,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos generales y de funcionamiento (seguros sociales, alquiler, teléfono, energía, personal, asesoría)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "Los gastos generales, de funcionamiento u ordinarios (seguros sociales, gastos de alquiler, teléfono, energía, comunicaciones, gastos de personal, asesoría fiscal, laboral, etc.)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos en especie sin retribución económica real",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "Los gastos computables o cuantificables en especie, realizados mediante una cesión o compensación de equipos, espacios, vehículos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Celebraciones protocolarias o suntuarias",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "d) Gastos derivados de celebraciones protocolarias o suntuarios.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tributos, impuestos, tasas, sanciones e IVA compensable",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "Todo tipo de tributos, impuestos, tasas o sanciones, así como el importe del IVA soportado siempre que sea objeto de compensación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Servicios de personas, familiares o sociedades vinculadas",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "personas, familiares o sociedades vinculadas a cualquiera de ellos directa o indirectamente,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Honorarios del personal habitual del artista (asistentes, gestores, contables)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "Los honorarios del personal contratado de manera habitual por el artista plástico (asistentes, gestores, contables, etc.).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Servicios de personas que hayan participado en la convocatoria",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "Los servicios prestados por personas que hayan participado en la presente convocatoria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Manutención",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 5,
+     "texto": "convocatoria con independencia de que hayan obtenido la condición de beneficiarios o no. i) Gastos de manutención.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Sin valoración comparativa: importe fijo según el gasto solicitado (menos de 1.500 €: lo solicitado; 1.500-2.999 €: 1.500 €; 3.000-4.999 €: 3.000 €; 5.000 € o más: 5.000 €), por orden de presentación hasta agotar el crédito",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1492507,
+     "pagina": 3,
+     "texto": "sin otra prelación que la derivada del orden temporal de presentación de las solicitudes a través de la sede electrónica",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud según el anexo I",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "Solicitud conforme al modelo establecido en el ANEXO I de la presente convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado bancario del IBAN y su titularidad",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "Certificado bancario que acredite el código IBAN de 24 dígitos y su titularidad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Currículum y dossier con documentación gráfica del trabajo (máximo 5 folios)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "Curriculum vitae y trayectoria profesional: Dossier con una selección de documentación gráfica del trabajo del profesional",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de otras ayudas recibidas o solicitadas (anexo II)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "Declaración sobre otras ayudas recibidas o solicitadas para el mismo proyecto (ANEXO II).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable (anexo III)",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "(ANEXO II). • Declaración responsable (ANEXO III)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de residencia fiscal o de naturaleza en la Región de Murcia",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 2,
+     "texto": "circunstancia esta que se acreditará con los correspondientes certificados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Exhibición: memoria del proyecto, presupuesto sin IVA, plan de proyección y compromiso del centro de acogida",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 7,
+     "texto": "Memoria del proyecto a desarrollar en la que se detalle toda la información sobre",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Residencias: información y acreditación del centro, memoria formativa, inscripción, folletos, presupuesto y memoria personal",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 7,
+     "texto": "Información sobre el Centro de Formación o Residencia elegido (lugar, plazos, tasas, etc.) y acreditación expedida por el Centro de acogida.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ferias u otros eventos: información y memoria del evento, acreditación de la inscripción, folletos y memoria personal",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 7,
+     "texto": "Información sobre la Feria o evento con memoria detallada de los contenidos, acciones a realizar y el propósito que se persigue con ellas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto desglosado de la acción",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 7,
+     "texto": "6.- PRESUPUESTO desglosado de la acción para la que se solicita la ayuda",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica de la CARM (procedimiento 2385) o cualquiera de los registros del artículo 16.4 de la Ley 39/2015",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "A través de la sede electrónica de la Comunidad Autónoma de la Región de Murcia, www.sede.carm.es siendo necesario cumplimentar la solicitud cuyo modelo figura como ANEXO I",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.sede.carm.es",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "A través de la sede electrónica de la Comunidad Autónoma de la Región de Murcia, www.sede.carm.es",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "No obligatoria: también se admite cualquier registro del artículo 16.4 de la Ley 39/2015",
+    "cita": {
+     "documento": 1492507,
+     "pagina": 6,
+     "texto": "Por cualquiera de los registros previstos en el artículo 16.4 de la LPACAP",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Ayuda individual de movilidad para personas físicas profesionales de la cultura con vínculo con la Región de Murcia; no sirve a un promotor que actúe como empresa o asociación, aunque un músico murciano sí podría pedirla para viajar a un evento fuera de la Región.",
+   "Cubre solo desplazamiento, alojamiento, seguro médico y matrícula de residencias; no cubre cachés, técnica ni manutención.",
+   "El importe se asigna por tramos fijos (máximo 5.000 €) en orden de llegada hasta agotar los 30.000 €; no hay criterios con puntos.",
+   "Hay que justificar la totalidad de los gastos del proyecto, no solo la parte subvencionada."
+  ]
+ },
+ "citas": {
+  "verificadas": 50,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

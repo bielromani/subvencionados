@@ -1,0 +1,361 @@
+{
+ "version": 1,
+ "codigoBdns": "880044",
+ "generada": "2026-10-09T14:10:21.997Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1382743,
+   "nombre": "06_ANUNCIO BOP Conv_despoblamiento_2026.pdf",
+   "paginas": 13,
+   "huella": "d8118f4374e8782c"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Diputación de Alicante a ayuntamientos en riesgo de despoblamiento para actividades culturales, musicales y escénicas.",
+   "Actividades realizadas entre el 1 de septiembre de 2025 y el 31 de agosto de 2026, con acceso gratuito para el público.",
+   "Crédito inicial de 271.000 euros; cada ayuda cubre el 100 % del gasto, con un mínimo de 7.800 euros y hasta 11.000 euros.",
+   "Plazo de un mes desde el día siguiente a la publicación del extracto en el BOP de Alicante.",
+   "Solicitud únicamente por la sede electrónica de la Diputación."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales, musicales y escénicas de gasto corriente (actuaciones musicales y escénicas, festivales, certámenes, etc.) y publicaciones o material audiovisual culturales, realizadas entre el 1 de septiembre de 2025 y el 31 de agosto de 2026",
+   "cita": {
+    "documento": 1382743,
+    "pagina": 1,
+    "texto": "tradiciones culturales populares, tales como, entre otras: actuaciones musicales y/o escénicas; encuentros, festivales, certámenes, ferias, concursos, homenajes, exposiciones, congresos, simposios u otros análogos.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos y entidades de ámbito territorial inferior al municipio de la provincia de Alicante en riesgo de despoblamiento",
+   "cita": {
+    "documento": 1382743,
+    "pagina": 2,
+    "texto": "Podrán acogerse a la Convocatoria las entidades de ámbito territorial inferior al Municipio y los Ayuntamientos de la provincia de Alicante, que se encuentren en riesgo de despoblamiento.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 3,
+     "texto": "El plazo para la presentación de solicitudes será de un mes. Este plazo comenzará el día siguiente al de la publicación del extracto de la presente convocatoria en el Boletín Oficial de la Provincia",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el último día del plazo de presentación; sin notificación, se entiende desestimada. Se publica en el BOP de Alicante",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 7,
+     "texto": "El plazo máximo para resolver y notificar la resolución será de 6 meses desde el último día del plazo de presentación de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades ya realizadas o por realizar entre el 1 de septiembre de 2025 y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 1,
+     "texto": "destinadas a actividades culturales, musicales y escénicas, ya realizadas o por realizar entre el 1 de septiembre de 2025 al 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "En un solo envío por la sede electrónica, en dos meses desde la última actividad o desde la notificación de la resolución si ya se hizo: certificado 1-A, declaración de cumplimiento de objetivos, certificado de gratuidad y acreditación de publicidad",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 7,
+     "texto": "en el plazo de dos meses desde la realización de la última de las actividades subvencionadas, o desde la notificación de la Resolución de la Convocatoria si aquélla ya se hubiera llevado a cabo",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 271000,
+    "cita": {
+     "documento": 1382743,
+     "pagina": 2,
+     "texto": "El importe estimado inicial destinado a esta Convocatoria será de DOSCIENTOS SETENTA Y UN MIL EUROS (271.000,00 euros)",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 11000,
+    "cita": {
+     "documento": 1382743,
+     "pagina": 2,
+     "texto": "podrá alcanzar hasta un máximo de 11.000,00 euros, siempre que el presupuesto de gastos subvencionables presentado junto a la solicitud alcance o supere dichas cifras.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1382743,
+     "pagina": 2,
+     "texto": "La subvención alcanzará el 100% de los gastos subvencionables, tendrá una cuantía mínima de 7.800,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Abono tras remitir la documentación justificativa; si se justifica menos gasto, se reduce proporcionalmente",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 7,
+     "texto": "Para el abono de la subvención concedida las entidades beneficiarias deberán remitir, de una sola vez, a esta Excma. Diputación Provincial de Alicante",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con otras subvenciones de la Diputación u organismos dependientes para el mismo objeto; compatible con otras ayudas siempre que el total no supere el gasto justificado",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 2,
+     "texto": "No podrán acogerse a la convocatoria los Ayuntamientos que soliciten o que ya disfruten de cualquier subvención de la Diputación u Organismo dependiente de la misma para idéntico objeto, actividad o programa.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser municipio en riesgo de despoblamiento según la Resolución de 11 de noviembre de 2024 de la Presidencia de la Generalitat (DOGV 9989) o la vigente",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "Estar considerado municipio en riesgo de despoblamiento conforme a lo establecido en la Base Segunda.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber solicitado ni disfrutar de otra subvención de la Diputación para el mismo objeto",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "No haber solicitado o no disfrutar de cualquier subvención de la Diputación u Organismo dependiente de la misma para idéntico objeto, actividad o programa.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del art. 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "No estar incurso en ninguna de las circunstancias que impiden obtener la condición de beneficiario señaladas en el art. 13 de la Ley General de Subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social o tener aplazamiento o fraccionamiento",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "Encontrarse al corriente de sus obligaciones tributarias y frente a la Seguridad Social o, en su caso, haber suscrito convenio de fraccionamiento o aplazamiento de deudas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener deudas con la Diputación de Alicante en vía de apremio",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "No estar incursos en procedimientos de cobro por vía de apremio de deudas con la Diputación Provincial de Alicante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acceso del público gratuito a las actividades, y distribución gratuita de publicaciones y material audiovisual",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 1,
+     "texto": "El acceso del público a las actividades para las cuales se solicita ayuda será en todo caso gratuito",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades en castellano, valenciano o ambas lenguas",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 1,
+     "texto": "Las actividades de gasto corriente desarrolladas en lengua castellana, valenciana o en ambas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una sola solicitud por entidad, en la que se pueden relacionar varias actividades",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 3,
+     "texto": "Sólo se atenderá una solicitud por entidad, en la que se podrán relacionar varias actividades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratar las actividades con publicidad, transparencia y libre concurrencia según la normativa de contratos del sector público",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 9,
+     "texto": "Proceder a la contratación de las actividades, con observancia de los principios de publicidad, transparencia y libre concurrencia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad a la financiación de la Diputación en toda la difusión, con su logotipo, e indicar que el acceso es libre y gratuito",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 9,
+     "texto": "Dar la adecuada publicidad del carácter público de la financiación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ejecutar en su totalidad la actividad solicitada",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 10,
+     "texto": "6.-Ejecutar en su totalidad la actividad solicitada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener un mínimo de 3 puntos en la valoración",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "quedando excluidas las que no alcancen un mínimo de 3 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Actividades de gasto corriente culturales, musicales, de artes plásticas y visuales, escénicas y de tradiciones populares: actuaciones musicales y escénicas, festivales, certámenes, concursos, etc.",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 1,
+     "texto": "relacionadas directamente con el ámbito de la cultura, la música, las artes plásticas y visuales, las artes escénicas y las",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Adquisición, diseño, maquetación, edición, impresión y reproducción de libros, revistas, CD, DVD u otras publicaciones o material audiovisual culturales",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 1,
+     "texto": "La adquisición, así como el diseño, maquetación, edición, impresión y reproducción de libros y revistas, CD, DVD o cualquier otro tipo de publicación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En general, los gastos que respondan a la naturaleza de la actividad y sean necesarios para realizarla",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 1,
+     "texto": "naturaleza de la actividad subvencionada y resulten necesarios para la realización de las mismas.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Número de habitantes del municipio, priorizando los de menor población",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "Nacional de Estadística que se encuentre en vigor, priorizando aquellos de menor población. Hasta 10 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Presentación correcta de la solicitud y la documentación, sin necesidad de subsanación",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1382743,
+     "pagina": 5,
+     "texto": "de aclaración que implique la corrección de datos en la presentación. Hasta 5 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud normalizada suscrita por el alcalde o representante autorizado",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 4,
+     "texto": "Junto con la solicitud, suscrita por el Señor/a Alcalde/sa Presidente/a del Ayuntamiento o representante autorizado por éste",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria valorada firmada electrónicamente con todas las actividades, en orden de prioridad, presupuestadas por tipo de gasto y con previsión de otros ingresos",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 4,
+     "texto": "Breve MEMORIA VALORADA, debidamente firmada electrónicamente, en la que se relacionarán todas las actividades culturales para las cuales se solicita la ayuda.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro General a través de la sede electrónica de la Diputación de Alicante (Catálogo de Trámites, procedimiento de Cultura)",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 3,
+     "texto": "se presentarán en el Registro General a través de la Sede Electrónica de la Diputación en la dirección https://diputacionalicante.sedelectronica.es.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://diputacionalicante.sedelectronica.es/catalog/t/3312770d-a4a1-46e7-8962-4d6a9101dd1f",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 3,
+     "texto": "o directamente a través del enlace: https://diputacionalicante.sedelectronica.es/catalog/t/3312770d-a4a1-\n46e7-8962-4d6a9101dd1f",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación solo electrónica; hace falta Cl@ve, certificado digital o DNIe",
+    "cita": {
+     "documento": 1382743,
+     "pagina": 3,
+     "texto": "es necesario estar registrado para el uso de sistema de identificación y firma electrónica Cl@ve o, poseer un certificado digital de",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo pueden pedirla ayuntamientos y entidades locales menores en riesgo de despoblamiento de la provincia de Alicante; un promotor privado solo puede beneficiarse indirectamente si el ayuntamiento le contrata.",
+   "La cuantía mínima es de 7.800 euros y la máxima de 11.000 euros, según solicitudes y disponibilidad; si el presupuesto presentado es menor, la ayuda se reduce proporcionalmente.",
+   "Convocatoria de tramitación anticipada: condicionada a crédito en 2026; puede ampliarse con una cuantía adicional de hasta 135.000 euros.",
+   "Las actividades deben ser gratuitas para el público: no se puede cobrar entrada."
+  ]
+ },
+ "citas": {
+  "verificadas": 33,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

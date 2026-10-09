@@ -1,0 +1,291 @@
+{
+ "version": 1,
+ "codigoBdns": "900133",
+ "generada": "2026-10-09T14:09:55.362Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1439004,
+   "nombre": "DECRETO 2026-0779 [Resolución Alcaldía aprobación convocatoria Premios Portada Música i Festa 2026].pdf",
+   "paginas": 5,
+   "huella": "28a5564710ac73a9"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Concurso del Ayuntamiento de Massanassa para diseñar la portada del programa de mano del Festival Música i Festa 2026.",
+   "Para personas físicas mayores de edad residentes legalmente en España.",
+   "Un único premio de 200 euros, que puede declararse desierto.",
+   "Plazo: 20 días naturales desde el día siguiente a la publicación del extracto en el BOP de Valencia.",
+   "Las obras se presentan en el Registro de Entrada del Ayuntamiento."
+  ],
+  "objeto": {
+   "valor": "Premio del concurso cultural para la portada del programa de mano del Festival Música i Festa 2026",
+   "cita": {
+    "documento": 1439004,
+    "pagina": 1,
+    "texto": "El objeto de las presentes bases es regular el procedimiento de concesión de un premio del concurso cultural de la portada del Programa de mano del Festival Música i Festa 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas mayores de edad que residan legalmente en España",
+   "cita": {
+    "documento": 1439004,
+    "pagina": 2,
+    "texto": "Podrán participar en el concurso todas las personas físicas mayores de edad que residan legalmente en territorio español.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días naturales a partir del día siguiente a la publicación del extracto en el BOP",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "El plazo de presentación de las obras será de 20 días naturales a partir del día siguiente a la publicación en el BOP del extracto de la presente convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Resuelve la Alcaldía a propuesta del jurado; sin resolución expresa en plazo, se entiende desestimada",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "Vencido el plazo de resolución sin que hubiera sido dictada expresamente, los interesados podrán entender desestimada la solicitud por silencio administrativo",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 200,
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "El crédito asignado para la financiación de esta convocatoria es de 200 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 200,
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Se establece un único premio de 200.- euros.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Transferencia bancaria tras la resolución, una vez aportados los datos bancarios en 10 días hábiles; con retención de IRPF",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 5,
+     "texto": "El abono del importe líquido correspondiente al premio se realizará mediante transferencia bancaria a la cuenta corriente aportada",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser persona física mayor de edad con residencia legal en España",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "todas las personas físicas mayores de edad que residan legalmente en territorio español.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El tema debe aludir a Massanassa y al Festival Música i Festa",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "El tema deberá hacer alusión a Massanassa y el evento cultural Festival Música i Festa.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Incluir el texto del XXIX Festival Internacional Música i Festa y el escudo de Massanassa o una alegoría",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Tendrá que constar el escudo de Massanassa o una alegoría de él.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Formato A3 vertical, colores libres salvo dorados, plateados y fluorescentes",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "El tamaño de presentación de la obra será A3 (297 x 420 mm) adoptando la forma vertical.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obra firmada con pseudónimo",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "d. La obra irá firmada con pseudónimo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obra original y con los derechos necesarios",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Cada participante se compromete a: Garantizar que la obra sea original.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ceder al Ayuntamiento los derechos de explotación de la obra ganadora",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "La persona ganadora cede al Ayuntamiento de Massanassa los derechos de explotación sobre la obra finalista",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Ajuste a las características de la convocatoria",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "La valoración de las obras se hará atendiendo a las características establecidas en la presente convocatoria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Diseño artístico",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "las características establecidas en la presente convocatoria, su diseño artístico, su acomodación a las tradiciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Acomodación a las tradiciones",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "su diseño artístico, su acomodación a las tradiciones y su capacidad para promover el XXIX FESTIVAL INTERNACIONAL MÚSICA I FESTA",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Capacidad para promover el festival",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "su capacidad para promover el XXIX FESTIVAL INTERNACIONAL MÚSICA I FESTA, SANT JOAN 2026",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud general en el Registro de Entrada",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Las propuestas se presentarán mediante una solicitud general en el Registro de Entrada del Ayuntamiento de Massanassa",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sobre con la obra y, dentro, sobre cerrado con los datos personales del autor",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Las solicitudes irán acompañadas de un sobre con la obra participante, que contendrá, a su vez, un sobre cerrado con los datos personales del autor o autora",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La persona premiada aporta, en 10 días hábiles, certificado de titularidad bancaria o «Mantenimiento de Terceros» y fotocopia del DNI",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 4,
+     "texto": "Tras la publicación de la resolución, se establecerá un período de 10 días hábiles para que la persona premiada aporte:",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro de Entrada del Ayuntamiento de Massanassa (Plaça Escoles Velles, 1)",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Las propuestas se presentarán mediante una solicitud general en el Registro de Entrada del Ayuntamiento de Massanassa, sito en la Plaça Escoles Velles, n.º 1 de la población.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación presencial de la obra en el Registro de Entrada",
+    "cita": {
+     "documento": 1439004,
+     "pagina": 2,
+     "texto": "Las propuestas se presentarán mediante una solicitud general en el Registro de Entrada del Ayuntamiento de Massanassa",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Es un concurso de diseño gráfico (portada del programa de un festival de música), no una ayuda para conciertos: no sirve a un promotor de conciertos.",
+   "El premio está sujeto a retención de IRPF y puede declararse desierto.",
+   "Las obras no premiadas pueden retirarse entre el 1 y el 31 de julio de 2026 en la Biblioteca Pública Municipal."
+  ]
+ },
+ "citas": {
+  "verificadas": 23,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}

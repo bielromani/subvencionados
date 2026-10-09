@@ -1,0 +1,481 @@
+{
+ "version": 1,
+ "codigoBdns": "878508",
+ "generada": "2026-10-09T14:10:16.552Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1379438,
+   "nombre": "Ayudas 2026 a entidades locales menores de dos mil habitantes para la contratación de espectáculos a representar en los escenarios móviles de la Junta de Extremadura, según resolución de 24 de noviembre de 2025, que convoca.PDF",
+   "paginas": 70,
+   "huella": "9990796ca7dae1f4"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Programa I de la Junta de Extremadura: escenarios móviles en municipios y entidades locales menores de menos de 2.000 habitantes del 20 de junio al 14 de septiembre de 2026.",
+   "Las ayudas son para esas entidades locales, que contratan los espectáculos; las empresas escénicas y musicales solicitan aparte entrar en la oferta de programación.",
+   "Crédito de 407.300 euros; hasta 10.890 euros por entidad (una función de teatro, una de música y una de calle); solo se subvenciona el caché.",
+   "Plazo: quince días hábiles desde el día siguiente a la publicación de la convocatoria y su extracto en el DOE.",
+   "Caché máximo de los espectáculos musicales: 4.114 € (folk), 3.509 € (flamenco, pop rock, fusión, blues, versiones) y 2.420 € (copla y cantautor)."
+  ],
+  "objeto": {
+   "valor": "Ayudas a municipios y entidades locales menores para contratar los espectáculos que se representan en los escenarios móviles de la Junta de Extremadura, y selección de las empresas escénicas y musicales que forman la oferta de programación (Programa I) en 2026",
+   "cita": {
+    "documento": 1379438,
+    "pagina": 2,
+    "texto": "es objeto de esta resolución la convocatoria de ayudas a los municipios y entidades locales menores de la Comunidad Autónoma de Extremadura para la contratación de los espectáculos",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Municipios y entidades locales menores de Extremadura con menos de 2.000 habitantes (las empresas de actividades escénicas y musicales solicitan su incorporación a la oferta de programación)",
+   "cita": {
+    "documento": 1379438,
+    "pagina": 14,
+    "texto": "Podrán ser beneficiarios de las ayudas a la programación todos los municipios y entidades locales menores de Extremadura con población inferior a 2.000 habitantes",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles desde el día siguiente a la publicación de la convocatoria y su extracto en el Diario Oficial de Extremadura (el mismo plazo para las empresas)",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 18,
+     "texto": "El plazo de presentación de solicitudes será de quince días hábiles contados desde el siguiente al de la publicación de la convocatoria y su extracto",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses desde la publicación de la convocatoria y su extracto en el DOE; sin resolución, desestimada",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 19,
+     "texto": "El plazo máximo para resolver y notificar la concesión de las ayudas será de tres meses contados desde la publicación en el Diario Oficial de Extremadura",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 20 de junio al 14 de septiembre de 2026 (se acorta si hay menos de 57 entidades beneficiarias)",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 16,
+     "texto": "La actividad subvencionable se desarrollará entre el 20 de junio y el 14 de septiembre del año 2026, ambas fechas incluidas",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuatro meses tras el fin del programa, con certificación de gastos y pagos del Secretario-Interventor (anexo VI), facturas, justificantes de pago e informe de actividades (anexo IV)",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 26,
+     "texto": "deberá efectuarse por la entidad local beneficiaria dentro de los cuatro meses siguientes a la finalización del programa",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 407300,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 16,
+     "texto": "trescientos euros (407.300,00 €) con cargo a la aplicación presupuestaria 150020000",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 10890,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 17,
+     "texto": "La cuantía máxima por ayuda será de 10.890,00 € por beneficiario (una de teatro, una de música y una de calle).",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "50 % tras publicarse la concesión en el DOE y 50 % al presentar la certificación de los contratos (anexo V); sin garantías",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 26,
+     "texto": "Abono inicial del 50 % del total de la subvención concedida, una vez publicada la resolución de concesión en el Diario Oficial de Extremadura.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas sin superar el coste de la contratación",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 28,
+     "texto": "Las ayudas reguladas en esta resolución serán compatibles con otras subvenciones, ayudas, ingresos o recursos para la misma finalidad",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Entidad local de menos de 2.000 habitantes según el censo a 1 de septiembre de 2025",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 14,
+     "texto": "con población inferior a 2.000 habitantes, según el censo de población a 1 de septiembre del ejercicio 2025",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad local: al corriente con Seguridad Social, Hacienda estatal y autonómica",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 15,
+     "texto": "Estar al corriente con sus obligaciones con respecto a la Seguridad Social y Hacienda estatal y no tener deudas con la Hacienda autonómica.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad local: no estar incursa en las prohibiciones del artículo 12.2 de la Ley 6/2011",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 15,
+     "texto": "No estar incursos en alguna de las prohibiciones para obtener la condición de beneficiarios",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad local: no estar integrada en la Red de Teatros de Extremadura",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 15,
+     "texto": "c) No estar integrados en la Red de Teatros de Extremadura.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad local: aportar persona de apoyo, toma eléctrica de 20.000 W, camerino y difusión con carteles",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 24,
+     "texto": "Disponer de un cuadro de protección para el enganche de luz, con una potencia de 20.000 W.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: establecidas en el Espacio Económico Europeo",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 5,
+     "texto": "Encontrarse establecidas en cualquier estado miembro del Espacio Económico Europeo (EEE).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: ejercer actividad económica acorde en Extremadura a la fecha de la solicitud",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 5,
+     "texto": "Ejercer una actividad económica acorde a la naturaleza de la actividad desarrollable en este programa en el territorio de la Comunidad Autónoma",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: al menos un miembro de alta en la Seguridad Social",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 5,
+     "texto": "Tener al menos a uno de sus miembros dados de alta en alguno de los regímenes de la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: espectáculos técnicamente viables en los escenarios móviles",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 5,
+     "texto": "f. Ofertar espectáculos técnicamente viables en los escenarios móviles.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: espectáculos ya estrenados y representados al menos diez veces",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 6,
+     "texto": "Que los espectáculos ofertados se encuentren ya estrenados y hayan sido representados en un mínimo de diez ocasiones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: caché máximo (IVA incluido) de 4.114 € en folk; 3.509 € en flamenco, pop rock, fusión, blues y versiones; 2.420 € en copla y cantautor; 3.388 € en teatro y calle",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 6,
+     "texto": "Flamenco, pop rock, fusión, blues y versiones: 3.509,00 €.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: máximo dos espectáculos, una solicitud por espectáculo",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 6,
+     "texto": "Cada empresa podrá solicitar su participación e incorporación a la programación con un máximo de dos espectáculos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas distribuidoras o management: los requisitos los cumplen también la compañía o grupo representado",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 5,
+     "texto": "los requisitos anteriores deberán cumplirse tanto por parte de dichas empresas o «management», como por parte de la compañía o grupo al que representan",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Exclusivamente el caché artístico ofertado por la empresa en su solicitud de incorporación",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 16,
+     "texto": "y que se corresponderá exclusivamente con el caché artístico, coincidiendo con el ofertado por la empresa en su solicitud de incorporación al Programa I.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Derechos de autor: los paga la entidad local",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 24,
+     "texto": "En el caso de que la representación genere derechos de autor, deberán costear los gastos correspondientes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Instalación y consumo eléctrico del escenario: a cargo de la entidad local",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 24,
+     "texto": "asumiendo los gastos de instalación y energía eléctrica consumida correspondiente.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Empresas: calidad e interés artístico y cultural de la propuesta (ficha artística y calidad del espectáculo)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 9,
+     "texto": "Calidad e interés profesional artístico y cultural del conjunto de la propuesta (máximo 20 puntos):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Empresas: plantilla media anual de trabajadores",
+    "puntosMaximos": 6,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 10,
+     "texto": "Este punto se valorará de la siguiente manera: - Más de 1: 6 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Empresas: trayectoria y años de actividad (más de quince años)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 10,
+     "texto": "d) Más de quince años de actividad: 20 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Empresas: participantes extremeños o residentes en Extremadura",
+    "puntosMaximos": 14,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 10,
+     "texto": "sean mayoritariamente extremeños o residentes en Extremadura, hasta un máximo de 14 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Empresas: número de participantes en la representación",
+    "puntosMaximos": 14,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 11,
+     "texto": "técnicos -con un máximo de dos- y directores), hasta un máximo de 14 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Empresas: composición equilibrada entre hombres y mujeres",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 11,
+     "texto": "de conformidad con lo declarado previamente en el anexo I, hasta un máximo de 5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Entidades locales: prioridad a las localidades que no han tenido el Programa I en los cinco años previos (desempate por sorteo)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1379438,
+     "pagina": 22,
+     "texto": "Aquellas localidades que no han disfrutado de la programación de actividades culturales del Programa I en los cinco años previos",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Entidad local: solicitud de subvención (anexo III) con declaración responsable",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 52,
+     "texto": "ANEXO III Solicitud de subvención AYUDAS A LA REALIZACIÓN DE ACTIVIDADES CULTURALES",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad local: NIF y certificados de Seguridad Social, Hacienda estatal y autonómica (si no autoriza la consulta)",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 54,
+     "texto": "Certificados de hallarse al corriente en las obligaciones con respecto a la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: solicitud de incorporación (anexo I) por cada espectáculo",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 6,
+     "texto": "que se formalizará a través del modelo oficial del anexo I, debidamente cumplimentado y firmado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: escritura de constitución y poder de representación",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 7,
+     "texto": "a) Escritura de constitución, en caso de sociedades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: certificado de plantilla media anual de la Seguridad Social",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 8,
+     "texto": "Certificación expedida por la Seguridad Social en relación con la plantilla media anual",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: certificados de estar al corriente, de situación en la AEAT y de vida laboral",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 8,
+     "texto": "f) Certificado de situación de actividad en la Agencia Tributaria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: justificación de al menos diez representaciones anteriores",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 8,
+     "texto": "Justificación de la representación del espectáculo ofertado en anteriores ocasiones (mínimo diez)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: enlace de descarga de la grabación completa del espectáculo",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 8,
+     "texto": "URL del enlace de descarga de la grabación completa del espectáculo presentado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas: currículum de la ficha artística y técnica",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 8,
+     "texto": "k) Currículum de los profesionales que conforman la ficha artística y técnica.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Punto de acceso general electrónico de la Junta de Extremadura (sede electrónica) o registros electrónicos; presencial solo para personas físicas",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 17,
+     "texto": "Telemáticamente, junto con el resto de documentación requerida, a través del punto de acceso general electrónico (www.juntaex.es)",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.juntaex.es/w/0636122",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 17,
+     "texto": "electrónico (www.juntaex.es) dentro de la ficha correspondiente (https://www.juntaex.es/w/0636122).",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "DNI electrónico o certificado electrónico para la presentación telemática",
+    "cita": {
+     "documento": 1379438,
+     "pagina": 7,
+     "texto": "será necesario que las personas interesadas dispongan de DNI electrónico o de certificado electrónico en vigor.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "La subvención es para municipios y entidades locales menores de menos de 2.000 habitantes. Un promotor o empresa musical no la recibe: solicita entrar en la oferta de programación (anexo I, ficha https://www.juntaex.es/w/0712224) y cobra el caché de la entidad local que lo contrata.",
+   "Las modalidades musicales son folk, flamenco, pop rock, fusión, blues, versiones, copla y cantautor; no hay categoría de jazz, clásica ni ópera.",
+   "Funciones de música: 57 en total (20 de flamenco, 16 de pop, rock, fusión, blues y versiones, 8 de folk, 6 de copla y 6 de cantautor), repartidas entre los espectáculos mejor puntuados.",
+   "Los criterios con puntos (máximo 79) valoran a las empresas; las entidades locales se ordenan por no haber disfrutado antes del programa y por sorteo.",
+   "Las empresas deben entregar en dos meses un informe de la actividad (anexo II) y facturar a cada entidad local; si incumplen, no pueden presentarse a la convocatoria siguiente.",
+   "Convocatoria de tramitación anticipada, condicionada a crédito en los presupuestos de 2026. Las páginas 31 a 70 son los anexos (formularios)."
+  ]
+ },
+ "citas": {
+  "verificadas": 45,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

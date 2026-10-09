@@ -1,0 +1,127 @@
+{
+ "version": 1,
+ "codigoBdns": "890794",
+ "generada": "2026-10-09T14:08:01.636Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1494572,
+   "nombre": "Orden Foral aprobación BBRR_Udal Platea 26_27E-2026.pdf",
+   "paginas": 2,
+   "huella": "bc14802afca5c4c4"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvención del Gobierno de Navarra (Udal Platea Local 2026) para la programación de artes escénicas y musicales profesionales en espacios escénicos municipales.",
+   "Para municipios de Navarra.",
+   "Crédito total de 750.000 euros, repartido en tres categorías (A, B y C)."
+  ],
+  "objeto": {
+   "valor": "Apoyar la programación de artes escénicas y musicales profesionales en los espacios escénicos municipales de Navarra en 2026",
+   "cita": {
+    "documento": 1494572,
+    "pagina": 1,
+    "texto": "subvención a l os municipios de navarra para apoyar l a programación de artes escénicas y musicales profesionales en los espacios escénicos municipales de la Comunidad Foral",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Municipios de Navarra",
+   "cita": {
+    "documento": 1494572,
+    "pagina": 1,
+    "texto": "Aprobar l a convocatoria de l a subvención a l os municipios de navarra para apoyar l a",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 750000,
+    "cita": {
+     "documento": 1494572,
+     "pagina": 1,
+     "texto": "Institución Príncipe de Viana por un importe máximo de 750.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El texto solo contiene la Orden Foral 27E/2026 que aprueba la convocatoria; las bases reguladoras están en el Anexo, que no se incluye, por lo que faltan plazos, requisitos, gastos, criterios, documentación y forma de presentación.",
+   "Reparto del crédito: categoría A 100.000 euros, categoría B 510.000 euros y categoría C 140.000 euros.",
+   "Los beneficiarios son ayuntamientos: un promotor no puede pedirla directamente, aunque puede beneficiarse como compañía o grupo contratado en la programación municipal.",
+   "El texto del PDF tiene errores de reconocimiento (faltan muchas letras «l»)."
+  ]
+ },
+ "citas": {
+  "verificadas": 3,
+  "revisar": 0,
+  "noConsta": 14
+ }
+}

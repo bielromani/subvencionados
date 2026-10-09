@@ -1,0 +1,316 @@
+{
+ "version": 1,
+ "codigoBdns": "928556",
+ "generada": "2026-10-09T14:09:55.377Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1519395,
+   "nombre": "Bases2026_cast.pdf",
+   "paginas": 7,
+   "huella": "fcf8c7d5faeeb6b1"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Concurso de música joven Palau Ressona del Ayuntamiento de Palau-solità i Plegamans.",
+   "Para grupos o solistas de 12 a 30 años, sin contrato discográfico.",
+   "Premios en especie (grabaciones, videoclips, distribución digital) valorados hasta 1452 €.",
+   "Inscripción telemática del 28 de septiembre al 25 de octubre; final el 21 de noviembre."
+  ],
+  "objeto": {
+   "valor": "Concurso de música joven que ofrece un espacio a grupos noveles para mostrar su música y apoyar el inicio de su trayectoria",
+   "cita": {
+    "documento": 1519395,
+    "pagina": 1,
+    "texto": "se facilita un espacio donde los grupos novatos o con una trayectoria musical poco extensa tengan la oportunidad de mostrar sus conocimientos",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Grupos o solistas jóvenes de 12 a 30 años, sin importar su lugar de residencia",
+   "cita": {
+    "documento": 1519395,
+    "pagina": 1,
+    "texto": "Todos aquellos grupos o solistas jóvenes que tengan interés, independientemente de su lugar de residencia, con edades comprendidas entre los 12 y 30 años.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el 28 de septiembre hasta el domingo 25 de octubre, telemáticamente; ampliable si no se alcanza el mínimo de inscripciones",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "La documentación deberá entregarse a partir del 28 de setiembre y hasta el domingo 25 de octubre telemáticamente",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Resultados de la preselección entre el 26 y el 30 de octubre; el veredicto se comunica al acabar la final",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "A todos los grupos presentados se les comunicará los resultados de la selección entre el 26 i el 30 de octubre.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Final el 21 de noviembre en la Sala Corral del Espai Jove l'Escorxador",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "Los conciertos se realizarán el día 21 de noviembre en la Sala Corral del Espai Jove l'Escorxador.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": 1452,
+    "cita": {
+     "documento": 1519395,
+     "pagina": 5,
+     "texto": "Grabación de una maqueta, bajo la supervisión de un productor profesional, valorado en 1452 €.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Premios en especie: grabaciones y videoclips en fechas fijadas (diciembre de 2026 a marzo de 2027)",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 5,
+     "texto": "La grabación se hará los días 9, 10, 11 i 14 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Tener entre 12 y 30 años",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 1,
+     "texto": "independientemente de su lugar de residencia, con edades comprendidas entre los 12 y 30 años.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de un repertorio de 20 minutos si se es seleccionado",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 1,
+     "texto": "tengan un repertorio suficiente de 20 minutos en el momento del concurso.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber ganado la categoría A o B en ediciones anteriores",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 1,
+     "texto": "Hayan sido ganadoras de la categoría A o la categoría B en las en las anteriores ediciones del Palau Ressona.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener contrato discográfico",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 1,
+     "texto": "Hayan sido ganadoras de la categoría A o la categoría B en las en las anteriores ediciones del Palau Ressona. • Tengan un contrato discográfico.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Designar una persona portavoz y responsable mayor de edad, que figurará como beneficiaria del premio en la BDNS",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 2,
+     "texto": "deberán designar a una persona portavoz y responsable, mayor de edad, que actuará como interlocutora con la organización",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Categoría A: mayoría de miembros de 21 a 30 años; categoría B: de 12 a 20 años; categoría Música Urbana: de 12 a 30 años",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 2,
+     "texto": "Categoría A: Formaciones en las que la mayoría de los miembros tengan edades comprendidas entre los 21 y los 30 años.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponibilidad y flexibilidad el día de la final",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "los grupos seleccionados se comprometen a tener disponibilidad y flexibilidad durante el mismo día de la realización del concurso.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Musicalidad",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "teniendo en cuenta los criterios que también regirán en la final del Palau Ressona: la musicalidad, la originalidad,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Originalidad",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "regirán en la final del Palau Ressona: la musicalidad, la originalidad, la proyección, la puesta en escena",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Proyección",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "la musicalidad, la originalidad, la proyección, la puesta en escena y la inclusión de la perspectiva feminista.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Puesta en escena",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1519395,
+     "pagina": 4,
+     "texto": "la musicalidad, la originalidad, la proyección, la puesta en escena y la inclusión de la perspectiva feminista.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Inclusión de la perspectiva feminista (paridad, lenguaje inclusivo, diversidad en las canciones)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1519395,
+     "pagina": 6,
+     "texto": "Paridad o exclusividad de mujeres en la formación del grupo. - Utilización de un lenguaje inclusivo y no sexista.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Formulario de inscripción con aceptación de las bases y persona de contacto; autorización de tutores si hay menores",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "Formulario de inscripción con la aceptación de las bases correspondiente que indique también la persona de contacto y referencia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Imagen reciente del grupo o solista",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "Una imagen reciente del grupo o solista.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grabación de un tema en mp3 (mínimo 160 kbps), en soporte físico o enlace de descarga",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "Una grabación de un tema en formato digital mp3 (mínimo 160 kbps).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Rider técnico del grupo",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "3. El rider técnico del grupo.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Inscripción telemática en la web del Ayuntamiento",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "hasta el domingo 25 de octubre telemáticamente en https://palauplegamans.cat/inscripcio-palau-ressona",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://palauplegamans.cat/inscripcio-palau-ressona",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "hasta el domingo 25 de octubre telemáticamente en https://palauplegamans.cat/inscripcio-palau-ressona",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática",
+    "cita": {
+     "documento": 1519395,
+     "pagina": 3,
+     "texto": "hasta el domingo 25 de octubre telemáticamente en https://palauplegamans.cat/inscripcio-palau-ressona",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Es un concurso de música joven con premios en especie (grabación de maqueta 1452 €, canción 363 €, videoclip 1149,50 €, videoclip con acompañamiento 1452 €), no una subvención en dinero; no sirve a un promotor de conciertos de jazz, clásica u ópera.",
+   "Las fechas de inscripción (28 de septiembre a 25 de octubre) no indican el año en la frase; los premios se graban en diciembre de 2026.",
+   "La cabecera dice «XXII edición» y el texto «XXI edición».",
+   "Los criterios de valoración no tienen puntos; se sanciona el contenido machista, homófobo o racista.",
+   "El jurado y la organización pueden declarar los premios desiertos."
+  ]
+ },
+ "citas": {
+  "verificadas": 26,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

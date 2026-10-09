@@ -1,7 +1,7 @@
 {
  "version": 1,
  "codigoBdns": "857022",
- "generada": "2026-10-09T14:01:32.579Z",
+ "generada": "2026-10-09T14:10:26.753Z",
  "modelo": "Claude (sesión de Claude Code)",
  "documentos": [
   {
@@ -135,9 +135,8 @@
     "cita": {
      "documento": 1322126,
      "pagina": 2,
-     "texto": "Musika talde edo elkarteen kasuan, gutxienez kideen %50ek Gernika- Lumon erroldatuta egon beharko dute.",
-     "estado": "revisar",
-     "motivo": "No aparece en el documento"
+     "texto": "Musika talde edo elkarteen kasuan, gutxienez kideen %50ek Gernika-\nLumon erroldatuta egon beharko dute.",
+     "estado": "verificada"
     }
    },
    {
@@ -343,8 +342,8 @@
   ]
  },
  "citas": {
-  "verificadas": 29,
-  "revisar": 1,
+  "verificadas": 30,
+  "revisar": 0,
   "noConsta": 7
  }
 }

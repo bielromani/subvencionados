@@ -1,0 +1,398 @@
+{
+ "version": 1,
+ "codigoBdns": "902460",
+ "generada": "2026-10-09T14:09:55.302Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1445406,
+   "nombre": "PUNT7_Iragarkia_sinatuta.pdf",
+   "paginas": 9,
+   "huella": "a14d424bcd5e6399"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Azkoitia para actividades culturales o de ocio puntuales en Azkoitia o dirigidas a su población.",
+   "Para asociaciones y grupos legalmente constituidos y para personas o grupos que hagan actividades culturales, sin ánimo de lucro.",
+   "Crédito total de 23.000 euros.",
+   "Convocatoria abierta hasta el 31 de octubre de 2026; hay que pedirla antes de la fecha de la actividad.",
+   "Justificación en 60 días desde el fin de la actividad."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales y/o de ocio puntuales de grupos, asociaciones y agentes culturales sin ánimo de lucro, en Azkoitia o dirigidas a su población",
+   "cita": {
+    "documento": 1445406,
+    "pagina": 2,
+    "texto": "culturales y/o de ocio puntuales que se desarrollen en",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Organizaciones, asociaciones y agrupaciones legalmente constituidas, y personas o grupos de personas que realicen actividades culturales o de ocio",
+   "cita": {
+    "documento": 1445406,
+    "pagina": 3,
+    "texto": "Organizaciones, asociaciones y agrupaciones legalmente constituidas.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Convocatoria abierta desde el día siguiente a la publicación en el Boletín Oficial de Gipuzkoa hasta el 31 de octubre de 2026; la solicitud debe hacerse antes de la actividad",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "Oficial de Gipuzkoa hasta el 31 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-10-31",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "Oficial de Gipuzkoa hasta el 31 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Sin plazo fijado; la comisión evalúa y propone la cuantía a medida que recibe las solicitudes",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 7,
+     "texto": "A medida que se vayan recibiendo las solicitudes, la",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": "60 días desde el fin del ejercicio o de la actividad (o desde la concesión si es posterior)",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 8,
+     "texto": "el plazo de 60 días desde la finalización del ejercicio o",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 23000,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 2,
+     "texto": "consignación destinada a la citada finalidad; es decir, 23.000 euro. 23.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Si se pide a tiempo, el pago se hace en lo posible antes de la actividad, sin garantía",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 8,
+     "texto": "realizará antes de la fecha de la actividad puntual.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones, declarando las solicitadas para la misma actividad",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "Estas subvenciones son compatibles con otras, en",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad legalmente constituida o persona o grupo que haga actividades culturales o de ocio",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "Personas o grupos de personas asociadas para el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sin ánimo de lucro",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 2,
+     "texto": "rales de Azkoitia sin ánimo de lucro o a actividades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividad en Azkoitia o dirigida a la población de Azkoitia",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 2,
+     "texto": "Azkoitia o que estén dirigidas a la población azkoitiarra.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programa coherente con los objetivos generales del Ayuntamiento y de sus programas culturales",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "con los objetivos generales del Ayuntamiento de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pedir la subvención antes de la fecha de la actividad (salvo eventos anteriores a la convocatoria, previa comunicación)",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "La subvención se solicitará antes de la fecha",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las actividades que reciban dinero del Ayuntamiento por contrato o convenio",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 3,
+     "texto": "que reciban aportaciones económicas por contrato o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al día con las obligaciones fiscales y con la Seguridad Social",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 5,
+     "texto": "Consulta de estar al día con las obligaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener los seguros y autorizaciones necesarios para la actividad",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "Obtener y cumplir los seguros y autorizaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración del Ayuntamiento con su logotipo en la publicidad",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "Hacer constar en la publicidad escrita, oral, visual e",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos que respondan a la naturaleza de la actividad y se hagan en plazo, según el art. 31 de la Ley 38/2003 y las Bases Generales municipales",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 7,
+     "texto": "Se considerarán gastos subvencionables aquellos que,",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Calidad del proyecto o actividad cultural y su impacto y aportación al pueblo",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "La calidad del proyecto o actividad cultural y su",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria, continuidad y estabilidad de la asociación o agente cultural",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "La trayectoria, continuidad y estabilidad de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Difusión del proyecto a la ciudadanía",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "La difusión del proyecto presentado a la ciudadanía.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de participantes, duración, nivel cultural, ámbito y difusión de la actividad",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "El número de participantes, la duración, el nivel",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Financiación de la actividad y esfuerzo organizativo y económico del solicitante",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 6,
+     "texto": "La financiación de la actividad. El esfuerzo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Infraestructura y recursos humanos para organizar la actividad",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 7,
+     "texto": "La infraestructura y los recursos humanos para",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Garantía y fomento del uso del euskera",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 7,
+     "texto": "La garantía y el fomento del uso del euskera en el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Participación igualitaria de mujeres y hombres",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1445406,
+     "pagina": 7,
+     "texto": "La participación igualitaria de mujeres y hombres en",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Primera solicitud: certificado de inscripción en el registro de asociaciones del Gobierno Vasco o municipal",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Certificado de inscripción en el registro de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Primera solicitud: justificante bancario de la cuenta corriente",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Justificante expedido por entidad bancaria o caja de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Primera solicitud: currículum de la asociación (actividades, objetivos, recursos)",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Curriculum vitae de la asociación: actividades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impreso de solicitud cumplimentado y firmado",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Impreso de solicitud debidamente cumplimentado y",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria sucinta del solicitante y del proyecto (ámbito, público, plazos, lugares, fechas, recursos)",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Memoria sucinta de la persona solicitante y del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto de la actividad con gastos e ingresos previstos",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Presupuesto requerido por la actuación puntual que",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración jurada de otras subvenciones solicitadas o concedidas",
+    "cita": {
+     "documento": 1445406,
+     "pagina": 4,
+     "texto": "Declaración jurada en la que se recojan las",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es bilingüe (euskera y castellano a dos columnas); las citas son fragmentos de una sola columna por el formato del texto.",
+   "No fija importe máximo por solicitud ni puntos en los criterios; el crédito de 23.000 euros puede ampliarse con lo no usado de la otra línea de subvenciones culturales, sin superar 50.000 euros en la partida.",
+   "La comisión puede aumentar los límites de gasto de las Bases Generales del Ayuntamiento por la singularidad del evento; esas Bases Generales (BOG nº 54 de 20/03/2023) y las Bases Específicas (BOG nº 76 de 27/04/2026) no se incluyen.",
+   "El pago anticipado no está garantizado: el solicitante debe poder adelantar los gastos.",
+   "No indica lugar ni forma de presentación de las solicitudes.",
+   "Pensada para asociaciones y agentes culturales locales de Azkoitia; un promotor externo solo encaja si su actividad se hace en Azkoitia o se dirige a su población y no tiene ánimo de lucro."
+  ]
+ },
+ "citas": {
+  "verificadas": 34,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}

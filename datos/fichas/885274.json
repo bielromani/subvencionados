@@ -1,0 +1,254 @@
+{
+ "version": 1,
+ "codigoBdns": "885274",
+ "generada": "2026-10-09T14:08:01.634Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1396865,
+   "nombre": "CERTIFICADO JGL-EXPTE. 64-2026-CONV. SUBV. CULTURALES Y RECREATIVAS 2026.pdf",
+   "paginas": 3,
+   "huella": "14a2af37643ef045"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Medina de Pomar (Burgos) para actividades culturales gratuitas de asociaciones en 2026, incluidos conciertos y festivales.",
+   "Para asociaciones culturales de Medina de Pomar, en concurrencia competitiva.",
+   "Gasto aprobado de 32.000 euros.",
+   "Las notificaciones son electrónicas: la asociación necesita certificado digital."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales o similares y gratuitas de las asociaciones: informativas, formativas, tradiciones populares, patrimonio, conciertos, artes escénicas, danza, literatura, festivales, exposiciones, teatro, proyecciones y concursos",
+   "cita": {
+    "documento": 1396865,
+    "pagina": 1,
+    "texto": "Puesta en valor del patrimonio histórico artístico y cultural. Realización de conciertos. Actuaciones de artes escénicas.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones culturales de Medina de Pomar",
+   "cita": {
+    "documento": 1396865,
+    "pagina": 1,
+    "texto": "Aprobar la convocatoria para la concesión de subvenciones a las Asociaciones Culturales de Medina de Pomar 2026 por procedimiento de concurrencia competitiva",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": "Actividades justificadas con cartel o fotografía; número de socios con declaración jurada. Si por fuerza mayor no se justifica toda la actividad, la subvención se reduce proporcionalmente",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Se justificarán actividades realizadas con cartel o fotografía. Ya que se puntúa por número de actuaciones. Se justificará el número de socios con una declaración jurada.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 32000,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Aprobar el gasto de 32.000,00 euros a la que asciende el importe de la",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Actividades de carácter cultural o similar y gratuitas",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 1,
+     "texto": "Desarrollo de actividades de carácter cultural o similar y gratuito en diferentes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comunicar y enviar el cartel de las actividades con un mes de antelación para su publicidad",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "comunicarse y enviarse con el cartel con mes de antelación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar el logotipo del Ayuntamiento en todas las actividades",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "hacer constar el logotipo del Ayuntamiento en todos ellas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de certificado digital, porque las notificaciones a las asociaciones son electrónicas",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "deben ser electrónicas por lo que resulta necesario que las Asociaciones cuenten con certificado digital.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Variedad de actividades culturales: 0,25 puntos por cada actividad diferente",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 1,
+     "texto": "Puntuación: 0,25 por cada actividad diferente hasta un máximo de 2 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Aportación económica de la asociación al proyecto (0 puntos hasta el 20 %; 0,5 puntos con el 80 %)",
+    "puntosMaximos": 0.5,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 1,
+     "texto": "Si la aportación es del 80% se concederá 0,5 puntos,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de socios, con declaración responsable (1 punto con 150 socios o más)",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Número de socios, con una declaración responsable: máximo 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Repercusión o impacto de la actividad (internacional 1; nacional 0,8; autonómico 0,6; provincial 0,4; local 0,2)",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Repercusión/impacto de la actividad programada: máximo 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Previsión de asistencia (1 punto con 500 personas o más)",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Previsión de asistencia: máximo 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Colaboración en actividades del Ayuntamiento (Noche en Blanco, recreación de Carlos V, cabalgata, 25 de noviembre / 8 de marzo): 0,25 puntos cada una",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "el Ayuntamiento de Medina de Pomar, máximo 1 punto: Participación con una actividad en la Noche en Blanco: 0,25 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Declaración responsable del número de socios",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Número de socios, con una declaración responsable: máximo 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo II indicando en qué actividad municipal se va a participar",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "Se especificará en el Anexo II en que actividad van a participar.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Notificaciones electrónicas obligatorias; las asociaciones deben tener certificado digital",
+    "cita": {
+     "documento": 1396865,
+     "pagina": 2,
+     "texto": "las notificaciones con personas jurídicas como las Asociaciones deben ser electrónicas por lo que resulta necesario que las Asociaciones cuenten con certificado digital.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es el certificado del acuerdo municipal que aprueba la convocatoria y sus criterios de valoración; remite a la Ordenanza para la concesión de subvenciones a asociaciones culturales, que no se incluye (faltan plazo y lugar de presentación, importes máximos, gastos subvencionables y pago).",
+   "Solo para asociaciones culturales de Medina de Pomar; las actividades deben ser gratuitas. No sirve a un promotor profesional salvo como contratado por una asociación.",
+   "Si por fuerza mayor no puede justificarse toda la actividad, el importe se reduce proporcionalmente."
+  ]
+ },
+ "citas": {
+  "verificadas": 17,
+  "revisar": 0,
+  "noConsta": 12
+ }
+}

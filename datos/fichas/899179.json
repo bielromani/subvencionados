@@ -1,0 +1,342 @@
+{
+ "version": 1,
+ "codigoBdns": "899179",
+ "generada": "2026-10-09T14:09:55.341Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1436313,
+   "nombre": "Bases de convocatoria cultura 2026.pdf",
+   "paginas": 10,
+   "huella": "691abe06c81b9a2f"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Comarca de La Ribagorza a sus ayuntamientos para actividades culturales y de artes escénicas y musicales.",
+   "Actividades realizadas entre el 16 de noviembre de 2025 y el 15 de noviembre de 2026; una por municipio.",
+   "Crédito total de 6.000 €; máximo 450 € por solicitud (350 € si la actividad no está en el Catálogo de Compañías Ribagorzanas) y hasta el 80 % del coste.",
+   "Plazo: 20 días naturales desde la publicación del extracto en el BOP de Huesca; justificación hasta el 27 de noviembre de 2026.",
+   "Solicitud electrónica en el registro de la Comarca."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales y de artes escénicas y musicales en los municipios de la Comarca de La Ribagorza, realizadas entre el 16/11/2025 y el 15/11/2026",
+   "cita": {
+    "documento": 1436313,
+    "pagina": 1,
+    "texto": "El objeto de la presente convocatoria es regular la concesión de ayudas a los Ayuntamientos de la Comarca de La Ribagorza para la realización de actividades culturales y de artes escénicas y musicales",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos de la Comarca de La Ribagorza no pertenecientes a la Red Aragonesa de Espacios Escénicos (los de la RAEE, solo para núcleos agregados o entidades locales menores)",
+   "cita": {
+    "documento": 1436313,
+    "pagina": 1,
+    "texto": "Para actividades de artes escénicas y musicales, todos los municipios que integran la Comarca de La Ribagorza no pertenecientes a la Red Aragonesa de Espacios Escénicos (RAEE).",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días naturales desde la publicación del extracto en el Boletín Oficial de la Provincia de Huesca",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 2,
+     "texto": "El plazo de presentación de solicitudes será de 20 días naturales desde la publicación del extracto de la presente convocatoria en el Boletín Oficial de la Provincia de Huesca.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses desde el fin del plazo de presentación; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 3,
+     "texto": "En el plazo máximo de tres meses contados desde el día siguiente a la fecha de",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Entre el 16 de noviembre de 2025 y el 15 de noviembre de 2026",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "en aquellas actividades realizadas entre el 16 de noviembre de 2025 y el 15 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 27 de noviembre de 2026, con certificado del secretario (anexo II), facturas y material gráfico",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 5,
+     "texto": "El plazo de justificación finalizará el 27 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 6000,
+    "cita": {
+     "documento": 1436313,
+     "pagina": 2,
+     "texto": "La cantidad total destinada a esta subvención ascenderá a un máximo de 6.000,00 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 450,
+    "cita": {
+     "documento": 1436313,
+     "pagina": 3,
+     "texto": "La cantidad máxima que se dará a un solicitante para su actividad o proyecto será de 450 euros por solicitud.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1436313,
+     "pagina": 3,
+     "texto": "el importe de la subvención podrá ser de cuantía tal que sobrepase, aisladamente el 80% del coste de la actividad",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "La Comarca paga tras la justificación; después el ayuntamiento aporta en 30 días naturales el justificante bancario del pago",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 6,
+     "texto": "una vez la Comarca haya procedido al pago de la subvención concedida, la Entidad deberá presentar, en el plazo de 30 días naturales, fotocopia compulsada del justificante bancario",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas públicas nacionales o europeas sin superar el gasto subvencionado",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 2,
+     "texto": "Estas subvenciones son compatibles con otras convocadas por cualquier otra administración o entes públicos nacionales o europeos.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser municipio de la Comarca de La Ribagorza no perteneciente a la RAEE; los de la RAEE solo para núcleos agregados o entidades locales menores",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Los municipios pertenecientes a la RAEE podrán optar a esta subvención para sus núcleos de población agregados o entidades locales menores.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener deudas pendientes con la Comarca de la Ribagorza",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "mantengan deudas pendientes de pago por cualquier concepto con la Comarca de la Ribagorza",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Artes escénicas y musicales realizadas por compañías y grupos aragoneses",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Por artes escénicas y musicales se entenderán las realizadas por compañías y grupos aragoneses de teatro, danza, música,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una sola actividad por municipio, realizada en él y que no coincida con las fiestas patronales",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Únicamente se subvencionará una actividad cultural o actuación por municipio y realizada en el municipio y que no podrá coincidir en fecha con las fiestas patronales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social y no estar en las prohibiciones del art. 13.2 de la Ley 38/2003",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 4,
+     "texto": "Estar al corriente en el cumplimiento de las obligaciones tributarias o frente a la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Aceptar la subvención en 10 días desde la notificación",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 4,
+     "texto": "La aceptación de la subvención otorgada y de las condiciones derivadas de su otorgamiento en el plazo de 10 días de recepción de la notificación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración de la Comarca en la publicidad",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 4,
+     "texto": "A hacer constar en la publicidad de la actuación subvencionada la colaboración de la Comarca de La Ribagorza.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al día en la rendición de cuentas a la Cámara de Cuentas de Aragón",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 5,
+     "texto": "Se deberá acreditar estar al día en la obligación de rendir sus cuentas a la Cámara de Cuentas de Aragón",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Caché o presupuesto de la actividad cultural o espectáculo (IVA incluido)",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 8,
+     "texto": "PRESUP. ACTIVIDAD CULTURAL O CACHÉ IMPORTE",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actuaciones de teatro, danza, música, magia, circo, animación infantil, a la lectura y de calle",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "las realizadas por compañías y grupos aragoneses de teatro, danza, música, magia, circo, animación infantil, animación a la lectura y animación de calle.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades culturales: conferencias, exposiciones, talleres u otras que la Comisión Técnica considere",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Se entenderán por actividades culturales conferencias, exposiciones, talleres… u otro tipo de actividad cultural",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Actividad inscrita en el Catálogo Online de Compañías Ribagorzanas: hasta 450 € (si no, hasta 350 €)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1436313,
+     "pagina": 3,
+     "texto": "Para aquellas entidades cuya actividad cultural se encuentre inscrita en el Catálogo Online de Compañías Ribagorzanas (www.ribagorzaescultura.com) en el momento de presentar la solicitud.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Importe según solicitudes presentadas, crédito disponible y gasto efectivo",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1436313,
+     "pagina": 3,
+     "texto": "El importe de las subvenciones se determinará en función de las solicitudes presentadas, la partida presupuestaria disponible y en función del gasto efectivo a realizar.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Instancia del alcalde según el modelo del anexo I",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Instancia del Alcalde del Ayuntamiento, dirigida al Sr. Presidente de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Breve memoria descriptiva de las actividades",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 2,
+     "texto": "Breve memoria descriptiva de las actividades propuestas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de otras subvenciones solicitadas u obtenidas para la misma finalidad",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 2,
+     "texto": "Declaración de otras subvenciones y ayudas solicitadas y/u obtenidas para la misma finalidad que la subvención solicitada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de estar al corriente con Hacienda y la Seguridad Social o autorización para comprobarlo",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 2,
+     "texto": "Acreditación de hallarse al corriente en el cumplimiento de las obligaciones tributarias y con la Seguridad Social o autorización a la Comarca para su comprobación",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro electrónico de la Comarca de La Ribagorza",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Las solicitudes se presentarán de forma electrónica, a través del registro electrónico de la Comarca de La Ribagorza. https://ribagorza.sedelectronica.es",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://ribagorza.sedelectronica.es",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "a través del registro electrónico de la Comarca de La Ribagorza. https://ribagorza.sedelectronica.es",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1436313,
+     "pagina": 1,
+     "texto": "Las solicitudes se presentarán de forma electrónica, a través del registro electrónico de la Comarca de La Ribagorza.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo pueden pedirla los ayuntamientos de la Comarca de La Ribagorza; un promotor solo puede beneficiarse indirectamente si un ayuntamiento contrata su actuación, y las artes escénicas y musicales deben ser de compañías o grupos aragoneses.",
+   "No hay criterios con puntos: se concede a todos los que cumplan los requisitos, con importes máximos de 450 € (actividad en el Catálogo de Compañías Ribagorzanas) o 350 €.",
+   "Los pagos deben estar hechos antes del fin del plazo de justificación (27 de noviembre de 2026)."
+  ]
+ },
+ "citas": {
+  "verificadas": 31,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

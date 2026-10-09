@@ -1,0 +1,524 @@
+{
+ "version": 1,
+ "codigoBdns": "921239",
+ "generada": "2026-10-09T14:09:55.244Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1499313,
+   "nombre": "CONVOCATÒRIA SUBVENCIONS ÀMBIT MUSICAL, ARTS ESCÈNIQUES I AUDIOVISUALS 2026 DILIGÈNCIA - SEFYCU 8445825.pdf",
+   "paginas": 12,
+   "huella": "ddd473955ae53c3c"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Ontinyent a entidades locales de música, artes escénicas y audiovisuales para sus actividades de 2026.",
+   "Para asociaciones de las comisiones Musical, de Artes Escénicas o Audiovisuales del Consell de Cultura, con sede en Ontinyent e inscritas al menos un año en el registro municipal.",
+   "Crédito total de 60.000 €; hasta el 100 % del coste y 15.000 € por entidad (mínimo 400 €).",
+   "Plazo: 30 días hábiles desde la publicación del extracto en el BOP de Valencia.",
+   "Solicitud telemática en la sede electrónica con certificado digital de la entidad."
+  ],
+  "objeto": {
+   "valor": "Financiar las actividades propias y el mantenimiento de la actividad habitual de entidades asociativas de Ontinyent del ámbito musical, de artes escénicas y audiovisual en 2026",
+   "cita": {
+    "documento": 1499313,
+    "pagina": 1,
+    "texto": "Convocar per a l’exercici 2026 en règim de concurrència competitiva, les ajudes a entitats associatives del municipi d’Ontinyent d’àmbit musical, d’arts escèniques i d’arts audiovisuals",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades asociativas de la Comisión Musical, de Artes Escénicas o de Artes Audiovisuales del Consell de Cultura, legalmente constituidas, con sede en Ontinyent e inscritas en el Registro Municipal de Asociaciones desde al menos un año antes",
+   "cita": {
+    "documento": 1499313,
+    "pagina": 2,
+    "texto": "Tindran la consideració d’entitats beneficiàries les entitats associatives, incloses en la Comissió Musical, la d’Arts Escèniques i la d’Arts Audiovisuals del Consell de Cultura",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "30 días hábiles desde la publicación del extracto en el BOP de Valencia",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "El termini per a presentar les sol·licituds serà de 30 dies hàbils a comptar des de la publicació de l’extracte de la present convocatòria en el BOP de València.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Máximo 6 meses desde el fin del plazo de solicitudes y, en todo caso, antes de acabar el ejercicio; sin notificación, se entiende denegada",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 7,
+     "texto": "El termini màxim per a resoldre i notificar les subvencions concedides no podrà excedir els 6 mesos des de la data de finalització del termini de presentació de sol·licituds",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Gastos realizados entre el 1 de enero y el 31 de diciembre de 2026",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 9,
+     "texto": "ode comprés entre l’1 de gener i el 31 de desembre de 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta 3.000 €: un mes desde el fin de la actividad, como máximo el 31/01/2027; más de 3.000 €: tres meses, como máximo el 31/03/2027. Por la sede electrónica con firma electrónica",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 9,
+     "texto": "documentació següent, en el termini màxim d’un mes des de la finalització de l’activitat, sense excedir, en cap cas, el 31 de gener de 2027:",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 60000,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 1,
+     "texto": "El crèdit pressupostari total destinat a aquesta convocatòria serà de 60.000 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 15000,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "mòria, amb el límit màxim per entitat de 15.000 €.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 1,
+     "texto": "podrà arribar al 100% del cost de les activitats indicades en la me-",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Por transferencia tras la justificación; anticipo posible del 50 % previa solicitud motivada",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 10,
+     "texto": "Es podrà anticipar el 50% de l'import de l'ajuda concedida, prèvia sol·licitud degudament motivada de l'entitat beneficiària.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas, ingresos o recursos si la suma no supera el coste de la actividad",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "blics o privats, sempre que la suma total de les ajudes no supere el cost de l'activitat subvencionada.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Entidad legalmente constituida con sede en Ontinyent",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "legalment constituïdes que tinguen seu oberta a Ontinyent i estiguen inscrites",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Inscrita en el Registro Municipal de Asociaciones desde al menos un año antes de la convocatoria, con datos actualizados en 2026",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "en el Registre Municipal d’Associacions des d’almenys 1 any abans a la data de publicació de la present convocatòria, i amb les seues dades actualitzades en 2026",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en las prohibiciones del artículo 13 de la LGS",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "Que estiguen incurses en alguna de les circumstàncies assenyalades en l’article 13 de la LGS.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener convenio de colaboración en vigor con subvención del Ayuntamiento",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "Que mantinguen en vigor algun conveni de col·laboració amb l’Ajuntament d’Ontinyent que incloga algun tipus de subvenció per part d’aquest.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No depender ni estar vinculada a otras entidades solicitantes o con convenio",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "Que siguen entitats dependents o que tinguen algun tipus de vinculació amb altres entitats que hagen sol·licitat aquestes ajudes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener subvenciones municipales pendientes de justificar ni pérdida total de una subvención en 2025",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 2,
+     "texto": "Aquelles entitats que tinguen per justificar una subvenció concedida anteriorment per l’Ajuntament",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 3,
+     "texto": "que es troba al corrent en el compliment de les seues obligacions tributàries i davant la Seguretat Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programa con claro interés social y de dinamización cultural",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 3,
+     "texto": "Mostrar un clar interés social i de dinamització cultural.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades desarrolladas principalmente en Ontinyent",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 3,
+     "texto": "Ha de ser desenvolupat principalment en la ciutat d'Ontinyent.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar difusión a la subvención citando al Ayuntamiento, el importe y la finalidad",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 3,
+     "texto": "Donar adequada difusió a la concessió de la subvenció, fent constar com a concedent a l’Ajuntament d’Ontinyent",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Alquiler de las instalaciones de la asociación",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 3,
+     "texto": "Despeses de lloguer de les instal·lacions de l'associació.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Electricidad, teléfono e internet",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 3,
+     "texto": "Despeses d'electricitat, telèfon i internet satisfetes per l'associació.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personal contratado por la asociación (salarios y Seguridad Social, sin dietas)",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "Despeses de personal contractat per l'associació (salaris i seguretat social, amb exclusió de les dietes i altres conceptes retributius).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos directos de las actividades: suministros, difusión, ponentes y similares (los de fuera de Ontinyent, máximo 10 %)",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "Despeses directes vinculades a la realització de les activitats incloses en el programa tal com subministraments, despeses de difusió, ponents i semblants",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Inversiones (material inventariable, equipos informáticos) hasta 1.000 € anuales",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "Les despeses en inversions (material inventariable, equipament informàtic, etc) no podran superar en cap cas la quantia de 1.000,00 € anuals.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Celebraciones gastronómicas y gastos suntuarios",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "No es podran subvencionar en cap cas les despeses derivades de celebracions gastronòmiques ni despeses sumptuàries",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ayudas o premios de la entidad a terceros",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "ajudes o premis de l'entitat beneficiària a ter",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA deducible o compensable",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "L’IVA no serà subvencionable en el cas que siga deduïble o compensable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pagos en efectivo de más de 1.000 euros",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 9,
+     "texto": "No s’admetran pagaments en efectiu que superen l’import de 1.000,00 euros o quantia que legalment es fixe.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Coste de las actividades previstas (de 3 puntos hasta 1.000 € a 15 puntos con más de 48.000 €)",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "A.1. Cost de les activitats previstes, màxim 15 punts:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad cultural del proyecto (coherencia, aportación artística, innovación, relevancia local)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 4,
+     "texto": "Qualitat cultural del projecte: màxim 20 punts: es valorarà la qualitat general del projecte cultural",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Nivel de autofinanciación del proyecto (10 puntos con más del 70 %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 5,
+     "texto": "Nivell d’autofinançament del projecte, màxim 10 punts:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Actividades abiertas a toda la población y gratuitas",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 5,
+     "texto": "Estan obertes a tota la població de forma gratuïta (no s’admeten puntuacions intermèdies): 10 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interacción o colaboración entre entidades o colectivos locales",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 5,
+     "texto": "Promouen la interacció o col·laboració entre diferents entitats/col·lectius locals: 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Actividades innovadoras no realizadas antes en Ontinyent",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 5,
+     "texto": "Activitats innovadores (no s’han realitzat anteriorment en el municipi d’Ontinyent): 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Proyecto realizado en distintos lugares o barrios de la ciudad",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 5,
+     "texto": "El projecte es realitza en diferents llocs o barris de la ciutat: 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Junta directiva paritaria (5) y protocolo contra el acoso sexual y la LGTBIfobia (5 si registrado en REGCON, 3 si no)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 5,
+     "texto": "sexual i per raó de sexe, i contra la LGTBI fòbia: màxim 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Promoción del uso del valenciano en documentación, web y redes, cartelería y actividades",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 6,
+     "texto": "justificativa corresponent a l’anualitat anterior per tal de valorar aquest criteri): màxim 10 punts:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "No recibir ayuda indirecta o en especie del Ayuntamiento por usar una instalación municipal",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1499313,
+     "pagina": 6,
+     "texto": "No rebre cap ajuda indirecta o en espècie de l’Ajuntament (despeses de lloguer, llum, neteja) per utilitzar una instal·lació municipal: 10 punts.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Formulario normalizado de solicitud por el trámite de la sede electrónica",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Les sol·licituds es realitzaran mitjançant el corresponent formulari normalitzat de sol·licitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria detallada de las actividades, con lenguaje inclusivo, firmada por el representante",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Memòria detallada de les activitats que es pretenen desenvolupar, que haurà d’utilitzar un llenguatge inclusiu i no sexista",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificación del presupuesto detallado de gastos e ingresos",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Certificació del pressupost de despeses i ingressos detallat de l'entitat associativa",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración jurada de cumplir los requisitos y estar al corriente con la AEAT y la Seguridad Social",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Declaració jurada de complir tots els requisits per a ser beneficiària d’una subvenció pública",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable sobre el IVA soportado",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Declaració responsable relativa a l’IVA suportat, segons model normalitzat.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de mantenimiento de terceros si cambia la cuenta bancaria",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "l'ingrés de l'ajuda (Fitxa de manteniment de tercers) en cas de modificació del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentación que acredite los criterios 7.B (paridad y protocolo) y 7.C (valenciano)",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Aportar documentació per acreditar que es compleixen els requisits dels apartats 7.B i 7.C.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Ontinyent, trámite específico",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "Les sol·licituds de subvencions es presentaran de forma telemàtica a través de la Seu Electrònica de l’Ajuntament",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://ontinyent.sedipualba.es/",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 1,
+     "texto": "La comprovació de l'autenticitat d'aquest document i la resta d'informació està disponible en https://ontinyent.sedipualba.es/",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Obligatorio: certificado digital de firma electrónica de la entidad",
+    "cita": {
+     "documento": 1499313,
+     "pagina": 8,
+     "texto": "tot utilitzant el certificat digital de signatura electrònica de l'entitat sol·licitant.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento está en valenciano.",
+   "Solo pueden pedirla asociaciones locales de Ontinyent integradas en el Consell de Cultura; no sirve a un promotor de fuera ni a empresas.",
+   "El importe se reparte por puntos (máximo 100) dividiendo el crédito entre los puntos totales; mínimo 400 € y máximo 15.000 € por entidad.",
+   "La URL recogida es la de la sede electrónica que aparece en el pie de verificación del documento.",
+   "Las facturas deben ser de 2026 y estar pagadas al menos en un 50 % al justificar (100 % si hubo anticipo); la subvención se reduce si los gastos justificados son menores o cambian los criterios valorados."
+  ]
+ },
+ "citas": {
+  "verificadas": 50,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

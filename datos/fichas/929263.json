@@ -1,0 +1,194 @@
+{
+ "version": 1,
+ "codigoBdns": "929263",
+ "generada": "2026-10-09T14:10:22.082Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1520945,
+   "nombre": "Convocatòria_2026.pdf",
+   "paginas": 3,
+   "huella": "fb56a6ba3e518d32"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Puigcerdà para participar en el desfile de carrozas de la Festa de l'Estany 2026.",
+   "Para entidades jurídicas, personas físicas y sociedades que participen en el desfile.",
+   "Crédito total de 16.500 euros; máximo de 1.600 euros por solicitante y hasta el 100 % del presupuesto de la actividad.",
+   "Plazo: 15 días naturales desde la publicación del extracto en el Boletín Oficial de la Provincia.",
+   "Solicitud electrónica en la sede del Ayuntamiento de Puigcerdà."
+  ],
+  "objeto": {
+   "valor": "Potenciar el número y la calidad de las collas carrossaires y comparsas participantes en el desfile de carrozas de la Festa de l'Estany de Puigcerdà",
+   "cita": {
+    "documento": 1520945,
+    "pagina": 1,
+    "texto": "La finalitat d’aquesta convocatòria és potenciar el nombre i qualitat de colles carrossaires i comparses participants a la Festa de l’estany.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades jurídicas, personas físicas y sociedades que participen en el desfile de carrozas de la Festa de l'Estany 2026",
+   "cita": {
+    "documento": 1520945,
+    "pagina": 2,
+    "texto": "Podran ser objecte d’aquesta subvenció les entitats jurídiques, persones físiques i societats, que participin a la desfilada de carrosses de la Festa de l'Estany 2026",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días naturales desde la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "en el termini de 15 dies naturals des de la publicació de l'extracte de la convocatòria en el Butlletí Oficial de la Província.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde el fin del plazo de presentación; sin notificación en plazo se entiende desestimada",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 3,
+     "texto": "L'Alcaldia de l’ajuntament ha d’emetre la resolució corresponent en el termini màxim de tres mesos, a comptar des de l’acabament del període de presentació de les sol·licituds.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Desfile de carrozas de la Festa de l'Estany 2026",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "que participin a la desfilada de carrosses de la Festa de l'Estany 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 16500,
+    "cita": {
+     "documento": 1520945,
+     "pagina": 1,
+     "texto": "La quantia total màxima de les subvencions convocades és de 16.500,00 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 1600,
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "amb un màxim de 1.600,00 euros per entitat sol·licitant.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "L'import de la subvenció no podrà superar en cap cas el 100% del pressupost de l'activitat",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Haber hecho la inscripción de carrozas de la Festa de l'Estany del año de la convocatoria y haber participado en el desfile",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "Haver realitzat el tràmit d’inscripció de Carrosses de la Festa de l’Estany de l’any de la convocatòria. I haver participat en la corresponent rua.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber sido sancionado por las autoridades locales por infringir la normativa o estas bases desde el año anterior",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "No haver estat objecte de sanció per part de les autoritats locals per infracció de la normativa vigent o per incompliment d’aquestes bases",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo específico de la sede electrónica, firmada digitalmente por el interesado o su representante legal",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "Les sol·licituds es formularan mitjançant en el model disponible específic a la seu electrònica de l’Ajuntament de Puigcerdà",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Puigcerdà, por canal electrónico",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "Les sol·licituds es formularan mitjançant en el model disponible específic a la seu electrònica de l’Ajuntament de Puigcerdà",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Solicitud firmada digitalmente y presentada por canal electrónico o telemático",
+    "cita": {
+     "documento": 1520945,
+     "pagina": 2,
+     "texto": "Les sol·licituds, degudament emplenades i signades digitalment per la persona",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto no corresponde al título de la convocatoria (subvenciones a entidades culturales para actividades y nuevos públicos 2026): es la convocatoria del Ayuntamiento de Puigcerdà para el desfile de carrozas de la Festa de l'Estany 2026.",
+   "Remite a las bases reguladoras publicadas en el BOP de Girona (3/11/2021 y 14/12/2021), que no se incluyen; no constan gastos subvencionables, criterios con puntos, justificación ni pago.",
+   "Aunque dice que se adjudica según criterios de valoración, el documento no los detalla y habla de concurrencia no competitiva.",
+   "El documento está en catalán.",
+   "No sirve a un promotor de conciertos: es una ayuda a participantes en un desfile de carrozas."
+  ]
+ },
+ "citas": {
+  "verificadas": 13,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

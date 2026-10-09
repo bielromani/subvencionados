@@ -1,0 +1,152 @@
+{
+ "version": 1,
+ "codigoBdns": "901520",
+ "generada": "2026-10-09T14:10:22.085Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1528901,
+   "nombre": "Decreto Nº 4470 de 28-09-2026  RESOLUCIÓN CONVOCATORIA DE INSTRUMENTOS MUSICALES UP ALBACETE 2026.pdf",
+   "paginas": 1,
+   "huella": "07fb443cf42b1a8a"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Resolución de la Diputación de Albacete que concede una ayuda dentro de la convocatoria de 2026 para comprar instrumentos musicales.",
+   "La convocatoria se dirige a entidades locales territoriales y sus entes dependientes de la provincia de Albacete.",
+   "Financia instrumentos y accesorios musicales inventariables de bandas de música, sus escuelas de música y agrupaciones musicales.",
+   "Se paga tras justificar gastos y pagos con cuenta justificativa simplificada; justificación hasta el 5 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Adquisición de instrumentos musicales y accesorios musicales inventariables de las bandas de música, sus escuelas de música adscritas y agrupaciones musicales del municipio",
+   "cita": {
+    "documento": 1528901,
+    "pagina": 1,
+    "texto": "GASTOS DE ADQUISICIÓN DE INSTRUMENTOS MUSICALES y accesorios musicales de naturaleza inventariable de las Bandas de Música, de las EEMM adscritas a estas y/o de las Agrupaciones Musicales del municipio.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades locales territoriales y sus entes dependientes de la provincia de Albacete",
+   "cita": {
+    "documento": 1528901,
+    "pagina": 1,
+    "texto": "AYUDAS A ENTIDADES LOCALES TERRITORIALES Y SUS ENTES DEPENDIENTES, DE LA PROVINCIA DE ALBACETE PARA LA ADQUISICIÓN DE INSTRUMENTOS MUSICALES",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": "Justificación de gastos y pagos mediante formulario electrónico de cuenta justificativa simplificada, hasta el 5 de noviembre de 2026",
+    "cita": {
+     "documento": 1528901,
+     "pagina": 1,
+     "texto": "mediante el modelo de formulario electrónico cuenta justificativa simplificada. La citada justificación de gastos se realizará hasta el día 5 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago previa justificación de los gastos y de sus pagos",
+    "cita": {
+     "documento": 1528901,
+     "pagina": 1,
+     "texto": "El abono de la ayuda concedida se efectuará, conforme determina el artículo 6º de la convocatoria, previa la oportuna justificación de gastos y pagos de los mismos",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social (esta resolución atiende a solicitantes que subsanaron esos incumplimientos)",
+    "cita": {
+     "documento": 1528901,
+     "pagina": 1,
+     "texto": "DE SOLICITANTES/BENEFICIARIOS UNA VEZ SUBSANADOS INCUMPLIMIENTOS DE OBLIGACIONES DE HACIENDA Y/O DE SEGURIDAD SOCIAL DURANTE EL AÑO 2026",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Instrumentos musicales y accesorios musicales de naturaleza inventariable",
+    "cita": {
+     "documento": 1528901,
+     "pagina": 1,
+     "texto": "GASTOS DE ADQUISICIÓN DE INSTRUMENTOS MUSICALES y accesorios musicales de naturaleza inventariable",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento no son las bases ni la convocatoria: es el Decreto nº 4470 de 28/09/2026, resolución de concesión que otorga 4.000,00 € a un único beneficiario (Patronato UP Albacete) tras subsanar incumplimientos con Hacienda o la Seguridad Social.",
+   "La convocatoria (Decreto nº 1920 de 20/04/2026) y la Ordenanza reguladora de las bases a las que remite no se incluyen, por lo que faltan plazos de solicitud, crédito total, importes máximos, criterios y documentación.",
+   "Solo pueden pedirla entidades locales para sus bandas y agrupaciones musicales; no sirve a un promotor privado de conciertos."
+  ]
+ },
+ "citas": {
+  "verificadas": 6,
+  "revisar": 0,
+  "noConsta": 13
+ }
+}

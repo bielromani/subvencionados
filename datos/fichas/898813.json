@@ -1,0 +1,328 @@
+{
+ "version": 1,
+ "codigoBdns": "898813",
+ "generada": "2026-10-09T14:10:22.027Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1435221,
+   "nombre": "CONVOCATORIA_CASTELLA_CONCURS_MOSCA.pdf",
+   "paginas": 4,
+   "huella": "e8d16624c1cbf1ef"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Concurso de música joven «Mosca» 2026 del Ayuntamiento de Palafolls: premia composiciones musicales de grupos jóvenes.",
+   "Para personas físicas; al menos un 25 % de la formación debe ser de Palafolls.",
+   "Dos premios de 450 euros (900 euros en total), que se pagan tras actuar en la Fiesta Mayor 2026.",
+   "Plazo: 15 días naturales desde el día siguiente a la publicación del extracto en el BOP de Barcelona."
+  ],
+  "objeto": {
+   "valor": "Premiar composiciones musicales de jóvenes; los ganadores actúan en la Fiesta Mayor (AlterFesta) 2026",
+   "cita": {
+    "documento": 1435221,
+    "pagina": 1,
+    "texto": "El objetivo es premiar las composiciones musicales entregadas, donde se priorizará:",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas que quieran mostrar su talento, en formaciones con al menos un 25 % de miembros de Palafolls",
+   "cita": {
+    "documento": 1435221,
+    "pagina": 1,
+    "texto": "Son susceptibles todas aquellas personas físicas que quieran mostrar su talento y poner en valor su trabajo.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Barcelona y durante 15 días naturales",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia de Barcelona y finalizará 15 días naturales después.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "El que acuerde el órgano competente, antes de la AlterFesta de septiembre del año en curso",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "El plazo de resolución y notificación será el acordado por el órgano competente y se hará antes de la celebración de la AlterFesta en septiembre del año en curso.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actuación en la Fiesta Mayor 2026, durante la primera quincena de septiembre",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "realizar la actuación en la Fiesta Mayor 2026, durante la primera quincena de septiembre.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 900,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "la cantidad total máxima de la subvención será de 900,00 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 450,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "El importe de cada premio será de 450€, de los cuales se repartirán como máximo 2.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Una vez realizada la actuación en la Fiesta Mayor 2026",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "El pago de las cantidades que conforman los premios se efectuará una vez realizada la actuación que contempla la concesión del premio",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Al menos un 25 % de la formación debe ser de Palafolls",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "La inscripción está sujeta a que al menos un 25% de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presentar un mínimo de tres canciones en el formato que indican las bases",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "Presentar un mínimo de tres canciones en el formato que especifican las bases.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La persona que entrega la ficha es la representante legal del grupo ante la organización",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "será el/la representante legal del grupo y la responsable de la comunicación con los organizadores del Mosca.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Realizar la actuación en la Fiesta Mayor 2026 para cobrar el premio",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "se efectuará una vez realizada la actuación que contempla la concesión del premio",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Se expulsa al grupo que intente manipular los resultados o haga votación fraudulenta",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 3,
+     "texto": "En el caso de que se detecte algún intento de manipular los resultados, o de alguna votación fraudulenta, se expulsará al grupo implicado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Que al menos un 25 % de la formación sea de Palafolls",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "1.- Que al menos un 25% de la formación sean de Palafolls (5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Que todos los miembros sean menores de 35 años",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "2.- Que la totalidad de los miembros sean menores de 35 años (5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Criterios musicales y originalidad: trabajos nuevos del año, originalidad de los temas y calidad musical",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "en curso y la originalidad de los temas y calidad musical. (5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Que la mayor parte del repertorio sea en catalán",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "4.-Que la mayor parte de su repertorio sea en catalán. (5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Que sea música en directo, con instrumentos y voces en tiempo real y no bases pregrabadas",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 1,
+     "texto": "pregrabadas, autotune o reproducciones automatizadas. (5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Votación del jurado (primer premio): calidad musical, puesta en escena y originalidad, de 1 a 9",
+    "puntosMaximos": 9,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 3,
+     "texto": "calidad musical, puesta en escena y originalidad de los temas presentados, siendo 1 la puntuación más baja y 9 la máxima.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Votación del público asistente al concierto (segundo premio): gana el grupo con más votos",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 3,
+     "texto": "cada persona asistente al concierto tendrá un voto que podrá depositar dentro de una urna, y el grupo con más votos será el segundo ganador.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Concordancia con la temática del resto de grupos de la AlterFesta",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 3,
+     "texto": "Concordancia con la temática del resto de grupos musicales de la AlterFesta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Grupos que no hayan ganado (ni tengan miembros ganadores) en la edición anterior",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1435221,
+     "pagina": 3,
+     "texto": "Grupos que no hayan sido ganadores (o con miembros ganadores)",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Ficha de inscripción rellenada mediante el trámite específico de la sede electrónica",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "Las solicitudes se deberán entregar con la ficha rellenada mediante el trámite específico que figura en la web del Ayuntamiento de Palafolls",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del DNI de todos los componentes del grupo",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "con una fotocopia del DNI de todos los componentes del grupo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Un mínimo de tres canciones",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "Presentar un mínimo de tres canciones en el formato que especifican las bases.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Trámite específico en la sede electrónica del Ayuntamiento de Palafolls, oficina de atención ciudadana o medios del art. 16.4 de la Ley 39/2015",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "Se deberán presentar en la oficina de atención ciudadana del Ayuntamiento o por cualquier de los medios señalados en el artículo 16.4 de la Ley 39/2015",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://www.palafolls.cat",
+    "cita": {
+     "documento": 1435221,
+     "pagina": 2,
+     "texto": "específico que figura en la web del Ayuntamiento de Palafolls a través de la sede electrónica http://www.palafolls.cat.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es un concurso con premios para grupos jóvenes, no una subvención a proyectos; los dos ganadores salen uno por jurado y otro por votación del público en el concierto.",
+   "Se rige por las bases generales del concurso de música joven de Palafolls (Junta de Gobierno Local de 3 de marzo de 2026), que no se incluyen; el formato de las canciones está en esas bases.",
+   "La convocatoria mezcla criterios con puntos (5 puntos cada uno) y una votación del jurado de 1 a 9 sin explicar cómo se combinan.",
+   "No sirve a un promotor de conciertos de jazz, clásica u ópera: va dirigido a personas físicas músicos jóvenes."
+  ]
+ },
+ "citas": {
+  "verificadas": 27,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

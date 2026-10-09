@@ -1,0 +1,505 @@
+{
+ "version": 1,
+ "codigoBdns": "904572",
+ "generada": "2026-10-09T14:10:26.511Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1451578,
+   "nombre": "C Bases Distribución 26 _20260511_085754.pdf",
+   "paginas": 29,
+   "huella": "1e173a4ac7bcc1de"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas de la Agencia Gallega de las Industrias Culturales (Agadic) para distribuir espectáculos de artes escénicas y música, dentro y fuera de Galicia, en 2026.",
+   "Para personas físicas autónomas y empresas privadas dedicadas a producir y distribuir espectáculos, con actividad mayoritaria en Galicia; no para asociaciones.",
+   "Crédito de 500.000 euros (250.000 para música); máximo 15.000 euros por solicitante.",
+   "Concurrencia no competitiva por orden de entrada: el plazo se abre a los 10 días naturales de la publicación en el DOG y dura tres meses.",
+   "Cubre viajes, transporte de material, alojamiento, manutención y, en ferias y festivales, costes de personal artístico y técnico."
+  ],
+  "objeto": {
+   "valor": "Distribución exterior e interior de espectáculos de artes escénicas y música: giras fuera de Galicia, actuaciones en ferias y festivales, asistencia a ferias y mercados, y distribución interior de artes escénicas",
+   "cita": {
+    "documento": 1451578,
+    "pagina": 5,
+    "texto": "subvenciones para promover la distribución exterior e interior de bienes y servicios culturales producidos por empresas vinculadas a las artes escénicas y o musicales",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas autónomas y personas jurídicas privadas (y agrupaciones o comunidades de bienes) con domicilio o sucursal en Galicia, la UE o el EEE, dedicadas profesionalmente a la producción y distribución de espectáculos de artes escénicas o musicales con actividad mayoritaria en Galicia",
+   "cita": {
+    "documento": 1451578,
+    "pagina": 6,
+    "texto": "Podrán obtener la condición de personas beneficiarias de las subvenciones las personas físicas (autónomas) y personas jurídicas privadas, con domicilio o sucursal en Galicia",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Se abre transcurridos 10 días naturales desde el día siguiente a la publicación en el Diario Oficial de Galicia y termina a los tres meses (de 9:00 del primer día a 14:00 del último)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 13,
+     "texto": "El plazo para la presentación de las solicitudes se iniciará transcurridos 10 días naturales a contar desde el día siguiente al de la publicación de la convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Máximo tres meses desde el día siguiente a la publicación de la convocatoria en el DOG; sin resolución, desestimada",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 19,
+     "texto": "La citada resolución se deberá dictar y notificar en el plazo máximo de tres meses, a contar desde el día siguiente al de la publicación",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Entre el 1 de noviembre de 2025 y el 31 de octubre de 2026",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 9,
+     "texto": "Todas las actividades para las que se solicita subvención deben desarrollarse entre el 1 de noviembre de 2025 y el 31 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 1 de junio de 2026 (actividades entre el 1 de noviembre y el 1 de mayo) o hasta el 10 de noviembre de 2026 (entre el 2 de mayo y el 31 de octubre)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 22,
+     "texto": "Para los proyectos subvencionados con fecha de realización entre el 1 de noviembre y el 1 de mayo el plazo de justificación finaliza el 1 de junio del 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 500000,
+    "cita": {
+     "documento": 1451578,
+     "pagina": 7,
+     "texto": "El crédito destinado a la financiación de estas ayudas es de 500.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 15000,
+    "cita": {
+     "documento": 1451578,
+     "pagina": 7,
+     "texto": "pero la cuantía máxima total que podrán obtener es de 15.000 €.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Tras la justificación y comprobación; se pueden pedir anticipos (con un mes de antelación a la justificación) y pagos a cuenta",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 24,
+     "texto": "El pago de la subvención se realizará una vez recibida la documentación justificativa y realizadas las actuaciones de comprobación oportunas",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas públicas o privadas para el mismo proyecto, salvo las de la Consellería de Cultura, Lengua y Juventud y sus organismos",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 5,
+     "texto": "La percepción de estas ayudas es compatible con otras subvenciones, ayudas e ingresos o recursos para el mismo proyecto",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "Sí, régimen de minimis (Reglamento UE 2023/2831; máximo 300.000 euros en tres años)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 5,
+     "texto": "El importe total de las ayudas de minimis concedidas por un Estado miembro a una única empresa no excederá de 300.000 euros",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Dedicarse profesionalmente a la producción y distribución de espectáculos de artes escénicas o musicales con actividad mayoritaria en Galicia",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 6,
+     "texto": "dedicadas profesionalmente a la actividad de producción y distribución de espectáculos de artes escénicas o musicales que desarrollen mayoritariamente su actividad en la Comunidad Autónoma de Galicia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las asociaciones y entidades sin fines de lucro",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 6,
+     "texto": "Las asociaciones y restantes entidades sin fines de lucro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No incurrir en las prohibiciones del artículo 10 de la Ley 9/2007 de subvenciones de Galicia",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 6,
+     "texto": "Las personas o entidades en las que concurra alguna de las prohibiciones establecidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidad B.1 (música fuera de Galicia): mínimo cuatro conciertos en tres espacios distintos, y no más de cuatro en el mismo espacio",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 8,
+     "texto": "consistente en la realización de un mínimo de cuatro conciertos en tres espacios distintos, como mínimo, y en ningún caso más de cuatro conciertos en el mismo espacio.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidad B.2: conciertos en ferias o festivales de música fuera de Galicia",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 9,
+     "texto": "Podrán acogerse a esta modalidad las empresas que presenten un proyecto de exhibición de conciertos en ferias o festivales del sector de la música que se celebren fuera de Galicia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidad B.3: asistencia a ferias y mercados musicales fuera de Galicia (máximo dos personas por entidad y evento)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 9,
+     "texto": "Modalidad B.3: subvenciones para la asistencia a ferias y mercados musicales fuera de Galicia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidades B.1/B.2: tener los contratos o invitaciones con contenido económico de la actividad",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 9,
+     "texto": "Estar en posesión de los contratos/invitaciones con contenido económico de la actividad a realizar en feria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alta en el IAE correspondiente",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 9,
+     "texto": "ARTES ESCÉNICAS A.1/A.2/A.4 Alta en el IAE correspondiente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una misma compañía, artista o grupo solo puede ser presentado por un solicitante",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 7,
+     "texto": "una misma compañía, artista o grupo solo podrá ser presentado por una persona solicitante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad a la financiación de la Xunta (Agadic) con su logotipo en todo el material de difusión",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 21,
+     "texto": "debe hacerse mención expresa de la colaboración de la Xun-\nta de Galicia a través de la Agencia Gallega de las Industrias Culturales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Subcontratación limitada al 20 % del importe de la subvención",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 13,
+     "texto": "en ningún caso se podrá subcontratar por más del 20% del importe total de la subvención otorgada.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Transporte y desplazamiento de todo el equipo artístico y técnico (avión hasta 200 €/persona en España y Portugal, 300 € resto de Europa, 800 € resto del mundo)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 10,
+     "texto": "Gastos de transporte y desplazamiento de todo el equipo artístico y técnico, quedando excluidos los desplazamientos dentro de la ciudad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Autobús, tren, peajes, alquiler de vehículos y combustible (70, 90 o 100 €/persona según destino)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 10,
+     "texto": "Gastos autobús / tren/ peajes autopistas/ alquiler",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Transporte de materiales (400, 600 u 800 € según destino) y visados (100 %)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 10,
+     "texto": "España y Portugal 400€ Transporte de materiales Resto de Europa 600€",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alojamiento y manutención (manutención 45-60 €/persona; alojamiento 70-90 €/persona)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 10,
+     "texto": "b) Gastos de alojamiento y manutención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidades A.2 y B.2: servicios profesionales (personal artístico y técnico), hasta el 60 % del caché sin IVA",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 10,
+     "texto": "Para las modalidades A2 y B2, también serán subvencionables los gastos de servicios profesionales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidades A.3 y B.3: cuotas de asistencia e inscripción (dos personas por feria) y alquiler del espacio de promoción",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 11,
+     "texto": "derechos o cuotas de asistencia e inscripción (dos personas máximo por feria o festival) así como el alquiler del espacio para la promoción",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidad A.4: solo gastos de personal artístico y técnico de los días de representación",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 11,
+     "texto": "Para la modalidad A.4 tendrán la consideración de gastos subvencionables solo los gastos de personal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos generales imputables hasta el 25 % del coste total del proyecto",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 12,
+     "texto": "máximo que se podrá considerar como imputable al proyecto en concepto de gastos generales es el 25% del coste total del proyecto.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "IVA e impuestos recuperables, impuestos personales sobre la renta, intereses, gastos financieros, recargos, sanciones y gastos judiciales",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 12,
+     "texto": "no serán subvencionables los gastos relativos a impuestos indirectos, en concreto, el importe del impuesto sobre el valor añadido",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamientos dentro de la ciudad",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 10,
+     "texto": "quedando excluidos los desplazamientos dentro de la ciudad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos administrativos o de mantenimiento formal de la empresa (gestorías, notarías)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 12,
+     "texto": "Los gastos administrativos o de mantenimiento formal de la empresas, como gastos de gestorías, notarías o similares.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Honorarios profesionales no artísticos ni técnicos",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 12,
+     "texto": "Los honorarios profesionales y otros similares derivados de la realización de representaciones vinculados al proyecto, excepto los considerados artísticos o técnicos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Elaboración de materiales de difusión del proyecto",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 12,
+     "texto": "Los gastos correspondientes a la elaboración de materiales de difusión vinculados al proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos no vinculados directamente con la actividad",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 12,
+     "texto": "Los gastos generales ni cualquier otros gastos no vinculados directamente con la actividad objeto",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo normalizado (anexo II)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 2,
+     "texto": "deberá presentarse una solicitud ajustada al modelo normalizado que se incluye como anexo II de esta resolución",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado del acuerdo de solicitud o autorización de quien firma, si es persona jurídica",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "Certificado del acuerdo de solicitud de la ayuda o de la autorización de la persona que la firme en nombre de la entidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Agrupaciones sin personalidad: nombramiento de representante, compromisos de ejecución de cada miembro y de no disolución",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "nombramiento del representante o apoderado legal único de la agrupación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estatutos y escrituras de constitución inscritos",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "Estatutos inscritos y escrituras de constitución inscritos en el registro mercantil o el que corresponda.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de la representación de quien firma",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "Documentación que acredite suficientemente la representación de quien firma la solicitud.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidades A.1, A.2, B.1 y B.2: ficha del proyecto y presupuesto (anexo III)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "2.1.1. Ficha del proyecto y presupuesto de gastos (anexo III).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contrato de actuación u oferta/invitación con contenido económico",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "Contrato de actuación u oferta/invitación con contenido económico.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Invitación para representación promocional en feria",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "2.1.3. Invitación para representación promocional en feria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidades A.3 y B.3: inscripción como profesional en la feria o compromiso de inscripción, y acreditación de la vinculación de los asistentes",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 14,
+     "texto": "Documento de inscripción como profesional de los asistentes a la feria o mercado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modalidad A.4: ficha de contratación y presupuesto (anexo IV)",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 15,
+     "texto": "2.3.1. Ficha de contratación y presupuesto de gastos (anexo IV).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica de la Xunta de Galicia, formulario normalizado",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 13,
+     "texto": "Las solicitudes se presentarán obligatoriamente por medios electrónicos a través del formulario normalizado disponible en la sede electrónica de la Xunta de Galicia",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sede.xunta.gal",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 13,
+     "texto": "disponible en la sede electrónica de la Xunta de Galicia, https://sede.xunta.gal.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria; admite cualquier sistema de firma de la sede, incluido Chave365",
+    "cita": {
+     "documento": 1451578,
+     "pagina": 13,
+     "texto": "incluido el sistema de usuario y clave Chave365",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Concurrencia no competitiva: se conceden por orden cronológico de presentación de la solicitud completa hasta agotar el crédito; conviene presentar pronto.",
+   "Reparto del crédito: música 250.000 € (B.1 giras fuera de Galicia 150.000 €, B.2 ferias y festivales 50.000 €, B.3 asistencia a ferias 50.000 €); artes escénicas 250.000 €.",
+   "Límites: en B.1/B.2 la ayuda no supera el contrato de distribución sin IVA (o la taquilla justificada); en A.3/B.3, 60 % de los costes, 2.000 € por feria y 8.000 € al año; los gastos de viaje y estancia tienen topes por persona según destino.",
+   "Las ayudas de música (B.1, B.2, B.3) son para actuar o promocionarse fuera de Galicia; la distribución interior (A.4) solo es para artes escénicas.",
+   "Se pierde la ayuda si no se justifica al menos el 60 % de los costes previstos.",
+   "El texto es la versión en castellano de las hojas enviadas al Diario Oficial de Galicia (borrador sin fecha de publicación); no da fechas exactas de inicio y fin del plazo."
+  ]
+ },
+ "citas": {
+  "verificadas": 49,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

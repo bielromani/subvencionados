@@ -1,0 +1,755 @@
+{
+ "version": 1,
+ "codigoBdns": "894723",
+ "generada": "2026-10-09T14:08:01.405Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1534474,
+   "nombre": "Orden Foral aprobación aprobación Artem Pro 2026_55E-2026_CSV.pdf",
+   "paginas": 27,
+   "huella": "ea79ed3e95d3461d"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Gobierno de Navarra (Artem Pro 2026) para nuevas producciones de artes escénicas y musicales en vivo producidas y estrenadas en Navarra.",
+   "Para empresas y profesionales (personas físicas y sociedades) de Navarra dados de alta en el IAE de actividades escénicas o musicales.",
+   "Crédito de 316.255 euros; hasta el 70 % del presupuesto aceptado y como máximo 33.000 euros por proyecto.",
+   "Plazo: 20 días hábiles desde el día siguiente a la publicación de las bases en el Boletín Oficial de Navarra.",
+   "Gastos entre el 22 de noviembre de 2025 y el 20 de noviembre de 2026; justificación hasta el 20 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Nuevos proyectos de producción de espectáculos de artes escénicas y musicales en vivo, de sala y de calle, producidos y estrenados en Navarra (creación de la obra y estreno)",
+   "cita": {
+    "documento": 1534474,
+    "pagina": 3,
+    "texto": "La convocatoria tiene por objeto regular las ayudas para nuevos proyectos de producción de espectáculos de artes escénicas y musicales en vivo, de sala y de calle, que sean producidos y estrenados en Navarra",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas naturales o empadronadas en Navarra y sociedades mercantiles, civiles, comunidades de bienes u otras unidades económicas con domicilio y actividad en Navarra, al menos desde enero de 2025, con objeto social escénico o musical",
+   "cita": {
+    "documento": 1534474,
+    "pagina": 4,
+    "texto": "Personas físicas que sean naturales o estén empadronadas en la Comunidad Foral de Navarra, al menos desde enero de 2025.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días hábiles a partir del día siguiente a la publicación de las bases en el Boletín Oficial de Navarra",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 6,
+     "texto": "El plazo para presentar las solicitudes y documentación requerida será de 20 días hábile s a partir del día siguiente a la publicación de estas bases en el Boletín Oficial de Navarra.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde el día siguiente al fin del plazo de solicitud; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 17,
+     "texto": "que se dictará en un plazo máximo de tres meses contados a partir del día siguiente al de finalización del plazo para la presentación de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades entre el 22 de noviembre de 2025 y el 20 de noviembre de 2026; estreno durante 2026 y hasta el 28 de febrero de 2027",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 3,
+     "texto": "Las actividades subvencionables deben ejecutarse entre el 22 de noviembre de 2025 y el 20 de noviembre de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 20 de noviembre de 2026 inclusive (Anexo VIII, facturas, pagos, memoria de ejecución y evaluación, publicidad); con retraso hasta el 30 de noviembre se reduce hasta un 10 %, después se pierde el derecho al cobro",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 23,
+     "texto": "las personas o entidades beneficiarias deberán presentar la siguiente documentación, hasta el 20 de novie mbre 2026 inclusive, y según la forma indicada en el punto 5.2.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 316255,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 6,
+     "texto": "de Cultura- Institución Príncipe de Viana para el año 2026, por un importe máximo de 316.255 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 33000,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 6,
+     "texto": "La cuantía de la ayuda para cada proyecto no podrá ser, en ningún caso, superior al 70% del presupuesto aceptado, ni superior a 33.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 70,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 6,
+     "texto": "La cuantía de la ayuda para cada proyecto no podrá ser, en ningún caso, superior al 70% del presupuesto aceptado, ni superior a 33.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras justificar, al final o en hasta tres pagos parciales; pagos a cuenta solicitables hasta el 30 de septiembre de 2026; anticipo excepcional de hasta el 50 % en el mes siguiente a la concesión",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 20,
+     "texto": "El abono de las ayudas se realizará previa justificación de la realización de la actividad subvencionada por parte de la persona o entidad beneficiaria.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas sin superar la intensidad máxima ni el coste; incompatible con otras subvenciones del Departamento de Cultura, Deporte y Turismo para el mismo proyecto y con fondos estructurales de la UE",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 24,
+     "texto": "En todo caso, será incompatible con cualquier subvención de cualquier tipo concedida por el Departamento de C ultura, Deporte y Turismo de la Administración de la Comunidad Foral para el mismo proyecto.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "No es de minimis: ayuda de Estado exenta conforme al artículo 53 del Reglamento (UE) 651/2014; no se acumula con ayudas de minimis por los mismos costes si se supera la intensidad",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 24,
+     "texto": "Estas ayudas no se acumularán con ayudas de mínimis, relativas a los mismos costes subvencionables, si tal acumulación da lugar a una intensidad de ayuda superior",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Personas físicas naturales o empadronadas en Navarra al menos desde enero de 2025",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 4,
+     "texto": "Personas físicas que sean naturales o estén empadronadas en la Comunidad Foral de Navarra, al menos desde enero de 2025.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sociedades y entidades con domicilio social y actividad en Navarra al menos desde enero de 2025",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 4,
+     "texto": "Estas entidades deberán tener su domicilio social y venir desarrollando su actividad en la Comunidad Foral de Navarra, al menos desde enero de 2025.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener como objeto social el desarrollo de actividades escénicas o musicales",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 4,
+     "texto": "deberán tener social o estatutariamente, como objeto o fin social, el desarrollo de actividades escénicas o musicales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar de alta en el IAE (grupo 965, agrupación 85 o agrupaciones 1, 2 o 3 de la sección 3ª)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 4,
+     "texto": "deberán estar dadas de alta, en el momento de presentación de la solicitud, en cualquiera de los epígrafes del Impuesto sobre Actividades Económicas-I.A.E.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidas asociaciones, fundaciones y entidades sin ánimo de lucro, entidades locales y sus entes, entidades con partida nominativa y centros educativos o escuelas de música",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 4,
+     "texto": "Asociaciones, fundaciones y demás entidades sin ánimo de lucro, sindicatos, asociaciones empresariales, colegios profesionales y asociaciones profesionales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en las prohibiciones del artículo 13 de la Ley Foral 11/2005 ni sancionada por discriminación por razón de sexo",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 4,
+     "texto": "Las personas y entidades beneficiarias deben cumplir los requisitos generales que establece el artículo 13 de la Ley Foral 11/2005",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No ser empresa en crisis ni estar sujeta a una orden de recuperación de ayudas",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 5,
+     "texto": "No podrán ser beneficiarios de estas ayudas las empresas en crisis",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Un único proyecto por empresa o profesional",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 3,
+     "texto": "Cada empresa o profesional podrá presentar un único proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditar fecha y lugar de estreno en Navarra con documento firmado por la entidad programadora",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 5,
+     "texto": "Acreditar la fecha y el lugar de estreno en Navarra del espectáculo a través de un contrato, certificado, precontrato, promesa de contrato",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mínimo de cinco representaciones con programadores diferentes en los doce meses siguientes al estreno",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 5,
+     "texto": "Llevar a cabo un mínimo de cinco representaciones, con entidades programadoras diferentes, en un periodo máximo de doce meses desde la fecha del estreno.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estreno durante 2026 y hasta el 28 de febrero de 2027",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 3,
+     "texto": "Los proyectos objeto de subvención deberán ser estrenados durante todo el año 2026 y hasta el 28 de febrero de 2027, incluido.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mantener las condiciones laborales del personal según la normativa",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 5,
+     "texto": "Mantener las condiciones de trabajo pertinentes del personal laboral, de acuerdo con la normativa laboral y social aplicable.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Informar del uso de inteligencia artificial y su nivel de intervención",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 5,
+     "texto": "en el caso de utilizar modelos de inteligencia artificial para el desarrollo de la actividad, la beneficiaria deberá informar de ello",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contemplar medidas ambientales de prevención y gestión de residuos y sostenibilidad de eventos",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 3,
+     "texto": "debe contemplar las medidas ambientales en relación con la prevención en la generación de residuos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 50 puntos, de ellos al menos 30 en calidad artística",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 12,
+     "texto": "Para recibir subvención, las solicitudes deberán alcanzar al menos 50 puntos del total, de los cuales al menos 30 puntos deberán haber sido obtenidos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la financiación del Gobierno de Navarra y usar su logotipo en la publicidad",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 19,
+     "texto": "Deberán utilizar el logotipo de Gobierno de Navarra para el programa, cartel, anuncios o publicidad de cualquier tipo del proyecto subvencionado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presentar declaración de transparencia en el mes siguiente a la concesión (salvo personas físicas)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 18,
+     "texto": "las entidades beneficiarias (salvo los que sean personas físicas) deberán presentar vía registro telemático la declaración relativa a la obligación de transparencia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pedir tres ofertas si un gasto de bienes de equipo o consultoría supera 12.000 euros",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 25,
+     "texto": "C uando el importe del gasto subvencionable supere la cuantía de 12.000 euros, en el supuesto de suministro de bienes de equipo o prestación de servicios por empresas de consultoría o asistencia",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Costes salariales y Seguridad Social del personal y artistas, o cachés si la contratación es mercantil",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 8,
+     "texto": "Costes salariales y Seguridad Social del personal y artistas contratados necesarios para realizar las acciones contempladas en el proyecto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cachés o costes de prestación del servicio en contratación mercantil",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 8,
+     "texto": "o cachés o costes de prestación del servicio, si la contratación se realiza en régimen mercantil.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alojamiento (solo de fuera de Navarra, máx. 75 euros por noche), manutención (máx. 20 euros) y desplazamientos del equipo técnico y artístico, y transporte de elementos",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 8,
+     "texto": "Gastos de alojamiento, manutención y desplazamiento de los miembros del equipo técnico y artístico, así como el transporte de los elementos necesarios para realizar la producción",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Kilometraje: 0,34 euros/km en vehículo propio y 0,43 euros/km en furgoneta propia; alquiler de vehículo; transporte público en clase turista",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 8,
+     "texto": "En caso de utilizar vehículo propio, 0,34 euros por kilómetro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de producción: medios externos, alquiler de espacios escénicos y local de ensayo (máx. 3 meses), alquiler de equipos, escenografía, vestuario y consumibles",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "tales como la contratación de medios externos, alquileres de espacios escénicos y local de ensayos (máximo 3 meses), alquileres de equipos y medios materiales, escenografía, vestuario",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Difusión, digitalización y comercialización hasta el 15 % del total de gastos aceptados",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "Gastos de difusión, digitalización y comercialización de las actividades incluidas en el proyecto hasta un máximo de un 15% del total de gastos aceptados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Amortización de bienes de equipo inventariables en la parte imputable al proyecto",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "se considerará gasto subvencionable la amortización de los mismos únicamente en la proporción que sea imputable al proyecto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos financieros directamente relacionados e indispensables",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "Los gastos financieros necesarios para realizar el proyecto serán subvencionables si están directamente relacionados con la actividad subvencionada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Costes indirectos hasta el 15 % del total de gastos aceptados",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "Los costes indirectos subvencionables deberán estar incluidos en el presupuesto del proyecto y no podrán exceder del 15 % del total de gastos aceptados.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Adquisición, uso y financiación de inmuebles e infraestructuras y sus amortizaciones",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "Todos los relacionados con la adquisición, utilización y financiación de los bienes inmuebles e infraestructuras, así como sus amortizaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos no razonablemente necesarios para la producción y el estreno o de importe no fiable",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "Los conceptos de gasto que no sean razonablemente necesarios para la producción y estreno de la producción escénica o musical",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA y otros impuestos indirectos recuperables e impuestos personales sobre la renta",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 9,
+     "texto": "Impuestos indirectos (como el IVA), cuando sean susceptibles de recuperación o compensación, así como los impuestos personales sobre la renta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Retribuciones del personal que superen 2,5 veces el SMI",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 10,
+     "texto": "Las retribuciones del personal de la entidad que supere 2,5 veces el Salario Mínimo Interprofesional.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de representación, protocolarios, suntuosos, alimentación y bebidas",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 10,
+     "texto": "Gastos de representación, protocolarios, suntuosos, de compra de alimentación, bebidas o similares.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Peajes, aparcamientos y kilometraje con vehículo alquilado",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 10,
+     "texto": "Gastos de autopista (peajes), aparcamientos y gastos de kilometraje en el caso de que el vehículo sea alquilado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas por trabajos de la propia persona física solicitante",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 10,
+     "texto": "Facturas de gastos por trabajos realizados por la persona física solicitante de la ayuda.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desayunos, cafés, almuerzos y similares",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 10,
+     "texto": "Desayunos, cafés, almuerzos u otros conceptos similares.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Calidad artística: interés y calidad de la producción",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 12,
+     "texto": "Inte rés y calidad de la producción (hasta 25 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad artística: experiencia de la persona o compañía (producciones, premios, nominaciones, festivales y ferias en los últimos 4 años)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 13,
+     "texto": "Experiencia de la persona o compañía solicitante (hasta 10 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad artística: trayectoria de la dirección de la producción en los últimos 4 años",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 13,
+     "texto": "Traye ctoria de l Dire ctor o Dire ctora de la producción e n los últimos 4 años (hasta 5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad artística: participación de profesionales en equipo artístico, técnico y de producción (Anexo VI)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 14,
+     "texto": "equipo de producción, distribución y comunicación (hasta 5 puntos). (Anexo VI)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad artística: innovación artística y nuevos lenguajes",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 14,
+     "texto": "Innovación artística: desarrollo de nuevos lenguajes (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad artística: producción emergente (primera producción 5, segunda 3)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 15,
+     "texto": "siempre que se trate de la primera o segunda producción, valorada de la siguiente forma (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Calidad artística: plan de comunicación",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 15,
+     "texto": "Plan de comunicación (hasta 5 puntos). Se valorará la coherencia del plan de comunicación de la propuesta",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Gestión: viabilidad económica (más puntos cuanto menor sea el porcentaje solicitado)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 15,
+     "texto": "Viabilidad económica (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Gestión: presupuesto coherente o equilibrado",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 15,
+     "texto": "Presupuesto coherente o equilibrado con el proyecto (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Gestión: plan de explotación (compromisos de programación, distribuidora, ferias)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 16,
+     "texto": "Plan de explotación (hasta 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Impacto: presencia del euskera (versión en euskera 5; materiales bilingües 2,5)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 16,
+     "texto": "Presencia del Euskera en la producción (hasta 5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Impacto: perspectiva de igualdad de género y participación profesional de mujeres",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 16,
+     "texto": "la contribución y participación profe sional de las muje re s (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Impacto: accesibilidad para personas en riesgo de exclusión o con diversidad funcional",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 17,
+     "texto": "en riesgo de exclusión y/o con diversidad funcional (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Impacto: mediación y educación para nuevos públicos (infancia, jóvenes y colectivos vulnerables)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1534474,
+     "pagina": 17,
+     "texto": "jóvenes de 12 a 35 años y a los grupos y personas más vulnerables (hasta 5 puntos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Formulario de solicitud (Anexo I)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "La documentación que debe acompañar al formulario específico de solicitud (Anexo I) es la señalada a continuación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documento de alta en el IAE en los epígrafes indicados, expedido por el Ayuntamiento",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Documento que acredite estar de alta, en el momento de presentación de la solicitud, en cualquiera de los siguientes epígrafes del Impuesto sobre Actividades Económicas-I.A.E.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personas jurídicas: contrato de sociedad o escritura de constitución o modificación de estatutos",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "En el caso de personas jurídicas, además, copia del contrato de la sociedad, copia de escritura de constitución o de modificación de los estatutos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Copia del NIF/CIF",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Copia del NIF/CIF de la persona o entidad solicitante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documento que acredite fecha y lugar de estreno en Navarra",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Documento que acredite la fecha y el lugar de estreno en Navarra del espectáculo, mediante certificado o declaración de compromiso por parte de la entidad programadora.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratos o compromisos de al menos cinco representaciones en doce meses",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "que se van a llevar a cabo un mínimo de cinco representaciones, en un periodo máximo de doce meses desde la fecha del estreno.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria descriptiva del proyecto (Anexo II), máximo 30 folios",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Memoria descriptiva del proyecto (Anexo II). La descripción del proyecto no superará los 30 folios",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Datos económicos (Anexo III) con presupuesto equilibrado",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Los datos económicos del proyecto recogidos en la memoria deberán ser cumplimentados conforme al modelo del Anexo III",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de experiencia y trayectoria (Anexo V)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Documentación acreditativa de la experiencia y trayectoria a tener en cuenta en los criterios de valoración (Anexo V).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Coproducciones: documentación de la base 6.3 (Anexo IV de agrupación o contrato entre las partes)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 7,
+     "texto": "Los proyectos de coproducción deberán acreditarse mediante la documentación que se indica en el base 6.3.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Participación de profesionales (Anexo VI)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 26,
+     "texto": "Anexo VI. Participación de profesionales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Opcional: vídeo explicativo del proyecto de menos de 15 minutos",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 11,
+     "texto": "Las personas solicitantes podrán incluir en la documentación un archivo de video explicando su proyecto, con una duración inferior a 15 minutos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Personas jurídicas: Registro General Electrónico de la Comunidad Foral de Navarra; personas físicas: preferentemente telemática o en la Oficina de Registro (calle Navarrería 39, Pamplona, con cita previa)",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 6,
+     "texto": "En el caso de personas jurídicas, obligatoriamente de manera telemática a través del Registro General Electrónico de la Administración de la C omunidad Foral de Navarra",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Obligatorio para personas jurídicas: certificado digital, DNI electrónico o Cl@ve",
+    "cita": {
+     "documento": 1534474,
+     "pagina": 6,
+     "texto": "siendo necesario para identificarse disponer de certificado digital, DNI electrónico o Sistema Cl@ve.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es la Orden Foral 55E/2026 que aprueba la convocatoria y sus bases (anexo). Los modelos (Anexos I a VIII) no se incluyen; están en la ficha del catálogo de trámites del Gobierno de Navarra.",
+   "No da fecha exacta de fin de solicitud: depende de la publicación en el BON.",
+   "Encaja con productoras o profesionales de música en vivo con sede en Navarra que estrenen una nueva producción (por ejemplo, un espectáculo de ópera o un concierto escénico); quedan excluidas asociaciones y fundaciones.",
+   "Las ayudas se reparten por orden de puntuación hasta agotar el crédito; si la justificación se presenta entre el 21 y el 30 de noviembre se reduce hasta un 10 %, y después se pierde el derecho al cobro.",
+   "Si se incluyen retenciones de IRPF del cuarto trimestre de 2025 o Seguridad Social de noviembre de 2025, hay que presentar las liquidaciones antes del 15 de febrero de 2027.",
+   "Los proyectos subvencionados se consideran de interés social a efectos del mecenazgo cultural de Navarra (Anexo VII).",
+   "El texto del PDF tiene espacios insertados en algunas palabras (p. ej. «Co nvo cato ria», «C ultura»)."
+  ]
+ },
+ "citas": {
+  "verificadas": 75,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

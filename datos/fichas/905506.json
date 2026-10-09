@@ -1,7 +1,7 @@
 {
  "version": 1,
  "codigoBdns": "905506",
- "generada": "2026-10-09T14:01:32.534Z",
+ "generada": "2026-10-09T14:10:26.716Z",
  "modelo": "Claude (sesión de Claude Code)",
  "documentos": [
   {
@@ -261,8 +261,12 @@
   "documentacion": [
    {
     "texto": "Solicitud (Anexo I)",
-    "cita": null,
-    "sinCita": true
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Documentación que debe acompañar a la solicitud: Solicitud Anexo I",
+     "estado": "verificada"
+    }
    },
    {
     "texto": "Fotocopia del DNI del solicitante y de los mayores de 16 años de la unidad familiar (o documento de identidad para extranjeros)",
@@ -350,8 +354,8 @@
   ]
  },
  "citas": {
-  "verificadas": 31,
-  "revisar": 1,
+  "verificadas": 32,
+  "revisar": 0,
   "noConsta": 5
  }
 }

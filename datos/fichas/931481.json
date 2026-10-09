@@ -1,0 +1,436 @@
+{
+ "version": 1,
+ "codigoBdns": "931481",
+ "generada": "2026-10-09T14:10:22.073Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1526676,
+   "nombre": "GEX_11222_2026_-_02_Bases_VII_Certamen_Teatro_Musical_2026.pdf",
+   "paginas": 11,
+   "huella": "507b80d650f85336"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Bases del VII Certamen Nacional de Teatro Musical Aficionado (Bienal de Teatro Musical de Andalucía 2026), del Ayuntamiento de Posadas.",
+   "Pueden participar asociaciones sin ánimo de lucro con fines teatrales, grupos de escuelas de arte dramático y otras entidades teatrales.",
+   "Premios por 6.500 euros en total: 1.200 euros a cada uno de los cuatro grupos finalistas, 1.000 euros al Premio Bienal de Oro y 700 euros al Premio del Público.",
+   "Inscripción: diez días naturales desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia.",
+   "El certamen se celebra del 7 al 28 de noviembre de 2026 en el Auditorio Municipal de Posadas."
+  ],
+  "objeto": {
+   "valor": "VII Certamen Nacional de Teatro Musical Aficionado en el marco de la Bienal de Teatro Musical de Andalucía 2026: selección de cuatro grupos que compiten por premios",
+   "cita": {
+    "documento": 1526676,
+    "pagina": 1,
+    "texto": "El Ayuntamiento de Posadas, a través del área de Cultura convoca la VII Edición del CERTAMEN NACIONAL DE TEATRO MUSICAL AFICIONADO",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones sin ánimo de lucro con fines relacionados con el teatro, grupos de escuelas de arte dramático y otras entidades con actividades teatrales",
+   "cita": {
+    "documento": 1526676,
+    "pagina": 1,
+    "texto": "las Asociaciones sin ánimo de lucro, cuyos fines estén relacionados con el teatro, así como grupos pertenecientes a Escuelas de Arte Dramático u otras entidades que realicen actividades relacionadas con el teatro.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Diez días naturales desde el día siguiente a la publicación de la convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "El plazo de inscripción será de diez días naturales, contados a partir del día siguiente a la publicación de esta convocatoria en el Boletín Oficial de la Provincia.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "La comisión publica el acta de selección en el tablón y en www.esfiga.es; los seleccionados tienen tres días para confirmar asistencia. Los premios se notifican por el tablón municipal",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 4,
+     "texto": "La Comisión levantará acta del resultado obtenido en la selección, la cual se publicará en el tablón del Ayuntamiento así como en la página web www.esfiga.es",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 7 al 28 de noviembre de 2026; representaciones los días 14, 15, 21 y 22 de noviembre y gala de clausura el 28 de noviembre",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 4,
+     "texto": "El Certamen se desarrollará del 7 al 28 de noviembre de 2026, de conformidad con lo siguiente:",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 6500,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 6,
+     "texto": "El importe total destinado a los premios regulados en las presentes Bases asciende a 6.500 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 1200,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 5,
+     "texto": "Se otorgarán cuatro premios por importe de 1.200 euros a los cuatro grupos seleccionados para la Fase Final del concurso.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Ingreso de los premios en la cuenta bancaria de la entidad; es imprescindible que al menos dos miembros del grupo asistan a la gala de clausura",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 4,
+     "texto": "Dicha asistencia será requisito imprescindible para la entrega de la dotación económica que proceda de conformidad con el artículo 8.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Los premios de las distintas modalidades son acumulables entre sí",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 6,
+     "texto": "Los premios de las distintas modalidades serán acumulables entre sí.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser asociación sin ánimo de lucro con fines teatrales, grupo de escuela de arte dramático u otra entidad con actividades teatrales",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 1,
+     "texto": "las Asociaciones sin ánimo de lucro, cuyos fines estén relacionados con el teatro",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grupos de teatro musical no profesionales (certamen de aficionados)",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 1,
+     "texto": "poner en valor el trabajo de los grupos de teatro musical no profesionales que existen en España.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Representar la obra con el mismo reparto y escenografía que en la grabación enviada; los cambios deben notificarse antes",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 4,
+     "texto": "Las obras seleccionadas deberán ser representadas con el mismo reparto y escenografía que figure en el DVD/USB/archivo remitido.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos dos miembros del elenco o ficha técnica deben asistir a la gala de clausura",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 4,
+     "texto": "Los grupos participantes designarán como mínimo a dos miembros pertenecientes al elenco o ficha técnica de la obra para su asistencia a la misma.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Confirmar la asistencia en tres días desde la comunicación de la selección",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 4,
+     "texto": "los cuales tendrán un plazo de tres días contados a partir de la fecha en que reciban la comunicación de selección para confirmar la asistencia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La grabación de la obra debe estar en poder de la organización al cierre de la inscripción o la inscripción se desestima",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "Al cierre del plazo de inscripción los organizadores deberán disponer de la grabación; en caso contrario, quedará automáticamente desestimada la inscripción.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El grupo realiza la carga, descarga, montaje y desmontaje; la organización aporta un técnico durante una jornada",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 7,
+     "texto": "Las labores de carga/descarga, montaje/desmontaje de decorados y escenografías y material técnico serán realizadas íntegramente por personal del grupo participante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del art. 13 de la Ley 38/2003 y estar al corriente con Hacienda y la Seguridad Social (declaración responsable)",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 9,
+     "texto": "Que la entidad a la que representa se encuentra al corriente de sus obligaciones tributarias con la Agencia Estatal Tributaria y la Agencia Autonómica Tributaria",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Los derechos de imagen u otros permisos necesarios para la representación corren por cuenta del grupo (los derechos SGAE los paga el convocante)",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 7,
+     "texto": "los derechos de imagen o cualesquiera otros derechos/permisos necesarios para la representación, serán gestionados y por cuenta del grupo participante.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Puesta en escena",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "siendo la puntuación máxima de 10 puntos, atendiendo a los siguientes criterios: - Puesta en escena.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interpretación",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Puesta en escena. - Interpretación. - Escenografía.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Escenografía",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Interpretación. - Escenografía. - Iluminación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Iluminación",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Escenografía. - Iluminación. - Vestuario y caracterización.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Vestuario y caracterización",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Iluminación. - Vestuario y caracterización. - Espacio sonoro (música).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Espacio sonoro (música)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Vestuario y caracterización. - Espacio sonoro (música).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Elección del texto e interés de la obra",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Elección del texto e interés de la obra.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Capacidad de entretenimiento",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Elección del texto e interés de la obra. - Capacidad de entretenimiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Capacidad de hacernos reflexionar",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Capacidad de entretenimiento. - Capacidad de hacernos reflexionar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Valoración de la acogida del público",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "- Capacidad de hacernos reflexionar. - Valoración de la acogida del público.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud de participación según el Anexo I",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "Solicitud de participación tal y como figura en el Anexo I debidamente cumplimentada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del CIF de la entidad y del DNI del representante legal",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "Fotocopia del CIF de la entidad solicitante y del DNI del representante legal de la entidad solicitante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de inscripción en el Registro de Asociaciones de Andalucía, en su caso",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "Certificado de inscripción de la entidad solicitante en el Registro de Asociaciones de Andalucía, en su caso.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Currículum o trayectoria de la entidad",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "d) Currículum o trayectoria de la entidad solicitante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dossier de la obra con sinopsis, ficha artística, ficha técnica y rider técnico",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "Dossier de la obra, debiendo incluir al menos: sinopsis, ficha artística, ficha técnica y rider técnico.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Copia del guion o libreto",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "f) Copia del guion o libreto. g) Cartel oficial",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cartel oficial y fotografías en formato digital",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "g) Cartel oficial y fotografías en formato digital.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Archivo con la grabación completa de la obra o enlace",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "h) Archivo con grabación completa de la obra (o enlace).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado bancario de la cuenta de la entidad donde ingresar los premios",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 3,
+     "texto": "Certificado emitido por la entidad bancaria referido al número de cuenta de titularidad de la entidad solicitante donde, en su caso, se deba ingresar el/los premio/s.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro General del Ayuntamiento de Posadas o cualquiera de los medios del art. 16.4 de la Ley 39/2015; los impresos están en la sede electrónica y en www.esfiga.es",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "se presentará en el Registro General del Ayuntamiento de Posadas o por alguno de los procedimientos previstos en el artículo 16.4 de la Ley 39/2015",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.esfiga.es",
+    "cita": {
+     "documento": 1526676,
+     "pagina": 2,
+     "texto": "en la sede electrónica del Excmo. Ayuntamiento de Posadas y en la página web www.esfiga.es.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es un certamen con premios, no una subvención a proyectos: se seleccionan cuatro grupos finalistas y dos reservas.",
+   "La puntuación máxima de la selección es de 10 puntos, pero las bases no reparten los puntos entre los criterios.",
+   "Premios acumulables: 1.200 euros a cada finalista, 1.000 euros y galardón al Premio Bienal de Oro, 700 euros y galardón al Premio Especial del Público, además de quince premios galardón sin dotación económica.",
+   "La organización paga los derechos SGAE y pone a disposición el equipamiento técnico del auditorio (Anexo II).",
+   "Es para grupos aficionados de teatro musical; no encaja con un promotor profesional de jazz, clásica u ópera."
+  ]
+ },
+ "citas": {
+  "verificadas": 39,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

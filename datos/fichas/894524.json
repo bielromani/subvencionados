@@ -1,0 +1,747 @@
+{
+ "version": 1,
+ "codigoBdns": "894524",
+ "generada": "2026-10-09T14:10:26.287Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1421576,
+   "nombre": "RESOLUCIÓN CONVOC FAM 26_firmado.pdf",
+   "paginas": 47,
+   "huella": "16bd66e5ffb829ae"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Institut Valencià de Cultura para fomentar actividades musicales en 2026: festivales y ciclos, programación en salas, cursos y concursos, giras fuera de la Comunitat Valenciana, producción de conciertos, estructuras, composición y discos.",
+   "Para empresas (personas físicas o jurídicas), asociaciones, fundaciones y entidades locales según la modalidad.",
+   "Crédito de 2.690.000 euros; máximos por proyecto entre 5.000 y 30.000 euros según la modalidad, sin superar el 65 % del presupuesto.",
+   "Plazo: 15 días hábiles desde el día siguiente a la publicación en el DOGV; actividades entre el 1 de diciembre de 2025 y el 30 de noviembre de 2026.",
+   "Concurrencia competitiva (mínimo 50 de 100 puntos); se paga tras justificar, hasta el 30 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Creación, producción, difusión y exhibición de actuaciones musicales en la Comunitat Valenciana: festivales, ciclos y eventos conmemorativos, programación en salas, cursos y concursos, giras fuera de la Comunitat, producción de espectáculos en vivo, estructuras administrativas, composición y producción discográfica",
+   "cita": {
+    "documento": 1421576,
+    "pagina": 1,
+    "texto": "Estas subvenciones tienen por finalidad el impulso y la promoción de la creación, producción, difusión y exhibición de actuaciones musicales",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Según la modalidad: ayuntamientos y entidades locales de menos de 100.000 habitantes, empresas (personas físicas o jurídicas), asociaciones y entidades organizadoras; empresas gestoras de salas privadas; empresas musicales y discográficas; compositores (personas físicas)",
+   "cita": {
+    "documento": 1421576,
+    "pagina": 4,
+    "texto": "los ayuntamientos y otras entidades locales, así como los entes de su sector público instrumental cuya población sea inferior a 100.000 habitantes, empresas, sean personas físicas o jurídicas, asociaciones y entidades",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días hábiles desde el día siguiente a la publicación de la convocatoria en el Diari Oficial de la Generalitat Valenciana",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 7,
+     "texto": "El plazo de presentación de solicitudes será de 15 días hábiles a contar desde el día siguiente al de la publicación de la presente convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Máximo tres meses desde la publicación de la convocatoria; se publica en el DOGV y en la web del IVC",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 35,
+     "texto": "y notificará en el plazo máximo de tres (3) meses a contar desde la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de diciembre de 2025 al 30 de noviembre de 2026 (estructuras administrativas: hasta el 30 de noviembre de 2027)",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 2,
+     "texto": "Las actividades deberán tener lugar entre el 1 de diciembre de 2025 y el 30 de noviembre de 2026, ambos incluidos",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa (con informe de auditor si se justifican 25.000 € o más o más de 20 facturas), por vía telemática, hasta el 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 42,
+     "texto": "presentarse en el IVC no más tarde del 30 de noviembre de 2026, por vía telemática a través de su sede",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 2690000,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 5,
+     "texto": "El importe global máximo destinado a esta convocatoria es de 2.690.000 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 30000,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 6,
+     "texto": "a) Ayudas a festivales, ciclos y eventos conmemorativos, 30.000 €.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 65,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 6,
+     "texto": "ni tampoco ser superior al 65% del presupuesto total del proyecto presentado.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras la correcta justificación, en la cuenta indicada en el anexo II de domiciliación bancaria",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 46,
+     "texto": "El pago de las ayudas se efectuará previa correcta justificación por parte de las personas y entidades beneficiarias",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas sin superar el coste de la actividad; no si el proyecto tiene subvención nominativa de la Conselleria",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 6,
+     "texto": "Las ayudas contempladas en la presente convocatoria son compatibles con la percepción de otras subvenciones procedentes de cualquier administración",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "Sí, régimen de minimis (Reglamento UE 2023/2831) en todas las modalidades salvo la composición",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 46,
+     "texto": "Se acogen al régimen de minimis establecido en el Reglamento (UE) 2023/2831 de la Comisión, de 13 de diciembre de 2023, las siguientes modalidades",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Festivales: actuaciones profesionales durante al menos dos días o con un mínimo de cinco conciertos, fuera de la programación regular de un espacio",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 2,
+     "texto": "nunca inferior a dos días, o alternativamente con un mínimo de cinco conciertos programados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Festivales y ciclos: al menos el 25 % de la programación con grupos o solistas de la Comunitat Valenciana",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 2,
+     "texto": "Se considerará festival, a efectos de esta convocatoria, cuando al menos el 25% de la programación esté formada por grupos o solistas de la Comunitat Valenciana.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ciclos: mínimo 4 conciertos y más de 3 días",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 2,
+     "texto": "conformar el proyecto para que pueda optar a ser considerado ciclo, a efectos de esta convocatoria, es de 4.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Organizadores de festivales y ciclos: estructura profesional y capacidad de gestión",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 4,
+     "texto": "siempre que dispongan de estructura profesional y capacidad de gestión para ello",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: empresas gestoras de salas privadas con programación musical regular en la Comunitat Valenciana",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 4,
+     "texto": "gestoras de salas privadas dedicadas a la exhibición de una programación musical regular, y ubicadas en la Comunitat Valenciana.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: mínimo 3 conciertos deficitarios fuera de la Comunitat Valenciana",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 3,
+     "texto": "El proyecto de gira implicará, necesariamente, la realización de un mínimo de 3 conciertos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción de espectáculos en vivo: empresas ubicadas en la Comunitat Valenciana dedicadas profesionalmente a producir espectáculos de música",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 4,
+     "texto": "ubicadas en la Comunitat Valenciana y dedicadas profesionalmente a la producción de espectáculos de música.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyectos solo con conciertos, actuaciones y actividades profesionales",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 13,
+     "texto": "Todos los proyectos deberán incluir única y exclusivamente conciertos, actuaciones y actividades profesionales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Puntuación mínima de 50 puntos sobre 100",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 13,
+     "texto": "y que no alcancen, como mínimo, 50 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Máximo 6 solicitudes por solicitante (3 en festivales y en giras; 2 en producción en vivo; 1 en salas)",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 8,
+     "texto": "Se admitirán hasta 6 solicitudes por persona física o entidad peticionaria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 37,
+     "texto": "Hallarse al corriente en el cumplimiento de sus obligaciones tributarias y frente a la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad a la financiación con los logotipos del IVC y la Generalitat",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 37,
+     "texto": "Estas medidas consistirán en la inclusión de los logotipos institucionales del IVC",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificar como mínimo el mayor entre el 50 % del presupuesto presentado y el importe concedido",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 38,
+     "texto": "El 50% del presupuesto de gastos total del proyecto presentado en el momento de la solicitud.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos corrientes generados por las actividades subvencionadas (no inversiones)",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 6,
+     "texto": "presentes ayudas irán destinadas a sufragar los gastos corrientes generados por las actividades objeto de la subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos estrictamente necesarios derivados de la actuación, realizados entre el 1 de diciembre de 2025 y el 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 39,
+     "texto": "se consideran gastos subvencionables aquellos que, de manera indubitada y siendo estrictamente necesarios, respondan a la naturaleza de la actuación subvencionada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos indirectos: hasta el 20 % en festivales, ciclos y cursos; 30 % en salas; 25 % en giras, producción en vivo y discográfica",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 40,
+     "texto": "En la modalidad de festivales, ciclos y eventos conmemorativos, hasta un máximo del 20% de la cantidad total a justificar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Trabajo de los socios o del empresario individual, hasta el 25 % de los gastos directos",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "serán válidos a efectos de justificación, siempre y cuando no superen el 25% del total de gastos directos de obligada justificación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Informe de auditoría de la cuenta justificativa",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 43,
+     "texto": "El gasto derivado del informe de auditoría tendrá la condición de gasto subvencionable.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Discográfica: promoción, publicidad y marketing hasta el 25 %",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "los gastos de promoción, publicidad y marketing, se corresponderán con gastos directos y solamente podrán suponer un máximo del 25%",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Inversiones y adquisiciones patrimoniales",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 6,
+     "texto": "Las ayudas no podrán destinarse, por la naturaleza del capítulo presupuestario, ni a inversiones ni a adquisiciones patrimoniales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Bienes inventariables (ordenadores, focos, mobiliario...)",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "La adquisición de bienes susceptibles de inventariar (ordenadores, focos, mobiliario, discos duros, etc.)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Intereses, recargos y sanciones",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "Los intereses deudores de cuentas bancarias, recargos y sanciones administrativas o penales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Catering y restauración",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "c) Los servicios de catering y restauración.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dietas no integradas en nóminas o facturas",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "Las dietas, salvo que las mismas figuren integradas en las nóminas o facturas de los servicios prestados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Papelería, fotocopias, correos y mensajería",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "Los gastos generales de papelería, fotocopias, correos y mensajería.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Decoración floral y regalos",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "Los gastos de decoración floral y los regalos que no estén contemplados como premios",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Combustible, alojamiento y desplazamientos sin factura a nombre del beneficiario con nombres y fechas",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "Los gastos de alojamiento y desplazamiento, siempre y cuando no vengan reflejados en una factura a nombre de la persona o entidad beneficiaria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA deducible",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 40,
+     "texto": "No se podrá incluir como gasto subvencionable el importe del IVA deducible",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: espectáculos no musicales o de terceros que alquilen la sala",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "en ningún caso se aceptarán gastos generados por la exhibición de otras representaciones artísticas que no sean musicales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Merchandising y objetos promocionales",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 41,
+     "texto": "quedan expresamente excluidos los gastos de merchandising y los objetos promocionales.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Festivales y ciclos: contenido del proyecto y programación (mínimo 37,5)",
+    "puntosMaximos": 75,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 14,
+     "texto": "El contenido del proyecto y la programación de actividades se valorarán hasta un máximo de 75 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Festivales y ciclos: relato artístico",
+    "puntosMaximos": 12,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 14,
+     "texto": "La ponderación del relato artístico se valorará hasta un máximo de 12 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Festivales y ciclos: volumen de programación",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 14,
+     "texto": "El volumen de programación se valorará hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Festivales y ciclos: género musical (se priman los menos extendidos)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 14,
+     "texto": "El género musical al que atiende mayoritariamente la programación se valorará hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Festivales y ciclos: empleo de profesionales valencianos",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 15,
+     "texto": "El fomento del empleo de profesionales valencianos se valorará hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Festivales y ciclos: edición anterior, evolución y trayectoria",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 15,
+     "texto": "Las características de la edición anterior, la evolución y la trayectoria se valorarán hasta un máximo de 25 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Eventos conmemorativos: proyecto artístico (mínimo 40)",
+    "puntosMaximos": 80,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 16,
+     "texto": "El proyecto artístico se valorará hasta un máximo de 80 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: proyecto de programación (mínimo 35)",
+    "puntosMaximos": 70,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 18,
+     "texto": "El proyecto de programación se valorará hasta un máximo de 70 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: temporada del ejercicio anterior",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 19,
+     "texto": "Las características de la temporada de exhibición realizada durante el ejercicio anterior a esta convocatoria se valorará hasta un máximo de 20 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: características de la sala",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 20,
+     "texto": "Las características de la sala se valorarán hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Cursos, concursos, jornadas y congresos: proyecto de la actividad (mínimo 35)",
+    "puntosMaximos": 70,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 20,
+     "texto": "El proyecto detallado de la actividad se valorará hasta un máximo de 70 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: proyecto de gira (mínimo 35)",
+    "puntosMaximos": 70,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 23,
+     "texto": "El proyecto detallado de la gira se valorará hasta un máximo de 70 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: trayectoria del solista o agrupación",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 24,
+     "texto": "La trayectoria del solista o agrupación musical participante en la gira se valorará hasta un máximo de 15 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: trayectoria artística, profesional y de gestión de la empresa",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 24,
+     "texto": "La trayectoria artística, profesional y de gestión de la empresa solicitante se valorará hasta un máximo de 15 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción en vivo: proyecto de la producción (mínimo 35)",
+    "puntosMaximos": 70,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 25,
+     "texto": "El proyecto detallado de la producción se valorará hasta un máximo de 70 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción en vivo: actividad profesional de los intérpretes",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 26,
+     "texto": "intérpretes en la producción del espectáculo de música se valorará hasta un máximo de 15 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción en vivo: trayectoria de la empresa",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 27,
+     "texto": "La trayectoria artística, profesional y de gestión de la empresa solicitante se valorará hasta un máximo de 15 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Estructuras administrativas: actividad y estructura de la entidad (mínimo 30)",
+    "puntosMaximos": 60,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 28,
+     "texto": "La actividad y la estructura de la entidad solicitante se valorará hasta un máximo de 60 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Composición: proyecto de la composición (mínimo 30)",
+    "puntosMaximos": 60,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 30,
+     "texto": "El proyecto detallado de la composición se valorará hasta un máximo de 60 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Discográfica: proyecto de producción (mínimo 35)",
+    "puntosMaximos": 70,
+    "cita": {
+     "documento": 1421576,
+     "pagina": 32,
+     "texto": "El proyecto detallado de la producción musical a registrar, se valorará hasta un máximo de 70 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud (anexo I) con nombre del proyecto, coste, modalidad y cuantía solicitada",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 9,
+     "texto": "Toda solicitud deberá cumplimentarse según el modelo de solicitud de subvenciones al fomento de actividades musicales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Resumen del proyecto y ficha presupuestaria en los modelos normalizados de la modalidad (dentro de plazo; no se pueden subsanar)",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 9,
+     "texto": "Son también de obligada presentación en dicho plazo, el resumen del proyecto y la ficha presupuestaria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona física: NIF y, en su caso, residencia en la Comunitat Valenciana",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 10,
+     "texto": "Si quien solicita es una persona física: NIF y, en su caso, documentación acreditativa de la residencia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresario individual: NIF, alta como empresario y alta en el IAE o en el Censo de Empresarios",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 10,
+     "texto": "Si quien solicita es un empresario individual: NIF, documentación acreditativa de su alta como empresario individual",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona jurídica: escritura o estatutos inscritos, NIF de la entidad y del representante, alta en el IAE y certificado del acuerdo de solicitar",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 10,
+     "texto": "Si quien solicita es una persona jurídica: escritura, documento público de constitución o estatutos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidad pública: NIF y certificado del acuerdo del órgano de gobierno",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 10,
+     "texto": "Si quien solicita es un ayuntamiento u otra entidad del sector público: NIF de la entidad y del representante legal",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaraciones responsables del anexo I (otras ayudas, minimis, prohibiciones, discapacidad, derechos de autor, espacios escénicos, permisos de sala)",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 11,
+     "texto": "Declaración responsable de ayudas de minimis concedidas al solicitante durante el ejercicio fiscal presente y los dos anteriores",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Discográfica: prueba sonora u obra completa (wav o mp3) en plataforma no comercial, opcional para puntuar más",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 10,
+     "texto": "En la modalidad de producción discográfica, la solicitud podrá acompañarse de una prueba sonora del proyecto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Composición: partituras anónimas del boceto u obra completa, opcional para puntuar más",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 10,
+     "texto": "la solicitud también podrá acompañarse de las partituras de un boceto, o de la obra completa",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro de la sede electrónica del IVC, con modelo normalizado y firma electrónica",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 7,
+     "texto": "deberá hacerse por vía telemática a través del registro de la sede electrónica accesible desde la web https://sede.ivc.gva.es/",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sede.ivc.gva.es/",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 7,
+     "texto": "del registro de la sede electrónica accesible desde la web https://sede.ivc.gva.es/, para lo que la",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Sí: presentación telemática con certificado o firma electrónica admitida por la sede",
+    "cita": {
+     "documento": 1421576,
+     "pagina": 7,
+     "texto": "deberán disponer de cualquiera de los certificados o firmas electrónicas que admita dicha aplicación.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Importes máximos por modalidad: festivales, ciclos y eventos 30.000 €; salas 25.000 €; cursos y concursos 10.000 €; giras 20.000 €; producción en vivo 20.000 €; estructuras 30.000 €; composición 5.000 €; discográfica 10.000 €. Nunca más del 65 % del presupuesto del proyecto.",
+   "Reparto del crédito: festivales, ciclos y eventos 850.000 €; salas 275.000 €; cursos y concursos 170.000 €; giras 170.000 €; producción en vivo 225.000 €; estructuras 740.000 € (bienal); composición 60.000 €; discográfica 200.000 €.",
+   "Los cursos de perfeccionamiento deben dirigirse exclusivamente a alumnado de grado superior de música; las sesiones de DJ no puntúan en festivales ni salas.",
+   "Las giras solo cuentan conciertos deficitarios fuera de la Comunitat Valenciana.",
+   "El resumen del proyecto y la ficha presupuestaria acreditan méritos: si no se presentan en plazo, el IVC no los requiere.",
+   "Remite a las bases reguladoras (Resolución de 26 de mayo de 2025, DOGV 10118), que no se incluyen; los criterios con sus subapartados están detallados en la convocatoria."
+  ]
+ },
+ "citas": {
+  "verificadas": 74,
+  "revisar": 0,
+  "noConsta": 2
+ }
+}

@@ -1,0 +1,537 @@
+{
+ "version": 1,
+ "codigoBdns": "902428",
+ "generada": "2026-10-09T14:10:26.658Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1445350,
+   "nombre": "CERTIFICADO_DE_ACUERDO_ASOCIACIONES_Y_ENTIDADES_CULTURALES_2026.pdf",
+   "paginas": 20,
+   "huella": "48040f2dc2f380fc"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Torrent para proyectos y actividades culturales de 2026, incluida la música (clásica, jazz-blues, corales, ópera).",
+   "Para asociaciones y entidades culturales sin ánimo de lucro con domicilio en Torrent e inscritas en el Registro Municipal de Asociaciones.",
+   "Crédito de 17.946,51 euros (más 10.000 euros adicionales condicionados); hasta 6.000 euros por solicitud según la puntuación.",
+   "Plazo: un mes desde el día siguiente a la publicación del extracto en el BOP de Valencia.",
+   "Pago anticipado del 75 %; justificación hasta el 31 de enero de 2027."
+  ],
+  "objeto": {
+   "valor": "Proyectos y actividades culturales de interés general desarrollados entre el 1 de enero y el 31 de diciembre de 2026 (programación estable, proyectos individuales o interasociativos; teatro, ópera, danza, música, literatura, etc.)",
+   "cita": {
+    "documento": 1445350,
+    "pagina": 6,
+    "texto": "destinades a finançar projectes i activitats culturals desenvolupades en el període comprés entre l’1 de gener i el 31 de desembre de 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades y asociaciones culturales del municipio de Torrent sin ánimo de lucro, con personalidad jurídica",
+   "cita": {
+    "documento": 1445350,
+    "pagina": 8,
+    "texto": "Podran acollir-se a esta convocatòria les entitats i associacions de caràcter bàsicament cultural del municipi de Torrent",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Valencia",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "El termini d'admissió de sol·licituds serà d’un mes comptador des de l’endemà de la publicació de l'extracte d'aquesta convocatòria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Máximo seis meses; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 19,
+     "texto": "El termini màxim per a resoldre i notificar la resolució del procediment no podrà excedir de sis mesos.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero al 31 de diciembre de 2026",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 6,
+     "texto": "desenvolupades en el període comprés entre l’1 de gener i el 31 de desembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa simplificada por medios electrónicos (trámite CULT-004) hasta el 31 de enero de 2027; facturas completas a nombre de la entidad",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 17,
+     "texto": "La data límit de justificació serà el 31 de gener de 2027.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 17946.51,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 15,
+     "texto": "L’import màxim destinat a aquesta convocatòria és de 17.946,51 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 6000,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 15,
+     "texto": "De 41 a 55 punts: màxim 6.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Anticipo del 75 % y el 25 % restante tras la justificación",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 16,
+     "texto": "Es realitzarà un pagament anticipat per import del 75 per 100 de la subvenció, sent el pagament del 25 per 100 restant una vegada realitzada la justificació",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones, recursos o ingresos, sin superar el gasto realizado",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 16,
+     "texto": "Estes subvencions són compatibles amb altres subvencions obtingudes d'altres organismes, així com altres recursos o ingressos per a la mateixa finalitat.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Entidad sin ánimo de lucro, con personalidad jurídica y capacidad de obrar",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 8,
+     "texto": "tinguen ànim de lucre, dotades de personalitat jurídica i amb capacitat d’obrar",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Domicilio social en Torrent e inscripción previa en el Registro Municipal de Asociaciones, con datos actualizados",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 8,
+     "texto": "Tindre domicili social a Torrent i figurar inscrites en el Registre Municipal d’Associacions de l’Ajuntament de Torrent",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con la AEAT, la Seguridad Social y el Ayuntamiento",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 9,
+     "texto": "Estar al corrent de les seues obligacions fiscals amb l’Agència Estatal de l’Administració Tributària",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber justificado correctamente las subvenciones municipales de años anteriores",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 9,
+     "texto": "Haver justificat correctament les subvencions concedides en anys anteriors per l’Ajuntament de Torrent.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13 de la Ley 38/2003",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 9,
+     "texto": "No estar incurs en cap de les prohibicions per a obtindre la condició de beneficiari",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comprometerse a gastar al menos el 30 % del proyecto en el comercio de Torrent (declaración responsable, Anexo II)",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "d’inversió como a mínim del 30% de les depeses derivades del projecte a subvencionar que corresponguen al teixit comercial de Torrent.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad a la financiación municipal",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "S'haurà de donar publicitat del finançament realitzat per l'Ajuntament de Torrent",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las actividades subvencionadas por otra concejalía o fuera del ámbito de la cultura",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 7,
+     "texto": "Les que obtinguen subvenció per part d’altra regidoria",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos de ejecución de las actividades culturales del proyecto",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 12,
+     "texto": "Despeses derivades de l’execució de les activitats culturals que consten en el projecte o activitat.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Difusión de las actividades programadas",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 12,
+     "texto": "Despeses de difusió de les activitats programades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratación de espectáculos de grupos profesionales o amateurs y gestión de derechos de autor",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 12,
+     "texto": "Despeses derivades de la contractació d’espectacles de grups professionals o amateur, i els generats per la gestió de drets d’autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gestión o dirección técnica o artística del proyecto",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 12,
+     "texto": "Despeses generades per la gestió o direcció tècnica o artística del projecte o activitat cultural.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Seguros de responsabilidad civil e impuestos indirectos no recuperables",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 12,
+     "texto": "Es consideren despeses subvencionables les assegurances de responsabilitat civil vinculades a la realització de les activitats",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Costes indirectos (alquiler, luz, agua, teléfono, limpieza, material fungible), imputables hasta el 20 % del gasto",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "S’estableix per a l’activitat subvencionada com a cost indirecte imputable a la mateixa un 20% del total del gasto",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos inventariables (mobiliario, ordenadores, etc.)",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "Els gastos inventariables (aquelles que formen part del patrimoni de l'entitat",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hostelería y restauración, salvo vinculación directa con la actividad",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "Les despeses en hostaleria i restauració, llevat que estiguen directament vinculats a l'activitat",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades ya previstas en la oferta municipal o de otras concejalías",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "Activitats que ja es troben previstes en l’oferta municipal",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Intereses deudores, recargos y sanciones",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "Interessos, recàrrecs i sancions administratives i penals.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de procedimientos judiciales",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "Les despeses de procediments judicials.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Compra de bebidas alcohólicas",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 13,
+     "texto": "- La compra de begudes alcohòliques.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No se admiten tiques, fotocopias, albaranes, facturas proforma ni presupuestos como justificantes",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 18,
+     "texto": "Tiquets, fotocòpies, albarans, factures proforma o pressupostos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Interés general de la actividad y beneficio para la ciudadanía de Torrent",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Interés general de l’activitat i benefici per a la ciutadania de Torrent, amb un projecte dedicat a millorar les mancances Fins 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de actividades culturales programadas y sus presupuestos, incluidas las formativas complementarias",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Nombre d'activitats culturals programades i els seus pressupostos, tenint en compte les de caràcter formatiu Fins 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Proyectos en colaboración con otras asociaciones (trabajo en red)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "xarxa i la col·laboració entre entitats associatives per a l’èxit Fins 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Originalidad y carácter innovador",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Originalitat i caràcter innovador de l’activitat cultural i la seua incidència segons els grups de població municipal. Fins 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Carácter permanente y continuo durante todo el año",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Caràcter permanent i continu de l’activitat o programa durant tot l’any (bé presencialment, segons estipulen les Fins 5 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Colaboración y complementariedad con la programación cultural municipal",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Col·laboració i complementarietat amb les accions ja Fins 5 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Compromiso de inversión por encima del 30 % en el comercio de Torrent",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "derivades del projecte a subvencionar) destinats al teixit Fins 4 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Encuentros intergeneracionales e implicación de la gente joven",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Activitats que fomenten trobades intergeneracionals, processos de rejoveniment de les associacions i implicació Fins 2 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Promoción de la igualdad entre hombres y mujeres",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Incidència de l’activitat cultural en la promoció de la igualtat Fins 2 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Estrategias y acciones de comunicación externa",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1445350,
+     "pagina": 14,
+     "texto": "Accions de comunicació externa de les activitats (xarxes Fins 2 punts",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en modelo oficial CULT-003, con declaración responsable incluida",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "Les entitats interessades hauran de presentar la seua sol·licitud, ajustada al model oficial que es publica en la seu electrònica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo I: detalle del proyecto, calendario y presupuesto",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "ANNEX I: detall del projecte a realitzar, així com el seu calendari i pressupost.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo II: declaración responsable de compromiso de gasto mínimo del 30 % en el comercio de Torrent",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "ANNEX II: declaració responsable on es manifeste el compromís",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de mantenimiento de terceros",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "3. Model de Fitxa Manteniment de Tercers.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Breve resumen de actividades de la entidad en 2025",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "Breu resum d’activitats de l’entitat sol·licitant durant l’any 2025.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Poderes o certificación de representación y NIF de la entidad, si no constan en el Ayuntamiento",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "s’aportaran poders o certificació actualitzada que acredite la representació legal de la persona sol·licitant",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de la AEAT y la Seguridad Social si se opone a la consulta de datos",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 11,
+     "texto": "haurà d'aportar-se certificació positiva de l’Agència Estatal de l’Administració Tributària i de la Tresoreria General de la Seguretat Social.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Torrent, apartado Ayudas y Subvenciones (trámite CULT-003)",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "El model normalitzat de sol·licitud, així com els annexos, podran trobar-se en la seu electrònica de l'Ajuntament de Torrent a l’apartat d’Ajudes i Subvencions.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://torrent.sedelectronica.es/",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 1,
+     "texto": "Verificació: https://torrent.sedelectronica.es/",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación obligatoria por medios electrónicos",
+    "cita": {
+     "documento": 1445350,
+     "pagina": 10,
+     "texto": "haurà de fer-se a través de mitjans electrònics.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "La cuantía depende de la puntuación (máximo 55 puntos): 1-10 puntos hasta 800 €; 11-20 hasta 1.500 €; 21-30 hasta 2.000 €; 31-40 hasta 3.500 €; 41-55 hasta 6.000 €. Si el crédito no alcanza, se prorratea.",
+   "Además del crédito de 17.946,51 euros, hay una cuantía adicional de 10.000 euros condicionada a la aprobación del presupuesto de 2026.",
+   "Solo para entidades sin ánimo de lucro de Torrent inscritas en el registro municipal; una empresa promotora no puede pedirla.",
+   "El documento es el certificado del acuerdo de la Junta de Gobierno Local que aprueba la convocatoria, con las bases específicas como anexo; está en valenciano.",
+   "La URL citada es la de verificación de la sede electrónica; las bases no dan otra dirección del trámite."
+  ]
+ },
+ "citas": {
+  "verificadas": 51,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

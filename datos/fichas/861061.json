@@ -1,0 +1,249 @@
+{
+ "version": 1,
+ "codigoBdns": "861061",
+ "generada": "2026-10-09T14:10:21.927Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1333835,
+   "nombre": "VCLSJM_ES_Convocatoria PRECREA Matilde Salvador.pdf",
+   "paginas": 8,
+   "huella": "7179908db56b4f46"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Premio Matilde Salvador de Música de la Universitat Jaume I, dentro de la VI edición de los Premios a la Creación de las Universidades Públicas Valencianas (PRECREA).",
+   "Reconoce a personas físicas o colectivos creadores en el ámbito de la música; las candidaturas las proponen entidades culturales o profesionales o premiados anteriores.",
+   "Premio único e indivisible de 5.000 euros, sujeto a retenciones.",
+   "Plazo de candidaturas desde el día siguiente a la publicación del extracto en el DOGV hasta el 20 de octubre de 2025."
+  ],
+  "objeto": {
+   "valor": "Premio Matilde Salvador de Música a la trayectoria de creación cultural en el ámbito de la música (PRECREA, VI edición)",
+   "cita": {
+    "documento": 1333835,
+    "pagina": 2,
+    "texto": "Convocar el Premio Matilde Salvador de Música dentro de los Premios a la Creación de las Universidades Públicas Valencianas",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas o colectivos considerados creadores en el ámbito de la música, propuestos por entidades culturales o profesionales del sector o por premiados en ediciones anteriores",
+   "cita": {
+    "documento": 1333835,
+    "pagina": 2,
+    "texto": "El premio se otorga a partir de las actividades de creación cultural realizadas por personas físicas o colectivos susceptibles de ser considerados como creadores en el ámbito de la música.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación del extracto en el DOGV hasta el 20 de octubre de 2025",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 3,
+     "texto": "El plazo de presentación de candidaturas se iniciará a partir del día siguiente al de la publicación del extracto de la resolución de la convocatoria en el Diario Oficial de la Generalitat Valenciana (DOGV)",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2025-10-20",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 3,
+     "texto": "extracto de la resolución de la convocatoria en el Diario Oficial de la Generalitat Valenciana (DOGV) y finalizará el 20 de octubre de 2025.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Máximo seis meses desde la publicación de la convocatoria; resuelve el Vicerrectorado de Cultura, Lenguas y Sociedad",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 4,
+     "texto": "General de Subvenciones, no podrá exceder de seis meses, que se computarán a partir de la publicación de la correspondiente convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 5000,
+    "cita": {
+     "documento": 1333835,
+     "pagina": 1,
+     "texto": "el año 2025 (VCLS-VCL, proyecto 22G001, subproyecto 03), por un importe total de 5.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 5000,
+    "cita": {
+     "documento": 1333835,
+     "pagina": 5,
+     "texto": "El premio está dotado con un premio dinerario de 5.000 euros",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Premio indivisible, con retenciones fiscales; solo se paga si el premiado acredita estar al corriente con Hacienda, la Seguridad Social y la Hacienda valenciana y no es deudor de la Universitat",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 5,
+     "texto": "No podrá realizarse el pago del premio sin la acreditación de que la persona beneficiaria está al corriente en el cumplimiento de sus obligaciones tributarias y ante la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas con la misma finalidad, sin superar el coste de la actividad",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 5,
+     "texto": "El premio regulado en las presentes bases será compatible con otras ayudas que tengan la misma finalidad",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser persona física o colectivo creador en el ámbito de la música",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 2,
+     "texto": "realizadas por personas físicas o colectivos susceptibles de ser considerados como creadores en el ámbito de la música.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La candidatura debe proponerla una entidad cultural o profesional del sector o una persona premiada en ediciones anteriores",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 2,
+     "texto": "podrán ser propuestas por entidades culturales o profesionales relacionadas con la actividad artística objeto del premio o por personas galardonadas en ediciones anteriores",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 5 puntos sobre 10; si no, el premio puede declararse desierto",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 4,
+     "texto": "siempre que estas no lleguen a una puntuación mínima de 5 puntos sobre 10.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda, la Seguridad Social y la Hacienda valenciana para cobrar",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 5,
+     "texto": "corriente en el cumplimiento de sus obligaciones tributarias y ante la Seguridad Social y la Hacienda pública valenciana.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Se rechazan las obras que contravengan los principios de los Estatutos de la Universitat Jaume I",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 4,
+     "texto": "Serán rechazadas aquellas obras que puedan contravenir los principios regulados en los Estatutos de la Universitat Jaume I.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Calidad de la trayectoria profesional de la candidatura (50 %)",
+    "puntosMaximos": 50,
+    "cita": {
+     "documento": 1333835,
+     "pagina": 4,
+     "texto": "Calidad de la trayectoria profesional de la candidatura        50",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Relevancia con la excelencia y la innovación en la vida cultural y artística valenciana (50 %)",
+    "puntosMaximos": 50,
+    "cita": {
+     "documento": 1333835,
+     "pagina": 4,
+     "texto": "Relevancia con la excelencia y la innovación en la vida        50",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Propuesta de candidatura (anexo II)",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 3,
+     "texto": "Las candidaturas deberán ir acompañadas de la siguiente documentación: a) Propuesta de candidatura (anexo II).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentos que acrediten los méritos de la candidatura e información complementaria",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 3,
+     "texto": "Los documentos que se consideren oportunos para acreditar los méritos de la candidatura, así como datos relevantes e información complementaria de esta.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Formulario del Registro Electrónico de la Universitat Jaume I o registros del art. 16 de la Ley 39/2015",
+    "cita": {
+     "documento": 1333835,
+     "pagina": 3,
+     "texto": "Las candidaturas se presentarán a través del formulario de solicitud disponible en el Registro Electrónico de la Universitat Jaume I.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es un premio a la trayectoria, no una subvención a proyectos o conciertos: no hay gastos subvencionables ni justificación.",
+   "Corresponde a la VI edición (PRECREA 2025), con presupuesto de 2025 y plazo que terminó el 20 de octubre de 2025.",
+   "Los criterios se expresan en porcentaje (50 % y 50 %); el jurado puntúa sobre 10 y en caso de empate prima la trayectoria profesional.",
+   "Un promotor de conciertos no puede ser premiado como tal, pero sí podría proponer una candidatura como entidad profesional del ámbito musical."
+  ]
+ },
+ "citas": {
+  "verificadas": 19,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

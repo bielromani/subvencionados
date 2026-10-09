@@ -1,0 +1,568 @@
+{
+ "version": 1,
+ "codigoBdns": "891209",
+ "generada": "2026-10-09T14:09:55.116Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1530021,
+   "nombre": "Bases de la convocatoria de subvenciones festivales 2026.pdf",
+   "paginas": 17,
+   "huella": "a2fe6c7ed55869ef"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Diputación Provincial de Huesca para festivales profesionales de alto interés cultural en la provincia en 2026, incluida música clásica, lírica y jazz.",
+   "Para ayuntamientos y sus entes, comarcas y entidades privadas sin ánimo de lucro.",
+   "Crédito total de 420.000 €; entre 3.000 y 50.000 € por solicitud, y el total de ayudas no puede superar el 80 % del presupuesto.",
+   "Plazo: 20 días hábiles desde el día siguiente a la publicación del extracto en el BOP de Huesca.",
+   "Actividades entre el 1 de noviembre de 2025 y el 31 de octubre de 2026; justificación hasta el 3 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Apoyo a festivales profesionales de alto interés cultural en la provincia de Huesca en 2026: música (clásica, antigua, contemporánea, lírica, jazz, etc.), teatro, circo, danza, otras artes escénicas, cine y artes visuales o multidisciplinares",
+   "cita": {
+    "documento": 1530021,
+    "pagina": 2,
+    "texto": "El objeto de esta línea de subvenciones es dar apoyo a festivales de carácter profesional de alto interés cultural que se realicen en la provincia de Huesca en el ejercicio de 2026",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos de la provincia de Huesca y sus entes dependientes, comarcas mayoritariamente en la provincia y entidades privadas sin ánimo de lucro",
+   "cita": {
+    "documento": 1530021,
+    "pagina": 2,
+    "texto": "Ayuntamientos de la provincia de Huesca y entes que dependan de ellos. b) Comarcas cuyo territorio esté mayoritariamente en la provincia de Huesca. c) Entidades privadas sin ánimo de lucro.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Huesca",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "El plazo de presentación de solicitudes será de 20 días hábiles contados a partir del día siguiente a la publicación del extracto de esta convocatoria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses desde la publicación de la convocatoria; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 10,
+     "texto": "El plazo máximo para resolver y notificar la resolución será de tres meses y se computará a partir de la publicación de la presente convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de noviembre de 2025 al 31 de octubre de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "El período de realización de las actividades subvencionadas se fija entre el 1 de noviembre de 2025 y el 31 de octubre de 2026, ambos inclusive.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa con justificantes de gasto por registro electrónico hasta el 3 de noviembre de 2026; justificantes de pago hasta el 16 de noviembre de 2026",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 10,
+     "texto": "el plazo de justificación finalizará el 3 de noviembre de 2026, pudiendo presentarse los justificantes de pago efectivo hasta el 16 de noviembre de 2026",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 420000,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "La Diputación Provincial Huesca aportará al presente programa en el ejercicio de 2026 un máximo de 420.000,00 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 50000,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "con un mínimo de 3.000,00 € por solicitud y un máximo de 50.000,00 €",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "la suma de todas las ayudas públicas o privadas no podrá superar el 80% del presupuesto total de la actividad.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras la justificación; no se admiten pagos a cuenta ni anticipos",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 13,
+     "texto": "No se admitirán solicitudes de pagos a cuenta o anticipos de pago.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas e ingresos (incluida taquilla) sin superar el coste ni el 80 % del presupuesto; el beneficiario aporta al menos el 20 % de su presupuesto",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "Estas subvenciones son compatibles con otras subvenciones, ayudas, ingresos o recursos para la misma finalidad",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser ayuntamiento o ente dependiente, comarca o entidad privada sin ánimo de lucro",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 2,
+     "texto": "Pueden ser beneficiarios de las ayudas los siguientes sujetos:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en las causas del artículo 13 de la Ley 38/2003",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 2,
+     "texto": "No podrán tener la condición de beneficiario las entidades en las que concurra alguna de las causas establecidas en el artículo 13",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con la Diputación de Huesca (tributos y reintegros), Hacienda y la Seguridad Social",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 3,
+     "texto": "Hallarse al corriente de sus obligaciones tributarias y frente a la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber cumplido las subvenciones concedidas por la Diputación para el mismo fin el año anterior",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 3,
+     "texto": "El efectivo cumplimiento de los requisitos y la realización de la actividad en todas las subvenciones que hayan sido concedidas al beneficiario",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidades locales: estar al día en la rendición de cuentas a la Cámara de Cuentas de Aragón",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 3,
+     "texto": "Cuando el beneficiario sea una entidad local, estar al día en la obligación de rendir sus cuentas a la Cámara de Cuentas de Aragón",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Festival celebrado mayoritariamente en la provincia de Huesca (no se subvencionan gastos fuera de ella)",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "El festival debe tener lugar mayoritariamente en la provincia de Huesca.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos dos ediciones consecutivas previas (2024 y 2025)",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "El festival debe contar con un mínimo de dos ediciones consecutivas realizadas antes de la del año de la concesión de la subvención (2024 Y 2025).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mínimo de 6 actividades, dedicadas exclusivamente a una modalidad, en un periodo de 2 a 60 días",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "El festival debe tener un mínimo de 6 actividades y debe dedicarse exclusivamente a alguna de las especialidades mencionadas en la base primera.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Subcontratación con terceros hasta el 50 % del importe",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "Los solicitantes podrán concertar con terceras personas la ejecución de la actividad objeto de la ayuda hasta un 50% de su importe",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Aportar al menos el 20 % del gasto con presupuesto propio (sin contar la taquilla)",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "el beneficiario deberá aportar un mínimo del 20% del gasto ejecutado del programa directamente de su presupuesto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 35 puntos en la valoración",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 8,
+     "texto": "Para poder optar a la subvención será indispensable obtener un mínimo de 35 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración de la Diputación con su logotipo en la publicidad, con aprobación previa del Servicio de Cultura",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 14,
+     "texto": "Hacer constar la colaboración de la Diputación Provincial de Huesca en todas y cada una de las acciones de publicidad y difusión",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Cachés de los contratos de los espectáculos y sus derechos de autor",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Los cachés de los contratos de los espectáculos programados y sus derechos de autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alquiler de equipos (máximo 20 % del presupuesto de la programación, acorde con la ficha técnica) y publicidad",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Los gastos de alquileres de equipos y publicidad necesarios para su celebración.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hostelería, restauración y alojamiento solo si derivan de los contratos de los artistas",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "salvo si se corresponden con prestaciones derivadas de los contratos suscritos para la realización de los espectáculos del festival por los participantes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dietas y locomoción de personas directamente vinculadas a la actividad, hasta 0,26 € por km y dietas del grupo 2 del RD 462/2002",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "es 0,26 euros por kilómetro (no se admitirán facturas en gasto de gasolina)",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos suntuarios",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "No serán subvencionables los gastos relativos a: a) Gastos suntuarios.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Premios en dinero, salvo que sean esenciales para la actividad",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Premios que consistan en entrega de cantidades dinerarias",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hostelería, restauración y alojamiento no derivados de los contratos artísticos",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Gastos en servicios de hostelería, restauración y alojamientos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos protocolarios",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "d) Gastos de carácter protocolario.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sueldos, salarios y Seguridad Social de la entidad promotora o de sus miembros",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Sueldos, salarios o cualquier otro tipo de retribución o remuneración, seguros sociales, cuotas de la Seguridad Social de la entidad promotora",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mantenimiento y funcionamiento ordinario de la entidad (locales, gastos financieros, suministros, internet)",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Gastos de mantenimiento y funcionamiento ordinario de la entidad promotora de la actividad subvencionada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos por encima del valor de mercado",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "Gastos que superen el valor de mercado comprobado por la Administración",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas de gasolina",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "no se admitirán facturas en gasto de gasolina",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impuestos indirectos recuperables e impuestos personales sobre la renta",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 5,
+     "texto": "En ningún caso se consideraran subvencionables los impuestos indirectos cuando sean susceptibles de recuperación o compensación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pagos en efectivo de más de 300 euros",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 12,
+     "texto": "No se admitirán justificantes de pago en efectivo por importe superior a 300 euros.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Calidad e interés del proyecto y de la programación artística",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "a.1. Calidad e interés del proyecto y de la programación artística: hasta 15 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de acciones previstas y presupuesto total",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "a.2. Número de acciones previstas y presupuesto total: hasta 15 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Contribución a la dinamización, equilibrio territorial y desestacionalidad",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "Contribución a la dinamización, equilibrio territorial y desestacionalidad del festival: hasta 10 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria y evolución del festival",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "c) Trayectoria y evolución del festival: hasta 5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Plan de comunicación y estrategias de desarrollo de públicos",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "Potencialidad del plan de comunicación y estrategias de desarrollo de públicos: hasta 3 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Proyección regional y nacional del festival",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 7,
+     "texto": "e) Proyección regional y nacional del festival: hasta 3 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Captación de nuevos públicos y actividades paralelas",
+    "puntosMaximos": 6,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 8,
+     "texto": "Capacidad del festival para la captación de nuevos públicos y realización de actividades paralelas: hasta 6 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Apuesta por artistas emergentes y propuestas innovadoras",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 8,
+     "texto": "g) Apuesta por artistas emergentes, propuestas innovadoras: hasta 3 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria del solicitante y de la actividad",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1530021,
+     "pagina": 8,
+     "texto": "h) Trayectoria del solicitante y de la actividad: hasta 10 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Anexo S1: solicitud, con autorización para consultar Hacienda y Seguridad Social (o certificados)",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "a) Anexo S1. Solicitud de subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo S2: presupuesto detallado de gastos e ingresos previstos",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "b) Anexo S2. Presupuesto detallado de las actuaciones, que contemple los gastos previstos por conceptos y los ingresos previstos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo S3: memoria explicativa y programación por día, artistas, trayectoria del festival y plan de comunicación",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "Anexo S3. Memoria explicativa y proyecto de programación en el que se extracte la programación por día, artistas, grupos, trayectoria del festival y plan de comunicación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyecto de la actividad en documento separado, con antecedentes, previsión y presupuesto desglosado",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "El desarrollo se ampliará adjuntando, en documento separado, el proyecto de la actividad,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo S4: certificado de rendición de cuentas si el solicitante es entidad local",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "Anexo S4. En el caso de que el solicitante sera una entidad local, certificado del Secretario de la entidad local de rendición de cuentas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Relación de personas con gastos de dietas y locomoción en la memoria de actuación",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 4,
+     "texto": "la relación de las personas que incurrirán en dichos gastos y su vinculación con la actividad.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro electrónico de la Diputación Provincial de Huesca, con los modelos de su sede electrónica",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "la documentación requerida en la presente convocatoria se presentará a través del registro electrónico.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://dphuesca.sedipualba.es/",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 1,
+     "texto": "La comprobación de la autenticidad de este documento y otra información está disponible en https://dphuesca.sedipualba.es/",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1530021,
+     "pagina": 6,
+     "texto": "la documentación requerida en la presente convocatoria se presentará a través del registro electrónico.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Muy relevante para un promotor de jazz, clásica u ópera: incluye festivales de música clásica, antigua, contemporánea, lírica y jazz, y cubre cachés, derechos de autor, alquiler de equipos y publicidad; pero solo para entidades sin ánimo de lucro (o administraciones locales), no empresas.",
+   "Exige un festival con al menos dos ediciones previas consecutivas (2024 y 2025), 6 actividades como mínimo y 2 a 60 días de duración.",
+   "Crédito repartido por tipo de beneficiario: 270.000 € ayuntamientos, 50.000 € comarcas y 100.000 € asociaciones; el importe sale del valor del punto (máximo 70 puntos, mínimo 35).",
+   "No hay anticipos: la ayuda se cobra tras justificar. Penalizaciones por retraso en la justificación (10 % a 30 %) y por no dar publicidad (5 %).",
+   "Ayudas de Estado exentas bajo el artículo 53 del Reglamento (UE) 651/2014."
+  ]
+ },
+ "citas": {
+  "verificadas": 55,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

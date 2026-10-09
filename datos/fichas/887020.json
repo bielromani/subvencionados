@@ -1,0 +1,1088 @@
+{
+ "version": 1,
+ "codigoBdns": "887020",
+ "generada": "2026-10-09T14:10:21.765Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1438312,
+   "nombre": "Convocatòria MU 2026_CAT_BOIB.pdf",
+   "paginas": 23,
+   "huella": "6531163a20e86a55"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Institut d'Estudis Baleàrics (IEB) para la proyección exterior de la música y los músicos de las Illes Balears en 2026.",
+   "Dos líneas excluyentes: a) movilidad de artistas y profesionales; b) proyección exterior, a la que pueden optar también promotores y organizadores de actividades musicales profesionales que programen artistas baleares, sin importar su residencia fiscal.",
+   "Crédito de 300.000 euros; hasta 10.000 euros por proyecto de la línea b y 25.000 euros por beneficiario en total.",
+   "Actividades entre el 16 de septiembre de 2025 y el 15 de septiembre de 2026; solicitudes del 3 de marzo al 20 de abril de 2026 y del 21 de abril al 4 de septiembre de 2026.",
+   "Solicitud electrónica en la sede de la CAIB; justificación en 20 días hábiles tras la actividad."
+  ],
+  "objeto": {
+   "valor": "Apoyo a actividades de proyección exterior de la música y de músicos, intérpretes y compositores profesionales de las Illes Balears (giras, conciertos fuera de su isla, ferias, promoción, material gráfico, audiovisual y fonográfico) entre el 16 de septiembre de 2025 y el 15 de septiembre de 2026",
+   "cita": {
+    "documento": 1438312,
+    "pagina": 3,
+    "texto": "Aquesta convocatòria té per objecte contribuir a les activitats de projecció exterior de la música i dels músics, intèrprets i compositors de",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Línea a: personas físicas y jurídicas (y comunidades de bienes y agrupaciones) que se desplazan o su representante, con independencia de su residencia fiscal. Línea b: personas físicas, jurídicas y comunidades de bienes de alta en epígrafes musicales, y entidades organizadoras de actividades musicales profesionales o editoras fonográficas que presenten música o músicos de las Illes Balears",
+   "cita": {
+    "documento": 1438312,
+    "pagina": 7,
+    "texto": "en són beneficiàries les persones físiques i jurídiques que es desplacen o el seu representant, independentment de la",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Dos periodos: del 3 de marzo al 20 de abril de 2026 (obligatorio para actividades entre el 16/09/2025 y el 20/04/2026) y del 21 de abril al 4 de septiembre de 2026 (actividades entre el 21/04/2026 y el 15/09/2026)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "-Primer període de presentació: del 3 de març al 20 d'abril de 2026. Obligatòriament, s'han de presentar dins aquest període les",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-03-03",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "-Primer període de presentació: del 3 de març al 20 d'abril de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-09-04",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "-Segon període de presentació: del 21 d'abril a 4 de setembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el fin del plazo de presentación; sin resolución se entienden desestimadas. Se resuelve en dos periodos y se publica en el BOIB",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 18,
+     "texto": "El termini per dictar i notificar la resolució expressa és de sis mesos a partir de la data en què finalitza el termini per presentar les",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Entre el 16 de septiembre de 2025 y el 15 de septiembre de 2026",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "Les activitats subvencionades s'han de dur a terme entre el dia 16 de setembre de 2025 i el dia 15 de setembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "20 días hábiles después de realizar la actividad (o tras la publicación de la concesión en el BOIB si es posterior), con cuenta justificativa por la sede electrónica de la CAIB: memoria de actuación, memoria económica, facturas, justificantes de pago y muestras del material",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 19,
+     "texto": "El termini per justificar la subvenció acaba en el termini de 20 dies hàbils després d'haver duit a terme l'activitat objecte de la",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 300000,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 7,
+     "texto": "El crèdit assignat a aquesta convocatòria és de 300.000 € (tres-cents mil euros) amb càrrec al capítol 4 del pressupost de l'IEB de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 25000,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 19,
+     "texto": "L'import màxim que es pot atorgar a cada beneficiari en aquesta convocatòria per a totes les sol·licituds és de 25.000 € (vint-i-cinc mil",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 17,
+     "texto": "Una qualificació d'1 punt correspon al 0,8 % de l'import subvencionable, que s'incrementa gradualment fins al 80 %, que correspon",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Menos de 2.000 euros: transferencia tras justificar la actividad. Desde 2.000 euros: 50 % anticipado al publicarse la concesión y 50 % tras justificar. Se admite un único pago parcial con justificación parcial",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 19,
+     "texto": "Per a subvencions atorgades a partir de 2.000 €, el pagament de les ajudes es farà efectiu a partir de la data en què es resolgui",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con ayudas por los mismos conceptos de la Conselleria de Turismo, Cultura y Deportes, el IEB, el Institut d'Indústries Culturals o el Institut Ramon Llull; compatible con otras sin superar el coste de la actividad",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 22,
+     "texto": "Els beneficiaris no poden obtenir ajudes pels mateixos conceptes que es derivin d'altres convocatòries d'ajudes de la Conselleria de",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "Sí, sujeta al Reglamento (UE) 2023/2831 de ayudas de minimis",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 1,
+     "texto": "Reglament (UE) núm. 2023/2831 de la Comissió, de 13 de desembre de 2023, relatiu a l'aplicació dels articles 107 i 108 del Tractat de",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Los artistas deben ser naturales o residentes en las Illes Balears, con empadronamiento ininterrumpido mínimo de un año",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 3,
+     "texto": "S'entén com a artista de les Illes Balears els intèrprets o compositors naturals o residents a les Illes Balears amb una antiguitat",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En formaciones, al menos el 50 % de los miembros deben ser artistas de las Illes Balears (con excepción para líderes compositores de música original)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 3,
+     "texto": "En el cas de les formacions, es considera que són de Balears quan els artistes de les Illes Balears en constitueixen un mínim d'un 50 % dels",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si intérpretes no baleares interpretan obras de autores baleares, estas deben ser al menos el 70 % del programa",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 4,
+     "texto": "cal que aquestes obres constitueixin un mínim d'un 70 % del programa per ser subvencionables.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Difundir al compositor balear en el programa de mano, la web y los materiales de promoción",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 4,
+     "texto": "És imprescindible que es faci difusió del compositor de les Illes Balears en el programa de mà, el web i altres materials de promoció de l'actuació.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo actuaciones remuneradas con honorarios de al menos el 10 % de la inversión total, en espacios con programación musical habitual y fuera de la isla del artista (salvo ferias profesionales)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 4,
+     "texto": "només són subvencionables les actuacions remunerades amb uns honoraris totals amb un valor que ha de ser",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si la actuación va a taquilla, el artista debe recibir al menos el 50 % de la recaudación",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 4,
+     "texto": "de l'artista ha de ser del 50 % de la recaptació.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: personas físicas, jurídicas y comunidades de bienes de alta en epígrafes de interpretación, composición, representación de artistas, producción fonográfica o de espectáculos musicales (o 3 años de experiencia, solo para materiales promocionales)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 7,
+     "texto": "Les persones físiques, jurídiques i les comunitats de béns donades d'alta d'activitat econòmica en epígrafs relacionats amb la interpretació i",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: entidades organizadoras de actividades musicales profesionales o editoras fonográficas, de cualquier residencia fiscal, que presenten música o músicos de las Illes Balears",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Les entitats organitzadores d'activitats musicals de caràcter professional o editores fonogràfiques, independentment de la seva residència",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda estatal y autonómica y con la Seguridad Social",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Estar al corrent de les obligacions tributàries i amb la Seguretat Social davant l'Administració de l'Estat",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente en el pago de reintegros de subvenciones",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Estar al corrent de pagament d'obligacions per reintegrament de subvencions",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cumplir los principios del art. 3 de la Ley 11/2016 de igualdad de mujeres y hombres",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Complir els principis de l'article 3 de la Llei 11/2016, de 28 de juliol, d'igualtat de dones i homes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una sola solicitud por proyecto",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Presentar una sola sol·licitud per projecte.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de organización y capacidad suficientes para ejecutar la actividad",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Disposar de l'organització i la capacitat suficients i necessàries per garantir el compliment de l'activitat",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del art. 10 del Texto refundido de la Ley de subvenciones de las Illes Balears ni ser empresa en crisis",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 8,
+     "texto": "Les que incorrin en qualsevol de les prohibicions establertes en l'article 10 del Text refós de la Llei de subvencions de les Illes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: obtener un mínimo de 50 puntos",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 17,
+     "texto": "La puntuació mínima per obtenir subvenció de les activitats descrites en el punt 1.1. b) és de 50 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Importe mínimo solicitado de 150 euros",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 19,
+     "texto": "L'import mínim sol·licitat per al qual s'instruirà un expedient és de 150 euros",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gasto mínimo realizado y justificado del 50 % del coste de la actividad",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 21,
+     "texto": "ha de ser, com a mínim, del 50% del cost de l'activitat.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pedir tres ofertas cuando el gasto supere 15.000 euros",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 21,
+     "texto": "l'entitat ha de sol·licitar com a mínim tres ofertes de diferents proveïdors",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar el apoyo del IEB con su logotipo y la frase «Amb el suport de» en programas, carteles y redes (#culturaIB)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 22,
+     "texto": "Fer constar el suport de l'IEB de manera visible en els programes, cartells i elements propagandístics i de comunicació de",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Desplazamiento de carga, personal artístico y agentes culturales (máximo dos por institución): avión en clase turista, barco, tren, taxi, autobús y alquiler de vehículos, con los máximos por destino",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "El desplaçament de càrrega, personal artístic i/o agents culturals (amb un màxim de dos per institució o empresa).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamiento de hasta dos técnicos (iluminación, sonido, regidores o road managers) en proyectos de actuaciones en directo",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "l'activitat, de, com a màxim, dos professionals de perfil tècnic (tècnics d'il·luminació, tècnics de so, regidors i/o road managers).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamiento de agentes culturales o periodistas (máximo dos) a la isla del artista",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "El desplaçament d'agents culturals o periodistes (amb un màxim de dos per sol·licitud) amb destinació a l'illa de referència de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Honorarios del conductor en gira (línea a)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "Els honoraris del conductor en cas de gira.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Kilometraje en vehículo propio, hasta 0,262384 euros por kilómetro",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "El quilometratge en els desplaçaments per carretera que es facin en vehicle propi, amb un preu màxim de 0,262384 euros per",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Visados, documento ESTA y cuaderno ATA",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "Les despeses de visat, del document ESTA i del Quadern ATA.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alojamiento, hasta 100 euros por persona y noche (noches de actividad más dos adicionales, y noches entre fechas de gira)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses d'allotjament s'estipulen en un màxim de 100 € per persona i nit.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditaciones o inscripciones en ferias, mercados y jornadas profesionales",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "Les despeses del cost de les acreditacions o inscripcions a fires, mercats i jornades professionals.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alquiler de instrumentos y backline",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "Les despeses de lloguer d'instruments i backline.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Transporte de instrumentos, material técnico, escenografía y vestuario, y asientos extra",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "s'hi inclouen les despeses de transport d'instruments i material tècnic per al muntatge, escenografies i",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: producción de elementos gráficos, audiovisuales y fonográficos",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "La producció d'elements gràfics, audiovisuals i fonogràfics.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: edición y traducción de material gráfico",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 5,
+     "texto": "L'edició i la traducció de material gràfic.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: servicios profesionales artísticos, técnicos, de producción y comunicación ligados a los artistas baleares; los artísticos, hasta 3.000 euros por proveedor",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Per a serveis de caràcter artístic, el màxim per proveïdor que es tindrà en consideració a efectes subvencionables és de 3.000 €.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: nóminas de trabajadores propios artísticos, técnicos y de apoyo con su Seguridad Social, según horas asignadas",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les nòmines dels treballadors propis que ofereixin serveis artístics, tècnics i de suport amb el cost corresponent de la seguretat",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea b: alquiler de equipamientos y de estands en ferias profesionales",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "El lloguer d'equipaments. — El lloguer d'estands a fires professionals.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Dietas y tasa turística",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "No es pagaran en cap cas ni la taxa turística ni les dietes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Combustible, aparcamiento y peajes",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses de combustible, aparcament i peatges.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Avión en primera clase",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Els desplaçaments amb avió en primera classe.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamientos dentro de la isla de referencia",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses de desplaçament dins l'illa de referència.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actuaciones en la isla de referencia del artista y su material promocional",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses d'actuacions que es facin a l'illa de referència i e l material promocional corresponent.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades benéficas o fuera de circuitos profesionales",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses d'activitats en esdeveniments de caràcter benèfic o fora de circuits professionals",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades de asociaciones sin ánimo de lucro de cultura popular y tradicional",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses d'activitats d'associacions sense ànim de lucre en l'àmbit de la cultura popular i tradicional",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cursos de educación reglada o no reglada y clases particulares (salvo convenio con el IEB)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses derivades de cursos d'educació reglada o no reglada; o classes particulars",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Para promotores: gastos de organización, gestión y publicidad no imputables directamente a la actuación del artista balear (dirección artística, infraestructura, personal y publicidad genérica del festival, gastos generales)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "En cas que se sol·liciti l'ajut de la línia per a promotors, les despeses d'organització, gestió i publicitat que no siguin directament",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Honorarios del beneficiario y de los administradores de personas jurídicas",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Els honoraris del beneficiari de la subvenció i, en el cas de les persones jurídiques, els honoraris dels administradors.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos corrientes de funcionamiento (local de ensayo, suministros, tasas, limpieza, seguros, cuotas de autónomo)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses corrents de funcionament, com ara el lloguer del local d'assaig habitual",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Material inventariable (instrumentos, ordenadores, material de estudio, mobiliario)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "L'adquisició de material inventariable, com instruments musicals, ordinadors, material d'estudi, fotocopiadores, mobiliari",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actuaciones sin retribución o con retribución inferior al 10 % del proyecto (salvo ferias profesionales o decisión de la comisión)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses derivades de les actuacions que no percebin retribució o que percebin una retribució econòmica inferior al 10 % del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actuaciones con caché de 3.000 euros o más cuyos ingresos superen el 200 % de la inversión",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Les despeses derivades de les actuacions que percebin una retribució econòmica superior a 3.000 € i que superi el 200 % de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cenas, comidas y gastos de representación",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Amb caràcter general, els sopars i dinars o despeses de representació.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impuestos, tasas y tributos",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 6,
+     "texto": "Els imposts, les taxes i els tributs.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actuaciones en entorno académico",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 4,
+     "texto": "Les actuacions en un entorn acadèmic no són subvencionables.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cachés en especie",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 4,
+     "texto": "No és acceptable un caixet en espècies.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "I. Trayectoria artística y profesional de los artistas (bloque)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Trajectòria artística i professional de l'artista o artistes implicats (de 0 a 20 punts):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "I.A. Proyectos internacionales en los últimos cinco años (1 punto por proyecto)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Per tenir projectes internacionals en els darrers cinc anys: fins a 5 punts (1 punt per projecte).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "I.B. Actuaciones en directo fuera de la isla de residencia en el último año (1 punto por cada 5)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Per haver actuat en directe fora de l'illa de residència en el darrer any: fins a 5 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "I.C. Discos con composiciones originales o repertorio de compositores baleares (2 por trabajo)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Per haver publicat treballs discogràfics amb composicions originals / interpretació de repertori de compositors de les Illes Balears: fins a 5 punts (2 per treball).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "I.D. Experiencia profesional acreditada (desde 3 años, 1 punto por año)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Per experiència professional acreditada: fins a 5 punts (a partir de 3 anys, 1 punt per any).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II. Potencial de proyección exterior del proyecto (bloque)",
+    "puntosMaximos": 65,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Potencial de projecció exterior del projecte (de 0 a 65 punts):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A. Características de las acciones (subbloque)",
+    "puntosMaximos": 35,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 15,
+     "texto": "Característiques de les accions (màxim 35 punts):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.a. Impacto de las acciones: número, lugar, eco en el público e incidencia en el circuito profesional",
+    "puntosMaximos": 26,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "a) Impacte de les accions (nombre d'accions, lloc de realització, ressò entre el públic general, incidència sobre el circuit professional). Màxim: 26 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.b. (promotor) Talleres, clases magistrales u otras actividades formativas del artista balear (1 punto por acción)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Impartició de tallers, lliçons magistrals o altres activitats formatives impartides per l'artista/grup balear: fins a 5 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.c. (promotor) Organización de residencias o procesos creativos del artista balear (1 actividad: 5; más de una: 8)",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Organització d'una o diverses residències o altres processos creatius de l'artista o grup balear: 1 activitat: 5 punts. Més d'una activitat: 8 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.d. Colaboración con artistas de fuera de Baleares relevantes o con repercusión pública",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Col·laboració (mitjançant enregistrament o actuació en directe) amb artistes de fora de les Illes Balears amb rellevància en el gènere musical o amb repercussió pública: fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.e. Difusión de obras creadas con la ayuda a la creación musical del IEB",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Accions que contribueixen a la difusió de les obres creades amb el suport de l'Institut d'Estudis Baleàrics, mitjançant la subvenció de suport a la creació en el sector de la música: fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.f. Difusión de artistas que participaron en Fira B! 2023, 2024 y 2025",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Accions que contribueixen a la difusió dels artistes de les Illes Balears que han participat en les edicions 2023, 2024 i 2025 de Fira B!: fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.g. Difusión del patrimonio cultural balear: composiciones propias o de autores baleares, cultura tradicional, uso del catalán",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "difusió de la cultura tradicional de les Illes Balears; c. per fer ús de la llengua catalana): fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.h. Relación con el Any Alcover (puntos adicionales)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "El projecte presentat té relació amb l'Any Alcover (5 punts addicionals).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.i. Igualdad de género (ODS 5): obras de mujeres, grupos con al menos 40 % de mujeres o contenidos sobre derechos de las mujeres o LGTBI",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "c. el seu contingut contribueix a la sensibilització i educació de la societat envers els drets de les dones o el col·lectiu LGTBI): fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.i. Mantenimiento de la industria cultural balear (ODS 9)",
+    "puntosMaximos": 6,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "empreses audiovisuals, fotògrafs, agències de representació, etc.) (ODS 9): fins a 6 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.i. (artistas) Cohesión entre las islas (ODS 10 y 11)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "professionals d'altres illes que no siguin la d'origen o la de residència del sol·licitant) (ODS 10, ODS 11): fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.i. Acciones en Formentera o de creadores de Formentera (ODS 10)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Accions desenvolupades a Formentera o realitzades per creadors, empreses, entitats o col·lectius d'aquest territori (ODS 10): fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.i. Retorno social: colectivos o zonas desfavorecidas o en riesgo de exclusión (ODS 10)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "comunitat o una zona en condicions desfavorides o en risc d'exclusió, o a la sensibilització i educació de la societat envers aquests col·lectius: fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.A.i. Medio ambiente (ODS 13)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "educació de la societat envers el medi ambient: fins a 5 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.B. Elementos de promoción (subbloque)",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Elements de promoció (màxim 30 punts):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.B.i. Publicidad y contratación de servicios de comunicación",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "i. Publicitat i contractació de serveis de comunicació: fins a 8 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.B.ii. Material gráfico físico o digital complementario",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Producció de material gràfic físic o digital complementari: fins a 3 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.B.iii. Material audiovisual complementario",
+    "puntosMaximos": 12,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Producció de material audiovisual complementari: fins a 12 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "II.B.iv. Material fonográfico complementario",
+    "puntosMaximos": 12,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "Producció de material fonogràfic complementari: fins a 12 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "III. Plan estratégico (para promotores: integración en la programación del festival o sala, repercusión pública, potencial en redes profesionales y viabilidad económica)",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1438312,
+     "pagina": 16,
+     "texto": "III. Avaluació del pla estratègic (15 punts):",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Persona física: DNI, pasaporte o NIE",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "L'acreditació de la identitat: DNI, passaport o NIE.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona física: si procede, alta en el régimen de autónomos y en el IAE en epígrafes culturales",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Si escau, un document acreditatiu de l'alta en el règim especial de treballadors autònoms",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona jurídica: NIF, DNI del representante y documento constitutivo",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "NIF de la persona jurídica. — DNI, passaport o NIE de la persona física que la representa.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona jurídica: estatutos inscritos en el registro",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Els estatuts socials inscrits degudament en el registre.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona jurídica: acreditación de la representación legal del firmante",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Un document acreditatiu de la representació legal amb la qual actua la persona física que signa la sol·licitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Persona jurídica: alta en el IAE en epígrafes culturales del ejercicio 2026",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Un document acreditatiu d'estar donat d'alta en l'impost d'activitats econòmiques (IAE) en epígrafs vinculats al sector cultural de l'exercici corresponent a 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable en modelo normalizado (obligaciones, ayudas solicitadas, IVA, minimis, etc.)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Una declaració responsable, per mitjà del model normalitzat disponible en el procediment publicat en la Seu Electrònica de la CAIB",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si procede, solicitud de autorización de gastos con personas o entidades vinculadas, con acreditación del precio de mercado",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Si escau, la sol·licitud d'autorització per fer despeses amb persones o entitats vinculades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Prueba de que los artistas son naturales (DNI) o residentes (certificado de empadronamiento histórico) en las Illes Balears",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Documentació provatòria que els artistes objecte de la subvenció són naturals o residents a les Illes Balears",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si el solicitante no es el artista, conformidad del artista o grupo con la solicitud",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "En cas que la persona sol·licitant no sigui l'artista mateix, un document que acrediti la conformitat de l'artista o el grup amb la sol·licitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria descriptiva y detallada del proyecto según modelo (única información que valora la comisión)",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 10,
+     "texto": "Una memòria descriptiva i detallada del projecte per al qual es sol·licita l'ajut",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En la memoria, plan estratégico del promotor: integración en el festival o sala, repercusión, potencial en redes profesionales y cuentas",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 11,
+     "texto": "Si el sol·licitant és un promotor, ha de detallar: I) la integració de l'activitat en el programa del festival o la programació",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto detallado según modelo, con ingresos, gastos e IVA desglosado",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 11,
+     "texto": "El pressupost detallat del projecte, seguint el model descarregable al web http://www.iebalearics.org, amb ingressos i despeses i amb el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En actuaciones en vivo, contrato o carta de invitación con condiciones, caché, fecha y hora",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 11,
+     "texto": "En cas d'una actuació en viu, el contracte o la carta d'invitació que formalitza l'activitat.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si hay ayudas de otras instituciones, plan de patrocinios y financiación",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 11,
+     "texto": "En cas de projectes que comptin amb ajuts d'altres institucions, el pla de patrocinis i de finançament de l'esdeveniment.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de veracidad de los datos bancarios",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 11,
+     "texto": "La declaració de veracitat de les dades bancàries, segons consta a la sol·licitud.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Trámite telemático en la sede electrónica de la CAIB (acceso desde la web del IEB); los extranjeros sin certificado digital, en el apartado habilitado de la web del IEB",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "Les sol·licituds de subvenció i la documentació adjunta s'han de presentar de forma electrònica mitjançant el tràmit telemàtic que estarà",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://www.iebalearics.org",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "disponible en el procediment publicat en la Seu Electrònica de la CAIB, al qual es pot accedir des de la pàgina web de l'IEB, http://www.iebalearics.org.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria; no se admiten otros medios. Los extranjeros sin certificado digital usan el apartado de la web del IEB",
+    "cita": {
+     "documento": 1438312,
+     "pagina": 9,
+     "texto": "Atès que tots els sol.licitants estan obligats a relacionar-se electrònicament",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Muy relevante para un promotor: la línea b admite entidades organizadoras de actividades musicales profesionales de cualquier residencia fiscal que programen artistas o compositores de las Illes Balears; los gastos del promotor deben ser directamente imputables a la actuación del artista balear.",
+   "Importes máximos: 25.000 euros por beneficiario para todas sus solicitudes y 10.000 euros por proyecto en la línea b; en la línea a los máximos son por persona y tramo según destino (Baleares, península, Canarias y Europa, fuera de Europa) y número de personas (por ejemplo, de 1.000 a 9.000 euros por expediente).",
+   "En la línea b, la parte de proyección exterior se subvenciona en porcentaje según la puntuación: 0,8 % por punto, hasta el 80 % con 100 puntos; mínimo 50 puntos.",
+   "El crédito se reparte 40 % para la línea a y 60 % para la línea b, y 70 % para el primer periodo y 30 % para el segundo.",
+   "No se subvencionan actuaciones con caché de 3.000 euros o más cuyos ingresos superen el 200 % de la inversión del solicitante.",
+   "Documento en catalán; se rige por la Orden de bases de 13 de diciembre de 2024 (BOIB núm. 166), que no se incluye."
+  ]
+ },
+ "citas": {
+  "verificadas": 112,
+  "revisar": 0,
+  "noConsta": 0
+ }
+}

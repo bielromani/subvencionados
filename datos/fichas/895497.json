@@ -1,0 +1,183 @@
+{
+ "version": 1,
+ "codigoBdns": "895497",
+ "generada": "2026-10-09T14:08:01.626Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1476117,
+   "nombre": "04-L0152 ADP + Ob Conv 2026_x_RAIS-ESP.pdf",
+   "paginas": 5,
+   "huella": "4a984d2e15580495"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Institut Ramon Llull a la movilidad de orquestas, formaciones de cámara y coros para actuaciones y giras de música clásica, contemporánea y ópera.",
+   "Actuaciones o giras realizadas entre el 1 de enero y el 31 de agosto de 2026.",
+   "Dotación de 200.000 euros tras la ampliación (inicialmente 150.000 euros).",
+   "Solicitudes del 8 al 23 de abril de 2026, solo por la sede electrónica del Institut Ramon Llull."
+  ],
+  "objeto": {
+   "valor": "Movilidad de orquestas, formaciones de cámara y/o corales para actuaciones y/o giras de música clásica, contemporánea y ópera",
+   "cita": {
+    "documento": 1476117,
+    "pagina": 3,
+    "texto": "Abrir la convocatoria 2026 para la concesión de subvenciones en régimen de concurrencia competitiva a la movilidad de orquestas, formaciones de cámara y/o corales para actuaciones y/o giras",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Orquestas, formaciones de cámara y/o corales (los requisitos concretos están en las bases, no incluidas)",
+   "cita": {
+    "documento": 1476117,
+    "pagina": 3,
+    "texto": "a la movilidad de orquestas, formaciones de cámara y/o corales para actuaciones y/o giras en el ámbito de la música clásica, contemporánea y la ópera",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 8 al 23 de abril de 2026, ambos incluidos",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "el plazo de presentación de solicitudes, de acuerdo con la base octava, sea del 8 al 23 de abril de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-04-08",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "el plazo de presentación de solicitudes, de acuerdo con la base octava, sea del 8 al 23 de abril de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-04-23",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "el plazo de presentación de solicitudes, de acuerdo con la base octava, sea del 8 al 23 de abril de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo; sin resolución publicada, las solicitudes se entienden desestimadas",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "Transcurrido el plazo máximo de seis meses sin que se haya dictado y publicado la resolución definitiva de la convocatoria, las personas solicitantes pueden entender desestimadas sus solicitudes",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actuaciones o giras llevadas a cabo entre el 1 de enero y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 3,
+     "texto": "música clásica, contemporánea y la ópera que se hayan llevado a cabo entre el 1 de enero y el 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 200000,
+    "cita": {
+     "documento": 1476117,
+     "pagina": 2,
+     "texto": "que queda fijada en 200.000,00 € con cargo al presupuesto del Institut Ramon Llull para el año 2026",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Actuaciones o giras realizadas entre el 1 de enero y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 3,
+     "texto": "que se hayan llevado a cabo entre el 1 de enero y el 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitantes extranjeros no residentes: certificado digital admitido por la Unión Europea o idCAT Móvil",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "Las personas solicitantes extranjeras no residentes, al presentar las solicitudes por medios telemáticos deben hacerlo a través de certificado digital admitido por la Unión Europea",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Solo por vía telemática, en la sede electrónica del Institut Ramon Llull",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "deben realizarse sólo por vía telemática utilizando la Sede electrónica del Institut Ramon Llull.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática obligatoria con firma electrónica; los no residentes, con certificado digital admitido por la UE o idCAT Móvil",
+    "cita": {
+     "documento": 1476117,
+     "pagina": 4,
+     "texto": "al presentar las solicitudes por medios telemáticos, deben autenticarse a través de los sistemas de firma electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto incluye la resolución de apertura de la convocatoria 2026 (DOGC núm. 9637, de 1.4.2026) y una resolución posterior de 15 de junio de 2026 que amplía la dotación de 150.000 a 200.000 euros.",
+   "Las bases reguladoras (modificadas por Acuerdo de 24 de marzo de 2025, DOGC núm. 9384) no se incluyen: faltan requisitos de los beneficiarios, importes máximos, gastos subvencionables, criterios de valoración, documentación, justificación y pago.",
+   "El crédito se reparte en partidas para empresas privadas (60.000 euros), fundaciones (10.000 euros) y otras instituciones sin fin de lucro (130.000 euros).",
+   "Es una ayuda interesante para orquestas, conjuntos de cámara y coros de música clásica, contemporánea u ópera con actuaciones o giras; el Institut Ramon Llull se dedica a la proyección exterior de la cultura catalana.",
+   "Las resoluciones se notifican por publicación en el tablón de anuncios de la sede electrónica del Institut Ramon Llull."
+  ]
+ },
+ "citas": {
+  "verificadas": 12,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

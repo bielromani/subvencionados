@@ -1,0 +1,263 @@
+{
+ "version": 1,
+ "codigoBdns": "895224",
+ "generada": "2026-10-09T14:08:01.603Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1429700,
+   "nombre": "BASES_MOSKITO_26.pdf",
+   "paginas": 4,
+   "huella": "da248a932028586f"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Concurso de música en directo «Moskito Music 2026» del Ayuntamiento de Coslada (Concejalía de Juventud), con temas propios.",
+   "Para solistas y grupos de la Comunidad de Madrid.",
+   "Premio al ganador de 1.250 euros y trofeo; los otros dos finalistas reciben 625 euros y trofeo cada uno.",
+   "Inscripción mediante el formulario de la web www.coslada.es, apartado de la Concejalía de Juventud."
+  ],
+  "objeto": {
+   "valor": "Concurso para dar a conocer música en directo con temas propios (punk, rock, pop, blues, metal, garage, R&B, soul, reggae, americana, música urbana y derivados)",
+   "cita": {
+    "documento": 1429700,
+    "pagina": 1,
+    "texto": "El objetivo de esta convocatoria es dar a conocer cualquier tipo de música: Punk, Rock, Pop, Blues, Metal, Garage, R&B, Soul, Reggae, Americana, música urbana y sus derivados.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Solistas y grupos de la Comunidad de Madrid",
+   "cita": {
+    "documento": 1429700,
+    "pagina": 1,
+    "texto": "Pueden optar a este concurso solistas y grupos de la Comunidad de Madrid.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde la publicación de las bases aprobadas en la web municipal (previsto en marzo), con tiempo suficiente para la inscripción",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "Plazo de presentación de solicitud de inscripción será desde la publicación de las bases aprobadas por el Ayuntamiento. Estas bases se publicarán en la pagina web en el mes de marzo",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "El jurado selecciona a 8 grupos o solistas hasta el 14 de abril; clasificados publicados desde la semana del 20 de abril; finalistas el 19 de mayo; ganador el día de la final de junio de 2026",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 1,
+     "texto": "El Jurado tendrá hasta el 14 de Abril para hacer la selección de los 8 grupos/solistas concursantes para las eliminatorias de semifinales.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Semifinales previsiblemente el 14 y 16 de mayo en el Parque Salvador Allende; final en junio (posibles 20 o 27 de junio)",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "Parque Salvador Allende, previsiblemente los días 14 y 16 de Mayo (estas fechas pueden ser cambiables en función de la planificación y programación municipal).",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": 1250,
+    "cita": {
+     "documento": 1429700,
+     "pagina": 1,
+     "texto": "El ganador obtendrá como premios su trofeo, 1.250,00 €.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Por transferencia bancaria, con retención del 19 % de IRPF",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 1,
+     "texto": "A los premios entregados mediante transferencia bancaria y con los datos facilitados por el participante, se le retendrá la parte correspondiente de IRPF, que según ley vigente es el 19%",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Música en directo y temas propios",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 1,
+     "texto": "La música debe ser en directo y los temas propios.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solistas o grupos de la Comunidad de Madrid",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 1,
+     "texto": "Pueden optar a este concurso solistas y grupos de la Comunidad de Madrid.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Repertorio de al menos 30 minutos de canciones propias, bajo pena de descalificación",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "menos 30 min. de canciones propias, indispensable para poder participar en los conciertos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los tres finalistas están obligados a actuar en la final de junio",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "Las tres formaciones / solistas estarán obligadas a actuar en la próxima edición de la final del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cesión de derechos de imagen a la organización para difundir temas y grabaciones, sin uso comercial",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 3,
+     "texto": "Los grupos participantes dan su autorización y ceden sus derechos de imagen a la organización del concurso",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Aceptación íntegra de las bases y de las decisiones de la organización y del jurado",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 3,
+     "texto": "La participación en este concurso implica la íntegra aceptación de las bases por parte de los grupos participantes",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Valoración técnica y artística del jurado",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "El jurado tendrá en cuenta (a parte de la valoración técnica y artística) que los participantes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Que al menos un miembro de la banda o el solista resida en Coslada",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "acrediten que al menos un miembro de la banda / solista sea residente del municipio de Coslada",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Formulario de inscripción",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "Para formalizar la inscripción habrá que rellenar un formulario de inscripción",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Breve biografía de la banda o solista (procedencia, géneros, trayectoria) y enlaces a material original",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "adjuntad una pequeña biografía de la banda/solista (lugar de procedencia, género o géneros musicales, además de una breve descripción de su trayectoria profesional y enlaces",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Identificación oficial (DNI, NIE o pasaporte) de al menos un miembro, que actúa como responsable",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 3,
+     "texto": "Se deberá aportar la identificación oficial de al menos uno de los miembros de la candidatura",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Formulario de inscripción en la web www.coslada.es, apartado de la Concejalía de Juventud",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 3,
+     "texto": "Envío de la solicitud de inscripción se realizará obligatoriamente a través del formulario de inscripción en la web de en www.coslada.es dentro del apartado de la Concejalía de Juventud",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://coslada.es/juventud-infancia/juventud/",
+    "cita": {
+     "documento": 1429700,
+     "pagina": 2,
+     "texto": "Estas bases se publicarán en la pagina web en el mes de marzo \" https://coslada.es/juventud-infancia/juventud/ “",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es un concurso de música con premios en metálico, no una subvención a actividades; los estilos citados (punk, rock, pop, blues, metal, etc.) no incluyen jazz, clásica ni ópera, por lo que encaja poco con un promotor de esos géneros.",
+   "No hay fecha exacta de fin de inscripción: las bases solo dicen que se publicarán en marzo con tiempo suficiente para inscribirse.",
+   "Los dos finalistas no ganadores reciben 625 euros y trofeo cada uno; el ganador puede telonear en las fiestas de Coslada de 2027 si la producción lo permite.",
+   "Los premios tienen retención del 19 % de IRPF.",
+   "Las fechas de semifinales y final pueden cambiar según la programación municipal."
+  ]
+ },
+ "citas": {
+  "verificadas": 20,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}

@@ -1,0 +1,591 @@
+{
+ "version": 1,
+ "codigoBdns": "904154",
+ "generada": "2026-10-09T14:10:07.285Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1450279,
+   "nombre": "01 RESO. CONVO. AYUDAS SALAS DE CONCIERTOS 2026.pdf",
+   "paginas": 16,
+   "huella": "fabb5b9e5cd86364"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Instituto de las Industrias Culturales y las Artes de la Región de Murcia (ICA) a las salas de conciertos de música en vivo para su programación de 2026.",
+   "Para profesionales o sociedades con domicilio en la Región de Murcia que gestionen salas de conciertos en la Región.",
+   "Dotación de 100.000 euros; hasta 20.000 euros por beneficiario y no más del 80 % del coste del proyecto.",
+   "Plazo: un mes desde el día siguiente a la publicación del extracto en el BORM; programación del 1 de enero al 31 de diciembre de 2026.",
+   "Cubre cachés, derechos de autor, promoción, alquiler de equipos, personal técnico por concierto y alojamiento de artistas; pago anticipado del 100 %."
+  ],
+  "objeto": {
+   "valor": "Gastos derivados de la programación de eventos musicales en salas de conciertos de música en vivo de la Región de Murcia durante 2026",
+   "cita": {
+    "documento": 1450279,
+    "pagina": 1,
+    "texto": "dirigidas a Salas de Conciertos de Música en Vivo de la Región de Murcia y destinadas a contribuir con los gastos derivados de la programación",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Profesionales o sociedades con domicilio social y fiscal en la Región de Murcia que gestionen salas de conciertos o música en vivo ubicadas en la Región",
+   "cita": {
+    "documento": 1450279,
+    "pagina": 2,
+    "texto": "Podrán participar en esta convocatoria profesionales o sociedades con domicilio social y fiscal en la Región de Murcia que gestionen Salas de Conciertos o Música en Vivo",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Región de Murcia",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "El plazo de presentación de las solicitudes y documentación será de UN MES a contar desde el día siguiente al de la publicación del extracto",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Máximo seis meses desde el fin del plazo de solicitudes; sin resolución, desestimadas",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 10,
+     "texto": "Dicha resolución se dictará en el plazo máximo de SEIS MESES, contados a partir del día siguiente a la fecha de finalización del plazo",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero al 31 de diciembre de 2026",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "será desde el 1 de enero al 31 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Dos meses desde el fin del periodo de ejecución, mediante cuenta justificativa con informe de auditor (sin informe si el proyecto es inferior a 15.000 €); se justifica el total del proyecto",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 13,
+     "texto": "Las personas beneficiarias quedan obligadas a justificar, en el plazo de DOS MESES a contar desde la fecha de finalización del periodo de ejecución",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 100000,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "una dotación máxima de CIEN MIL EUROS (100.000,00 €).",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 20000,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "El importe máximo de la ayuda a percibir por beneficiario será de un máximo de 20.000,00€ con independencia del número de Salas",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "La ayuda concedida por beneficiario no podrá superar el 80% del coste total del proyecto.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Pago anticipado único por el total de la ayuda, sin garantías",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 12,
+     "texto": "El pago del importe de la ayuda concedida se realizará en un único libramiento por la totalidad del importe de la misma y con carácter previo a la justificación",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas para la misma actividad sin superar su coste",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 15,
+     "texto": "Las subvenciones reguladas por la presente convocatoria son compatibles con la recepción de otras de naturaleza similar, para la misma actividad o proyecto",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Gestionar una sala cerrada dedicada de forma regular y profesional a la programación de conciertos en la Región de Murcia",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 2,
+     "texto": "los establecimientos cerrados dedicados de forma regular y profesional a la programación de conciertos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En 2024 y 2025, mínimo 40 conciertos profesionales (localidades de menos de 100.000 habitantes) o 60 (más de 100.000)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 2,
+     "texto": "una programación musical profesional integrada por un mínimo de 40 conciertos, y en las localidades con más de 100.000 habitantes hayan organizado al menos 60",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos el 70 % de los conciertos anuales con venta de entradas",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 2,
+     "texto": "al menos el 70% de los conciertos celebrados al año haya sido objeto de venta de entradas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El proyecto debe abarcar la programación de todo 2026 (no trimestral ni semestral)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 2,
+     "texto": "El proyecto presentado deberá integrar la programación de la sala de todo el ejercicio 2026",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alta en el IAE en los epígrafes 965.1 o 965.4",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "965.1 – Espectáculos en salas y locales 965.4 – Empresas de espectáculos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No incurrir en las prohibiciones del artículo 13 de la Ley 38/2003",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "Estén incursas en alguna de las circunstancias previstas en los artículos 13",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al corriente con Hacienda estatal, la Región de Murcia y la Seguridad Social",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "No estén al corriente de las obligaciones tributarias con la Administración Estatal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una misma sala solo puede concurrir con un proyecto",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 3,
+     "texto": "no pudiendo concurrir una misma Sala con más de un proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mínimo 50 puntos en total y 15 en interés cultural",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 9,
+     "texto": "deberán obtener un mínimo de 50 puntos en la valoración total del proyecto y al menos 15 puntos en el criterio número 1",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Incluir la imagen institucional de la Región de Murcia y el logotipo del ICA en la difusión",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 11,
+     "texto": "deberá figurar de forma visible la imagen institucional de la Región de Murcia, así como el logotipo o diseño del ICA",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No ser parte de convenios o contratos vigentes con la Región de Murcia con objeto similar",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 16,
+     "texto": "que sean parte en convenios y contratos vigentes celebrados con la Administración Pública de la Comunidad Autónoma de la Región de Murcia",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Caché de los artistas",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "necesarios y se realicen en el plazo de ejecución establecido en esta convocatoria, tales como: - Caché de los artistas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Derechos de autor y promoción y publicidad del evento",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Derechos de autor. - Promoción y publicidad del evento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de producción (alquiler de equipamiento) ligados al evento que no pueda prestar la sala",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Gastos de producción (alquiler de equipamiento material) ligados al evento no susceptibles de ser prestados con el equipamiento de la sala.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personal contratado específicamente para cada concierto (técnico y de producción, foto/vídeo, community manager, taquilla y control de accesos)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Solo se admitirán contratos vinculados a personal técnico y de producción, foto/video, community manager, personal de taquilla y control de accesos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alojamiento de los artistas, máximo 2 noches",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Gastos derivados del alojamiento de los artistas, máximo 2 noches",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos en efectivo hasta 1.000 € con tique o factura simplificada",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Gastos abonados en efectivo hasta un máximo de 1.000,00€ justificados mediante la aportación de tiques de compra o facturas simplificadas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Informe de auditor para la justificación",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Gastos derivados de la justificación mediante aportación de informe auditor",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos generales o de gestión corrientes (alquileres, telefonía, gestoría, electricidad, informática...)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Gastos generales o de gestión corrientes (en ningún supuesto, alquileres, telefonía, gastos de gestoría, energía eléctrica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos fijos de personal del solicitante (limpieza, administración, hostelería, mantenimiento, seguridad...)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Costes y gastos fijos de personal del solicitante (en ningún supuesto, limpieza",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Material o equipos inventariables y material fungible",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "Adquisiciones de material o equipos inventariables o de material fungible.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Inversiones",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "- Inversiones periódicas o no periódicas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dietas, catering y otros gastos de viaje",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 4,
+     "texto": "- Dietas, catering y otros gastos de viaje.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Reparaciones de inmuebles, mobiliario o equipamiento; renting, leasing y alquiler de vehículos o equipamiento",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 5,
+     "texto": "Adquisición, renting, leasing y alquiler de vehículos, mobiliario o equipamiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Intereses y gastos financieros",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 5,
+     "texto": "- Intereses, gastos financieros o de amortización.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA soportado y todo tipo de tributos, tasas o sanciones",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 5,
+     "texto": "- Importe del IVA soportado. - Todo tipo de tributos, impuestos, tasas o sanciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Servicios de personas o sociedades vinculadas o de otros beneficiarios de estas ayudas",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 5,
+     "texto": "Los servicios prestados por empresas o personas que hayan obtenido la condición de beneficiario en las presentes ayudas",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Interés cultural del proyecto: carácter innovador, calidad artística y técnica, fomento de la nueva creación (mínimo 15)",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 8,
+     "texto": "Interés cultural del proyecto, actividad o estructura (de 0 a 30 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Apoyo a artistas de la Región y a programas de artistas emergentes",
+    "puntosMaximos": 17,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 8,
+     "texto": "Apoyo de las Salas a artistas de la Región y que hayan acogido actuaciones de programas de respaldo a artistas emergentes (de 0 a 17 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Perfil y alcance: proyección nacional o internacional",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 9,
+     "texto": "Perfil y alcance del proyecto, actividad o estructura (de 0 a 8 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Repercusión social: destinatarios, rentabilidad social, formación y nuevos públicos",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 9,
+     "texto": "Repercusión social (de 0 a 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Presupuesto y viabilidad económica",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 9,
+     "texto": "Presupuesto y viabilidad económica (de 0 a 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria del solicitante",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1450279,
+     "pagina": 9,
+     "texto": "Trayectoria del solicitante (de 0 a 25 puntos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud (Anexo I)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "Solicitud conforme al modelo establecido en el ANEXO I de la presente convocatoria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de no estar incurso en prohibiciones (Anexo II)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "Declaración responsable de no estar incurso en ninguna de las causas de incompatibilidad o prohibición para obtener subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Escritura de constitución y estatutos inscritos",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "Escritura de constitución de la sociedad, en su caso, y estatutos debidamente inscritos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de la representación",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "Acreditación de la representación o escritura de apoderamiento debidamente inscrita",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado del IAE y residencia social y fiscal en Murcia (no obligatorio si autoriza consulta)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Certificación de IAE actividad económica relacionada con actividad enumerada en el artículo 3",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de propiedad o arrendamiento de la sala",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Acreditación de la propiedad de la Sala o contrato de arrendamiento",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria de los conciertos de 2024 y 2025 (grupos, procedencia, asistencia y precio)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Memoria de los eventos de música en directo realizados en los años 2024 y 2025, ordenados por fecha",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyecto de programación 2026 con reseña de cada evento, calendario y estructura de producción",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Proyecto de programación de música en directo para la que se solicita la subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto de gastos e ingresos, vinculante",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Presupuesto con el desglose de los gastos e ingresos previstos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado bancario de la cuenta (IBAN)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Certificado actualizado expedido por la entidad bancaria que acredite el número de cuenta cliente (IBAN)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de Seguridad Social, AEAT y Agencia Tributaria de la Región de Murcia (no obligatorios si autoriza consulta)",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 7,
+     "texto": "Certificado de que la empresa está al corriente de sus obligaciones con la Seguridad Social",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica de la Región de Murcia, procedimiento 1827 «Ayudas a salas de música de la Región de Murcia»",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "Las solicitudes deberán formularse a través de la sede electrónica de la Comunidad Autónoma de la Región de Murcia",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "sede.carm.es",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "de la sede electrónica de la Región de Murcia, sede.carm.es desde el que también podrá acceder",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación por la sede electrónica",
+    "cita": {
+     "documento": 1450279,
+     "pagina": 6,
+     "texto": "Las solicitudes deberán formularse a través de la sede electrónica de la Comunidad Autónoma de la Región de Murcia",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo para gestores de salas de conciertos con trayectoria (40 o 60 conciertos en 2024 y 2025); un promotor sin sala propia o arrendada no puede pedirla.",
+   "Reparto por orden de puntuación: el proyecto mejor valorado recibe el 100 % de lo solicitado, con los límites de 20.000 € y 80 % del coste.",
+   "Hay que justificar el total del proyecto presupuestado, no solo la ayuda, con cuenta justificativa con informe de auditor (salvo proyectos de menos de 15.000 €).",
+   "Las subsanaciones y resoluciones se publican en www.icarm.es (apartado Convocatorias)."
+  ]
+ },
+ "citas": {
+  "verificadas": 58,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

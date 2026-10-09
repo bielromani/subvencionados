@@ -1,0 +1,200 @@
+{
+ "version": 1,
+ "codigoBdns": "903840",
+ "generada": "2026-10-09T14:10:26.675Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1449519,
+   "nombre": "CONVOC_CONCESIÓN_DE_PREMIOS_PARA_ACTIVIDADES_EN_LA_FIESTA_MAYOR_2026.pdf",
+   "paginas": 4,
+   "huella": "085f60329ed51eab"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Premios del Ayuntamiento de La Torre de Claramunt para la rifa y el torneo de dominó de la Fiesta Mayor 2026.",
+   "Para participar en la rifa hay que comprar el ticket de la cena de verbena; en el dominó, inscribir la pareja.",
+   "Previstos 375 € en premios de la rifa y un máximo de 240 € en premios del torneo de dominó.",
+   "No financia actividades culturales ni conciertos."
+  ],
+  "objeto": {
+   "valor": "Premios de la rifa del 23 de junio y del torneo de dominó del 21 de junio de la Fiesta Mayor",
+   "cita": {
+    "documento": 1449519,
+    "pagina": 2,
+    "texto": "El objeto de la convocatoria es regular la concesión de los premios a la rifa que se realizará el 23 de junio",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Compradores del ticket numerado de la cena de verbena (rifa) y parejas inscritas en el torneo de dominó",
+   "cita": {
+    "documento": 1449519,
+    "pagina": 2,
+    "texto": "Para participar de la rifa es obligatorio comprar el ticket de la cena en las oficinas del Ayuntamiento días antes.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Rifa el 23 de junio y torneo de dominó el 21 de junio",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "El torneo se realizará el 21 de junio y se entregarán 3 premios por los ganadores del mismo",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Canje del vale en el Ayuntamiento con instancia genérica, ticket del gasto y número de cuenta: 6 meses (rifa) o 2 semanas (dominó)",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "en formato de vale para poder canjear al Ayuntamiento durante los 6 meses siguientes, realizando una instancia genérica aportando el ticket del gasto",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 375,
+    "cita": {
+     "documento": 1449519,
+     "pagina": 2,
+     "texto": "375€ ( premios rifa ) y un máximo de 240€ ( premios torneo de domino )",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "1er premio 100€, 2º premio 80€, 3er premio 60€",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Ingreso en cuenta tras canjear el vale; no se paga si hay deudas pendientes con la administración",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "El pago no se realizará si la persona tiene alguna deuda pendiente con la administración.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Comprar el ticket numerado de la cena de verbena para participar en la rifa",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 2,
+     "texto": "Para participar de la rifa es obligatorio comprar el ticket de la cena en las oficinas del Ayuntamiento días antes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Inscribir previamente la pareja de jugadores para el torneo de dominó",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "será imprescindible apuntar a la pareja de jugadores",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los vales de la rifa se gastan en comercios del municipio",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "No se aceptarán tickets de establecimientos que no sean del municipio.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener deudas pendientes con la administración",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "El pago no se realizará si la persona tiene alguna deuda pendiente con la administración.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Instancia genérica con el ticket del gasto (o el vale del premio) y el número de cuenta",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 3,
+     "texto": "realizando una instancia genérica aportando el ticket del gasto y el número de cuenta donde se realizará posteriormente el pago.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Oficinas del Ayuntamiento (compra del ticket e inscripción)",
+    "cita": {
+     "documento": 1449519,
+     "pagina": 2,
+     "texto": "es obligatorio comprar el ticket de la cena en las oficinas del Ayuntamiento días antes",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "No es una subvención para actividades culturales: son premios de una rifa y de un torneo de dominó de la Fiesta Mayor. No sirve a un promotor de conciertos.",
+   "El presupuesto es de 375 € para la rifa (5 vales de 25 € y 5 de 50 €) más un máximo de 240 € para el dominó.",
+   "Remite a las bases específicas de premios para concursos y actividades socioculturales (BOPB de 23 de enero de 2023), que no se incluyen.",
+   "Documento bilingüe (catalán y castellano); las citas son de la versión en castellano."
+  ]
+ },
+ "citas": {
+  "verificadas": 13,
+  "revisar": 0,
+  "noConsta": 9
+ }
+}
