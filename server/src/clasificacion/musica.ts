@@ -31,7 +31,7 @@ type Patron = [etiqueta: string, regex: RegExp];
 // Señales de que la convocatoria es de música (sobre texto normalizado).
 const SENALES_MUSICA: Patron[] = [
   // También palabras compuestas: "DeMúsica", "Gastromúsica".
-  ['música', /\b\w*musica(s|l|les)?\b/],
+  ['música', /\b\w*musica(s|l|ls|les)?\b/],
   ['concierto', /\bconciertos?\b/],
   ['orquesta', /\borquestas?\b/],
   ['sinfónica', /\bsinfonic[oa]s?\b/],
@@ -44,7 +44,7 @@ const SENALES_MUSICA: Patron[] = [
   ['conservatorio', /\bconservatorios?\b/],
   // Catalán, gallego y euskera (la BDNS incluye el título en la lengua cooficial).
   ['orquestra', /\borquestr(a|es)\b/],
-  ['concert', /\bconcerts?\b/],
+  ['concert', /\bconcerts?\b|\bkontzertu(a|ak)?\b/],
   ['musika', /\bmusik(a|ak|al)\b/],
   ['music', /\bmusic\b/],
   ['filarmónica', /\bfilarmonic[oa]s?\b/],
@@ -53,11 +53,15 @@ const SENALES_MUSICA: Patron[] = [
   ['cobla', /\bcoblas?\b/],
   ['charanga', /\b(charangas?|txarangas?)\b/],
   ['rondalla', /\brondallas?\b/],
+  ['parranda', /\bparrandas?\b/],
   ['cantautor', /\bcantautor(es|a|as)?\b/],
 ];
 
 // "Concierto" tiene acepciones que no son musicales.
 const DANZA = /\b(danzas?|dantza|baile|bailes|balls?|esbart)\b/;
+
+// El nombre del INAEM ("...de las Artes Escénicas y de la Música") no hace musical una ayuda de teatro o circo.
+const FALSOS_ORGANISMO = /\binstituto nacional de las artes escenicas y de la musica\b/g;
 
 // Conservatorios y escuelas de danza: no son de música.
 const FALSOS_DANZA = /\b(conservatorios?|escuelas?) (profesional |superior |elemental |municipal )?de danza\b/g;
@@ -125,6 +129,7 @@ const OTROS_GENEROS: Patron[] = [
   ['gaita', /\bgaitas?\b/],
   ['charanga', /\b(charangas?|txarangas?)\b/],
   ['rondalla', /\brondallas?\b/],
+  ['parranda', /\bparrandas?\b/],
   ['cantautor', /\bcantautor(es|a|as)?\b/],
 ];
 
@@ -205,7 +210,7 @@ export function encajeParaPromotor(b: Beneficiarios): EncajePromotor {
 }
 
 export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificacion): Clasificacion {
-  const t = normalizar(texto).replace(FALSOS_CONCIERTO, ' ').replace(FALSOS_DANZA, ' ');
+  const t = normalizar(texto).replace(FALSOS_CONCIERTO, ' ').replace(FALSOS_DANZA, ' ').replace(FALSOS_ORGANISMO, ' ');
   const evidencias = coincidencias(t, SENALES_MUSICA);
 
   const operaExplicita = OPERA_CON_TILDE.test(texto) || OPERA_CONTEXTO.test(t);
@@ -225,6 +230,12 @@ export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificaci
     if (coincidencias(t, patrones).length > 0 || (estilo === 'opera' && operaExplicita)) {
       estilosExplicitos.push(estilo);
     }
+  }
+
+  // Un coro de otro género (coro rociero, coro de flamenco...) no es música clásica.
+  const clasica = coincidencias(t, ESTILOS_PATRONES.clasica);
+  if (otrosGeneros.length > 0 && clasica.length > 0 && clasica.every((x) => x === 'coro')) {
+    estilosExplicitos.splice(estilosExplicitos.indexOf('clasica'), 1);
   }
 
   const generica =

@@ -2,7 +2,7 @@
 // etiquetada de test/evaluacion/ (muestraX.json + etiquetasX.json).
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { type ElementoMuestra, type Etiqueta, evaluar, type Universo, UNIVERSO_2024_2025, UNIVERSO_VALIDACION } from '../evaluacion.js';
+import { type ElementoMuestra, type Etiqueta, evaluar, type Universo, UNIVERSO_2024_2025, UNIVERSO_FINAL, UNIVERSO_VALIDACION } from '../evaluacion.js';
 
 const dir = new URL('../../test/evaluacion/', import.meta.url);
 const leer = <T>(f: string) => JSON.parse(readFileSync(new URL(f, dir), 'utf8')) as T;
@@ -11,6 +11,7 @@ const pct = (x: number) => `${(x * 100).toFixed(1).replace('.', ',')} %`;
 const MUESTRAS: [nombre: string, muestra: string, etiquetas: string, universo: Universo, nota: string][] = [
   ['Muestra 1 (semilla 20261009)', 'muestra.json', 'etiquetas.json', UNIVERSO_2024_2025, 'Usada para la primera ronda de correcciones.'],
   ['Muestra 2 (semilla 7771)', 'muestra-validacion.json', 'etiquetas-validacion.json', UNIVERSO_VALIDACION, 'Usada para validar la primera ronda y para la segunda ronda de correcciones.'],
+  ['Muestra 3 (semilla 4242)', 'muestra-final.json', 'etiquetas-final.json', UNIVERSO_FINAL, 'Midió la ronda 2 sin ajustes (cifra fiable en el historial) y después se usó para la ronda 3: estas cifras ya son optimistas.'],
 ];
 
 const secciones: string[] = [];
