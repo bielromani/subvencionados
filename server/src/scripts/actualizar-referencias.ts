@@ -21,7 +21,8 @@ for (const provincia of arbol) {
   }
 }
 entidades.sort((a, b) => a.provincia.localeCompare(b.provincia, 'es') || a.entidad.localeCompare(b.entidad, 'es'));
-if (entidades.length < 5000) throw new Error(`Catálogo sospechosamente pequeño: ${entidades.length} entidades`);
+// En octubre de 2026 el catálogo tenía 2.971 entidades; menos de 1.000 indicaría una respuesta incompleta.
+if (entidades.length < 1000) throw new Error(`Catálogo sospechosamente pequeño: ${entidades.length} entidades`);
 
 const dir = join(config.rutaDatos, 'referencia');
 mkdirSync(dir, { recursive: true });
