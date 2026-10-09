@@ -1,59 +1,71 @@
-# Diagnóstico: consulta la API de la BDNS y muestra las respuestas en bruto,
-# para comprobar dominios, endpoints y nombres de campos.
-name: Explorar API BDNS
+# Diagnóstico manual: consulta fuentes oficiales y muestra las respuestas en bruto,
+# para comprobar endpoints y formatos antes de programar contra ellos.
+name: Explorar fuentes
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/explorar-bdns.yml
 
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - name: Consultar endpoints
+      - name: Documentos de una convocatoria (PDF)
         run: |
-          pedir() {
-            echo "::group::$1"
-            curl -sS -m 40 -A "subvencionados/0.1" -H "Accept: application/json" -w "\nHTTP %{http_code} · %{content_type}\n" "$1" | head -c 6000
-            echo
-            echo "::endgroup::"
-          }
-          B=https://www.pap.hacienda.gob.es/bdnstrans/api/convocatorias/busqueda?vpd=GE
-          resumen() {
-            echo "::group::$1"
-            curl -sS -m 60 -H "Accept: application/json" "$1" | jq -c '{total: .totalElements, size: .size, n: .numberOfElements, primeros: [.content[:3][] | {numeroConvocatoria, fechaRecepcion, descripcion: .descripcion[:90], nivel1, nivel2}]}' || true
-            echo "::endgroup::"
-          }
-          resumen "$B&page=0&pageSize=5&finalidad=11"
-          resumen "$B&page=0&pageSize=5&finalidades=11"
-          resumen "$B&page=0&pageSize=5&finalidad=11&fechaDesde=01/01/2025&fechaHasta=31/12/2025"
-          resumen "$B&page=0&pageSize=5&order=fechaRecepcion&direccion=asc"
-          resumen "$B&page=0&pageSize=1000&finalidad=11"
-          resumen "$B&page=0&pageSize=10000&finalidad=11"
-          resumen "$B&page=0&pageSize=5&descripcion=musica"
-          resumen "$B&page=0&pageSize=5&descripcion=música"
-          resumen "$B&page=0&pageSize=5&descripcion=concierto"
-          resumen "$B&page=0&pageSize=5&descripcion=opera"
-          resumen "$B&page=0&pageSize=5&descripcion=lírica"
-          resumen "$B&page=0&pageSize=5&descripcion=orquesta"
-          resumen "$B&page=0&pageSize=5&tipoAdministracion=L&finalidad=11"
-          resumen "$B&page=0&pageSize=5&tipoAdministracion=A&finalidad=11"
-          resumen "$B&page=0&pageSize=5&tipoAdministracion=C&finalidad=11"
-          for y in 2008 2012 2014 2015 2016 2017 2018 2020 2022 2024; do
-            resumen "$B&page=0&pageSize=1&finalidad=11&fechaDesde=01/01/$y&fechaHasta=31/12/$y"
-          done
           C=https://www.pap.hacienda.gob.es/bdnstrans/api
-          echo "::group::concesiones de la convocatoria 932065 (Festival Jazz Figueres)"
-          curl -sS -m 60 "$C/concesiones/busqueda?vpd=GE&page=0&pageSize=5&numeroConvocatoria=932065" | jq -c '{total: .totalElements, content: [.content[] | del(.idPersona)]}'
-          echo "::endgroup::"
-          echo "::group::concesiones sin filtro con numeroConvocatoria inexistente"
-          curl -sS -m 60 "$C/concesiones/busqueda?vpd=GE&page=0&pageSize=1&numeroConvocatoria=1" | jq -c '{total: .totalElements}'
-          echo "::endgroup::"
-          echo "::group::detalle con documentos (INAEM música)"
-          NUM=$(curl -sS -m 60 "$B&page=0&pageSize=1&descripcion=ayudas%20a%20la%20m%C3%BAsica%20y%20a%20la%20l%C3%ADrica" | jq -r '.content[0].numeroConvocatoria')
-          echo "num=$NUM"
-          curl -sS -m 60 "$C/convocatorias?vpd=GE&numConv=$NUM" | jq -c '.'
-          echo "::endgroup::"
-          echo "::group::cabeceras de límite de uso"
-          curl -sS -m 60 -D - -o /dev/null "$B&page=0&pageSize=1"
-          echo "::endgroup::"
+          for u in "$C/convocatorias/documentos?vpd=GE&idDocumento=1517570" "$C/convocatorias/documentos/1517570" "$C/convocatorias/documentos?idDocumento=1517570"; do
+            echo "::group::$u"
+            curl -sS -m 60 -D - -o /tmp/doc "$u" | head -20
+            echo "tamaño: $(stat -c %s /tmp/doc) bytes · tipo: $(file -b /tmp/doc)"
+            head -c 300 /tmp/doc | strings | head -5
+            echo "::endgroup::"
+          done
+
+      - name: Texto extraído del PDF
+        run: |
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          C=https://www.pap.hacienda.gob.es/bdnstrans/api
+          curl -sS -m 60 -o /tmp/doc.pdf "$C/convocatorias/documentos?vpd=GE&idDocumento=1517570" || true
+          if file -b /tmp/doc.pdf | grep -q PDF; then pdftotext -layout /tmp/doc.pdf - | head -80; pdfinfo /tmp/doc.pdf | head -12; else echo "No es PDF"; fi
+
+      - name: Catálogo de órganos de entidades locales
+        run: |
+          C=https://www.pap.hacienda.gob.es/bdnstrans/api
+          curl -sS -m 120 "$C/organos?vpd=GE&idAdmon=L" -o /tmp/org.json
+          echo "tamaño: $(stat -c %s /tmp/org.json)"
+          jq -c 'length, .[0:3]' /tmp/org.json | head -c 3000; echo
+          jq -c '[.. | objects | select(.descripcion? and (.descripcion|test("FIGUERES|GRAN CANARIA|DIPUTACI.N PROV. DE C.RDOBA")))] | .[0:8]' /tmp/org.json | head -c 3000; echo
+          curl -sS -m 120 "$C/organos?vpd=GE&idAdmon=A" | jq -c '.[0:2]' | head -c 1500; echo
+
+      - name: Nomenclátor de municipios del INE
+        run: |
+          for y in 26 25; do
+            u="https://www.ine.es/daco/daco42/codmun/diccionario$y.xlsx"
+            curl -sS -m 60 -o /tmp/ine.xlsx -w "$u %{http_code} %{size_download} %{content_type}\n" "$u"
+          done
+          pip install -q openpyxl
+          python3 -c "
+          import openpyxl
+          wb = openpyxl.load_workbook('/tmp/ine.xlsx', read_only=True)
+          ws = wb.active
+          for i, row in enumerate(ws.iter_rows(values_only=True)):
+              print(row)
+              if i > 6: break
+          print('filas', ws.max_row)
+          "
+
+      - name: Volumen de convocatorias genéricas de cultura
+        run: |
+          B="https://www.pap.hacienda.gob.es/bdnstrans/api/convocatorias/busqueda?vpd=GE&finalidad=11&pageSize=10000"
+          for y in 2023 2024 2025 2026; do
+            : > /tmp/c.jsonl
+            for p in 0 1; do curl -sS -m 120 "$B&page=$p&fechaDesde=01/01/$y&fechaHasta=31/12/$y" | jq -c '.content[]' >> /tmp/c.jsonl; done
+            total=$(wc -l < /tmp/c.jsonl)
+            directas=$(jq -s '[.[] | select((.descripcion // "") | test("nominativ|convenio|conveni |directa|concesi.n directa"; "i"))] | length' /tmp/c.jsonl)
+            echo "$y: $total en Cultura · $directas parecen directas por el título · $((total - directas)) resto"
+          done
+          echo "Muestra de títulos 2026 que no parecen directas:"
+          jq -r 'select((.descripcion // "") | test("nominativ|convenio|conveni |directa"; "i") | not) | .descripcion[0:120]' /tmp/c.jsonl | shuf -n 40 --random-source=/tmp/c.jsonl
