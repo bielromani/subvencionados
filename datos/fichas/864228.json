@@ -1,0 +1,227 @@
+{
+ "version": 1,
+ "codigoBdns": "864228",
+ "generada": "2026-10-09T14:01:00.392Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1345566,
+   "nombre": "CrrgtConvoAnticipCLT054_ES_1.pdf",
+   "paginas": 4,
+   "huella": "58cd465291acd466"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones en especie de la Oficina de Apoyo a la Iniciativa Cultural (OSIC) para contratar espectáculos profesionales del catálogo Programa.cat en 2026.",
+   "La solicitan entes públicos (municipios), no las compañías ni los promotores.",
+   "Dotación máxima de 4.375.000 euros, ampliable.",
+   "Solicitudes del 31 de octubre de 2025 al 30 de octubre de 2026 (hasta las 14:00), solo por EACAT con firma T-CAT.",
+   "Resolución en un máximo de cuatro meses desde la solicitud."
+  ],
+  "objeto": {
+   "valor": "Subvenciones en especie, en concurrencia no competitiva, para la contratación de espectáculos profesionales incluidos en el catálogo Programa.cat para 2026",
+   "cita": {
+    "documento": 1345566,
+    "pagina": 2,
+    "texto": "Abrir convocatoria para la concesión de subvenciones en especie, en régimen de concurrencia no competitiva, para la contratación de espectáculos profesionales incluidos en el catálogo de espectáculos Programa.cat para el año 2026 (CLT054).",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entes públicos (los fondos de las diputaciones se destinan a municipios de cada provincia)",
+   "cita": {
+    "documento": 1345566,
+    "pagina": 3,
+    "texto": "es necesario que la persona representante del ente público solicitante firme el formulario de solicitud con el certificado de la tarjeta del personal de las administraciones públicas catalanas (T-CAT).",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 31 de octubre de 2025 al 30 de octubre de 2026; el último día, hasta las 14:00 horas",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "El periodo para presentar las solicitudes es del 31 d’octubre del 2025 al 30 d’octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2025-10-31",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "El periodo para presentar las solicitudes es del 31 d’octubre del 2025 al 30 d’octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-10-30",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "El día 30 de octubre de 2026 se pueden presentar solicitudes hasta las 14:00:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Cuatro meses como máximo desde el registro de la solicitud; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "a través de un acuerdo que debe dictarse en el plazo máximo de cuatro meses a contar de la fecha de registro de la presetación de la solicitud de subvención.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Año 2026",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 2,
+     "texto": "para la contratación de espectáculos profesionales incluidos en el catálogo de espectáculos Programa.cat para el año 2026 (CLT054).",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Por vía telemática a través de EACAT",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "Las solicitudes de subvenciones y los otros trámites asociados al procedimiento de concesión de las ayudas y su justificación deben realizarse exclusivamente por vía telemática",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 4375000,
+    "cita": {
+     "documento": 1345566,
+     "pagina": 2,
+     "texto": "La dotación máxima de la convocatoria es de 4.375.000,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Subvención en especie (contratación del espectáculo del catálogo)",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 1,
+     "texto": "por el que se aprueba la convocatoria para la concesión de subvenciones en especie, en régimen de concurrencia no competitiva,",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "El solicitante debe ser un ente público, firmando con tarjeta T-CAT",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "es necesario que la persona representante del ente público solicitante firme el formulario de solicitud con el certificado de la tarjeta del personal de las administraciones públicas catalanas (T-CAT).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los espectáculos deben estar incluidos en el catálogo Programa.cat",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 1,
+     "texto": "para la contratación de espectáculos profesionales incluidos en el catálogo de espectáculos Programa.cat para el año 2026",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Uso obligatorio del modelo específico de solicitud; su incumplimiento no es subsanable",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "es necesario utilizar obligatoriamente el modelo específico de presentación de solicitud establecido. El incumplimiento de esta obligación no es un requisito subsanable",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Contratación de espectáculos profesionales del catálogo Programa.cat",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 1,
+     "texto": "concurrencia no competitiva, para la contratación de espectáculos profesionales incluidos en el catálogo de espectáculos Programa.cat para el año 2026",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Formulario específico de solicitud firmado con certificado T-CAT",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "es necesario utilizar obligatoriamente el modelo específico de presentación de solicitud establecido.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Exclusivamente por vía telemática a través de la extranet de las administraciones catalanas (EACAT)",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "deben realizarse exclusivamente por vía telemática, a través de la extranet de las administraciones catalanas, http://eacat.cat, utilizando el sistema de firma electrónica",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://eacat.cat",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "a través de la extranet de las administraciones catalanas, http://eacat.cat, utilizando el sistema de firma electrónica",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Obligatorio: firma con el certificado de la tarjeta T-CAT y lector homologado",
+    "cita": {
+     "documento": 1345566,
+     "pagina": 3,
+     "texto": "Para poder firmar con esta tarjeta es necesario disponer de un lector de tarjetas criptográficas     homologado       y    del    software    correspondiente",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Los beneficiarios son entes públicos (ayuntamientos): un promotor o compañía no puede pedirla, pero se beneficia indirectamente si su espectáculo está en el catálogo Programa.cat y un municipio lo contrata.",
+   "Es la convocatoria; las bases generales (Resolución CLT/961/2024) y las bases específicas (Resolución CLT/605/2024 y modificaciones) no se incluyen: faltan requisitos, importes por espectáculo, porcentajes y documentación.",
+   "La dotación se reparte por aportaciones: Departamento de Cultura 3.300.000 €, Diputación de Barcelona 630.000 €, Girona 180.000 €, Tarragona 115.000 € y Lleida 150.000 € para municipios de cada provincia; puede ampliarse.",
+   "Concurrencia no competitiva: no hay criterios de valoración con puntos en este documento."
+  ]
+ },
+ "citas": {
+  "verificadas": 18,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

@@ -1,0 +1,513 @@
+{
+ "version": 1,
+ "codigoBdns": "895065",
+ "generada": "2026-10-09T14:01:24.677Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1423077,
+   "nombre": "20260313_Otros_SFM26 - BASES.pdf",
+   "paginas": 14,
+   "huella": "2657907e86e47ace"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Diputación de Segovia para festivales de música y/o danza en 2026: línea 1 de música moderna y popular (incluye jazz y blues) y línea 2 de música o danza tradicional o folk.",
+   "Para ayuntamientos de la provincia de Segovia de menos de 20.000 habitantes y sus entidades locales menores.",
+   "Crédito de 30.000 euros (20.000 para la línea 1 y 10.000 para la línea 2); la ayuda no supera el 70 % del coste del festival ni baja de 250 euros.",
+   "Solicitudes hasta el 30 de abril de 2026; festivales hasta el 15 de octubre de 2026 y justificación hasta el 30 de octubre de 2026.",
+   "Solicitud telemática en la sede electrónica de la Diputación."
+  ],
+  "objeto": {
+   "valor": "Realización de un festival de música y/o danza (mínimo tres conciertos de formaciones distintas en un máximo de diez días consecutivos) por entidades locales de la provincia de Segovia",
+   "cita": {
+    "documento": 1423077,
+    "pagina": 3,
+    "texto": "A estos efectos se considerará festival la realización de un mínimo de tres (3)\nconciertos o actuaciones de formaciones distintas, en un período máximo de diez días\nconsecutivos",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos de municipios de la provincia de Segovia con menos de 20.000 habitantes y sus entidades locales menores",
+   "cita": {
+    "documento": 1423077,
+    "pagina": 5,
+    "texto": "los\n       ayuntamientos de municipios de la provincia de Segovia con población inferior\n       a 20.000 habitantes y las entidades locales menores dependientes de ellos",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación de las bases en el BOP hasta el 30 de abril de 2026",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 9,
+     "texto": "publicación de las presentes bases en el Boletín Oficial de la Provincia hasta el 30 de\nabril de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-04-30",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 9,
+     "texto": "publicación de las presentes bases en el Boletín Oficial de la Provincia hasta el 30 de\nabril de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Dos meses como máximo desde el fin del plazo de presentación; se publica en el BOP",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 10,
+     "texto": "por la Presidencia de la Corporación, en un plazo máximo de dos\nmeses contados desde la finalización del plazo de presentación de instancias.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Hasta el 15 de octubre de 2026 (gastos realizados en 2026)",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 3,
+     "texto": "que realicen, en su\nterritorio, un festival de música y/o danza, con plazo de ejecución hasta el 15 de\noctubre de 2026..",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa con aportación de justificantes de gasto, hasta el 30 de octubre de 2026, sin ampliaciones",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 11,
+     "texto": "El plazo de presentación de la documentación justificativa finalizará el       30 de\noctubre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 30000,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "El crédito para las ayudas reguladas está establecido en la cantidad de 30.000\n€ con cargo a la aplicación 0426.3340.462.00",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 70,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 7,
+     "texto": "la cuantía de la ayuda no podrá ser superior al 70% de la cantidad presupuestada\ncomo coste del Festival ni inferior a 250 €.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras la justificación, sin pagos anticipados; si se justifica menos, se paga la parte justificada",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 12,
+     "texto": "La subvención se pagará previa justificación por la beneficiaria. No se realizarán\n     pagos anticipados con carácter previo a la justificación.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas públicas o privadas para la misma finalidad si el conjunto no supera el 100 % del gasto",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 8,
+     "texto": "Compatibles con otras concedidas por otras entidades públicas o privadas para la\nmisma finalidad, siempre y cuando el conjunto de todas ellas no sobrepase el 100%\ndel gasto.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ayuntamiento de la provincia de Segovia con menos de 20.000 habitantes (nomenclátor del INE a 1 de enero de 2026) o entidad local menor dependiente",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "Los habitantes se contabilizarán según el número que venga reseñado en el\n       “nomenclátor” publicado por el Instituto Nacional de Estadística (INE)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Organizar el festival en su territorio",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "que organicen en su territorio un festival según se regula en la base primera.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Festival con al menos tres conciertos o actuaciones de formaciones distintas en un máximo de diez días consecutivos",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 3,
+     "texto": "A estos efectos se considerará festival la realización de un mínimo de tres (3)\nconciertos o actuaciones de formaciones distintas, en un período máximo de diez días\nconsecutivos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Línea 1: música en directo (vocal, instrumental o mixta), no basada en música pregrabada",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 3,
+     "texto": "siempre que la interpretación de los repertorios musicales se realice en directo,\n       vocales, instrumentales o mixtos, y no se basen en la reproducción de música",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Se excluyen actividades de fiestas patronales (verbenas, charangas, pasacalles, procesiones) y, en la línea 1, el folk",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 4,
+     "texto": "actividades musicales vinculadas a la programación de fiestas patronales, tales\n       como verbenas, charangas, reboladas, pasacalles o procesiones, así como\n       festivales o conciertos de música folk",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una única solicitud por entidad local y línea",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "Cada Entidad Local podrá solicitar una única subvención para cada una de las\n       líneas convocadas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No programar actuaciones ya subvencionadas o financiadas por la Diputación",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 8,
+     "texto": "No se podrá programar en el festival actuaciones que hayan sido subvencionadas o\nfinanciadas por esta Diputación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comprometerse a realizar íntegramente lo programado en el proyecto",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 8,
+     "texto": "el\nayuntamiento solicitante habrá de comprometerse a realizar íntegramente lo\nprogramado en el proyecto que presente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración de la Diputación e incluir su logotipo en los materiales gráficos y promocionales",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 14,
+     "texto": "Se incluirá el logotipo de la institución en los materiales gráficos, así como en\ncualquier acción promocional que realice",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones tributarias y con la Seguridad Social para cobrar",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 13,
+     "texto": "no podrá realizarse el pago de la subvención en tanto el\nbeneficiario no se halle al corriente en el cumplimiento de sus obligaciones tributarias",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Cachés de actuantes",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "necesarios para el desarrollo del festival, entre ellos, cachés de actuantes, transporte,\nsonorización, iluminación, alquiler de equipos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Transporte",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "entre ellos, cachés de actuantes, transporte,\nsonorización, iluminación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sonorización e iluminación",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "cachés de actuantes, transporte,\nsonorización, iluminación, alquiler de equipos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alquiler de equipos",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "sonorización, iluminación, alquiler de equipos, material de imprenta para publicitar",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Material de imprenta para publicitar y promocionar la actividad",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "material de imprenta para publicitar y\npromocionar la actividad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Minutas de conferenciantes y material didáctico",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "promocionar la actividad, minutas de conferenciantes, material didáctico, seguros o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Seguros",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "minutas de conferenciantes, material didáctico, seguros o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cualquier otro gasto de puesta en marcha y desarrollo del festival realizado en 2026 y pagado antes del fin del plazo de justificación",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "cualquier otro gasto derivado de su puesta en marcha y desarrollo, se realicen en año\nel año 2026 y estén efectivamente abonados antes del fin de plazo de justificación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contrataciones laborales solo de personal contratado específica y exclusivamente para el festival",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "solo serán subvencionables si se\nrefieren a personal contratado específica y exclusivamente para el desarrollo del",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Nóminas de trabajadores fijos o funcionarios del ayuntamiento",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "No se admitirá, por tanto, nóminas de trabajadores fijos o funcionarios del\nayuntamiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Material de oficina, salvo uso exclusivo certificado en la gestión del festival",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "No serán subvencionables gastos de material de oficina, salvo que pueda certificarse\nque se ha utilizado exclusivamente en la gestión del festival.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de inversión: material inventariable como instrumentos, tablaos, equipos musicales e informáticos",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 5,
+     "texto": "No serán gastos subvencionables los de inversión, esto es, la adquisición de material\ninventariable como instrumentos, tablaos, equipos musicales e informáticos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comidas o ágapes",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "No serán gastos subvencionables aquellos derivados de la realización de comidas o\nágapes.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Ediciones anteriores del festival con la misma denominación en los cinco años previos (1 punto por edición)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "1 punto por cada uno de ellos, efectivamente ejecutado, hasta\n             un máximo de 5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Conciertos adicionales a partir de la cuarta actuación (1 punto cada uno)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "es decir a\n             partir de la cuarta actuación, se otorgará un punto, hasta un máximo de 5\n             puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Actividades culturales complementarias: exposiciones, talleres, conferencias, mesas redondas, venta de productos (1 punto cada una)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "venta de productos relacionados con el objeto del festival: 1\n             punto por cada actividad, hasta un máximo de 5.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Días de celebración a partir del primero (1 punto por día)",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "Por cada día de celebración del festival, a partir del primero, 1 punto, hasta\n             un máximo de 4.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Grupos de la provincia de Segovia de municipio distinto al organizador (0,50 por grupo)",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "de Segovia, municipio distinto al/los municipios organizadores, 0,50, hasta\n             un máximo de 3 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Grupos de provincia distinta de Segovia (1 punto por grupo)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "Por cada grupo que participe en el Festival, de procedencia de provincia\n             distinta de Segovia, 1 punto, hasta un máximo de 5.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Grupos de procedencia internacional (2 puntos por grupo)",
+    "puntosMaximos": 6,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 6,
+     "texto": "Por cada grupo participante de procedencia internacional, 2 puntos, hasta\n             un máximo de 6.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Población del municipio organizador (5 puntos hasta 100 habitantes; 0 a partir de 3.000); solo si se obtienen al menos 5 puntos en los criterios anteriores",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1423077,
+     "pagina": 7,
+     "texto": "Hasta 100 habitantes                       5 PUNTOS",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Memoria resumen del proyecto del festival según el Anexo I",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 9,
+     "texto": "a. Memoria resumen del proyecto del Festival según el modelo del Anexo I.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable con el domicilio social/fiscal de los grupos participantes (Anexo II)",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 9,
+     "texto": "Declaración responsable en la que deberá constar el domicilio social/fiscal\n          de los grupos o formaciones participantes. (Anexo II)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Opcional: proyecto extenso con los detalles relevantes de la programación",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 9,
+     "texto": "2.- Documentación opcional: Proyecto extenso señalando, en su caso, los\naspectos y detalles de su programación que el solicitante considere relevantes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración y acreditación de otras subvenciones obtenidas para la misma finalidad",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 9,
+     "texto": "El solicitante deberá declarar y acreditar las subvenciones obtenidas para la misma",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Únicamente por vía telemática en la sede electrónica de la Diputación de Segovia, en el trámite de cada línea",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 8,
+     "texto": "únicamente a través de la sede electrónica de la Diputación\n   Provincial (https://sedeelectronica.dipsegovia.es)",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sedeelectronica.dipsegovia.es",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 8,
+     "texto": "únicamente a través de la sede electrónica de la Diputación\n   Provincial (https://sedeelectronica.dipsegovia.es)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática obligatoria",
+    "cita": {
+     "documento": 1423077,
+     "pagina": 8,
+     "texto": "Las solicitudes se presentarán de forma telemática en cumplimiento de lo\n   dispuesto en el artículo 14 de la Ley 39/2015",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo pueden pedirla ayuntamientos y entidades locales menores; un promotor puede beneficiarse indirectamente si un ayuntamiento lo contrata para el festival. Interesa la línea 1, que incluye expresamente el jazz y el blues; la música clásica y la ópera no se mencionan.",
+   "La cuantía se calcula por puntos: el crédito se divide entre la suma de puntos para obtener el valor del punto; no hay importe máximo en euros, solo el tope del 70 % del coste y el mínimo de 250 euros.",
+   "Dotación por líneas: 20.000 euros para la línea 1 (música moderna y popular) y 10.000 euros para la línea 2 (tradicional y/o danza); el sobrante de una pasa a la otra.",
+   "Si no se realizan actividades valoradas o las hace un actuante distinto, se puede descontar la parte correspondiente de la ayuda.",
+   "El plazo de presentación (hasta el 30 de abril de 2026) ya ha pasado."
+  ]
+ },
+ "citas": {
+  "verificadas": 49,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

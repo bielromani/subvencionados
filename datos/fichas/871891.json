@@ -1,0 +1,206 @@
+{
+ "version": 1,
+ "codigoBdns": "871891",
+ "generada": "2026-10-09T14:00:52.082Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1504298,
+   "nombre": "CrrgtConvo+AmplCLT014ES.pdf",
+   "paginas": 7,
+   "huella": "ac0900b61c942309"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Convocatoria de la Oficina de Apoyo a la Iniciativa Cultural (Generalitat de Catalunya) para programas que articulen los sectores profesionales de artes escénicas, música, artes visuales, cultura comunitaria y bibliotecas, período 2026-2027 (CLT014).",
+   "Dotación inicial de 1.050.000 euros, ampliada en julio de 2026 hasta 3.000.000 euros en total.",
+   "Solicitudes del 9 de diciembre de 2025 al 26 de marzo de 2026 (hasta las 14:00 h del último día).",
+   "Tramitación solo telemática con firma electrónica (EACAT para administraciones; Tràmits gencat para el resto)."
+  ],
+  "objeto": {
+   "valor": "Programas que articulen los sectores profesionales en los ámbitos de las artes escénicas, la música, las artes visuales, la cultura comunitaria de estos ámbitos y el ámbito bibliotecario, período 2026-2027",
+   "cita": {
+    "documento": 1504298,
+    "pagina": 2,
+    "texto": "para programas que articulen los sectores profesionales en los ámbitos de las artes escénicas, la música, las artes visuales, la cultura comunitaria de estos ámbitos, y en ámbito bibliotecario para el período 2026-2027 (CLT014).",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 9 de diciembre de 2025 al 26 de marzo de 2026; el último día hasta las 14:00 horas",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "El período para presentar las solicitudes es del 9 de diciembre de 2025 al 26 de marzo de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2025-12-09",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "El período para presentar las solicitudes es del 9 de diciembre de 2025 al 26 de marzo de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-03-26",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "El día 26 de marzo de 2026 se pueden presentar solicitudes hasta las 14:00:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Cuatro meses como máximo desde el día siguiente a la publicación de la convocatoria; sin acuerdo, se entiende desestimada",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 4,
+     "texto": "a través de un acuerdo que debe dictarse y publicarse en el plazo máximo de cuatro meses a contar del día siguiente a la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Período 2026-2027",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 2,
+     "texto": "la cultura comunitaria de estos ámbitos, y en ámbito bibliotecario para el período 2026-2027 (CLT014).",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "La justificación se tramita solo por vía telemática con firma electrónica; plazos y forma en las bases",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "concesión de las ayudas y su justificación deben realizarse solo por vía telemática utilizando el sistema de firma electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 3000000,
+    "cita": {
+     "documento": 1504298,
+     "pagina": 7,
+     "texto": "La dotación presupuestaria de la línea queda fijada en 3.000.000,00 euros en total.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Presentar un programa que articule los sectores profesionales de las artes escénicas, la música, las artes visuales, la cultura comunitaria o el ámbito bibliotecario",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 2,
+     "texto": "para programas que articulen los sectores profesionales en los ámbitos de las artes escénicas, la música, las artes visuales, la cultura comunitaria de estos ámbitos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar obligatoriamente el modelo específico de solicitud; no hacerlo no es subsanable",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "es necesario utilizar obligatoriamente el modelo específico de presentación de solicitud establecido. El incumplimiento de esta obligación no es un requisito subsanable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de un sistema de identificación y firma electrónica del catálogo de la Orden VPD/93/2022",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "Las personas solicitantes deben disponer de alguno de los mecanismos de identificación y firma electrónica que prevé la Orden VPD/93/2022",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Formulario específico de solicitud firmado electrónicamente",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "la fecha a partir de la cual debe entenderse por presentada la solicitud o el trámite es la fecha de entrada del formulario específico señalado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Administraciones públicas y entidades dependientes domiciliadas en Cataluña: extranet EACAT; resto de solicitantes: web de Tràmits gencat",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "b) En el resto de los casos, a través de la web de Tràmits gencat https://web.gencat.cat/ca/tramits/.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://web.gencat.cat/ca/tramits/ (administraciones públicas: http://eacat.cat)",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "b) En el resto de los casos, a través de la web de Tràmits gencat https://web.gencat.cat/ca/tramits/.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación solo telemática con firma electrónica; los entes públicos firman con tarjeta T-CAT",
+    "cita": {
+     "documento": 1504298,
+     "pagina": 3,
+     "texto": "deben realizarse solo por vía telemática utilizando el sistema de firma electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento contiene la resolución que publica la convocatoria (CLT014) y la ampliación de su dotación (julio de 2026); no incluye las bases generales (Resolución CLT/961/2024) ni las bases específicas (Resolución CLT/234/2024), donde están beneficiarios, requisitos, gastos, criterios de valoración, importes, documentación, pago y justificación.",
+   "La dotación inicial era de 1.050.000 euros; la ampliación añade 1.950.000 euros y la deja en 3.000.000 euros (1.500.000 en 2026, 1.200.000 en 2027 y 300.000 en 2028).",
+   "El plazo de solicitud ya terminó el 26 de marzo de 2026.",
+   "Línea pensada para programas de articulación de los sectores profesionales (asociaciones, redes del sector), no para financiar conciertos concretos; habría que comprobar en las bases específicas si un promotor puede acceder."
+  ]
+ },
+ "citas": {
+  "verificadas": 15,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

@@ -1,0 +1,583 @@
+{
+ "version": 1,
+ "codigoBdns": "870672",
+ "generada": "2026-10-09T14:01:24.474Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1418242,
+   "nombre": "C-Bases-Festiv M 26  _20251124_145745.pdf",
+   "paginas": 30,
+   "huella": "80bf388f5ea84eb0"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Agadic (Xunta de Galicia) a festivales de música profesionales celebrados en Galicia entre el 1 de noviembre de 2025 y el 31 de octubre de 2026.",
+   "Para autónomos, empresas privadas y asociaciones que desarrollen mayoritariamente su actividad en Galicia y puedan organizar actividades escénico-musicales.",
+   "Crédito de 80.000 euros; hasta el 90 % del presupuesto subvencionable con un máximo de 12.000 euros por solicitante.",
+   "Solo se subvencionan los cachés de artistas con actividad habitual en Galicia.",
+   "Solicitud electrónica en la sede de la Xunta durante un mes desde el día siguiente a la publicación en el DOG."
+  ],
+  "objeto": {
+   "valor": "Organización y celebración de festivales de música de carácter profesional en Galicia con interés estratégico para el sector",
+   "cita": {
+    "documento": 1418242,
+    "pagina": 5,
+    "texto": "a festivales de música\nde carácter profesional celebrados en Galicia que, por sus características, tengan un interés estratégi-\nco para el sector",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas autónomas, personas jurídicas privadas y sus agrupaciones, y asociaciones, con actividad mayoritaria en Galicia y objeto social que permita organizar actividades escénico-musicales; se excluyen fundaciones y comunidades de bienes",
+   "cita": {
+    "documento": 1418242,
+    "pagina": 6,
+    "texto": "Podrán acceder a estas ayudas las personas físicas (autónomas) o jurídicas privadas y sus\nagrupaciones domiciliadas en Galicia o en un territorio miembro de la Unión Europea",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes desde el día siguiente a la publicación de la convocatoria en el Diario Oficial de Galicia",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "El plazo para la presentación de las solicitudes será de un mes desde el día siguiente al de la\npublicación de la correspondiente convocatoria en el Diario Oficial de Galicia.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "15 días desde la propuesta y, como máximo, cinco meses desde el día siguiente a la publicación en el DOG; sin resolución, desestimada por silencio",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 18,
+     "texto": "en el plazo de 15 días desde la fecha de elevación de la propuesta de resolución, y\nen el plazo de cinco meses contados desde el día siguiente al de la publicación",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Festival celebrado entre el 1 de noviembre de 2025 y el 31 de octubre de 2026",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 7,
+     "texto": "a) Debe celebrarse entre el 1 de noviembre del 2025 y el 31 de octubre del año 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 30 de agosto de 2026 para festivales celebrados antes del 31 de julio y hasta el 15 de noviembre de 2026 para los posteriores; memoria de actuación, memoria económica, facturas y pagos",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 23,
+     "texto": "El plazo de justificación de la subvención concedida finaliza el 30 de agosto de 2026 para los festi-\nvales que se celebren antes de 31 de julio",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 80000,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 6,
+     "texto": "El crédito asignado a la financiación de estas ayudas será de 80.000 euros con cargo al\npresupuesto del 2026",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 12000,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 7,
+     "texto": "La intensidad máxima de ayuda será el 90% del presupuesto subvencionable con un límite de\nsubvención por persona solicitante de 12.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 90,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 7,
+     "texto": "La intensidad máxima de ayuda será el 90% del presupuesto subvencionable",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras justificar; se puede pedir un anticipo de hasta el 80 % y pagos a cuenta, sin garantía",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 24,
+     "texto": "El pago se realizará una vez recibida la documentación justificativa de la subvención y realizadas\nlas actuaciones de comprobación oportunas",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con otras ayudas o patrocinios de la Xunta para el mismo proyecto; compatible con las de otras administraciones y entidades, sin superar el 100 % del coste",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 5,
+     "texto": "Estas subvenciones son incompatibles con otras subvenciones, ayudas o patrocinios para el mismo\nproyecto de cualquier departamento de la Xunta de Galicia",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "Sí, Reglamento (UE) 2023/2831; máximo 300.000 euros de minimis en tres años",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 5,
+     "texto": "no puede ser superior a 300.000 €\ndurante el período de los tres años previos.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Desarrollar mayoritariamente la actividad en Galicia y tener objeto social que permita organizar actividades escénico-musicales",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 6,
+     "texto": "siempre que desarrollen mayoritariamente su actividad en la Comunidad\nAutónoma de Galicia y cuyo objeto social les permita la organización de actividades escénico-\nmusicales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No pueden ser beneficiarias fundaciones, otras entidades sin ánimo de lucro distintas de asociaciones ni comunidades de bienes",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 6,
+     "texto": "no podrán ser personas beneficiarias fundaciones u otras formas jurídicas sin ánimo de\nlucro, distintas de las asociaciones anteriormente descritas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 10 de la Ley 9/2007",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 6,
+     "texto": "No podrán obtener la condición de beneficiarias las personas en que concurra alguna de las\nprohibiciones establecidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Festival celebrado entre el 1 de noviembre de 2025 y el 31 de octubre de 2026",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 7,
+     "texto": "a) Debe celebrarse entre el 1 de noviembre del 2025 y el 31 de octubre del año 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Antigüedad mínima de dos ediciones, sin contar la que se presenta",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "Tener una antigüedad de, por lo menos, dos ediciones, excluida la edición que se presenta\n           a esta convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Duración mínima de dos días consecutivos, dentro de un periodo de quince días y con conciertos todos los días",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "Tiene que tener una duración mínima de dos días consecutivos. El festival tiene que\n           desarrollarse dentro de un único período de quince días",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Importe mínimo del proyecto de 38.000 euros (IVA incluido)",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "d) El importe mínimo del proyecto será de 38.000 euros (IVA incluido).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratación artística de al menos el 30 % del coste del proyecto",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "e) Debe tener un presupuesto mínimo de contratación artística del 30 % del coste del proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos el 80 % de los conciertos con entrada de pago",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "f)   Un mínimo del 80 % de los conciertos programados tienen que ser con entradas de pago.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programación de al menos cinco grupos",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "g) La programación deberá estar conformada por un mínimo de cinco grupos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo un proyecto subvencionable por solicitante",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 7,
+     "texto": "solo podrá ser objeto de subvención un proyecto por persona solicitante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 35 puntos en la valoración",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 18,
+     "texto": "será requisito alcanzar una puntuación míni-\nma en la fase de valoración de 35 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pedir tres ofertas cuando el gasto supere la cuantía del contrato menor",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 20,
+     "texto": "la persona beneficiaria deberá\nsolicitar como mínimo tres ofertas de diferentes proveedores",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicitar la financiación de la Xunta/Agadic con el logotipo oficial e incluir una página de publicidad en los programas del festival",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 21,
+     "texto": "En los programas de los festivales, en caso de que cuenten con ellos, se deberá incluir en un lugar\ndestacado una página de publicidad",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Únicamente gastos de contratación artística: cachés de solistas, grupos o bandas con actividad habitual en Galicia",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "son gastos subvencionables únicamente los gastos de\ncontratación artística. Tendrán la consideración de gastos de contratación artística los cachés de los\nsolistas/grupos o bandas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos realizados y pagados entre el 1 de noviembre de 2025 y el 31 de octubre de 2026",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "respetando siempre el período\nsubvencionable indicado en esta convocatoria, que abarca desde el 1 de noviembre del 2025 al 31 de\noctubre de 2026",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Intereses deudores de cuentas bancarias",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "a) Los intereses deudores de las cuentas bancarias.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Intereses, recargos y sanciones administrativas y penales",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "b) Los intereses, recargos y sanciones administrativas y penitenciarias.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de procedimientos judiciales",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "c) Los gastos de procedimientos judiciales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impuestos indirectos recuperables e impuestos personales sobre la renta",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "Los impuestos indirectos cuando sean susceptibles de recuperación o compensación ni los\n       impuestos personales sobre la renta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cualquier gasto no vinculado directamente con la actividad",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "e) Cualquier otro no vinculado directamente con la actividad objeto de subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cachés de artistas sin actividad habitual en Galicia y otros gastos que no sean de contratación artística (técnica, promoción, desplazamientos)",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 8,
+     "texto": "los cachés de los\nsolistas/grupos o bandas que conforman la programación del festival cuya actividad se desarrolle de\nforma habitual en Galicia.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Automático: antigüedad del festival (1 punto de 3 a 5 ediciones; 5 puntos con más de 20)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 15,
+     "texto": "1.1. Antigüedad (excluida la edición objeto de esta               Hasta 5",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Automático: nivel de contratación artística gallega respecto al total de contratación artística",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 16,
+     "texto": "2.1. Nivel de contratación artística gallega.                       Hasta 7",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Automático: número de grupos contratados (1 punto de 5 a 6; 7 puntos más de 12)",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 16,
+     "texto": "2.2. Número de grupos contratados.                                  Hasta 7 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Automático: porcentaje de conciertos con entrada de pago",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 16,
+     "texto": "3.1. Conciertos de pago de entrada:                                 Hasta 7 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Automático: porcentaje de subvención solicitada respecto al presupuesto total sin IVA (menos de 10 %: 7 puntos)",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 16,
+     "texto": "3.2. Porcentaje de subvención solicitada con respecto al pre-       Hasta 7 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Automático: adhesión al Carné Xove de la Xunta",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 17,
+     "texto": "3.3. Adhesión al Carné Xove impulsado por la Xunta de Galicia         2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Técnico: trayectoria y evolución del festival",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 17,
+     "texto": "1. Trayectoria y evolución del festival                                             Hasta 10",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Técnico: memoria de la última edición (dirección artística, calidad de la programación, diversidad, igualdad, accesibilidad, artistas emergentes)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 17,
+     "texto": "2. Memoria del festival de la última edición realizada                              Hasta 10",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Técnico: interés cultural y artístico, relevancia y singularidad del proyecto",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 17,
+     "texto": "3.1. Interés cultural y artístico, relevancia y singularidad del proyecto.          Hasta 10",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Técnico: potencialidad del plan de comunicación",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1418242,
+     "pagina": 17,
+     "texto": "3.2. Potencialidad del plan de comunicación.                                        Hasta 5",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo normalizado (anexo II)",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 3,
+     "texto": "deberá presentarse una solicitud\najustada al modelo normalizado que se incluye como anexo II de esta resolución",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado del acuerdo de solicitud o autorización de quien firma, si es persona jurídica",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "Certificado del acuerdo de solicitud de la ayuda o de la autorización de la persona que la firme\n    en nombre de la entidad si la persona solicitante es persona jurídica.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estatutos y escrituras de constitución inscritos",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "Estatutos inscritos y escrituras de constitución válidamente inscritos en el registro mercantil o el\n    que corresponda.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentación que acredite la representación de quien firma",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "Documentación que acredite suficientemente la representación de quien firma la solicitud.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo III: programación del festival con la relación de grupos o solistas contratados",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "Anexo III: programación del festival para el cual se solicita la subvención, que obligatoriamente\ndeberá contener la relación de los grupos/solistas o bandas contratados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria de trayectoria y evolución del festival (máximo 10 páginas)",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "1.2. Memoria de la trayectoria y evolución del festival, con un máximo de 10 páginas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria de la última edición realizada",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 10,
+     "texto": "1.3. Memoria del festival de la última edición realizada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria del proyecto: interés cultural y artístico (con descripción de cada grupo) y plan de comunicación",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 11,
+     "texto": "Interés cultural y artístico, relevancia y singularidad del proyecto. Debe incluir, además, la\n   descripción de cada uno de los grupos de música contratados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Anexo IV: memoria económico-financiera con presupuesto detallado con y sin IVA, ingresos y cachés",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 11,
+     "texto": "Anexo IV: memoria económico-financiera, que incluya el presupuesto completo y detallado de la\ninversión total del proyecto y la previsión de ingresos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de adhesión al Carné Xove",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 11,
+     "texto": "Documentación acreditativa de ser festival adherido al programa Carné Xove de la Xunta de Gali-\ncia.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Obligatoriamente por medios electrónicos, mediante el formulario normalizado de la sede electrónica de la Xunta de Galicia",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 9,
+     "texto": "Las solicitudes se presentarán obligatoriamente por medios electrónicos a través del formulario\nnormalizado disponible en la sede electrónica de la Xunta de Galicia, https://sede.xunta.gal.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sede.xunta.gal",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 9,
+     "texto": "normalizado disponible en la sede electrónica de la Xunta de Galicia, https://sede.xunta.gal.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria; se admite cualquier sistema de identificación y firma de la sede, incluido Chave365",
+    "cita": {
+     "documento": 1418242,
+     "pagina": 9,
+     "texto": "podrá emplearse cualquier de los mecanismos de identificación y\nfirma admitidos por la sede electrónica de la Xunta de Galicia, incluido el sistema de usuario y clave\nChave365",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Muy pertinente para un promotor de festivales con actividad en Galicia, pero exige festivales consolidados (al menos dos ediciones previas), un presupuesto mínimo de 38.000 euros, cinco grupos y un 80 % de conciertos de pago.",
+   "Solo se subvencionan los cachés de artistas con actividad habitual en Galicia; técnica, desplazamientos y promoción no son subvencionables.",
+   "Puntuación máxima de 70 puntos (35 automáticos y 35 técnicos); se necesitan al menos 35 para ser beneficiario.",
+   "Ayuda de minimis (Reglamento UE 2023/2831): el total de ayudas de minimis no puede superar 300.000 euros en tres años.",
+   "El crédito se reparte en dos aplicaciones de 40.000 euros cada una (13.A1.432B.470.0 y 13.A1.432B.481.0)."
+  ]
+ },
+ "citas": {
+  "verificadas": 57,
+  "revisar": 0,
+  "noConsta": 2
+ }
+}

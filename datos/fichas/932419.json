@@ -1,0 +1,195 @@
+{
+ "version": 1,
+ "codigoBdns": "932419",
+ "generada": "2026-10-09T14:01:16.334Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1529323,
+   "nombre": "Convocatoria_de_ayudas_PMM-extracto_CAST_2026.pdf",
+   "paginas": 1,
+   "huella": "00e163b74be03e14"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Ayudas individuales para los gastos de escolaridad del alumnado de la Escuela Municipal de Música Can Roig i Torres de Santa Coloma de Gramenet, curso 2026-2027.",
+   "Para alumnado empadronado en Santa Coloma de Gramenet cuya unidad familiar cumpla los requisitos de la base 4.",
+   "Cuantía total de 12.000 euros; cada ayuda es el 20 % del gasto del curso, con un máximo de 250 euros.",
+   "Plazo de solicitud: del 5 al 19 de octubre, ambos incluidos."
+  ],
+  "objeto": {
+   "valor": "Ayudas económicas individuales para los gastos de escolaridad (matrícula y cuotas) del alumnado de la Escuela Municipal de Música",
+   "cita": {
+    "documento": 1529323,
+    "pagina": 1,
+    "texto": "La regulación del otorgamiento de ayudas económicas individuales para hacer frente a los gastos de escolaridad del alumnado empadronado en el municipio de Santa Coloma de Gramenet",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Alumnado de la Escuela Municipal de Música empadronado en Santa Coloma de Gramenet cuya unidad familiar cumpla los requisitos de la base 4 (si es menor, lo solicitan padres o tutores)",
+   "cita": {
+    "documento": 1529323,
+    "pagina": 1,
+    "texto": "Las personas beneficiarias serán el alumnado de la Escuela Municipal de Música, empadronado en Santa Coloma de Gramenet y que formen parte de una unidad familiar que cumpla los requisitos establecidos en la base 4.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 5 al 19 de octubre, ambos incluidos (no se indica el año)",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "Del día 5 de octubre al día 19 de octubre, ambos incluidos",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Curso escolar 2026-2027",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "DE SANTA COLOMA DE GRAMENET, CORRESPONDIENTE AL CURSO ESCOLAR 2026-2027",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 12000,
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "Cuarto. Importe Cuantía total: 12.000,00 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 250,
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "por parte de la familia (matrícula y cuotas mensuales), con un límite máximo de 250 euros por ayuda.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 20,
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "El importe de cada ayuda individual será el equivalente al 20% del gasto total del curso a satisfacer",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar matriculado en la Escuela Municipal de Música y empadronado en Santa Coloma de Gramenet",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "Las personas beneficiarias serán el alumnado de la Escuela Municipal de Música, empadronado en Santa Coloma de Gramenet",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Formar parte de una unidad familiar que cumpla los requisitos de la base 4",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "que formen parte de una unidad familiar que cumpla los requisitos establecidos en la base 4.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En menores de edad, solicitan padres, madres, tutores o guardadores legales",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "En el caso de menores de edad, podrán solicitar estas ayudas los padres, madres, tutores o tutoras legales",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gasto total del curso: matrícula y cuotas mensuales",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "del gasto total del curso a satisfacer por parte de la familia (matrícula y cuotas mensuales)",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Santa Coloma de Gramenet",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "Sede electrónica del Ayuntamiento de Santa Coloma de Gramenet :",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://oiac.gramenet.cat:10003/CercadorOIAC/fitxa.aspx?lngIdFitxa=21399&mode=a&lang=ca",
+    "cita": {
+     "documento": 1529323,
+     "pagina": 1,
+     "texto": "Sede electrónica del Ayuntamiento de Santa Coloma de Gramenet : https://oiac.gramenet.cat:10003/CercadorOIAC/fitxa.aspx?lngIdFitxa=21399&mode=a&lang=ca",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto de la convocatoria; el texto completo está en la Base de Datos Nacional de Subvenciones y las bases reguladoras se publicaron en el BOPB de 7 de junio de 2023 (no incluidas). Los requisitos económicos de la unidad familiar (base 4) no constan.",
+   "El plazo (del 5 al 19 de octubre) no indica el año; el extracto está firmado en septiembre de 2026 y corresponde al curso 2026-2027.",
+   "Son ayudas para alumnado de una escuela municipal de música, no sirven a un promotor de conciertos."
+  ]
+ },
+ "citas": {
+  "verificadas": 13,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}

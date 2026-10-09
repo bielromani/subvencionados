@@ -1,0 +1,365 @@
+{
+ "version": 1,
+ "codigoBdns": "878295",
+ "generada": "2026-10-09T14:01:08.345Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1378940,
+   "nombre": "Conv Gral Subv 2026 - Condiciones generales.pdf",
+   "paginas": 22,
+   "huella": "495df62b2493c3dc"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Condiciones generales de la Convocatoria General de Subvenciones 2026 del Ayuntamiento de Irun.",
+   "Periodo subvencionable del 1 de enero al 31 de diciembre de 2026, salvo particularidades de cada línea.",
+   "Anticipo de hasta el 80 % en la concesión; el resto se paga tras justificar.",
+   "Solicitud en la Sede Electrónica del Ayuntamiento (www.irun.org/sede).",
+   "El objeto, beneficiarios, cuantías, plazos y criterios de la línea de actividades culturales (Anexo 9) no se incluyen."
+  ],
+  "objeto": {
+   "valor": null,
+   "cita": null
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Con carácter general, tres meses desde el cierre del plazo de solicitudes (o desde la solicitud en convocatorias no competitivas), salvo que el anexo diga otra cosa; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 6,
+     "texto": "de tres meses desde el cierre del plazo de",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero al 31 de diciembre de 2026, salvo particularidades de cada línea",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 2,
+     "texto": "El periodo subvencionable será del 1 de enero",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Plazo fijado en cada anexo; se presenta igual que la solicitud, con memoria de justificación, cuenta justificativa de ingresos y gastos, relación de facturas con fecha de pago y documentación gráfica",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 12,
+     "texto": "Las justificaciones se presentarán de la misma",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Anticipo o pago a cuenta de hasta el 80 % en la resolución de concesión, sin garantías; el resto tras la justificación",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 11,
+     "texto": "el pago de un importe máximo de hasta el 80%",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con otras subvenciones del Ayuntamiento de Irun para el mismo proyecto, salvo que el anexo diga otra cosa; compatible con otras administraciones o entes sin superar el coste",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 10,
+     "texto": "general, incompatible con la obtención de",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "En actividades con contacto habitual con menores, declaración responsable de que el personal no tiene condenas por delitos sexuales o de trata",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 3,
+     "texto": "menores, se deberá cumplir el requisito legal",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 4,
+     "texto": "e) No hallarse al corriente en el cumplimiento",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener residencia fiscal en un paraíso fiscal",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 4,
+     "texto": "h) Tener la residencia fiscal en un país o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyectos comprometidos con la igualdad efectiva de mujeres y hombres",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 21,
+     "texto": "b) Estarán comprometidos con la igualdad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Uso de lenguaje inclusivo",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 21,
+     "texto": "c) Utilizarán lenguaje inclusivo en un sentido de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Uso de las lenguas oficiales según la ordenanza municipal de normalización del euskera",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 22,
+     "texto": "f) Utilizarán las lenguas oficiales conforme a lo",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos que respondan a la naturaleza de la actividad, vinculados a su desarrollo y realizados en plazo",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 18,
+     "texto": "que respondan a la naturaleza de la actividad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas pendientes de pago emitidas en el trimestre anterior al cierre del plazo de justificación",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 18,
+     "texto": "subvencionables facturas pendientes de pago",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Póliza de seguro como único gasto en proyectos singulares, si el anexo lo recoge",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 18,
+     "texto": "contratación de una póliza de seguro para",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comidas y hostelería de las personas que ejecutan la actividad, hasta el 20 % de la subvención",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 19,
+     "texto": "podrá justificarse hasta un máximo del 20% de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA solo cuando no sea recuperable o compensable por el beneficiario",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 21,
+     "texto": "únicamente cuando éste no sea susceptible",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Costes internos de administración, organización y propios",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 19,
+     "texto": "Costes internos de administración,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comidas, cenas u otros servicios de hostelería, salvo los de quienes ejecutan la actividad",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 19,
+     "texto": "Costes de comidas, cenas u otros propios",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos que financien a partidos políticos",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 19,
+     "texto": "de gastos de partidos políticos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas de personas o entidades vinculadas, salvo autorización expresa",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 19,
+     "texto": "facturas emitidas por personas o entidades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pagos en efectivo de 1.000 euros o más con un mismo tercero profesional",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 13,
+     "texto": "que se prohíben pagos en efectivo por un",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Presupuesto de ingresos y gastos del proyecto (modelo normalizado)",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 8,
+     "texto": "Presupuesto de ingresos y gastos del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria descriptiva del proyecto (modelo normalizado)",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 8,
+     "texto": "Memoria descriptiva del proyecto a realizar",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Agrupaciones sin personalidad: relación de integrantes con sus compromisos y representante",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 8,
+     "texto": "de la agrupación con indicación de los",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personas físicas que presenten en papel: impreso de solicitud",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 9,
+     "texto": "Impreso de solicitud de subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personas físicas que presenten en papel: declaración responsable y autorización de consulta de datos",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 9,
+     "texto": "Declaración responsable y autorización de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personas físicas que presenten en papel: declaración de otras subvenciones solicitadas u otorgadas",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 9,
+     "texto": "Declaración sobre otras solicitudes de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de Hacienda para quienes no tributen en Gipuzkoa, Bizkaia o Araba",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 10,
+     "texto": "Deberán acompañar el certificado de la",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede Electrónica del Ayuntamiento de Irun, trámite «Subvenciones municipales: SOLICITUDES», o cualquier medio de la Ley 39/2015 (DIR3 L01200454)",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 7,
+     "texto": "correspondiente, se presentará en la Sede",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.irun.org/sede",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 7,
+     "texto": "www.irun.org/sede, utilizando el trámite",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "La solicitud electrónica se firma con DNIe, certificados de IZENPE o FNMT o BakQ/IrunTxartela; las personas físicas pueden presentar en papel",
+    "cita": {
+     "documento": 1378940,
+     "pagina": 8,
+     "texto": "utilizando alguno de los sistemas de firma",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto solo contiene las Condiciones generales de la Convocatoria General de Subvenciones 2026 de Irun; falta el Anexo n.º 9 (actividades culturales), que fija objeto, beneficiarios, crédito, cuantías, plazos de solicitud y justificación, criterios de valoración y documentación específica.",
+   "Convocatoria en régimen de tramitación anticipada: su validez depende de que haya crédito en el presupuesto de 2026.",
+   "El documento es bilingüe (euskera y castellano a dos columnas); las citas son fragmentos cortos de la columna en castellano.",
+   "El importe concedido es máximo y se liquida con la justificación; los fondos sobrantes pueden redistribuirse entre líneas o beneficiarios."
+  ]
+ },
+ "citas": {
+  "verificadas": 31,
+  "revisar": 0,
+  "noConsta": 9
+ }
+}

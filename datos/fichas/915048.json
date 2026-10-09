@@ -1,0 +1,415 @@
+{
+ "version": 1,
+ "codigoBdns": "915048",
+ "generada": "2026-10-09T14:01:16.248Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1481043,
+   "nombre": "_ANUNCIO subvenciones cultura 2026.pdf",
+   "paginas": 10,
+   "huella": "048da11f1dc547c2"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Burriana para actividades y proyectos culturales de 2026 (música, teatro, danza y otros).",
+   "Para asociaciones culturales inscritas en el Registro Municipal de Asociaciones, con sede social y domicilio fiscal en Burriana.",
+   "Crédito total de 10.000 euros; hasta 3.000 euros por proyecto y entidad, y hasta el 100 % del coste.",
+   "Plazo de 15 días hábiles desde la publicación del extracto en el Boletín Oficial de la Provincia; justificación hasta el 30 de noviembre de 2026.",
+   "Solicitud en el registro electrónico del Ayuntamiento (trámite Subvenciones culturales 2026)."
+  ],
+  "objeto": {
+   "valor": "Promoción de actividades o proyectos culturales de 2026 realizados por asociaciones: música, teatro, danza, artes visuales, cinematografía, historia, patrimonio, literatura, actividades religiosas, culturas del toro y cultura tradicional",
+   "cita": {
+    "documento": 1481043,
+    "pagina": 1,
+    "texto": "serán objeto de subvención las siguientes actividades o proyectos culturales: música, teatro, danza, artes visuales, cinematografía, historia, arqueología, patrimonio, literatura",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones inscritas en el Registro Municipal de Asociaciones de Burriana antes de la publicación del extracto, cuyo fin principal estatutario sea la promoción y difusión de la cultura",
+   "cita": {
+    "documento": 1481043,
+    "pagina": 1,
+    "texto": "Podrán ser beneficiarias las asociaciones inscritas en el Registro Municipal de Asociaciones, con anterioridad a la publicación del extracto de las presentes bases en el Boletín oficial de la Provincia",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 4,
+     "texto": "El plazo de presentación de solicitudes será de 15 días hábiles, a contar desde el día siguiente al de la publicación del EXTRACTO DE LA CONVOCATORIA en el Boletín Oficial de la Provincia.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde la publicación de la convocatoria; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 7,
+     "texto": "El plazo máximo para resolver y notificar la resolución del procedimiento no podrá exceder de seis meses",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Gastos realizados entre el 1 de enero y el 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "y se realicen desde el día 1 de enero de 2026 hasta el día 30 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa simplificada (modelo normalizado, memoria, facturas con su pago y acreditación de la publicidad) hasta el 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "El plazo para presentar la documentación justificativa será como máximo hasta el día 30 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 10000,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "del Presupuesto Municipal para el ejercicio de 2026, por un importe total de 10.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 3000,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "El importe máximo subvencionable por actividad/proyecto y por entidad será de 3.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "El Ayuntamiento de Burriana podrán financiar hasta el 100% del coste total de la actividad o el proyecto.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras la justificación de las actividades",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "El pago de las ayudas y subvenciones contempladas en estas bases se efectuará previa justificación de las actividades subvencionadas.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas para la misma finalidad sin superar el coste total; incompatible con otras subvenciones del Ayuntamiento para el mismo proyecto o con convenio en vigor",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "Estas ayudas son compatibles con otras subvenciones, ayudas, ingresos o recursos procedentes de cualesquiera administraciones o entes públicos o privados nacionales",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Asociación inscrita en el Registro Municipal de Asociaciones antes de la publicación del extracto",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 1,
+     "texto": "Podrán ser beneficiarias las asociaciones inscritas en el Registro Municipal de Asociaciones, con anterioridad a la publicación del extracto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fin principal estatutario de promoción y difusión de la cultura",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 1,
+     "texto": "cuya finalidad u objeto principal sea la promoción y difusión de la cultura y que así conste en los estatutos de la asociación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con la Agencia Tributaria, la Seguridad Social y el Ayuntamiento",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 2,
+     "texto": "Estar al corriente en el cumplimiento de las obligaciones tributarias con la Agencia Tributaria y con la Seguridad Social, así como con el Ayuntamiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 2,
+     "texto": "No estar incursas en ninguna de las prohibiciones para obtener la condición de beneficiaria de subvenciones públicas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sede social y domicilio fiscal en Burriana",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 2,
+     "texto": "Tener la sede social y domicilio fiscal en Burriana",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener contrato o convenio en vigor con el Ayuntamiento con la misma finalidad",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 2,
+     "texto": "No podrán ser beneficiarios aquellas entidades que tengan suscrito un contrato/convenio en vigor con el Ayuntamiento, con la misma finalidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Difundir que la actividad está subvencionada e incluir el logotipo de la concejalía de Cultura y del Ayuntamiento en el material impreso",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 2,
+     "texto": "deberán incorporar en todo el material impreso que se derive de las actividades objeto de las presentes bases, el logotipo de la concejalía de Cultura",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Se excluyen proyectos que no respeten la identidad y símbolos de Burriana, que discriminen o que no respeten el bien superior del menor",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 2,
+     "texto": "Actividades o proyectos que no respeten la identidad propia y común de Burriana y/o los símbolos oficiales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los gastos certificados deben ser iguales o superiores al presupuesto presentado",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "Los gastos certificados tienen que ser iguales o superiores al importe del presupuesto presentado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos corrientes necesarios para la actividad, realizados del 1 de enero al 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "Únicamente se considerarán gastos subvencionables los de carácter corriente que, de manera indubitada, respondan a la naturaleza de la actividad subvencionada",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos de inversión, mobiliario o material no fungible para el equipamiento o mantenimiento de las sedes",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "no serán subvencionables los gastos de inversión, adquisición de mobiliario o material no fungible destinado al equipamiento y/o mantenimiento de sus sedes sociales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos por encima del valor de mercado",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 9,
+     "texto": "En ningún caso el coste de adquisición de los gastos subvencionables podrá ser superior al valor de mercado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Presupuesto detallado de las actividades propuestas",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "Presupuesto detallado destinado por la entidad para las actividades propuestas (incluidos gastos, otros ingresos, logística, etc). Puntuación de 0 a 10.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Programa anual de actividades culturales",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "(ubicación, cronograma, participación, colaboraciones, etc.) . Puntuación de 0 a 10.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Memoria de resultados de las acciones culturales del año anterior",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "resumen de prensa y RRSS, documentación gráfica o fotográfica, textos o información generada, etc. Puntuación de 0 a 10.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Formación de sus miembros",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "Formación de sus miembros: Planes de formación de los miembros de la entidad y participación. Puntuación de 0 a 5.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Continuidad y estabilidad de la asociación",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "permanencia del solicitante en la gestión de actividades o proyectos de carácter cultural a nivel local. Puntuación de 0 a 5.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Programas de formación cultural en Burriana abiertos a la ciudadanía",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "Programas de formación cultural: Realizadas en Burriana por la entidad y abiertos a toda la ciudadanía. Puntuación de 0 a 10.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Fomento del arraigo a Burriana y a sus símbolos",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1481043,
+     "pagina": 5,
+     "texto": "resumen de prensa y RRSS, documentación gráfica o fotográfica, textos o información generada, etc. Puntuación de 0 a 15.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud (Anexo I) firmada electrónicamente por el representante legal",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "La solicitud a la que se hace referencia en el párrafo anterior (Anexo I), firmada electrónicamente, por el representante legal de la asociación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyecto según el Anexo II firmado por la presidencia",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "Un proyecto cumplimentado de acuerdo con el Anexo II, debidamente firmado, electrónicamente, por quien ostente la presidencia de la asociación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de cargos directivos (Anexo III)",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "Certificado de cargos directivos (Anexo III), debidamente firmado por quien ostente la secretaria de la asociación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de estar al corriente con Hacienda y la Seguridad Social",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 4,
+     "texto": "Declaración responsable suscrita por el/la representante legal de que la entidad solicitante se halla al corriente de sus obligaciones tributarias y frente a la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de no estar incursa en prohibiciones",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 4,
+     "texto": "Declaración responsable suscrita por el/la representante legal de que la asociación no está incursa en ninguna de las prohibiciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de mantenimiento de terceros con certificado de titularidad bancaria, si no consta en el Ayuntamiento",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 4,
+     "texto": "Domiciliación bancaria: deberá constar en el Ayuntamiento la ficha de mantenimiento de terceros.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro electrónico del Ayuntamiento de Burriana, trámite electrónico Subvenciones culturales 2026",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "Las solicitudes se presentarán en el registro electrónico del Ayuntamiento de Burriana",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria; la presencial debe subsanarse electrónicamente",
+    "cita": {
+     "documento": 1481043,
+     "pagina": 3,
+     "texto": "si se presentase alguna solicitud presencialmente, se requerirá a la entidad interesada para que la subsane mediante su presentación electrónica.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Si las solicitudes estimadas superan el crédito, se prorratea en función de la valoración; la Comisión puede fijar una puntuación mínima.",
+   "Solo pueden pedirla asociaciones culturales de Burriana; un promotor con forma de empresa no puede ser beneficiario.",
+   "El texto es el anuncio de aprobación de las bases y la convocatoria; los anexos (modelos de solicitud, proyecto y certificado) no se incluyen."
+  ]
+ },
+ "citas": {
+  "verificadas": 38,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

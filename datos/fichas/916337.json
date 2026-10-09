@@ -1,0 +1,296 @@
+{
+ "version": 1,
+ "codigoBdns": "916337",
+ "generada": "2026-10-09T14:00:34.694Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1484835,
+   "nombre": "Anunci_convocatoria_subvencions_Festes_Majors.pdf",
+   "paginas": 5,
+   "huella": "7c51c133722fca14"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Sant Feliu de Buixalleu para fomentar la música en vivo y la cultura popular en las Fiestas Mayores de 2026.",
+   "Para entidades privadas sin ánimo de lucro con sede en el municipio.",
+   "Crédito total de 16.000 euros: 2.000 euros fijos por solicitud (hasta 8.000) y el resto según puntuación.",
+   "Plazo de 15 días hábiles desde la publicación del extracto en el BOP; justificación hasta el 15 de octubre de 2026."
+  ],
+  "objeto": {
+   "valor": "Fomento de la música en vivo y de la cultura popular y tradicional mediante la realización de las Fiestas Mayores de 2026 en Sant Feliu de Buixalleu",
+   "cita": {
+    "documento": 1484835,
+    "pagina": 1,
+    "texto": "destinades al foment de la música en viu i de la cultura popular i tradicional a través de la realització de Festes Majors del 2026 en el municipi de Sant",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades privadas sin ánimo de lucro domiciliadas en Sant Feliu de Buixalleu que realicen actividades culturales en las Fiestas Mayores de 2026",
+   "cita": {
+    "documento": 1484835,
+    "pagina": 1,
+    "texto": "Entitats privades sense ànim de lucre domiciliades a Sant Feliu de Buixalleu que realitzin una activitat de caràcter cultural en el marc de les Festes Majors del 2026",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia, vía BDNS",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "El termini de presentació de sol·licituds serà de 15 dies hàbils a comptar des del dia següent de la publicació del corresponent extracte de la convocatòria",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde el día siguiente al fin del plazo de presentación",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "El termini màxim per notificar la resolució definitiva serà de sis mesos, comptats a partir del dia següent a la finalització del termini de presentació de sol·licituds.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Fiestas Mayores de 2026",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 1,
+     "texto": "realitzin una activitat de caràcter cultural en el marc de les Festes Majors del 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa hasta el 15 de octubre de 2026, sin prórroga posible",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 5,
+     "texto": "El termini de justificació finalitza l’15 d’octubre de 2026. No es coincideixen ampliacions del termini de justificació.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 16000,
+    "cita": {
+     "documento": 1484835,
+     "pagina": 1,
+     "texto": "La quantitat màxima destinada a aquesta línia de subvencions és de 16.000 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago a cuenta de oficio de 2.000 euros por solicitud concedida (si se pide en la solicitud) en 10 días hábiles desde la resolución; el resto tras justificar",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 4,
+     "texto": "es concedirà d’ofici el pagament a compte de 2.000 €, fins a un màxim de 8.000 €, per cadascuna de les sol·licituds que hagin estat objecte de concessió",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad privada sin ánimo de lucro domiciliada en Sant Feliu de Buixalleu",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 1,
+     "texto": "Entitats privades sense ànim de lucre domiciliades a Sant Feliu de Buixalleu",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar legalmente constituida e inscrita en el Registro de Asociaciones, con sede y actividad en el municipio",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "Estar legalment constituïdes i inscrites en el corresponent Registre d’Associacions, i tenir la seu social i desenvolupar l’activitat objecte de la subvenció al municipi.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener objetivos y finalidades coincidentes con los de las bases",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "Tenir objectius i finalitats coincidents amb els establerts a aquestes bases.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones fiscales, con la Seguridad Social y de reintegros de subvenciones",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "Trobar-se al corrent del compliment de les obligacions fiscals amb l’Ajuntament, resta d’administracions i amb la seguretat social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar inhabilitada ni en trámite de inhabilitación para recibir subvenciones",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "No trobar-se inhabilitades per l’Ajuntament ni per qualsevol altra Administració Pública per accedir a noves convocatòries de subvencions.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en ninguna circunstancia del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "Que no concorri en cap circumstància de les assenyalades a l’article 13.2 de la Llei 38/2003, de 17 de novembre, General de Subvencions.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La subvención no puede superar el gasto acreditado",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 4,
+     "texto": "En cas que l’import de la subvenció resulti superior a l’import acreditat, la subvenció es minorarà en l’import màxim acreditat.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Actividades de música en vivo: conciertos, sardanas, habaneras",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 3,
+     "texto": "S’assignarà 2,5 punts per cada activitat de música en viu (concerts, sardanes, havaneres) i de promoció de la cultura",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades de promoción de la cultura: exposiciones, concursos, talleres, magia, monólogos, espectáculos infantiles y teatrales",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 3,
+     "texto": "de promoció de la cultura (exposicions, concursos, tallers, màgia, monòlegs, espectacles infantils i teatrals), que s’efectuïn dins el termini d’execució",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Número de actividades realizadas acordes con los gastos subvencionables (2,5 puntos por actividad)",
+    "puntosMaximos": 38,
+    "cita": {
+     "documento": 1484835,
+     "pagina": 3,
+     "texto": "Nombre d’activitats efectuades que concordin 2,5 punts per 38",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Variedad en la tipología de actividades: musical, infantil, artística, mágica, literaria, teatral (2 puntos por tipología)",
+    "puntosMaximos": 12,
+    "cita": {
+     "documento": 1484835,
+     "pagina": 3,
+     "texto": "Varietat en la tipologia d’activitats (2) 2 punts per cada 12",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Importe destinado a actividades de música en vivo y promoción de la cultura (proporcional al mayor importe)",
+    "puntosMaximos": 50,
+    "cita": {
+     "documento": 1484835,
+     "pagina": 3,
+     "texto": "Import destinat a activitats de música en viu i de 50",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Instancia de solicitud en modelo normalizado",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "Instància de sol·licitud de subvenció, d’acord amb el model normalitzat publicat.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de cumplimiento de obligaciones fiscales y con la Seguridad Social, firmada por el presidente",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "Declaració responsable del compliment de les obligacions fiscals i amb la Seguretat Social, signada pel president de l’entitat",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Por medios electrónicos, mediante el trámite específico habilitado",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "La sol·licitud s’haurà de presentar per mitjans electrònics, mitjançant el tràmit específic",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1484835,
+     "pagina": 2,
+     "texto": "La sol·licitud s’haurà de presentar per mitjans electrònics, mitjançant el tràmit específic",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es el anuncio de la convocatoria (en catalán); las bases generales reguladoras (BOP de Girona nº 118 de 22.06.2026 y DOGC nº 9692 de 23.06.2026), incluido el apartado 4.2 de gastos subvencionables, no se incluyen.",
+   "El importe se compone de una cuantía fija de 2.000 euros por solicitud (máximo 8.000 euros en total) más una variable que reparte 8.000 euros según los puntos; si hay más de cuatro solicitudes, la parte fija se reduce proporcionalmente.",
+   "Solo para entidades sin ánimo de lucro del municipio: un promotor profesional no puede ser beneficiario, aunque las entidades pueden contratar conciertos.",
+   "La justificación exige memoria, relación clasificada de gastos, detalle de financiación, facturas con justificantes de pago y certificado de titularidad bancaria."
+  ]
+ },
+ "citas": {
+  "verificadas": 24,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

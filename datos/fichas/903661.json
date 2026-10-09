@@ -1,0 +1,256 @@
+{
+ "version": 1,
+ "codigoBdns": "903661",
+ "generada": "2026-10-09T14:01:00.307Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1449095,
+   "nombre": "6116264-Certificado_JGL_27_04_2026_punto_11_JUVENTUD_PREMIOS_TORREMUSIC_2026.PDF",
+   "paginas": 11,
+   "huella": "4bb95b4465e468b5"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Premios del Ayuntamiento de Torrejón de Ardoz a los grupos locales de música que actúen en el Festival Torremusic 2026 (19 de junio de 2026).",
+   "Para grupos de música locales (legalmente constituidos o representados por una persona física) con al menos el 50 % de miembros empadronados en Torrejón.",
+   "Crédito total de 1.200 euros; premio de 200 euros por grupo.",
+   "Solicitudes desde el día siguiente a la publicación en el BOCM hasta el 25 de mayo de 2026.",
+   "Resolución en junio y abono en noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Premios por la participación de grupos locales de música en el Festival Torremusic 2026, para fomentar la cultura local y dar visibilidad a los grupos",
+   "cita": {
+    "documento": 1449095,
+    "pagina": 2,
+    "texto": "Estas bases tienen como objeto fomentar la participación de grupos de música para el fomento de la cultura local y dar visibilidad a los grupos.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Grupos de música legalmente constituidos o una persona física en representación del grupo no constituido",
+   "cita": {
+    "documento": 1449095,
+    "pagina": 3,
+    "texto": "Podrán participar grupos de música legalmente constituidos o una persona física que actúe en representación del grupo, si no se encuentran legalmente constituidos como grupo.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación en el BOCM hasta el 25 de mayo de 2026, ambos inclusive",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 1,
+     "texto": "El plazo para presentar las solicitudes será desde día siguiente de publicación en BOCM hasta 25 de mayo de 2026 (ambos inclusive).",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-05-25",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 1,
+     "texto": "será desde día siguiente de publicación en BOCM hasta 25 de mayo de 2026 (ambos inclusive).",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Junio de 2026",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 4,
+     "texto": "Fecha de resolución:            Junio de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actuación en el Festival Torremusic el 19 de junio de 2026",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 3,
+     "texto": "en el que se establecerán los grupos que actuarán en el Festival Torremusic el día 19 de junio de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 1200,
+    "cita": {
+     "documento": 1449095,
+     "pagina": 2,
+     "texto": "aplicación presupuestaria 040 33410 48000 denominada “SUBVENCIONES JUVENTUD” por un importe máximo de MIL DOSCIENTOS EUROS (1.200,00 €).",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 200,
+    "cita": {
+     "documento": 1449095,
+     "pagina": 2,
+     "texto": "El importe máximo por grupo será de DOSCIENTOS EUROS (200,00 €).",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Abono en cuenta por transferencia bancaria en noviembre de 2026",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 4,
+     "texto": "Abono en cuenta:                              Noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser seleccionado en el sorteo del 1 de junio y participar de forma activa y adecuada el 19 de junio de 2026",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 3,
+     "texto": "los grupos de música que hayan resultado seleccionados en el sorteo con fecha 1 de junio y que hayan participado en el desarrollo del mismo de forma activa y adecuada el día 19 de junio de 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El 50 % de los miembros empadronados en Torrejón de Ardoz, o haberlo estado al menos 5 años en los últimos 10",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 3,
+     "texto": "El 50% de sus miembros de su grupo deben ser empadronados en Torrejón, o haber sido empadronado en Torrejón de Ardoz al menos 5 años en los últimos 10 años.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una persona mayor de edad del grupo actúa como representante y responsable de la actuación",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 3,
+     "texto": "Una persona mayor de edad del grupo, actuará en representación del grupo, siendo la responsable de la actuación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los grupos que actuaron en 2025 no tienen prioridad en el sorteo",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 3,
+     "texto": "Los grupos de música que hayan actuado en la edición del año 2025 no tendrán prioridad en el sorteo de esta edición",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Seis actuaciones de 30 minutos: dos de pop-rock, dos de metal-punk y dos de rap",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 4,
+     "texto": "Se establecen 6 actuaciones de 30 minutos de duración, con 2 actuaciones de cada modalidad estableciéndose las siguientes: 2 actuaciones de género pop – rock, 2 actuaciones de metal – punk y 2 actuaciones de rap.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cumplir los requisitos del art. 13.2 y 13.3 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 5,
+     "texto": "beneficiario regulados en el artículo 13.2 y 13.3 de la ley 38/2003 general de subvenciones.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud anexa a las bases",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 4,
+     "texto": "deberán presentar la siguiente documentación: 1. Solicitud anexa a las bases.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de cumplir los requisitos del art. 13.2 y 13.3 de la Ley 38/2003",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 5,
+     "texto": "beneficiario regulados en el artículo 13.2 y 13.3 de la ley 38/2003 general de subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de titularidad de la cuenta bancaria del grupo o de su representante",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 5,
+     "texto": "Certificado de titularidad de la cuenta del grupo de música o persona física en representación del grupo, para hacer efectivo el abono del premio mediante transferencia bancaria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los grupos seleccionados deben aportar rider técnico, foto del grupo y logo",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 3,
+     "texto": "Los grupos de música seleccionados para actuar en el Festival Torremusic deberán aportar RIDER técnico, foto del grupo y logo.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica municipal o cualquiera de las formas del art. 16.4 de la Ley 39/2015, indicando el código de la convocatoria",
+    "cita": {
+     "documento": 1449095,
+     "pagina": 4,
+     "texto": "Los solicitantes deben presentar en la sede electrónica municipal o de cualquiera de las formas previstas en el artículo 16.4 de la Ley del Procedimiento Administrativo Común",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "No sirve a un promotor de jazz, clásica u ópera: son premios de 200 euros para grupos locales de Torrejón de Ardoz de pop-rock, metal-punk y rap que actúan en el Festival Torremusic.",
+   "Hay un plazo previo para entrar en el sorteo de grupos (solicitudes antes del 25 de mayo de 2026; sorteo el 1 de junio).",
+   "La retención fiscal del premio se rige por la legislación fiscal vigente.",
+   "Las páginas 8 a 10 del documento no tienen texto; el anexo de solicitud no se puede leer."
+  ]
+ },
+ "citas": {
+  "verificadas": 20,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

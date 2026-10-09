@@ -1,0 +1,317 @@
+{
+ "version": 1,
+ "codigoBdns": "917703",
+ "generada": "2026-10-09T14:01:00.286Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1489509,
+   "nombre": "EDICTO_ACUERDO_JGL_para_publicar.pdf",
+   "paginas": 15,
+   "huella": "0ef84c93055abf3c"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Línea 33D del Ayuntamiento de Rubí: subvenciones para actividades de creación y difusión musical en 2026.",
+   "Solo para entidades culturales inscritas en el Registro de Entidades Ciudadanas (REC) de Rubí.",
+   "La línea 33D tiene 6.000 euros (la convocatoria conjunta de 11 líneas suma 154.700 euros).",
+   "Plazo: 10 días hábiles desde el día siguiente a la última publicación (BOPB y sede electrónica).",
+   "Concurrencia competitiva sobre 100 puntos; mínimo 50 puntos para recibir ayuda."
+  ],
+  "objeto": {
+   "valor": "Actividades de creación y difusión musical (línea 33D) de entidades inscritas en el REC de Rubí",
+   "cita": {
+    "documento": 1489509,
+    "pagina": 2,
+    "texto": "33D                 creación y difusión      6U041 3340D 48002 6.000,00",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades culturales inscritas en el Registro de Entidades Ciudadanas (REC) del Ayuntamiento de Rubí",
+   "cita": {
+    "documento": 1489509,
+    "pagina": 6,
+    "texto": "Estar debidamente inscritas y con los datos actualizados en el Registro de Entidades Ciudadanas del Ayuntamiento de Rubí (REC)",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "10 días hábiles desde el día siguiente a la última de las publicaciones (BOPB a través de la BDNS y sede electrónica)",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 9,
+     "texto": "El plazo de presentación de solicitudes será de 10 días hábiles, a contar desde el día siguiente de la última de las publicaciones.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde el día siguiente a la última publicación de la convocatoria",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 10,
+     "texto": "el plazo máximo para resolver y notificar la resolución es de tres meses contados desde el día siguiente al de la publicación de la convocatoria en el BOPB",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 6000,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 5,
+     "texto": "33D       6U041       3340D 48002       6.000,00",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": "Debe declararse la solicitud u obtención de otras subvenciones o ingresos para la misma finalidad",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 7,
+     "texto": "La solicitud u obtención de otras subvenciones, ingresos o recursos para la misma finalidad, procedentes de cualquier administración o ente público o privado",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar inscrita y con datos actualizados en el REC de Rubí y en el Registro de Asociaciones de la Generalitat o el registro oficial que corresponda",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 6,
+     "texto": "Estar debidamente inscritas y con los datos actualizados en el Registro de Entidades Ciudadanas del Ayuntamiento de Rubí (REC) y en el Registro de Asociaciones de la Generalidad de Cataluña",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber justificado cualquier subvención anterior del Ayuntamiento de Rubí",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 6,
+     "texto": "Haber dado cumplimiento a la obligación de justificar cualquier otra subvención anteriormente otorgada por el Ayuntamiento de Rubí",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de pago de obligaciones por reintegro de subvenciones",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 6,
+     "texto": "Estar al corriente de pago de obligaciones por reintegro de subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No incurrir en las prohibiciones del artículo 13 de la Ley 38/2003",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 6,
+     "texto": "No incurrir en ninguna de las prohibiciones del artículo 13 de la Ley 38/2003, de 17 de noviembre, general de subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No incurrir en infracción grave de los principios éticos y reglas de conducta de la base 32",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 6,
+     "texto": "No incurrir en infracción grave de los principios éticos y las reglas de conducta establecidas en la base 32.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener una puntuación mínima de 50 puntos",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 12,
+     "texto": "que hayan obtenido una puntuación mínima de 50 puntos (con puntuación de criterios generales y de criterios específicos) conforme en la base 8.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos elegibles de las actividades de la línea de subvención convocada",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "Serán objeto de subvención los gastos elegibles que las entidades que reúnen requisitos para ser beneficiarias realicen en las actividades que se enmarquen dentro de los ámbitos temáticos",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Características de la entidad: gestión",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "Gestión (8 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Características de la entidad: solvencia",
+    "puntosMaximos": 6,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "Gestión (8 puntos)         Solvencia (6 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Características de la entidad: perfil colaborativo",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "Solvencia (6 puntos)         Perfil colaborativo (4 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Adecuación técnica de la actividad: viabilidad",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "que se solicita subvención, tendrán por objeto de valoración los siguientes aspectos:         Viabilidad (20 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Adecuación técnica de la actividad: calidad",
+    "puntosMaximos": 22,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "Viabilidad (20 puntos)         Calidad (22 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Criterios específicos de cada línea (impactos, innovación, objetivos), detallados en las fichas",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1489509,
+     "pagina": 11,
+     "texto": "Criterios específicos (40 puntos) relacionados a cada subvención, por ejemplo:",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Declaración responsable del representante sobre el cumplimiento de requisitos y sobre otras subvenciones solicitadas u obtenidas",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 7,
+     "texto": "Declaración responsable del representante de la entidad, sobre: 1. El cumplimiento de los requisitos para ser beneficiaria de la subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitud de transferencia bancaria (ficha de alta, baja o modificación de datos bancarios)",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 10,
+     "texto": "Solicitud de transferencia bancaria (Ficha de Alta, Baja o Modificación de datos bancarios de terceros).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria explicativa del proyecto de actividad y de su presupuesto",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 10,
+     "texto": "En relación a cada actividad para la que se solicite subvención, una memoria explicativa del proyecto de actividad y de su presupuesto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentación específica definida en la ficha de cada línea",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 10,
+     "texto": "Documentación de carácter específico, la que definan las fichas elaboradas para detallar de manera sistematizada la información relativa a cada línea de subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si no puede obtenerla el Ayuntamiento: certificado del registro de asociaciones, estatutos, certificados tributarios y de Seguridad Social, libro de cuentas y libro de socios",
+    "cita": {
+     "documento": 1489509,
+     "pagina": 10,
+     "texto": "los certificados vigentes de estar al corriente de pago de obligaciones tributarias y ante la seguridad social, una copia certificada del libro de cuentas de la entidad",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es la convocatoria conjunta de 11 líneas del Ayuntamiento de Rubí (154.700 euros en total); esta ficha corresponde a la línea 33D, de creación y difusión musical, con 6.000 euros.",
+   "Las fichas específicas de cada línea (Anexo I: periodo de ejecución, importes máximos, porcentajes, conceptos subvencionables, criterios específicos y documentación específica) no se incluyen, ni la Ordenanza reguladora (BOPB de 24 de octubre de 2022).",
+   "Solo pueden pedirla entidades inscritas en el Registro de Entidades Ciudadanas de Rubí: no sirve a un promotor de conciertos que no sea una entidad local registrada.",
+   "Si el crédito no basta, se reparte por valor/punto entre las solicitudes con al menos 50 puntos; se admite reformulación de solicitudes.",
+   "El documento no indica el lugar ni la forma de presentación de solicitudes."
+  ]
+ },
+ "citas": {
+  "verificadas": 24,
+  "revisar": 0,
+  "noConsta": 11
+ }
+}

@@ -1,0 +1,613 @@
+{
+ "version": 1,
+ "codigoBdns": "895298",
+ "generada": "2026-10-09T14:01:00.237Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1423703,
+   "nombre": "Decret_Ajuts festivals.pdf",
+   "paginas": 13,
+   "huella": "dedf194661fc72b2"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas económicas y en especie del Ayuntamiento de Mataró para organizar festivales de interés cultural en Mataró durante 2026.",
+   "Para empresas con domicilio fiscal en Mataró y entidades sin ánimo de lucro del Registro Municipal de Entidades, titulares de festivales con al menos 3 ediciones previas.",
+   "Dotación total de 52.000 euros; máximo 12.000 euros por ayuda y hasta el 40 % del presupuesto del proyecto.",
+   "Cubre cachés, alquiler de sonido, luz e infraestructuras, transporte, seguridad, publicidad, seguros y derechos de autor.",
+   "Plazo: 20 días hábiles desde el día siguiente a la publicación del extracto en el BOPB; solicitud telemática."
+  ],
+  "objeto": {
+   "valor": "Ayudas económicas y en especie para festivales de interés cultural en el término municipal de Mataró, abiertos a la ciudadanía y realizados en 2026",
+   "cita": {
+    "documento": 1423703,
+    "pagina": 3,
+    "texto": "destinats a donar suport a festivals d’interès cultural que tinguin lloc al terme municipal de Mataró, que siguin oberts al conjunt de la ciutadania i que es duguin a terme durant l’any 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas jurídicas con ánimo de lucro con domicilio fiscal en Mataró y entidades sin ánimo de lucro inscritas en el Registro Municipal de Entidades de Mataró",
+   "cita": {
+    "documento": 1423703,
+    "pagina": 3,
+    "texto": "Les persones jurídiques amb ànim de lucre amb domicili fiscal a Mataró. Les entitats sense ànim de lucre, inscrites al Registre Municipal d’Entitats de Mataró",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días hábiles desde el día siguiente a la publicación del extracto de la convocatoria en el BOPB",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Les sol·licituds es podran presentar durant el termini de 20 dies hàbils des de l'endemà de la publicació de l'extracte de la convocatòria al BOPB.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde la fecha de solicitud; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 8,
+     "texto": "El termini per a l'atorgament dels ajuts no serà superior a tres mesos des de la data de la sol·licitud.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Año 2026",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Relatius als festivals/ activitats: 1.   Dur-se a terme dins l’anualitat 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Tres meses desde el final del festival (si hay actividades en el último trimestre, como máximo el 30 de enero del año siguiente); memoria, relación de gastos, ingresos, certificado, material de difusión y facturas por al menos el doble de la ayuda",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 13,
+     "texto": "La presentació de la documentació anteriorment esmentada es realitzarà dins el termini màxim de 3 mesos a comptar des de la finalització del festival",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 52000,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "La dotació econòmica total de la convocatòria és de 52.000,00€, amb càrrec a l’aplicació pressupostària",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 12000,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "L’import màxim de l’ajut serà de 12.000€, sempre que entre totes les ajudes atorgades no superin els 52.000€",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 40,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "L’import atorgat podrà ser com a màxim del 40% del pressupost total de cada projecte presentat.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Anticipo opcional del 60 % tras la aceptación si se pide en la solicitud; el 40 % restante tras la justificación",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 9,
+     "texto": "Es podrà avançar el pagament del 60% de l’import atorgat quan el desenvolupament de l’activitat ho requereixi, sempre que prèviament s’hagi presentat l'acceptació de l’ajut",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas e ingresos para la misma finalidad, sin superar el coste total; incompatible con otra subvención municipal o convenio nominativo para las mismas actividades",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 8,
+     "texto": "L’obtenció de l’ajut és compatible amb l’obtenció d’altres subvencions, ajuts, ingressos i/o recursos destinats a la mateixa finalitat/projecte",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Empresas: persona jurídica con ánimo de lucro con domicilio fiscal en Mataró",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Les persones jurídiques amb ànim de lucre amb domicili fiscal a Mataró.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidades sin ánimo de lucro inscritas en el Registro Municipal de Entidades como máximo el último día de presentación",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Les entitats sense ànim de lucre, inscrites al Registre Municipal d’Entitats de Mataró, com a màxim, el darrer dia de presentació de sol·licituds.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Un solo proyecto por entidad o empresa",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Cada entitat/empresa només pot presentar un projecte.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener convenio de subvención nominativa con el Ayuntamiento para las mismas actividades",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "No poden ser beneficiaris aquells que tinguin conveni de subvenció nominativa amb l'Ajuntament de Mataró per les mateixes activitats",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El festival debe realizarse en 2026",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Dur-se a terme dins l’anualitat 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener como mínimo 3 ediciones previas en el mismo ámbito artístico",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Tenir mínim 3 edicions prèvies en el mateix en el mateix àmbit artístic pel que es sol·licita l’ajut.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programar un mínimo de 6 actividades culturales (conciertos, espectáculos, proyecciones...)",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Programar un mínim de 6 activitats culturals (concerts, espectacles, projeccions...) d’algun dels àmbits artístics detallats en el punt 2 de les Bases reguladores.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Realizar al menos el 75 % de las actividades del festival en Mataró",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 3,
+     "texto": "Realitzar almenys el 75% de les activitats programades pel festival a Mataró.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber justificado y, en su caso, reintegrado subvenciones anteriores del Ayuntamiento de Mataró",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "Haver justificat en temps i forma qualsevol subvenció anteriorment atorgada per l’Ajuntament de Mataró.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda, la Seguridad Social y el Ayuntamiento",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "Estar al corrent del compliment de les obligacions tributària, amb la Seguretat Social i amb l’Ajuntament de Mataró",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar en las situaciones del artículo 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "No trobar-se en cap de les situacions previstes a l’article 13 de la Llei General de Subvencions.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ser titular del festival (creador o conceptualizador y organizador)",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "Tenir la titularitat del festival, és a dir, ser-ne el creador o conceptualitzador així com l’organitzador.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener un mínimo de 25 puntos",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "S'atorgarà ajut a aquells projectes que obtinguin un mínim de 25 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratar un seguro de responsabilidad civil",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 5,
+     "texto": "Els beneficiaris hauran de contractar una assegurança de responsabilitat civil.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presentar la memoria de seguridad al menos dos meses antes del inicio del festival",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 8,
+     "texto": "Els beneficiaris han de presentar com a màxim 2 mesos abans de l’inici del festival la memòria de seguretat per a cada activitat que la requereixi",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No subcontratar la ejecución total de la actividad",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 9,
+     "texto": "No es podrà subcontractar l’execució total de l’activitat.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar el catalán en la documentación y la difusión del festival",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 11,
+     "texto": "Utilitzar el català a la documentació i als elements de difusió del festival.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar «Amb el suport de l'Ajuntament de Mataró» en la difusión",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 11,
+     "texto": "haurà de fer constar la llegenda \"Amb el suport de l'Ajuntament de Mataró\" amb l'anagrama segons el model tipogràfic",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Aceptar expresamente la ayuda en 10 días hábiles desde la notificación de la resolución",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 8,
+     "texto": "L’acceptació de l’ajut s’ha de fer de forma expressa en el termini de 10 dies hàbils a partir de la notificació de la resolució definitiva dels ajuts",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Cachés",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "Les despeses subvencionables són aquelles despeses relacionades directament amb l’activitat de manera indubtable: caixets, lloguer d’infraestructures",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alquiler de infraestructuras: equipos de sonido, luz o audiovisuales, generadores, tarimas, sanitarios químicos",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "lloguer d’infraestructures (equips de so, llum o audiovisuals, generadors, entarimats, sanitaris químics,...)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Preventivo sanitario, transportes, seguridad y control de accesos",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "preventiu sanitari, transports, seguretat i control d’accessos, publicitat i difusió, col·laboradors, assegurances, drets d’autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicidad y difusión",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "seguretat i control d’accessos, publicitat i difusió, col·laboradors, assegurances, drets d’autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Colaboradores, seguros y derechos de autor",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "publicitat i difusió, col·laboradors, assegurances, drets d’autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hasta el 30 % de la ayuda: alquiler de espacios, suministros, gastos generales, material de oficina, administración y material didáctico",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "Seran subvencionables fins al màxim del 30% de l’import de l´ajut les despeses en: lloguer d’espais/local, subministraments, despeses generals",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hasta el 20 % de la ayuda: trabajos de miembros de la Junta o de empresas de las que sean titulares o socios",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "Seran subvencionables fins al màxim del 20% de l’import de l’ajut les despeses per treballs o serveis prestats per :",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Inversiones",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "No són despeses subvencionables: les despeses d’inversions, atencions protocol·làries (àpats, dietes...)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Atenciones protocolarias (comidas, dietas...)",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "les despeses d’inversions, atencions protocol·làries (àpats, dietes...) i les despeses d’amortització de béns inventariables.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Amortización de bienes inventariables",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 4,
+     "texto": "i les despeses d’amortització de béns inventariables.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Coherencia, calidad e interés en el contexto cultural de Mataró y adecuación al calendario cultural",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "web municipal, on es pot consultar la programació vigent: fins a 15 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad económica, planteamiento económico-financiero y diversificación de fuentes de financiación",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "privats. Es valorarà la diversificació de fonts de finançament: fins a 15 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Descentralización, presencia en los barrios, proyección territorial e implicación del tejido social y cultural",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "capacitat de projecció territorial i implicació del teixit social i cultural del territori: fins a 10 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Singularidad, innovación y originalidad; apuesta por artistas emergentes, propuestas de riesgo o multidisciplinares",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "propostes innovadores o de risc i/o de caràcter multidisciplinar: fins a 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Plan de comunicación, desarrollo y fidelización de públicos y fomento de nuevos públicos",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "accions de foment de nous públics: fins a 10 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Contratación de artistas residentes en el Maresme y apoyo a la creación de los creadores de Mataró",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "suport a la creació i a la producció dels creadors de la ciutat de Mataró: fins a 10 punts.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Paridad y perspectiva de género en la propuesta artística y el equipo gestor",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Aplicació de la paritat i la perspectiva de gènere en el contingut de la proposta artística i de l’equip gestor: fins a 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Sostenibilidad, cuidado del medio ambiente y accesibilidad",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "promoció de continguts, actuacions i activitats accessibles: fins a 10 punts",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Tipo y número de actividades (1 punto por actividad de artes en vivo a partir de la séptima, hasta 6; 1 punto por actividad formativa a partir de la tercera, hasta 4)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Tipus i nombre d’activitats: fins a 10 punts",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en modelo normalizado de la sede electrónica",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 5,
+     "texto": "Sol·licitud en model normalitzat disponible a la Seu Electrònica (https://seu.mataro.cat), que inclou entre altres:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de los seguros contratados o previstos (Modelo 5)",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 5,
+     "texto": "Declaració responsable de la/es assegurança/ces contractada/es (responsabilitat civil incloent servei de bar si s’escau, voluntaris, i causes climatològiques)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de protección de datos (Modelo 6)",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 5,
+     "texto": "Declaració de protecció de dades (Model 6).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de ser titular del festival",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 5,
+     "texto": "Full de declaració responsable de ser el titular del Festival.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria completa del proyecto (Modelo 1): programación, artistas y trayectoria, fechas, espacios, objetivos, plan de comunicación, recursos y necesidades técnicas",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 5,
+     "texto": "Memòria completa del projecte (Model 1) que contingui: Descripció del projecte, escaleta de la programació amb indicació de les activitats, artistes que es preveu contractar i la seva trajectòria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto del proyecto (Modelo 2) con gastos desglosados, previsión de ingresos y ayuda solicitada",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "El pressupost del projecte (Model 2) en el qual figurin totes les despeses desglossades, la previsió d'ingressos i la quantitat de l'ajut que sol·licita",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Poderes de representación, si no se usa certificado de representante de persona jurídica",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Poders de representació, si no s'utilitza un certificat electrònic de representant de persona jurídica per fer la presentació de la sol·licitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo empresas: tarjeta fiscal y estatutos",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Només en el cas d’empreses: targeta fiscal i estatuts de la mateixa.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Telemáticamente en la sede electrónica del Ayuntamiento de Mataró, por el representante legal",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "La presentació de manera telemàtica s'efectuarà a la Seu electrònica de l’Ajuntament de Mataró, pel representant legal de la persona jurídica (empresa o entitat).",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://seu.mataro.cat",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Les sol·licituds i la documentació requerida s’ha de presentar per via telemàtica utilitzant la Seu Electrònica (https://seu.mataro.cat)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática obligatoria",
+    "cita": {
+     "documento": 1423703,
+     "pagina": 6,
+     "texto": "Les sol·licituds i la documentació requerida s’ha de presentar per via telemàtica utilitzant la Seu Electrònica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento está en catalán: decreto de aprobación y convocatoria con el contenido completo; las bases reguladoras (Pleno de 5 de febrero de 2026, BOPB de 11 de febrero de 2026) no se incluyen, y la convocatoria remite a su punto 2 para los ámbitos artísticos.",
+   "Además del dinero, el Ayuntamiento cede en especie, según disponibilidad, escenarios (hasta 6), sillas (500), mesas (60), vallas, equipamientos municipales y su sistema de venta de entradas; los costes de cesión de espacios y del personal técnico corren a cargo del beneficiario.",
+   "La ayuda final se calcula como puntuación × 12.000 / 100; si todos obtienen la máxima puntuación se reparte a partes iguales.",
+   "Útil para un promotor con empresa domiciliada en Mataró que sea titular de un festival con al menos 3 ediciones previas.",
+   "Entidades con ayudas de más de 10.000 € deben informar de las retribuciones de sus órganos de dirección."
+  ]
+ },
+ "citas": {
+  "verificadas": 60,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

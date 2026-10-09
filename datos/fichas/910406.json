@@ -1,0 +1,176 @@
+{
+ "version": 1,
+ "codigoBdns": "910406",
+ "generada": "2026-10-09T14:00:52.105Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1468947,
+   "nombre": "textoConvocatoria13893.pdf",
+   "paginas": 2,
+   "huella": "6a2c670193a5a990"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Subvenciones del Patronato Provincial de Turismo de Castellón para organizar ciclos y conciertos de música en 2026.",
+   "Para entidades privadas cuyo ciclo supere 3.000 asistentes en total o cuyo concierto supere 3.000 asistentes por día, en la provincia de Castellón.",
+   "Crédito total de 525.000 euros; hasta el 80 % de los gastos subvencionables y entre 10.000 y 30.000 euros por beneficiario según asistentes.",
+   "Plazo: quince días hábiles desde el día siguiente a la publicación del extracto en el BOP de Castellón."
+  ],
+  "objeto": {
+   "valor": "Organización de ciclos y conciertos de música en municipios de la provincia de Castellón en 2026 que ayuden a generar demanda turística",
+   "cita": {
+    "documento": 1468947,
+    "pagina": 1,
+    "texto": "Organización de ciclos y conciertos de música que se realicen en algún municipio de la provincia de Castellón en el ejercicio 2026, que ayuden a generar demanda turística.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades privadas que organicen un ciclo de música con más de 3.000 asistentes en total o un concierto con más de 3.000 asistentes/día en la provincia de Castellón",
+   "cita": {
+    "documento": 1468947,
+    "pagina": 1,
+    "texto": "Entidades privadas que organicen un ciclo de música con más de 3.000 asistentes en total o concierto con más de 3.000 asistentes/día",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Castellón",
+    "cita": {
+     "documento": 1468947,
+     "pagina": 2,
+     "texto": "QUINCE DÍAS HÁBILES a contar desde el día siguiente al de la publicación de este extracto de la convocatoria en el Boletín Oficial de la Provincia de Castellón.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Ciclos y conciertos realizados en el ejercicio 2026",
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "que se realicen en algún municipio de la provincia de Castellón en el ejercicio 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 525000,
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "El importe total de la presente convocatoria asciende a 525.000,00 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 30000,
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "siendo la subvención máxima por beneficiario desde 10.000 € hasta 30.000,00 € en función del número de asistentes.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "La cuantía de la subvención no podrá superar el 80% de los gastos subvencionables de la actividad",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad privada organizadora de un ciclo de música con más de 3.000 asistentes en total o de un concierto con más de 3.000 asistentes/día",
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "Entidades privadas que organicen un ciclo de música con más de 3.000 asistentes en total o concierto con más de 3.000 asistentes/día",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El ciclo o concierto debe celebrarse en algún municipio de la provincia de Castellón",
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "que tengan lugar en algún municipio de la provincia de Castellón, siempre que cumplan con los requisitos indicados en las bases.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La actividad debe ayudar a generar demanda turística",
+    "cita": {
+     "documento": 1468947,
+     "pagina": 1,
+     "texto": "en el ejercicio 2026, que ayuden a generar demanda turística.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto de la convocatoria publicado en el BOP; no contiene las bases reguladoras.",
+   "Las bases reguladoras se publicaron en el Boletín Oficial de la Provincia de Castellón núm. 65 de 30/05/2026 y no se incluyen: faltan requisitos detallados, gastos subvencionables, criterios de valoración, documentación, forma de presentación, pago y justificación.",
+   "El importe máximo por beneficiario va de 10.000 a 30.000 euros en función del número de asistentes; el tramo concreto está en las bases.",
+   "Solo sirve a promotores de eventos grandes: exige más de 3.000 asistentes en el ciclo o por día de concierto."
+  ]
+ },
+ "citas": {
+  "verificadas": 10,
+  "revisar": 0,
+  "noConsta": 10
+ }
+}

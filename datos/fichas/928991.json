@@ -1,0 +1,462 @@
+{
+ "version": 1,
+ "codigoBdns": "928991",
+ "generada": "2026-10-09T14:01:08.426Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1520338,
+   "nombre": "Bases reguladoras de la convocatoria de subvenciones para la celebración fiestas populares  Carballo 2026.pdf",
+   "paginas": 5,
+   "huella": "1d02cd7f38ff3c42"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Concello de Carballo para la celebración de fiestas populares, tradicionales, patronales o gastronómicas en 2026.",
+   "Para comisiones de fiestas, entidades sin ánimo de lucro y agrupaciones vecinales de Carballo vinculadas al lugar de la fiesta.",
+   "500 euros por día de fiesta con verbena o concierto en directo, sin superar el 50 % del presupuesto; crédito de 27.500 euros.",
+   "Solicitud hasta el 3 de noviembre de 2026, con la justificación incluida."
+  ],
+  "objeto": {
+   "valor": "Colaborar con las comisiones de fiestas de Carballo en la realización de fiestas populares, tradicionales y/o patronales de arraigo cultural o gastronómicas consolidadas",
+   "cita": {
+    "documento": 1520338,
+    "pagina": 1,
+    "texto": "colaborar coas Comisións de Festas do municipio de Carballo vinculadas a un territorio concreto para a realización de festas populares, tradicionais e/ou patronais de arraigo cultural",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades constituidas con sede social en Carballo registradas en el Concello, o agrupaciones de personas físicas o jurídicas o colectivos empadronados o con vecindad en Carballo, vinculados al territorio de la fiesta",
+   "cita": {
+    "documento": 1520338,
+    "pagina": 1,
+    "texto": "Poderán solicitar estas subvencións as entidades xuridicamente constituídas con sede social no municipio de Carballo que estean rexistradas no Concello de Carballo",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación del extracto en el BOP, a través de la BDNS, hasta el 3 de noviembre de 2026",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "Prazo de solicitude: comeza ao día seguinte da publicación do extracto da convocatoria no BOP, a través da Base de Datos Nacional de Subvencións e remata o 3 de novembro de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-11-03",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "a través da Base de Datos Nacional de Subvencións e remata o 3 de novembro de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Procedimiento abreviado: propuesta de resolución y aprobación de la justificación en un único acto; sin plazo indicado",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "a proposta de resolución e aprobación da xustificación será efectuada por un único acto pola Concelleira de Festas e aprobados polo órgano competente",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Fiestas celebradas durante 2026 hasta el 31 de octubre, y las realizadas después del 31 de octubre de 2025",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "durante o ano 2026 (ata o 31 de outubro) e aquelas que se realizaron con posterioridade ao 31 de outubro de 2025",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Se justifica con la propia solicitud: memoria, declaración de gastos e ingresos y facturas por al menos el doble de la subvención",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "sen necesidade de presentar ningún tipo de xustificación tendo en conta que esta xa deberá formar parte da documentación que acompaña a solicitude.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 27500,
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "Para a concesión destas axudas destinarase un presuposto de 27.500 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 50,
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "A subvención municipal non sobrepasará o 50% do presuposto total do proxecto ou actividade.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Transferencia bancaria en un pago único, sin justificación posterior",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "O abono da subvención levarase a cabo mediante transferencia bancaria, nun pago único, sen necesidade de presentar ningún tipo de xustificación",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con otras ayudas del Concello de Carballo (salvo el Programa de Actuaciones Musicales); compatible con ayudas de otras administraciones o entes, sin superar el coste total",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "Estas subvencións son incompatibles con outras axudas ou financiación do Concello de Carballo, exceptuando as posibles actuacións de agrupacións a través do Programa de Actuacións Musicais do Concello",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Desarrollar un programa de actividades festivas de una fiesta popular en el período de la convocatoria",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Desenvolver un programa de actividades festivas dunha Festa Popular no período de datas especificadas nesta convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Carecer de ánimo de lucro, también en las actividades subvencionadas",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Carecer de fins de lucro e que as actividades subvencionadas non persigan finalidade de lucro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ámbito de actuación en el término municipal de Carballo",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Que o ámbito de actuación sexa o termo municipal de Carballo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sede social y actividad regular en el municipio, o empadronamiento o vecindad en el caso de particulares",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Que teñan a súa sede social no municipio e realicen as súas actividades regularmente no mesmo, ou no caso de particulares, empadroados ou con veciñanza no municipio.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener pendiente de justificar subvenciones del Concello del ejercicio anterior",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Non ter pendente de xustificar ningunha subvención ou axuda económica do Concello correspondente ao exercicio anterior.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber presentado la declaración responsable o solicitud de permiso antes de la fiesta y que no se haya denegado",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "de permiso acorde á normativa vixente, con anterioridade á celebración da festa, e non ter sido denegada a súa celebración.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de seguro de responsabilidad civil que cubra la actividad",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Dispoñer dun seguro de responsabilidade civil a nome da entidade ou agrupación de persoas organizadoras que cubra esta actividade.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las agrupaciones deben estar formadas por miembros empadronados o con vecindad en Carballo, detallar compromisos e importes por miembro y nombrar un representante único",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "deberá nomearse un representante ou apoderado único da agrupación, con poderes bastantes para cumprir as obrigas que, como beneficiario, corresponden á agrupación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Vinculación directa con el lugar de celebración de la fiesta",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "As entidades ou agrupacións deberán estar vinculadas directamente co lugar de celebración da festas, por ter o seu domicilio social nese lugar",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades abiertas a toda la ciudadanía, en espacios accesibles de uso público y con entrada libre y gratuita",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "As actividades deberán estar abertas a todos os cidadáns, realizarse en espazos accesibles e de uso público ou veciñal e ter entrada libre e gratuíta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las fiestas de la juventud, las privadas o particulares y las organizadas por entidades con ánimo de lucro",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 1,
+     "texto": "Exclúense desta convocatoria as chamadas festas da xuventude ou similares, as festas organizadas con motivo de conmemoracións ou celebracións particulares ou de orixe privado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La ayuda se calcula por días de fiesta con verbena o concierto de orquesta, grupo musical en directo o solista de renombre; se excluyen solistas, dúos y tríos de animación y DJ",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "verbena ou concerto na que actúe unha orquestra ou grupo musical en directo ou solista de consolidado renome e relevancia. Exclúense os solistas, dúos e os tríos de animación musical ou os Dj.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El presupuesto de gastos del programa debe superar el doble de la subvención",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "O presuposto dos gastos do programa presentado para a organización das festas deberá ser superior ao dobre do importe da subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Difundir la colaboración del Concello con su logotipo; material gráfico en gallego",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "No caso de que se realice, o material gráfico correspondente á publicidade da actividade (carteis, revistas,...) estará redactada en galego.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar lenguaje no sexista e inclusivo; se excluyen fiestas que usen la imagen de la mujer como reclamo",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "Excluiranse as solicitudes para festas que utilicen na súa actividade linguaxe sexista ou empreguen a imaxe da muller como reclamo",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Contratación de actividades musicales o culturales",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "Só se admitirán como gastos subvencionables os gastos derivados da contratación de actividades musicais ou culturais",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alquiler de infraestructuras",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "contratación de actividades musicais ou culturais, gastos de aluguer de infraestruturas, seguros, pagos de dereitos de autor",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Seguros",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "gastos de aluguer de infraestruturas, seguros, pagos de dereitos de autor, gastos de publicidade e pirotecnia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Derechos de autor",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "gastos de aluguer de infraestruturas, seguros, pagos de dereitos de autor, gastos de publicidade e pirotecnia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicidad",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "gastos de aluguer de infraestruturas, seguros, pagos de dereitos de autor, gastos de publicidade e pirotecnia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pirotecnia",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "gastos de aluguer de infraestruturas, seguros, pagos de dereitos de autor, gastos de publicidade e pirotecnia.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Contrataciones o subcontrataciones con personas o entidades vinculadas a la entidad solicitante",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 4,
+     "texto": "En nigún caso se poderán contratar ou subcontratar con persoas ou entidades vinculadas á entidade ou agrupación de persoas solicitantes da subvención",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo del Concello (Anexo 1) con datos de la entidad, representante, fiesta, lugar y días",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "As solicitudes presentaranse no modelo que a tal fin preparará o Concello de Carballo e no que deberá constar (Anexo 1):",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En agrupaciones, nombramiento de representante o apoderado único (Anexo 2)",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "Deberán nomear un representante ou apoderado único da agrupación (Anexo 2).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de realización del programa y memoria de la actividad realizada",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "Declaración da realización do programa de actividades obxecto da subvención e memoria da actividade realizada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentos que acrediten la realización (prensa, fotografías, carteles) y materiales de difusión con la colaboración del Concello",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "Documentos, escaneados ou fotocopiados en A4, que demostren a realización das actividades subvencionadas, como noticias de prensa, fotografías, tríptico ou cartel",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración detallada y clasificada de gastos e ingresos del programa",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "Declaración detallada e clasificada dos gastos subvencionables e ingresos correspondentes ao programa da actividade subvencionada",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas por un importe mínimo del doble de la subvención y relación clasificada",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "Facturas correspondentes as actividades do programa subvencionado por un importe mínimo do dobre da subvención concedida e relación clasificada das facturas presentadas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de otras subvenciones o ayudas para el mismo objeto",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "Declaración responsable detallada das subvencións ou axudas solicitadas ou concedidas doutras administración públicas ou entidades privadas para o mesmo obxecto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de la cuenta bancaria a nombre de la comisión",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "Certificación da conta bancaria a nome da Comisión (non será necesario achegar este documento se xa foi presentado anteriormente e non sufriu variación).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con AEAT, Seguridad Social y ATRIGA si se opone a la consulta de oficio",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 3,
+     "texto": "No caso de que as persoas interesadas se opoñan a esta consulta, deberán de indicalo no impreso correspondente e achegar o devandito documento.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Concello de Carballo; personas físicas o agrupaciones pueden usar el Registro General",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "As entidades que soliciten algunha subvención deberán presentar as súas solicitudes na sede electrónica do Concello de Carballo",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica para entidades; las personas físicas y agrupaciones pueden presentar en el Registro General",
+    "cita": {
+     "documento": 1520338,
+     "pagina": 2,
+     "texto": "no caso de persoas físicas ou agrupacións de persoas físicas ou xurídicas poden facelo no Rexistro Xeral do Concello de Carballo",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El importe se fija en 500 euros por cada día de fiesta con verbena o concierto en directo, con el límite del 50 % del presupuesto; no hay un importe máximo por beneficiario expreso.",
+   "Si las facturas presentadas no alcanzan el doble de la subvención, se paga la parte proporcional.",
+   "Procedimiento abreviado sin concurrencia competitiva (art. 19.2 de la Ley 9/2007 de Galicia): no hay criterios de valoración con puntos.",
+   "El documento está en gallego.",
+   "Dirigida a comisiones de fiestas locales; un promotor solo encajaría como proveedor contratado (orquestas, grupos en directo), no como solicitante."
+  ]
+ },
+ "citas": {
+  "verificadas": 44,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

@@ -1,0 +1,536 @@
+{
+ "version": 1,
+ "codigoBdns": "892465",
+ "generada": "2026-10-09T14:00:43.549Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1416160,
+   "nombre": "BASES REGULADORAS DE LA CONVOCATORIA DE SUBVENCIONES DE CARÁCTER ORDINARIO PARA LA ORGANIZACIÓN DE ACTIVIDADES CULTURALES EN LOS BARRIOS DE LEIOA DURANTE EL EJERCICIO 2026.pdf.PDF",
+   "paginas": 8,
+   "huella": "b38f3cb211e41bf8"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones ordinarias del Ayuntamiento de Leioa para actividades culturales en los barrios durante 2026.",
+   "Para comisiones de fiestas y asociaciones culturales con personalidad jurídica, sede en Leioa e inscritas en los registros de asociaciones.",
+   "Crédito total de 15.000 euros; la ayuda no puede superar el 40 % del presupuesto de la actividad.",
+   "Plazo de solicitud hasta el 30 de noviembre de 2026.",
+   "Solicitud por la sede electrónica del Ayuntamiento de Leioa."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales de las comisiones de fiestas y asociaciones culturales de Leioa en 2026, en días que no coincidan con las fiestas de cada barrio",
+   "cita": {
+    "documento": 1416160,
+    "pagina": 1,
+    "texto": "Deialdi honen xedea da Leioako udalerriko Festabatzordeek eta Kultura-elkarteek 2026ko ekitaldian egindako kultura jarduerak sustatzeko diru-laguntzak arautzea.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas jurídicas con sede social o establecimiento permanente en Leioa, inscritas en el Registro de Asociaciones municipal y en el del Gobierno Vasco",
+   "cita": {
+    "documento": 1416160,
+    "pagina": 1,
+    "texto": "nortasun juridikoa duen edozein pertsona, baldin eta egoitza soziala edo establezimendu iraunkorra Leioan badauka eta Leioako Udaleko Elkarteen Erregistroan eta Eusko Jaurlaritzako Elkarteen eta Erakundeen Erregistroan inskribatuta badago.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde la publicación en el Boletín Oficial de Bizkaia hasta el 30 de noviembre de 2026, para actividades realizadas en 2026",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Eskabideak aurkezteko epea 2026ko azaroaren 30ean amaituko da, Bizkaiko Aldizkari Ofizialean argitaratzen denetik.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-11-30",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Eskabideak aurkezteko epea 2026ko azaroaren 30ean amaituko da",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Por decreto de Alcaldía; notificación por correo electrónico en 10 días desde la resolución. No consta plazo máximo para resolver; sin resolución expresa se entiende denegada",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 5,
+     "texto": "Interesatuei jakinarazpena egiteko epea 10 egunekoa izango da, ebazpena egiten den egunetik aurrera.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Ejercicio 2026, en días que no coincidan con las fiestas de cada barrio",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "Jarduerak auzo bakoitzeko jaiegunekin bat ez datozen egunetan egingo dira",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Dos meses desde la finalización de la actividad, con memoria, balance de ingresos y gastos, facturas originales, declaración jurada y ejemplares de la publicidad",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 7,
+     "texto": "Justifikatzeko gehienezko epea bi hilabetekoa izango da, aktibitatea bukatzen denetik zenbatzen hasita.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 15000,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Eskatzaileen artean banatzeko gehienezko zenbatekoa 15.000 eurokoa izango da.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 40,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Eskatzaileen artean eman beharreko diru-laguntzek ezin dute jardueraren aurrekontu osoaren %40",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "El Ayuntamiento paga el 100 % de la subvención ordinaria a los beneficiarios de 2026 (no se indica el momento)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 7,
+     "texto": "Leioako Udalak, ohiko diru-laguntzen %100 ordainduko die 2026ko diru-laguntzen onuradun direnei.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones si la suma no supera el presupuesto presentado; si lo supera, se reduce esta ayuda",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 7,
+     "texto": "Diru-laguntza hauek deituta edo dei daitezkeen beste diru-laguntza batzuekin bateragarriak dira, betiere jasotako diru-laguntza guztien batuketak ez badu aurkeztutako aurrekontua gainditzen.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Tener personalidad jurídica",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "onuradun izan daiteke nortasun juridikoa duen edozein pertsona",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener sede social o establecimiento permanente en Leioa",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "baldin eta egoitza soziala edo establezimendu iraunkorra Leioan badauka",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar inscrita en el Registro de Asociaciones del Ayuntamiento de Leioa y en el Registro de Asociaciones y Entidades del Gobierno Vasco",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "Leioako Udaleko Elkarteen Erregistroan eta Eusko Jaurlaritzako Elkarteen eta Erakundeen Erregistroan inskribatuta badago.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La actividad debe ser de interés para el municipio de Leioa (impacto entre la población, proyección, imagen positiva)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "udal- interesekotzat hartuko da elkarte horrek diru- laguntzaren xede den jarduerarekin udalerriko biztanleen artean duen eta sortzen duen inpaktua",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "Ezin izango dira onuradun izan Dirulaguntzen Lege Orokorreko 13.2 artikuluan ezartzen diren debekuren bat duten entitateek.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No realizar actividades que discriminen por razón de sexo ni haber sido sancionada por ello",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "ezin izango da inolako laguntza edo dirulaguntzarik eman sexuaren ziozko bereizkeria eragiten duen jarduerarik egiteko",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las actividades deben hacerse en días que no coincidan con las fiestas de cada barrio",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "Jarduerak auzo bakoitzeko jaiegunekin bat ez datozen egunetan egingo dira",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber justificado las subvenciones municipales anteriores; si no, la solicitud se desestima",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Leioako Udalak aurretik emandako diru-laguntzen justifikazio dokumentalik aurkeztu ez duten pertsona edo entitateen eskabideak ez dira aintzat hartuko",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener los permisos necesarios y cumplir la normativa de espectáculos públicos (Ley vasca 10/2013)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 5,
+     "texto": "Aktibitate eta ikuskizun publikoei buruzko indarreko araudia bete (Eusko Legebiltzarraren abenduaren 23ko 10/2013 Legea",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicidad y carteles en las dos lenguas oficiales, citando el apoyo municipal y con comunicación inclusiva",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 6,
+     "texto": "EAEko bi hizkuntza ofizialetan idatzi behar direnak, Kultura Kirol eta Gazteria Atalaren babesa aipatu eta komunikazio inklusiboa bermatuko dute",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comunicar cualquier otra subvención pública o privada para el mismo fin",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 6,
+     "texto": "Helburu berbererako jaso den beste edozein diru-laguntza jakinarazi, publikoa ala pribatua, eta betiere, jasotako zenbatekoa adierazi.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos generados por la actividad, justificados con facturas originales hasta el importe concedido",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 6,
+     "texto": "Aktibitatearen eraginez sortutako gastuen faktura originalak, emandako zenbateko osoa bete arte.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Costes internos de administración y organización",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 7,
+     "texto": "Honako hauek ez dira egiaztagiritzat hartuko: o Administrazio, antolakuntza eta abarren barruko kostuak.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comidas de hermandad o similares",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 7,
+     "texto": "Anaitasun bazkari edo antzekoen kostuak.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Recibos (no se admiten como justificante)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 7,
+     "texto": "Anaitasun bazkari edo antzekoen kostuak. o Ordainagiriak.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Continuidad de la actividad a lo largo de los años",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Eskatzaileak garatutako aktibitatearen jarraipena urteetan zehar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Colaboración en la organización de programas municipales",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "urteetan zehar. Udal programak antolatzeko kolaborazioa.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Participación en programas y actividades municipales",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Udal programa eta aktibitateetan parte hartzea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Originalidad u oportunidad respecto a actividades similares con apoyo municipal",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 3,
+     "texto": "Aktibitate edo proiektuaren originaltasuna edo oportunitatea, Udalaren babespean egiten diren antzeko jarduerei erreparatuz.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Adecuación del proyecto a los objetivos de la solicitud",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Proiektua egokia izatea eskabidean azaltzen diren helburuetarako.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Relevancia del proyecto en el contexto de Leioa",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Proiektua garrantzitsua izatea Leioako testuinguruan.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Colectivo destinatario",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Leioako testuinguruan. Zein kolektibotarako den.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad técnica y económica",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Bideragarritasun tekniko eta ekonomikoa, aktibitatea garatzeko eskatzen diren baliabideei eta Udalak horiek erabilgarri izateari erreparatuz.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Costes de la actividad y recursos económicos propios del solicitante",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Garatutako aktibitatearen kostuak. Eskatzaileak berak dituen baliabide ekonomikoak.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Dificultad para acceder a otras vías de financiación",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Beste finantzazio bide batzuetara jotzeko zailtasuna edo beste erakunde batzuetatik jasotako finantzazioa nahikoa ez izatea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Esfuerzo organizativo (recursos humanos, estructura y medios económicos)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Antolatzeko ahalegina, aktibitatea garatzeko behar diren giza baliabideen, egituraren edota baliabide ekonomikoen ikuspuntutik.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Uso de las dos lenguas oficiales de la CAV",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "Aktibitatea garatzea EAEn ofizialak diren bi hizkuntzak erabiliz.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Incorporación de la perspectiva de género",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1416160,
+     "pagina": 4,
+     "texto": "bi hizkuntzak erabiliz. Proiektuan genero ikuspegian txertatzea.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud normalizada de subvención (A1. Subv1)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "Diru-laguntza normalizatuaren eskaera (A1. Subv1).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programa detallado: descripción, público, objetivos, interés para Leioa, lugares y fechas",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "Jarduera edo ekitaldiaren programa zehaztua, gutxienez, honako hauek barne hartuz: proiektuaren deskribapena, jardueraren publikoa zein den, helburuak",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto de las actividades para 2026",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "lekuak eta datak zehaztu behar dira. 2026 urterako ekintzen aurrekontua.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de terceros (si hay cambios respecto al año anterior)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "agiri hauek aurkeztu beharko aldaketarik izan ezean: Hirugarrenen fitxa.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Copia de los estatutos de la entidad (si hay cambios)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "Hirugarrenen fitxa. Entitate eskatzailearen estatutuen kopia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Composición de la junta directiva (si hay cambios)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "estatutuen kopia. Zuzendaritza batzordearen osaera.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Balance de ingresos y gastos del año anterior (si hay cambios)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "Eskabidea aurkeztu eta aurreko urteko diru-sarrera eta gastuen balantzea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de otras subvenciones solicitadas u obtenidas para la misma actividad, con entidades e importes",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 2,
+     "texto": "aipatuz zein erakunde edo erakundeei eskatu zaien eta eskatutako, edo hala badagokio, jasotako zenbateko zehatzak.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de no estar incursa en prohibiciones",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "Pertsonek edo entitateek onuradun izateko inolako debekurik ez dutela justifikatzeko, ardurapeko adierazpen bidez egin dezakete.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Leioa",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "kultur entitateek Leioako Udalaren egoitza electonikoaren bidez egin beharko dituzte bai eskaera bai eskatzen zaizkien gainerako izapideak",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://udaletxean.leioa.eus/",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "egin beharko dituzte bai eskaera bai eskatzen zaizkien gainerako izapideak: https://udaletxean.leioa.eus/",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Relación electrónica obligatoria para personas jurídicas (Ley 39/2015)",
+    "cita": {
+     "documento": 1416160,
+     "pagina": 1,
+     "texto": "pertsona juridokoek, besteak beste kultur-erakundeek, herri administrazioekin harreman eleltronikoak izan behar dituztela ezartzen du.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento está solo en euskera.",
+   "El artículo 2 exige además «kirol arloko jardueraren bat» (una actividad deportiva), probable errata copiada de otra convocatoria, ya que el objeto son actividades culturales.",
+   "Los criterios de valoración no tienen puntuación; el Departamento de Cultura y Juventud valora cada proyecto en su conjunto.",
+   "No consta importe máximo por solicitud.",
+   "Dirigida a comisiones de fiestas y asociaciones culturales de los barrios de Leioa; no sirve a un promotor de fuera ni con forma de empresa."
+  ]
+ },
+ "citas": {
+  "verificadas": 51,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

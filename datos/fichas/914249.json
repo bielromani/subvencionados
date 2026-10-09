@@ -1,0 +1,585 @@
+{
+ "version": 1,
+ "codigoBdns": "914249",
+ "generada": "2026-10-09T14:01:08.265Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1481335,
+   "nombre": "DLD_KEK_2026_-6000_KTSV2_1781519912617_20260615_123841.pdf",
+   "paginas": 28,
+   "huella": "8d475c1f7372ee39"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Diputación Foral de Bizkaia para actividades culturales de ayuntamientos en 2026 (folclore, música, danza, teatro, artes visuales y promoción literaria).",
+   "Solo para ayuntamientos de Bizkaia de menos de 6.000 habitantes y sus organismos autónomos locales.",
+   "Hasta el 70 % del presupuesto del proyecto y como máximo 24.000 euros; crédito total de 350.000 euros.",
+   "Plazo: quince días hábiles desde el día siguiente a la publicación del decreto foral en el Boletín Oficial de Bizkaia.",
+   "Solicitud electrónica en la sede de la Diputación; justificación hasta el 29 de marzo de 2027."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales de ayuntamientos de menos de 6.000 habitantes relacionadas con la promoción y difusión cultural en folclore, artes escénicas (música, danza y teatro), artes visuales y audiovisuales y promoción literaria",
+   "cita": {
+    "documento": 1481335,
+    "pagina": 6,
+    "texto": "directamente con la promoción y difusión cultural",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos de Bizkaia y sus organismos autónomos locales de municipios con menos de 6.000 habitantes",
+   "cita": {
+    "documento": 1481335,
+    "pagina": 8,
+    "texto": "ayuntamientos de Bizkaia, así como los organismos",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles desde el día siguiente a la publicación del decreto foral en el Boletín Oficial de Bizkaia",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 11,
+     "texto": "quince (15) días hábiles contados a partir del día",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el fin del plazo de solicitudes; sin resolución expresa, se entiende desestimada. Se publica en el Boletín Oficial de Bizkaia",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 19,
+     "texto": "resolución de las solicitudes será de seis (6) meses,",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Ejercicio 2026",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 21,
+     "texto": "1. Realizar la actividad en el ejercicio 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 29 de marzo de 2027 (incluido) en la sede electrónica: memoria de actuación, memoria económica con certificado de Secretaría-Intervención y muestra de la documentación gráfica",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 22,
+     "texto": "documentación que a continuación se relaciona hasta el 29 de marzo del año 2027 (incluido):",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 350000,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 27,
+     "texto": "Trescientos cincuenta mil (350.000,00) euros con",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 24000,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 17,
+     "texto": "correspondientes, y nunca superior a 24.000,00",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 70,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 17,
+     "texto": "hasta el 70 % del presupuesto total del proyecto,",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Pago tras la resolución: si no se renuncia en diez días hábiles desde su publicación, se entiende aceptada y se tramita el abono sin exigir garantías",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 20,
+     "texto": "de Acción Cultural procederá a tramitar su abono",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas para la misma finalidad, salvo las de la propia Diputación Foral de Bizkaia, sin superar el coste de la actividad",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 19,
+     "texto": "serán compatibles con otras subvenciones, ayudas,",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser ayuntamiento u organismo autónomo local de un municipio de Bizkaia con menos de 6.000 habitantes según el último padrón",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "cuenten con una población menor a 6.000",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gestionar programas de promoción y difusión cultural en su propio ámbito",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 9,
+     "texto": "de mayo, reúnan el requisito de gestionar programas de promoción y difusión cultural en su propio ámbito de actuación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las causas del artículo 12 de la Norma Foral 5/2005",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 9,
+     "texto": "solicitud, siempre que, no estando incursos en las",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una sola solicitud por entidad con un único proyecto",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "3. Cada entidad podrá presentar una sola solicitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto depurado del proyecto de al menos 2.400 euros",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "sea inferior a dos mil cuatrocientos (2.400,00)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 30 puntos en la valoración",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 17,
+     "texto": "mínimo de 30 puntos, a juicio del tribunal",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones tributarias y con la Seguridad Social y no deber reintegros",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 18,
+     "texto": "solicitantes se encuentran al corriente de sus",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber sido sancionada por discriminación por razón de sexo o de personas LGTBI",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 9,
+     "texto": "a) Que hayan sido objeto de sanción administrativa,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer, en su caso, de planes de igualdad y protocolos contra el acoso sexual",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 9,
+     "texto": "disponer de planes de igualdad y protocolos y/o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidos: viajes de estudios, excursiones y visitas no culturales",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 6,
+     "texto": "a) Viajes de estudios, excursiones, así como viajes y",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidos: ferias agrícolas y de artesanía, concursos y actividades gastronómicas",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 6,
+     "texto": "b) Ferias agrícolas y de artesanía, concursos y",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidas: actividades de ocio, deportivas, sociales y sanitarias",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 6,
+     "texto": "c) Actividades de ocio, esparcimiento y tiempo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidas: actividades de promoción turística del municipio",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "d) Actividades de promoción turística del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidas: actividades destinadas específicamente a la infancia o a la tercera edad",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "e) Actividades destinadas específicamente a la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluida: producción o edición de discos, libros, dvd o similares",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "f) La producción o edición de discos, libros, dvd o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidos: proyectos de patrimonio cultural material o inmaterial",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "h) Proyectos y actividades relacionadas con el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar el apoyo de la Diputación Foral de Bizkaia con su imagen corporativa en materiales y comparecencias",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 24,
+     "texto": "a la concesión, deberá hacerse constar el apoyo de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar euskera y castellano en la publicidad y difusión, y el euskera en las intervenciones públicas",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 24,
+     "texto": "f) Utilizar las dos lenguas oficiales en la Comunidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditar un plan de igualdad de mujeres y hombres mediante declaración responsable con la justificación",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 25,
+     "texto": "j) Acreditar el cumplimiento de la obligación de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Subcontratación máxima del 90 % del importe de la actividad",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 26,
+     "texto": "admisible será del 90 % del importe de la actividad",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos que respondan a la naturaleza de la actividad, estrictamente necesarios, realizados en plazo y a valor de mercado",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 7,
+     "texto": "indubitada a la naturaleza de la actividad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo transacciones acreditadas con facturas a nombre de la entidad solicitante",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "constatada con facturas a nombre de la entidad",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "IVA (los importes deben figurar sin IVA)",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "a) El IVA. Tanto en el presupuesto que contiene la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de gestión de la estructura de la entidad: personal, mantenimiento y alquiler de locales",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "b) Los gastos de gestión de la estructura de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos abonados directamente por otras entidades",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "los que vayan a ser abonados directamente por",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos del funcionamiento del área municipal de cultura (se deduce un 25 % si hay contrato integral de servicios culturales)",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "deducirá un 25 % del presupuesto de costo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los excluidos por el artículo 29 de la Norma Foral 5/2005",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 8,
+     "texto": "c) En general, los que resultan expresamente",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Disciplina cultural del proyecto (folclore 15, música contemporánea/pop/jazz 15, música clásica y coral, danza y teatro 25, artes visuales y literatura 25)",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 14,
+     "texto": "proyecto: hasta 25 puntos. La valoración de este",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Descripción de objetivos y planificación de actividades con calendario",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 15,
+     "texto": "calendario de ejecución de las mismas: hasta 8",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Ámbito territorial (equilibrio territorial de la oferta cultural según comarca)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 15,
+     "texto": "oferta cultural: hasta 10 puntos. La distribución de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Municipio con Plan Estratégico Comarcal o en Zona de Actuación Prioritaria",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 15,
+     "texto": "Actuación Prioritaria (ZAP): 5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de habitantes del municipio (más puntos cuanto menor)",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 15,
+     "texto": "e) Número de habitantes del municipio: hasta 30",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Porcentaje del gasto en cultura del presupuesto municipal ponderado por habitantes",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 16,
+     "texto": "haztatua: 15 puntu, gehienez. 15 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Objetivos y actuaciones para promover la igualdad entre mujeres y hombres",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 16,
+     "texto": "mujeres y hombres: hasta 3 puntos. Los puntos se",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Proyecto redactado con perspectiva de género y/o lenguaje inclusivo",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1481335,
+     "pagina": 17,
+     "texto": "utilización de lenguaje inclusivo: 4 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Proyecto cultural detallado con memoria explicativa que recoja los criterios de la base 10.1 a), b), c) y g)",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 11,
+     "texto": "a) Proyecto cultural detallado que incluya una",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto detallado de cada actividad sin IVA",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 11,
+     "texto": "b) Presupuesto detallado de cada una de las",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de Secretaría y/o Intervención con la población del municipio",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 11,
+     "texto": "que se haga constar la población del municipio a la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de Secretaría y/o Intervención con el presupuesto municipal total y la partida de cultura de 2026",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 11,
+     "texto": "conste el presupuesto total del mismo y la partida",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En su caso, acreditación de la representación",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 12,
+     "texto": "e) En su caso, se deberá acreditar la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En su caso, certificado sobre Plan Estratégico Comarcal o Zona de Actuación Prioritaria",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 12,
+     "texto": "f) En su caso, certificado expedido por la secretaría",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de domiciliación bancaria si se opone a la consulta de oficio",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 12,
+     "texto": "por sus propios medios, deberá aportarse ficha de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con Hacienda y Seguridad Social si se opone a la consulta de oficio",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 12,
+     "texto": "b) Certificado de estar al corriente de las",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica de la Diputación Foral de Bizkaia",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 10,
+     "texto": "sede electrónica de la Diputación Foral de Bizkaia:",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.ebizkaia.eus/es/inicio",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 10,
+     "texto": "https://www.ebizkaia.eus/es/inicio",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria (art. 14.2 a de la Ley 39/2015)",
+    "cita": {
+     "documento": 1481335,
+     "pagina": 10,
+     "texto": "subvención deberán presentarse a través de la",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo pueden pedirla ayuntamientos de Bizkaia de menos de 6.000 habitantes y sus organismos autónomos; un promotor no puede solicitarla, aunque puede ser contratado por esos ayuntamientos para su programación.",
+   "En el criterio de disciplina, la música clásica y coral puntúa 25 puntos y el jazz y otras músicas populares 15.",
+   "El documento es bilingüe (euskera y castellano a dos columnas); las citas son fragmentos cortos de la columna en castellano. La cita del criterio de gasto en cultura mezcla euskera y castellano porque la cifra solo aparece así de seguida.",
+   "No se da fecha exacta de inicio ni de fin de solicitudes: dependen de la publicación del decreto foral en el Boletín Oficial de Bizkaia.",
+   "El porcentaje aplicado sobre el presupuesto sirve de referencia para el importe definitivo; si el coste final es menor, hay reintegro proporcional."
+  ]
+ },
+ "citas": {
+  "verificadas": 57,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

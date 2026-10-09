@@ -1,0 +1,431 @@
+{
+ "version": 1,
+ "codigoBdns": "923862",
+ "generada": "2026-10-09T14:00:51.693Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1506296,
+   "nombre": "ANEXOS_ SUVBENCIONES CULTURALES 2026.pdf",
+   "paginas": 23,
+   "huella": "b5a6e1dfe9a2dc68"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Grado (Asturias) para actividades culturales de asociaciones sin ánimo de lucro durante 2026, incluida la música.",
+   "Para asociaciones con personalidad jurídica propia inscritas en el Registro de Asociaciones del Ayuntamiento que actúen en el concejo de Grado.",
+   "Crédito total de 18.000 euros, repartido en proporción a la puntuación obtenida.",
+   "Plazo: 20 días naturales a contar desde el 1 de septiembre de 2026, por medios electrónicos.",
+   "Justificación hasta el 15 de diciembre de 2026; pago único tras justificar."
+  ],
+  "objeto": {
+   "valor": "Fomento de actividades culturales de asociaciones sin ánimo de lucro en 2026: actividades en cualquier modalidad artística (artes plásticas, literarias, teatro, música y artes escénicas) vinculadas a Grado, programas de promoción cultural y actividades sobre etnografía, historia y tradiciones del concejo",
+   "cita": {
+    "documento": 1506296,
+    "pagina": 1,
+    "texto": "destinadas al fomento de actividades culturales realizadas por asociaciones sin ánimo de lucro durante el año 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones con personalidad jurídica propia que cumplan los requisitos del artículo 11 de la Ley 38/2003 y los específicos de la convocatoria",
+   "cita": {
+    "documento": 1506296,
+    "pagina": 2,
+    "texto": "Podrán ser beneficiarios de las subvenciones reguladas en la presente convocatoria las asociaciones con personalidad jurídica propia",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días naturales a contar desde el 1 de septiembre de 2026, por medios electrónicos",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "El plazo de presentación de las solicitudes será de 20 días naturales a contar desde el 1 de septiembre de 2026",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-09-01",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "El plazo de presentación de las solicitudes será de 20 días naturales a contar desde el 1 de septiembre de 2026",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses como máximo desde la publicación del extracto en el BOPA; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 7,
+     "texto": "El plazo máximo para resolver y notificar la resolución del procedimiento no podrá exceder de 3 meses.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades realizadas durante el año 2026",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 1,
+     "texto": "actividades culturales realizadas por asociaciones sin ánimo de lucro durante el año 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 15 de diciembre de 2026, con cuenta justificativa (Anexo II) acompañada de facturas o documentos de gasto originales",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 8,
+     "texto": "El plazo de justificación de la subvención concedida se establece en el 15 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 18000,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 1,
+     "texto": "municipal 07.3321.48100, y asciende a la cuantía máxima de 18.000,00 €.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago único tras acreditar la justificación de los gastos",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 8,
+     "texto": "Acreditada la justificación de los gastos subvencionables se procederá al abono de la ayuda en un único pago.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones, ayudas o ingresos para la misma finalidad sin superar el coste total del proyecto",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 8,
+     "texto": "La subvención objeto de esta convocatoria es compatible con otras subvenciones, ayudas ingresos o recursos para la misma finalidad",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser asociación con personalidad jurídica propia sin ánimo de lucro",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "Podrán ser beneficiarios de las subvenciones reguladas en la presente convocatoria las asociaciones con personalidad jurídica propia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desarrollar actividades culturales en el término municipal de Grado",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "- Que desarrollen actividades culturales en el término municipal de Grado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar legalmente constituida y dada de alta en el Registro de Asociaciones del Ayuntamiento de Grado",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "- Que estén legalmente constituidas y dadas de alta en el Registro de Asociaciones del Ayuntamiento de Grado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Realizar en el concejo de Grado los proyectos o actividades subvencionados",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "- Realicen los proyectos o actividades en el concejo de Grado que motiven la concesión de la subvención.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "- Estén al corriente en el pago de sus obligaciones tributarias y frente a la Seguridad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las circunstancias del artículo 13 de la Ley 38/2003",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "No podrán obtener la condición de beneficiario las personas o entidades en quienes concurran alguna de las circunstancias contempladas en el artículo 13 de la Ley 38/2003.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mantener las condiciones desde la solicitud hasta la liquidación de la ayuda",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "Las condiciones exigidas para ser beneficiario deberán darse en el momento de la presentación de la solicitud y mantenerse a lo largo de todo el proceso",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidos festejos, fiestas patronales y actividades lúdicas y vecinales (viajes, festivales o jornadas gastronómicas, deportes)",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "festejos, fiestas patronales, ni actividades lúdicas y vecinales (tipo viajes colectivos, festivales o jornadas gastronómicas, actividades deportivas y similares).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los proyectos no culturales o sin contenidos culturales mínimos quedan excluidos",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 5,
+     "texto": "Si el proyecto presentado no es cultural o no alcanza unos contenidos mínimos de actividades culturales en el total del proyecto, quedará excluido de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comunicar otras ayudas para la misma finalidad en los quince días siguientes a su concesión",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 8,
+     "texto": "privados, nacionales e internacionales, dentro de los quince días siguientes a su concesión y en todo caso, con anterioridad a la justificación de la aplicación dada a",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Proyecto presentado: importancia y contenido cultural, elaboración, concreción, desarrollo y destinatarios (15 %)",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 5,
+     "texto": "Criterio 1/ 15% Proyecto presentado. Se valorará la importancia y contenido cultural",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Ámbito territorial, incidencia y repercusión: local 2, concejo 4, regional 6, nacional 8, internacional 10 puntos (10 %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 5,
+     "texto": "Criterio 2/ 10% ámbito territorial de intervención, incidencia y repercusión de las actividades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de socios: de 1 punto (0 a 9) a 5 puntos (más de 250) (5 %)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 5,
+     "texto": "Criterio 3/ 5% Número de socios. Solo se valorarán aquellas que se indiquen",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria: años de existencia de la entidad, de 0 a 10 puntos (10 %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 6,
+     "texto": "Criterio 4/ 10% Trayectoria de la Asociación. Años de existencia de la entidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Repercusión en medios de comunicación en 2025 y 2026: cartelería y redes, prensa, TV y radio (10 %)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 6,
+     "texto": "Criterio 5/ 10% Repercusión en los medios de comunicación de las actividades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de actividades culturales del proyecto, reparto proporcional (15 %)",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 6,
+     "texto": "Criterio 6/ 15% número de actividades. Esta puntuación se repartirá",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Organización conjunta de actividades con el Ayuntamiento de Grado en 2025 y 2026 (15 %)",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 6,
+     "texto": "Criterio 7/ 15% Organización conjunta de actividades con el Ayuntamiento de Grado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Búsqueda de otras fuentes de financiación: patrocinio de bancos, empresas o fundaciones 2, captación de recursos 1, subvenciones del Principado y otros 2 puntos (5 %)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 7,
+     "texto": "Criterio 8/ 5% Búsqueda y consecución de otras fuentes de financiación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Grado de cumplimiento del proyecto en la convocatoria anterior: menos del 50 % 0, más del 50 % 7, 100 % 15 puntos (15 %)",
+    "puntosMaximos": 15,
+    "cita": {
+     "documento": 1506296,
+     "pagina": 7,
+     "texto": "Criterio 9/ 15% Grado de cumplimiento del proyecto en la anterior convocatoria de estas subvenciones:",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud según modelo (Anexo I)",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "A la solicitud, según modelo (Anexo I), se acompañará obligatoriamente la siguiente documentación:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Modelo Anexo III de justificación de criterios de valoración",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "a) Modelo Anexo III de justificación de criterios de valoración, debidamente cumplimentado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Original o fotocopia de los estatutos o acta de constitución",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "b) Original o fotocopia de los estatutos o acta de constitución.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de la inscripción en el Registro de Asociaciones del Ayuntamiento de Grado",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "c) Acreditación de la inscripción en el Registros de Asociaciones del Ayuntamiento de Grado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Número de Identificación Fiscal",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "d) Número de Identificación Fiscal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de acreedor (Anexo V) sellada por la entidad financiera, si no figura como acreedor o han cambiado los datos bancarios",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "e) Ficha de acreedor (Anexo V) sellada y firmada por la entidad financiera.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con Hacienda y Seguridad Social si no se autoriza la consulta al Ayuntamiento",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 3,
+     "texto": "f) Certificados de hallarse al corriente de en el cumplimiento de las obligaciones tributarias y con la Seguridad Social en caso de NO haber autorizado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha técnica de la asociación (Anexo IV), salvo si ya se aportó y no hay cambios",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 21,
+     "texto": "ANEXO IV (No será necesaria su presentación si ya se aportó en anteriores convocatorias y no ha habido variación en los datos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Por medios electrónicos",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "septiembre de 2026 y las solicitudes deberán presentarse por medios electrónicos de conformidad con lo previsto en el artículo 14 de la Ley 39/2015",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria",
+    "cita": {
+     "documento": 1506296,
+     "pagina": 2,
+     "texto": "las solicitudes deberán presentarse por medios electrónicos",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "La cuantía de cada subvención se calcula en proporción a la puntuación obtenida; no hay importe máximo por beneficiario ni porcentaje máximo del coste.",
+   "Los criterios se ponderan en porcentajes (suman 100 %); en puntosMaximos figura ese peso, cada criterio tiene además su propio baremo interno.",
+   "La fecha de fin de presentación no está escrita: son 20 días naturales a contar desde el 1 de septiembre de 2026.",
+   "La convocatoria no detalla gastos subvencionables ni no subvencionables; remite a las Bases Generales Reguladoras del Ayuntamiento de Grado (BOPA nº 20 de 31 de enero de 2023), que no se incluyen.",
+   "Solo para asociaciones del concejo de Grado (Asturias) inscritas en su registro municipal; un promotor solo encaja si es una asociación cultural local, aunque la música está entre las modalidades subvencionables.",
+   "El documento incluye los anexos (solicitud, cuenta justificativa, justificación de criterios, ficha técnica y ficha de terceros)."
+  ]
+ },
+ "citas": {
+  "verificadas": 39,
+  "revisar": 0,
+  "noConsta": 5
+ }
+}

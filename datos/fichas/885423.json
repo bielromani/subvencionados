@@ -1,0 +1,369 @@
+{
+ "version": 1,
+ "codigoBdns": "885423",
+ "generada": "2026-10-09T14:01:24.583Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1451915,
+   "nombre": "C-Bases CnC 26 _20260205_122704.pdf",
+   "paginas": 25,
+   "huella": "1408b6cbeaaf0680"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Programa Cultura en el Camino de la Agadic (Xunta de Galicia): ayudas para programar artes escénicas y musicales profesionales en ayuntamientos gallegos por los que pasan los Caminos de Santiago.",
+   "Para ayuntamientos del Camino de Santiago; deben contratar a empresas profesionales con sede en Galicia.",
+   "Crédito de 250.000 euros; cuantía fija de 2.500 euros (hasta 20.000 habitantes) o 3.500 euros (más de 20.000 habitantes), por orden de entrada.",
+   "Programación entre el 15 de junio y el 31 de agosto de 2026; justificación hasta el 10 de septiembre de 2026.",
+   "Solicitud electrónica en la sede de la Xunta durante un mes, empezando 5 días hábiles después de la publicación en el DOG."
+  ],
+  "objeto": {
+   "valor": "Programaciones culturales de artes escénicas y musicales profesionales (teatro, música, danza, nuevo circo y magia) en ayuntamientos gallegos del Camino de Santiago entre el 15 de junio y el 31 de agosto de 2026",
+   "cita": {
+    "documento": 1451915,
+    "pagina": 5,
+    "texto": "Estas ayudas tienen como finalidad el fomento de las artes escénicas y musicales de carácter\nprofesional, en particular de teatro, música, danza, nuevo circo y magia",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos de Galicia por los que discurren los Caminos de Santiago reconocidos por la Ley 5/2016 (o con acuerdo de inicio de su tramitación), individualmente o agrupados",
+   "cita": {
+    "documento": 1451915,
+    "pagina": 6,
+    "texto": "Podrán ser entidades beneficiarias de estas ayudas los ayuntamientos de la Comunidad Autónoma\nde Galicia, por los que discurren los diferentes Caminos de Santiago",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes, que empieza a los 5 días hábiles desde el día siguiente a la publicación de la convocatoria en el DOG (inicio a las 9:00 h, fin a las 14:00 h)",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 9,
+     "texto": "El plazo para la presentación de las solicitudes será de un mes y se iniciará a los 5 días hábiles\ncontados desde el siguiente al de la publicación de la convocatoria en el Diario Oficial de Galicia.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Quince días desde la propuesta y, como máximo, cinco meses desde el día siguiente a la publicación en el DOG; sin resolución, desestimada por silencio",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 15,
+     "texto": "resolución expresa en el plazo de quince días desde la fecha de elevación de la propuesta de\nresolución y en el plazo de cinco meses contados desde el día siguiente al de la publicación",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Entre el 15 de junio y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 8,
+     "texto": "1. deberá desarrollarse entre el 15 de junio y el 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa mediante certificación de la secretaría municipal, hasta el 10 de septiembre de 2026",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 18,
+     "texto": "El plazo máximo de justificación de la subvención concedida finalizará el 10 de septiembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 250000,
+    "cita": {
+     "documento": 1451915,
+     "pagina": 7,
+     "texto": "El crédito global destinado a la financiación de estas ayudas es de 250.000 euros de la aplicación\npresupuestaria 13.A1.432B.760.0",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 3500,
+    "cita": {
+     "documento": 1451915,
+     "pagina": 7,
+     "texto": "los ayuntamientos de más de 20.000 habitantes, recibirán una cuantía global fija de 3.500 euros para\nla totalidad de la programación",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 50,
+    "cita": {
+     "documento": 1451915,
+     "pagina": 7,
+     "texto": "recibirán una cuantía global fija de 2.500 euros para\nla totalidad de la programación, que corresponderá al 50% del caché de cada una de las actividades",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Tras la resolución definitiva y una vez recibida la documentación justificativa",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 19,
+     "texto": "El pago de las ayudas se hará efectivo a partir de la fecha de la resolución definitiva de concesión\ny se realizará siempre y cuando sea recibida la documentación justificativa",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas para el mismo proyecto, salvo las de la Consellería de Cultura, Lengua y Juventud; el total no puede superar el 100 % del coste",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 5,
+     "texto": "nacionales, de la Unión Europea o de organismos internacionales pero incompatibles con cualquier\notra concedida por la Consellería de Cultura, Lengua y Juventud.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ayuntamiento gallego por el que discurra un Camino de Santiago reconocido por la Ley 5/2016 o con acuerdo de inicio de tramitación",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 6,
+     "texto": "reconocidos por la Ley 5/2016,\nde 4 de mayo, de Patrimonio Cultural y delimitados por el correspondiente Decreto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber remitido al Consejo de Cuentas de Galicia las últimas cuentas generales",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 6,
+     "texto": "deberán haber\ncumplido el deber de remisión al Consejo de Cuentas de Galicia de las últimas cuentas generales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13 de la Ley 38/2003 ni del artículo 10 de la Ley 9/2007",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 6,
+     "texto": "No podrán obtener la condición de beneficiarias de estas subvenciones las entidades en que\nconcurran alguna de las circunstancias o prohibiciones indicadas en el artículo 13",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programación entre el 15 de junio y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 8,
+     "texto": "1. deberá desarrollarse entre el 15 de junio y el 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mínimo dos contrataciones con presupuesto total superior a 5.000 euros (IVA incluido) en ayuntamientos de hasta 20.000 habitantes o 8.750 euros en los de más",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 8,
+     "texto": "deberá contener como mínimo dos contrataciones de teatro, danza, música, circo o magia con\n       un presupuesto total superior a 5.000 euros (IVA incluido)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos dos actuaciones de dos de las cinco disciplinas (teatro, circo, danza, música y magia)",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 16,
+     "texto": "Las programaciones deberán recoger un mínimo de dos actuaciones y deberán contemplar dos de las\ncinco disciplinas ofertadas (teatro, circo, danza, música y magia).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contratar espectáculos de empresas profesionales con sede o establecimiento permanente en Galicia; quedan excluidas las asociaciones culturales",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 16,
+     "texto": "producidos y distribuidos por empresas dedicadas profesionalmente a las artes escénicas\no musicales con sede, domicilio social o establecimiento permanente en la Comunidad Autónoma de\nGalicia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programar a través de la plataforma www.galescena.gal y comunicar las actividades contratadas en 10 días naturales desde la adjudicación",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 16,
+     "texto": "dispondrán\nde un plazo no superior a 10 días naturales para comunicar, a través de la sede electrónica, las\nactividades contratadas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Formalizar contrato de actuación artística y abonar el 100 % del caché a las compañías o grupos",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 16,
+     "texto": "Abonar a las compañías o grupos participantes en la programación 100% del caché o/el imponerte\nestipulado en el contrato.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Asumir los gastos de organización, coordinación, difusión y derechos de autor",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 16,
+     "texto": "Asumir los gastos derivados de la organización puntual de cada actividad, de la coordinación y\ngestión del ciclo de actuaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Remitir datos de público y taquilla en galescena.gal en cinco días hábiles tras cada actuación",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 17,
+     "texto": "Remitir la información sobre públicos y recaudación de la taquilla en formato electrónico a través de\nla página de la agencia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicitar la financiación de la Xunta/Agadic y usar el logotipo oficial de la Xunta",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 17,
+     "texto": "debe hacerse mención expresa de la colaboración de la Xunta de\nGalicia a través de la Agencia Gallega de las Industrias Culturales",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Cachés de las compañías o grupos de la programación",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 8,
+     "texto": "Se consideran gastos subvencionables aquellos que, de manera indudable, correspondan a los\ncachés de las compañías/grupos que configuran la programación.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Tasas, tributos o impuestos, salvo el IVA no recuperable",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 8,
+     "texto": "Los gastos derivados de cualquier tipo de tasa, tributo o impuesto, excepto el impuesto sobre el valor\nañadido no recuperable.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Intereses deudores, recargos, sanciones y gastos judiciales",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 9,
+     "texto": "Los gastos de intereses deudores en cuentas bancarias, intereses, recargos y sanciones\nadministrativos y penitenciarios, y los gastos de los procedimientos judiciales.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo normalizado (anexo II)",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 9,
+     "texto": "Las solicitudes se presentarán obligatoriamente por medios electrónicos a través del formulario\nnormalizado (anexo II)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentación que acredite la representación de quien firma la solicitud",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 10,
+     "texto": "1.1. Documentación que acredite suficientemente la representación de quien firma la solicitud.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación de la remisión al Consejo de Cuentas de las cuentas generales del último ejercicio",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 10,
+     "texto": "Acreditación del cumplimiento del deber de remisión al Consejo de Cuentas de las cuentas\ngenerales del último ejercicio.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificación de la secretaría con el acuerdo del ayuntamiento por el que se solicita la subvención",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 10,
+     "texto": "Certificación emitida y firmada por el secretario o secretaria de la entidad local solicitante, en la\nque se haga constar el acuerdo del ayuntamiento",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentos de consulta automática (NIF, certificados tributarios y de Seguridad Social) solo si la entidad se opone a la consulta",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 11,
+     "texto": "En caso de que las entidades interesadas se opongan a la consulta, deberán indicarlo en el recuadro\ncorrespondiente habilitado en el formulario correspondiente y aportar los documentos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Obligatoriamente por medios electrónicos, mediante el formulario normalizado de la sede electrónica de la Xunta de Galicia",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 9,
+     "texto": "normalizado (anexo II) disponible en la sede electrónica de la Xunta de Galicia, https://sede.xunta.gal.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sede.xunta.gal",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 9,
+     "texto": "normalizado (anexo II) disponible en la sede electrónica de la Xunta de Galicia, https://sede.xunta.gal.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria; se admite cualquier sistema de identificación y firma de la sede, incluido Chave365",
+    "cita": {
+     "documento": 1451915,
+     "pagina": 9,
+     "texto": "podrá emplearse cualquier de los mecanismos de identificación y\nfirma admitidos por la sede electrónica de la Xunta de Galicia, incluido el sistema de usuario y clave\nChave365",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Solo pueden pedirla ayuntamientos; para un promotor o compañía interesa como vía de contratación: los ayuntamientos deben contratar a empresas profesionales con sede o establecimiento permanente en Galicia (no asociaciones), a través de la plataforma galescena.gal.",
+   "Concurrencia no competitiva: se concede por orden cronológico de entrada del expediente completo hasta agotar el crédito; no hay criterios de valoración.",
+   "Cuantía fija: 2.500 euros (50 % del caché de cada actividad) en ayuntamientos de hasta 20.000 habitantes y 3.500 euros (40 % del caché) en los de más de 20.000.",
+   "Solo se subvencionan los cachés; el ayuntamiento asume organización, difusión y derechos de autor.",
+   "Se considera incumplido el objetivo si no se justifica al menos el 60 % de los costes previstos."
+  ]
+ },
+ "citas": {
+  "verificadas": 34,
+  "revisar": 0,
+  "noConsta": 3
+ }
+}

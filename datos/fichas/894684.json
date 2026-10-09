@@ -1,0 +1,385 @@
+{
+ "version": 1,
+ "codigoBdns": "894684",
+ "generada": "2026-10-09T14:01:16.158Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1422038,
+   "nombre": "A Creación Musical 2026 BASES firmado.pdf",
+   "paginas": 12,
+   "huella": "af5308447d09e2a2"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas de la Universidad de Granada a proyectos de creación musical o sonora (incluidos ópera y zarzuela) para el curso 2026-2027.",
+   "Para creadores e intérpretes musicales egresados de la UGR.",
+   "Hasta dos ayudas de 1.500 euros (3.000 euros en total).",
+   "Plazo hasta el 24 de abril de 2026 a las 12:00, por la sede electrónica de la UGR.",
+   "Los proyectos se presentan públicamente en espacios de la UGR dentro de la programación del curso 2026/2027."
+  ],
+  "objeto": {
+   "valor": "Proyectos musicales o sonoros de investigación y creación musical y escénica innovadora, y su difusión, impulsados por personas egresadas de la UGR",
+   "cita": {
+    "documento": 1422038,
+    "pagina": 1,
+    "texto": "de promocionar y fomentar la investigación y la creación musical y escénica innovadora, así como su difusión, mediante la financiación de proyectos musicales o sonoros impulsados por personas egresadas de la UGR.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Creadores e intérpretes musicales egresados de la Universidad de Granada (en proyectos colectivos, al menos un miembro principal)",
+   "cita": {
+    "documento": 1422038,
+    "pagina": 1,
+    "texto": "intérpretes musicales pertenecientes al colectivo de personas egresadas de la UGR.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación en el BOUGR hasta el 24 de abril de 2026 a las 12:00",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "El plazo para presentar solicitudes se abre al día siguiente de su publicación en el Boletín Oficial de la Universidad de Granada (BOUGR).",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-04-24",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "La fecha límite para la presentación es el lunes, día 24 de abril de 2026, a las 12:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses desde la publicación del extracto en el BOUGR; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 6,
+     "texto": "El plazo máximo para resolver y notificar la resolución del procedimiento será de seis meses, contados desde la fecha de publicación del extracto de la convocatoria en el Boletín Oficial de la Universidad de Granada.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Producir y presentar el proyecto dentro del curso académico 2026/2027",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 7,
+     "texto": "Las personas beneficiarias de la ayuda se comprometen a producir y presentar el proyecto aprobado dentro del curso académico 2026/2027.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Un mes desde la representación pública: memoria justificativa, relación clasificada de gastos e indicación de otros ingresos",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 8,
+     "texto": "las actividades financiadas y su coste, en el plazo de un mes a contar desde la ejecución de la representación pública.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 3000,
+    "cita": {
+     "documento": 1422038,
+     "pagina": 3,
+     "texto": "A fecha de publicación de la convocatoria, la cuantía total (3.000 euros) se encuentra retenida con cargo",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 1500,
+    "cita": {
+     "documento": 1422038,
+     "pagina": 3,
+     "texto": "Se autoriza el gasto por el que se podrán conceder hasta dos ayudas de 1.500 € entre todas las propuestas",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Por transferencia, tras la resolución definitiva y la firma de la Carta de Aceptación, dentro de 2026; sujeto a retención fiscal",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 3,
+     "texto": "El abono de estas ayudas se llevará a cabo mediante transferencia, una vez publicada la resolución",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas, sin superar el coste de la actividad; deben comunicarse",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 3,
+     "texto": "Estas ayudas no son incompatibles con otras que puedan obtener las personas beneficiarias para la realización del proyecto.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser egresado o egresada de la UGR",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "Ser egresado/a de la UGR, acreditado a través de verificación automática o mediante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda, la Seguridad Social y los reintegros de subvenciones",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "Estar al corriente de las obligaciones tributarias y de la Seguridad Social y estar al corriente del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Reunir los requisitos del artículo 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "la condición de persona beneficiaria de subvenciones establecidos en el artículo 13 de la Ley",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En proyectos colectivos, al menos un miembro principal egresado de la UGR",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "En proyectos colectivos, al menos un miembro principal del proyecto debe tener la condición de egresado/a de la UGR.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los proyectos deben realizarse en espacios gestionados por la UGR",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "Los proyectos deben realizarse en espacios gestionados por la UGR.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pueden incluir la dimensión escénica de géneros como la ópera y la zarzuela, acción o instalación musical y sonora",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "Las propuestas pueden incorporar la dimensión espacial o escénica propia de géneros como la ópera y",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dejar constancia fotográfica o audiovisual del proceso de creación",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 7,
+     "texto": "Habrá de dejar constancia fotográfica o audiovisual del proceso de creación o ejecución del mismo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Incluir el logotipo de la UGR y la mención de apoyo de La Madraza en la documentación del proyecto",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 7,
+     "texto": "“Proyecto producido con el apoyo de La Madraza (Universidad de Granada)”.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ceder de forma no exclusiva los derechos de reproducción y comunicación pública a la UGR",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 8,
+     "texto": "manera no exclusiva- los derechos de reproducción y comunicación pública de las obras de los mismos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Enviar materiales de difusión, participar en ensayos y presentación y ofrecer al menos una actividad pública (conferencia o taller)",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 9,
+     "texto": "ofrecer, al menos, una actividad pública (conferencia o taller), en torno a la/s fecha/s que acuerden",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Gastos adicionales de producción o presentación más allá de lo previsto en la convocatoria",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "La Universidad de Granada no sufragará gastos adicionales de la producción o presentación del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamiento o alojamiento de beneficiarios o artistas",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 2,
+     "texto": "de desplazamiento o alojamiento de las personas beneficiarias o artistas, estos no se sufragarán con",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Calidad, rigor y solvencia del proyecto (ponderación en %)",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1422038,
+     "pagina": 5,
+     "texto": "o Calidad, rigor y solvencia del proyecto (40%).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria artística del solicitante (ponderación en %)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1422038,
+     "pagina": 5,
+     "texto": "o Trayectoria artística del solicitante (20%).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad del proyecto (ponderación en %)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1422038,
+     "pagina": 5,
+     "texto": "o Viabilidad del proyecto (20%).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Grado de innovación del proyecto (ponderación en %)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1422038,
+     "pagina": 5,
+     "texto": "o Grado de innovación del proyecto (20%).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Formulario de solicitud según el modelo facilitado (PDF)",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "Formulario de solicitud, a través del modelo facilitado al efecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria del proyecto en un único PDF (máximo 15 páginas y 5 Mb)",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "Memoria del proyecto, en formato libre, en un único documento PDF (máximo 15 páginas y 5 Mb) que",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "CV del solicitante (máximo 1 página)",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "o CV del solicitante (máximo 1 página). o Breve descripción del proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Calendario de trabajo y presupuesto total desglosado",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "Calendario de trabajo estimado y presupuesto total del proyecto en el que se desglosen los",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dossier artístico con la descripción detallada del proyecto",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "Dossier artístico con la descripción detallada del proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Referencias de creación reciente (pueden ser enlaces)",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "Referencias de creación reciente (pueden incluirse enlaces de URL a un link externo).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Procedimiento habilitado en la Sede Electrónica de la UGR",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "Se llevarán a cabo de manera online a través del Procedimiento habilitado en la Sede Electrónica de la",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación online identificándose con certificado digital, usuario y clave UGR o Cl@ve",
+    "cita": {
+     "documento": 1422038,
+     "pagina": 4,
+     "texto": "UGR, donde deberá identificarse a través de uno de estos métodos: o Certificado Digital",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Los criterios de valoración se expresan como ponderación en porcentaje (40 %, 20 %, 20 %, 20 %), no en puntos.",
+   "La fecha límite figura como «lunes, día 24 de abril de 2026», aunque esa fecha no cae en lunes; conviene confirmarla.",
+   "La UGR no paga desplazamientos ni alojamiento ni gastos adicionales de producción; los proyectos se presentan en espacios de la UGR. La ayuda está sujeta a retención fiscal.",
+   "Solo para egresados de la UGR; un promotor solo podría participar si es creador o intérprete egresado."
+  ]
+ },
+ "citas": {
+  "verificadas": 35,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

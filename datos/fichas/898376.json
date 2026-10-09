@@ -1,0 +1,194 @@
+{
+ "version": 1,
+ "codigoBdns": "898376",
+ "generada": "2026-10-09T14:01:00.400Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1434860,
+   "nombre": "CONVOCATORIA BDNS SUBVENCIONES CULTURALES 2026 - SEFYCU 6728647.pdf",
+   "paginas": 2,
+   "huella": "e00a43fa141f0dac"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Subvenciones del Consorcio de la Ciudad de Cuenca para actividades culturales y turísticas en el Casco Antiguo de Cuenca en 2026.",
+   "Incluye música, teatro, danza y otras disciplinas; pueden pedirla entidades públicas, empresas (promotores culturales) y entidades sin ánimo de lucro.",
+   "Presupuesto total de 130.000 euros.",
+   "Plazo: treinta días naturales desde el día siguiente a la publicación del extracto en el BOE.",
+   "Actividades entre el 1 de enero y el 31 de diciembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Actividades de interés cultural y turístico en el Casco Antiguo de Cuenca: música, teatro, danza, artes plásticas, cinematografía, creación literaria, medios de comunicación, cultura tradicional y promoción cultural y turística",
+   "cita": {
+    "documento": 1434860,
+    "pagina": 1,
+    "texto": "Las actividades subvencionables se referirán a las disciplinas de música, teatro, danza, artes plásticas, cinematografía, creación literaria, medios de comunicación, cultura tradicional y actividades de promoción cultural y turística.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades de derecho público (universidades, organismos de investigación), sociedades científicas, colegios profesionales y otras entidades sin ánimo de lucro, empresas privadas del sector del arte, la cultura y el turismo (promotores culturales) y entidades culturales sin ánimo de lucro",
+   "cita": {
+    "documento": 1434860,
+    "pagina": 1,
+    "texto": "c) Entidades de derecho privado tales como empresas (promotores culturales) o sociedades del sector del arte, de la cultura y de la promoción del turismo con capacidad suficiente para acreditar el cumplimiento del proyecto.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Treinta días naturales a partir del día siguiente a la publicación del extracto en el Boletín Oficial del Estado",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 2,
+     "texto": "El plazo para la presentación de solicitudes será de treinta días naturales a partir del día siguiente a la publicación del Extracto de la resolución de la convocatoria en el Boletín Oficial del Estado.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero al 31 de diciembre de 2026",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 2,
+     "texto": "El plazo para la ejecución de las actividades subvencionables empezará el día 1 de enero de 2026 y finalizará el 31 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 130000,
+    "cita": {
+     "documento": 1434860,
+     "pagina": 1,
+     "texto": "El presupuesto destinado a financiar la presente convocatoria asciende a 130.000,00 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Las actividades deben desarrollarse en el ámbito del Casco Antiguo de Cuenca",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 1,
+     "texto": "tienen por objeto la realización de actividades de interés cultural y turístico en el ámbito del Casco Antiguo de Cuenca.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidades de derecho público (universidades, organismos públicos de investigación) cuya actividad se relacione con los fines de la convocatoria",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 1,
+     "texto": "a) Entidades de derecho público tales como universidades u organismos públicos de investigación, a través de sus centros, institutos, departamentos, secciones u otras unidades de investigación,",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Sociedades científicas, colegios profesionales u otras entidades sin ánimo de lucro con personalidad jurídica propia y actividad demostrada en la materia",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 1,
+     "texto": "b) Sociedades científicas legalmente constituidas, colegios profesionales u otras entidades públicas o privadas sin ánimo de lucro, dotadas de personalidad jurídica propia capacidad y actividad demostrada en esta materia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Empresas (promotores culturales) o sociedades del sector del arte, la cultura y el turismo con capacidad para acreditar el cumplimiento del proyecto",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 1,
+     "texto": "c) Entidades de derecho privado tales como empresas (promotores culturales) o sociedades del sector del arte, de la cultura y de la promoción del turismo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Entidades sin ánimo de lucro con fines culturales legalmente registradas (asociaciones, fundaciones, corporaciones)",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 1,
+     "texto": "d) Entidades sin ánimo de lucro con fines culturales, tales como asociaciones, fundaciones, corporaciones y organizaciones culturales legalmente registradas.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "En los lugares del art. 16.4 de la Ley 39/2015; los obligados a relacionarse electrónicamente, por medios electrónicos",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 2,
+     "texto": "Las solicitudes se presentarán en los lugares a que se refiere el art. 16. 4 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Obligatoria la presentación electrónica para los sujetos obligados del art. 14 de la Ley 39/2015 (personas jurídicas, entre otros)",
+    "cita": {
+     "documento": 1434860,
+     "pagina": 2,
+     "texto": "Los sujetos obligados a relacionarse electrónicamente con la Administración, según el art. 14 de dicha Ley, deberán presentar su solicitud por medios electrónicos.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto de la convocatoria publicado en la BDNS, no las bases ni la convocatoria completa.",
+   "Las bases reguladoras (aprobadas el 16 de diciembre de 2025 y publicadas en el BOE de 28 de enero de 2026) no se incluyen: faltan requisitos detallados, gastos subvencionables, importe máximo, criterios de valoración, documentación, plazo de resolución y justificación.",
+   "Los promotores culturales (empresas) pueden ser beneficiarios, pero solo para actividades en el Casco Antiguo de Cuenca."
+  ]
+ },
+ "citas": {
+  "verificadas": 12,
+  "revisar": 0,
+  "noConsta": 10
+ }
+}

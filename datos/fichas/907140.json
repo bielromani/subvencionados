@@ -1,0 +1,166 @@
+{
+ "version": 1,
+ "codigoBdns": "907140",
+ "generada": "2026-10-09T14:01:08.458Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1459316,
+   "nombre": "EDICTO_EXTRACTO_CONVOCATORIA_SUBVENCIONES_PRODUCTORES_MUSICALES_FIRMADO.pdf",
+   "paginas": 3,
+   "huella": "ce020e0ccd35d765"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Subvenciones del Patronato Municipal de Turismo y Playas de Alicante para eventos musicales de relevancia turística en 2026.",
+   "Para empresas que realicen eventos de la industria musical en la ciudad de Alicante.",
+   "Cuantía total de 150.000 euros, en concurrencia competitiva.",
+   "Plazo hasta el 15 de septiembre de 2026.",
+   "Solicitud obligatoria por la Sede Electrónica con certificado digital de la entidad."
+  ],
+  "objeto": {
+   "valor": "Contribuir a sufragar parte de los gastos de eventos de la industria musical en Alicante de relevancia para el sector turístico que posicionen la ciudad como destino",
+   "cita": {
+    "documento": 1459316,
+    "pagina": 1,
+    "texto": "Contribuir a sufragar parte de los gastos derivados de su participación en la consecución de los objetivos contemplados en las Bases de la convocatoria.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Empresas que realicen eventos de la industria musical en la ciudad de Alicante, de significada relevancia turística",
+   "cita": {
+    "documento": 1459316,
+    "pagina": 1,
+    "texto": "Empresas por la realización de eventos de la industria musical en la ciudad de Alicante, de significada relevancia para el sector turístico",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Desde el día siguiente a la publicación de las bases en el Boletín Oficial de la Provincia de Alicante hasta el 15 de septiembre de 2026",
+    "cita": {
+     "documento": 1459316,
+     "pagina": 2,
+     "texto": "El plazo comenzará a partir del día siguiente a la publicación de las presentes Bases en el Boletín Oficial de la Provincia de Alicante y finalizará el 15 de septiembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-09-15",
+    "cita": {
+     "documento": 1459316,
+     "pagina": 2,
+     "texto": "en el Boletín Oficial de la Provincia de Alicante y finalizará el 15 de septiembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 150000,
+    "cita": {
+     "documento": 1459316,
+     "pagina": 1,
+     "texto": "La cuantía total de la subvención será de ciento cincuenta mil euros (150.000 €)",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser empresa",
+    "cita": {
+     "documento": 1459316,
+     "pagina": 1,
+     "texto": "Empresas por la realización de eventos de la industria musical en la ciudad de Alicante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El evento debe celebrarse en la ciudad de Alicante, tener significada relevancia turística y promover el posicionamiento de la ciudad como destino",
+    "cita": {
+     "documento": 1459316,
+     "pagina": 1,
+     "texto": "de significada relevancia para el sector turístico, que promuevan el posicionamiento de la ciudad de Alicante como destino.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede Electrónica del Ayuntamiento de Alicante, mediante el trámite habilitado",
+    "cita": {
+     "documento": 1459316,
+     "pagina": 2,
+     "texto": "se presentará obligatoriamente a través de la Sede Electrónica mediante certificado digital de la entidad utilizando el trámite habilitado al efecto.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación electrónica obligatoria con certificado digital de la entidad",
+    "cita": {
+     "documento": 1459316,
+     "pagina": 2,
+     "texto": "se presentará obligatoriamente a través de la Sede Electrónica mediante certificado digital de la entidad",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto (edicto) de la convocatoria; las bases reguladoras con requisitos, gastos subvencionables, criterios de valoración, importes por beneficiario y documentación no se incluyen. Se pueden consultar en www.alicante.es, www.alicanteturismo.com y en la BDNS.",
+   "Encaja con promotores de conciertos constituidos como empresa que organicen eventos musicales con impacto turístico en Alicante."
+  ]
+ },
+ "citas": {
+  "verificadas": 9,
+  "revisar": 0,
+  "noConsta": 10
+ }
+}

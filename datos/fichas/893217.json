@@ -1,0 +1,254 @@
+{
+ "version": 1,
+ "codigoBdns": "893217",
+ "generada": "2026-10-09T14:00:34.865Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1418113,
+   "nombre": "DEKRETUA 2026-0099 [Resolución de Alcaldía de aprobación de la convocatoria de subvenciones para fiestas tradicionales en el municipio de Zigoitia- 2026] (1).pdf",
+   "paginas": 3,
+   "huella": "5dfafef4c353a613"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Zigoitia para financiar fiestas patronales y romerías de 2026.",
+   "Solo para los concejos del municipio legalmente constituidos y registrados.",
+   "Crédito total de 20.000 euros, repartido a partes iguales entre las solicitudes, sin superar el 100 % del gasto justificado.",
+   "Solicitud y justificación hasta el 30 de diciembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Financiación de fiestas patronales y romerías de las localidades del municipio, fomentando la participación vecinal y actividades lúdico-culturales",
+   "cita": {
+    "documento": 1418113,
+    "pagina": 2,
+    "texto": "La subvención tiene por finalidad colaborar en la financiación de fiestas patronales y / o romerías de las localidades del municipio de Zigoitia",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Concejos del municipio de Zigoitia legalmente constituidos y registrados",
+   "cita": {
+    "documento": 1418113,
+    "pagina": 2,
+    "texto": "Podrán ser beneficiarias de estas subvenciones los concejos que se encuentren legalmente",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Solicitud y justificación, con la documentación, hasta el 30 de diciembre de 2026",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "El plazo máximo de presentación de solicitudes y justificación, junto con la documentación a que hace referencia el punto séptimo, será el 30 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": "2026-12-30",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "El plazo máximo de presentación de solicitudes y justificación, junto con la documentación a que hace referencia el punto séptimo, será el 30 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Tres meses desde el fin del plazo de presentación; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "El plazo de resolución será de tres meses contados desde que finalice el plazo para la presentación de solicitudes",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Fiestas patronales celebradas durante el año 2026",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 1,
+     "texto": "concurrencia competitiva en materia de las fiestas patronales del municipio de Zigoitia celebradas durante el año 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Junto con la solicitud, hasta el 30 de diciembre de 2026, con facturas o documentos contables originales o compulsados",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "Justificantes de gastos causados por la realización de la actividad o actividades subvencionadas: facturas o documentos contables de valor probatorio y equivalente: originales o fotocopias compulsadas.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 20000,
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "La cuantía total máxima de las ayudas convocadas es de 20.000 euros.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1418113,
+     "pagina": 3,
+     "texto": "sin que en ningún caso pueda subvencionarse más del 100 por cien del gasto justificado.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser concejo del municipio de Zigoitia legalmente constituido y registrado",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "Podrán ser beneficiarias de estas subvenciones los concejos que se encuentren legalmente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fiestas patronales o romerías celebradas en 2026",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 1,
+     "texto": "en materia de las fiestas patronales del municipio de Zigoitia celebradas durante el año 2026",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mencionar el patrocinio del Ayuntamiento en los programas de fiestas",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "Ejemplares de programas, en los cuales se hará mención del patrocinio del Ayuntamiento de Zigoitia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las facturas deben identificar emisor, receptor (la entidad beneficiaria), objeto, fecha e IVA",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "No se admitirán como justificación de los gastos, aquellos recibos, facturas, tickets, etc. en los que no estén claramente identificados los siguientes datos:",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos causados por la realización de las actividades de las fiestas",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "Justificantes de gastos causados por la realización de la actividad o actividades subvencionadas",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Recibos, facturas o tiques sin emisor, receptor, objeto, fecha o IVA claramente identificados",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "No se admitirán como justificación de los gastos, aquellos recibos, facturas, tickets, etc. en los que no estén claramente identificados los siguientes datos:",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Reparto a partes iguales del crédito entre el número de solicitudes, sin superar el 100 % del gasto justificado",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1418113,
+     "pagina": 3,
+     "texto": "La cantidad máxima a subvencionar por entidad será el resultado de distribuir a partes iguales la dotación de la partida presupuestaria entre el número de solicitudes",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud oficial cumplimentada y firmada",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "Solicitud oficial debidamente cumplimentada y firmada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas o documentos contables de los gastos, originales o fotocopias compulsadas",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "facturas o documentos contables de valor probatorio y equivalente: originales o fotocopias compulsadas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ejemplares de los programas con mención del patrocinio del Ayuntamiento",
+    "cita": {
+     "documento": 1418113,
+     "pagina": 2,
+     "texto": "Ejemplares de programas, en los cuales se hará mención del patrocinio del Ayuntamiento de Zigoitia.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es la resolución de alcaldía que aprueba la convocatoria (en anexo); las bases reguladoras son la ordenanza de fiestas patronales publicada en el BOTHA nº 48 de 29 de abril de 2016, que no se incluye.",
+   "Solo pueden pedirla los concejos del municipio: un promotor de conciertos no puede ser beneficiario, aunque podría ser contratado por un concejo para las fiestas.",
+   "El gasto se imputa al presupuesto de 2027 y la concesión queda condicionada a que exista crédito suficiente.",
+   "No hay criterios con puntos: el crédito se reparte a partes iguales entre las solicitudes."
+  ]
+ },
+ "citas": {
+  "verificadas": 19,
+  "revisar": 0,
+  "noConsta": 8
+ }
+}

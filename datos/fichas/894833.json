@@ -1,0 +1,327 @@
+{
+ "version": 1,
+ "codigoBdns": "894833",
+ "generada": "2026-10-09T14:01:00.069Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1422504,
+   "nombre": "cl_Dec convo VEM _am_ 2026.pdf",
+   "paginas": 17,
+   "huella": "fffa2fc04e204153"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Diputación de Valencia (València és Música – agrupaciones musicales 2026) para entidades sin ánimo de lucro con corales, orquestas y rondallas de pulso y púa, grupos de tabal y dulzaina, danza popular y big bands.",
+   "Exige estar federada en la federación correspondiente y celebrar un concierto entre el 20 de octubre de 2025 y el 18 de octubre de 2026 con al menos una obra valenciana.",
+   "Crédito total de 360.000 euros prorrateado; máximo 1.500 euros por entidad.",
+   "Plazo: quince días hábiles desde el día siguiente a la publicación del extracto en el BOP; solicitud en la sede electrónica de la Diputación.",
+   "Justificación hasta el 19 de octubre de 2026; pago tras acreditar el concierto."
+  ],
+  "objeto": {
+   "valor": "Ayudas a agrupaciones musicales federadas (corales, orquestas y rondallas de pulso y púa, tabal y dulzaina, danza popular y big bands) de la provincia de Valencia para la continuidad de su actividad y la difusión de música de autores valencianos",
+   "cita": {
+    "documento": 1422504,
+    "pagina": 4,
+    "texto": "la OGS, son objeto de esta convocatoria las ayudas a",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades sin ánimo de lucro con agrupación musical, domicilio social en la provincia de Valencia y federadas en la federación que corresponda según el tipo de entidad",
+   "cita": {
+    "documento": 1422504,
+    "pagina": 5,
+    "texto": "Podrán acogerse a estas ayudas las entidades sin",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles a partir del día siguiente a la publicación del extracto de la convocatoria en el BOP",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 8,
+     "texto": "quince días hábiles, a partir del día siguiente de la",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses desde la publicación de la convocatoria en el BOP",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 8,
+     "texto": "publicación es de seis meses, contados a partir de la",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 20 de octubre de 2025 al 18 de octubre de 2026",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 12,
+     "texto": "de octubre de 2025 y el 18 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Desde el día siguiente a la publicación de la resolución en el BOP hasta el 19 de octubre de 2026; declaración responsable del concierto, programa de mano y fotografías en PDF",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 13,
+     "texto": "el BOP y terminará el 19 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 360000,
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "La financiación del gasto global de 360.000 euros,",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 1500,
+    "cita": {
+     "documento": 1422504,
+     "pagina": 10,
+     "texto": "individual un máximo de 1.500 euros por entidad",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Tras acreditar la celebración del concierto",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 13,
+     "texto": "El pago de la subvención se realizará previa",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con ayudas de otras administraciones o entidades para la misma finalidad; incompatible con otras subvenciones de la Diputación de Valencia para el mismo objeto y con Excel·lent Música de Banda 2026 (salvo excepciones)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "presente convocatoria son compatibles con otras",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Entidad sin ánimo de lucro con agrupación musical y domicilio social en la provincia de Valencia",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 5,
+     "texto": "domicilio social en la provincia de Valencia, que",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar federada en la federación correspondiente antes del 25 de abril de 2025 y mantenerse",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 5,
+     "texto": "25 de abril de 2025 y permanecer en esta situación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Big bands: agrupaciones con grupos de jazz (en todas sus modalidades) federadas en la Federación de Big Bands de la provincia de Valencia",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 4,
+     "texto": "de jazz (en todas sus modalidades), federadas en la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las propias federaciones no pueden ser beneficiarias",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 5,
+     "texto": "No podrán ser beneficiarias las propias federaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos el 20 % de los miembros asociados deben residir en el municipio de la entidad, con domicilio social en él",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 5,
+     "texto": "Al menos el 20% de los miembros asociados de la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mínimo de cinco miembros asociados en corales, orquestas y rondallas, tabal y dulzaina y danza popular",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 5,
+     "texto": "cinco el número mínimo de miembros asociados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mínimo de doce miembros asociados en las big bands",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 6,
+     "texto": "mínim de membres associats exigit serà de dotze.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Celebrar un concierto o actuación entre el 20 de octubre de 2025 y el 18 de octubre de 2026 (con música en vivo en la danza popular)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 6,
+     "texto": "en vivo, entre el 20 de octubre de 2025 y el 18 de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El concierto no puede formar parte de la programación municipal (semanas culturales, fiestas mayores)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 6,
+     "texto": "dentro de las programaciones que el ayuntamiento",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El programa debe incluir al menos una obra de música tradicional valenciana y/o de autores o autoras valencianos",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 6,
+     "texto": "obra de música tradicional valenciana (popular) y/o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del art. 13 de la LGS y art. 6 de la OGS (declaración responsable)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "entidad solicitante no está incursa en ninguna de las",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración de la Diputación con los logotipos del Anexo I en toda la difusión",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 10,
+     "texto": "s'inclouran els logotips de l'Annex I, en lloc",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud con declaración responsable sobre las prohibiciones del art. 13 LGS, el 20 % de miembros residentes, el número de miembros y el domicilio social",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "En la solicitud se declarará responsablemente que al",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En la justificación: declaración responsable del lugar, día y hora del concierto y de las obras valencianas (modelo del Anexo II)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 12,
+     "texto": "Documento en el que el representante legal de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En la justificación: programa de mano definitivo con obras, autores, lugar, fecha, mención a la convocatoria y logotipos",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 12,
+     "texto": "programa definitivo del concierto o actuación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En la justificación: fotografías del concierto, del público y del cartel de la Diputación, en PDF (no valen enlaces)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 12,
+     "texto": "Fotografía(s) del concierto o actuación donde",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica de la Diputación de Valencia, catálogo de trámites - Cultura",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "la Diputación de Valencia (www.sede.dival.es), en el",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.sede.dival.es",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "la Diputación de Valencia (www.sede.dival.es), en el",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Obligatorio: el representante legal firma con certificado electrónico de representante (o de persona física acreditando la representación)",
+    "cita": {
+     "documento": 1422504,
+     "pagina": 7,
+     "texto": "electrónico de firma electrónica de representante.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Documento bilingüe (valenciano y castellano) a dos columnas: las citas son fragmentos de una sola línea de una de las columnas.",
+   "Las bases reguladoras son la Ordenanza General de Subvenciones de la Diputación de Valencia (BOP núm. 101, de 29 de mayo de 2017), no incluida; la convocatoria contiene todo lo específico.",
+   "No hay criterios de valoración: los 360.000 euros se prorratean entre las beneficiarias hasta 1.500 euros por entidad; no se exige financiación propia y no se admite reformulación.",
+   "Solo sirve a entidades sin ánimo de lucro federadas (por ejemplo, una big band de jazz federada en la Federación de Big Bands de la provincia de Valencia); no a promotores ni empresas.",
+   "Los listados certificados que envían las federaciones a la Diputación prueban la condición de federada.",
+   "Se acepta tácitamente la subvención a los diez días de publicarse la resolución; se puede renunciar antes del fin del plazo de justificación sin penalización futura."
+  ]
+ },
+ "citas": {
+  "verificadas": 29,
+  "revisar": 0,
+  "noConsta": 4
+ }
+}

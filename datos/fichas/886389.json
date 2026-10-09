@@ -1,0 +1,1049 @@
+{
+ "version": 1,
+ "codigoBdns": "886389",
+ "generada": "2026-10-09T14:00:43.475Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1419217,
+   "nombre": "CSVH71X6OX2KZ1Q0XFIL Orden convocatoria ayudas a la música 2026.pdf",
+   "paginas": 47,
+   "huella": "c73fb03a007f87a8"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Gobierno de Aragón a la música en 2026: producción, giras fuera de Aragón, distribución y difusión (incluida la organización de conciertos y galas) y programación en salas privadas.",
+   "Para empresas y profesionales (personas físicas o jurídicas) de producción y difusión musical con domicilio social en Aragón y alta en epígrafes musicales del IAE; quedan excluidas las entidades sin ánimo de lucro.",
+   "Crédito total de 400.000 euros; entre 1.000 y 35.000 euros por ayuda según modalidad, sin superar el 80 % del presupuesto.",
+   "Plazo: 10 días hábiles desde la publicación del extracto en el Boletín Oficial de Aragón; actividades del 14 de noviembre de 2025 al 13 de noviembre de 2026.",
+   "Solicitud electrónica en la sede del Gobierno de Aragón; justificación hasta el 19 de noviembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Apoyo a la producción y distribución de actividades musicales y a salas de exhibición de espectáculos musicales de gestión privada, en cuatro modalidades: producción, giras y actuaciones fuera de Aragón, distribución y difusión, y programación en salas privadas",
+   "cita": {
+    "documento": 1419217,
+    "pagina": 2,
+    "texto": "Esta orden tiene por objeto la convocatoria de ayudas para el apoyo a la producción y distribución de actividades de carácter musical, y asimismo el apoyo a salas de exhibición de espectáculos musicales de gestión privada",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Empresas, personas físicas o jurídicas, de producción y difusión musical (solistas, grupos, salas de conciertos privadas y otras de gestión de la música) con domicilio social en Aragón",
+   "cita": {
+    "documento": 1419217,
+    "pagina": 5,
+    "texto": "las empresas, tanto personas físicas como jurídicas, de producción y difusión musical (solistas, grupos musicales, salas de conciertos de gestión privada, y otras relacionadas con la gestión de la música), con domicilio social en la Comunidad Autónoma de Aragón",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "10 días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de Aragón",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 14,
+     "texto": "El plazo de presentación de las solicitudes será de 10 días hábiles contados a partir del siguiente al de la publicación del extracto de esta Orden en el boletín oficial de Aragón.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Tres meses desde el fin del plazo de solicitudes; sin resolución expresa, se entiende desestimada. Se publica en el Boletín Oficial de Aragón",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 38,
+     "texto": "El plazo máximo para la resolución y notificación del procedimiento será de tres meses contados desde la fecha de finalización del plazo para presentar las solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 14 de noviembre de 2025 al 13 de noviembre de 2026 (gastos pagados hasta el 18 de noviembre de 2026)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 2,
+     "texto": "que se hayan desarrollado desde el día 14 de noviembre de 2025 hasta el día 13 de noviembre de 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa con justificantes de gasto, desde el día siguiente a la publicación de la orden de resolución hasta el 19 de noviembre de 2026",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 44,
+     "texto": "El plazo para la justificación de la subvención se iniciará a partir del día siguiente al de publicación de la Orden de resolución en el Boletín Oficial de Aragón y finalizará el día 19 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 400000,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 4,
+     "texto": "por una cuantía total de cuatrocientos mil euros (400.000 €) con cargo a la aplicación presupuestaria",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 35000,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 8,
+     "texto": "a 15.000 € en la de giras y actuaciones fuera de Aragón y a 35.000 € en la modalidad de programación musical en salas de gestión privada.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 80,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 8,
+     "texto": "El importe de la subvención no podrá ser de tal cuantía que, aisladamente o en concurrencia con otras subvenciones o ayudas, supere el 80% del presupuesto del proyecto presentado.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Anticipo opcional de hasta el 50 % (máximo 60.000 euros), a petición en 15 días desde la resolución; el resto tras justificar",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 44,
+     "texto": "podrá acordar el pago anticipado de la ayuda concedida, como financiación necesaria para poder llevar a cabo las actuaciones inherentes a la subvención, como máximo hasta el 50 % del importe",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas e ingresos sin superar el coste de la actividad ni el 80 % del presupuesto",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 8,
+     "texto": "El importe de la subvención en ningún caso podrá ser de tal cuantía que, en concurrencia con otras subvenciones, ayudas, ingresos generados por la propia actividad, así como otros ingresos o recursos, supere el coste de la actividad subvencionada.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "Sí, Reglamento (UE) 2023/2831: límite de 300.000 euros en tres años",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 8,
+     "texto": "Estas ayudas quedan sometidas al régimen de mínimis en los términos regulados en el Reglamento (UE) 2023/2831 de la Comisión de 13 de diciembre de 2023",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Domicilio social en Aragón y alta en el IAE en epígrafes musicales",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 5,
+     "texto": "con domicilio social en la Comunidad Autónoma de Aragón, y que estén dadas de alta en el Impuesto de Actividades Económicas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Epígrafes profesionales de música 031, 032, 033 o 039",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 5,
+     "texto": "Actividades profesionales relacionadas con la música: Epígrafes 031, 032, 033, 039.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Epígrafes empresariales de servicios recreativos y culturales 9651, 9654, 9691 o agencia de colocación de artistas 983",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 5,
+     "texto": "Actividades empresariales. Servicios recreativos y culturales: Epígrafes 9651, 9654, 9691. - Actividades empresariales. Agencia de colocación de artistas: Epígrafe 983.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Excluidas las entidades sin ánimo de lucro",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 5,
+     "texto": "Quedan expresamente excluidas de esta convocatoria las entidades solicitantes que ostenten la forma jurídica de entidad sin ánimo de lucro.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber cumplido las subvenciones anteriores del sector público aragonés para el mismo fin",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 5,
+     "texto": "Acreditar el efectivo cumplimiento de los requisitos y la realización de la actividad en todas las subvenciones que les hayan sido concedidas con anterioridad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda estatal, Seguridad Social y Hacienda aragonesa (se admite deuda autonómica menor que la subvención)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 6,
+     "texto": "Hallarse al corriente en el cumplimiento de las obligaciones tributarias con la Hacienda del Estado y frente a la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 6,
+     "texto": "Las empresas que concurran en alguna de las circunstancias previstas en el artículo 13.2 de la Ley 38/2003, de 17 de noviembre, General de Subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener subvención nominativa para el mismo objeto en la Ley de Presupuestos",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 6,
+     "texto": "Aquellas empresas que tengan concedida una subvención nominativa para el mismo objeto o actividad accesoria del mismo en la Ley de Presupuestos vigente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Si la ayuda propuesta supera 30.000 euros, acreditar el cumplimiento de los plazos de pago de la Ley de morosidad",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 7,
+     "texto": "Las empresas solicitantes para las que se proponga una ayuda de importe superior a 30.000 euros, sujetos a la Ley 3/2004",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo una ayuda por empresa en cada modalidad",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 4,
+     "texto": "solamente podrá concederse a una misma empresa una ayuda por cada una de las modalidades.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras en la península: mínimo tres actuaciones en escenarios distintos fuera de Aragón",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 3,
+     "texto": "Actuaciones en la península, con un mínimo de tres, en escenarios diferentes fuera de nuestra Comunidad Autónoma, pudiendo ser consecutivas o no.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Conciertos de la modalidad de distribución: no deben formar parte de una programación estable en salas privadas",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 3,
+     "texto": "Organización de conciertos, siempre que éstos no formen parte de una programación estable en salas de gestión privada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Programación en salas privadas: al menos el 50 % del presupuesto debe ser cachés de artistas",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 3,
+     "texto": "Ayudas a la programación musical en salas de gestión privada, con un presupuesto en el que, al menos, el 50% corresponda a cachés de artistas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción: obra terminada e inscrita en el depósito legal como máximo el 19 de noviembre de 2026",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 3,
+     "texto": "La obra musical deberá estar terminada dentro del plazo de ejecución e inscrita en el depósito legal correspondiente como fecha límite el 19 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Pedir tres ofertas cuando el gasto supere el importe del contrato menor",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 12,
+     "texto": "la empresa beneficiaria deberá solicitar como mínimo tres ofertas de diferentes proveedores, con carácter previo a la contracción del compromiso",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Incluir el logotipo del Gobierno de Aragón en carteles, programas y anuncios, con informe previo de la Comisión de Comunicación Institucional",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 40,
+     "texto": "Y en toda la publicidad referida a carteles, programas de mano y anuncios en prensa, deberá hacer figurar, necesariamente, el logotipo del Gobierno de Aragón",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Subcontratación máxima del 50 % de la actividad",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 41,
+     "texto": "La empresa beneficiaria podrá subcontratar hasta un porcentaje que no sobrepase el 50 % del importe de la actividad subvencionada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentación en castellano o con traducción jurada",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 20,
+     "texto": "La documentación que se presente deberá estar en castellano, el idioma oficial en la Comunidad Autónoma de Aragón o, en su defecto, acompañado de la traducción jurada",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Producción: grabación, mezcla y masterización de CD o vinilo; grabación de videoclip o DVD",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 9,
+     "texto": "Grabación, mezcla y masterización de cd o vinilo. - Grabación de videoclip o DVD.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción: diseño gráfico, edición y reproducción; gastos de streaming en plataformas",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 9,
+     "texto": "Diseño gráfico y textos de cd, videoclip, DVD o vinilo. - Edición y reproducción de cd, videoclip, DVD o vinilo. - Gastos relacionados con el streaming en plataformas musicales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción: músicos de la grabación (nóminas o facturas) y sus desplazamientos y alojamiento",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 9,
+     "texto": "Gastos de músicos necesarios para la grabación debidamente justificados en el proyecto: Nóminas y Seguridad Social, exclusivamente del tiempo de la grabación, o facturación de servicio, y gastos de desplazamiento y alojamiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción: material de difusión y publicidad en prensa, radio y web",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 9,
+     "texto": "Gastos de material de difusión: catálogo, carteles y folletos. - Gastos de publicidad: Prensa, radio y página web.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción y salas: gastos generales de la empresa imputados, hasta el 10 % de los costes directos",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 9,
+     "texto": "El porcentaje máximo a imputar sobre los costes directos del proyecto subvencionado del será del 10%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: nómina y Seguridad Social del personal artístico o facturación si es externo",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Nómina y Seguridad Social del personal artístico participante en las actuaciones, exclusivamente por el tiempo de su duración",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: técnico de sonido o iluminación",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Nómina y Seguridad Social del técnico de sonido o iluminación necesario en las actuaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: desplazamiento y alojamiento del personal si no lo cubre el contratante",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Gastos de desplazamiento, y alojamiento del personal que participa en la gira o actuación, siempre que no esté cubierto por la entidad contratante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: transporte de material, alquiler de vehículos, combustible y peajes",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Gastos de transporte de material y de alquiler de vehículos para los desplazamientos, combustible y peajes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: material de difusión y publicidad (carteles, programas de mano, prensa, radio, Internet)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Gastos de material de difusión y publicidad: carteles, programas de mano, prensa, radio e Internet.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Distribución: artistas representados (nóminas o facturas) durante la actuación o grabación",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Nóminas y Seguridad Social de los artistas representados o facturación de servicios por el tiempo que dure la actuación o la grabación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Organización de conciertos y galas: cachés, alquiler de escenarios y equipos técnicos, seguridad, seguros de responsabilidad civil, publicidad y personal de apoyo",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Gastos de organización de conciertos y galas: caché de artistas contratados, alquiler de escenarios, alquiler de equipos técnicos o sanitarios, seguridad, seguros de responsabilidad civil, publicidad y prensa, personal de apoyo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Distribución: asistencia a ferias o mercados musicales (stand, desplazamiento y alojamiento del personal propio)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Gastos de asistencia a ferias o mercados nacionales e internacionales de difusión de la música: gastos de alquiler y adecuación del stand",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Distribución: material de difusión y publicidad (carteles, folletos, CDs promocionales, prensa, radio, podcast, web)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "Gastos de material de difusión y publicidad: carteles, folletos, revistas, CDs promocionales, prensa, radio, podcast y página web.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: cachés de artistas y su desplazamiento y alojamiento",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "Pago de cachés de artistas. - Pagos de desplazamiento y alojamiento de los artistas contratados.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: servicios técnicos de los conciertos",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "Pago de los servicios técnicos para la realización de los conciertos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: seguro de la sala y pagos a SGAE u otras entidades de gestión de derechos",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "Pago del seguro de la sala. - Pagos a la Sociedad General de Autores o a otras entidades de gestión de derechos de autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: material de difusión y publicidad",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "Gastos de material de difusión: catálogo, carteles y folletos. - Gastos de publicidad: prensa, radio y página web.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamiento y alojamiento con los límites de las indemnizaciones del grupo 2 de la Administración aragonesa",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "Los importes máximos que se podrán financiar en gastos de desplazamiento y alojamiento serán los mismos que los previstos en la normativa vigente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos financieros, de asesoría, garantía bancaria, notariales y registrales si son indispensables para la actividad",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 12,
+     "texto": "Los gastos financieros, los gastos de asesoría jurídica o financiera, los gastos de garantía bancaria, los gastos notariales y registrales",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Producción: locales de ensayo",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "No se considerarán gastos subvencionables los locales de ensayo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: alquiler de salas de actuación o locales de ensayo",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 10,
+     "texto": "No se considerarán gastos subvencionables el alquiler de salas de actuación o locales de ensayo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: cuotas de asociaciones profesionales",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "No serán subvencionables: - Las cuotas de asociaciones profesionales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: adquisición y reparación de locales y equipamiento, y alquiler de locales",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "La adquisición y reparación de locales y de equipamiento ni el alquiler de locales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: manutención de artistas y catering",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 11,
+     "texto": "La manutención de los artistas contratados ni los gastos de catering de las actuaciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Adquisición, construcción o mejora de bienes inventariables y equipamiento",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 12,
+     "texto": "Los gastos consistentes en la adquisición, construcción, rehabilitación y mejora de bienes inventariables, así como equipamiento de cualquier tipo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Catering, manutención, gastos de representación y protocolarios",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 12,
+     "texto": "El catering y los gastos de manutención, así como los gastos de representación y protocolarios.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 12,
+     "texto": "El Impuesto sobre el Valor Añadido (I.V.A.).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Organización de festivales (excluida de distribución y difusión)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 3,
+     "texto": "Queda expresamente excluida de la modalidad de distribución y difusión la organización de festivales.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Producción: interés cultural y artístico del proyecto",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 23,
+     "texto": "Para la adjudicación de las ayudas en la modalidad de producción se valorará: a) Interés cultural y artístico del proyecto (máximo 40 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción: rigor presupuestario",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 24,
+     "texto": "b) Rigor presupuestario (máximo 8 puntos). Se valorará la correcta delimitación de las partidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción: viabilidad técnica",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 24,
+     "texto": "c) Viabilidad técnica (máximo 4 puntos). Se valorarán los medios técnicos que van a ser empleados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción: viabilidad económica (más puntos cuanto menor sea la cantidad solicitada respecto al presupuesto)",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 24,
+     "texto": "d) Viabilidad económica (máximo 8 puntos) Un proyecto tiene una mayor viabilidad económica si tiene una financiación suficiente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción: trayectoria (antigüedad) y experiencia (grabaciones y actuaciones 2023-2025)",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 25,
+     "texto": "e) Trayectoria y experiencia del organizador en las actividades objeto de la convocatoria (máximo 30 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Producción: fomento de creadores aragoneses (artistas y técnicos aragoneses, grabación y reproducción en empresas aragonesas)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 26,
+     "texto": "así como que la grabación y la reproducción se realice en empresas de nuestra comunidad, como contribución al incremento de nuestro acervo cultural (máximo 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: interés cultural y artístico (número de actuaciones y relevancia de los escenarios)",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 26,
+     "texto": "Para la adjudicación de las ayudas a giras y actuaciones fuera de Aragón se valorará: a) Interés cultural y artístico del proyecto (máximo 40 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: rigor presupuestario",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 27,
+     "texto": "b) Rigor presupuestario (máximo 8 puntos). Se valorará la correcta delimitación de las partidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: viabilidad técnica",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 27,
+     "texto": "c) Viabilidad técnica (máximo 4 puntos). Se valorarán los medios técnicos que van a ser empleados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: viabilidad económica",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 23,
+     "texto": "d) Viabilidad económica (máximo 8 puntos). Un proyecto tiene una mayor viabilidad económica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: trayectoria y experiencia del organizador",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 28,
+     "texto": "e) Trayectoria y experiencia del organizador en las actividades objeto de la convocatoria (máximo 20 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: fomento de creadores aragoneses",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 29,
+     "texto": "f) Fomento de la actividad de creadores aragoneses (máximo 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Giras: ámbito territorial de las actuaciones fuera de Aragón",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 29,
+     "texto": "g) Ámbito territorial de las actuaciones fuera de Aragón (máximo 10 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Distribución y difusión: interés cultural y artístico (organización de galas y conciertos, 20 puntos en interés cultural)",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 29,
+     "texto": "Para la adjudicación de las ayudas a la distribución y difusión se valorará: a) Interés cultural y artístico del proyecto (máximo 40 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Distribución y difusión: rigor presupuestario",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 30,
+     "texto": "b) Rigor presupuestario (máximo 8 puntos). Se valorará la correcta delimitación de las partidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Distribución y difusión: viabilidad técnica",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 31,
+     "texto": "c) Viabilidad técnica (máximo 4 puntos). Se valorarán los medios técnicos que van a ser empleados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Distribución y difusión: viabilidad económica",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 31,
+     "texto": "d) Viabilidad económica (máximo 8 puntos). Un proyecto tiene una mayor viabilidad económica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Distribución y difusión: trayectoria y experiencia de la empresa organizadora",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 31,
+     "texto": "e) Trayectoria y experiencia de la empresa organizadora en las actividades objeto de la convocatoria (máximo 20 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Distribución y difusión: fomento de creadores aragoneses (porcentaje de solistas o grupos aragoneses programados)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 32,
+     "texto": "f) Fomento de la actividad de creadores aragoneses (máximo 20 puntos). Se valorará el número de solistas con vecindad administrativa aragonesa",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: interés cultural y artístico (aforo, número de actuaciones y proyección de los artistas)",
+    "puntosMaximos": 40,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 32,
+     "texto": "Para la adjudicación de las ayudas a la programación en salas de gestión privada se aplicarán los siguientes criterios: a) Interés cultural y artístico del proyecto (máximo 40 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: rigor presupuestario",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 33,
+     "texto": "b) Rigor presupuestario (máximo 8 puntos). Se valorará la correcta delimitación de las partidas",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: viabilidad técnica",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 33,
+     "texto": "c) Viabilidad técnica (máximo 4 puntos). Se valorarán los medios técnicos que van a ser empleados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: viabilidad económica",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 34,
+     "texto": "d) Viabilidad económica (máximo 8 puntos). Un proyecto tiene una mayor viabilidad económica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: trayectoria y experiencia en programación de la sala",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 34,
+     "texto": "e) Trayectoria y experiencia en programación de la sala (máximo 20 puntos).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Salas: fomento de creadores aragoneses (porcentaje de solistas o grupos aragoneses programados)",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1419217,
+     "pagina": 35,
+     "texto": "f) Fomento de la actividad de creadores aragoneses (máximo 20 puntos). Se valorará el número de solistas o grupos aragoneses programados",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Certificado de situación censal de la AEAT con alta en epígrafes musicales, expedido dentro del plazo de solicitud",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 14,
+     "texto": "Certificado de situación en el censo de actividades económicas de la Agencia Estatal de la Administración Tributaria en el que conste el alta",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto de gastos desglosado por partidas y sin IVA",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 15,
+     "texto": "Presupuesto de gastos, desglosado por partidas y calculado sin I.V.A., del proyecto o actividad para la que solicita la subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto de ingresos con el plan de financiación, según modelo, igual al de gastos",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 15,
+     "texto": "Presupuesto de ingresos explicativo del plan de financiación donde se indiquen las aportaciones de la empresa solicitante",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria descriptiva del proyecto (contenido según la modalidad)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 15,
+     "texto": "Memoria descriptiva del proyecto para el que se solicita la ayuda, en la que deberá constar expresamente los plazos de ejecución",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Giras: memoria con fechas, escenarios, localidades y currículum de los artistas",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 16,
+     "texto": "en la que deberán constar las fechas, escenarios y localidades de las actuaciones, así como el currículum vitae de los artistas o grupos musicales participantes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción y giras: acreditación de las actuaciones de 2023, 2024 y 2025 (certificados SGAE, contratos o facturas)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 16,
+     "texto": "Documentación acreditativa de las actuaciones realizadas en los años 2023, 2024 y 2025 (preferentemente a través de certificados SGAE",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Relación y descripción de los medios técnicos necesarios",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 16,
+     "texto": "Relación de medios técnicos necesarios y descripción detallada de los mismos, indicando su aplicación al desarrollo del proyecto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Producción y giras: autorización de cada participante residente en Aragón para verificar su residencia (o certificado de empadronamiento)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 16,
+     "texto": "Autorización, conforme al modelo disponible en la sede electrónica, por cada una de las personas con residencia en Aragón que intervienen en el proyecto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Distribución y difusión: memoria con acciones y relación de técnicos, artistas y grupos programados con su origen",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 17,
+     "texto": "la relación de técnicos, artistas y grupos programados, con mención expresa de su origen (aragonés, nacional o internacional).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Distribución y difusión: acreditación de conciertos o galas organizados en 2024 y 2025",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 17,
+     "texto": "Conciertos o galas organizadas por la empresa solicitante en los años 2024 y 2025 (facturas y justificantes de pago que acrediten la organización, programas, publicidad)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Distribución y difusión: contratos de representación de artistas, si procede",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 17,
+     "texto": "La representación de los artistas (contratos de representación).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: memoria de la programación con todas las actuaciones, fechas y artistas",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 17,
+     "texto": "Memoria descriptiva de la programación de la sala para la que se solicita la ayuda, en la que deberá constar una relación detallada de todas las actuaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: escritura de titularidad o contrato de alquiler y seguro de responsabilidad civil",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 17,
+     "texto": "Escritura pública que acredite la titularidad de la sala o el contrato de alquiler, así como el seguro de responsabilidad civil actualizado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: acreditación de actuaciones de 2024 y 2025 y del aforo de la sala",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 18,
+     "texto": "Documentación acreditativa de las actuaciones realizadas en los años 2024 y 2025 (preferentemente a través de certificados SGAE",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Salas: documentación del aforo",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 18,
+     "texto": "Documentación acreditativa del aforo de la sala.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con la AEAT y con Aragón si no se autoriza su consulta",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 18,
+     "texto": "Certificado de estar al corriente en el cumplimiento de sus obligaciones tributarias con la AEAT, que requerirá autorización expresa por parte de la empresa solicitante.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaraciones responsables incluidas en la solicitud (veracidad, prohibiciones, cumplimiento de ayudas anteriores, igualdad, etc.)",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 19,
+     "texto": "Como parte integrante de la solicitud, las empresas solicitantes, a través de su representante, efectuarán las siguientes declaraciones responsables que constarán en aquella",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de otras subvenciones o ingresos para el mismo proyecto",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 19,
+     "texto": "Declaración de las subvenciones, ingresos o ayudas, concedidas o en trámite de concesión por cualquier otra administración",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de ayudas de mínimis de los tres últimos ejercicios",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 19,
+     "texto": "Declaración de las ayudas de mínimis percibidas por el solicitante en el ejercicio fiscal actual y en los dos ejercicios fiscales anteriores.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de terceros con los datos bancarios, si no se presentó antes",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 21,
+     "texto": "la comunicación de los datos bancarios se realizará de forma telemática a través de este enlace: https://aplicaciones.aragon.es/tramitar/ficha-terceros",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Gobierno de Aragón, con el modelo específico obligatorio, o registros electrónicos del art. 16.4.a) de la Ley 39/2015",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 13,
+     "texto": "Las solicitudes se dirigirán a la Dirección General de Cultura presentándose electrónicamente a través de la sede electrónica de la Administración Pública de la Comunidad Autónoma de Aragón",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.aragon.es/tramitador/-/tramite/convocatoria-ayudas-musica-aragon",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 13,
+     "texto": "conforme al modelo específico disponible en la dirección electrónica https://www.aragon.es/tramitador/-/tramite/convocatoria-ayudas-musica-aragon",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Relación electrónica obligatoria para empresas y autónomos; solicitud con firma electrónica",
+    "cita": {
+     "documento": 1419217,
+     "pagina": 13,
+     "texto": "Las solicitudes deberán estar firmadas electrónicamente y se considerarán presentadas a los efectos de su tramitación en el momento en que se obtenga el justificante de registro.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Importes por ayuda: mínimo 1.000 euros; máximo 12.000 euros en producción y en distribución y difusión, 15.000 euros en giras fuera de Aragón y 35.000 euros en programación de salas privadas.",
+   "Reparto estimativo del crédito: 60.000 euros producción, 45.000 giras, 260.000 salas privadas y 35.000 distribución y difusión.",
+   "Para un promotor con domicilio en Aragón, la modalidad de distribución y difusión cubre la organización de conciertos y galas (cachés, escenarios, técnica, seguridad, seguros, publicidad), pero excluye los festivales y los conciertos de programación estable en salas privadas.",
+   "La cuantía es proporcional a la puntuación (máximo de la modalidad con 100 puntos) y si no se justifica todo el presupuesto se paga el mismo porcentaje sobre lo justificado.",
+   "Se rige por las bases reguladoras de la Orden ECD/1248/2022 (y modificaciones), no incluidas; la orden recoge, no obstante, todos los apartados esenciales.",
+   "Pagos en efectivo solo excepcionalmente, hasta 100 euros por pago y sin superar el 10 % de la ayuda."
+  ]
+ },
+ "citas": {
+  "verificadas": 107,
+  "revisar": 0,
+  "noConsta": 2
+ }
+}

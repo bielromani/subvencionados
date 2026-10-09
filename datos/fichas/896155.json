@@ -1,0 +1,521 @@
+{
+ "version": 1,
+ "codigoBdns": "896155",
+ "generada": "2026-10-09T14:00:52.008Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1426065,
+   "nombre": "Edipto Bases subvenciones Coros 2026.pdf",
+   "paginas": 16,
+   "huella": "33c145ccaa3a3892"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Patronato Municipal del Certamen Internacional de Habaneras y Polifonía de Torrevieja para que las corales de Torrevieja difundan la habanera en 2026.",
+   "Para asociaciones corales sin ánimo de lucro inscritas en el Registro Municipal de Asociaciones de Torrevieja que hayan participado en el Certamen.",
+   "Crédito total de 108.000 euros; 1.800 euros por punto y un máximo de 18.000 euros por entidad.",
+   "Plazo: 10 días hábiles desde el día siguiente a la publicación del anuncio en el BOP.",
+   "Pago anticipado; justificación hasta el 31 de enero del año siguiente."
+  ],
+  "objeto": {
+   "valor": "Potenciar la difusión de la habanera a través de las corales torrevejenses en 2026: promoción del Certamen Internacional de Habaneras y Polifonía y difusión del canto de la habanera",
+   "cita": {
+    "documento": 1426065,
+    "pagina": 1,
+    "texto": "Las presentes bases tienen por objeto potenciar la difusión de la habanera a través de las corales torrevejenses para la anualidad de 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones corales de Torrevieja sin ánimo de lucro que realicen las actividades y cumplan los requisitos",
+   "cita": {
+    "documento": 1426065,
+    "pagina": 2,
+    "texto": "Tendrán la consideración de beneficiarios, las Asociaciones o Entidades que realicen las actividades objeto de las presentes bases y reúnan los requisitos exigidos en las mismas.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "10 días hábiles desde el día siguiente a la publicación del anuncio de convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 9,
+     "texto": "El plazo de presentación de solicitudes será de 10 días hábiles, contados a partir del día siguiente a la publicación del anuncio de convocatoria en el Boletín Oficial de la Provincia.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "10 días como máximo desde el fin del plazo de presentación; sin notificación, se entiende desestimada",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 11,
+     "texto": "El plazo máximo de resolución será de 10 días desde la finalización del plazo de presentación de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Año natural 2026; gastos efectivamente pagados antes del 31 de diciembre del ejercicio de concesión",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 14,
+     "texto": "Se considerará gasto realizado el que ha sido efectivamente pagado con anterioridad al 31 de diciembre del ejercicio en que se concede la subvención.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Antes del 31 de enero del año siguiente, por el importe total concedido, con memoria final, facturas originales y certificaciones",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "La justificación del gasto correspondiente a la subvención se deberá presentar antes del día 31 de enero del año siguiente al de la convocatoria",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 108000,
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "Para la financiación de las presentes Bases se establece la cantidad máxima de CIENTO OCHO MIL EUROS (108.000,00 €)",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 18000,
+    "cita": {
+     "documento": 1426065,
+     "pagina": 10,
+     "texto": "El importe máximo de la subvención que se conceda a cada Entidad no podrá superar la cantidad de DIECIOCHO MIL EUROS (18.000,00 €).",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago anticipado una vez concedida la subvención",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 11,
+     "texto": "El pago del importe de las subvenciones concedidas se realizará de manera anticipada, una vez sea concedida",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas, que deben comunicarse; hay que renunciar a la parte que, sumada a otros ingresos, supere el total de gastos",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 5,
+     "texto": "Renunciar parcialmente a la subvención concedida cuando el pago de la misma suponga, junto con los otros ingresos de cualquier naturaleza, una cantidad superior al total de los gastos.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Estar legalmente constituida como asociación",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "a) Estar legalmente constituidas como Asociaciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar inscrita en el Registro Municipal de Asociaciones",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "b) Estar inscritas en el Registro Municipal de Asociaciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber participado en los Certámenes de Habaneras y Polifonía de Torrevieja",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "c) Haber participado en los Certámenes de Habaneras y Polifonía de Torrevieja.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Carecer de ánimo de lucro y no depender de entidades lucrativas",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "d) Carecer de fines de lucro y no depender económica o institucionalmente de entidades lucrativas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones derivadas de subvenciones municipales anteriores",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "e) Estar al corriente, en el caso de haber recibido subvenciones de la Corporación Municipal con anterioridad, en el cumplimiento de las obligaciones contraídas por tal concesión.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones tributarias, con la Seguridad Social y con el Ayuntamiento de Torrevieja y el Patronato",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "f) Estar al corriente en el cumplimiento de las obligaciones tributarias y de la seguridad social y de las obligaciones fiscales con el Ayuntamiento de Torrevieja y el Patronato de Habaneras.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13 de la Ley General de Subvenciones (declaración responsable)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 2,
+     "texto": "g) No estar incursos en ninguna de las causas de prohibición contenidas en los apartados 2 y 3 del artículo 13 de la Ley General de Subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener domicilio social en Torrevieja",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "h) Declaración de poseer domicilio social en la ciudad de Torrevieja.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Realizar la actividad dentro del año natural",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 3,
+     "texto": "adoptar el comportamiento que fundamente la concesión de la subvención, dentro del año natural, ajustándose a los términos de la solicitud o proyecto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Dar publicidad a la financiación pública con el escudo del Patronato o el logotipo del Ayuntamiento",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 4,
+     "texto": "cualquier tipo que sean objeto de subvención, con el escudo del Patronato Municipal o logotipo aprobado por el Ayuntamiento de Torrevieja.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No subcontratar las actividades subvencionadas",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 5,
+     "texto": "No subcontratar los proyectos o actividades objeto de las subvenciones, salvo que expresamente se concrete lo contrario en cada una de las convocatorias de subvenciones.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los programas de los conciertos deben ser preferentemente de habaneras",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 10,
+     "texto": "Los programas de los conciertos, objeto de la subvención deberán ser preferentemente de habaneras, debiendo ser justificados documentalmente.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Transporte, alojamiento y manutención para conciertos fuera de la localidad (computables al 100 %)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "Gastos de transporte: alojamiento y manutención para la realización de conciertos fuera de la localidad, Estos gastos serán computables al 100%.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Personal: director, subdirector o personal contratado por la entidad o mediante prestación de servicios (hasta el 100 % de la subvención)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "Gastos de personal: del director, subdirector o personal contratado por la entidad, o mediante contrato de prestación de servicios.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicidad, cartelería y alquiler de equipos para los conciertos programados (hasta el 80 % de la subvención)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "Gastos: publicidad, cartelería y alquiler de equipos necesarios para los conciertos programados, con un máximo del 80% sobre el importe total concedido de subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tributos efectivamente abonados y no recuperables",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 14,
+     "texto": "Los tributos se considerarán gastos subvencionables cuando sean abonados por el beneficiario efectivamente",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Restaurantes, fiestas o similares",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "En ningún caso serán subvencionables los gastos de restaurantes, fiestas o similares, de mantenimiento de la entidad y de inversión.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Mantenimiento de la entidad",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "En ningún caso serán subvencionables los gastos de restaurantes, fiestas o similares, de mantenimiento de la entidad y de inversión.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Inversión",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "En ningún caso serán subvencionables los gastos de restaurantes, fiestas o similares, de mantenimiento de la entidad y de inversión.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alimentos, bebidas alcohólicas, lotes navideños, flores, metopas, decoración, obsequios y gastos lúdicos o suntuarios",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 12,
+     "texto": "Tampoco tendrán carácter subvencionable la compra de alimentos, bebidas alcohólicas, lotes navideños, flores, metopas, artículos de decoración, obsequios y otros gastos de carácter lúdico, suntuario o innecesario",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos por encima del valor de mercado",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 14,
+     "texto": "En ningún caso el coste de adquisición de los gastos subvencionables podrá ser superior al valor de mercado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Conciertos de promoción de la habanera celebrados en Torrevieja: 1 punto por concierto",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1426065,
+     "pagina": 10,
+     "texto": "a) Celebrados en Torrevieja, 1 punto por cada concierto, hasta un máximo de 2 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Conciertos en localidades a hasta 250 km de Torrevieja: 2 puntos por concierto",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1426065,
+     "pagina": 10,
+     "texto": "b) Celebrados en localidades que disten de Torrevieja hasta 250 kilómetros, 2 puntos, por cada concierto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Conciertos en localidades a más de 250 km de Torrevieja: 3 puntos por concierto",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1426065,
+     "pagina": 10,
+     "texto": "c) Celebrados en localidades que disten de Torrevieja más de 250 kilómetros, 3 puntos, por cada concierto.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de coralistas en activo: hasta 20, 1 punto; de 21 a 39, 2 puntos; 40 o más, 3 puntos",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1426065,
+     "pagina": 10,
+     "texto": "Desde 40 coralistas en adelante, 3 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Instancia de solicitud de la subvención",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 7,
+     "texto": "a) Instancia solicitando la concesión de la subvención municipal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria del programa de actividades previsto: actividades, duración, miembros en activo, presupuesto de ingresos y gastos e importe solicitado",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 7,
+     "texto": "b) Memoria de la entidad solicitante en la que conste la descripción del programa de actividades que se tiene previsto desarrollar durante el año",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto detallado de ingresos y gastos, con otras subvenciones solicitadas o concedidas",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "4.- Presupuesto detallado de ingresos y gastos, haciendo constar expresamente las subvenciones solicitadas a otras instituciones y organismos con el mismo fin",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria de las actividades del año anterior",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "c) Memoria de las actividades desarrolladas durante el año natural anterior a la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documentación compulsada que acredite la representación (libro de actas y DNI del representante)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "d) Documentación compulsada que acredite la representación del solicitante:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Copia de la tarjeta de identificación fiscal de la asociación",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "e) Copia de la tarjeta de identificación fiscal de la Asociación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Número de inscripción en el Registro Municipal de Asociaciones (si concurre por primera vez)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "f) Número de inscripción en el Registro Municipal de Asociaciones, en el caso de Entidades y Asociaciones que concurran por primera vez",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de compromiso de dar publicidad al Patronato como patrocinador",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "g) Declaración debidamente firmada en la que se haga constar el compromiso de la Asociación de dar la correspondiente publicidad al Patronato Municipal de Habaneras",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de domicilio social en Torrevieja",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "h) Declaración de poseer domicilio social en la ciudad de Torrevieja.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de no ser deudor de la Hacienda Pública",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "i) Certificación acreditativa de no ser deudor de la Hacienda Pública.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de estar al corriente con la Seguridad Social",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "j) Certificado acreditativo de estar al corriente en el cumplimiento de las obligaciones con la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de estar al corriente con el Ayuntamiento de Torrevieja o SUMA Gestión Tributaria",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 8,
+     "texto": "k) Certificación acreditativa de estar al corriente de las obligaciones tributarias con el Ayuntamiento de Torrevieja, o por SUMA Gestión Tributaria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Impreso de alta de terceros con los datos bancarios (si han cambiado o es la primera vez)",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 9,
+     "texto": "l) Impreso de alta de terceros con los datos de la entidad bancaria a la que se ha de transferir el importe de la subvención",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Página web del Ayuntamiento de Torrevieja, sede del Patronato de Habaneras",
+    "cita": {
+     "documento": 1426065,
+     "pagina": 9,
+     "texto": "Las Asociaciones presentarán sus solicitudes en la página web del Ayuntamiento de Torrevieja, sede Patronato Habaneras.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Convocatoria cerrada a las corales de Torrevieja que han participado en el Certamen de Habaneras: no sirve a un promotor de conciertos de jazz, clásica u ópera.",
+   "La puntuación máxima total es de 10 puntos; cada punto vale 1.800 euros y, si la suma supera los 108.000 euros, las cuantías se reducen proporcionalmente.",
+   "No se tienen en cuenta los conciertos organizados por el propio Patronato.",
+   "Los gastos de personal pueden llegar al 100 % de la subvención y los de publicidad, cartelería y alquiler de equipos al 80 %.",
+   "Toda la documentación debe ser original o copia compulsada; el plazo de subsanación es de 10 días naturales (la base 6 menciona 5 días)."
+  ]
+ },
+ "citas": {
+  "verificadas": 49,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

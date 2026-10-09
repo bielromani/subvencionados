@@ -1,0 +1,264 @@
+{
+ "version": 1,
+ "codigoBdns": "917275",
+ "generada": "2026-10-09T14:01:32.562Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1491429,
+   "nombre": "BASES_CONCURSO_MÚSICA_CALLEJERA_SAN_ANTOLÍN_2026.pdf",
+   "paginas": 9,
+   "huella": "35ca36765005d747"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "III Concurso de Música Callejera de las Fiestas de San Antolín 2026 del Ayuntamiento de Palencia, en forma de premios.",
+   "Para personas físicas mayores de edad que actúen como solistas, dúos o grupos.",
+   "Dos premios por 1.100 euros en total: primer premio de 750 euros y premio del público de 350 euros.",
+   "Actuación el 31 de agosto de 2026 en la calle Mayor de Palencia.",
+   "Plazo: diez días hábiles desde la publicación del extracto en el BOP de Palencia."
+  ],
+  "objeto": {
+   "valor": "Premios del III Concurso de Música Callejera de las Fiestas de San Antolín 2026 en Palencia",
+   "cita": {
+    "documento": 1491429,
+    "pagina": 1,
+    "texto": "El objeto de la convocatoria es el “III CONCURSO DE MÚSICA CALLEJERA” DE LAS FIESTAS DE SAN ANTOLÍN 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Personas físicas mayores de edad, nacionales o extranjeras, que actúen como solistas, dúos o grupos musicales",
+   "cita": {
+    "documento": 1491429,
+    "pagina": 2,
+    "texto": "personas físicas, mayores de edad, nacionales o extranjeras, que actúen como solistas, dúos o grupos musicales.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Diez días hábiles desde el día siguiente a la publicación del extracto en el BOP de Palencia",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "El plazo para la presentación de solicitudes será de diez días hábiles contados a partir del día siguiente al de la publicación del extracto",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Fallo del jurado en un máximo de siete días naturales tras las audiciones; resolución de la Alcaldía en un máximo de tres días desde la propuesta",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 5,
+     "texto": "que será emitido en un plazo máximo de tres días desde la elevación de la propuesta",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "31 de agosto de 2026, entre las 18 y las 21:30 horas, en la calle Mayor de Palencia",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "el día 31 de agosto de 2026 entre las 18 y las 21:30 horas en los lugares habilitados a lo largo de la calle Mayor de Palencia.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 1100,
+    "cita": {
+     "documento": 1491429,
+     "pagina": 4,
+     "texto": "Se concederán dos premios, por una cantidad total de 1.100 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 750,
+    "cita": {
+     "documento": 1491429,
+     "pagina": 4,
+     "texto": "Primer premio: 750 €",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Transferencia bancaria a la cuenta indicada por el premiado en un anexo que se facilitará",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 4,
+     "texto": "El pago del premio se realizará mediante transferencia bancaria a la cuenta que haya indicado el participante",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Personas físicas mayores de edad (solistas, dúos o grupos)",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 2,
+     "texto": "personas físicas, mayores de edad, nacionales o extranjeras, que actúen como solistas, dúos o grupos musicales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los participantes aportan sus propios medios técnicos",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 2,
+     "texto": "Los participantes se harán cargo de los medios técnicos, que precisen, dado el carácter de música callejera que inspira el presente concurso.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con Hacienda y la Seguridad Social, mediante declaración responsable",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 2,
+     "texto": "Las personas participantes deberán acreditar estar al corriente de sus obligaciones tributarias y con la Seguridad Social, mediante declaración responsable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No ser deudor con la Hacienda Municipal",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 2,
+     "texto": "Así mismo, deberán declarar responsablemente no ser deudores con la Hacienda Municipal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13 de la LGS y 5 de la Ordenanza",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 2,
+     "texto": "No podrán obtener la condición de beneficiario de subvenciones las personas en quienes concurra alguna de las circunstancias previstas en los artículos 13 de la LGS",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actuar el 31 de agosto de 2026 en los lugares habilitados de la calle Mayor",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "Las personas o grupos participantes actuarán en el lugar o lugares habilitados al efecto por el Ayuntamiento de Palencia el día 31 de agosto de 2026",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Selección del primer premio por un jurado de al menos tres profesionales palentinos del ámbito musical (sin baremo de puntos)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1491429,
+     "pagina": 4,
+     "texto": "La selección de los participantes premiados corresponderá a un jurado integrado por al menos tres profesionales palentinos del ámbito musical",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Premio del público por votación popular en Instagram y papeletas en urnas",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1491429,
+     "pagina": 4,
+     "texto": "Para el premio especial de jurado popular se habilitará una votación en Instagram @palenciacultura",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud de participación según el modelo del Anexo I",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "Las solicitudes de participación se presentarán, conforme al modelo de solicitud recogido en el Anexo I de las presentes bases.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de no estar incurso en prohibiciones del art. 13.2 LGS y de estar al corriente de pagos (incluida en el Anexo I)",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 8,
+     "texto": "Que no están incursos en ninguna de las prohibiciones para obtener la condición de beneficiarios de subvenciones previstas en el Art. 13.2 LGS",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro General del Ayuntamiento (Edificio Agustinas Canónigas), sede electrónica o cualquier medio del art. 16.4 de la Ley 39/2015",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "podrán presentar su solicitud en el Registro General del Ayuntamiento (Edificio Agustinas Canónigas, calle Mayor Principal nº 7)",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "sede.aytopalencia.es",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "mediante el procedimiento de tramitación electrónica que está disponible en la Sede Electrónica de este Ayuntamiento (sede.aytopalencia.es)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "No obligatoria: al ser personas físicas pueden presentar en papel o electrónicamente",
+    "cita": {
+     "documento": 1491429,
+     "pagina": 3,
+     "texto": "Los participantes, al ser personas físicas, podrán presentar su solicitud en el Registro General del Ayuntamiento",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Es un concurso de música callejera con premios, no una subvención a la programación de conciertos; solo pueden participar personas físicas, no empresas promotoras.",
+   "Los premios están sujetos a la retención fiscal que corresponda.",
+   "El jurado puede declarar desierto el concurso; su fallo es inapelable.",
+   "Impreso de inscripción descargable en www.aytopalencia.es/area/cultura-y-fiestas/fiestas."
+  ]
+ },
+ "citas": {
+  "verificadas": 21,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

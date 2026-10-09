@@ -1,0 +1,548 @@
+{
+ "version": 1,
+ "codigoBdns": "926775",
+ "generada": "2026-10-09T14:00:34.853Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1513799,
+   "nombre": "Convocatoria subvenciones para entidades culturales  2026.pdf",
+   "paginas": 7,
+   "huella": "4d36de5666d2ceec"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Palamós para actividades de entidades culturales en 2026, con un programa específico de música.",
+   "Para entidades culturales o asociaciones sin ánimo de lucro domiciliadas en Palamós.",
+   "Crédito total de 30.000 euros, de los que 6.000 euros son para el programa de Música.",
+   "Plazo de un mes desde el día siguiente a la publicación del extracto en el BOP de Girona.",
+   "Se paga tras justificar, como máximo el 31 de enero de 2027."
+  ],
+  "objeto": {
+   "valor": "Subvenciones a entidades culturales durante 2026 en cinco programas: artes escénicas, música, artes plásticas, asociaciones de familias y actividades socioculturales",
+   "cita": {
+    "documento": 1513799,
+    "pagina": 1,
+    "texto": "El objeto de la convocatoria es regular la concesión de subvenciones a entidades culturales durante el año 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades culturales o asociaciones sin ánimo de lucro constituidas y domiciliadas en Palamós que organicen actividades culturales en el municipio",
+   "cita": {
+    "documento": 1513799,
+    "pagina": 1,
+    "texto": "las entidades culturales o asociaciones sin ánimo de lucro, legalmente constituido y domiciliado en el municipio de Palamós",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Un mes desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Provincia de Girona",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 5,
+     "texto": "El plazo para presentar las solicitudes de subvenciones de los cinco programas es de un mes a contar desde el día siguiente a la fecha de publicación del extracto",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo desde la publicación del extracto en el BOP de Girona",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 5,
+     "texto": "el plazo máximo para resolver y notificar la resolución no podrá ejercer de seis meses, a partir de la fecha de publicación del extracto",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades del año 2026",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 1,
+     "texto": "regular la concesión de subvenciones a entidades culturales durante el año 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa simplificada con facturas y comprobantes de pago, en el registro general, como máximo el 31 de enero de 2027",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 6,
+     "texto": "deberán presentar la cuenta justificativa, acompañado de los documentos justificativos correspondientes, como máximo el 31 de enero de 2027.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 30000,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "La cuantía máxima total que se destina a esta convocatoria para 2026 es de 30.000 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Tras la justificación; excepcionalmente puede pedirse por escrito un anticipo del 50 %",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 6,
+     "texto": "El pago se hará previa la justificación de la subvención con la presentación de los justificantes correspondientes",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Incompatible con una subvención nominativa o un convenio con el Ayuntamiento por el mismo concepto; con otras ayudas, sin superar el coste de la actividad",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 6,
+     "texto": "no podrán obtener subvención dentro de la presente convocatoria por el mismo concepto subvencionado.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad cultural o asociación sin ánimo de lucro legalmente constituida",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 1,
+     "texto": "las entidades culturales o asociaciones sin ánimo de lucro, legalmente constituido y domiciliado en el municipio de Palamós",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener como finalidad organizar y realizar actividades culturales en Palamós",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 1,
+     "texto": "que tengan como finalidad la organización, la realización y la práctica de actividades culturales en el municipio de Palamós.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de seguro de responsabilidad civil que cubra el riesgo de la actividad",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Documentación acreditativa conforme dispone de un seguro de responsabilidad civil",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "De no encontrarse incluidos en las prohibiciones para obtener la condición de beneficiario de subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 5,
+     "texto": "Estar al corriente de sus obligaciones tributarias y con la Seguridad Social",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Hacer constar la colaboración del Ayuntamiento en las actividades y en la propaganda",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 6,
+     "texto": "están obligadas a hacer constar la colaboración del Ayuntamiento de Palamós en todas las actividades de ejecución de lo pactado",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "La subvención no puede superar el importe solicitado",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "En ningún caso se podrá otorgar una subvención superior al importe solicitado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Los gastos deben estar contabilizados y pagados antes de que acabe el periodo de subvención",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 6,
+     "texto": "Los gastos deben estar contabilizados y pagados antes de la finalización del periodo de subvención.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos que respondan a la naturaleza de la actividad: material gráfico, formación, desplazamientos, vestuario, instrumentos y suministros",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "material gráfico, recibo federación, formación, desplazamientos, vestuario, instrumentos… y suministros diversos relacionados que se efectúen durante el período de la actividad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de funcionamiento de la entidad (alquiler de local, seguros, telefonía, papelería, informática) hasta el 40 % del presupuesto",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "alquiler local, póliza de seguros, telefonía, papelería, informática…, siempre y cuando no superen el 40% del presupuesto presentado.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desplazamientos con factura o, en vehículo particular, a 0,19 euros por kilómetro con modelo normalizado",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "hecho con vehículos particulares, deberán justificarse mediante el modelo normalizado (0,19 € / Km).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de personal, con nóminas y boletines de cotización",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 6,
+     "texto": "Los gastos de personal deberán acreditarse con los recibos de nóminas confeccionados de acuerdo con la Orden de 27 de diciembre de 1994",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Impuestos indirectos recuperables o compensables",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "Los impuestos indirectos cuando sean susceptibles de recuperación o compensación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de inversión, incluida la compra de bienes muebles",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "Gastos de inversión, incluidas las adquisiciones de bienes muebles",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos anteriores al inicio o posteriores a la finalización del proyecto",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "Gastos realizados antes del inicio del proyecto y fecha posterior a la finalización del",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Actividad realizada en Palamós (1 punto por actividad)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "1. Actividad realizada en Palamós Por cada actividad 1 punto hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Difusión del nombre del municipio por actividades fuera de Palamós (1 punto por actividad)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "Difusión del nombre del municipio, por cada Por cada actividad 1 punto hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Incidencia en la población: previsión de participación del público (1, 2 o 5 puntos según asistentes)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "previsión de participación de De 25 a 500 personas 2 puntos los ciudadanos Más de 501 personas 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Continuidad de las acciones en el tiempo (de 1 punto la segunda edición a 5 puntos la sexta y posteriores)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "tengan continuidad en el tiempo Sexta edición y posteriores 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Novedad de la propuesta en Palamós (1 punto por acción, 5 por programa)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "ha hecho nunca en Palamós Para cada programa 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Recuperación y difusión del patrimonio cultural de Palamós",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "difusión del patrimonio cultural de Palamós Primera tradición (coplas, pastorcillos, etc.) 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Singularidad: actividad única y exclusiva de una entidad de Palamós",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "7. Singularidad en la actividad cultural Palamós por iniciativa de una entidad Palamós, única, 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Formación artística estable en el municipio, como aula de música (1 punto por curso)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "estable en el municipio: aula de música, círculo, Por cada curso 1 punto hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Propuestas que complementen la programación cultural del Ayuntamiento (1 punto por actividad)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "oferta de difusión cultural generada desde el Cada actividad 1 punto hasta un máximo de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Proyectos promovidos conjuntamente por varias entidades: 2 puntos la entidad promotora y 1 punto por entidad colaboradora hasta 10",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "entidad, institución, fundaciones u otros 1 punto por cada entidad que colabora hasta un máximo organismos del municipio. de 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Participación en fiestas locales y actos a petición del Ayuntamiento (1 punto por acto)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "fiestas locales y actos y acciones generales a Por cada acto 1 puntos hasta un máximo de 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de socios de la entidad (de 1 a 5 puntos)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "12. Número de socios de la entidad De 101 a 200 socios 3 puntos De 201 a 300 socios 4 puntos Más de 301 socios 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Financiación diversificada: otras administraciones públicas 5 puntos; patrocinio privado 5 puntos",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "Otras Administraciones Publicas 5 puntos 13. Financiación diversificado Patrocinio privado (sponsors) 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Cursos o talleres de formación abiertos al público de al menos 8 horas (1 punto por taller)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "cursos, talleres, etc. (mínimo 8h) abiertos al Por cada taller 1 punto hasta a un máximo de 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Periodicidad de la actividad durante el año (de 1 punto anual a 5 puntos más de una vez al mes)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 2,
+     "texto": "el año Una vez al mes 4 puntos Más de una vez al mes 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Actividades con recaudación benéfica (1 punto por actividad, sin máximo indicado)",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "16. Actividades con recaudación benéfica Para cada actividad 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Recopilación de imágenes de las actividades en jpg para el archivo",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1513799,
+     "pagina": 3,
+     "texto": "17. Recopilación de imágenes de las actividades para el archivo en formato jpg (resolución de 5 puntos",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en modelo normalizado de la sede electrónica",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Las solicitudes se formalizarán mediante el modelo normalizado disponible en la sede electrónica del Ayuntamiento de Palamós",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditación del seguro de responsabilidad civil exigido por la Ley 11/2009 de espectáculos públicos",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Documentación acreditativa conforme dispone de un seguro de responsabilidad civil, en la cuantía y con las condiciones determinadas por la normativa de desarrollo de la Ley",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado del secretario que acredite la representación del presidente (anexo I)",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Acreditación de la representación con que actúa quien presenta la solicitud mediante certificado del secretario/a de la entidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Autorización de difusión de datos e imágenes (anexo II)",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Autorización a favor del Ayuntamiento de Palamós para la difusión pública de los datos e imágenes",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable (anexo III) sobre otras ayudas, prohibiciones, sanciones por discriminación y certificados de delitos sexuales",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Declaración responsable de la entidad en relación con los siguientes extremos de acuerdo con el modelo normalizado que consta como Anexo III.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Relación de actividades con objetivos, contenidos, lugar, fechas y número previsto de beneficiarios (anexo IV)",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "Relación de las actividades propuestas, con justificación de sus objetivos y necesidad, detalle de contenidos, lugar donde se llevarán a cabo las actividades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto detallado de gastos e ingresos (anexo V)",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "El presupuesto detallado, en el que consten los gastos previstos y las diferentes fuentes de ingresos Anexo V.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Registro general del Ayuntamiento de Palamós o sede electrónica",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 5,
+     "texto": "Las solicitudes deben presentarse en el Registro general del Ayuntamiento de Palamós o a través de la Sede electrónica",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "http://seu.palamos.cat",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 4,
+     "texto": "mediante el modelo normalizado disponible en la sede electrónica del Ayuntamiento de Palamós (http://seu.palamos.cat)",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "No obligatoria: también se admite el registro general presencial",
+    "cita": {
+     "documento": 1513799,
+     "pagina": 5,
+     "texto": "Las solicitudes deben presentarse en el Registro general del Ayuntamiento de Palamós o a través de la Sede electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Las bases reguladoras específicas (aprobadas en julio de 2022, DOGC 8760 y BOP 144 de 29 de julio de 2022) no se incluyen; el documento es la convocatoria de 2026.",
+   "Reparto por programas: Artes escénicas 5.500 €, Música 6.000 €, Artes plásticas 1.700 €, Asociaciones de familias 11.000 € y Actividad sociocultural 5.800 €. El texto dice «seis programas» pero enumera cinco.",
+   "La cuantía se reparte por prorrateo según la puntuación; no hay importe máximo por entidad, salvo no superar lo solicitado ni el coste de la actividad.",
+   "Solo para entidades domiciliadas en Palamós: un promotor profesional no encaja salvo que sea una asociación cultural sin ánimo de lucro local.",
+   "Algunos criterios tienen tramos acumulables (proyectos conjuntos, financiación diversificada) sin un máximo total claro."
+  ]
+ },
+ "citas": {
+  "verificadas": 51,
+  "revisar": 0,
+  "noConsta": 5
+ }
+}

@@ -1,0 +1,166 @@
+{
+ "version": 1,
+ "codigoBdns": "861209",
+ "generada": "2026-10-09T14:01:08.359Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1409924,
+   "nombre": "03 ACORD_1.37_JGL_20251219.pdf",
+   "paginas": 8,
+   "huella": "395fd208c9056915"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Acuerdo del Ayuntamiento de Onda que aprueba la justificación y el pago de las subvenciones de 2025 a asociaciones locales por actuaciones musicales y taurinas en la Fira d'Onda.",
+   "Beneficiarias: entidades sin ánimo de lucro de Onda.",
+   "Se paga el 100 % tras justificar, sin anticipos; una subvención se deja sin efecto por no justificar."
+  ],
+  "objeto": {
+   "valor": "Actuaciones musicales y taurinas organizadas por asociaciones locales durante la Fira d'Onda 2025",
+   "cita": {
+    "documento": 1409924,
+    "pagina": 1,
+    "texto": "Bases especifiques de la convocatòria per a la concessió de subvencions per a la realització d'actuacions musicals i taurines a les associacions locals durant la Fira d'Onda 2025",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades sin ánimo de lucro de Onda",
+   "cita": {
+    "documento": 1409924,
+    "pagina": 1,
+    "texto": "concessió de subvencions per la realització d'activitats musicals i taurines durant la Fira d’Onda a entitats sense ànim de lucre d'Onda",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Durante la Fira d'Onda 2025",
+    "cita": {
+     "documento": 1409924,
+     "pagina": 6,
+     "texto": "per la realització d'activitat musicals i taurines durant la Fira 2025.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Solicitud telemática de justificación y pago con facturas, en el plazo de la base 13.ª (no se indica cuál)",
+    "cita": {
+     "documento": 1409924,
+     "pagina": 1,
+     "texto": "Vistes les sol·licituds de justificació i pagament del 100% de la subvenció presentades telemàticament pels representants de les distintes associacions",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago del 100 % tras la justificación; no se realizaron anticipos",
+    "cita": {
+     "documento": 1409924,
+     "pagina": 4,
+     "texto": "Vist que no s’ha procedit a realitzar cap bestreta de la subvenció, queda justificat el 100% del total de la subvenció concedida a cada entitat.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad sin ánimo de lucro de Onda",
+    "cita": {
+     "documento": 1409924,
+     "pagina": 1,
+     "texto": "durant la Fira d’Onda a entitats sense ànim de lucre d'Onda (pressupost 2025).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con la Hacienda local, la Agencia Tributaria y la Seguridad Social",
+    "cita": {
+     "documento": 1409924,
+     "pagina": 4,
+     "texto": "no figuren com a deutors amb la Hisenda Local, ni l'Agència Tributària, ni amb la Seguretat Social.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Facturas justificativas de los gastos (en la fase de justificación)",
+    "cita": {
+     "documento": 1409924,
+     "pagina": 2,
+     "texto": "Vist que els presidents de les entitats presenten factures justificatives de les despeses efectuades",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento no son las bases: es el certificado del acuerdo de la Junta de Govern Local de 19 de diciembre de 2025 que aprueba la justificación y el pago del 100 % de las subvenciones de la Fira d'Onda 2025 y deja sin efecto una por no justificar. Las bases específicas (aprobadas el 3 de octubre de 2025) no se incluyen.",
+   "Las retenciones de crédito fueron de 15.000 euros para las subvenciones musicales y 4.800 euros para las taurinas; se pagaron 6.169 euros y 4.000 euros respectivamente, con importes por entidad de entre 225 y 800 euros.",
+   "Los gastos aceptados en las musicales fueron, entre otros, equipos de sonido e iluminación, orquestas, charangas y sesiones de DJ para las peñas.",
+   "El documento está en valenciano. Es una convocatoria cerrada (2025) para peñas y asociaciones locales de Onda; no sirve a un promotor de jazz, clásica u ópera."
+  ]
+ },
+ "citas": {
+  "verificadas": 8,
+  "revisar": 0,
+  "noConsta": 12
+ }
+}

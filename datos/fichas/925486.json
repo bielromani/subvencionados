@@ -1,0 +1,193 @@
+{
+ "version": 1,
+ "codigoBdns": "925486",
+ "generada": "2026-10-09T14:00:43.563Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1510515,
+   "nombre": "Acord convocatòria ajuts MEAMUTE 2026.pdf",
+   "paginas": 5,
+   "huella": "3496a6efdac5f056"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Consell Insular de Menorca, programa «Menorca, Arts, Música i Teatre» 2026.",
+   "Subvenciona que entidades y ayuntamientos contraten artistas y grupos del Catálogo del programa (grupos menorquines o residentes en la isla).",
+   "Importe máximo de la convocatoria: 150.000 euros.",
+   "Plazo: treinta días naturales desde el día siguiente a la publicación en el BOIB.",
+   "Solicitud solo por el trámite de Carpeta Ciutadana."
+  ],
+  "objeto": {
+   "valor": "Contratación por las entidades beneficiarias de artistas y grupos incluidos en el Catálogo de Menorca, Arts, Música i Teatre, para promover la actividad musical, teatral y artística de grupos menorquines",
+   "cita": {
+    "documento": 1510515,
+    "pagina": 1,
+    "texto": "Amb aquesta convocatòria se subvenciona que les entitats beneficiàries puguin contractar els artistes i grups inclosos en el Catàleg de Menorca, Arts, Música i Teatre",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Ayuntamientos, asociaciones culturales y de vecinos, clubes de jubilados, entidades religiosas y fundaciones culturales de Menorca (según los efectos previstos en el Plan Estratégico)",
+   "cita": {
+    "documento": 1510515,
+    "pagina": 1,
+    "texto": "Els efectes prevists al PES són que els ajuntaments, les associacions culturals, de veïns, els clubs de jubilats, les entitats religioses i les fundacions culturals tenguin",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Treinta días naturales a partir del día siguiente a la publicación en el BOIB",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 3,
+     "texto": "El termini de presentació de sol·licituds per acollir-se a aquests ajuts serà de trenta dies naturals a partir de l’endemà de la publicació al BOIB.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Año 2026",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 3,
+     "texto": "Aprovar la convocatòria dels ajuts del programa Menorca, Arts, Música i Teatre per a l’any 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 150000,
+    "cita": {
+     "documento": 1510515,
+     "pagina": 3,
+     "texto": "L’import màxim previst per destinar a la convocatòria és de 150.000 euros, que seran atesos amb càrrec a la partida 4-33400-4890009.",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Los artistas y grupos contratados deben estar incluidos en el Catálogo de Menorca, Arts, Música i Teatre",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 1,
+     "texto": "contractar els artistes i grups inclosos en el Catàleg de Menorca, Arts, Música i Teatre",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comunicar a la persona responsable de la Agenda Cultural la realización de las actividades subvencionadas",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 1,
+     "texto": "les entitats beneficiàries han de comunicar a la persona responsable de l’Agenda Cultural la realització de les activitats subvencionades",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El programa promueve a grupos menorquines o residentes en la isla",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 1,
+     "texto": "espectacles que desenvolupen els grups menorquins o residents a l’illa",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Contratación de artistas y grupos del Catálogo (música, teatro, artes visuales y otros espectáculos)",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 1,
+     "texto": "se subvenciona que les entitats beneficiàries puguin contractar els artistes i grups inclosos en el Catàleg",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Únicamente por el trámite de Carpeta Ciutadana del Consell Insular de Menorca",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 3,
+     "texto": "Determinar que les sol·licituds de subvenció només es podran realitzar pel tràmit de Carpeta Ciutadana elaborat a aquest efecte",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://www.cime.es/gesserveis/gestion.aspx?IDGESTION=900100131",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 3,
+     "texto": "pel tràmit de Carpeta Ciutadana elaborat a aquest efecte: https://www.cime.es/gesserveis/gestion.aspx?IDGESTION=900100131.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Solicitud solo electrónica por Carpeta Ciutadana",
+    "cita": {
+     "documento": 1510515,
+     "pagina": 3,
+     "texto": "les sol·licituds de subvenció només es podran realitzar pel tràmit de Carpeta Ciutadana",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es el acuerdo que aprueba la convocatoria 2026 y modifica la composición de la comisión evaluadora; se rige por las bases aprobadas el 2 de junio de 2025 (BOIB núm. 77 de 19 de junio de 2025), que no se incluyen: requisitos, gastos, criterios, documentación, pago y justificación no constan.",
+   "La relación de grupos y sus importes para 2026 será la que se apruebe por resolución o, en su caso, la de la Resolución núm. 107/2026 (convocatoria 2025).",
+   "Beneficiarios deducidos del apartado de efectos del Plan Estratégico de Subvenciones; las bases concretan quién puede pedirla.",
+   "Útil sobre todo para entidades organizadoras de Menorca que contraten grupos del Catálogo; un promotor solo encaja si es entidad beneficiaria o si sus artistas están en el Catálogo.",
+   "El documento está en catalán."
+  ]
+ },
+ "citas": {
+  "verificadas": 12,
+  "revisar": 0,
+  "noConsta": 9
+ }
+}

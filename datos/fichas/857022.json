@@ -1,0 +1,350 @@
+{
+ "version": 1,
+ "codigoBdns": "857022",
+ "generada": "2026-10-09T14:01:32.579Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1322126,
+   "nombre": "BOB euskaraz Kultur Etxea musika jorratzeko helburu dirulaguntza 2025.pdf",
+   "paginas": 5,
+   "huella": "8f6d2fb2d3b27a81"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones de la Kultur Etxea de Gernika-Lumo para proyectos musicales sin ánimo de lucro en 2025.",
+   "Para asociaciones, grupos musicales o personas empadronadas en Gernika-Lumo (en grupos, al menos el 50 % de los miembros).",
+   "Ejemplos: grabar o producir un disco, un single o un videoclip.",
+   "No se indica crédito total ni importe máximo; el importe depende del gasto realizado.",
+   "Justificación hasta el 31 de enero del año siguiente a la actividad."
+  ],
+  "objeto": {
+   "valor": "Proyectos musicales sin ánimo de lucro de grupos o personas, con incidencia en Gernika-Lumo (actividades ordinarias o extraordinarias)",
+   "cita": {
+    "documento": 1322126,
+    "pagina": 1,
+    "texto": "Araudi honen helburua da irabazi-asmorik gabeko musika-proiektuak egiteko dirulaguntzak ematea eremu horretan jarduten duten talde edo pertsonei.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones, grupos musicales o personas que realicen actividades relacionadas con la música (grabar disco, single o videoclip)",
+   "cita": {
+    "documento": 1322126,
+    "pagina": 2,
+    "texto": "Musikarekin zerikusia duten jarduerak egiten dituzten elkarte, musika-talde edo petsonak, hala nola:",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Antes de la fecha límite fijada en la convocatoria (el documento no la indica)",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "behar bezala erregistratuko dira (presentzialki edo emailez) bertan deialdian jarritako epemuga baino lehen.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Un mes como máximo desde el día siguiente al fin del plazo de solicitudes; sin notificación, se entiende denegada",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Eskaerak aurkezteko azken egunaren biharamunetik hasita, gehienez hilabeteko epea izango dute Gernika-Lumoko Kultur Etxeko herri erakundeko arduradunek aurkeztutako eskabideak aztertzeko eta ebazpenaren berri emateko.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Proyecto o actividades del año correspondiente (2025)",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Dagokion urtean egin beharreko proiektua edo jarduerak deskribatzen dituen memoria",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 31 de enero del año siguiente a la actividad, solo en soporte digital: solicitud, memoria de actividades, memoria económica y facturas",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 4,
+     "texto": "onuradunak bidezko agiriak aurkeztu beharko ditu diruz lagundutako jarduera egin eta hurrengo urteko urtarrilaren 31rako, honako agiri hauek aurkeztuz, euskarri digitalean bakarrik:",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Pago único por transferencia bancaria junto con la notificación de la concesión",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 4,
+     "texto": "Diru-laguntzak epe bakarrean ordainduko dira, bankuko transferentziaren bidez.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con ayudas de otras entidades públicas o privadas, comunicándolas; la suma no puede superar el gasto justificado",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Dirulaguntza horiek bateragarriak dira beste erakunde publiko edo pribatu batzuek emandako dirulaguntzekin",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Las personas solicitantes deben estar empadronadas en Gernika-Lumo",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Dirulaguntza jaso nahi duten norbanakoek Gernika-Lumon erroldatuta egon beharko dute.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En grupos o asociaciones, al menos el 50 % de los miembros empadronados en Gernika-Lumo",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Musika talde edo elkarteen kasuan, gutxienez kideen %50ek Gernika- Lumon erroldatuta egon beharko dute.",
+     "estado": "revisar",
+     "motivo": "No aparece en el documento"
+    }
+   },
+   {
+    "texto": "Las actividades ordinarias deben estar vinculadas a algún espacio musical de Gernika-Lumo",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Ohiko jarduerek Gernika-Lumoko musika-guneren batekin zerikusia izan beharko dute.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Compromiso de participar al año siguiente en un concierto del programa musical Arbolapean",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Eskatzaileek konpromisoa hartuko dute dirulaguntza eman eta hurren urtean Arbolapean musika-programaren esparruan antolatutako kontzertu batean parte hartzeko",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyectos sin ánimo de lucro",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 1,
+     "texto": "Araudi honen helburua da irabazi-asmorik gabeko musika-proiektuak egiteko dirulaguntzak ematea",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener deudas tributarias ni ayudas anteriores sin justificar (condición para el pago)",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 4,
+     "texto": "Zerga zorrak ordaindu gabe izatea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Letras e imágenes sin contenido racista, sexista, homófobo, xenófobo ni contrario a la dignidad",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 5,
+     "texto": "Musika-proposamenen letrek eta/edo irudiek ez dute kutsu arrazista, sexista, homofobo, xenofobo edo pertsonen duintasunaren aurkakoak izan behar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Publicidad en euskera o bilingüe, con el logo de la Kultur Etxea",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 5,
+     "texto": "Jarduerari buruzko edozein komunikabidetan emango den informazioa edo egingo den publizitatea euskara hutsez edo ele bietan egin beharko da",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos directa y objetivamente vinculados al objeto de la subvención",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 1,
+     "texto": "Diruz lagundu ahal izango dira dirulaguntzaren xedearekin zuzenean eta objektiboki lotuta dauden eta diruz lagundutako jardueraren izaerari zalantzarik gabe erantzuten dioten gastuak.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grabación, producción o fabricación de un disco",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Disko bat grabatzea, ekoiztea edo fabrikatzea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grabación o publicación de un single",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Single bat grabatzea/publikatzea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grabación o publicación de un videoclip",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 2,
+     "texto": "Bideoklip bat grabatzea/publikatzea.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos de gestión de difícil justificación hasta el 10 % de los gastos aceptados, exentos de justificación documental",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 5,
+     "texto": "Justifikazio zaileko kudeaketa-gastu gisa agiri bidez justifikatzetik salbuetsita dago diruz lagundu daitezkeen gastu egiaztatuen eta onartuen % 10 arte.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Comidas, bebidas y otros consumos, aunque estén justificados",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 5,
+     "texto": "ez dira onartuko, agiri bidez justifikatuta egon arren, janarien, edarien eta bestelako kontsumoen gastuak.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud oficial cumplimentada (anexo I)",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Eskabidea egiteko agiri ofiziala, behar bezala beteta. (I. eraskina)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del DNI del responsable o solicitante",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Ardunadunaren edo eskatzailearen NAN fotokopia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria del proyecto o actividades del año (currículum del grupo: historia, estilo, fotos)",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Dagokion urtean egin beharreko proiektua edo jarduerak deskribatzen dituen memoria (taldearen curriculuma: historia, estiloa, argazkiak…)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria económica o presupuesto con los recursos financieros previstos",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Dagokion urtean egin beharreko proiektuaren edo jardueren memoria ekonomikoa edo aurrekontua",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Número de cuenta bancaria",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Diru-laguntza ordaindu ahal izateko banketxeko kontu zenbakia.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable del solicitante (anexo II)",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Diru-laguntzaren eskatzailearen erantzukizunpeko adierazpena, behar izanez gero eskatzen diren ziurtagiriak aurkeztuz. (II. eranskina).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Kultur Etxea de Gernika-Lumo, presencialmente o por correo electrónico; formularios en la Kultur Etxea y en su web",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "behar bezala erregistratuko dira (presentzialki edo emailez) bertan deialdian jarritako epemuga baino lehen.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "www.kulturagernika-lumo.eus",
+    "cita": {
+     "documento": 1322126,
+     "pagina": 3,
+     "texto": "Eskabide orriak Gernika-Lumoko Kultur Etxea herri erakundean eta bere web gunean egongo dira (www.kulturagernika-lumo.eus) eskuragarri",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento está en euskera y corresponde a la convocatoria de 2025.",
+   "No indica crédito total, importe máximo ni fechas concretas de presentación; solo la partida presupuestaria 10.3300.48.101.",
+   "El importe se reparte entre todas las solicitudes que cumplan y depende del gasto realizado; no hay criterios de valoración con puntos.",
+   "Orientada a grupos y músicos locales de Gernika-Lumo (grabaciones, discos, videoclips); poco útil para un promotor de conciertos de fuera.",
+   "La documentación debe presentarse en euskera o en euskera y castellano."
+  ]
+ },
+ "citas": {
+  "verificadas": 29,
+  "revisar": 1,
+  "noConsta": 7
+ }
+}

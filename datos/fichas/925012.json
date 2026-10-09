@@ -1,0 +1,405 @@
+{
+ "version": 1,
+ "codigoBdns": "925012",
+ "generada": "2026-10-09T14:01:08.453Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1509426,
+   "nombre": "RESOLUCION SUBVENCIONES CULTURA.pdf",
+   "paginas": 5,
+   "huella": "97b53bed68218648"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Teguise para el proyecto anual de agrupaciones folklóricas y asociaciones musicales y culturales de raíz popular o tradicional (2026).",
+   "Para asociaciones sin ánimo de lucro con sede en Teguise e inscritas en el Registro Municipal de Asociaciones.",
+   "Partida de 70.000 euros; se financia hasta el 70 % de algunos gastos (técnica, cachés) según el tipo de gasto.",
+   "Plazo: diez días hábiles a partir del 1 de septiembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Apoyar a asociaciones que mantienen, promocionan y divulgan la actividad cultural dentro y fuera del municipio mediante un proyecto anual",
+   "cita": {
+    "documento": 1509426,
+    "pagina": 1,
+    "texto": "asociaciones que dedican su actividad a mantener, promocionar y divulgar la actividad cultural dentro y fuera del municipio a través de un proyecto anual.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones folklóricas, culturales y musicales de raíz tradicional y demás entidades sin fines lucrativos con actividades lúdico-culturales, constituidas, inscritas en el Registro Municipal de Asociaciones y con sede social en Teguise",
+   "cita": {
+    "documento": 1509426,
+    "pagina": 1,
+    "texto": "Podrán ser beneficiarios de estas ayudas las Asociaciones Folklóricas, Culturales y musicales de raíz tradicional y demás entidades sin fines lucrativos que realicen actividades lúdicas – culturales",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Diez días hábiles a partir del 1 de septiembre de 2026",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 4,
+     "texto": "se establece el plazo para presentar la correspondiente solicitud será de DIEZ (10) DÍAS HÁBILES a partir del día 1 de septiembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Año 2026 (proyecto anual)",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 1,
+     "texto": "en régimen de concurrencia competitiva correspondiente al año 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 70000,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 1,
+     "texto": "338.489.02 SUBVENCIONES Asociaciones Culturales por importe de SETENTA MIL EUROS (70.000 €).",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 70,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta un 70% en gastos de necesidades técnicas (sonidos, iluminación, escenario…)",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser asociación folklórica, cultural o musical de raíz tradicional u otra entidad sin fines lucrativos con actividades lúdico-culturales",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 1,
+     "texto": "las Asociaciones Folklóricas, Culturales y musicales de raíz tradicional y demás entidades sin fines lucrativos que realicen actividades lúdicas – culturales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar debidamente constituida en la fecha de la solicitud",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 1,
+     "texto": "que se encuentran debidamente constituidas en la fecha de la solicitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar inscrita en el Registro Municipal de Asociaciones y tener sede social en Teguise",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 1,
+     "texto": "se encuentran inscritas en el Registro Municipal de Asociaciones además de que tengan sede social en Teguise.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incursa en las prohibiciones del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 1,
+     "texto": "aquellas entidades en quienes concurra alguna de las circunstancias previstas en el artículo 13.2 de la Ley 38/2003",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las actividades deben estar abiertas al público en general y sin cobro de entrada, salvo fin benéfico",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "pueda participar el público en general y sin darse cobro de entrada u otra contraprestación económica, sólo se permitirá cuando el fin fuera benéfico.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos directos de las actividades: invitaciones, cachés, material, decoración, etc.",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Serán gastos subvencionables todos aquellos gastos directos derivados de las actividades como invitaciones, cachés, gastos de material, decoración, etc.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Adquisición de instrumentos, vestimenta o material técnico para el mantenimiento de la agrupación",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "adquisición de instrumentos, vestimenta o material técnico necesarios para el mantenimiento de la agrupación o asociación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cartelería de promoción del proyecto, en especie, impresa por la imprenta municipal con el logo del Ayuntamiento",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "concretamente referente a la cartelería necesaria para promocionar el proyecto que saldrán de la imprenta municipal siempre con el logo del Ayuntamiento de Teguise.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Necesidades técnicas (sonido, iluminación, escenario): hasta el 70 %",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta un 70% en gastos de necesidades técnicas (sonidos, iluminación, escenario…)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Vestimenta: hasta el 50 %",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta 50 % en gastos de vestimentas.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Instrumentos: hasta el 50 %",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta 50% en gastos de instrumentos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Transporte: hasta el 60 %",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta un 60% en gastos de transporte.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Organización (caché, invitación, decoración, material): hasta el 70 %",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta un 70% en gastos de organización (caché, invitación, decoración, gastos de material…)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos generales (asesoría, material de oficina, seguro): hasta el 30 %",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Hasta un 30% en gastos generales (asesoría, material oficina, seguro…)",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Calidad del proyecto y repercusión en el municipio (tipo de actividad, trayectoria, participación, interés)",
+    "puntosMaximos": 30,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Calidad del Proyecto y repercusión en el Municipio. Aspectos relacionados con el proyecto 30 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de actuaciones en diferentes puntos del municipio",
+    "puntosMaximos": 20,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Nº de Actuaciones en diferentes puntos del Municipio: 20 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de actuaciones en el exterior promocionando el nombre de Teguise (mínimo una)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Nº de Actuaciones en el exterior, promocionando el nombre del municipio 5 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de asociados",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Nº de Asociados: 10 puntos 1.- Inferior a 30 componentes (5 puntos)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Necesidades técnicas propias de la asociación (instrumentos, vestuario, atrezo)",
+    "puntosMaximos": 10,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Necesidades técnicas propias de la asociación como, instrumentos, 10 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Años de antigüedad en el municipio",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1509426,
+     "pagina": 3,
+     "texto": "Años de antigüedad en el municipio: 25 puntos",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Instancia de solicitud dirigida al Alcalde",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Instancia de solicitud dirigida al Sr. Alcalde del Ayuntamiento de Teguise.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable según modelo del anexo",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Declaración responsable, según modelo que se adjunta en el Anexo.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documento acreditativo de la entidad del firmante (CIF, DNI o pasaporte)",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Documento acreditativo de la entidad del firmante, (C.I.F., D.N.I. o pasaporte)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del DNI del presidente",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Fotocopia de DNI del Presidente. - Fotocopia del acta de constitución.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del acta de constitución",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Fotocopia de DNI del Presidente. - Fotocopia del acta de constitución.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con Hacienda y Seguridad Social",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Certificado de estar al corriente con la hacienda pública y con la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitud de alta a terceros cumplimentada por el interesado y la entidad bancaria",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Solicitud de alta a terceros, debidamente cumplimentado por el interesado/a y por la entidad bancaria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyecto de la actividad con presupuesto de gastos e ingresos",
+    "cita": {
+     "documento": 1509426,
+     "pagina": 2,
+     "texto": "Proyecto de la actividad a subvencionar (incluyendo presupuesto de gastos e ingresos).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es el decreto de Alcaldía que abre la convocatoria e incluye las bases específicas (apartado G, punto 10 de la Ordenanza General de Subvenciones de Teguise); el resto del régimen (plazos de resolución, justificación, pago, lugar de presentación) remite a esa Ordenanza, que no se incluye.",
+   "El porcentaje financiable depende del tipo de gasto: 70 % técnica y organización (cachés), 60 % transporte, 50 % vestimenta e instrumentos, 30 % gastos generales.",
+   "Las actividades subvencionadas deben ser gratuitas para el público (solo se admite cobro con fin benéfico).",
+   "Dirigida a asociaciones folklóricas y musicales de raíz tradicional con sede en Teguise (Lanzarote); poco útil para un promotor profesional de jazz, clásica u ópera."
+  ]
+ },
+ "citas": {
+  "verificadas": 34,
+  "revisar": 0,
+  "noConsta": 11
+ }
+}

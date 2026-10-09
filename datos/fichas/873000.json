@@ -1,0 +1,389 @@
+{
+ "version": 1,
+ "codigoBdns": "873000",
+ "generada": "2026-10-09T14:00:43.710Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1365178,
+   "nombre": "Convocatoria para la Concession de Subvenciones.pdf",
+   "paginas": 6,
+   "huella": "17e2af635bec4135"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Puigcerdà a entidades culturales del municipio para actividades culturales y creación de nuevos públicos en 2025.",
+   "Crédito total de 15.000 euros; máximos por entidad entre 1.333 euros (corales) y 2.750 euros (grupos teatrales, colles geganteres, castellers).",
+   "La subvención puede llegar al 100 % del presupuesto presentado.",
+   "Plazo: 15 días hábiles desde la publicación del extracto en el Boletín Oficial de la Provincia.",
+   "Solicitud con el modelo de la sede electrónica del Ayuntamiento."
+  ],
+  "objeto": {
+   "valor": "Actividades culturales y creación de nuevos públicos culturales por entidades culturales de Puigcerdà, en programación anual o actividades puntuales de 2025",
+   "cita": {
+    "documento": 1365178,
+    "pagina": 2,
+    "texto": "a entidades culturales del Municipio de Puigcerdà para la realización de actividades culturales y la creación de nuevos públicos culturales.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades culturales del municipio de Puigcerdà con sede social en Puigcerdà",
+   "cita": {
+    "documento": 1365178,
+    "pagina": 2,
+    "texto": "subvenciones por parte del Ayuntamiento de Puigcerdà a entidades culturales del Municipio de Puigcerdà",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días hábiles desde la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "en el plazo de 15 días hábiles desde la publicación del extracto de la convocatoria en el Boletín Oficial de la Provincia.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Dos meses desde el cierre del plazo de presentación; sin resolución, se entiende desestimada. Notificación en 15 días desde la aprobación",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 4,
+     "texto": "El plazo máximo para resolver será de dos meses a contar desde la fecha de cierre del periodo de presentación de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 1 de enero al 31 de diciembre de 2025",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "esta convocatoria y que se ejecuten entre el 1 de enero al 31 de diciembre de 2025.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 15000,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 1,
+     "texto": "La cuantía total máxima de las subvenciones convocadas es de 15.000’00€ que se imputarán a las aplicaciones presupuestarias siguientes",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 2750,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "Por los grupos teatrales, máximo 2.750 € de subvención por grupo.",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 100,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "El importe de la subvención puede ser del 100% del presupuesto presentado por la entidad por esta anualidad.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones públicas, sin que la suma supere el 100 % del presupuesto presentado",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "la suma de todas las subvenciones públicas correspondientes al mismo ejercicio no podrá exceder del 100% del presupuesto presentado por la entidad por esta anualidad.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad cultural con sede social en Puigcerdà",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "tienen que tener su sede social en Puigcerdà, tienen que desarrollar algunas de sus actividades en el municipio de Puigcerdà",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Desarrollar alguna de sus actividades en el municipio de Puigcerdà",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "tienen que desarrollar algunas de sus actividades en el municipio de Puigcerdà",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Realizar las actividades dentro del periodo previsto (año 2025)",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "Las entidades culturales tienen que llevar a cabo la propuesta/actividades que presenten a la solicitud dentro del periodo previsto en la base tercera",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cumplir las obligaciones de los beneficiarios de la base décima de las bases reguladoras",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "cumplir las obligaciones establecidas en la base décima (obligaciones de los beneficiarios) de las bases que regulan esta convocatoria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social (se autoriza su consulta)",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "obtener de forma directa la acreditación de estar al corriente de sus obligaciones tributarias y con la Seguridad Social.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Actividades de una programación anual o actividades concretas o puntuales relacionadas con la propuesta presentada",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "Podrán ser objeto de subvención las actividades que formen parte de una programación anual o bien actividades concretas o puntuales",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Inversiones y obras de construcción o rehabilitación de inmuebles",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "La financiación de inversiones y las obras de construcción o rehabilitación de inmuebles.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA deducible, compensable o repercutible",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 2,
+     "texto": "Los importes satisfechos en concepto de IVA cuando estos tengan el carácter de deducible, compensable o repercutible",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Duración de la actividad (1 día o fin de semana, 1 mes, programación anual)",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "Duración de la actividad 1 día o un fin de semana 1 punto 1 mes 2 puntos Programación anual 3 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de actividades realizadas en el municipio",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "Realización de actividades en el 1 actividad 1 punto municipio 2 actividades 2 puntos 3 o más actividades 3 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Realización de actividades fuera del municipio",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "Realización de actividades fuera Realización de actividades fuera del del municipio municipio 2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de ediciones",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "Número de ediciones 1a o 2a edición 1 punto 3a o 4a edición 2 puntos 5 ediciones o más 3 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Público asistente",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "De 101 a 500 personas 2 puntos Més de 500 personas 3 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Financiación privada de la propia entidad",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "Financiación privada De la propia entidad 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Financiación privada de patrocinadores privados",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "De la propia entidad 1 punto De patrocinadores privados 1 punto",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Financiación pública de otras entidades públicas",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "Financiación pública Otras entidades públicas 2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de integrantes de la entidad (solo entidades y asociaciones)",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "De 11 a 20 personas 2 puntos Mas de 20 personas 3 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Realización de actividades gratuitas (solo entidades y asociaciones)",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 5,
+     "texto": "gratuitas Realización de actividades gratuitas 2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interés cultural y de la programación: calidad de la propuesta artística y cultural (solo festivales culturales)",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1365178,
+     "pagina": 6,
+     "texto": "Interés cultural y de la programación Cualidad propuesta artística i cultural 5 puntos",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo normalizado de la sede electrónica, con datos del solicitante, de la actividad y fechas de realización",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "Las solicitudes se formularán a través del modelo disponible en la sede electrónica del Ayuntamiento de Puigcerdà, en el plazo de 15 días hábiles",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de cumplir los requisitos para ser beneficiario",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "la declaración responsable de la concurrencia de los requisitos para poder obtener la condición de beneficiario de subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de compromiso de cumplir las condiciones de la subvención",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "la declaración de compromiso del cumplimiento de las condiciones impuestas para la concesión de la subvención",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Autorización al Ayuntamiento para comprobar que se está al corriente con Hacienda y la Seguridad Social",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "la declaración de autorización al Ayuntamiento de Puigcerdà a obtener de forma directa la acreditación de estar al corriente de sus obligaciones tributarias",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Puigcerdà, con el modelo disponible",
+    "cita": {
+     "documento": 1365178,
+     "pagina": 3,
+     "texto": "Las solicitudes se formularán a través del modelo disponible en la sede electrónica del Ayuntamiento de Puigcerdà",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Convocatoria del año 2025: las actividades debían ejecutarse entre el 1 de enero y el 31 de diciembre de 2025.",
+   "Importes máximos por tipo de entidad: corales 1.333 euros; grupos teatrales 2.750; colles geganteres i de grallers 2.750; castellers 2.750. No se menciona otro tipo de entidad musical.",
+   "El crédito se reparte proporcionalmente a la puntuación; si sobra saldo, se puede llegar al máximo por tipología.",
+   "Hay dos tablas de criterios: una para propuestas y actividades de entidades y asociaciones culturales y otra para festivales culturales (esta añade 5 puntos por calidad de la propuesta artística y no puntúa integrantes ni gratuidad).",
+   "Las bases reguladoras están publicadas en el BOP de Girona de 29/05/2017 y no se incluyen; no constan pago ni justificación.",
+   "Solo para entidades culturales con sede en Puigcerdà; poco útil para un promotor de fuera."
+  ]
+ },
+ "citas": {
+  "verificadas": 33,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

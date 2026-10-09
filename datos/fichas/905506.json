@@ -1,0 +1,357 @@
+{
+ "version": 1,
+ "codigoBdns": "905506",
+ "generada": "2026-10-09T14:01:32.534Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1454357,
+   "nombre": "BASES_2026-2027_definitivas.pdf",
+   "paginas": 8,
+   "huella": "5f717bef0ed0421a"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas del Ayuntamiento de Langreo a familias con menores en riesgo de exclusión para inscribirlos en actividades deportivas, artísticas y musicales.",
+   "Dotación de 40.000 euros; máximo 350 euros por menor y año.",
+   "Plazo: 20 días hábiles desde la publicación del extracto en el BOPA.",
+   "Duración de un curso (unas 10 mensualidades), con justificación bimestral."
+  ],
+  "objeto": {
+   "valor": "Ayudas económicas a familias con menores en riesgo o exclusión social para incluirlos en actividades deportivas, artísticas y musicales",
+   "cita": {
+    "documento": 1454357,
+    "pagina": 1,
+    "texto": "regular las ayudas económicas a las familias con menores que se encuentren en situación de riesgo o exclusión social",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Familias con menores de 18 años de los programas de Servicios Sociales de Langreo o derivados por los centros educativos del concejo",
+   "cita": {
+    "documento": 1454357,
+    "pagina": 1,
+    "texto": "destinadas a familias con menores (menores de 18 años) que presenten riesgo de exclusión o dificultades de relación y desarrollo personal.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "20 días hábiles desde el día siguiente a la publicación del extracto en el BOPA",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Las solicitudes se presentarán, en el plazo de 20 días hábiles desde el siguiente a la publicación del extracto de la convocatoria en el Boletín Oficial del Principado de Asturias (BOPA)",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el día hábil siguiente al fin del plazo de solicitudes; sin notificación, desestimada por silencio",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 7,
+     "texto": "El Plazo de resolución y notificación será de seis meses, a contar desde el día hábil siguiente, al de finalización del plazo de presentación de solicitudes",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Un curso deportivo o formativo, 10 mensualidades al año",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 3,
+     "texto": "Las ayudas se concederán en el curso deportivo/formativo,10 mensualidades al año.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Bimestral, ante el SIAC, con los justificantes de pago a la entidad, en los 10 primeros días tras cada bimestre",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 3,
+     "texto": "Se realizará durante los 10 primeros días transcurridos al cumplirse el bimestre de participación de el/la menor en actividad deportivo/académica.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 40000,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 2,
+     "texto": "Ayudas inclusión menores deporte y música. Ayudas familias menores Línea 1: 23112 48901. 40.000 €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 350,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 3,
+     "texto": "se sufragarán los gastos de inscripción y participación en las sesiones que correspondan por un importe total máximo de 350 €/año/menor",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Primer pago anticipado (dos primeros meses e inscripción) y después pagos bimestrales tras justificar",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 1,
+     "texto": "se abonará la primera cantidad de manera anticipada para facilitar la total y efectiva incorporación e inclusión de los menores en las mismas",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Requisito no tener acceso a otras ayudas públicas que cubran la totalidad de la necesidad",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "No tener acceso a otras ayudas de Administraciones Públicas, que cubran la totalidad de la necesidad para la que se solicita la prestación",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "No tener acceso a otras ayudas públicas que cubran toda la necesidad",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "No tener acceso a otras ayudas de Administraciones Públicas, que cubran la totalidad de la necesidad para la que se solicita la prestación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Haber destinado al objeto y justificado la ayuda del curso anterior, si se recibió",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "En caso de haber sido beneficiario de alguna de estas ayudas durante el curso anterior, que éstas hayan sido destinadas al objeto para el que fue concedida",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Escolarización y asistencia regular a clase de los menores",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Cumplir con la escolarización y asistencia regular a clase de los/las menores en edad escolar obligatoria.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alcanzar una puntuación mínima de 5 puntos",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Alcanzar la puntuación mínima (5 puntos), exigible para valorar positivamente la solicitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades colectivas dentro del concejo de Langreo",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 1,
+     "texto": "Se trata de incluir a l@s menores en actividades de carácter colectivo y dentro del Concejo de Langreo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo un cambio de actividad por menor y curso",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 2,
+     "texto": "Únicamente se permitirá un cambio de actividad por menor y curso deportivo/formativo",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Actividades artísticas y musicales: inscripción y participación en las sesiones (incluye los dos primeros meses y la cuota de inscripción)",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 3,
+     "texto": "En las actividades artísticas y musicales se sufragarán los gastos de inscripción y participación en las sesiones que correspondan",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Actividades deportivas: licencia federativa, mutua o seguro de accidentes y coste de los entrenamientos",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 3,
+     "texto": "en las actividades deportivas, se cubrirá el gasto de la licencia federativa y mutua/seguro de accidentes/lesiones",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Familias o menores de los programas y prestaciones de los Servicios Sociales de Langreo",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 6,
+     "texto": "Familias / menores pertenecientes a los diferentes programas y prestaciones de los SS.SS. del Ayuntamiento de Langreo. 3 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Menores derivados por los equipos de orientación y profesorado de los centros educativos del concejo",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 6,
+     "texto": "servicio a la comunidad de los centros educativos del Concejo. 2 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "No disponer de recursos económicos o no superar los baremos de ingresos",
+    "puntosMaximos": 3,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 6,
+     "texto": "acreditando la situación de necesidad mediante la documentación pertinente. 3 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Informe favorable del trabajador de Servicios Sociales según la situación psicosocial del menor",
+    "puntosMaximos": 12,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 6,
+     "texto": "Informe favorable de el/la trabajador/a de los SS.SS.MM. en función de la situación psicosocial de el/la menor, contexto familiar… Hasta 12 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Certificado de discapacidad o dependencia del menor",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1454357,
+     "pagina": 6,
+     "texto": "Certificado de discapacidad y/o dependencia si existiera por parte de el/la menor. 2 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud (Anexo I)",
+    "cita": null,
+    "sinCita": true
+   },
+   {
+    "texto": "Fotocopia del DNI del solicitante y de los mayores de 16 años de la unidad familiar (o documento de identidad para extranjeros)",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Fotocopia D.N.I del solicitante y de las personas mayores de dieciséis años pertenecientes a la unidad familiar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del libro de familia u otro documento que acredite la composición familiar",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Fotocopia del libro de familia o cualquier otro documento que acredite la composición de la unidad de todos los integrantes de la unidad familiar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ficha de terceros (Anexo II) o declaración de no cambio de cuenta (Anexo III)",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Fichero de acreedores / Ficha de terceros (Anexo II) o declaración que no han cambiado de número de cuenta",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de discapacidad o dependencia del menor, si existe",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Certificado de discapacidad y/o dependencia si existiera por parte de el/la menor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Volante de empadronamiento o autorización de consulta",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Volante de empadronamiento o autorización de consulta por parte de los Servicios Sociales Municipales.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Otros documentos que pidan los Servicios Sociales para acreditar los requisitos",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Cualquier otro documento que los Servicios Sociales Municipales estimen oportuno para acreditar el cumplimiento de los requisitos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Presencialmente en el SIAC del Ayuntamiento de Langreo, en el Registro Electrónico de la sede, en otras administraciones del SIR o por los medios del art. 16.4 de la Ley 39/2015",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Por medio del Registro Electrónico habilitado en la sede electrónica de nuestro portal web (https://tramites.ayto-langreo.es/), previa identificación en el mismo.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://tramites.ayto-langreo.es/",
+    "cita": {
+     "documento": 1454357,
+     "pagina": 5,
+     "texto": "Por medio del Registro Electrónico habilitado en la sede electrónica de nuestro portal web (https://tramites.ayto-langreo.es/), previa identificación en el mismo.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Son ayudas sociales a familias con menores para pagar inscripciones en actividades deportivas, artísticas o musicales; no sirven a un promotor de conciertos.",
+   "El crédito puede ampliarse y las ayudas se adjudican hasta agotarlo.",
+   "Las entidades que imparten la actividad deben estar inscritas en el Registro de Entidades Deportivas del Principado y en el registro municipal, y emitir justificantes bimestrales."
+  ]
+ },
+ "citas": {
+  "verificadas": 31,
+  "revisar": 1,
+  "noConsta": 5
+ }
+}

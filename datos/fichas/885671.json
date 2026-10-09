@@ -1,0 +1,173 @@
+{
+ "version": 1,
+ "codigoBdns": "885671",
+ "generada": "2026-10-09T14:01:16.321Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1472158,
+   "nombre": "04-L0197 ADP + Ob Conv 2026_x_RAIS-ESP.pdf",
+   "paginas": 5,
+   "huella": "2d30f62bc95d4266"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Institut Ramon Llull para la programación internacional de la creación artística catalana en música y artes escénicas.",
+   "Actividades realizadas entre el 1 de enero y el 31 de diciembre de 2026.",
+   "Dotación de la convocatoria ampliada a 1.000.000 euros (550.000 en 2026 y 450.000 en 2027).",
+   "Solicitudes del 16 de febrero al 10 de marzo de 2026, solo por vía telemática en la sede electrónica del Institut Ramon Llull con certificado digital o idCAT Móvil."
+  ],
+  "objeto": {
+   "valor": "Programación internacional de la creación artística catalana en el ámbito de la música y las artes escénicas",
+   "cita": {
+    "documento": 1472158,
+    "pagina": 3,
+    "texto": "Abrir la convocatoria 2026 para la concesión de subvenciones en régimen de concurrencia competitiva para la programación internacional de la creación artística catalana en el ámbito de la música y las artes escénicas",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 16 de febrero al 10 de marzo de 2026, ambos incluidos",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "el plazo de presentación de solicitudes, de acuerdo con la base octava, sea del 16 de febrero al 10 de marzo de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-02-16",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "sea del 16 de febrero al 10 de marzo de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-03-10",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "sea del 16 de febrero al 10 de marzo de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo; sin resolución definitiva publicada, las solicitudes se entienden desestimadas",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "Transcurrido el plazo máximo de seis meses sin que se haya dictado y publicado la resolución definitiva de la convocatoria, las personas solicitantes pueden entender desestimadas sus solicitudes por silencio administrativo.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Entre el 1 de enero y el 31 de diciembre de 2026",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 3,
+     "texto": "música y las artes escénicas que se lleve a cabo entre el 1 de enero y el 31 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Los trámites de justificación se realizan solo por vía telemática en la sede electrónica del Institut Ramon Llull",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "Las solicitudes y los demás trámites asociados al procedimiento de concesión y justificación de las subvenciones deben realizarse sólo por vía telemática utilizando la sede electrónica del Institut Ramon Llull.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 1000000,
+    "cita": {
+     "documento": 1472158,
+     "pagina": 2,
+     "texto": "música y las artes escénicas, que queda fijada en 1.000.000,00 euros distribuido de la manera siguiente:",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Actividades de programación internacional de creación artística catalana en música o artes escénicas",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 3,
+     "texto": "para la programación internacional de la creación artística catalana en el ámbito de la música y las artes escénicas que se lleve a cabo entre el 1 de enero y el 31 de diciembre de 2026.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Institut Ramon Llull, solo por vía telemática",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "deben realizarse sólo por vía telemática utilizando la sede electrónica del Institut Ramon Llull.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Presentación telemática obligatoria con certificado digital admitido por la Unión Europea o idCAT Móvil (usuario y contraseña solo excepcionalmente y con autorización previa)",
+    "cita": {
+     "documento": 1472158,
+     "pagina": 4,
+     "texto": "deben hacerlo a través de certificado digital admitido por la Unión Europea",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto contiene la resolución de apertura de la convocatoria 2026 (DOGC núm. 9602, de 11.2.2026) y una resolución posterior de 9 de junio de 2026 que amplía la dotación de 850.000 a 1.000.000 euros. Las bases reguladoras (DOGC núm. 9337, de 27 de enero de 2025), con beneficiarios, gastos, criterios de valoración, importes y documentación, no se incluyen.",
+   "La dotación se reparte en 550.000 euros con cargo a 2026 y 450.000 euros con cargo a 2027 (condicionados a crédito).",
+   "Las resoluciones se notifican por publicación en el tablón de anuncios de la sede electrónica del Institut Ramon Llull.",
+   "Puede interesar a un promotor que programe internacionalmente a artistas catalanes de música; conviene consultar las bases para saber quién puede solicitarla."
+  ]
+ },
+ "citas": {
+  "verificadas": 11,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

@@ -1,0 +1,212 @@
+{
+ "version": 1,
+ "codigoBdns": "871443",
+ "generada": "2026-10-09T14:00:52.097Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1528561,
+   "nombre": "CrrgtConvo+CrrgtAmpliCLT050ES.pdf",
+   "paginas": 4,
+   "huella": "d7bb90a41f9c1b3c"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Convocatoria de la Oficina de Apoyo a la Iniciativa Cultural (Generalitat de Catalunya) para las actividades de centros de creación y producción de artes escénicas, música y artes visuales en equipamientos públicos, período 2026-2027 (CLT050).",
+   "Dirigida a centros de creación y producción de carácter profesional en equipamientos de titularidad pública.",
+   "Dotación máxima de 2.000.000 euros repartida entre 2026, 2027 y 2028.",
+   "Solicitudes del 5 de diciembre de 2025 al 26 de febrero de 2026 (hasta las 14:00 h del último día).",
+   "Tramitación solo telemática con firma electrónica (EACAT para administraciones; Tràmits gencat para el resto)."
+  ],
+  "objeto": {
+   "valor": "Actividades de los centros de creación y producción de artes escénicas, música y artes visuales de carácter profesional en equipamientos de titularidad pública, período 2026-2027",
+   "cita": {
+    "documento": 1528561,
+    "pagina": 2,
+    "texto": "para las actividades de los centros de creación y producción de artes escénicas, música y artes visuales de carácter profesional en equipamientos de titularidad pública para el período 2026-2027 (CLT050).",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Centros de creación y producción de artes escénicas, música y artes visuales de carácter profesional en equipamientos de titularidad pública (administraciones públicas, entidades dependientes u otros solicitantes)",
+   "cita": {
+    "documento": 1528561,
+    "pagina": 3,
+    "texto": "En el caso que la persona solicitante sea una administración pública o una entidad dependiente o participada mayoritariamente por esta, domiciliada en Cataluña",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 5 de diciembre de 2025 al 26 de febrero de 2026; el último día hasta las 14:00 horas",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "El periodo para presentar las solicitudes es del 5 de diciembre de 2025 al 26 de febrero de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2025-12-05",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "El periodo para presentar las solicitudes es del 5 de diciembre de 2025 al 26 de febrero de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-02-26",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "El día 26 de febrero de 2026 se pueden presentar solicitudes hasta las 14:00:00 horas.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Cuatro meses como máximo desde el día siguiente a la publicación de la convocatoria; sin acuerdo, se entiende desestimada",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 4,
+     "texto": "a través de un acuerdo que se debe dictar y publicar en el plazo máximo de cuatro meses a contar desde el día siguiente a la fecha de publicación de la convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Período 2026-2027",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 1,
+     "texto": "en equipamientos de titularidad pública para el período 2026-2027 (ref. BDNS XXXXXX)",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "La justificación se tramita solo por vía telemática con firma electrónica; plazos y forma en las bases",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "concesión de las ayudas y su justificación se deben hacer solo por vía telemática utilizando el sistema de firma electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 2000000,
+    "cita": {
+     "documento": 1528561,
+     "pagina": 2,
+     "texto": "La dotación máxima de la convocatoria es de 2.000.000,00 de euros, distribuidos entre las anualidades siguientes",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser centro de creación y producción de artes escénicas, música o artes visuales de carácter profesional en un equipamiento de titularidad pública",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 2,
+     "texto": "para las actividades de los centros de creación y producción de artes escénicas, música y artes visuales de carácter profesional en equipamientos de titularidad pública",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Usar obligatoriamente el modelo específico de solicitud; no hacerlo no es subsanable",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "es necesario utilizar obligatoriamente el modelo específico de presentación de solicitud establecido. El incumplimiento de esta obligación no es un requisito subsanable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de un sistema de identificación y firma electrónica del catálogo de la Orden VPD/93/2022",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "Las personas solicitantes deben disponer de alguno de los mecanismos de identificación y signatura electrónica que prevé la Orden VPD/93/2022",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Formulario específico de solicitud firmado electrónicamente",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "la fecha a partir de la cual debe entenderse por presentada la solicitud o trámite es la fecha de entrada del formulario específico señalado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Administraciones públicas y entidades dependientes domiciliadas en Cataluña: extranet EACAT; resto de solicitantes: web de Tràmits gencat",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "b) En el resto de los casos, a través de la web de Tràmits gencat https://web.gencat.cat/ca/tramits/.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://web.gencat.cat/ca/tramits/ (administraciones públicas: http://eacat.cat)",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "b) En el resto de los casos, a través de la web de Tràmits gencat https://web.gencat.cat/ca/tramits/.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Tramitación solo telemática con firma electrónica; los entes públicos firman con tarjeta T-CAT",
+    "cita": {
+     "documento": 1528561,
+     "pagina": 3,
+     "texto": "se deben hacer solo por vía telemática utilizando el sistema de firma electrónica",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El documento es la resolución que publica la convocatoria (CLT050); no incluye las bases generales (Resolución CLT/961/2024) ni las bases específicas (Resolución CLT/1643/2022), donde están requisitos, gastos subvencionables, criterios de valoración, importes, documentación, pago y justificación.",
+   "Solo para centros de creación y producción profesionales en equipamientos de titularidad pública: no encaja con un promotor de conciertos privado sin equipamiento público.",
+   "La dotación se reparte en 1.000.000 euros (2026), 600.000 euros (2027) y 400.000 euros (2028) y puede ampliarse hasta un importe no superior al de la convocatoria.",
+   "El nombre del fichero indica corrección y ampliación de la convocatoria, pero el texto solo contiene la convocatoria original."
+  ]
+ },
+ "citas": {
+  "verificadas": 16,
+  "revisar": 0,
+  "noConsta": 5
+ }
+}

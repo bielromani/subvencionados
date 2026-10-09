@@ -1,0 +1,209 @@
+{
+ "version": 1,
+ "codigoBdns": "900353",
+ "generada": "2026-10-09T14:01:16.329Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1439573,
+   "nombre": "ESTUDIOS MUSICALES_ANEXOS.pdf",
+   "paginas": 3,
+   "huella": "cc0103b427527c8d"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Subvención del Ayuntamiento de Leoz/Leotz para el abono de la matrícula de estudios musicales.",
+   "El texto disponible solo contiene los anexos (modelos de solicitud, declaración responsable y solicitud de abono por transferencia).",
+   "Se reparte en concurrencia en régimen de prorrateo."
+  ],
+  "objeto": {
+   "valor": "Subvencionar la matrícula de estudios musicales",
+   "cita": {
+    "documento": 1439573,
+    "pagina": 2,
+    "texto": "de la convocatoria de subvenciones mediante concurrencia en régimen de prorrateo, destinadas a subvencionar la matrícula de estudios musicales para el año",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": null,
+   "cita": null
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": null,
+    "cita": null
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": "Por transferencia a la cuenta indicada en la solicitud de abono, con certificado bancario de titularidad",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 3,
+     "texto": "Se adjunta a la presente solicitud certificado bancario de titularidad y número de cuenta.",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Se declara no haber solicitado ni obtenido otras subvenciones para la misma finalidad",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 2,
+     "texto": "No haber solicitado ni obtenido ningún tipo de subvención de otras Administraciones Públicas, Entes públicos o privados o de particulares, nacionales o internacionales, para la misma finalidad que la de esta convocatoria.",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "No estar incurso en las prohibiciones de la Ley 38/2003, General de Subvenciones",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 1,
+     "texto": "DECLARO no hallarme incurso/a en ninguna de las causas de prohibición enumeradas en la Ley 38/2003, de 17 de noviembre, General de Subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 2,
+     "texto": "Que se halla al corriente en el cumplimiento de las obligaciones tributarias y con la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No haber obtenido otras subvenciones para la misma finalidad",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 2,
+     "texto": "No haber solicitado ni obtenido ningún tipo de subvención de otras Administraciones Públicas, Entes públicos o privados o de particulares",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Matrícula de estudios musicales",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 1,
+     "texto": "SOLICITUD DE SUBVENCIÓN DE ABONO DE MATRÍCULA PARA ESTUDIOS MUSICALES",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [
+   {
+    "texto": "Solicitud (Anexo I)",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 1,
+     "texto": "ANEXO I SOLICITUD DE SUBVENCIÓN DE ABONO DE MATRÍCULA PARA ESTUDIOS MUSICALES",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Documento Nacional de Identidad",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 1,
+     "texto": "Justificantes aportados: Documento Nacional Identidad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Factura o factura simplificada de la matrícula",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 1,
+     "texto": "Factura o factura simplificada de la matrícula para estudios musicales para los que se solicita la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable (Anexo 2)",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 2,
+     "texto": "ANEXO 2 Declaración Responsable",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitud de abono por transferencia con certificado bancario (Anexo 3)",
+    "cita": {
+     "documento": 1439573,
+     "pagina": 3,
+     "texto": "ANEXO 3 Solicitud de Abono por Transferencia",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento solo contiene los anexos (modelos de solicitud, declaración responsable y solicitud de abono) de la Ordenanza General de Subvenciones y Bases del Ayuntamiento de Leoz/Leotz; faltan las bases y la convocatoria, por lo que no constan beneficiarios, importes, plazos ni criterios.",
+   "Son ayudas a particulares para la matrícula de estudios musicales; no sirven a un promotor de conciertos."
+  ]
+ },
+ "citas": {
+  "verificadas": 12,
+  "revisar": 0,
+  "noConsta": 14
+ }
+}

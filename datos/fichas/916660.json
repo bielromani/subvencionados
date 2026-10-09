@@ -1,0 +1,265 @@
+{
+ "version": 1,
+ "codigoBdns": "916660",
+ "generada": "2026-10-09T14:00:34.873Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1485712,
+   "nombre": "ANUNCIO concurso composición de música coral en valenciano 2026-1.pdf",
+   "paginas": 3,
+   "huella": "a937a926f2b01596"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Concurso del Ayuntamiento de Burriana para premiar una composición inédita de música coral en valenciano.",
+   "Pueden participar músicos mayores de 18 años residentes o nacidos en la Comunitat Valenciana.",
+   "Primer premio de 600 euros y hasta tres menciones sin dotación.",
+   "Partituras por correo electrónico del 1 de julio al 8 de octubre de 2026."
+  ],
+  "objeto": {
+   "valor": "Concurso de composición de música coral en valenciano para ampliar el repertorio coral y estrenar obras inéditas",
+   "cita": {
+    "documento": 1485712,
+    "pagina": 1,
+    "texto": "al objeto de estimular la ampliación del repertorio coral en valenciano y dar ocasión a la interpretación de obras inéditas.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Músicos mayores de 18 años, residentes o nacidos en la Comunitat Valenciana",
+   "cita": {
+    "documento": 1485712,
+    "pagina": 1,
+    "texto": "Podrán participar todos los músicos mayores de 18 años, residentes o nacidos en la Comunidad Valenciana, sin límite de edad.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 1 de julio hasta las 23:59 horas del 8 de octubre de 2026",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "El plazo de presentación será del 1 de julio hasta las 23:59 horas del 8 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-07-01",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "El plazo de presentación será del 1 de julio hasta las 23:59 horas del 8 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-10-08",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "El plazo de presentación será del 1 de julio hasta las 23:59 horas del 8 de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "La decisión del jurado se hará pública en la segunda quincena de octubre de 2026",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 3,
+     "texto": "durante la segunda quincena del mes de octubre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Las obras premiadas las interpretará la Coral Borrianenca en las fiestas de Sant Blai 2027",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 3,
+     "texto": "Las composiciones que obtengan el premio y los accésits serán interpretadas por la Coral Borrianenca durante las festividades de Sant Blai 2027",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 600,
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "Se establece un primer premio de 600 euros, con cargo a la aplicación presupuestaria 01.334.489000029",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 600,
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "Se establece un primer premio de 600 euros",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser músico mayor de 18 años, residente o nacido en la Comunitat Valenciana",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "Podrán participar todos los músicos mayores de 18 años, residentes o nacidos en la Comunidad Valenciana",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "las prohibiciones para obtener la condición de beneficiario previstas en el artículo 13 de la ley general de subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de obligaciones tributarias, con la Seguridad Social y con el Ayuntamiento",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "no hallarse al corriente de sus obligaciones tributarias, frente a la Seguridad social o el propio Ayuntamiento.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obra a cuatro voces mixtas a capela, sin divisi",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "Las obras serán escritas a cuatro voces mixtas “a capella”, sin “divisi”, de duración",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Duración inferior a cinco minutos y dificultad asumible por un coro mixto amateur",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "aproximada inferior a cinco minutos y su dificultad deberá poder ser asumida por un coro mixto amateur.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obras inéditas, no interpretadas en público ni premiadas antes",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "Serán inéditas, no interpretadas anteriormente en público ni premiadas en ningún otro concurso.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Texto obligatoriamente en valenciano, con los derechos sobre el texto",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "El texto deberá estar escrito obligatoriamente en valenciano y será de libre elección.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Una única obra por mensaje de correo, identificada con pseudónimo",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "Los concursantes deberán presentar una única obra en cada mensaje de correo electrónico.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Relación entre facilidad de ejecución y calidad musical de la obra",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1485712,
+     "pagina": 1,
+     "texto": "el jurado valorará muy especialmente la relación entre facilidad de ejecución y calidad musical de la obra.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Partitura en PDF, clara, legible y con páginas numeradas, con pseudónimo y sin la identidad del autor",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "Tanto en la dirección del correo electrónico como en la partitura debe aparecer un pseudónimo y en ningún caso la identidad del autor.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Audio de la obra (opcional)",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "A la partitura se podrá adjuntar un audio de la obra presentada.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Por correo electrónico a la dirección del concurso, en formato PDF",
+    "cita": {
+     "documento": 1485712,
+     "pagina": 2,
+     "texto": "Las partituras serán presentadas mediante correo electrónico a la dirección concurscomposicioborriana@gmail.com en formato PDF.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Es un concurso de composición con premio (600 euros, sujeto a retención de IRPF), no una subvención a actividades: no sirve a un promotor de conciertos salvo como compositor.",
+   "Las bases se titulan «III Concurso» pero el apartado de objeto habla del «II Concurso».",
+   "El jurado puede declarar desierto el concurso y su decisión es inapelable."
+  ]
+ },
+ "citas": {
+  "verificadas": 21,
+  "revisar": 0,
+  "noConsta": 7
+ }
+}

@@ -1,0 +1,197 @@
+{
+ "version": 1,
+ "codigoBdns": "898761",
+ "generada": "2026-10-09T14:01:00.317Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1520907,
+   "nombre": "04-L0164 ADP + DOGC Obert Conv 2026 x RAIS- ESP.pdf",
+   "paginas": 5,
+   "huella": "7c13ee097f98ca68"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Institut Ramon Llull para la movilidad de artistas en actuaciones de música y artes escénicas realizadas entre el 1 de enero y el 31 de agosto de 2026.",
+   "Las partidas se destinan a empresas privadas, fundaciones, otras entidades sin ánimo de lucro y entidades en el exterior.",
+   "Dotación inicial de 200.000 euros, ampliada a 900.000 euros por resolución posterior.",
+   "Solicitudes del 22 de abril al 6 de mayo de 2026, solo por la sede electrónica del Institut Ramon Llull.",
+   "Resolución definitiva en un máximo de seis meses."
+  ],
+  "objeto": {
+   "valor": "Movilidad de artistas para actuaciones en el ámbito de la música y las artes escénicas realizadas entre el 1 de enero y el 31 de agosto de 2026",
+   "cita": {
+    "documento": 1520907,
+    "pagina": 3,
+    "texto": "Institut Ramon Llull para la movilidad de artistas para actuaciones en el ámbito de la música y las artes escénicas que se lleven a cabo entre el 1 de enero y el 31 de agosto de 2026.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "No se detallan en el documento; las partidas presupuestarias van a empresas privadas, fundaciones, otras instituciones sin fin de lucro y entidades en el exterior",
+   "cita": {
+    "documento": 1520907,
+    "pagina": 3,
+    "texto": "D/004/041/ 470.000177 Creación - Conv- A empresas privadas / L0164 Movilidad artistas artes escénicas",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 22 de abril al 6 de mayo de 2026, ambos incluidos",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "Establecer que el plazo de presentación de solicitudes, de acuerdo con la base octava, sea del 22 de abril al 6 de mayo de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-04-22",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "sea del 22 de abril al 6 de mayo de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-05-06",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "sea del 22 de abril al 6 de mayo de 2026, ambos incluidos.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Seis meses como máximo; sin resolución definitiva publicada, se entiende desestimada",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "Transcurrido el plazo máximo de seis meses sin que se haya dictado y publicado la resolución definitiva de la convocatoria, las personas solicitantes pueden entender desestimadas sus solicitudes",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actuaciones realizadas entre el 1 de enero y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 3,
+     "texto": "escénicas que se lleven a cabo entre el 1 de enero y el 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Por vía telemática en la sede electrónica del Institut Ramon Llull",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "Las solicitudes y los demás trámites asociados al procedimiento de concesión y justificación de las subvenciones deben realizarse sólo por vía telemática utilizando la Sede electrónica del Institut Ramon Llull.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 900000,
+    "cita": {
+     "documento": 1520907,
+     "pagina": 2,
+     "texto": "que queda fijada en 900.000,00 € con cargo al presupuesto del Institut Ramon Llull",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Actuaciones de música o artes escénicas realizadas entre el 1 de enero y el 31 de agosto de 2026",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 3,
+     "texto": "actuaciones en el ámbito de la música y las artes escénicas que se lleven a cabo entre el 1 de enero y el 31 de agosto de 2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitantes españoles o extranjeros residentes en España: autenticación con firma electrónica",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "Las personas solicitantes españolas o extranjeras residentes en España, al presentar las solicitudes por medios telemáticos, deben autenticarse a través de los sistemas de firma electrónica",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solicitantes extranjeros no residentes: certificado digital admitido por la UE o idCAT Móvil",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "Las personas solicitantes extranjeras no residentes, al presentar las solicitudes por medios telemáticos deben hacerlo a través de certificado digital admitido por la Unión Europea",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": "Solo por vía telemática en la sede electrónica del Institut Ramon Llull",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "deben realizarse sólo por vía telemática utilizando la Sede electrónica del Institut Ramon Llull.",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": "Obligatorio: firma electrónica (residentes) o certificado digital admitido por la UE o idCAT Móvil (no residentes); usuario y contraseña solo excepcionalmente con autorización previa",
+    "cita": {
+     "documento": 1520907,
+     "pagina": 4,
+     "texto": "deben hacerlo a través de certificado digital admitido por la Unión Europea (consultar el listado de empresas certificadoras de confianza",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "El texto reúne la resolución de convocatoria 2026 (DOGC núm. 9648, de 20.4.2026) y una resolución posterior que eleva la dotación de 200.000 a 900.000 euros (790.000 € a empresas privadas, 5.000 € a fundaciones, 100.000 € a otras entidades sin fin de lucro y 5.000 € a entidades en el exterior).",
+   "Las bases reguladoras (Acuerdo de 16 de enero de 2025, DOGC núm. 9337, y corrección en DOGC núm. 9340) no se incluyen: faltan beneficiarios, requisitos, gastos subvencionables (desplazamientos, etc.), importes máximos, criterios de valoración y documentación.",
+   "El plazo de solicitud (22 de abril a 6 de mayo de 2026) ya ha pasado.",
+   "El Institut Ramon Llull tiene como finalidad la proyección y difusión exterior de la lengua y la cultura catalanas; el documento no detalla dónde deben realizarse las actuaciones."
+  ]
+ },
+ "citas": {
+  "verificadas": 14,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

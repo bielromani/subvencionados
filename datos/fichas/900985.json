@@ -1,0 +1,503 @@
+{
+ "version": 1,
+ "codigoBdns": "900985",
+ "generada": "2026-10-09T14:00:51.870Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1441238,
+   "nombre": "JARDUEREN DEIALDIA-CONVOCATORIA ACTIVIDADESbiling 2026.pdf",
+   "paginas": 13,
+   "huella": "96db665c4909dad1"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Subvenciones del Ayuntamiento de Burlada para actividades de fomento, difusión y normalización del euskera en 2026.",
+   "Para APYMAs, centros educativos y asociaciones culturales de Burlada sin ánimo de lucro.",
+   "Crédito total de 16.000 euros en tres líneas de 5.333 euros; la ayuda cubre como máximo el 70 % del déficit de la actividad.",
+   "Solicitudes del 1 de septiembre al 15 de noviembre de 2026 en la sede electrónica, con la justificación de las actividades ya realizadas."
+  ],
+  "objeto": {
+   "valor": "Actividades de promoción, divulgación y normalización del uso del euskera en Burlada: fomento del uso, motivación y sensibilización, publicaciones y medios locales en euskera, y literatura y lectura en euskera",
+   "cita": {
+    "documento": 1441238,
+    "pagina": 1,
+    "texto": "normalización del uso del euskera en Burlada a",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Asociaciones culturales, asociaciones de padres y madres (APYMAs) y centros educativos de Burlada",
+   "cita": {
+    "documento": 1441238,
+    "pagina": 3,
+    "texto": "culturales, asociaciones de padres y madres y",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 1 de septiembre al 15 de noviembre de 2026; plazo improrrogable",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "1 de septiembre al 15 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-09-01",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "1 de septiembre al 15 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-11-15",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "1 de septiembre al 15 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": "Cuatro meses como máximo desde el fin del plazo de presentación; sin resolución expresa, se entiende desestimada",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 8,
+     "texto": "resolución será de cuatro meses. El plazo se",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Actividades realizadas entre el 15 de noviembre de 2025 y el 31 de octubre de 2026 en Burlada",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "2025 y el 31 de octubre de 2026 en el término",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Cuenta justificativa (memoria de actuación y memoria económica con relación de gastos, facturas, justificantes de pago y otros ingresos) que se presenta junto con la solicitud",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "La entidad beneficiaria deberá justificar el",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 16000,
+    "cita": {
+     "documento": 1441238,
+     "pagina": 9,
+     "texto": "El Ayuntamiento destinará 16.000 euros para la",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 70,
+    "cita": {
+     "documento": 1441238,
+     "pagina": 9,
+     "texto": "entidad será, como máximo el 70% del déficit,",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Pago del total de la subvención tras la resolución de concesión",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 11,
+     "texto": "los solicitantes y se procederá al pago del total",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras subvenciones para la misma finalidad, sin superar el coste de la actividad",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 11,
+     "texto": "compatible con la percepción de otras",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser persona jurídica legalmente constituida e inscrita en el registro correspondiente",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "constituida, y estar inscrita en el registro que",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar de alta en el registro municipal de asociaciones de Burlada",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "3.2.-Estar de alta en el registro de asociaciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener domicilio social y fiscal en Burlada",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "3.3.-Tener domicilio social y fiscal en Burlada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener carácter social y carecer de ánimo de lucro",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "3.4.-Tener carácter social y carecer de ánimo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ejecutar el proyecto en el término municipal de Burlada",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "3.5.-Ejecutar el proyecto presentado en el",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Contar con medios materiales y personales para ejecutar el proyecto sin condicionarlo a la subvención",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "3.6.-Contar con medios materiales y personales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Disponer de estructura, experiencia y capacidad operativa suficientes",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 4,
+     "texto": "3.7.-Disponer de la estructura suficiente para",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias con el Ayuntamiento de Burlada",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 4,
+     "texto": "obligaciones tributarias con el Ayuntamiento de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones tributarias y con la Seguridad Social",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 4,
+     "texto": "sus obligaciones tributarias y frente a la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Cumplir los artículos 13 y 14 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 4,
+     "texto": "artículos 13 y 14 de la Ley 38/2023 General de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las empresas y otras entidades con ánimo de lucro",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 4,
+     "texto": "a) Las empresas u otras entidades con ánimo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Quedan excluidas las entidades que hayan incumplido sus obligaciones con el Ayuntamiento en los dos ejercicios anteriores",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 4,
+     "texto": "incumplido o vulnerado, en los dos ejercicios",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Las actividades deben ser de interés específico para el fomento del euskera y no subvencionables por otra área municipal",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "No recibirán subvención las actividades que no",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Incluir en la difusión la leyenda «Colabora el Ayuntamiento de Burlada»",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "leyenda: Colabora el Ayuntamiento de Burlada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No hacer un uso sexista del lenguaje ni de la imagen en la publicidad",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 3,
+     "texto": "2.10.-No hacer un uso sexista del lenguaje ni de",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos que respondan a la naturaleza de la actividad subvencionada, pagados antes del fin del periodo de justificación",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "que respondan a la naturaleza de la actividad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "IVA solo cuando sea un coste real no deducible para el beneficiario",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "IVA, únicamente serán gastos subvencionables",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "Impuestos indirectos recuperables o compensables",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "cuando sean susceptibles de recuperación o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos realizados fuera del periodo de ejecución de la actividad",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "aquellos que se realicen fuera del periodo de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos por encima del valor de mercado",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "superior al valor de mercado.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Incidencia de la actividad en la normalización lingüística de Burlada",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1441238,
+     "pagina": 9,
+     "texto": "1. Incidencia de la actividad en la normalización",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria de la asociación",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "2. Trayectoria de la asociación.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interés, calidad, originalidad e innovación de las actividades",
+    "puntosMaximos": null,
+    "cita": {
+     "documento": 1441238,
+     "pagina": 10,
+     "texto": "3. Interés, calidad, originalidad e innovación de",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Instancia (Anexo I) firmada por la persona representante de la entidad",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "instancia prevista como Anexo I firmada por la",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del CIF de la entidad",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "7.1.-Fotocopia del CIF de la entidad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de titularidad de la cuenta bancaria",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "7.2.- Certificado de titularidad de cuenta",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria de actuación con las actividades realizadas y los resultados",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "a) Una memoria de actuación justificativa del",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Memoria económica del coste de las actividades, gastos e ingresos",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "b) Memoria económica: Una memoria",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Relación clasificada y numerada de gastos con acreedor, importe, fecha de emisión y de pago",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "b.1) relación clasificada, numerada y suscrita de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Facturas o documentos de valor probatorio equivalente (originales o compulsados)",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 6,
+     "texto": "b.2) Las facturas o documentos de valor",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Justificantes del pago de las facturas",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 7,
+     "texto": "b.3) La documentación acreditativa del pago de",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Relación detallada de otros ingresos o subvenciones que financien la actividad",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 7,
+     "texto": "b.4) Una relación detallada de otros ingresos o",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de otras subvenciones solicitadas o concedidas para el mismo proyecto",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 7,
+     "texto": "7.4.-Declaración responsable de la relación, en",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con las haciendas estatal, foral y local y con la Seguridad Social",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 7,
+     "texto": "7.5.-Certificados de estar al corriente con en el",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Burlada, con la ficha del Anexo I",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "la sede electrónica del Ayuntamiento de",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sedeelectronica.burlada.es/carpetaciudadana/tramite.aspx?idtramite=9553",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "dana/tramite.aspx?idtramite=9553 , horretarako https://sedeelectronica.burlada.es/carpetaciuda",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Solicitud a través de la sede electrónica",
+    "cita": {
+     "documento": 1441238,
+     "pagina": 5,
+     "texto": "Las solicitudes deberán formularse a través de",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "Convocatoria de fomento del euskera para APYMAs, centros educativos y asociaciones culturales de Burlada; no sirve a un promotor de conciertos salvo que sea una asociación cultural de Burlada con actividades en euskera.",
+   "El crédito de 16.000 euros se reparte en tres líneas de 5.333 euros (APYMAs, centros educativos y asociaciones culturales); no hay importe máximo por entidad, y la ayuda es como máximo el 70 % del déficit (gastos menos ingresos).",
+   "La solicitud se presenta después de realizar las actividades (15/11/2025 a 31/10/2026) e incluye la documentación justificativa.",
+   "Los criterios de valoración no tienen puntuación asignada; si el crédito no basta se reparte proporcionalmente.",
+   "Documento bilingüe euskera-castellano a dos columnas: las citas son fragmentos cortos de una sola línea de la columna en castellano."
+  ]
+ },
+ "citas": {
+  "verificadas": 49,
+  "revisar": 0,
+  "noConsta": 2
+ }
+}

@@ -1,0 +1,151 @@
+{
+ "version": 1,
+ "codigoBdns": "911603",
+ "generada": "2026-10-09T14:00:43.809Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1472149,
+   "nombre": "Certificado JGL 4-6-26 convocatoria concurrencia musicales.pdf.PDF",
+   "paginas": 3,
+   "huella": "ec3dec574e720095"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Convocatoria del Ayuntamiento de la Pobla de Vallbona para proyectos y actividades musicales en 2026.",
+   "Para entidades sin ánimo de lucro con sede social o delegación permanente en el municipio.",
+   "Gasto autorizado de 11.645,72 euros.",
+   "El documento es solo el certificado de aprobación; el texto de la convocatoria no se incluye."
+  ],
+  "objeto": {
+   "valor": "Proyectos y actividades musicales desarrollados en la Pobla de Vallbona por entidades sin ánimo de lucro, ejercicio 2026",
+   "cita": {
+    "documento": 1472149,
+    "pagina": 2,
+    "texto": "Aprobar la convocatoria de subvenciones destinadas a entidades sin ánimo de lucro para desarrollar proyectos y actividades musicales en la Pobla de Vallbona, ejercicio 2026",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Entidades sin ánimo de lucro con sede social o delegación permanente en el término municipal de la Pobla de Vallbona",
+   "cita": {
+    "documento": 1472149,
+    "pagina": 1,
+    "texto": "desarrollados por entidades sin ánimo de lucro con sede social o delegación permanente en el término municipal de la Pobla de Vallbona.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Ejercicio 2026",
+    "cita": {
+     "documento": 1472149,
+     "pagina": 2,
+     "texto": "proyectos y actividades musicales en la Pobla de Vallbona, ejercicio 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 11645.72,
+    "cita": {
+     "documento": 1472149,
+     "pagina": 2,
+     "texto": "Autorizar el gasto derivado de la aprobación de la convocatoria de la subvención, por un importe total de 11.645,72 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser entidad sin ánimo de lucro",
+    "cita": {
+     "documento": 1472149,
+     "pagina": 1,
+     "texto": "desarrollados por entidades sin ánimo de lucro con sede social o delegación permanente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Tener sede social o delegación permanente en el término municipal de la Pobla de Vallbona",
+    "cita": {
+     "documento": 1472149,
+     "pagina": 1,
+     "texto": "con sede social o delegación permanente en el término municipal de la Pobla",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es el certificado del acuerdo de la Junta de Gobierno Local de 4 de junio de 2026 que aprueba la convocatoria; el texto de la convocatoria (anexo «CONVOCATORIA SUBVENCIONES CONCURRENCIA ENTIDADES MUSICALES.pdf») no se incluye, por lo que faltan plazos, importes por entidad, criterios, gastos y documentación.",
+   "La convocatoria se rige por la ordenanza general reguladora de subvenciones y premios del Ayuntamiento, que tampoco se incluye.",
+   "Solo para entidades sin ánimo de lucro con sede o delegación en la Pobla de Vallbona; un promotor con forma de empresa no podría pedirla."
+  ]
+ },
+ "citas": {
+  "verificadas": 6,
+  "revisar": 0,
+  "noConsta": 13
+ }
+}

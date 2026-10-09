@@ -1,0 +1,409 @@
+{
+ "version": 1,
+ "codigoBdns": "911014",
+ "generada": "2026-10-09T14:01:16.305Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1470319,
+   "nombre": "Bases de la Convocatoria de Subvención CC.PDF",
+   "paginas": 9,
+   "huella": "cf727687d3d25277"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas individuales del Ayuntamiento de Aranda de Duero para el alumnado de la Escuela Municipal de Música y Danza Antonio Baciero, curso 2025/2026.",
+   "Financian parte de la matrícula y mensualidades de la especialidad de música.",
+   "Dotación total de 6.450 euros; la ayuda es el 60 %, 45 % o 25 % del coste según la puntuación.",
+   "Plazo de 15 días hábiles desde la publicación de las bases en el Boletín Oficial de la Provincia, por la sede electrónica."
+  ],
+  "objeto": {
+   "valor": "Ayudas individualizadas al alumnado matriculado en la Escuela Municipal de Música y Danza Antonio Baciero durante el curso 2025/2026",
+   "cita": {
+    "documento": 1470319,
+    "pagina": 1,
+    "texto": "para la concesión de ayudas individualizadas a todos aquellos alumnos matriculados en la Escuela Municipal de Música y Danza “Antonio Baciero” de",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Alumnado de la Escuela Municipal de Música y Danza Antonio Baciero matriculado durante el curso 2025/2026",
+   "cita": {
+    "documento": 1470319,
+    "pagina": 3,
+    "texto": "Podrán ser beneficiarios de estas ayudas que se convocan, los alumnos de la Escuela Municipal de Música y Danza “Antonio Baciero” que acrediten haber estado matriculados en dicho centro durante el curso 2025/2026.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "15 días hábiles desde el día siguiente a la publicación de las bases en el Boletín Oficial de la Provincia",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 4,
+     "texto": "El plazo de presentación de solicitudes será de 15 días hábiles, a contar desde el siguiente al de la publicación de estas Bases en el \"Boletín Oficial de la Provincia\"",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": "Curso 2025/2026 (de septiembre de 2025 a junio de 2026)",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 2,
+     "texto": "Se considera curso escolar 2025/2026, el comprendido entre los meses de septiembre de 2025 y junio de 2026",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Se justifica con la propia solicitud, aportando los resguardos de pago de la matrícula y las mensualidades",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 8,
+     "texto": "académico 2025/2026 la justificación se realiza con la propia solicitud con los resguardos de pago de la matriculación y las mensualidades del curso.",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 6450,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 7,
+     "texto": "El total de la subvención es de 6.450,00.- €",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": null,
+    "cita": null
+   },
+   "porcentajeMaximo": {
+    "valor": 60,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 7,
+     "texto": "7 o más puntos: el 60% del coste de matriculación y mensualidades de la especialidad cursada que se subvenciona.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Anticipo de hasta el 90 % en 15 días tras la concesión y el 10 % restante tras justificar; si la ayuda es de 600 euros o menos, pago único",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 8,
+     "texto": "en el plazo de 15 días, se anticipará como máximo el 90% de la misma, abonándose el otro 10% restante una vez se hubiere justificado debidamente",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas siempre que el total no supere el coste de matrícula y mensualidades; hay que comunicar las ayudas obtenidas",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 2,
+     "texto": "aisladamente o en concurrencia con otras ayudas o subvenciones de otras Administraciones Públicas o de otras entidades públicas o privadas, superen el coste de matriculación y mensualidades",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Haber estado matriculado en la Escuela Municipal de Música y Danza Antonio Baciero durante el curso 2025/2026",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "que acrediten haber estado matriculados en dicho centro durante el curso 2025/2026.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Toda la unidad familiar empadronada en Aranda de Duero con al menos seis meses de antigüedad",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "Estar empadronados en Aranda de Duero, toda la unidad familiar y con una antigüedad mínima de seis meses, antes de la presentación de la solicitud",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Acreditar asistencia normal a clase y rendimiento satisfactorio",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "el alumno deberá acreditar que ha asistido a clase con normalidad y que su rendimiento durante el curso ha sido satisfactorio.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Someterse a las actuaciones de comprobación",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "Someterse a las actuaciones de comprobación y facilitar los datos que se le requieran, conforme al artículo 29 de la ordenanza municipal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Comunicar otras ayudas obtenidas para la misma finalidad",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "Comunicar, tan pronto como se conozca, la obtención de subvenciones o ayudas para la misma finalidad",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente de las obligaciones con el Ayuntamiento de Aranda de Duero",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "Estar al corriente de sus obligaciones tributarias y otras prestaciones patrimoniales no tributarias con el Ayuntamiento de Aranda de Duero",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar al corriente con la AEAT, la Tesorería Municipal y la Seguridad Social",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "corriente en el cumplimiento de sus obligaciones tributarias con la AEAT y la Tesorería Municipal y frente a la Seguridad Social.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Conservar los justificantes de la aplicación de los fondos",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 3,
+     "texto": "Conservar los documentos justificativos de la aplicación de los fondos recibidos, incluidos los documentos electrónicos",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Parte del coste de matrícula y mensualidades de la especialidad de música cursada",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 2,
+     "texto": "financiarán parte del coste de matriculación y mensualidades de la especialidad de música cursada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Solo gastos efectivamente pagados durante el curso escolar",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "puesto que sólo serán subvencionables aquellos gastos que hayan sido pagados durante el curso escolar.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [
+   {
+    "criterio": "Renta per cápita igual o inferior a 7.500 euros",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 6,
+     "texto": "Renta per cápita igual o inferior 7.500 € 4 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Renta per cápita entre 7.500 y 14.500 euros",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 6,
+     "texto": "Renta per cápita comprendida entre 7.500 € y 14.500 € 2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Familia numerosa",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 6,
+     "texto": "Por la condición de familia numerosa 2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Familia monoparental",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 6,
+     "texto": "Condición de familia monoparental 2 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Hermanos matriculados en el centro durante el curso",
+    "puntosMaximos": 1,
+    "cita": {
+     "documento": 1470319,
+     "pagina": 6,
+     "texto": "Hermanos matriculados en el centro durante el curso escolar 1 punto",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud normalizada",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 4,
+     "texto": "La solicitud deberá estar debidamente cumplimentada y se acompañará de la siguiente documentación: 1. Solicitud normalizada.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Fotocopia del DNI de todos los miembros de la unidad familiar",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 4,
+     "texto": "Fotocopia del Documento Nacional de Identidad (DNI) de todos los miembros de la unidad familiar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de empadronamiento y convivencia o autorización para recabarlo",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Certificado de empadronamiento y convivencia de la unidad familiar expedido por el órgano municipal correspondiente",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Libro de Familia o documento que acredite los miembros de la unidad familiar",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Fotocopia compulsada del Libro de Familia o documento/ que acredite el número de miembros de la unidad familiar.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado bancario de la cuenta donde se abonará la ayuda",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Certificado actual de la Entidad Bancaria donde se encuentra la cuenta del padre, madre o representante legal del alumno",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de Hacienda de ingresos de 2025 o autorización para recabarlo",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Certificado de Hacienda en el que se haga constar los ingresos del ejercicio 2025",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado del director del centro de matrícula, asistencia, rendimiento y cuotas pagadas",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Certificado, expedido por el/la Director/a del Centro, que acredite que el alumno ha estado matriculado en la Escuela Municipal de Música y Danza",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Extracto bancario que acredite el pago de las cuotas",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Extracto del Banco o Caja que acredite que las cuotas han sido efectivamente abonados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de no estar incurso en prohibiciones",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Declaración responsable de no estar incurso en las prohibiciones del artículo 13 de la Ley General de Subvenciones",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de otras ayudas solicitadas y recibidas",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Declaración responsable de las ayudas o subvenciones solicitadas y recibidas para la misma finalidad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de estar al corriente con el Ayuntamiento, la AEAT y la Seguridad Social",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 5,
+     "texto": "Declaración responsable de estar al corriente de sus obligaciones fiscales con el Ilustre Ayuntamiento de Aranda de Duero",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Sede electrónica del Ayuntamiento de Aranda de Duero, con los modelos normalizados",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 4,
+     "texto": "se realizará a través de la Sede Electrónica del Ayuntamiento de Aranda de Duero, a través de los modelos que al efecto sean puestos a disposición",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "https://sede.arandadeduero.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&PAGE_CODE=CATALOGO&DETALLE=6269004131923226299500",
+    "cita": {
+     "documento": 1470319,
+     "pagina": 4,
+     "texto": "El acceso al trámite para descargar la documentación y presentarla es: https://sede.arandadeduero.es/sta/CarpetaPublic/doEvent?APP_CODE=STA&PAGE_CODE",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "Para recibir ayuda hay que obtener al menos 3 puntos: 7 o más puntos dan el 60 % del coste, entre 4 y 6 el 45 % y 3 puntos el 25 %, por orden de puntuación hasta agotar el crédito.",
+   "Son ayudas para alumnado de una escuela municipal de música; no sirven a un promotor de conciertos."
+  ]
+ },
+ "citas": {
+  "verificadas": 37,
+  "revisar": 0,
+  "noConsta": 6
+ }
+}

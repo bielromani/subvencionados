@@ -1,0 +1,622 @@
+{
+ "version": 1,
+ "codigoBdns": "891690",
+ "generada": "2026-10-09T14:01:16.054Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1526304,
+   "nombre": "Texto Convocatoria BDNS.pdf",
+   "paginas": 26,
+   "huella": "b1c6607c8d7303df"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": true,
+  "resumen": [
+   "Ayudas de la Comunidad de Madrid a empresas privadas de producción musical para proyectos de música en 2026: ópera y zarzuela, grabación discográfica y ciclos, festivales y conciertos.",
+   "Para microempresas y pequeñas empresas (incluidos autónomos) con actividad musical, domicilio fiscal en Madrid y al menos dos años de trayectoria.",
+   "Crédito total de 350.000 euros; la ayuda va de 4.000 a 41.500 euros según la puntuación (mínimo 25 puntos) y no supera el 75 % del presupuesto.",
+   "Plazo de quince días hábiles desde la publicación del extracto en el BOCM; actividad entre el 7 de noviembre de 2025 y el 30 de noviembre de 2026.",
+   "Pago anticipado del 100 % tras la aceptación; justificación hasta el 1 de diciembre de 2026."
+  ],
+  "objeto": {
+   "valor": "Proyectos de música de empresas de producción musical en 2026: a) producción y estreno de ópera y zarzuela con música en directo; b) grabación, edición discográfica y difusión audiovisual o por Internet; c) producción y exhibición de ciclos o festivales y conciertos",
+   "cita": {
+    "documento": 1526304,
+    "pagina": 2,
+    "texto": "Se convocan ayudas a favor de empresas de producción musical para la realización de proyectos de música en 2026 en las siguientes modalidades:",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Productores y empresas cuyo objeto sea la actividad musical (microempresas o pequeñas empresas, incluidos empresarios autónomos) con domicilio fiscal en la Comunidad de Madrid",
+   "cita": {
+    "documento": 1526304,
+    "pagina": 2,
+    "texto": "Tendrán la consideración de beneficiarios los productores y las empresas cuyo objeto sea la actividad musical",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Quince días hábiles desde el día siguiente a la publicación del extracto en el Boletín Oficial de la Comunidad de Madrid",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 5,
+     "texto": "El plazo para la presentación de las solicitudes será de quince días hábiles a contar desde el día siguiente a la publicación en el Boletín Oficial de la Comunidad de Madrid del extracto",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "finPresentacion": {
+    "valor": null,
+    "cita": null
+   },
+   "resolucion": {
+    "valor": "Seis meses desde el último día del plazo de solicitudes; sin resolución, se entiende desestimada",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 17,
+     "texto": "El plazo máximo de resolución del procedimiento de concesión de las ayudas objeto de la presente Orden será de seis meses a contar desde el último día de plazo para la presentación de solicitudes.",
+     "estado": "verificada"
+    }
+   },
+   "ejecucion": {
+    "valor": "Del 7 de noviembre de 2025 al 30 de noviembre de 2026",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 2,
+     "texto": "El periodo subvencionable será desde el 7 de noviembre de 2025 al 30 de noviembre de 2026.",
+     "estado": "verificada"
+    }
+   },
+   "justificacion": {
+    "valor": "Hasta el 1 de diciembre de 2026, con cuenta justificativa (memoria, procedencia de fondos, coste global, facturas) y certificados, en el Registro Electrónico de la Comunidad de Madrid",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 19,
+     "texto": "El beneficiario deberá acreditar hasta el 1 de diciembre del año 2026, la realización de la producción y estreno de la obra subvencionada",
+     "estado": "verificada"
+    }
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 350000,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 2,
+     "texto": "La presente convocatoria es de carácter anual y asciende a un importe máximo de 350 000 euros",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 41500,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 15,
+     "texto": "37 22.000 50 41.500 La determinación de la cuantía, que tendrá como límite el importe de la subvención solicitada",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 75,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 15,
+     "texto": "que tendrá como límite el importe de la subvención solicitada, no excederá del 75% del presupuesto presentado por el interesado en su solicitud.",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": "Anticipo del 100 % por transferencia tras la adjudicación y la aceptación, sin garantías",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 19,
+     "texto": "mediante un anticipo a cuenta del 100% de la ayuda concedida, tras la adjudicación y previa aceptación de la ayuda por los beneficiarios",
+     "estado": "verificada"
+    }
+   },
+   "compatibilidad": {
+    "valor": "Compatible con otras ayudas públicas o privadas si el total no supera el 100 % del coste del proyecto; las modalidades son compatibles entre sí",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 18,
+     "texto": "Las ayudas concedidas serán compatibles con cualquier otra de entidades públicas o privadas, siempre que el total de las subvenciones sumado a la cantidad concedida por la Comunidad de Madrid no exceda del 100 por 100",
+     "estado": "verificada"
+    }
+   },
+   "minimis": {
+    "valor": "Sí, Reglamento (UE) 2023/2831; máximo 300.000 euros de minimis en tres años",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 18,
+     "texto": "La ayuda total concedida con arreglo al régimen de minimis, no excederá de 300 000 euros durante el período de tres años",
+     "estado": "verificada"
+    }
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser microempresa o pequeña empresa (menos de 50 personas y hasta 10 millones de euros de volumen de negocio o balance)",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 3,
+     "texto": "Tener la condición de microempresa o de pequeña empresa, de acuerdo con lo previsto en el anexo I sobre la definición de PYME",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Domicilio fiscal en la Comunidad de Madrid",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 3,
+     "texto": "El solicitante deberá tener el domicilio fiscal en la Comunidad de Madrid.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Al menos dos años de actividad profesional (o trayectoria del administrador o socio mayoritario), acreditada con alta en el IAE o vida laboral",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 3,
+     "texto": "El empresario autónomo y la empresa como entidad jurídica deberá tener, al menos, una antigüedad de dos años de actividad profesional",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No pueden ser beneficiarias las comunidades de bienes ni agrupaciones sin personalidad jurídica",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 3,
+     "texto": "no podrán acceder a la condición de beneficiario las agrupaciones de personas físicas o jurídicas que carezcan de personalidad jurídica propia",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En coproducciones, solo puede ser beneficiaria la empresa con sede en Madrid que ejecute el gasto y tenga el porcentaje mayoritario; una solicitud por proyecto",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 3,
+     "texto": "sólo podrá resultar beneficiaria de la ayuda aquella que ejecute el gasto y tenga el porcentaje mayoritario de la misma.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No estar incurso en las prohibiciones del artículo 13.2 de la Ley General de Subvenciones",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "No podrán ser beneficiarios quienes estuvieran incursos en alguna de las prohibiciones previstas en el artículo 13.2 de la Ley 38/2003",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "No tener pendiente de justificar otra ayuda musical de la Comunidad de Madrid ni procedimiento de reintegro",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "No podrán ser beneficiarios aquellos solicitantes que tuvieran pendiente de justificación cualquier otra ayuda que la Comunidad de Madrid les hubiera concedido",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Un solo proyecto por modalidad y solicitante",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "Un mismo solicitante sólo podrá presentar un proyecto por modalidad.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ciclo o festival: al menos cuatro conciertos diferentes",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 2,
+     "texto": "se entenderá por ciclo o festival la realización de eventos musicales de cualquier estilo en los que se programen al menos cuatro conciertos diferentes.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Obtener al menos 25 puntos en la valoración",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 14,
+     "texto": "Serán adjudicados a aquellos solicitantes que hayan presentado un proyecto cuya baremación haya obtenido, al menos, 25 puntos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Estar dado de alta en el servicio de Notificaciones Electrónicas de la Comunidad de Madrid",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 5,
+     "texto": "los solicitantes deberán estar dados de alta en el servicio de Notificaciones Electrónicas de la Comunidad de Madrid",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Insertar el logotipo de la Comunidad de Madrid en toda la publicidad impresa o digital",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 24,
+     "texto": "Insertar en toda publicidad impresa (carteles o cualquier tipo de pieza promocional) o digital (página web en cualquier tipo de soporte)",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En subvenciones de más de 30.000 euros, acreditar el cumplimiento de los plazos de pago a proveedores",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 17,
+     "texto": "para subvenciones de importe superior a 30.000 euros, las personas físicas y jurídicas, distintas de las entidades de derecho público, con ánimo de lucro",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Producción musical (ópera y zarzuela): gastos técnicos, artísticos, nóminas de ensayos y Seguridad Social, atrezo, decorados, derechos de autor, alquiler de locales de ensayo, publicidad y promoción",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 22,
+     "texto": "Para la modalidad de producción musical: Gastos técnicos, gastos artísticos, nóminas de ensayos y seguridad social, atrezo, decorados",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Grabación de discos: preparación, gastos técnicos de grabación, alquiler de estudios, gastos artísticos, nóminas, postproducción, derechos de autor, publicidad y promoción",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 22,
+     "texto": "Para la modalidad de grabación de discos: gastos de preparación (trascripciones y otros), gastos técnicos de grabación, alquiler de locales o estudios de grabación",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Ciclos, festivales y conciertos: gastos técnicos, artísticos, nóminas y Seguridad Social, alquiler de locales y espacios escénicos, gastos de exhibición, derechos de autor y seguros, publicidad y promoción",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 23,
+     "texto": "Para la modalidad de ciclos, festivales y conciertos: gastos técnicos, gastos artísticos, nóminas y seguridad social, alquiler de locales y espacios escénicos",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos generales (gestoría, digitalización, notariales, funcionamiento, financieros) hasta el 25 % del presupuesto",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 9,
+     "texto": "Estos gastos generales no podrán superar el 25% del presupuesto total del proyecto.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [
+   {
+    "texto": "El IVA",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 23,
+     "texto": "No se considerará gasto subvencionable el importe correspondiente al impuesto sobre el valor añadido.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "El trabajo propio imputado por el empresario autónomo (hasta el 10 %) cuenta para el coste pero no es subvencionable",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 9,
+     "texto": "función hasta un 10% del presupuesto presentado, indicando en el epígrafe corresponda el coste del trabajo que realizará. Esta previsión no será, en ningún caso, subvencionable.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Gastos por encima del valor de mercado",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 23,
+     "texto": "En ningún caso, el coste de adquisición de los gastos subvencionables podrá ser superior al valor de mercado).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "criterios": [
+   {
+    "criterio": "Interés cultural del proyecto",
+    "puntosMaximos": 25,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "1 Interés cultural del proyecto presentado, hasta 25 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interés cultural: recuperación patrimonial o creación contemporánea, innovación, singularidad",
+    "puntosMaximos": 8,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "Su contribución a la recuperación patrimonial o la creación contemporánea, su carácter innovador, especialización o singularidad, hasta 8 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interés cultural: nivel artístico de compositores, intérpretes o grupos",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "Nivel artístico de los compositores, intérpretes o grupos estables, hasta 7 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interés cultural: consolidación y creación de nuevos públicos en Madrid",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "en la creación de nuevos públicos en el ámbito de la Comunidad de Madrid, hasta 5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Interés cultural: vinculación del proyecto con la Comunidad de Madrid",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "Vinculación del proyecto cultural con la Comunidad de Madrid, hasta 5 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad económica del proyecto",
+    "puntosMaximos": 14,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "2 Viabilidad económica del proyecto, hasta 14 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad: adecuación a la previsión presupuestaria",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "Adecuación del proyecto a la previsión presupuestaria presentada, hasta 7 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Viabilidad: plan de financiación",
+    "puntosMaximos": 7,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "b) Plan de financiación propuesto, hasta 7 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria profesional",
+    "puntosMaximos": 6,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "3 Trayectoria profesional, hasta 6 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria: valoración en producción y gestión de la empresa",
+    "puntosMaximos": 4,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "Valoración en producción y gestión de la empresa, hasta un máximo de 4 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Trayectoria: obras producidas en los últimos 2 años (1 punto por obra)",
+    "puntosMaximos": 2,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "realizada en los últimos 2 años, en la modalidad de la solicitud, hasta un máximo de 2 puntos.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de intérpretes (producción de espectáculos y grabación): de 1 punto hasta 4 intérpretes a 5 puntos con 17 o más",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 13,
+     "texto": "grabación y edición discográfica, hasta 5 puntos, con el siguiente desglose:",
+     "estado": "verificada"
+    }
+   },
+   {
+    "criterio": "Número de conciertos (ciclos, festivales o conciertos): de 0 puntos con 3 conciertos a 5 puntos con 8 o más",
+    "puntosMaximos": 5,
+    "cita": {
+     "documento": 1526304,
+     "pagina": 14,
+     "texto": "f) 8 conciertos o más: 5 puntos.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "documentacion": [
+   {
+    "texto": "Solicitud en el modelo normalizado de la sede electrónica",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "Las solicitudes para participar en la convocatoria se cumplimentarán en el modelo normalizado que se encuentra disponible en la sede electrónica de la Comunidad de Madrid",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Identidad: DNI y tarjeta fiscal (empresario individual) o NIF, escritura y estatutos inscritos y acreditación del representante (sociedad)",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 5,
+     "texto": "Empresario individual: Documento nacional de identidad y tarjeta de identificación fiscal.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificados de estar al corriente con la AEAT, la Seguridad Social y la Comunidad de Madrid (consultables de oficio)",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 6,
+     "texto": "Certificación de la Agencia Estatal de Administración Tributaria de que la empresa está al corriente de sus obligaciones tributarias",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Alta en el IAE en epígrafes de música (965 o 355.2)",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 6,
+     "texto": "Alta en el Impuesto de Actividades Económicas correspondiente a los epígrafes empresariales o profesionales relacionados con la música",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Certificado de situación censal de la AEAT",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 6,
+     "texto": "Certificado de situación censal de Actividades Económicas de la AEAT en el que consten los centros de trabajo",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Último recibo del IAE, certificado de exención o declaración de cifra de negocios inferior a 1.000.000 euros",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 7,
+     "texto": "Último recibo pagado o certificado de exención o declaración responsable de que la cifra de negocios en el ejercicio fiscal anterior ha sido inferior a 1 000 000 euros.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaraciones responsables de requisitos (Formulario 1520F1): pequeña empresa, antigüedad y domicilio, prohibiciones, reintegros",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 7,
+     "texto": "Declaraciones sobre el cumplimiento de los requisitos establecidos en el dispongo tercero de esta orden (Formulario 1520F1).",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de ayudas de minimis de tres ejercicios (Formulario 1520FO1)",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 7,
+     "texto": "Declaración de las ayudas recibidas por la empresa durante un período de tres ejercicios fiscales",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración de ayudas solicitadas u obtenidas para el proyecto",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 7,
+     "texto": "Declaración sobre las ayudas solicitadas u obtenidas para el proyecto que se presenta.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "En coproducciones, contrato de coproducción y presupuestos total y asumido",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 8,
+     "texto": "En el caso de que el proyecto sea una coproducción, se deberá aportar copia del contrato de coproducción correspondiente.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Proyecto (Formulario 1520FO2): memoria con relación con Madrid, calendario, ficha artística y técnica, derechos de autor, trayectoria de dos años y compromisos de intervinientes",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 8,
+     "texto": "Memoria explicativa de la producción que incluirá, entre otros aspectos, la justificación de la relación del proyecto con la Comunidad de Madrid.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Declaración responsable de tener los derechos de autor",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 8,
+     "texto": "Declaración responsable de estar en posesión de los derechos de autor que correspondan.",
+     "estado": "verificada"
+    }
+   },
+   {
+    "texto": "Presupuesto pormenorizado y plan de financiación (Formularios 1520FO3 o 1520FO4), sin IVA",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 8,
+     "texto": "Presupuesto pormenorizado de los gastos previstos para el proyecto presentado y plan de financiación (Formulario 1520FO3).",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "presentacion": {
+   "lugar": {
+    "valor": "Exclusivamente por medios electrónicos en el Registro Electrónico de la Comunidad de Madrid (sede.comunidad.madrid) u otros registros electrónicos",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "se presentarán exclusivamente mediante medios electrónicos, en el Registro Electrónico de la Comunidad de Madrid",
+     "estado": "verificada"
+    }
+   },
+   "url": {
+    "valor": "sede.comunidad.madrid",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "que se encuentra disponible en la sede electrónica de la Comunidad de Madrid, en la dirección electrónica: sede.comunidad.madrid.",
+     "estado": "verificada"
+    }
+   },
+   "certificadoDigital": {
+    "valor": "Sí; certificado electrónico reconocido o cualificado y documentos firmados digitalmente",
+    "cita": {
+     "documento": 1526304,
+     "pagina": 4,
+     "texto": "el interesado deberá disponer de uno de los certificados electrónicos reconocidos o cualificados de firma electrónica operativos en la Comunidad de Madrid",
+     "estado": "verificada"
+    }
+   }
+  },
+  "avisos": [
+   "La cuantía se fija por escala: 25 puntos dan 4.000 euros y cada punto más 1.500 euros, hasta 41.500 euros con 50 puntos; siempre con el límite de lo solicitado y del 75 % del presupuesto.",
+   "Muy adecuada para un promotor de conciertos o productor de ópera/zarzuela con forma de pequeña empresa o autónomo en Madrid; los ciclos o festivales deben tener al menos cuatro conciertos.",
+   "Presupuestos sin IVA. Si se justifica menos coste del previsto, la ayuda se reduce proporcionalmente. Las bases reguladoras son la Orden 1424/2016 y sus modificaciones (no incluidas).",
+   "Si la propuesta es inferior al 50 % de lo solicitado, se puede reformular en 10 días hábiles (máximo 30 % del presupuesto inicial).",
+   "En la modalidad discográfica, si se entrega el máster, el disco editado debe presentarse antes del 31 de diciembre de 2027."
+  ]
+ },
+ "citas": {
+  "verificadas": 61,
+  "revisar": 0,
+  "noConsta": 2
+ }
+}

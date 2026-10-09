@@ -1,0 +1,173 @@
+{
+ "version": 1,
+ "codigoBdns": "923725",
+ "generada": "2026-10-09T14:00:34.876Z",
+ "modelo": "Claude (sesión de Claude Code)",
+ "documentos": [
+  {
+   "id": 1505871,
+   "nombre": "Extracto convocatoria para BDNS eus.pdf",
+   "paginas": 1,
+   "huella": "35bdb027318aa6e8"
+  }
+ ],
+ "datos": {
+  "documentoEsBases": false,
+  "resumen": [
+   "Ayudas del Ayuntamiento de Derio para gastos de cursos de idiomas en el extranjero y de estudios de música y danza.",
+   "Solo para personas físicas que cumplan la Ordenanza reguladora.",
+   "Crédito de 13.000 euros; la ayuda es el 50 % del gasto justificado, con un máximo de 500 euros por persona.",
+   "Solicitudes del 1 de septiembre al 10 de octubre de 2026."
+  ],
+  "objeto": {
+   "valor": "Gastos de participación en cursos de idiomas en el extranjero y en estudios de música y danza",
+   "cita": {
+    "documento": 1505871,
+    "pagina": 1,
+    "texto": "Deialdi honen helburua atzerriko hizkuntza-ikastaroetan eta musika- eta dantza-ikasketetan parte hartzeagatik sortutako gastuak diruz laguntzea da.",
+    "estado": "verificada"
+   }
+  },
+  "beneficiarios": {
+   "valor": "Solo personas físicas que cumplan los requisitos de la Ordenanza",
+   "cita": {
+    "documento": 1505871,
+    "pagina": 1,
+    "texto": "Laguntza horietarako Ordenantzan ezarritako baldintzak betetzen dituzten pertsona fisikoak bakarrik izan daitezke onuradunak.",
+    "estado": "verificada"
+   }
+  },
+  "plazos": {
+   "presentacion": {
+    "valor": "Del 1 de septiembre al 10 de octubre de 2026",
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "Eskabideak aurkezteko epea 2026ko irailaren 1etik urriaren 10era artekoa",
+     "estado": "verificada"
+    }
+   },
+   "inicioPresentacion": {
+    "valor": "2026-09-01",
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "Eskabideak aurkezteko epea 2026ko irailaren 1etik urriaren 10era artekoa",
+     "estado": "verificada"
+    }
+   },
+   "finPresentacion": {
+    "valor": "2026-10-10",
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "Eskabideak aurkezteko epea 2026ko irailaren 1etik urriaren 10era artekoa",
+     "estado": "verificada"
+    }
+   },
+   "resolucion": {
+    "valor": null,
+    "cita": null
+   },
+   "ejecucion": {
+    "valor": null,
+    "cita": null
+   },
+   "justificacion": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "dinero": {
+   "presupuestoTotal": {
+    "valor": 13000,
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "Laugarrena. Zenbatekoa: 13.000 euro",
+     "estado": "verificada"
+    }
+   },
+   "importeMaximo": {
+    "valor": 500,
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "benetan justifikatutako gastuaren %50 izango da, gehienez ere 500 euro pertsonako",
+     "estado": "verificada"
+    }
+   },
+   "porcentajeMaximo": {
+    "valor": 50,
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "Diru-laguntzaren zenbatekoa benetan justifikatutako gastuaren %50 izango da, gehienez ere 500 euro pertsonako",
+     "estado": "verificada"
+    }
+   },
+   "pago": {
+    "valor": null,
+    "cita": null
+   },
+   "compatibilidad": {
+    "valor": null,
+    "cita": null
+   },
+   "minimis": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "requisitos": [
+   {
+    "texto": "Ser persona física y cumplir las condiciones de la Ordenanza reguladora",
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "Laguntza horietarako Ordenantzan ezarritako baldintzak betetzen dituzten pertsona fisikoak bakarrik izan daitezke onuradunak.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosSubvencionables": [
+   {
+    "texto": "Gastos de participación en cursos de idiomas en el extranjero y en estudios de música y danza",
+    "cita": {
+     "documento": 1505871,
+     "pagina": 1,
+     "texto": "atzerriko hizkuntza-ikastaroetan eta musika- eta dantza-ikasketetan parte hartzeagatik sortutako gastuak diruz laguntzea da.",
+     "estado": "verificada"
+    }
+   }
+  ],
+  "gastosNoSubvencionables": [],
+  "criterios": [],
+  "documentacion": [],
+  "presentacion": {
+   "lugar": {
+    "valor": null,
+    "cita": null
+   },
+   "url": {
+    "valor": null,
+    "cita": null
+   },
+   "certificadoDigital": {
+    "valor": null,
+    "cita": null
+   }
+  },
+  "avisos": [
+   "El documento es solo el extracto de la convocatoria para la BDNS (en euskera), no las bases: remite a las bases publicadas en el BOB del 16 de octubre de 2020, que no se incluyen.",
+   "No sirve a un promotor de conciertos: son ayudas individuales a personas físicas para estudiar idiomas en el extranjero o música y danza.",
+   "Si el crédito no basta para cubrir el 50 %, se reparte para que cada beneficiario reciba el mismo porcentaje del gasto justificado.",
+   "El texto cita el decreto de alcaldía 2025-0443, mientras que el título de la convocatoria habla del decreto 2026-454."
+  ]
+ },
+ "citas": {
+  "verificadas": 10,
+  "revisar": 0,
+  "noConsta": 9
+ }
+}
