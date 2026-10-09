@@ -25,6 +25,9 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
   - premios y concursos para sus músicos (personas físicas);
   - ayudas a ayuntamientos, que son clientes potenciales;
   - precedentes: concesiones directas y nominativas, con lo concedido.
+- **Fase 1 en marcha**: textos de las bases, series año a año, ubicación por municipio, directorio de
+  organismos (`GET /api/organismos`), concursos generales de cultura y vigilancia del formato. Cifras del nicho en
+  [docs/informe-nicho.md](docs/informe-nicho.md).
 - **Web** (React) con tres pestañas:
   - *Para ti*: las recomendaciones;
   - *Explorar*: filtros por plazo, tipo, estilo, comunidad, administración y actividad, con paginación;
@@ -47,6 +50,7 @@ npm run recolectar                          # incremental: desde la última ejec
 npm run recolectar -- --desde=2014-01-01    # histórico
 npm run recolectar -- --minutos=30          # se para a los 30 minutos y deja el resto pendiente
 npm run importar                            # carga datos/bdns en la base de datos de la app
+npm run informe                             # regenera docs/informe-nicho.md con las cifras del nicho
 ```
 
 Para lanzar el histórico o forzar una actualización desde GitHub: pestaña *Actions* → *Recolectar BDNS* →
@@ -69,8 +73,13 @@ server/
   src/emparejamiento.ts  perfil del promotor → recomendaciones
   src/app.ts           API REST (Express)
   src/db.ts            SQLite
-  src/scripts/         recolectar (BDNS → datos/) e importar (datos/ → SQLite)
-datos/bdns/            lo descargado de la BDNS (lo actualiza el workflow)
+  src/series.ts        la misma convocatoria año a año y previsión de la próxima
+  src/organismos.ts    directorio de organismos que financian música
+  src/referencias.ts   ubicación de cada organismo (catálogo BDNS + nomenclátor INE)
+  src/informe.ts       informe del nicho
+  src/scripts/         recolectar, importar, informe, referencias y muestra de evaluación
+datos/bdns/            lo descargado de la BDNS (lo actualiza el workflow diario)
+datos/referencia/      entidades locales y municipios (workflow mensual)
 web/                   React + Vite
 docs/                  plan por fases y fuentes de datos
 ```

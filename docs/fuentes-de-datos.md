@@ -29,7 +29,9 @@ cliente usa los dos).
 | `GET /convocatorias/busqueda?vpd=GE&page&pageSize&descripcion&fechaDesde=dd/mm/aaaa&fechaHasta&finalidad` | Listado. La búsqueda por texto no distingue tildes pero busca subcadenas («opera» encuentra «cooperación») |
 | `GET /convocatorias?vpd=GE&numConv={código}` | Ficha: órgano (`nivel1` = ESTADO/AUTONOMICA/LOCAL), `tipoConvocatoria`, presupuesto, beneficiarios, regiones NUTS, fechas de solicitud, URL de las bases, anuncios |
 | `GET /concesiones/busqueda?vpd=GE&numeroConvocatoria={código}` | Concesiones de una convocatoria: beneficiario, importe, fecha |
-| `GET /finalidades`, `/regiones`, `/beneficiarios`, `/instrumentos`, `/actividades`, `/organos` | Catálogos |
+| `GET /convocatorias/documentos?idDocumento={id}` | PDF de un documento de la convocatoria (texto de la convocatoria, bases...). Cada ficha trae la lista en `documentos` |
+| `GET /organos?vpd=GE&idAdmon=L` | Entidades locales por provincia > municipio o diputación > órganos (2.971 entidades en octubre de 2026) |
+| `GET /finalidades`, `/regiones`, `/beneficiarios`, `/instrumentos`, `/actividades` | Catálogos |
 
 Ficha pública de una convocatoria: `https://www.pap.hacienda.gob.es/bdnstrans/GE/es/convocatorias/{código}`.
 
@@ -38,10 +40,27 @@ Ficha pública de una convocatoria: `https://www.pap.hacienda.gob.es/bdnstrans/G
 Ver `server/src/bdns/recolector.ts`:
 
 1. **Descubrir.** Listados de la finalidad Cultura por años y búsquedas por texto en todas las finalidades
-   (música, concierto, orquesta, jazz, lírica, ópera, zarzuela, coral…). Se queda con las de título musical.
+   (música, concierto, orquesta, jazz, lírica, ópera, zarzuela, coral…). Se queda con las de título musical y,
+   desde 2023, con los concursos generales de cultura en los que un concierto puede encajar.
 2. **Descargar.** La ficha completa y las concesiones de cada convocatoria nueva. Las concesiones a personas
    físicas se guardan sin nombre ni DNI.
 3. **Refrescar.** Vuelve a descargar las de los últimos 60 días, porque sus plazos y concesiones aún cambian.
+4. **Documentos.** De los concursos (de música, últimos 3 años; generales de cultura, último año) descarga el
+   PDF preferentemente en castellano y guarda su texto (comprimido, con los saltos de página) en
+   `datos/bdns/documentos/`. El PDF no se copia: se enlaza a la descarga oficial.
+5. **Vigilancia.** Se valida el formato de cada ficha; si falla más del 20 %, la ejecución termina con error y
+   GitHub avisa por correo.
+
+## 2. Referencias territoriales (en uso)
+
+| Fuente | Fichero | Uso |
+|---|---|---|
+| Catálogo de entidades locales de la BDNS (`/organos?idAdmon=L`) | `datos/referencia/entidades-locales.json` | Provincia de cada ayuntamiento, diputación o cabildo |
+| Nomenclátor de municipios del INE (`ine.es/daco/daco42/codmun/diccionarioAA.xlsx`) | `datos/referencia/municipios-ine.json` | Código oficial de municipio (8.132 municipios) |
+
+Las descarga el workflow `referencias.yml` el día 2 de cada mes. Con ellas, cada convocatoria local queda ubicada
+en su municipio, provincia y comunidad (en la primera muestra, 134 de 134; 94 hasta el municipio y 40 diputaciones,
+cabildos y consejos insulares en su provincia).
 
 ### Observaciones de la primera descarga (1 sept.-8 oct. 2026: 148 convocatorias de música)
 
@@ -51,12 +70,10 @@ Ver `server/src/bdns/recolector.ts`:
 - La fecha de inicio a veces falta y el plazo depende de la publicación en el boletín («a partir del día siguiente
   de la publicación…»); `abierto` puede valer `false` aunque el plazo no haya empezado.
 
-## 2. Fuentes complementarias (pendientes)
+## 3. Fuentes complementarias (pendientes)
 
 | Fuente | Por qué | Prioridad |
 |---|---|---|
-| PDF de las bases y anuncios del boletín | Los requisitos reales (estilos, gastos, criterios) están ahí; el título no basta | Alta |
-| Convocatorias genéricas de cultura (finalidad 11 sin palabras musicales en el título) | Muchas ayudas municipales «a actividades culturales» admiten conciertos | Alta |
 | Plataforma de Contratación del Sector Público | Gran parte del dinero público para conciertos son contratos (cachés), no subvenciones | Alta |
 | Diarios oficiales autonómicos | Por si alguna comunidad publica fuera de la BDNS (STC 33/2018) | Media |
 | AIE, SGAE y fundaciones | No son públicas, pero los promotores las piden | Baja |
