@@ -1,72 +1,47 @@
-# Diagnóstico: qué fuentes oficiales publican el directorio de ayuntamientos (contacto, alcalde)
-# y los concejales con su área (cultura). Muestra cabecera y primeras filas de cada fuente.
+# Diagnóstico: muestra la estructura de fuentes candidatas para el directorio de cultura
+# (directorio de técnicos de cultura de la Diputación de Cádiz, Red de Teatros de la Comunidad de Madrid).
 name: Explorar fuentes del directorio
 
 on:
   workflow_dispatch:
+  push:
+    branches: ['claude/**']
+    paths: ['.github/workflows/explorar-directorio.yml']
 
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 20
     steps:
-      - name: Muestras de cada fuente
+      - name: Diputación de Cádiz
         continue-on-error: true
         run: |
-          muestra() {
-            echo "::group::$1"
-            curl -sSL -m 180 -A "Mozilla/5.0" -o /tmp/f -w "HTTP %{http_code} · %{size_download} bytes · %{content_type}\n" "$2" || true
-            if file -b /tmp/f | grep -qiE 'zip|excel|ooxml|microsoft'; then
-              python3 -c "
-          import openpyxl,sys
-          try:
-              wb=openpyxl.load_workbook('/tmp/f',read_only=True)
-              for ws in wb.worksheets[:3]:
-                  print('hoja',ws.title)
-                  for i,r in enumerate(ws.iter_rows(values_only=True)):
-                      print(r)
-                      if i>4: break
-          except Exception as e: print('no xlsx',e)"
-            else
-              head -c 2500 /tmp/f; echo; echo "líneas: $(wc -l < /tmp/f)"
-            fi
+          A="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"
+          curl -sSL -m 60 -A "$A" -o /tmp/idx.html -w "HTTP %{http_code} %{size_download}\n" https://www.dipucadiz.es/cultura/directorios/provincia/
+          echo "::group::enlaces del índice"
+          grep -o 'href="[^"]*directorios/provincia/[^"]*"' /tmp/idx.html | sort -u | head -80
+          grep -o 'href="[^"]*directorios/provincia/[^"]*"' /tmp/idx.html | sort -u | wc -l
+          echo "::endgroup::"
+          echo "::group::html del índice (recorte)"
+          sed -n '/directorios\/provincia\//,+3p' /tmp/idx.html | head -60
+          echo "::endgroup::"
+          for u in Cadiz-00003 El-Puerto-de-Santa-Maria-00001 Chiclana-de-la-Frontera-00008 Sanlucar-de-Barrameda-00007; do
+            echo "::group::$u"
+            curl -sSL -m 60 -A "$A" -o /tmp/m.html -w "HTTP %{http_code} %{size_download}\n" "https://www.dipucadiz.es/cultura/directorios/provincia/$u"
+            python3 - <<'EOF'
+          import re, html
+          t = open('/tmp/m.html', encoding='utf-8', errors='replace').read()
+          i = t.find('Organizaci')
+          print(t[max(0, i - 3000): i + 6000])
+          EOF
             echo "::endgroup::"
-          }
-          pip install -q openpyxl
-          S=https://analisi.transparenciacatalunya.cat
-          muestra "CAT cargos (área)" "$S/resource/m5nd-xjza.json?\$limit=6&\$where=area%20is%20not%20null"
-          muestra "CAT cargos cultura" "$S/resource/m5nd-xjza.json?\$limit=6&\$where=upper(area)%20like%20'%25CULTUR%25'"
-          muestra "CAT cargos cultura (n)" "$S/resource/m5nd-xjza.json?\$select=count(*)&\$where=upper(area)%20like%20'%25CULTUR%25'"
-          muestra "CAT cargos con email (n)" "$S/resource/m5nd-xjza.json?\$select=count(*)&\$where=e_mail%20is%20not%20null"
-          muestra "CAT ajuntaments" "$S/resource/vevv-8fvw.json?\$limit=2"
-          muestra "Euskadi directorio API" "https://api.euskadi.eus/directory/entities?subType=PUBLIC_SECTOR&publicSectorScope=LOCAL&sector=r01epd01247c8e1e65dd55724fc88144718e5803f%2F1&lang=SPANISH&fromItemAt=0&pageSize=3"
-          muestra "Euskadi registro EELL" "https://opendata.euskadi.eus/contenidos/ds_registros/registro_entidades_locales/opendata/entidades.json"
-          muestra "Bizkaia ayuntamientos" "https://www.opendatabizkaia.eus/es/datastore/dump/24a15c1c-0225-4d15-becb-4bfa90c13910/ayuntamientos?format=json"
-          muestra "Galicia casas dos concellos" "https://abertos.xunta.gal/catalogo/administracion-publica/-/dataset/0301/casas-dos-concellos-galicia/102/acceso-aos-datos.csv"
-          muestra "Galicia rexistro EELL" "https://abertos.xunta.gal/catalogo/administracion-publica/-/dataset/0264/rexistro-entidades-locais-galicia/001/descarga-directa-ficheiro.csv"
-          muestra "CLM directorio" "https://datosabiertos.castillalamancha.es/sites/datosabiertos.castillalamancha.es/files/Entidades_Locales_CLM%20%28Junio_2025%29.csv"
-          muestra "Castellón alcaldes" "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/alcaldes/exports/csv"
-          muestra "Castellón ayuntamientos" "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/ayuntamientos/exports/csv"
-          muestra "Alicante directorio local" "https://datosabiertos.diputacionalicante.es/resource/csv/directorio-local"
-          muestra "Navarra guía EELL" "https://datosabiertos.navarra.es/dataset/ebce4d71-a914-46ed-b7c6-d7e73046b511/resource/621b149e-4410-4353-b7d1-b08e3ff5d1e2/download/2025-municipios.csv"
-          muestra "Andalucía RAEL" "https://datos.juntadeandalucia.es/api/v0/rael/all?format=csv"
-          muestra "Aragón municipios" "https://opendata.aragon.es/GA_OD_Core/download?resource_id=11&formato=csv"
-          muestra "Salamanca alcaldes" "https://datosabiertossalamanca.es/dataset/55683da4-954e-4b34-8ab2-bc4a97e70682/resource/204dceb7-50fd-42a7-9aa9-4a4d61f951e9/download/sp02.csv"
-          muestra "Málaga alcaldes (página)" "https://opendata.malaga.es/dataset/alcaldesmalaga"
-          muestra "Valladolid ayuntamientos" "https://datos.diputaciondevalladolid.es/dataset/e31a3edc-62b5-4c1a-b5ca-ffcc18462775/resource/64ed751d-1da7-49ed-a22d-ce1b03f472af/download/datosgeneralesayuntamientos.xml"
-          muestra "Córdoba eprinsa" "https://enlaza.eprinsa.es/file/datahub/00af650c-1f30-4e88-8dc7-8d17851b04da.csv"
-          muestra "GVA gobierno abierto EELL" "https://dadesobertes.gva.es/dataset/93721b0e-3a83-4108-a7b5-040058c5d6c6/resource/29864181-c7b1-470c-a4e6-e5958ead7c4a/download/mapets.csv"
-          muestra "Registro de alcaldes (redsara)" "https://concejales.redsara.es/consulta/"
-          muestra "BDGEL" "https://serviciostelematicosext.hacienda.gob.es/sgcief/InventarioBDGEL/Home/ConsultaBDGEL"
+          done
 
-      - name: Wikidata (web, teléfono, email y alcalde de cada municipio)
+      - name: Red de Teatros de la Comunidad de Madrid
         continue-on-error: true
         run: |
-          Q='SELECT ?ine ?web ?tel ?email ?alcaldeLabel WHERE { ?m wdt:P772 ?ine . OPTIONAL{?m wdt:P856 ?web} OPTIONAL{?m wdt:P1329 ?tel} OPTIONAL{?m wdt:P968 ?email} OPTIONAL{?m wdt:P6 ?alcalde} SERVICE wikibase:label { bd:serviceParam wikibase:language "es". } }'
-          curl -sS -m 300 -A "subvencionados/1.0 (https://github.com/bielromani/subvencionados)" -H "Accept: text/csv" --data-urlencode "query=$Q" https://query.wikidata.org/sparql -o /tmp/wd.csv
-          wc -l /tmp/wd.csv; head -5 /tmp/wd.csv
-          python3 -c "
-          import csv
-          r=list(csv.DictReader(open('/tmp/wd.csv')))
-          ine={x['ine'] for x in r}
-          for k in ['web','tel','email','alcaldeLabel']: print(k, len({x['ine'] for x in r if x[k]}), 'de', len(ine))"
+          sudo apt-get install -y -qq poppler-utils >/dev/null
+          curl -sSL -m 120 -A "Mozilla/5.0" -o /tmp/red.pdf -w "HTTP %{http_code} %{size_download}\n" https://www.madrid.org/clas_artes/red/pdf/directorio-red.pdf
+          pdfinfo /tmp/red.pdf | head -20
+          pdftotext -layout /tmp/red.pdf - | head -150
+          echo "líneas: $(pdftotext -layout /tmp/red.pdf - | wc -l)"
