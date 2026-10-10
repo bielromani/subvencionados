@@ -13,35 +13,33 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Diputación de Cádiz
+      - name: Diputación de Cádiz (listado completo)
         continue-on-error: true
         run: |
           A="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"
-          curl -sSL -m 60 -A "$A" -o /tmp/idx.html -w "HTTP %{http_code} %{size_download}\n" https://www.dipucadiz.es/cultura/directorios/provincia/
-          echo "::group::enlaces del índice"
-          grep -o 'href="[^"]*directorios/provincia/[^"]*"' /tmp/idx.html | sort -u | head -80
-          grep -o 'href="[^"]*directorios/provincia/[^"]*"' /tmp/idx.html | sort -u | wc -l
-          echo "::endgroup::"
-          echo "::group::html del índice (recorte)"
-          sed -n '/directorios\/provincia\//,+3p' /tmp/idx.html | head -60
-          echo "::endgroup::"
-          for u in Cadiz-00003 El-Puerto-de-Santa-Maria-00001 Chiclana-de-la-Frontera-00008 Sanlucar-de-Barrameda-00007; do
-            echo "::group::$u"
-            curl -sSL -m 60 -A "$A" -o /tmp/m.html -w "HTTP %{http_code} %{size_download}\n" "https://www.dipucadiz.es/cultura/directorios/provincia/$u"
-            python3 - <<'EOF'
-          import re, html
-          t = open('/tmp/m.html', encoding='utf-8', errors='replace').read()
-          i = t.find('Organizaci')
-          print(t[max(0, i - 3000): i + 6000])
-          EOF
-            echo "::endgroup::"
+          B="https://www.dipucadiz.es/system/modules/es.dipucadiz.listas/elements/list-inner.jsp?tipo_=Organigrama_F:cc13c603-d83e-11e8-a419-286ed488c708&ruta_=/sites/default/cultura/directorios/provincia/.elements/&incluirFiltros_=false&categoria_=/system/categories/servicios/cultura/&num_columns_=3&listConfig=/cultura/.content/Lista_L/Lista_L_00140.html&usepagination=true&ratio=r-box-21_9&mostrarFecha=false&buscarTitulo=false&hideOptions=true"
+          for q in "num_elements_=300" "num_elements_=55&page=2" "num_elements_=55&pagina=2" "num_elements_=55&page_=2" "num_elements_=55&currentPage=2"; do
+            curl -sSL -m 60 -A "$A" -o /tmp/l.html "$B&$q"
+            echo "$q -> $(grep -o 'directorios/provincia/[A-Za-z0-9-]*' /tmp/l.html | sort -u | wc -l) enlaces; primero: $(grep -o 'directorios/provincia/[A-Za-z0-9-]*' /tmp/l.html | head -1)"
           done
+          curl -sSL -m 60 -A "$A" -o /tmp/l.html "$B&num_elements_=300"
+          grep -o 'directorios/provincia/[A-Za-z0-9-]*' /tmp/l.html | sort -u | tr '\n' ' '
+          echo
+          grep -o 'searchStateParameters[^;]*;' /tmp/l.html | head -5
+          curl -sSL -m 60 -A "$A" https://www.dipucadiz.es/cultura/directorios/provincia/ | grep -o 'searchStateParameters *=[^;]*;' | head -5
 
       - name: Red de Teatros de la Comunidad de Madrid
         continue-on-error: true
         run: |
-          sudo apt-get install -y -qq poppler-utils >/dev/null
+          pip install -q pypdf
           curl -sSL -m 120 -A "Mozilla/5.0" -o /tmp/red.pdf -w "HTTP %{http_code} %{size_download}\n" https://www.madrid.org/clas_artes/red/pdf/directorio-red.pdf
-          pdfinfo /tmp/red.pdf | head -20
-          pdftotext -layout /tmp/red.pdf - | head -150
-          echo "líneas: $(pdftotext -layout /tmp/red.pdf - | wc -l)"
+          python3 - <<'EOF'
+          from pypdf import PdfReader
+          r = PdfReader('/tmp/red.pdf')
+          print('páginas', len(r.pages), r.metadata)
+          for i, p in enumerate(r.pages[:3]):
+              print('--- página', i + 1, '(layout)')
+              print(p.extract_text(extraction_mode='layout')[:6000])
+          print('--- página 1 (plano)')
+          print(r.pages[0].extract_text()[:3000])
+          EOF
