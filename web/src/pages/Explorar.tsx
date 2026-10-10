@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api, type Filtros } from '../api';
 import { TarjetaConvocatoria } from '../components/TarjetaConvocatoria';
+import { cambiarParams, type Ruta } from '../ruta';
 import { NOMBRE_ADMINISTRACION, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Meta } from '../tipos';
 
 interface Resultado {
@@ -10,12 +11,25 @@ interface Resultado {
   items: Convocatoria[];
 }
 
-export function Explorar({ meta }: { meta: Meta }) {
-  const [filtros, setFiltros] = useState<Filtros>({ tipo: 'concurrencia', plazo: 'abierta', orden: 'cierre' });
+const POR_DEFECTO: Filtros = { tipo: 'concurrencia', plazo: 'abierta', orden: 'cierre' };
+
+/** Los filtros van en la dirección (#/explorar?estilo=jazz&ccaa=…) para poder guardarlos o compartirlos. */
+function desdeRuta(ruta: Ruta): Filtros {
+  if (ruta.params.size === 0) return POR_DEFECTO;
+  const f: Record<string, string | number | boolean> = Object.fromEntries(ruta.params);
+  if (f.pagina) f.pagina = Number(f.pagina);
+  for (const k of ['todas', 'cultura']) if (f[k]) f[k] = f[k] === 'true';
+  return f as Filtros;
+}
+
+export function Explorar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
+  const [filtros, setFiltros] = useState<Filtros>(() => desdeRuta(ruta));
   const [resultado, setResultado] = useState<Resultado | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Sin filtros también hay que dejarlo en la dirección, para no volver a los de por defecto al recargar.
+    cambiarParams(Object.values(filtros).some(Boolean) ? { ...filtros } : { todo: 1 });
     // Pequeña espera para no lanzar una petición por cada tecla del buscador.
     const t = setTimeout(() => {
       api.convocatorias(filtros).then(setResultado, (e: Error) => setError(e.message));

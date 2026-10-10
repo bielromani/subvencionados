@@ -58,6 +58,12 @@ export interface Convocatoria {
   concesiones: ResumenConcesiones | null;
   clasificacion: Clasificacion;
   plazo: Plazo;
+  /** Id del organismo convocante (página #/organismo/:id). */
+  organismoId: string;
+  /** Municipio o provincia del organismo, si se ha podido situar. */
+  ubicacion: Ubicacion | null;
+  /** La misma convocatoria en otros años, si se repite. */
+  serie?: Serie | null;
   /** Documentos registrados en la BDNS, con su descarga oficial. */
   documentos: { id: number; nombre: string; descripcion: string | null; url: string }[];
   /** Hay ficha extraída de las bases (solo en los listados). */
@@ -200,3 +206,48 @@ export const NOMBRE_FORMA: Record<FormaJuridica, string> = {
   asociacion: 'Asociación',
   fundacion: 'Fundación',
 };
+
+export interface Serie {
+  id: string;
+  anios: number[];
+  mesHabitual: number | null;
+  /** Estimación aaaa-mm de la próxima, a partir del historial. No es un dato oficial. */
+  proximaPrevista: string | null;
+  retrasada: boolean;
+  convocatorias: {
+    id: string;
+    anio: number | null;
+    titulo: string;
+    presupuesto: number | null;
+    concedido: number | null;
+    fechaInicioSolicitud: string | null;
+    fechaFinSolicitud: string | null;
+  }[];
+}
+
+export interface Ubicacion {
+  provincia: string | null;
+  codigoProvincia: string | null;
+  ccaa: string;
+  municipio: string | null;
+  codigoMunicipio: string | null;
+}
+
+export interface Organismo {
+  id: string;
+  nombre: string;
+  entidad: string | null;
+  niveles: string[];
+  administracion: Administracion;
+  ubicacion: Ubicacion | null;
+  convocatorias: number;
+  concursos: number;
+  directas: number;
+  series: number;
+  presupuestoTotal: number;
+  concedidoTotal: number;
+  primerAnio: number | null;
+  ultimoAnio: number | null;
+  porAnio: { anio: number; convocatorias: number; presupuesto: number; concedido: number }[];
+  beneficiarios: { nombre: string; importe: number; veces: number }[];
+}

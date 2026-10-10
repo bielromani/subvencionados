@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { enlace } from '../ruta';
 import { FichaPlegable } from './FichaConvocatoria';
 import { NOMBRE_ADMINISTRACION, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Plazo } from '../tipos';
 
@@ -32,7 +33,8 @@ function ambito(c: Convocatoria): string {
   return 'Ámbito no indicado';
 }
 
-export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children?: ReactNode }) {
+/** En los listados el título lleva a su página; en la página (`pagina`) la ficha va aparte y no se pliega. */
+export function TarjetaConvocatoria({ c, children, pagina = false }: { c: Convocatoria; children?: ReactNode; pagina?: boolean }) {
   const cl = c.clasificacion;
   const organo = c.organoNiveles.slice(1).join(' · ') || c.organo;
 
@@ -49,8 +51,12 @@ export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children
           <Etiqueta>{NOMBRE_ADMINISTRACION[c.administracion]}</Etiqueta>
           <Etiqueta>{ambito(c)}</Etiqueta>
         </div>
-        <h3>{c.titulo}</h3>
-        <p className="organo">{organo}</p>
+        {pagina ? <h2>{c.titulo}</h2> : <h3><a href={enlace('convocatoria', c.id)}>{c.titulo}</a></h3>}
+        <p className="organo">
+          <a href={enlace('organismo', c.organismoId)}>{organo}</a>
+          {c.ubicacion?.municipio && ` · ${c.ubicacion.municipio}`}
+          {!c.ubicacion?.municipio && c.ubicacion?.provincia && ` · ${c.ubicacion.provincia}`}
+        </p>
       </header>
 
       <dl className="datos">
@@ -105,12 +111,17 @@ export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children
             {c.concesiones.numero === 1 ? 'concesión' : 'concesiones'}
           </summary>
           <ul>
-            {c.concesiones.entidades.slice(0, 10).map((e, i) => (
+            {c.concesiones.entidades.slice(0, pagina ? undefined : 10).map((e, i) => (
               <li key={i}>
                 {e.nombre} · {euros.format(e.importe)}
                 {e.fecha && ` · ${fecha(e.fecha)}`}
               </li>
             ))}
+            {!pagina && c.concesiones.entidades.length > 10 && (
+              <li className="ayuda">
+                <a href={enlace('convocatoria', c.id)}>Ver las {c.concesiones.entidades.length} entidades</a>
+              </li>
+            )}
             {c.concesiones.entidades.length < c.concesiones.numero && (
               <li className="ayuda">
                 {c.concesiones.numero - c.concesiones.entidades.length} a personas físicas (no se muestran)
@@ -120,7 +131,7 @@ export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children
         </details>
       )}
 
-      <FichaPlegable id={c.id} leida={c.tieneFicha ?? false} />
+      {!pagina && <FichaPlegable id={c.id} leida={c.tieneFicha ?? false} />}
 
       {children}
 

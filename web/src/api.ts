@@ -1,4 +1,4 @@
-import type { Coincidencia, Convocatoria, Meta, Perfil } from './tipos';
+import type { Coincidencia, Convocatoria, Meta, Organismo, Perfil } from './tipos';
 
 async function pedir<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
@@ -41,6 +41,13 @@ export const api = {
     return pedir<{ total: number; pagina: number; porPagina: number; items: Convocatoria[] }>(`/api/convocatorias?${params}`);
   },
   convocatoria: (id: string) => pedir<Convocatoria>(`/api/convocatorias/${encodeURIComponent(id)}`),
+  organismos: (f: { q?: string; ccaa?: string; administracion?: string; orden?: string; pagina?: number }) => {
+    const params = new URLSearchParams();
+    for (const [k, v] of Object.entries(f)) if (v) params.set(k, String(v));
+    return pedir<{ total: number; pagina: number; porPagina: number; items: Organismo[] }>(`/api/organismos?${params}`);
+  },
+  organismo: (id: string) =>
+    pedir<Organismo & { convocatorias: Convocatoria[] }>(`/api/organismos/${encodeURIComponent(id)}`),
   perfil: () => pedir<Perfil>('/api/perfil'),
   guardarPerfil: (p: Perfil) => pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) }),
   paraTi: () =>

@@ -1,19 +1,27 @@
 import { useEffect, useState } from 'react';
 import { api } from './api';
+import { PaginaConvocatoria } from './pages/Convocatoria';
 import { Explorar } from './pages/Explorar';
+import { PaginaOrganismo } from './pages/Organismo';
+import { Organismos } from './pages/Organismos';
 import { ParaTi } from './pages/ParaTi';
 import { Perfil } from './pages/Perfil';
+import { useRuta } from './ruta';
 import type { Meta } from './tipos';
 
-type Pestana = 'para-ti' | 'explorar' | 'perfil';
-const PESTANAS: [Pestana, string][] = [
-  ['para-ti', 'Para ti'],
-  ['explorar', 'Explorar'],
+/** Secciones del menú; la página de una convocatoria u organismo marca la sección de la que cuelga. */
+const SECCIONES: [string, string][] = [
+  ['', 'Para ti'],
+  ['explorar', 'Convocatorias'],
+  ['organismos', 'Organismos'],
   ['perfil', 'Mi perfil'],
 ];
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos' };
 
 export function App() {
-  const [pestana, setPestana] = useState<Pestana>('para-ti');
+  const ruta = useRuta();
+  const [pagina = '', id] = ruta.partes;
+  const seccion = SECCION_DE[pagina] ?? pagina;
   const [meta, setMeta] = useState<Meta | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -25,14 +33,16 @@ export function App() {
     <div className="app">
       <header className="cabecera">
         <div>
-          <h1>Subvencionados</h1>
+          <h1>
+            <a href="#/">Subvencionados</a>
+          </h1>
           <p className="lema">Ayudas públicas para conciertos de jazz, clásica y ópera</p>
         </div>
         <nav>
-          {PESTANAS.map(([id, nombre]) => (
-            <button key={id} className={id === pestana ? 'activa' : ''} onClick={() => setPestana(id)}>
+          {SECCIONES.map(([destino, nombre]) => (
+            <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
               {nombre}
-            </button>
+            </a>
           ))}
         </nav>
       </header>
@@ -46,9 +56,13 @@ export function App() {
 
       <main>
         {error && <p className="error">{error}</p>}
-        {meta && pestana === 'para-ti' && <ParaTi irAPerfil={() => setPestana('perfil')} />}
-        {meta && pestana === 'explorar' && <Explorar meta={meta} />}
-        {meta && pestana === 'perfil' && <Perfil meta={meta} alGuardar={() => setPestana('para-ti')} />}
+        {meta && pagina === '' && <ParaTi irAPerfil={() => (window.location.hash = '#/perfil')} />}
+        {meta && pagina === 'explorar' && <Explorar meta={meta} ruta={ruta} />}
+        {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
+        {meta && pagina === 'organismos' && <Organismos meta={meta} ruta={ruta} />}
+        {meta && pagina === 'organismo' && id && <PaginaOrganismo id={id} />}
+        {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}
+        {meta && !SECCIONES.some(([d]) => d === seccion) && <p className="error">Esta página no existe.</p>}
       </main>
 
       {meta && (

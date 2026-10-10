@@ -76,15 +76,22 @@ a {
   color: var(--texto-suave);
 }
 
+.cabecera h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
 nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
   background: var(--apagado-fondo);
   padding: 4px;
   border-radius: 999px;
 }
 
-nav button {
+nav a {
+  text-decoration: none;
   border: 0;
   background: transparent;
   color: var(--texto);
@@ -94,7 +101,7 @@ nav button {
   cursor: pointer;
 }
 
-nav button.activa {
+nav a.activa {
   background: var(--superficie);
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.12);
   font-weight: 600;
@@ -454,4 +461,76 @@ select {
   .ficha-fila {
     grid-template-columns: 1fr;
   }
+}
+
+.migas {
+  margin: 0 0 12px;
+}
+
+.pagina h2 {
+  margin: 4px 0;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.bloque {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 16px 20px;
+  margin-top: 16px;
+}
+
+.bloque h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+}
+
+.tarjeta h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tarjeta h3 a:hover {
+  text-decoration: underline;
+}
+
+.organo a {
+  color: inherit;
+}
+
+.tabla-scroll {
+  overflow-x: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--superficie);
+}
+
+.tabla th,
+.tabla td {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--borde);
+  vertical-align: top;
+}
+
+.tabla th {
+  color: var(--texto-suave);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tabla .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tabla tr.actual td {
+  background: var(--apagado-fondo);
+  font-weight: 600;
 }

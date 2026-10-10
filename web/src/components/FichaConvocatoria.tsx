@@ -201,7 +201,14 @@ export function VistaFicha({ ficha }: { ficha: Ficha }) {
   );
 }
 
-/** Ficha plegada: se pide al abrirla. La leída por IA si la hay; si no, la básica automática. */
+/** La ficha leída por IA si la hay; si no, la básica automática. Necesita la convocatoria del detalle. */
+export function FichaDe({ c }: { c: Convocatoria }) {
+  if (c.ficha) return <VistaFicha ficha={c.ficha} />;
+  if (c.basica) return <VistaBasica basica={c.basica} convocatoria={c} />;
+  return null;
+}
+
+/** Ficha plegada: se pide al abrirla. */
 export function FichaPlegable({ id, leida }: { id: string; leida: boolean }) {
   const [estado, setEstado] = useState<'cerrada' | 'cargando' | 'error' | Convocatoria>('cerrada');
   return (
@@ -219,8 +226,7 @@ export function FichaPlegable({ id, leida }: { id: string; leida: boolean }) {
       <summary>{leida ? 'Ficha completa de las bases' : 'Ficha básica: extracto, datos de las bases y documentos'}</summary>
       {estado === 'cargando' && <p className="ayuda">Cargando…</p>}
       {estado === 'error' && <p className="error">No se ha podido cargar la ficha.</p>}
-      {typeof estado === 'object' && estado.ficha && <VistaFicha ficha={estado.ficha} />}
-      {typeof estado === 'object' && !estado.ficha && estado.basica && <VistaBasica basica={estado.basica} convocatoria={estado} />}
+      {typeof estado === 'object' && <FichaDe c={estado} />}
     </details>
   );
 }
