@@ -76,7 +76,7 @@
    "url": "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
    "descripcion": "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)",
    "licencia": "CC BY 4.0",
-   "resultado": "5373929 bytes"
+   "resultado": "5373959 bytes"
   },
   {
    "fichero": "salamanca-alcaldes.csv",
@@ -97,7 +97,7 @@
    "url": "https://www.dipucadiz.es/cultura/directorios/provincia/",
    "descripcion": "Diputación de Cádiz · Personal de cultura de los ayuntamientos de la provincia",
    "licencia": "Información pública (citar la fuente)",
-   "resultado": "23542 bytes"
+   "resultado": "23925 bytes"
   }
  ]
 }
