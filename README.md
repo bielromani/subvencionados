@@ -33,9 +33,13 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
   plazo, minimis, compatibilidad, cachés) y enlaces a los documentos. Además hay 105 **fichas completas** que Claude
   leyó en la sesión de trabajo (plazos, dinero, requisitos, gastos, criterios, documentación), cada dato con su cita
   comprobada; otras se leen solo si se piden. `npm run fichas` prepara los textos e importa y comprueba las fichas.
-- **Web** (React) con tres pestañas:
+- **Web** (React), cada página con su dirección para guardarla o compartirla:
   - *Para ti*: las recomendaciones;
-  - *Explorar*: filtros por plazo, tipo, estilo, comunidad, administración y actividad, con paginación;
+  - *Convocatorias*: filtros por plazo, tipo, estilo, comunidad, administración y actividad; cada convocatoria
+    tiene su página con la ficha y sus ediciones de otros años;
+  - *Calendario*: plazos que abren y cierran y ediciones previstas, exportable a cualquier calendario (.ics);
+  - *Organismos*: quién convoca, cuánto ha concedido y a quién;
+  - *Mercado*: cifras y gráficos por año, comunidad, provincia (mapa) y actividad;
   - *Mi perfil*: los datos del promotor.
 
 ## Puesta en marcha

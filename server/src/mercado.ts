@@ -7,6 +7,8 @@ export interface Mercado {
   primerAnioConcesiones: number | null;
   porAnio: { anio: number; convocatorias: number; concursos: number; presupuesto: number; concedido: number }[];
   porComunidad: { nombre: string; convocatorias: number; concedido: number }[];
+  /** Solo organismos situados en una provincia (ayuntamientos, diputaciones, comarcas...). */
+  porProvincia: { codigo: string; nombre: string; convocatorias: number; concedido: number }[];
   porLinea: { linea: Linea | 'sin'; convocatorias: number; concedido: number }[];
 }
 
@@ -21,6 +23,7 @@ function comunidad(c: Convocatoria): string {
 export function mercado(convocatorias: Convocatoria[]): Mercado {
   const anios = new Map<number, Mercado['porAnio'][number]>();
   const comunidades = new Map<string, Mercado['porComunidad'][number]>();
+  const provincias = new Map<string, Mercado['porProvincia'][number]>();
   const lineas = new Map<Linea | 'sin', Mercado['porLinea'][number]>();
   const organismos = new Set<string>();
   const totales = { convocatorias: 0, concursos: 0, directas: 0, presupuesto: 0, concedido: 0, organismos: 0 };
@@ -50,6 +53,14 @@ export function mercado(convocatorias: Convocatoria[]): Mercado {
     cc.concedido += concedido;
     comunidades.set(nombre, cc);
 
+    const u = c.ubicacion;
+    if (u?.codigoProvincia && c.administracion !== 'estatal' && c.administracion !== 'autonomica') {
+      const p = provincias.get(u.codigoProvincia) ?? { codigo: u.codigoProvincia, nombre: u.provincia ?? u.codigoProvincia, convocatorias: 0, concedido: 0 };
+      p.convocatorias++;
+      p.concedido += concedido;
+      provincias.set(u.codigoProvincia, p);
+    }
+
     // Una convocatoria puede financiar varias cosas: cuenta en cada una (por eso no suman el total).
     for (const linea of c.clasificacion.lineas.length ? c.clasificacion.lineas : (['sin'] as const)) {
       const l = lineas.get(linea) ?? { linea, convocatorias: 0, concedido: 0 };
@@ -65,6 +76,7 @@ export function mercado(convocatorias: Convocatoria[]): Mercado {
     primerAnioConcesiones: porAnio.find((a) => a.concedido > 0)?.anio ?? null,
     porAnio,
     porComunidad: [...comunidades.values()].sort((a, b) => b.concedido - a.concedido || b.convocatorias - a.convocatorias),
+    porProvincia: [...provincias.values()].sort((a, b) => b.concedido - a.concedido || b.convocatorias - a.convocatorias),
     porLinea: [...lineas.values()].sort((a, b) => b.concedido - a.concedido || b.convocatorias - a.convocatorias),
   };
 }

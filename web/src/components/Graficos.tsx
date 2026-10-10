@@ -18,6 +18,7 @@ function Tabla({ puntos, columna, formato }: { puntos: Punto[]; columna: string;
   return (
     <details className="ver-tabla">
       <summary>Ver los datos en tabla</summary>
+      <div className="tabla-scroll">
       <table className="tabla">
         <thead>
           <tr>
@@ -34,6 +35,7 @@ function Tabla({ puntos, columna, formato }: { puntos: Punto[]; columna: string;
           ))}
         </tbody>
       </table>
+      </div>
     </details>
   );
 }

@@ -136,9 +136,19 @@ importes, beneficiarios) superan el nivel de acierto acordado.
 
 ---
 
-## Fase 3 · Nueva web: ordenada, completa y fácil de navegar
+## Fase 3 · Nueva web: ordenada, completa y fácil de navegar (en curso)
 
 **Objetivo:** pasar de tres pestañas a la estructura de secciones de la tabla inicial.
+
+Estado:
+- [x] Rutas con dirección propia (`#/convocatoria/:id`, `#/organismo/:id`, filtros de Convocatorias en la dirección).
+- [x] Página de convocatoria con la ficha abierta y la misma convocatoria en otros años.
+- [x] Organismos: listado con filtros y página de cada uno (año a año, a quién ha concedido, sus convocatorias).
+- [x] Calendario (abren, cierran, previstas) con exportación iCal.
+- [x] Mercado: cifras, concedido y convocatorias por año, por comunidad, mapa por provincias y qué financian.
+- [x] Sin desbordamientos a anchura de móvil.
+- [ ] Inicio con lo urgente y «Mis grupos» con recomendaciones por grupo.
+- [ ] Pruebas con 3-5 promotores reales.
 
 1. Navegación con rutas y URL propias (cada convocatoria, organismo y grupo tiene su página, que se puede compartir).
 2. **Inicio** con lo urgente; **Oportunidades** con filtros guardados; **Ficha de convocatoria** completa.

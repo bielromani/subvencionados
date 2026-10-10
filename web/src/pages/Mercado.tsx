@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { Barras, Cifra, Columnas, eurosCompactos } from '../components/Graficos';
+import { MapaProvincias } from '../components/Mapa';
 import { cambiarParams, type Ruta } from '../ruta';
 import { NOMBRE_ADMINISTRACION, NOMBRE_ESTILO, NOMBRE_LINEA, type Meta, type Mercado as DatosMercado } from '../tipos';
 
@@ -16,6 +17,7 @@ export function Mercado({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   });
   const [m, setM] = useState<DatosMercado | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [medida, setMedida] = useState<'concedido' | 'convocatorias'>('concedido');
   const consulta = new URLSearchParams(Object.entries(filtros).filter(([, v]) => v)).toString();
 
   useEffect(() => {
@@ -124,6 +126,30 @@ export function Mercado({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
                 }))}
             />
             <p className="ayuda">Según dónde está el organismo que convoca. «Ámbito estatal»: ministerios y ayudas para toda España.</p>
+          </section>
+
+          <section className="bloque">
+            <h3>Mapa por provincias</h3>
+            <div className="selector" role="radiogroup" aria-label="Medida del mapa">
+              {(['concedido', 'convocatorias'] as const).map((x) => (
+                <label key={x} className="casilla">
+                  <input type="radio" name="medida" checked={medida === x} onChange={() => setMedida(x)} />{' '}
+                  {x === 'concedido' ? 'Concedido' : 'Convocatorias'}
+                </label>
+              ))}
+            </div>
+            <MapaProvincias
+              formato={medida === 'concedido' ? eurosCompactos : numero}
+              datos={m.porProvincia.map((p) => ({
+                codigo: p.codigo,
+                valor: p[medida],
+                detalle: `${p.nombre}: ${euros.format(p.concedido)} concedidos · ${numero(p.convocatorias)} convocatorias`,
+              }))}
+            />
+            <p className="ayuda">
+              Solo ayuntamientos, diputaciones, cabildos y comarcas, situados en su provincia. Las ayudas de comunidades y
+              ministerios están en «Concedido por comunidad».
+            </p>
           </section>
 
           <section className="bloque">

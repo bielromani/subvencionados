@@ -274,5 +274,6 @@ export interface Mercado {
   primerAnioConcesiones: number | null;
   porAnio: { anio: number; convocatorias: number; concursos: number; presupuesto: number; concedido: number }[];
   porComunidad: { nombre: string; convocatorias: number; concedido: number }[];
+  porProvincia: { codigo: string; nombre: string; convocatorias: number; concedido: number }[];
   porLinea: { linea: Linea | 'sin'; convocatorias: number; concedido: number }[];
 }

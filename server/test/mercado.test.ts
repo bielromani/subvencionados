@@ -23,5 +23,6 @@ describe('mercado', () => {
     expect(m.primerAnioConcesiones).toBe(2024);
     expect(m.porLinea.find((l) => l.linea === 'festivales')).toMatchObject({ convocatorias: 2, concedido: 1200 });
     expect(m.porComunidad.reduce((s, c) => s + c.convocatorias, 0)).toBe(3);
+    expect(m.porProvincia.every((p) => /^\d{2}$/.test(p.codigo))).toBe(true);
   });
 });
