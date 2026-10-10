@@ -1,5 +1,5 @@
 {
- "fecha": "2026-10-09",
+ "fecha": "2026-10-10",
  "fuentes": [
   {
    "fichero": "cat-carrecs.csv",
@@ -76,7 +76,7 @@
    "url": "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
    "descripcion": "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)",
    "licencia": "CC BY 4.0",
-   "resultado": "5373803 bytes"
+   "resultado": "5373929 bytes"
   },
   {
    "fichero": "salamanca-alcaldes.csv",
@@ -91,6 +91,13 @@
    "descripcion": "Wikidata · web oficial y población de cada municipio (P856 y P1082 por código INE P772)",
    "licencia": "CC0",
    "resultado": "291567 bytes"
+  },
+  {
+   "fichero": "cadiz-cultura.json",
+   "url": "https://www.dipucadiz.es/cultura/directorios/provincia/",
+   "descripcion": "Diputación de Cádiz · Personal de cultura de los ayuntamientos de la provincia",
+   "licencia": "Información pública (citar la fuente)",
+   "resultado": "23542 bytes"
   }
  ]
 }

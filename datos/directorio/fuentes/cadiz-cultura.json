@@ -1,0 +1,839 @@
+[
+ {
+  "municipio": "Alcalá de los Gazules",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Alcala-de-los-Gazules-00008",
+  "personas": [
+   {
+    "nombre": "María Almagro Gámez",
+    "puesto": "Concejala de Cultura",
+    "telefono": "956420330",
+    "email": "maria.almagro.gamez@alcaladelosgazules.es"
+   },
+   {
+    "nombre": "José Diego de la Rosa Pérez",
+    "puesto": "Técnico de Cultura",
+    "telefono": "677404710",
+    "email": "josediegorp@live.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956413181",
+  "email": "josediegorp@live.com",
+  "calle": "Paseo de la Guardia Civil, 5",
+  "ciudad": "Alcalá de los Gazules",
+  "cp": "11180"
+ },
+ {
+  "municipio": "Alcalá del Valle",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Alcala-del-Valle-00012",
+  "personas": [
+   {
+    "nombre": "Carmen Sánchez Fernández",
+    "puesto": "Concejala de Cultura",
+    "telefono": "956135001",
+    "email": "alcaldia@alcaladelvalle.es"
+   },
+   {
+    "nombre": "Miguel Gavilán Listán",
+    "puesto": "Técnico de Cultura",
+    "telefono": "956135080",
+    "email": "miguelg.listan@hotmail.com"
+   },
+   {
+    "nombre": "Miguel César Torres",
+    "puesto": "Técnico de Cultura",
+    "telefono": "956135080",
+    "email": "miguelcesartorres@gmail.com"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956135001",
+  "email": "alcaldia@alcaladelvalle.es",
+  "calle": "Plaza del Ayuntamiento, 1",
+  "ciudad": "Alcalá del Valle",
+  "cp": "11693"
+ },
+ {
+  "municipio": "Algar",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Algar-00007",
+  "personas": [
+   {
+    "nombre": "Pedro Antonio Poley Coto",
+    "puesto": "Concejal de Cultura",
+    "telefono": "956710001",
+    "email": "pedroantonio.poley.coto@algar.es"
+   },
+   {
+    "nombre": "Lucía González Rodríguez",
+    "puesto": "Técnica de Cultura",
+    "telefono": "956710001",
+    "email": "lucia.gonzalez.rodriguez@algar.es"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "956710001",
+  "email": "ayuntamiento@algar.es",
+  "calle": "Plaza de la Constitución, 1",
+  "ciudad": "Algar",
+  "cp": "11639"
+ },
+ {
+  "municipio": "Algeciras",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Algeciras-00007",
+  "personas": [
+   {
+    "nombre": "Juan Bermejo",
+    "puesto": "Gestor",
+    "telefono": "956672757",
+    "email": "cultura.administracion@algeciras.es"
+   }
+  ],
+  "organización": "Delegación de Cultura",
+  "teléfono": "956672757",
+  "email": "cultura.comunicacion@algeciras.es",
+  "calle": "Avda. Villanueva, 2. Edificio Guillermo Pérez Villalta",
+  "ciudad": "Algeciras",
+  "cp": "110207"
+ },
+ {
+  "municipio": "Algodonales",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Algodonales-00012",
+  "personas": [
+   {
+    "nombre": "Juana Nadales Márquez",
+    "puesto": "Técnica",
+    "telefono": "662304916",
+    "email": "cultura@algodonales.es"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "956137003",
+  "email": "cultura@algodonales.es",
+  "calle": "Avda. Andalucía, 2",
+  "ciudad": "Algodonales",
+  "cp": "11680"
+ },
+ {
+  "municipio": "Arcos de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Arcos-de-la-Frontera-00008",
+  "personas": [
+   {
+    "nombre": "Juan Mariscal López",
+    "puesto": "Técnico",
+    "telefono": "652775628",
+    "email": "cultura@arcosdelafrontera.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956703013",
+  "email": "cultura@arcosdelafrontera.es",
+  "calle": "Palacio del Mayorazgo. San Pedro, 2",
+  "ciudad": "Arcos de la Frontera",
+  "cp": "11630"
+ },
+ {
+  "municipio": "Barbate",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Barbate-00008",
+  "personas": [
+   {
+    "nombre": "Antonio Aragón Fernández",
+    "puesto": "Técnico",
+    "telefono": "627232218",
+    "email": "culturabarbate@gmail.com"
+   },
+   {
+    "nombre": "Mari Luz Corrales",
+    "puesto": "Técnica",
+    "telefono": "956063601",
+    "email": "culturabarbate@gmail.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956063600",
+  "email": "culturabarbate@gmail.com",
+  "calle": "Edificio Matadero, Avda. Joaquín Blume, 2",
+  "ciudad": "Barbate",
+  "cp": "11160"
+ },
+ {
+  "municipio": "Benalup - Casas Viejas",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Benalup-Casas-Viejas-00011",
+  "personas": [
+   {
+    "nombre": "Manuel Pascual Cózar Rodríguez",
+    "puesto": "Técnico",
+    "telefono": "956419559",
+    "email": "benalupcasasviejascultura@gmail.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956419559",
+  "email": "benalupcasasviejascultura@gmail.com",
+  "calle": "Centro Cultural \"20 de Marzo\", Paseo de la Guardia Civil, s/n",
+  "ciudad": "Benalup - Casas Viejas",
+  "cp": "11190"
+ },
+ {
+  "municipio": "Benaocaz",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Benaocaz-00008",
+  "personas": [
+   {
+    "nombre": "Ana Aragón Ruiz",
+    "puesto": "Técnica",
+    "telefono": "956125500",
+    "email": "ana.aragon.ruiz@benaocaz.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956125500",
+  "email": "ana.aragon.ruiz@benaocaz.es",
+  "calle": "Plaza de las Libertades, 1",
+  "ciudad": "Benaocaz",
+  "cp": "11612"
+ },
+ {
+  "municipio": "Bornos",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Bornos-00008",
+  "personas": [
+   {
+    "nombre": "Ana Domínguez Enríquez",
+    "puesto": "Técnica",
+    "telefono": "956712011",
+    "email": "ana.dominguez.enriquez@bornos.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956712011",
+  "email": "ana.dominguez.enriquez@bornos.es",
+  "calle": "Granada, 26 (Casa Ordóñez)",
+  "ciudad": "Bornos",
+  "cp": "11640"
+ },
+ {
+  "municipio": "Castellar de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Castellar-de-la-Frontera-00011",
+  "personas": [
+   {
+    "nombre": "Tamara Trujillo Ojeda",
+    "puesto": "Concejala",
+    "telefono": "649073811",
+    "email": "tamaraayuntamientodecastellar@gmail.com"
+   },
+   {
+    "nombre": "María del Mar Gómez Domínguez",
+    "puesto": "Gestora Cultural",
+    "telefono": "956693001",
+    "email": "comunicacion.castellar@dipucadiz.es"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "email": "comunicacion.castellar@dipucadiz.es",
+  "calle": "Plaza Andalucía, s/n",
+  "ciudad": "Castellar de la Frontera",
+  "cp": "11350"
+ },
+ {
+  "municipio": "Chiclana de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Chiclana-de-la-Frontera-00008",
+  "personas": [
+   {
+    "nombre": "María Victoria Portillo Rodríguez",
+    "puesto": "Técnica",
+    "telefono": "956490146",
+    "email": "cultura@chiclana.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956490146",
+  "email": "cultura@chiclana.es",
+  "calle": "Nueva, 20",
+  "ciudad": "Chiclana de la Frontera",
+  "cp": "11130"
+ },
+ {
+  "municipio": "Chipiona",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Chipiona-00007",
+  "personas": [
+   {
+    "nombre": "Manuel González Martín",
+    "puesto": "Técnico",
+    "telefono": "662338057",
+    "email": "cultura@aytochipiona.es"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "956929065",
+  "email": "cultura@aytochipiona.es",
+  "calle": "Calle del Castillo, 5",
+  "ciudad": "Chipiona",
+  "cp": "11550"
+ },
+ {
+  "municipio": "Conil de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Conil-de-la-Frontera-00008",
+  "personas": [
+   {
+    "nombre": "Francisco Fuentes Aragón",
+    "puesto": "Técnico",
+    "telefono": "956440306",
+    "email": "coordinacion.cultura@conil.org"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956440911",
+  "email": "coordinacion.cultura@conil.org",
+  "calle": "Almadraba, s/n La Chanca",
+  "ciudad": "Conil de la Frontera",
+  "cp": "11140"
+ },
+ {
+  "municipio": "Cádiz",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Cadiz-00003",
+  "personas": [
+   {
+    "nombre": "Carmen Montes Gómez",
+    "puesto": "Técnica",
+    "telefono": "956241000",
+    "email": "carmen.montesgomez@cadiz.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956807037",
+  "email": "secretaria.cultura@cadiz.es",
+  "calle": "ECCO, Paseo Carlos III, 5",
+  "ciudad": "Cádiz",
+  "cp": "11003"
+ },
+ {
+  "municipio": "El Bosque",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/El-Bosque-00002",
+  "personas": [
+   {
+    "nombre": "Pilar Jaime Oliva",
+    "puesto": "Técnica",
+    "telefono": "678307635",
+    "email": "pilar.jaime.oliva@dipucadiz.es"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "678307635",
+  "email": "pilar.jaime.oliva@dipucadiz.es",
+  "calle": "Plaza de la Constitución, 2",
+  "ciudad": "El Bosque",
+  "cp": "11670"
+ },
+ {
+  "municipio": "El Gastor",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/El-Gastor-00003",
+  "personas": [
+   {
+    "nombre": "Brenda Benítez Román",
+    "puesto": "Concejala de Cultura",
+    "telefono": "956123815",
+    "email": "cultura@elgastor.es / biblioteca@elgastor.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956123815",
+  "email": "cultura@elgastor.es",
+  "calle": "Plz. de la Constitución, 12-14",
+  "ciudad": "El Gastor",
+  "cp": "11687"
+ },
+ {
+  "municipio": "El Puerto de Santa María",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/El-Puerto-de-Santa-Maria-00001",
+  "personas": [
+   {
+    "nombre": "Jesús Jiménez Lobillo",
+    "puesto": "Técnico",
+    "telefono": "956483733",
+    "email": "jesus.jimenezlobillo@elpuertodesantamaria.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956483730",
+  "email": "cultura@elpuertodesantamaria.es",
+  "calle": "Fernán Caballero, 2",
+  "ciudad": "El Puerto de Santa María",
+  "cp": "11500"
+ },
+ {
+  "municipio": "Espera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Espera-00012",
+  "personas": [
+   {
+    "nombre": "Rocío Vázquez",
+    "puesto": "Técnica",
+    "telefono": "639950317",
+    "email": "esperacultura@gmail.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956720011",
+  "email": "esperacultura@gmail.com",
+  "calle": "Andalucía, 31",
+  "ciudad": "Espera",
+  "cp": "11648"
+ },
+ {
+  "municipio": "Grazalema",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Grazalema-00007",
+  "personas": [
+   {
+    "nombre": "Ana Zapata González",
+    "puesto": "Técnica",
+    "telefono": "956132011",
+    "email": "cultura@grazalema.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956132011",
+  "email": "cultura@grazalema.es",
+  "calle": "Plz. de España, 1",
+  "ciudad": "Grazalema",
+  "cp": "11610"
+ },
+ {
+  "municipio": "Jerez de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Jerez-de-la-Frontera-00002",
+  "personas": [
+   {
+    "nombre": "José Luis Fernández Orozco",
+    "puesto": "Técnico",
+    "telefono": "956149730",
+    "email": "delegacion.cultura@aytojerez.es"
+   }
+  ],
+  "organización": "Delegación de Dinamización Cultural y Patrimonio Histórico",
+  "teléfono": "956149733",
+  "email": "delegacion.cultura@aytojerez.es",
+  "calle": "Curtidores, 1",
+  "ciudad": "Jerez de la Frontera",
+  "cp": "11403"
+ },
+ {
+  "municipio": "Jimena de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Jimena-de-la-Frontera-00008",
+  "personas": [
+   {
+    "nombre": "Eloísa García Palacios",
+    "puesto": "Técnica",
+    "telefono": "637741023",
+    "email": "eloisajimena@gmail.com"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "email": "ayuntamiento@jimenadelafrontera.es",
+  "calle": "Sevilla, 61",
+  "ciudad": "Jimena de la Frontera",
+  "cp": "11330"
+ },
+ {
+  "municipio": "La Línea de la Concepción",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/La-Linea-de-la-Concepcion-00001",
+  "personas": [
+   {
+    "nombre": "Luis Miguel Delgado García",
+    "puesto": "Técnico",
+    "telefono": "689429909",
+    "email": "luismiguel.delgado@lalinea.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956696200",
+  "email": "cultura@lalinea.es",
+  "calle": "Edificio La Comandancia, Plaza de la Constitución, s/n",
+  "ciudad": "La Línea de la Concepción",
+  "cp": "11300"
+ },
+ {
+  "municipio": "Los Barrios",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Los-Barrios-00001",
+  "personas": [
+   {
+    "nombre": "Josefa Gil",
+    "puesto": "Técnica",
+    "telefono": "956582508",
+    "email": "cultura@ayto-losbarrios.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956582508",
+  "email": "cultura@ayto-losbarrios.es",
+  "calle": "Calvario, 12",
+  "ciudad": "Los Barrios",
+  "cp": "11370"
+ },
+ {
+  "municipio": "Medina Sidonia",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Medina-Sidonia-00008",
+  "personas": [
+   {
+    "nombre": "María José Dávila Cabañas",
+    "puesto": "Técnica",
+    "telefono": "666872624",
+    "email": "culturaasidonense@gmail.com"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "956410013",
+  "email": "cultura@medinasidonia.com",
+  "calle": "Plz. de España, 1",
+  "ciudad": "Medina Sidonia",
+  "cp": "11170"
+ },
+ {
+  "municipio": "Olvera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Olvera-00012",
+  "personas": [
+   {
+    "nombre": "Araceli Mata Merino",
+    "puesto": "Técnica",
+    "telefono": "956130602",
+    "email": "cultura@olvera.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956130011",
+  "email": "cultura@olvera.es",
+  "calle": "Lepanto, Casa de la Cultura, 2ª planta",
+  "ciudad": "Olvera",
+  "cp": "11690"
+ },
+ {
+  "municipio": "Paterna de Rivera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Paterna-de-Rivera-00013",
+  "personas": [
+   {
+    "nombre": "José López Doblas",
+    "puesto": "Técnico",
+    "telefono": "667633730",
+    "email": "jlopez@paternaderivera.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956929012",
+  "email": "jlopez@paternaderivera.es",
+  "calle": "Plz. de la Constitución, 1",
+  "ciudad": "Paterna de Rivera",
+  "cp": "11178"
+ },
+ {
+  "municipio": "Prado del Rey",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Prado-del-Rey-00012",
+  "personas": [
+   {
+    "nombre": "Concepción Rodríguez Chacón",
+    "puesto": "Técnica",
+    "telefono": "956723011",
+    "email": "crodriguez.pradodelrey@dipucadiz.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956723011",
+  "email": "cultura.pradodelrey@gmail.com",
+  "calle": "Plz. de la Constitución, 1",
+  "ciudad": "Prado del Rey",
+  "cp": "11660"
+ },
+ {
+  "municipio": "Puerto Real",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Puerto-Real-00009",
+  "personas": [
+   {
+    "nombre": "Jesús Bocanegra Cazorla",
+    "puesto": "Técnico",
+    "telefono": "856213350",
+    "email": "jesus.bocanegra@puertoreal.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "856213344",
+  "email": "cultura@puertoreal.es",
+  "calle": "Plz. Poeta Rafael Alberti, 1",
+  "ciudad": "Puerto Real",
+  "cp": "11510"
+ },
+ {
+  "municipio": "Puerto Serrano",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Puerto-Serrano-00008",
+  "personas": [
+   {
+    "nombre": "Diego Nieto Castillo",
+    "puesto": "Técnico",
+    "telefono": "956136000",
+    "email": "diego.nieto.castillo@puertoserrano.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956127042",
+  "email": "diego.nieto.castillo@puertoserrano.es",
+  "calle": "Plaza Miguel Rodríguez Rivera s/n",
+  "ciudad": "Puerto Serrano",
+  "cp": "11659"
+ },
+ {
+  "municipio": "Rota",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Rota-00006",
+  "personas": [
+   {
+    "nombre": "Mª Luisa Marrufo Raffo",
+    "puesto": "Técnica",
+    "telefono": "682356574",
+    "email": "cultura@aytorota.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956810022",
+  "email": "cultura@aytorota.es",
+  "calle": "Avda. San Fernando s/n Auditorio municipal",
+  "ciudad": "Rota",
+  "cp": "11520"
+ },
+ {
+  "municipio": "San Fernando",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/San-Fernando-00007",
+  "personas": [
+   {
+    "nombre": "Mª Dolores Lado Gómez",
+    "puesto": "Técnica",
+    "telefono": "956162290",
+    "email": "lola.lado@aytosanfernando.org"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956944211",
+  "email": "cultura@aytosanfernando.org",
+  "calle": "Calle Real 63",
+  "ciudad": "San Fernando",
+  "cp": "11100"
+ },
+ {
+  "municipio": "San José del Valle",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/San-Jose-del-Valle-00008",
+  "personas": [
+   {
+    "nombre": "Manuela Rebollo Erdozain",
+    "puesto": "Técnica",
+    "telefono": "649688397",
+    "email": "culturasjvalle@gmail.com"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "956160011",
+  "email": "cultura-educacion@sanjosedelvalle.es",
+  "calle": "Plaza Andalucía s/n",
+  "ciudad": "San José del Valle",
+  "cp": "11580"
+ },
+ {
+  "municipio": "San Martín del Tesorillo",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/San-Martin-del-Tesorillo-00003",
+  "personas": [
+   {
+    "nombre": "Roberto García López",
+    "puesto": "Concejal",
+    "telefono": "661568901",
+    "email": "ayuntamiento@sanmartindeltesorillo.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956618096",
+  "email": "ayuntamiento@sanmartindeltesorillo.es",
+  "calle": "Tufas s/n",
+  "ciudad": "San Martín del Tesorillo",
+  "cp": "11340"
+ },
+ {
+  "municipio": "San Roque",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/San-Roque-00007",
+  "personas": [
+   {
+    "nombre": "César Aldana López",
+    "puesto": "Técnico",
+    "telefono": "956781587",
+    "email": "cultura.aldana@sanroque.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956780106",
+  "email": "agenda@sanroque.es",
+  "calle": "Rubín de Celis, 1",
+  "ciudad": "San Roque",
+  "cp": "11360"
+ },
+ {
+  "municipio": "Sanlúcar de Barrameda",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Sanlucar-de-Barrameda-00007",
+  "personas": [
+   {
+    "nombre": "Javier Jiménez Mármol",
+    "puesto": "Técnico",
+    "telefono": "669118027",
+    "email": "coordinadorculturafiestas@gmail.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura y Fiestas",
+  "teléfono": "956388000",
+  "email": "fiestassanlucardebarrameda@gmail.com",
+  "calle": "Cuesta de Belén, 1",
+  "ciudad": "Sanlúcar de Barrameda",
+  "cp": "11540"
+ },
+ {
+  "municipio": "Setenil de las Bodegas",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Setenil-de-las-Bodegas-00008",
+  "personas": [
+   {
+    "nombre": "José Andrades Linares",
+    "puesto": "Concejal",
+    "telefono": "619200196",
+    "email": "jose.andrades.linares@setenildelasbodegas.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956134004",
+  "email": "ayuntamiento@setenildelasbodegas.es",
+  "calle": "Villa, 5",
+  "ciudad": "Setenil de las Bodegas",
+  "cp": "11692"
+ },
+ {
+  "municipio": "Tarifa",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Tarifa-00007",
+  "personas": [
+   {
+    "nombre": "Irene Jiménez Perea",
+    "puesto": "Técnica",
+    "telefono": "956684689",
+    "email": "cultura@aytotarifa.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956684689",
+  "email": "cultura@aytotarifa.com",
+  "calle": "Plaza de Santa María, 3",
+  "ciudad": "Tarifa",
+  "cp": "11380"
+ },
+ {
+  "municipio": "Torre Alháquime",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Torre-Alhaquime-00008",
+  "personas": [
+   {
+    "nombre": "Mª Dolores Ruiz Carreño",
+    "puesto": "Concejala",
+    "telefono": "956125124",
+    "email": "concejaliatorrealhaquime@hotmail.com"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956125124",
+  "email": "concejaliatorrealhaquime@hotmail.com",
+  "calle": "Plaza de la Constitución, 1",
+  "ciudad": "Torre Alháquime",
+  "cp": "11691"
+ },
+ {
+  "municipio": "Trebujena",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Trebujena-00007",
+  "personas": [
+   {
+    "nombre": "José María Rodríguez Moreno",
+    "puesto": "Técnico",
+    "telefono": "956395362",
+    "email": "delcultura@trebujena.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956165006",
+  "email": "delcultura@trebujena.es",
+  "calle": "Plaza de España, 1",
+  "ciudad": "Trebujena",
+  "cp": "11560"
+ },
+ {
+  "municipio": "Ubrique",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Ubrique-00008",
+  "personas": [
+   {
+    "nombre": "Eva Mª Ríos Rojas",
+    "puesto": "Técnica",
+    "telefono": "670087201",
+    "email": "evarios@ayuntamientoubrique.es"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956461290",
+  "email": "evarios@ayuntamientoubrique.es",
+  "calle": "La Plaza, 1",
+  "ciudad": "Ubrique",
+  "cp": "11600"
+ },
+ {
+  "municipio": "Vejer de la Frontera",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Vejer-de-la-Frontera-00010",
+  "personas": [
+   {
+    "nombre": "Maribel Vallejo Melero",
+    "puesto": "Técnica",
+    "telefono": "683605282",
+    "email": "vejercultural@gmail.com"
+   }
+  ],
+  "organización": "Delegación Municipal de Cultura",
+  "teléfono": "956450800",
+  "email": "vejercultural@gmail.com",
+  "calle": "Marqués de Tamarón, 10",
+  "ciudad": "Vejer de la Frontera",
+  "cp": "11150"
+ },
+ {
+  "municipio": "Villaluenga del Rosario",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Villaluenga-del-Rosario-00007",
+  "personas": [
+   {
+    "nombre": "Mª del Rosario Pérez Gil",
+    "puesto": "Técnica",
+    "telefono": "956460001",
+    "email": "mariarosario.perez.gil@villaluengadelrosario.es"
+   }
+  ],
+  "organización": "Área de Cultura",
+  "teléfono": "956460001",
+  "email": "mariarosario.perez.gil@villaluengadelrosario.es",
+  "calle": "Real, 19",
+  "ciudad": "Villaluenga del Rosario",
+  "cp": "11611"
+ },
+ {
+  "municipio": "",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Villamartin-00010",
+  "personas": []
+ },
+ {
+  "municipio": "Zahara de los Atunes",
+  "url": "https://www.dipucadiz.es/cultura/directorios/provincia/Zahara-de-los-Atunes-00005",
+  "personas": [
+   {
+    "nombre": "Agustín Conejo Medina",
+    "puesto": "Concejal",
+    "telefono": "636395351",
+    "email": "aconejomedina@gmail.com"
+   },
+   {
+    "nombre": "Miguel Fillol Gutiérrez",
+    "puesto": "Técnico",
+    "telefono": "956439268",
+    "email": "administracion@elazaharadelosatunes.es"
+   }
+  ],
+  "organización": "Concejalía de Cultura",
+  "teléfono": "956439268",
+  "email": "aconejomedina@gmail.com",
+  "calle": "Paseo del Pradillo",
+  "ciudad": "Zahara de los Atunes",
+  "cp": "11393"
+ }
+]
