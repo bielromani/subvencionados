@@ -1,22 +1,22 @@
 # Informe del nicho: subvenciones públicas para música en España
 
-Generado el 2026-10-09 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
+Generado el 2026-10-10 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
 Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por reglas (ver
 `server/src/clasificacion/musica.ts`); la precisión medida está en `docs/evaluacion-clasificador.md`.
 
 ## Resumen
 
-- Periodo cubierto: 2014-01-15 a 2026-10-08.
-- Convocatorias de música: **16.385**; compatibles con jazz, clásica u ópera: **11.824**
-  (2.570 concursos y 9.254 concesiones directas o nominativas).
-- Importe concedido registrado en las compatibles: **859.158.974 €**
-  (527.608.733 € en concursos y 331.550.241 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
-- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.093 convocatorias y 648.642.034 € concedidos.
+- Periodo cubierto: 2014-01-15 a 2026-10-09.
+- Convocatorias de música: **16.391**; compatibles con jazz, clásica u ópera: **11.828**
+  (2.572 concursos y 9.256 concesiones directas o nominativas).
+- Importe concedido registrado en las compatibles: **859.172.974 €**
+  (527.608.733 € en concursos y 331.564.241 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
+- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 9.975 convocatorias y 645.806.389 € concedidos.
 - Mencionan expresamente el estilo: jazz 426, clásica 3.251, ópera y lírica 427. El resto son ayudas de música en general.
 - Concursos con el plazo abierto hoy: **11**; por abrir: **10**.
 - Convocatorias que se repiten año tras año (series): 1.900; previstas en los próximos 3 meses según su
-  historial (estimación): 68.
-- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.314.
+  historial (estimación): 66.
+- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.315.
 
 ## Por año (compatibles con jazz, clásica u ópera)
 
@@ -34,7 +34,7 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
 | 2023 | 1.337 | 308 | 1.029 | 194.535.516 € | 164.137.166 € |
 | 2024 | 1.406 | 330 | 1.076 | 220.192.455 € | 191.709.550 € |
 | 2025 | 1.470 | 317 | 1.153 | 259.494.941 € | 217.312.510 € |
-| 2026 (en curso) | 1.073 | 269 | 804 | 174.071.250 € | 75.884.403 € |
+| 2026 (en curso) | 1.077 | 271 | 806 | 175.013.481 € | 75.898.403 € |
 
 El concedido de los años recientes crece con el tiempo: las concesiones se registran meses después de la convocatoria.
 
@@ -42,9 +42,9 @@ El concedido de los años recientes crece con el tiempo: las concesiones se regi
 
 | Actividad | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| Sin especificar | 7.695 | 758 | 363.555.613 € |
-| Festivales, ciclos y programación | 1.747 | 584 | 198.574.134 € |
-| Formación (escuelas, conservatorios, becas) | 1.731 | 935 | 210.516.940 € |
+| Sin especificar | 7.608 | 706 | 363.097.587 € |
+| Formación (escuelas, conservatorios, becas) | 1.853 | 1.016 | 213.366.585 € |
+| Festivales, ciclos y programación | 1.748 | 585 | 198.574.134 € |
 | Producción y creación | 603 | 516 | 143.432.190 € |
 | Internacionalización | 485 | 216 | 63.238.039 € |
 | Equipamiento e inversiones | 403 | 195 | 65.953.115 € |
@@ -59,9 +59,9 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Ámbito | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| Cataluña | 2.593 | 515 | 287.810.112 € |
-| Comunitat Valenciana | 2.291 | 483 | 144.717.610 € |
-| Canarias | 912 | 84 | 78.415.897 € |
+| Cataluña | 2.594 | 515 | 287.824.112 € |
+| Comunitat Valenciana | 2.292 | 484 | 144.717.610 € |
+| Canarias | 913 | 84 | 78.415.897 € |
 | Andalucía | 815 | 123 | 31.814.585 € |
 | Galicia | 763 | 206 | 32.626.206 € |
 | Castilla y León | 557 | 109 | 9.385.900 € |
@@ -76,7 +76,7 @@ importes altos pero no es una oportunidad para el promotor.
 | Comunidad de Madrid | 257 | 109 | 20.771.822 € |
 | Comunidad Foral de Navarra | 239 | 117 | 26.613.853 € |
 | La Rioja | 129 | 23 | 1.355.604 € |
-| Cantabria | 118 | 57 | 1.782.678 € |
+| Cantabria | 119 | 58 | 1.782.678 € |
 | Ceuta | 44 | 12 | 354.792 € |
 | Melilla | 13 | 4 | 768.400 € |
 
@@ -84,7 +84,7 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Administración | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| local | 9.893 | 1.733 | 289.048.794 € |
+| local | 9.897 | 1.735 | 289.062.794 € |
 | autonomica | 1.659 | 748 | 480.833.043 € |
 | estatal | 190 | 36 | 88.958.440 € |
 | otra | 82 | 53 | 318.697 € |
@@ -94,8 +94,8 @@ importes altos pero no es una oportunidad para el promotor.
 | Beneficiarios admitidos | Concursos |
 |---|---:|
 | Autónomos y empresas | 667 |
-| Asociaciones y fundaciones | 1.143 |
-| Personas físicas (músicos: premios, concursos, becas) | 975 |
+| Asociaciones y fundaciones | 1.145 |
+| Personas físicas (músicos: premios, concursos, becas) | 976 |
 | Ayuntamientos y entidades locales | 243 |
 
 Un concurso puede admitir varios tipos de beneficiario.
@@ -141,7 +141,7 @@ Un concurso puede admitir varios tipos de beneficiario.
 | CONSEJERÍA DE CULTURA Y DEPORTE | ANDALUCÍA | 18 | 2021-2026 | 14.799.875 € |
 | DIPUTACIÓN PROVINCIAL DE TARRAGONA | DIPUTACIÓN PROV. DE TARRAGONA | 93 | 2016-2026 | 14.595.216 € |
 | DIPUTACIÓN PROVINCIAL DE ALACANT/ALICANTE | DIPUTACIÓN PROV. DE ALICANTE | 98 | 2016-2026 | 12.785.901 € |
-| CABILDO INSULAR DE TENERIFE | CABILDO INSULAR DE TENERIFE | 67 | 2016-2026 | 12.658.970 € |
+| CABILDO INSULAR DE TENERIFE | CABILDO INSULAR DE TENERIFE | 68 | 2016-2026 | 12.658.970 € |
 | SECRETARÍA GENERAL DE CULTURA | EXTREMADURA | 69 | 2020-2026 | 11.518.296 € |
 | ÁREA DE GOBIERNO DE CULTURA, TURISMO Y DEPORTE | MADRID | 4 | 2021-2025 | 9.507.976 € |
 | CONSEJERÍA DE CULTURA, TURISMO Y DEPORTE | COMUNIDAD DE MADRID | 34 | 2016-2026 | 9.266.967 € |
