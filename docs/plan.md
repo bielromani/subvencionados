@@ -92,11 +92,23 @@ tienen territorio, y las series muestran el historial de las convocatorias recur
 
 ---
 
-## Fase 2 · Ficha completa con IA (en curso)
+## Fase 2 · Ficha de cada convocatoria (en curso)
 
-**Objetivo:** extraer de las bases todo lo que el promotor necesita (bloques 2 a 8 de la ficha) sin leerse el PDF.
+**Objetivo:** que el promotor vea lo esencial de cada convocatoria sin leerse el PDF, gastando el mínimo de IA.
+
+**Decisión (octubre de 2026): ahorrar créditos.** Leer bases enteras con IA cuesta mucho (unos 64.000 caracteres de
+media por convocatoria). Por eso:
+- Todas las convocatorias tienen la **ficha básica automática, sin IA y sin coste**: el extracto oficial del boletín
+  partido en apartados (quién puede pedirla, qué financia, cuantía, plazo…), frases literales de las bases con su
+  página (importe máximo por beneficiario, porcentaje, plazo, minimis, compatibilidad, cachés) y los enlaces a los
+  documentos oficiales. Se calcula al abrir la ficha (`server/src/ficha/basica.ts`).
+- La lectura completa con IA ya no se hace por lotes: solo cuando el promotor pide en la sesión de trabajo que se lea
+  una convocatoria concreta. Las 105 fichas ya hechas se mantienen.
+- En los concursos de música: 2.099 de 3.283 tienen extracto (1.586 partido en apartados) y 1.076 tienen el texto de
+  las bases.
 
 Estado:
+- [x] Ficha básica automática para todas, en la API (`basica` en `GET /api/convocatorias/:id`) y en la web.
 - [x] Sin API de pago: las fichas las extrae Claude leyendo las bases en la sesión de trabajo. `npm run fichas --
       --preparar=DIR` deja los textos (marcados por documento y página), las instrucciones y el esquema; `--importar=DIR`
       valida cada ficha contra el esquema y comprueba sus citas antes de guardarla en `datos/fichas/`.
@@ -106,7 +118,7 @@ Estado:
 - [x] Selección por prioridad: 171 convocatorias (23 abiertas, 11 por abrir, 137 recurrentes recientes), sin las de
       formación. `npm run fichas -- --simular` lo lista.
 - [x] Ficha en la API (`GET /api/convocatorias/:id`) y en la web (desplegable «Ficha completa de las bases»).
-- [ ] Extraer las 171 fichas por lotes.
+- [x] 105 fichas completas leídas por IA (de 171 seleccionadas); las demás, solo si se piden.
 - [ ] Validación con fichas revisadas contra las bases y aciertos por campo.
 - [ ] Encaje explicado con cada grupo del promotor.
 
@@ -255,7 +267,7 @@ justificar) sin salir de la herramienta, salvo para el registro oficial.
 | Decisión | Cuándo hace falta |
 |---|---|
 | Repositorio público o privado | Ya (los datos y el código son visibles mientras sea público) |
-| Presupuesto mensual para IA (Fase 2) | Antes de la Fase 2 |
+| Presupuesto mensual para IA (Fase 2) | Decidido: sin API de pago y el mínimo de lectura con IA |
 | Nombre, dominio y marca | Antes de la Fase 6 |
 | Dónde alojarlo (p. ej. Supabase + Vercel) y presupuesto de hosting | Antes de la Fase 6 |
 | Proveedor de email y alta en WhatsApp Business | Antes de la Fase 7 |

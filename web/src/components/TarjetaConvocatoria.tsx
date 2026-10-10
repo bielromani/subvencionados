@@ -120,7 +120,7 @@ export function TarjetaConvocatoria({ c, children }: { c: Convocatoria; children
         </details>
       )}
 
-      {c.tieneFicha && <FichaPlegable id={c.id} />}
+      <FichaPlegable id={c.id} leida={c.tieneFicha ?? false} />
 
       {children}
 

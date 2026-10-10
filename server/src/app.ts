@@ -5,7 +5,9 @@ import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
 import { agruparOrganismos, idOrganismo, type Organismo } from './organismos.js';
 import { LINEAS, PERFIL_POR_DEFECTO, validarPerfil } from './perfil.js';
 import { CCAA } from './regiones.js';
+import { fichaBasica } from './ficha/basica.js';
 import type { Ficha } from './ficha/esquema.js';
+import { documentosConTexto } from './ficha/fichas.js';
 import { ESTILOS, type Convocatoria } from './tipos.js';
 
 const lista = (valor: unknown): string[] =>
@@ -117,7 +119,10 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       res.status(404).json({ error: 'Convocatoria no encontrada' });
       return;
     }
-    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha: opciones.fichas?.leer(c.codigoBdns) ?? null });
+    const ficha = opciones.fichas?.leer(c.codigoBdns) ?? null;
+    // Sin ficha leída por IA, la básica automática: extracto por apartados y frases literales de las bases.
+    const basica = ficha ? null : fichaBasica(c.anuncios, documentosConTexto(c, (a) => opciones.leerTexto?.(a) ?? null));
+    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha, basica });
   });
 
   app.get('/api/convocatorias/:id/documentos/:idDocumento', (req, res) => {

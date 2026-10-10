@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { api } from '../api';
-import type { Cita, Dato, ElementoFicha, Ficha } from '../tipos';
+import type { Cita, Convocatoria, Dato, ElementoFicha, Ficha } from '../tipos';
+import { VistaBasica } from './FichaBasica';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 });
 
@@ -200,9 +201,9 @@ export function VistaFicha({ ficha }: { ficha: Ficha }) {
   );
 }
 
-/** Ficha plegada: se pide al abrirla. */
-export function FichaPlegable({ id }: { id: string }) {
-  const [estado, setEstado] = useState<'cerrada' | 'cargando' | 'error' | Ficha>('cerrada');
+/** Ficha plegada: se pide al abrirla. La leída por IA si la hay; si no, la básica automática. */
+export function FichaPlegable({ id, leida }: { id: string; leida: boolean }) {
+  const [estado, setEstado] = useState<'cerrada' | 'cargando' | 'error' | Convocatoria>('cerrada');
   return (
     <details
       className="concesiones"
@@ -211,14 +212,15 @@ export function FichaPlegable({ id }: { id: string }) {
         setEstado('cargando');
         api
           .convocatoria(id)
-          .then((c) => setEstado(c.ficha ?? 'error'))
+          .then((c) => setEstado(c.ficha || c.basica ? c : 'error'))
           .catch(() => setEstado('error'));
       }}
     >
-      <summary>Ficha completa de las bases</summary>
+      <summary>{leida ? 'Ficha completa de las bases' : 'Ficha básica: extracto, datos de las bases y documentos'}</summary>
       {estado === 'cargando' && <p className="ayuda">Cargando…</p>}
       {estado === 'error' && <p className="error">No se ha podido cargar la ficha.</p>}
-      {typeof estado === 'object' && <VistaFicha ficha={estado} />}
+      {typeof estado === 'object' && estado.ficha && <VistaFicha ficha={estado.ficha} />}
+      {typeof estado === 'object' && !estado.ficha && estado.basica && <VistaBasica basica={estado.basica} convocatoria={estado} />}
     </details>
   );
 }

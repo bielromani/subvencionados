@@ -28,10 +28,11 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
 - **Fase 1 terminada**: textos de las bases, series año a año, ubicación por municipio, directorio de
   organismos (`GET /api/organismos`), concursos generales de cultura y vigilancia del formato. Cifras del nicho en
   [docs/informe-nicho.md](docs/informe-nicho.md).
-- **Fase 2 en curso: ficha con IA.** Claude lee las bases y rellena plazos, dinero, requisitos, gastos,
-  criterios, documentación y cómo presentarla. Cada dato lleva la cita literal y la página, comprobadas contra el
-  documento; lo que no se encuentra no se enseña. Sin API de pago: la lectura se hace en la sesión de trabajo y
-  `npm run fichas` prepara los textos e importa y comprueba las fichas.
+- **Fase 2 en curso: ficha de cada convocatoria.** Todas tienen una **ficha básica automática, sin IA**: el
+  extracto oficial partido en apartados, frases literales de las bases con su página (importe máximo, porcentaje,
+  plazo, minimis, compatibilidad, cachés) y enlaces a los documentos. Además hay 105 **fichas completas** que Claude
+  leyó en la sesión de trabajo (plazos, dinero, requisitos, gastos, criterios, documentación), cada dato con su cita
+  comprobada; otras se leen solo si se piden. `npm run fichas` prepara los textos e importa y comprueba las fichas.
 - **Web** (React) con tres pestañas:
   - *Para ti*: las recomendaciones;
   - *Explorar*: filtros por plazo, tipo, estilo, comunidad, administración y actividad, con paginación;
@@ -84,7 +85,7 @@ server/
   src/organismos.ts    directorio de organismos que financian música
   src/referencias.ts   ubicación de cada organismo (catálogo BDNS + nomenclátor INE)
   src/informe.ts       informe del nicho
-  src/ficha/           ficha con IA: esquema, preparación, comprobación de citas y selección
+  src/ficha/           ficha básica automática y ficha con IA: esquema, comprobación de citas y selección
   src/scripts/         recolectar, importar, informe, referencias y muestra de evaluación
 datos/bdns/            lo descargado de la BDNS (lo actualiza el workflow diario)
 datos/referencia/      entidades locales y municipios (workflow mensual)

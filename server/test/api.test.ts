@@ -93,8 +93,13 @@ describe('GET /api/convocatorias', () => {
   });
 
   it('detalle con la ficha de las bases cuando la hay, y 404', async () => {
-    expect((await request(app).get('/api/convocatorias/bdns-100').expect(200)).body.ficha).toBeNull();
-    expect((await request(app).get('/api/convocatorias/bdns-300').expect(200)).body.ficha.citas.verificadas).toBe(1);
+    const sinFicha = (await request(app).get('/api/convocatorias/bdns-100').expect(200)).body;
+    expect(sinFicha.ficha).toBeNull();
+    // Sin ficha leída, la básica automática.
+    expect(sinFicha.basica).toMatchObject({ datos: [] });
+    const conFicha = (await request(app).get('/api/convocatorias/bdns-300').expect(200)).body;
+    expect(conFicha.ficha.citas.verificadas).toBe(1);
+    expect(conFicha.basica).toBeNull();
     const lista = await request(app).get('/api/convocatorias').expect(200);
     expect(lista.body.items.filter((c: { tieneFicha: boolean }) => c.tieneFicha).map((c: { id: string }) => c.id)).toEqual(['bdns-300']);
     await request(app).get('/api/convocatorias/no-existe').expect(404);

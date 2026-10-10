@@ -421,6 +421,10 @@ select {
   margin-bottom: 4px;
 }
 
+.texto-oficial {
+  white-space: pre-line;
+}
+
 .ficha-resumen {
   background: var(--apagado-fondo);
   border-radius: var(--radio);

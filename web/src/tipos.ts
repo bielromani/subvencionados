@@ -58,10 +58,28 @@ export interface Convocatoria {
   concesiones: ResumenConcesiones | null;
   clasificacion: Clasificacion;
   plazo: Plazo;
+  /** Documentos registrados en la BDNS, con su descarga oficial. */
+  documentos: { id: number; nombre: string; descripcion: string | null; url: string }[];
   /** Hay ficha extraída de las bases (solo en los listados). */
   tieneFicha?: boolean;
   /** Solo en el detalle (GET /api/convocatorias/:id). */
   ficha?: Ficha | null;
+  /** Solo en el detalle y si no hay ficha leída: extracto por apartados y frases de las bases, sin IA. */
+  basica?: FichaBasica | null;
+}
+
+export type ApartadoExtracto = 'beneficiarios' | 'objeto' | 'bases' | 'cuantia' | 'plazo' | 'presentacion' | 'otros';
+export type CampoBasico = 'importeMaximo' | 'porcentajeMaximo' | 'plazo' | 'minimis' | 'compatibilidad' | 'caches';
+
+export interface FichaBasica {
+  extracto: {
+    titulo: string;
+    diario: string | null;
+    fecha: string | null;
+    url: string | null;
+    apartados: { tipo: ApartadoExtracto; texto: string }[];
+  } | null;
+  datos: { campo: CampoBasico; valor: number | null; documento: number; pagina: number; texto: string }[];
 }
 
 /** Cita literal de las bases, comprobada contra el texto del documento. */
