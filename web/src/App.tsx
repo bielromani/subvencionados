@@ -3,6 +3,8 @@ import { api } from './api';
 import { Calendario } from './pages/Calendario';
 import { PaginaConvocatoria } from './pages/Convocatoria';
 import { Explorar } from './pages/Explorar';
+import { Grupos } from './pages/Grupos';
+import { Inicio } from './pages/Inicio';
 import { Mercado } from './pages/Mercado';
 import { PaginaOrganismo } from './pages/Organismo';
 import { Organismos } from './pages/Organismos';
@@ -13,14 +15,15 @@ import type { Meta } from './tipos';
 
 /** Secciones del menú; la página de una convocatoria u organismo marca la sección de la que cuelga. */
 const SECCIONES: [string, string][] = [
-  ['', 'Para ti'],
+  ['', 'Inicio'],
+  ['grupos', 'Mis grupos'],
   ['explorar', 'Convocatorias'],
   ['calendario', 'Calendario'],
   ['organismos', 'Organismos'],
   ['mercado', 'Mercado'],
   ['perfil', 'Mi perfil'],
 ];
-const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos' };
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos', 'para-ti': '' };
 
 export function App() {
   const ruta = useRuta();
@@ -60,7 +63,9 @@ export function App() {
 
       <main>
         {error && <p className="error">{error}</p>}
-        {meta && pagina === '' && <ParaTi irAPerfil={() => (window.location.hash = '#/perfil')} />}
+        {meta && pagina === '' && <Inicio />}
+        {meta && pagina === 'para-ti' && <ParaTi irAPerfil={() => (window.location.hash = '#/perfil')} />}
+        {meta && pagina === 'grupos' && <Grupos ruta={ruta} />}
         {meta && pagina === 'explorar' && <Explorar meta={meta} ruta={ruta} />}
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
         {meta && pagina === 'calendario' && <Calendario meta={meta} ruta={ruta} />}

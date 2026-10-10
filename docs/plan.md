@@ -120,7 +120,7 @@ Estado:
 - [x] Ficha en la API (`GET /api/convocatorias/:id`) y en la web (desplegable «Ficha completa de las bases»).
 - [x] 105 fichas completas leídas por IA (de 171 seleccionadas); las demás, solo si se piden.
 - [ ] Validación con fichas revisadas contra las bases y aciertos por campo.
-- [ ] Encaje explicado con cada grupo del promotor.
+- [x] Encaje explicado con cada grupo del promotor (en «Mis grupos», con los motivos y avisos de cada convocatoria).
 
 1. Extracción estructurada con un modelo de lenguaje (Claude) a partir del texto de las bases y el extracto:
    importes, plazos, requisitos, gastos subvencionables, criterios con puntos, documentación, forma de pago y
@@ -147,7 +147,10 @@ Estado:
 - [x] Calendario (abren, cierran, previstas) con exportación iCal.
 - [x] Mercado: cifras, concedido y convocatorias por año, por comunidad, mapa por provincias y qué financian.
 - [x] Sin desbordamientos a anchura de móvil.
-- [ ] Inicio con lo urgente y «Mis grupos» con recomendaciones por grupo.
+- [x] Inicio con lo urgente: cierran en 30 días, abren pronto, previstas en 6 meses, nuevas y resumen por grupo
+      (sin perfil, con uno genérico de jazz, clásica y ópera para autónomos, empresas o asociaciones).
+- [x] «Mis grupos»: por cada grupo, lo que menciona su estilo (abierto y previsto) aparte de lo general, con el
+      porqué de cada encaje.
 - [ ] Pruebas con 3-5 promotores reales.
 
 1. Navegación con rutas y URL propias (cada convocatoria, organismo y grupo tiene su página, que se puede compartir).

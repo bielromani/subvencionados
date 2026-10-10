@@ -2,6 +2,7 @@ import express, { type Request } from 'express';
 import { aICal, calendario } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
+import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
 import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
 import { agruparOrganismos, idOrganismo, type Organismo } from './organismos.js';
@@ -214,6 +215,62 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
     repo.guardarPerfil(resultado.perfil);
     res.json(resultado.perfil);
+  });
+
+  const salidaCoincidencia = (m: Coincidencia) => ({ ...m, convocatoria: resumida(m.convocatoria) });
+  const primeras = (ms: Coincidencia[], n: number) => ({ total: ms.length, items: ms.slice(0, n).map(salidaCoincidencia) });
+
+  // Portada: lo urgente. Sin perfil, con uno genérico de jazz, clásica y ópera en toda España.
+  app.get('/api/inicio', (_req, res) => {
+    const perfil = repo.obtenerPerfil();
+    const conGrupos = perfil && perfil.grupos.length > 0 ? perfil : null;
+    const hoy = new Date();
+    const todas = conGrupos ? emparejar(repo.listarConvocatorias(), conGrupos, hoy) : coincidenciasGenericas(repo.listarConvocatorias(), hoy);
+    const s = seleccionar(todas, hoy);
+    res.json({
+      perfilCompleto: conGrupos !== null,
+      abiertas: s.abiertas.length,
+      cierranPronto: primeras(s.cierranPronto, 8),
+      abrenPronto: primeras(s.abrenPronto, 8),
+      previstas: {
+        total: s.previstas.length,
+        items: s.previstas.slice(0, 8).map((p) => ({ prevista: p.prevista, ...salidaCoincidencia(p.coincidencia) })),
+      },
+      artistas: primeras(s.artistas, 5),
+      nuevas: primeras(nuevas(todas, hoy), 8),
+      grupos: conGrupos
+        ? porGrupo(repo.listarConvocatorias(), conGrupos, hoy).map((g) => {
+            // Solo las que mencionan su estilo: las generales valen para todos los grupos.
+            const propia = (m: Coincidencia) => m.convocatoria.clasificacion.estilosExplicitos.includes(g.grupo.estilo);
+            return {
+              grupo: g.grupo,
+              abiertas: g.abiertas.filter(propia).length,
+              previstas: g.previstas.filter((p) => propia(p.coincidencia)).length,
+            };
+          })
+        : [],
+    });
+  });
+
+  // Mis grupos: las recomendaciones de cada grupo por separado, con el porqué.
+  app.get('/api/grupos', (_req, res) => {
+    const perfil = repo.obtenerPerfil();
+    if (!perfil || perfil.grupos.length === 0) {
+      res.json({ perfilCompleto: false, grupos: [] });
+      return;
+    }
+    res.json({
+      perfilCompleto: true,
+      grupos: porGrupo(repo.listarConvocatorias(), perfil).map((g) => ({
+        grupo: g.grupo,
+        abiertas: primeras(g.abiertas, 100),
+        previstas: {
+          total: g.previstas.length,
+          items: g.previstas.slice(0, 100).map((p) => ({ prevista: p.prevista, ...salidaCoincidencia(p.coincidencia) })),
+        },
+        artistas: primeras(g.artistas, 15),
+      })),
+    });
   });
 
   app.get('/api/para-ti', (_req, res) => {

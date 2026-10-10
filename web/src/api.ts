@@ -1,4 +1,13 @@
-import type { Coincidencia, Convocatoria, EventoCalendario, Mercado, Meta, Organismo, Perfil } from './tipos';
+import type { Coincidencia, Convocatoria, EventoCalendario, Grupo, Mercado, Meta, Organismo, Perfil } from './tipos';
+
+export interface Lista {
+  total: number;
+  items: Coincidencia[];
+}
+export interface ListaPrevistas {
+  total: number;
+  items: (Coincidencia & { prevista: string })[];
+}
 
 async function pedir<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
@@ -50,6 +59,22 @@ export const api = {
     pedir<Organismo & { convocatorias: Convocatoria[] }>(`/api/organismos/${encodeURIComponent(id)}`),
   calendario: (consulta: string) => pedir<{ eventos: EventoCalendario[] }>(`/api/calendario?${consulta}`),
   mercado: (consulta: string) => pedir<Mercado>(`/api/mercado?${consulta}`),
+  inicio: () =>
+    pedir<{
+      perfilCompleto: boolean;
+      abiertas: number;
+      cierranPronto: Lista;
+      abrenPronto: Lista;
+      previstas: ListaPrevistas;
+      artistas: Lista;
+      nuevas: Lista;
+      grupos: { grupo: Grupo; abiertas: number; previstas: number }[];
+    }>('/api/inicio'),
+  grupos: () =>
+    pedir<{
+      perfilCompleto: boolean;
+      grupos: { grupo: Grupo; abiertas: Lista; previstas: ListaPrevistas; artistas: Lista }[];
+    }>('/api/grupos'),
   perfil: () => pedir<Perfil>('/api/perfil'),
   guardarPerfil: (p: Perfil) => pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) }),
   paraTi: () =>

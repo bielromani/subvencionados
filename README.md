@@ -34,7 +34,9 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
   leyó en la sesión de trabajo (plazos, dinero, requisitos, gastos, criterios, documentación), cada dato con su cita
   comprobada; otras se leen solo si se piden. `npm run fichas` prepara los textos e importa y comprueba las fichas.
 - **Web** (React), cada página con su dirección para guardarla o compartirla:
-  - *Para ti*: las recomendaciones;
+  - *Inicio*: lo urgente (cierra pronto, abre pronto, previstas, nuevas) y el resumen de cada grupo;
+  - *Mis grupos*: las ayudas de cada grupo, las de su estilo aparte de las generales, con el porqué;
+  - *Recomendaciones* (`#/para-ti`): todas, por tipo de encaje;
   - *Convocatorias*: filtros por plazo, tipo, estilo, comunidad, administración y actividad; cada convocatoria
     tiene su página con la ficha y sus ediciones de otros años;
   - *Calendario*: plazos que abren y cierran y ediciones previstas, exportable a cualquier calendario (.ics);
