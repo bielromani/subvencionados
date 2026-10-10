@@ -365,6 +365,8 @@ def main() -> None:
     # --- Personal de cultura de los ayuntamientos de la provincia de Cádiz (directorio de la Diputación) ---
     if existe("cadiz-cultura.json"):
         for r in json.loads((fuentes / "cadiz-cultura.json").read_text(encoding="utf-8")):
+            if not r.get("municipio") or not (r.get("organización") or r.get("personas")):
+                continue  # ficha vacía en la web
             cod = municipios.buscar(r.get("municipio", ""), "11") or municipios.buscar(r.get("ciudad", ""), "11")
             if not cod:
                 sin_ubicar["cadiz-cultura.json"] += 1  # entidades locales autónomas: van con su nombre
