@@ -1,6 +1,7 @@
 import express, { type Request } from 'express';
 import { aICal, calendario } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
+import { mercado } from './mercado.js';
 import type { Repositorio } from './db.js';
 import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
 import { agruparOrganismos, idOrganismo, type Organismo } from './organismos.js';
@@ -150,6 +151,15 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const base = `${req.protocol}://${req.get('host')}`;
     res.type('text/calendar; charset=utf-8').set('Content-Disposition', 'attachment; filename="subvenciones-musica.ics"');
     res.send(aICal(eventos(req.query), base));
+  });
+
+  // Música compatible con jazz, clásica u ópera (o el estilo pedido), sin formación salvo que se pida.
+  app.get('/api/mercado', (req, res) => {
+    const conFormacion = req.query.formacion === 'true';
+    const base = filtrar(repo.listarConvocatorias(), { ...req.query, todas: undefined, cultura: undefined, plazo: undefined }).filter(
+      (c) => c.clasificacion.estilosCompatibles.length > 0 && (conFormacion || !c.clasificacion.lineas.includes('formacion')),
+    );
+    res.json(mercado(base));
   });
 
   app.get('/api/organismos', (req, res) => {

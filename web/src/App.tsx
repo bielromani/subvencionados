@@ -3,6 +3,7 @@ import { api } from './api';
 import { Calendario } from './pages/Calendario';
 import { PaginaConvocatoria } from './pages/Convocatoria';
 import { Explorar } from './pages/Explorar';
+import { Mercado } from './pages/Mercado';
 import { PaginaOrganismo } from './pages/Organismo';
 import { Organismos } from './pages/Organismos';
 import { ParaTi } from './pages/ParaTi';
@@ -16,6 +17,7 @@ const SECCIONES: [string, string][] = [
   ['explorar', 'Convocatorias'],
   ['calendario', 'Calendario'],
   ['organismos', 'Organismos'],
+  ['mercado', 'Mercado'],
   ['perfil', 'Mi perfil'],
 ];
 const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos' };
@@ -63,6 +65,7 @@ export function App() {
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
         {meta && pagina === 'calendario' && <Calendario meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismos' && <Organismos meta={meta} ruta={ruta} />}
+        {meta && pagina === 'mercado' && <Mercado meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismo' && id && <PaginaOrganismo id={id} />}
         {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}
         {meta && !SECCIONES.some(([d]) => d === seccion) && <p className="error">Esta página no existe.</p>}

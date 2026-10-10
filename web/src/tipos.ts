@@ -268,3 +268,11 @@ export interface EventoCalendario {
     anio: number | null;
   };
 }
+
+export interface Mercado {
+  totales: { convocatorias: number; concursos: number; directas: number; presupuesto: number; concedido: number; organismos: number };
+  primerAnioConcesiones: number | null;
+  porAnio: { anio: number; convocatorias: number; concursos: number; presupuesto: number; concedido: number }[];
+  porComunidad: { nombre: string; convocatorias: number; concedido: number }[];
+  porLinea: { linea: Linea | 'sin'; convocatorias: number; concedido: number }[];
+}
