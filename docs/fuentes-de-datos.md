@@ -97,10 +97,12 @@ de 2026):
 | Andalucía | Registro Andaluz de Entidades Locales (RAEL, API) | Teléfono, email, web, alcalde |
 | Aragón | Información general de los municipios | Teléfono, email, alcalde |
 | Salamanca | Diputación: alcaldes de la provincia | Alcalde |
+| Provincia de Cádiz | Diputación: personal de cultura de los ayuntamientos (web, se recorre ficha a ficha) | **Departamento de cultura** (teléfono, email, dirección) y su técnico |
 | Resto | Wikidata (P856 y P1082 por código INE) | Web y población |
 
 Sin directorio abierto encontrado: Madrid, Murcia, Canarias, Baleares, Asturias, Cantabria, La Rioja, Extremadura,
-Castilla y León (salvo Salamanca), Ceuta y Melilla. Para ellas queda la web del ayuntamiento.
+Castilla y León (salvo Salamanca), Ceuta y Melilla. Para ellas queda la web del ayuntamiento. El directorio de la
+Red de Teatros de la Comunidad de Madrid (madrid.org) responde 403 a las descargas automáticas.
 
 Los teléfonos y emails son los institucionales del ayuntamiento. Para enviar comunicaciones comerciales por email
 hay que cumplir la LSSI y el RGPD.

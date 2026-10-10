@@ -5,7 +5,9 @@ Uso: python3 directorio_descargar.py datos/directorio/fuentes
 Guarda cada fichero tal como lo sirve la fuente y un estado.json con la fecha y el resultado.
 Lo ejecuta el workflow directorio-cultura.yml (la red del entorno de desarrollo no llega a estas webs).
 """
+import html
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -60,6 +62,54 @@ SELECT ?ine (SAMPLE(?w) AS ?web) (MAX(?p) AS ?poblacion) WHERE {
 """
 
 
+DIPUCADIZ = "https://www.dipucadiz.es"
+# Listado paginado (10 municipios por página) que la web de la Diputación de Cádiz carga por AJAX.
+DIPUCADIZ_LISTA = (DIPUCADIZ + "/system/modules/es.dipucadiz.listas/elements/list-inner.jsp"
+                   "?tipo_=Organigrama_F:cc13c603-d83e-11e8-a419-286ed488c708"
+                   "&ruta_=/sites/default/cultura/directorios/provincia/.elements/&incluirFiltros_=false"
+                   "&categoria_=/system/categories/servicios/cultura/&num_elements_=55&num_columns_=3"
+                   "&listConfig=/cultura/.content/Lista_L/Lista_L_00140.html&usepagination=true"
+                   "&ratio=r-box-21_9&mostrarFecha=false&buscarTitulo=false&hideOptions=true&page={}")
+
+
+def texto_html(fragmento: str) -> str:
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", fragmento)).replace("\xa0", " ").split())
+
+
+def ficha_cadiz(pagina: str, url: str) -> dict:
+    """Ficha de un municipio del directorio de cultura de la Diputación de Cádiz."""
+    titulo = re.search(r'class="Titulo">\s*<h2[^>]*>(.*?)</h2>', pagina, re.S)
+    ficha = {"municipio": texto_html(titulo[1]) if titulo else "", "url": url, "personas": []}
+    bloque = re.search(r'class="Texto"\s*>\s*<ul>(.*?)</ul>', pagina, re.S)
+    for clave, valor in re.findall(r"<li>\s*([^:<]+):(.*?)</li>", bloque[1] if bloque else "", re.S):
+        ficha[texto_html(clave).lower()] = texto_html(valor)
+    for persona in re.split(r'<div class="diputado', pagina)[1:]:
+        nombre = re.search(r'class="nombre">(.*?)</div>', persona, re.S)
+        puesto = re.search(r'class="lugar">(.*?)</div>', persona, re.S)
+        cargo = re.search(r'class="cargo">(.*?)</div>', persona, re.S)
+        datos = dict((texto_html(k).lower(), texto_html(v)) for k, v in re.findall(r"<p>\s*([^:<]+):(.*?)</p>", cargo[1] if cargo else "", re.S))
+        ficha["personas"].append({"nombre": texto_html(nombre[1]) if nombre else "", "puesto": texto_html(puesto[1]) if puesto else "",
+                                  "telefono": datos.get("teléfono", ""), "email": datos.get("email", "")})
+    return ficha
+
+
+def directorio_cadiz() -> bytes:
+    """Recorre el directorio de personal de cultura de los ayuntamientos de la provincia de Cádiz."""
+    enlaces: list[str] = []
+    for pagina in range(1, 31):
+        listado = descargar(DIPUCADIZ_LISTA.format(pagina)).decode("utf-8", "replace")
+        nuevos = [e for e in dict.fromkeys(re.findall(r"/cultura/directorios/provincia/[A-Za-z0-9-]+-\d{5}", listado)) if e not in enlaces]
+        if not nuevos:
+            break
+        enlaces += nuevos
+    fichas = []
+    for enlace in enlaces:
+        fichas.append(ficha_cadiz(descargar(DIPUCADIZ + enlace).decode("utf-8", "replace"), DIPUCADIZ + enlace))
+        time.sleep(0.3)
+    print(f"  Diputación de Cádiz: {len(fichas)} fichas")
+    return json.dumps(fichas, ensure_ascii=False, indent=1).encode("utf-8")
+
+
 def descargar(url: str, datos: bytes | None = None, cabeceras: dict | None = None) -> bytes:
     req = urllib.request.Request(url, data=datos, headers={
         "User-Agent": "subvencionados/1.0 (https://github.com/bielromani/subvencionados)", **(cabeceras or {})})
@@ -79,13 +129,19 @@ def main() -> None:
     destino.mkdir(parents=True, exist_ok=True)
     estado = {"fecha": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "fuentes": []}
     fallos = 0
-    todas = FUENTES + [("wikidata-webs.csv", "https://query.wikidata.org/sparql",
-                        "Wikidata · web oficial y población de cada municipio (P856 y P1082 por código INE P772)", "CC0")]
+    todas = FUENTES + [
+        ("wikidata-webs.csv", "https://query.wikidata.org/sparql",
+         "Wikidata · web oficial y población de cada municipio (P856 y P1082 por código INE P772)", "CC0"),
+        ("cadiz-cultura.json", f"{DIPUCADIZ}/cultura/directorios/provincia/",
+         "Diputación de Cádiz · Personal de cultura de los ayuntamientos de la provincia", "Información pública (citar la fuente)"),
+    ]
     for fichero, url, descripcion, licencia in todas:
         try:
             if fichero == "wikidata-webs.csv":
                 cuerpo = urllib.parse.urlencode({"query": WIKIDATA_CONSULTA}).encode()
                 datos = descargar(url, cuerpo, {"Accept": "text/csv"})
+            elif fichero == "cadiz-cultura.json":
+                datos = directorio_cadiz()
             else:
                 # Varias URL: la primera que responda (p. ej. el padrón del último año publicado).
                 candidatas = [url] if isinstance(url, str) else url

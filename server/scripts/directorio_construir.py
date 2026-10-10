@@ -362,6 +362,26 @@ def main() -> None:
                             "cargo": r.get("carrec_persona", ""), "area": r.get("ambit_treball", ""),
                             "partido": r.get("sigles_partit_politic", ""), "desde": "", "fuente": "diba-electes.json"})
 
+    # --- Personal de cultura de los ayuntamientos de la provincia de Cádiz (directorio de la Diputación) ---
+    if existe("cadiz-cultura.json"):
+        for r in json.loads((fuentes / "cadiz-cultura.json").read_text(encoding="utf-8")):
+            cod = municipios.buscar(r.get("municipio", ""), "11") or municipios.buscar(r.get("ciudad", ""), "11")
+            if not cod:
+                sin_ubicar["cadiz-cultura.json"] += 1  # entidades locales autónomas: van con su nombre
+            mail_dep, tel_dep = emails(r.get("email")), telefono(r.get("teléfono"))
+            direccion = ", ".join(x for x in (r.get("calle", ""), " ".join(x for x in (r.get("cp", ""), r.get("ciudad", "")) if x)) if x)
+            for p in r.get("personas") or [{}]:
+                mail, tel = emails(p.get("email")) or mail_dep, telefono(p.get("telefono")) or tel_dep
+                departamento = ", ".join(x for x in (mail_dep, tel_dep) if x and x not in (mail, tel))
+                cultura.append({"codigo": cod, "cpro": "11", "tipo": "Ayuntamiento" if cod else "Entidad local autónoma",
+                                "entidad": f'Ayuntamiento de {municipios.por_codigo[cod]["nombre"]}' if cod else r.get("municipio", ""),
+                                "nombre": nombre_propio(p.get("nombre", "")),
+                                "cargo": f'{p["puesto"]} de cultura' if p.get("puesto") else "Departamento de cultura",
+                                "area": r.get("organización", ""), "partido": "", "desde": "", "fuente": "cadiz-cultura.json",
+                                "email": mail, "telefono": tel, "direccion": direccion, "enlace": r.get("url", ""),
+                                "notas": "Directorio de la Diputación sin fecha de actualización"
+                                         + (f". Departamento: {departamento}" if departamento else "")})
+
     # --- Responsables de cultura investigados a mano (capitales y ciudades de más de 50.000 habitantes) ---
     investigado = salida / "cultura-investigado.csv"
     descripcion["investigacion"] = "Investigación en webs municipales y prensa"
@@ -400,6 +420,8 @@ def main() -> None:
             "Población": poblacion.get(cod, ""),
             "Responsable de cultura": "; ".join(c["nombre"] for c in resp),
             "Cargo y área": "; ".join(f'{c["cargo"]}: {c["area"]}' for c in resp),
+            "Email cultura": next((c["email"] for c in resp if c.get("email")), ""),
+            "Teléfono cultura": next((c["telefono"] for c in resp if c.get("telefono")), ""),
             "Teléfono ayuntamiento": f.get("telefono", ("",))[0], "Email ayuntamiento": f.get("email", ("",))[0],
             "Web": f.get("web", ("",))[0], "Alcalde/sa": f.get("alcalde", ("",))[0], "Partido alcaldía": f.get("partido", ("",))[0],
             "Dirección": f.get("direccion", ("",))[0], "Fuentes": "; ".join(origen),
@@ -430,6 +452,7 @@ def main() -> None:
     for (ccaa, prov), fs in sorted(grupos.items(), key=lambda g: (normalizar(g[0][0]), normalizar(g[0][1]))):
         resumen.append({"Comunidad autónoma": ccaa, "Provincia": prov, "Municipios": len(fs),
                         "Con responsable de cultura": sum(1 for f in fs if f["Responsable de cultura"]),
+                        "Con contacto de cultura": sum(1 for f in fs if f["Email cultura"] or f["Teléfono cultura"]),
                         "Con teléfono": sum(1 for f in fs if f["Teléfono ayuntamiento"]),
                         "Con email": sum(1 for f in fs if f["Email ayuntamiento"]),
                         "Con web": sum(1 for f in fs if f["Web"]),
@@ -443,7 +466,7 @@ def main() -> None:
     escribir_excel(salida / "directorio-cultura.xlsx", filas_cultura, filas_ayto, resumen, estado)
 
     print(f"Municipios: {len(filas_ayto)} · cargos de cultura: {len(filas_cultura)}")
-    for k in ("Con responsable de cultura", "Con teléfono", "Con email", "Con web", "Con alcalde/sa"):
+    for k in ("Con responsable de cultura", "Con contacto de cultura", "Con teléfono", "Con email", "Con web", "Con alcalde/sa"):
         print(f"  {k}: {total[k]}")
     if sin_ubicar:
         print("Registros sin ubicar por fuente:", dict(sin_ubicar))
@@ -523,6 +546,8 @@ def escribir_excel(ruta: Path, cultura: list[dict], aytos: list[dict], resumen: 
          "en webs municipales, boletines oficiales y prensa local (octubre de 2026). Cada fila lleva el enlace a la fuente y su año. "
          "En amarillo: la fuente más reciente es anterior a este año. En naranja: dato dudoso (fuentes contradictorias); comprobar antes de usar.", False),
         ("· Los responsables investigados prevalecen en la hoja «Ayuntamientos» sobre los de Municat cuando ambos existen.", False),
+        ("· Provincia de Cádiz: el directorio de la Diputación da, para cada ayuntamiento, el departamento de cultura (teléfono, email, "
+         "dirección) y su personal técnico. No indica fecha de actualización.", False),
         ("· Para el resto de España, la hoja «Ayuntamientos» da el contacto general del ayuntamiento (teléfono, email, web) y el alcalde/sa "
          "cuando la comunidad o la diputación lo publica en abierto. Desde ahí se pide «la concejalía de cultura».", False),
         ("· Comunidades con directorio oficial completo: Cataluña, País Vasco (web y alcalde), Galicia (sin alcalde), Castilla-La Mancha, "

@@ -24,9 +24,10 @@ la BDNS puede corregirlos después de su descarga.
 - `directorio/fuentes/`: las descargas de cada fuente oficial tal cual, con `estado.json` (fecha, URL, licencia
   y resultado de cada una). Las hace `server/scripts/directorio_descargar.py`.
 - `directorio/ayuntamientos.csv`: los 8.132 municipios del INE por comunidad y provincia, con teléfono, email y web
-  del ayuntamiento, alcalde/sa y, si se conoce, el responsable de cultura.
+  del ayuntamiento, alcalde/sa y, si se conoce, el responsable de cultura y el email y teléfono de cultura.
 - `directorio/cultura.csv`: concejales y consejeros cuya área de gobierno incluye cultura (solo Cataluña publica
-  este dato).
+  este dato), los investigados a mano y el personal de cultura de los ayuntamientos de Cádiz (directorio de la
+  Diputación).
 - `directorio/directorio-cultura.xlsx`: lo mismo en Excel, con resumen por provincia y la lista de fuentes.
 
 `server/scripts/directorio_construir.py` cruza las fuentes con el nomenclátor del INE; se puede volver a ejecutar en
