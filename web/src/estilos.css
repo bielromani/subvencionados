@@ -534,3 +534,50 @@ select {
   background: var(--apagado-fondo);
   font-weight: 600;
 }
+
+.boton {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: var(--radio);
+  background: var(--acento);
+  color: var(--acento-texto);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.mes::first-letter {
+  text-transform: uppercase;
+}
+
+.eventos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eventos li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--borde);
+}
+
+.eventos li:last-child {
+  border-bottom: 0;
+}
+
+.evento-dia {
+  color: var(--texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.evento-detalle {
+  display: block;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+
+.evento-detalle a {
+  color: inherit;
+}

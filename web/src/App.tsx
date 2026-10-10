@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from './api';
+import { Calendario } from './pages/Calendario';
 import { PaginaConvocatoria } from './pages/Convocatoria';
 import { Explorar } from './pages/Explorar';
 import { PaginaOrganismo } from './pages/Organismo';
@@ -13,6 +14,7 @@ import type { Meta } from './tipos';
 const SECCIONES: [string, string][] = [
   ['', 'Para ti'],
   ['explorar', 'Convocatorias'],
+  ['calendario', 'Calendario'],
   ['organismos', 'Organismos'],
   ['perfil', 'Mi perfil'],
 ];
@@ -59,6 +61,7 @@ export function App() {
         {meta && pagina === '' && <ParaTi irAPerfil={() => (window.location.hash = '#/perfil')} />}
         {meta && pagina === 'explorar' && <Explorar meta={meta} ruta={ruta} />}
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
+        {meta && pagina === 'calendario' && <Calendario meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismos' && <Organismos meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismo' && id && <PaginaOrganismo id={id} />}
         {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}

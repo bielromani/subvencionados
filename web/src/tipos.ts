@@ -251,3 +251,20 @@ export interface Organismo {
   porAnio: { anio: number; convocatorias: number; presupuesto: number; concedido: number }[];
   beneficiarios: { nombre: string; importe: number; veces: number }[];
 }
+
+export interface EventoCalendario {
+  tipo: 'abre' | 'cierra' | 'prevista';
+  /** aaaa-mm-dd; en las previstas, aaaa-mm. */
+  fecha: string;
+  convocatoria: {
+    id: string;
+    codigoBdns: string;
+    titulo: string;
+    organo: string;
+    organismoId: string;
+    ambito: string;
+    presupuesto: number | null;
+    culturaGeneral: boolean;
+    anio: number | null;
+  };
+}

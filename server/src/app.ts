@@ -1,4 +1,5 @@
 import express, { type Request } from 'express';
+import { aICal, calendario } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import type { Repositorio } from './db.js';
 import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
@@ -135,6 +136,20 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
     // Las páginas van separadas por saltos de página (\f), para poder citarlas.
     res.json({ id: doc.id, nombre: doc.nombre, url: doc.url, paginas: texto.split('\f').map((p) => p.trim()) });
+  });
+
+  // Mismos filtros que el listado (estilo, ccaa, administracion, linea, q); el tipo y el plazo los fija el calendario.
+  const eventos = (q: Request['query']) =>
+    calendario(filtrar(repo.listarConvocatorias(), { ...q, cultura: q.cultura ?? 'true', tipo: undefined, plazo: undefined }));
+
+  app.get('/api/calendario', (req, res) => {
+    res.json({ eventos: eventos(req.query) });
+  });
+
+  app.get('/api/calendario.ics', (req, res) => {
+    const base = `${req.protocol}://${req.get('host')}`;
+    res.type('text/calendar; charset=utf-8').set('Content-Disposition', 'attachment; filename="subvenciones-musica.ics"');
+    res.send(aICal(eventos(req.query), base));
   });
 
   app.get('/api/organismos', (req, res) => {

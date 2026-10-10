@@ -158,7 +158,8 @@ const LINEAS: Record<Linea, RegExp> = {
   grabacion: /\bgrabacion(es)?\b|\bdiscografic|\bfonogramas?\b|\bdiscos?\b/,
   internacional: /\binternacional(es|izacion)?\b|\bexterior\b|\bextranjero\b/,
   composicion: /\bcomposicion\b|\bcompositor(es|as)?\b|\bencargos?\b/,
-  formacion: /\bformacion\b|\bbecas?\b|\bconservatorios?\b|\bescuelas? de musica\b|\bensenanzas?\b/,
+  formacion:
+    /\bformacion\b|\bbecas?\b|\bconservatorios?\b|\bescuelas? de musica\b|\bensenanzas?\b|\bestudios? (de|musicales)\b(?! (de )?grabacion)|\bmatriculas?\b|\balumn[oa]s\b|\bcurso academico\b/,
   equipamiento: /\bequipamiento\b|\binstrumentos musicales\b|\badquisicion de instrumentos\b|\binversion(es)?\b|\brehabilitacion\b/,
 };
 
