@@ -31,6 +31,9 @@ jobs:
   recolectar:
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    env:
+      # Los ficheros anuales son enormes: más memoria para Node (el runner tiene 16 GB).
+      NODE_OPTIONS: --max-old-space-size=8192
     steps:
       - uses: actions/checkout@v5
 

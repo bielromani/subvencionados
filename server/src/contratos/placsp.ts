@@ -121,7 +121,10 @@ export function esPersonaFisica(nif: string | null, nombre: string | null): bool
 
 /** Separa el ATOM en entradas (se ignoran las borradas). */
 export function entradas(atom: string): string[] {
-  return atom.split('<entry>').slice(1).map((e) => e.slice(0, e.indexOf('</entry>')));
+  return atom
+    .split('<entry>')
+    .slice(1)
+    .map((e) => e.slice(0, e.indexOf('</entry>') >= 0 ? e.indexOf('</entry>') : e.length));
 }
 
 /** Enlace a la página siguiente (más antigua) del ATOM. */

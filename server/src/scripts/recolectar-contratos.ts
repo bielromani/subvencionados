@@ -6,7 +6,7 @@
 //   npm run contratos -- --zip=FICHERO --tipo=menores    un fichero histórico mensual o anual ya descargado
 
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readdirSync, readFileSync, rmSync } from 'node:fs';
+import { createReadStream, mkdtempSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, join } from 'node:path';
 import { parseArgs } from 'node:util';
@@ -52,6 +52,19 @@ function procesar(atom: string, tipo: Tipo): { antigua: string | null; reciente:
   return { antigua, reciente };
 }
 
+/** Lee un .atom por partes (los anuales pesan varios GB): procesa cada entrada completa en cuanto llega. */
+async function procesarFichero(ruta: string, tipo: Tipo): Promise<void> {
+  let resto = '';
+  for await (const trozo of createReadStream(ruta, { encoding: 'utf8', highWaterMark: 4 << 20 })) {
+    resto += trozo;
+    const corte = resto.lastIndexOf('</entry>');
+    if (corte < 0) continue;
+    procesar(resto.slice(0, corte + 8), tipo);
+    resto = resto.slice(corte + 8);
+  }
+  if (resto.includes('<entry>')) procesar(resto, tipo);
+}
+
 async function descargar(url: string): Promise<string> {
   for (let intento = 1; ; intento++) {
     try {
@@ -93,7 +106,7 @@ if (values.fuentes) {
   const dir = mkdtempSync(join(tmpdir(), 'placsp-'));
   try {
     execFileSync('unzip', ['-q', '-o', values.zip, '-d', dir]);
-    for (const f of readdirSync(dir).filter((x) => x.endsWith('.atom'))) procesar(readFileSync(join(dir, f), 'utf8'), tipo);
+    for (const f of readdirSync(dir).filter((x) => x.endsWith('.atom'))) await procesarFichero(join(dir, f), tipo);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
