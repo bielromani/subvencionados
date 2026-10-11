@@ -20,6 +20,14 @@ const ESTADO_INICIAL: EstadoRecoleccion = { descubiertoHasta: null, pendientes: 
 const codigoDe = (r: RegistroBdns) => r.detalle.codigoBDNS ?? String(r.detalle.id);
 const anioDe = (r: RegistroBdns) => /^(\d{4})/.exec(r.detalle.fechaRecepcion ?? '')?.[1] ?? 'sin-fecha';
 
+/** Texto extraído de un documento (ruta relativa a datos/bdns), sin cargar todo el almacén. */
+export function leerTextoDocumento(raiz: string, relativa: string): string | null {
+  const ruta = join(raiz, relativa);
+  if (!existsSync(ruta)) return null;
+  const contenido = readFileSync(ruta);
+  return (relativa.endsWith('.gz') ? gunzipSync(contenido) : contenido).toString('utf8');
+}
+
 export class Almacen {
   readonly registros = new Map<string, RegistroBdns>();
   estado: EstadoRecoleccion;
@@ -61,10 +69,7 @@ export class Almacen {
   }
 
   leerTexto(relativa: string): string | null {
-    const ruta = join(this.raiz, relativa);
-    if (!existsSync(ruta)) return null;
-    const contenido = readFileSync(ruta);
-    return (relativa.endsWith('.gz') ? gunzipSync(contenido) : contenido).toString('utf8');
+    return leerTextoDocumento(this.raiz, relativa);
   }
 
   /** Escribe todos los ficheros. Solo reescribe los años con contenido distinto. */

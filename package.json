@@ -16,7 +16,8 @@
     "informe": "npm run informe -w server"
   },
   "devDependencies": {
-    "concurrently": "^10.0.6"
+    "concurrently": "^10.0.6",
+    "esbuild": "^0.28.2"
   },
   "engines": {
     "node": ">=22.13"

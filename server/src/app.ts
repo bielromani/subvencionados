@@ -14,7 +14,7 @@ import { CCAA } from './regiones.js';
 import { fichaBasica } from './ficha/basica.js';
 import type { Ficha } from './ficha/esquema.js';
 import { documentosConTexto } from './ficha/fichas.js';
-import { ESTILOS, type Convocatoria } from './tipos.js';
+import { ESTILOS, type Convocatoria, type Perfil } from './tipos.js';
 
 const lista = (valor: unknown): string[] =>
   typeof valor === 'string' && valor ? valor.split(',').map((x) => x.trim()).filter(Boolean) : [];
@@ -386,8 +386,23 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     res.json(m);
   });
 
-  app.get('/api/perfil', (_req, res) => {
-    res.json(repo.obtenerPerfil() ?? PERFIL_POR_DEFECTO);
+  // El perfil lo guarda cada navegador y lo manda en la cabecera X-Perfil (JSON en base64): así la web publicada
+  // no necesita guardar nada en el servidor. Sin cabecera, el guardado en la base de datos local.
+  const perfilDe = (req: Request): Perfil | null => {
+    const cabecera = req.get('x-perfil');
+    if (cabecera) {
+      try {
+        const r = validarPerfil(JSON.parse(Buffer.from(cabecera, 'base64').toString('utf8')));
+        if (!('errores' in r)) return r.perfil;
+      } catch {
+        // Cabecera ilegible: se usa el perfil local.
+      }
+    }
+    return repo.obtenerPerfil();
+  };
+
+  app.get('/api/perfil', (req, res) => {
+    res.json(perfilDe(req) ?? PERFIL_POR_DEFECTO);
   });
 
   app.put('/api/perfil', (req, res) => {
@@ -404,8 +419,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const primeras = (ms: Coincidencia[], n: number) => ({ total: ms.length, items: ms.slice(0, n).map(salidaCoincidencia) });
 
   // Portada: lo urgente. Sin perfil, con uno genérico de jazz, clásica y ópera en toda España.
-  app.get('/api/inicio', (_req, res) => {
-    const perfil = repo.obtenerPerfil();
+  app.get('/api/inicio', (req, res) => {
+    const perfil = perfilDe(req);
     const conGrupos = perfil && perfil.grupos.length > 0 ? perfil : null;
     const hoy = new Date();
     const todas = conGrupos ? emparejar(repo.listarConvocatorias(), conGrupos, hoy) : coincidenciasGenericas(repo.listarConvocatorias(), hoy);
@@ -460,8 +475,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   };
 
   // Mis grupos: las recomendaciones de cada grupo por separado, con el porqué.
-  app.get('/api/grupos', (_req, res) => {
-    const perfil = repo.obtenerPerfil();
+  app.get('/api/grupos', (req, res) => {
+    const perfil = perfilDe(req);
     if (!perfil || perfil.grupos.length === 0) {
       res.json({ perfilCompleto: false, grupos: [] });
       return;
@@ -481,8 +496,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     });
   });
 
-  app.get('/api/para-ti', (_req, res) => {
-    const perfil = repo.obtenerPerfil();
+  app.get('/api/para-ti', (req, res) => {
+    const perfil = perfilDe(req);
     if (!perfil) {
       res.json({ perfilCompleto: false, abiertas: [], recurrentes: [], artistas: [], indirectas: [], precedentes: [] });
       return;

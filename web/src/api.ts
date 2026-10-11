@@ -9,10 +9,29 @@ export interface ListaPrevistas {
   items: (Coincidencia & { prevista: string })[];
 }
 
+// El perfil vive en el navegador: se manda en cada petición para que el servidor no tenga que guardarlo.
+const CLAVE_PERFIL = 'subvencionados:perfil';
+function perfilGuardado(): string | null {
+  try {
+    return localStorage.getItem(CLAVE_PERFIL);
+  } catch {
+    return null;
+  }
+}
+function guardarEnNavegador(p: Perfil) {
+  try {
+    localStorage.setItem(CLAVE_PERFIL, JSON.stringify(p));
+  } catch {
+    // Sin almacenamiento (modo privado): el perfil dura lo que la sesión del servidor local.
+  }
+}
+const base64 = (texto: string) => btoa(String.fromCharCode(...new TextEncoder().encode(texto)));
+
 async function pedir<T>(url: string, init?: RequestInit): Promise<T> {
+  const perfil = perfilGuardado();
   const res = await fetch(url, {
     ...init,
-    headers: { 'Content-Type': 'application/json', ...init?.headers },
+    headers: { 'Content-Type': 'application/json', ...(perfil ? { 'X-Perfil': base64(perfil) } : {}), ...init?.headers },
   });
   const cuerpo = await res.json().catch(() => null);
   if (!res.ok) {
@@ -95,7 +114,11 @@ export const api = {
   festival: (id: string) => pedir<Festival>(`/api/festivales/${encodeURIComponent(id)}`),
   circuitos: () => pedir<{ items: Circuito[] }>('/api/circuitos'),
   perfil: () => pedir<Perfil>('/api/perfil'),
-  guardarPerfil: (p: Perfil) => pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) }),
+  guardarPerfil: async (p: Perfil) => {
+    const validado = await pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) });
+    guardarEnNavegador(validado);
+    return validado;
+  },
   paraTi: () =>
     pedir<{
       perfilCompleto: boolean;
