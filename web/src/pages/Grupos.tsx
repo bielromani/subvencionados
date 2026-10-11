@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { FilaFestival, FilaProgramador } from '../components/Directorio';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { cambiarParams, type Ruta } from '../ruta';
 import { NOMBRE_ESTILO, type Coincidencia } from '../tipos';
@@ -63,6 +64,41 @@ export function Grupos({ ruta }: { ruta: Ruta }) {
         generales={previstasGenerales}
         vacio="Ninguna prevista que mencione este estilo."
       />
+
+      <section className="bloque">
+        <h3>
+          Festivales y ciclos de {estilo} <span className="contador">{g.festivales.total}</span>
+        </h3>
+        <p className="ayuda">Con datos en los dos últimos años y en tus comunidades. Cada uno enlaza a sus contratos y ayudas.</p>
+        {g.festivales.items.length === 0 ? (
+          <p className="ayuda">Ninguno encontrado.</p>
+        ) : (
+          <ul className="filas">
+            {g.festivales.items.map((f) => (
+              <FilaFestival key={f.id} f={f} />
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section className="bloque">
+        <h3>
+          Programadores que contratan {estilo} <span className="contador">{g.programadores.total}</span>
+        </h3>
+        <p className="ayuda">Organismos públicos de tus comunidades con contratos que mencionan este estilo, de más a menos.</p>
+        {g.programadores.items.length === 0 ? (
+          <p className="ayuda">Ninguno encontrado.</p>
+        ) : (
+          <ul className="filas">
+            {g.programadores.items.map((p) => (
+              <FilaProgramador key={p.id} p={p} estilo={g.grupo.estilo} />
+            ))}
+          </ul>
+        )}
+        <p>
+          <a href={`#/donde-tocar?ver=programadores&estilo=${g.grupo.estilo}`}>Ver todos los programadores →</a>
+        </p>
+      </section>
 
       {g.artistas.total > 0 && (
         <section className="bloque">

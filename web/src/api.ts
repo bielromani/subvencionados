@@ -1,4 +1,4 @@
-import type { Coincidencia, Contrato, Convocatoria, EventoCalendario, Grupo, Mercado, MercadoContratos, Meta, Organismo, Perfil } from './tipos';
+import type { Circuito, Coincidencia, Contrato, Festival, Programador, Convocatoria, EventoCalendario, Grupo, Mercado, MercadoContratos, Meta, Organismo, Perfil } from './tipos';
 
 export interface Lista {
   total: number;
@@ -74,12 +74,26 @@ export const api = {
   grupos: () =>
     pedir<{
       perfilCompleto: boolean;
-      grupos: { grupo: Grupo; abiertas: Lista; previstas: ListaPrevistas; artistas: Lista }[];
+      grupos: {
+        grupo: Grupo;
+        abiertas: Lista;
+        previstas: ListaPrevistas;
+        artistas: Lista;
+        festivales: { total: number; items: Festival[] };
+        programadores: { total: number; items: Programador[] };
+      }[];
     }>('/api/grupos'),
   contratos: (consulta: string) =>
     pedir<{ total: number; pagina: number; porPagina: number; items: Contrato[] }>(`/api/contratos?${consulta}`),
   contrato: (id: string) => pedir<Contrato>(`/api/contratos/${encodeURIComponent(id)}`),
   mercadoContratos: (consulta: string) => pedir<MercadoContratos>(`/api/contratos/mercado?${consulta}`),
+  programadores: (consulta: string) =>
+    pedir<{ total: number; pagina: number; porPagina: number; items: Programador[] }>(`/api/programadores?${consulta}`),
+  programador: (id: string) => pedir<Programador>(`/api/programadores/${encodeURIComponent(id)}`),
+  festivales: (consulta: string) =>
+    pedir<{ total: number; pagina: number; porPagina: number; items: Festival[] }>(`/api/festivales?${consulta}`),
+  festival: (id: string) => pedir<Festival>(`/api/festivales/${encodeURIComponent(id)}`),
+  circuitos: () => pedir<{ items: Circuito[] }>('/api/circuitos'),
   perfil: () => pedir<Perfil>('/api/perfil'),
   guardarPerfil: (p: Perfil) => pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) }),
   paraTi: () =>

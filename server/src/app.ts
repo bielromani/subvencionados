@@ -2,6 +2,7 @@ import express, { type Request } from 'express';
 import { aICal, calendario } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
+import { type Circuito, circuitos, type Festival, festivales, type Programador, programadores } from './directorio.js';
 import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
@@ -197,6 +198,87 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     res.json(mercado(base));
   });
 
+  // Directorio de dónde tocar: se recalcula solo cuando cambian las convocatorias.
+  let directorio: { version: number; programadores: Programador[]; festivales: Festival[]; circuitos: Circuito[] } | null = null;
+  const dir = () => {
+    if (directorio?.version !== repo.version) {
+      const conv = repo.listarConvocatorias();
+      directorio = { version: repo.version, programadores: programadores(contratos), festivales: festivales(contratos, conv), circuitos: circuitos(contratos, conv) };
+    }
+    return directorio;
+  };
+  const paginar = <T,>(req: Request, xs: T[], salida: (x: T) => unknown = (x) => x) => {
+    const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 200);
+    const pagina = Math.max(Number(req.query.pagina) || 1, 1);
+    return { total: xs.length, pagina, porPagina, items: xs.slice((pagina - 1) * porPagina, pagina * porPagina).map(salida) };
+  };
+  const coincideTexto = (q: unknown, ...textos: (string | null)[]) =>
+    typeof q !== 'string' || !q.trim() || normalizar(textos.filter(Boolean).join(' ')).includes(normalizar(q.trim()));
+
+  app.get('/api/programadores', (req, res) => {
+    const ccaa = lista(req.query.ccaa);
+    const estilos = lista(req.query.estilo);
+    const xs = dir()
+      .programadores.filter(
+        (p) =>
+          (!ccaa.length || (p.ccaa && ccaa.includes(p.ccaa))) &&
+          (!estilos.length || estilos.some((e) => (p.estilos[e as keyof typeof p.estilos] ?? 0) > 0)) &&
+          coincideTexto(req.query.q, p.nombre, p.ciudad, p.provincia),
+      )
+      .sort((a, b) =>
+        req.query.orden === 'adjudicado'
+          ? b.adjudicado - a.adjudicado
+          : req.query.orden === 'reciente'
+            ? (b.ultimo ?? '').localeCompare(a.ultimo ?? '')
+            : b.contratos - a.contratos,
+      );
+    res.json(paginar(req, xs, ({ recientes: _r, ...p }) => p));
+  });
+
+  app.get('/api/programadores/:id', (req, res) => {
+    const p = dir().programadores.find((x) => x.id === req.params.id);
+    if (!p) {
+      res.status(404).json({ error: 'Programador no encontrado' });
+      return;
+    }
+    res.json(p);
+  });
+
+  app.get('/api/festivales', (req, res) => {
+    const ccaa = lista(req.query.ccaa);
+    const estilos = lista(req.query.estilo);
+    const todos = req.query.todos === 'true';
+    const xs = dir()
+      .festivales.filter(
+        (f) =>
+          (todos || f.musical) &&
+          (!ccaa.length || (f.ccaa && ccaa.includes(f.ccaa))) &&
+          (!estilos.length || estilos.some((e) => f.estilos.includes(e as never))) &&
+          coincideTexto(req.query.q, f.nombre, f.lugar, f.provincia, ...f.organizadores),
+      )
+      .sort((a, b) =>
+        req.query.orden === 'dinero'
+          ? b.dinero - a.dinero
+          : req.query.orden === 'reciente'
+            ? (b.anios.at(-1) ?? 0) - (a.anios.at(-1) ?? 0) || b.fuentes.length - a.fuentes.length
+            : b.anios.length - a.anios.length || b.fuentes.length - a.fuentes.length,
+      );
+    res.json(paginar(req, xs, ({ fuentes, ...f }) => ({ ...f, numFuentes: fuentes.length })));
+  });
+
+  app.get('/api/festivales/:id', (req, res) => {
+    const f = dir().festivales.find((x) => x.id === req.params.id);
+    if (!f) {
+      res.status(404).json({ error: 'Festival no encontrado' });
+      return;
+    }
+    res.json(f);
+  });
+
+  app.get('/api/circuitos', (_req, res) => {
+    res.json({ items: dir().circuitos });
+  });
+
   app.get('/api/contratos', (req, res) => {
     const hoy = new Date();
     const resultado = filtrarContratos(contratos, filtroContratos(req.query), hoy);
@@ -336,6 +418,22 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     });
   });
 
+  /** Festivales activos y programadores de las comunidades del promotor que encajan con un estilo. */
+  const dondeTocar = (estilo: string, zona: string[]) => {
+    const enZona = (ccaa: string | null) => !zona.length || (!!ccaa && zona.includes(ccaa));
+    const reciente = new Date().getFullYear() - 2;
+    const fests = dir()
+      .festivales.filter((f) => f.musical && enZona(f.ccaa) && (f.anios.at(-1) ?? 0) >= reciente && f.estilos.includes(estilo as never))
+      .sort((a, b) => b.anios.length - a.anios.length || b.dinero - a.dinero);
+    const progs = dir()
+      .programadores.filter((p) => enZona(p.ccaa) && (p.estilos[estilo as keyof typeof p.estilos] ?? 0) > 0)
+      .sort((a, b) => (b.estilos[estilo as keyof typeof b.estilos] ?? 0) - (a.estilos[estilo as keyof typeof a.estilos] ?? 0));
+    return {
+      festivales: { total: fests.length, items: fests.slice(0, 15).map(({ fuentes, ...f }) => ({ ...f, numFuentes: fuentes.length })) },
+      programadores: { total: progs.length, items: progs.slice(0, 15).map(({ recientes: _r, ...p }) => p) },
+    };
+  };
+
   // Mis grupos: las recomendaciones de cada grupo por separado, con el porqué.
   app.get('/api/grupos', (_req, res) => {
     const perfil = repo.obtenerPerfil();
@@ -353,6 +451,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
           items: g.previstas.slice(0, 100).map((p) => ({ prevista: p.prevista, ...salidaCoincidencia(p.coincidencia) })),
         },
         artistas: primeras(g.artistas, 15),
+        ...dondeTocar(g.grupo.estilo, [perfil.ccaaSede, ...perfil.ccaaActuacion].filter((x): x is string => !!x)),
       })),
     });
   });

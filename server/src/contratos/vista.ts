@@ -42,6 +42,8 @@ export function enriquecer(c: Contrato): ContratoVista {
   const fechas = c.adjudicaciones.map((a) => fechaValida(a.fecha)).filter((x): x is string => !!x).sort();
   return {
     ...c,
+    // Los guardados antes de decodificar las entidades hexadecimales (&#xD;) las llevan en el título.
+    titulo: c.titulo.replace(/&#x[0-9a-f]+;/gi, ' ').replace(/\s+/g, ' ').trim(),
     provincia: codigoProvincia ? PROVINCIAS_INE[codigoProvincia]![0] : null,
     codigoProvincia,
     ccaa,

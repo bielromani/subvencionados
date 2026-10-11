@@ -39,6 +39,8 @@ El objetivo a largo plazo es cubrir cualquier sector; esta primera versión es e
   - *Recomendaciones* (`#/para-ti`): todas, por tipo de encaje;
   - *Convocatorias*: filtros por plazo, tipo, estilo, comunidad, administración y actividad; cada convocatoria
     tiene su página con la ficha y sus ediciones de otros años;
+  - *Contratos*: contratos públicos de conciertos (abiertos y adjudicados) de la Plataforma de Contratación;
+  - *Dónde tocar*: festivales y ciclos, programadores públicos y circuitos, con sus fuentes;
   - *Calendario*: plazos que abren y cierran y ediciones previstas, exportable a cualquier calendario (.ics);
   - *Organismos*: quién convoca, cuánto ha concedido y a quién;
   - *Mercado*: cifras y gráficos por año, comunidad, provincia (mapa) y actividad;

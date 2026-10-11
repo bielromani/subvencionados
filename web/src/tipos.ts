@@ -322,3 +322,57 @@ export interface MercadoContratos {
   empresas: { nombre: string; nif: string | null; contratos: number; adjudicado: number; organismos: number }[];
   adjudicacionesAPersonasFisicas: number;
 }
+
+export interface FuenteDirectorio {
+  tipo: 'contrato' | 'convocatoria' | 'concesion';
+  id: string;
+  titulo: string;
+  fecha: string | null;
+  importe: number | null;
+  beneficiario?: string;
+}
+
+export interface Programador {
+  id: string;
+  nombre: string;
+  ciudad: string | null;
+  provincia: string | null;
+  codigoProvincia: string | null;
+  ccaa: string | null;
+  web: string | null;
+  contratos: number;
+  menores: number;
+  adjudicado: number;
+  importeHabitual: number | null;
+  estilos: Partial<Record<Estilo, number>>;
+  empresas: number;
+  primero: string | null;
+  ultimo: string | null;
+  meses: number[];
+  recientes?: FuenteDirectorio[];
+}
+
+export interface Festival {
+  id: string;
+  nombre: string;
+  musical: boolean;
+  estilos: Estilo[];
+  lugar: string | null;
+  provincia: string | null;
+  ccaa: string | null;
+  organizadores: string[];
+  anios: number[];
+  dinero: number;
+  numFuentes?: number;
+  fuentes?: FuenteDirectorio[];
+}
+
+export interface Circuito {
+  id: string;
+  nombre: string;
+  ambito: string;
+  organismos: { nombre: string; veces: number }[];
+  menciones: number;
+  anios: number[];
+  fuentes: FuenteDirectorio[];
+}

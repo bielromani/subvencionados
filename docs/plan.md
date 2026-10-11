@@ -167,7 +167,7 @@ uno de sus grupos y entiende qué necesita para pedirlas.
 
 ---
 
-## Fase 4 · Contratación pública: quién contrata conciertos (en curso)
+## Fase 4 · Contratación pública: quién contrata conciertos (terminada)
 
 **Objetivo:** añadir la otra gran fuente de dinero público para conciertos, los contratos (cachés, programación de
 fiestas y temporadas).
@@ -194,7 +194,7 @@ subvenciones y contratos juntos.
 
 ---
 
-## Fase 5 · Circuitos, festivales y programadores
+## Fase 5 · Circuitos, festivales y programadores (en curso)
 
 **Objetivo:** saber dónde colocar a los grupos, más allá de convocatorias y contratos.
 
@@ -203,6 +203,19 @@ subvenciones y contratos juntos.
 2. Directorio de **festivales y ciclos** construido con los propios datos (quién recibe subvenciones o contratos para
    un festival de jazz, clásica u ópera, dónde y desde cuándo).
 3. Espacios y programadores públicos, con su historial de programación financiada.
+
+Estado (todo construido con nuestros datos, sin IA y sin descargas nuevas):
+- [x] **Programadores públicos** (1.979): órganos que contratan música en vivo, con número de contratos, importe
+      habitual (mediana), estilos, empresas distintas, meses en que más contratan y sus últimos contratos.
+- [x] **Festivales y ciclos** (~1.170 de música, ~2.300 con los multidisciplinares): nombres sacados de los títulos de
+      contratos y convocatorias y de los beneficiarios de ayudas, agrupados por nombre y provincia, con años, lugar,
+      organizadores, dinero y fuentes. Al ser automático puede juntar o separar ediciones: la ficha lo avisa.
+- [x] **Circuitos** (14): PLATEA, redes de teatros de Castilla y León, Extremadura, Andalucía, Madrid, Castilla-La
+      Mancha, Aragón, Programa.cat, Circuit Cultural Valencià, circuitos provinciales… con sus apariciones en los datos.
+- [x] Web: sección «Dónde tocar» con fichas, y en «Mis grupos» los festivales y programadores de su estilo en las
+      comunidades del promotor.
+- [ ] Condiciones de acceso a cada circuito (bases de PLATEA y de las redes autonómicas): sus webs están en dominios
+      que el entorno de trabajo no alcanza; se puede consultar a mano o desde GitHub Actions.
 
 **Terminado cuando:** desde la ficha de un grupo se ven festivales, circuitos y programadores compatibles, cada uno con
 su fuente.

@@ -4,7 +4,9 @@ import { Calendario } from './pages/Calendario';
 import { PaginaContrato } from './pages/Contrato';
 import { Contratos } from './pages/Contratos';
 import { PaginaConvocatoria } from './pages/Convocatoria';
+import { DondeTocar } from './pages/DondeTocar';
 import { Explorar } from './pages/Explorar';
+import { PaginaFestival, PaginaProgramador } from './pages/FichaDirectorio';
 import { Grupos } from './pages/Grupos';
 import { Inicio } from './pages/Inicio';
 import { Mercado } from './pages/Mercado';
@@ -21,12 +23,13 @@ const SECCIONES: [string, string][] = [
   ['grupos', 'Mis grupos'],
   ['explorar', 'Subvenciones'],
   ['contratos', 'Contratos'],
+  ['donde-tocar', 'Dónde tocar'],
   ['calendario', 'Calendario'],
   ['organismos', 'Organismos'],
   ['mercado', 'Mercado'],
   ['perfil', 'Mi perfil'],
 ];
-const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos', 'para-ti': '', contrato: 'contratos' };
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos', 'para-ti': '', contrato: 'contratos', programador: 'donde-tocar', festival: 'donde-tocar' };
 
 export function App() {
   const ruta = useRuta();
@@ -73,6 +76,9 @@ export function App() {
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
         {meta && pagina === 'contratos' && <Contratos meta={meta} ruta={ruta} />}
         {meta && pagina === 'contrato' && id && <PaginaContrato id={id} />}
+        {meta && pagina === 'donde-tocar' && <DondeTocar key={ruta.params.get('ver') ?? ''} meta={meta} ruta={ruta} />}
+        {meta && pagina === 'programador' && id && <PaginaProgramador id={id} />}
+        {meta && pagina === 'festival' && id && <PaginaFestival id={id} />}
         {meta && pagina === 'calendario' && <Calendario meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismos' && <Organismos meta={meta} ruta={ruta} />}
         {meta && pagina === 'mercado' && <Mercado meta={meta} ruta={ruta} />}
