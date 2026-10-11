@@ -101,6 +101,24 @@ const fecha = (t: string | null) => (t && /^\d{4}-\d{2}-\d{2}/.test(t) ? t.slice
 /** NIF de persona física: DNI (8 cifras y letra) o NIE (X, Y, Z). */
 export const esNifPersona = (nif: string | null) => !!nif && /^([0-9]{8}[A-Z]|[XYZ][0-9]{7}[A-Z])$/i.test(nif.replace(/[\s.-]/g, ''));
 
+/** Nombre de sociedad, asociación, fundación, administración...: no es una persona física. */
+export const pareceEntidad = (nombre: string | null) =>
+  !!nombre &&
+  /(^|[^\p{L}])(s\.? ?l\.?|s\.? ?a\.?|s\.? ?l\.? ?u\.?|s\.? ?c\.?|s\.? ?coop\.?|c\.? ?b\.?|lda\.?|corp\.?|ltd\.?|gmbh|sas|srl)($|[^\p{L}])|sociedad|cooperativa|asociaci|associaci|ass\.|fundaci|federaci|agrupaci|ayuntamiento|ajuntament|concello|banda|orquesta|orquestra|uni[oó]n musical|producciones|produccions|eventos|events|management|espect[aá]culos|entertainment|music|m[uú]sica|teatro|compa[nñ][ií]a|colla|coral|charanga/iu.test(nombre);
+
+/** NIF de persona jurídica española (letra de entidad y cifras). */
+const esNifEntidad = (nif: string) => /^[A-HJ-NP-SUVW][0-9]{7}[0-9A-J]$/i.test(nif.replace(/[\s.-]/g, ''));
+
+/**
+ * Persona física: NIF o NIE de persona, o un NIF enmascarado o extranjero cuyo nombre no es de una entidad.
+ * Ante la duda se trata como persona y no se guarda su nombre.
+ */
+export function esPersonaFisica(nif: string | null, nombre: string | null): boolean {
+  if (esNifPersona(nif)) return true;
+  if (nif && (nif.includes('*') || !esNifEntidad(nif))) return !pareceEntidad(nombre);
+  return false;
+}
+
 /** Separa el ATOM en entradas (se ignoran las borradas). */
 export function entradas(atom: string): string[] {
   return atom.split('<entry>').slice(1).map((e) => e.slice(0, e.indexOf('</entry>')));
@@ -119,11 +137,15 @@ function adjudicaciones(xml: string): Adjudicacion[] {
     const total = bloque(r, 'cac:LegalMonetaryTotal');
     const fechaAdj = fecha(valor(r, 'cbc:AwardDate'));
     if (!ganador && !total && !fechaAdj) return [];
-    const nif = valor(ganador, 'cbc:ID');
-    const persona = esNifPersona(nif);
+    const nifLeido = valor(ganador, 'cbc:ID');
+    const nombre = valor(bloque(ganador, 'cac:PartyName'), 'cbc:Name');
+    // Algunas plataformas enmascaran el NIF ("****8604*"): entonces solo se guarda el nombre si es de una entidad.
+    const enmascarado = !!nifLeido?.includes('*');
+    const nif = enmascarado ? null : nifLeido;
+    const persona = esPersonaFisica(nifLeido, nombre);
     return [
       {
-        adjudicatario: persona ? null : valor(bloque(ganador, 'cac:PartyName'), 'cbc:Name'),
+        adjudicatario: persona ? null : nombre,
         nif: persona ? null : nif,
         personaFisica: persona,
         importe: numero(valor(total, 'cbc:TaxExclusiveAmount')),

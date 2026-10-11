@@ -38,6 +38,12 @@ export class AlmacenContratos {
     return true;
   }
 
+  /** Sustituye un contrato ya guardado sin mirar la fecha (para limpiezas). */
+  reescribir(c: Contrato & { anio: number }): void {
+    this.contratos.set(c.id, c);
+    this.cambiados.add(c.anio);
+  }
+
   escribir(): void {
     mkdirSync(this.raiz, { recursive: true });
     for (const anio of this.cambiados) {

@@ -32,6 +32,12 @@ describe('Plataforma de Contratación', () => {
     const c = leerEntrada(entradas(conPersona)[0]!)!;
     expect(c.adjudicaciones[0]).toMatchObject({ adjudicatario: null, nif: null, personaFisica: true });
     expect(esNifPersona('X1234567L')).toBe(true);
+    const enmascaradaPersona = leerEntrada(entradas(atom.replace('B27338821', '****8604*').replace('CAS D´OLEIRO 2.0 SL', 'Nombre Apellido'))[0]!)!;
+    expect(enmascaradaPersona.adjudicaciones[0]).toMatchObject({ adjudicatario: null, nif: null, personaFisica: true });
+    const enmascaradaEmpresa = leerEntrada(entradas(atom.replace('B27338821', '****8604*'))[0]!)!;
+    const extranjera = leerEntrada(entradas(atom.replace('B27338821', 'IT12345678901').replace('CAS D´OLEIRO 2.0 SL', 'Nome Cognome'))[0]!)!;
+    expect(extranjera.adjudicaciones[0]).toMatchObject({ adjudicatario: null, personaFisica: true });
+    expect(enmascaradaEmpresa.adjudicaciones[0]).toMatchObject({ adjudicatario: 'CAS D´OLEIRO 2.0 SL', nif: null, personaFisica: false });
     expect(esNifPersona('B27338821')).toBe(false);
   });
 
