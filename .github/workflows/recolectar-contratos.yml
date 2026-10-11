@@ -1,0 +1,82 @@
+# Contratos de música en vivo de la Plataforma de Contratación del Sector Público → datos/contratos/.
+# - A mano, sin nada: lee el ATOM de los últimos días (licitaciones, contratos menores y plataformas
+#   autonómicas agregadas). Unos pocos minutos.
+# - A mano con "periodos" (p. ej. "202609" o "2025"): descarga esos ficheros históricos. Un mes son
+#   ~300 MB y unos 8 minutos; un año entero puede pasar de una hora.
+# Sin ejecución programada por ahora: los minutos de Actions de la cuenta son limitados (2.000 al mes).
+name: Recolectar contratos
+
+on:
+  workflow_dispatch:
+    inputs:
+      periodos:
+        description: 'Ficheros históricos (aaaamm o aaaa, separados por espacios). Vacío = solo los últimos días'
+        required: false
+      tipos:
+        description: 'Fuentes de los históricos'
+        default: 'licitaciones menores agregadas'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar-contratos
+  cancel-in-progress: false
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Últimos días
+        if: inputs.periodos == ''
+        run: npm run contratos -w server -- --fuentes
+
+      - name: Históricos
+        if: inputs.periodos != ''
+        env:
+          PERIODOS: ${{ inputs.periodos }}
+          TIPOS: ${{ inputs.tipos }}
+        run: |
+          B=https://contrataciondelsectorpublico.gob.es/sindicacion
+          declare -A RUTA=(
+            [licitaciones]=sindicacion_643/licitacionesPerfilesContratanteCompleto3
+            [menores]=sindicacion_1143/contratosMenoresPerfilesContratantes
+            [agregadas]=sindicacion_1044/PlataformasAgregadasSinMenores
+          )
+          for p in $PERIODOS; do
+            for t in $TIPOS; do
+              f="/tmp/${t}_${p}.zip"
+              echo "::group::$t $p"
+              curl -sS -m 3600 --retry 3 -o "$f" "$B/${RUTA[$t]}_${p}.zip" && npm run contratos -w server -- --zip="$f" --tipo="$t" || echo "No se pudo procesar $t $p"
+              rm -f "$f"
+              echo "::endgroup::"
+            done
+          done
+
+      - name: Guardar los datos en el repositorio
+        if: always()
+        run: |
+          git config user.name "recolector-contratos"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/contratos
+          if git diff --cached --quiet; then echo "Sin cambios."; exit 0; fi
+          git commit -m "Contratos $(date -u +%Y-%m-%d): ${PERIODOS:-últimos días}"
+          rama="${GITHUB_REF_NAME}"
+          for i in 1 2 3 4; do
+            git push origin "HEAD:$rama" && exit 0
+            git fetch origin "$rama"
+            git rebase -X theirs "origin/$rama" || { git rebase --abort; sleep $((i * 5)); }
+          done
+          exit 1
+        env:
+          PERIODOS: ${{ inputs.periodos }}

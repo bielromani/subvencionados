@@ -1,27 +1,27 @@
 # Descarga de la BDNS las convocatorias de música y sus concesiones y las guarda en datos/bdns/.
-# - Cada día: busca las nuevas y refresca las de los últimos 60 días.
+# - Cada dos días: busca las nuevas y refresca las de los últimos 60 días (unos 6 minutos).
 # - A mano (Actions > Recolectar BDNS > Run workflow): histórico desde la fecha que se indique.
-# Si se agota el tiempo con trabajo pendiente, se vuelve a lanzar sola para continuar.
+# Los minutos de Actions del repositorio privado son limitados (2.000 al mes en la cuenta): cada ejecución
+# tiene un tope de 20 minutos de descarga y ya no se relanza sola; lo pendiente se recoge en la siguiente.
 name: Recolectar BDNS
 
 on:
   schedule:
-    - cron: '17 5 * * *'
+    - cron: '17 5 */2 * *'
   workflow_dispatch:
     inputs:
       desde:
         description: 'Fecha de publicación inicial (aaaa-mm-dd). Vacío = desde la última ejecución'
         required: false
       minutos:
-        description: 'Tiempo máximo de descarga'
-        default: '330'
+        description: 'Tiempo máximo de descarga (cada minuto cuenta para el límite mensual de Actions)'
+        default: '20'
       refrescar_dias:
         description: 'Volver a descargar las publicadas en los últimos N días'
         default: '60'
 
 permissions:
   contents: write
-  actions: write
 
 concurrency:
   group: recolectar-bdns
@@ -30,7 +30,7 @@ concurrency:
 jobs:
   recolectar:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5
 
@@ -48,7 +48,7 @@ jobs:
         id: recolectar
         env:
           DESDE: ${{ inputs.desde }}
-          MINUTOS: ${{ inputs.minutos || '330' }}
+          MINUTOS: ${{ inputs.minutos || '20' }}
           REFRESCAR: ${{ inputs.refrescar_dias || '60' }}
         run: |
           args=(--minutos="$MINUTOS" --refrescar-dias="$REFRESCAR")
@@ -79,9 +79,3 @@ jobs:
             git rebase -X theirs "origin/$rama" || { git rebase --abort; sleep $((i * 5)); }
           done
           exit 1
-
-      - name: Continuar si queda trabajo pendiente
-        if: steps.recolectar.outputs.pendientes != '0' && steps.recolectar.outputs.progreso != '0'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run recolectar-bdns.yml --ref "${{ github.ref_name }}" -f minutos="${{ inputs.minutos || '330' }}"

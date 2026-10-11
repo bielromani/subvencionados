@@ -6,7 +6,14 @@ on:
     paths-ignore:
       - 'datos/**'
       - '**.md'
+      - '.github/workflows/recolectar-*.yml'
+      - '.github/workflows/explorar-*.yml'
   workflow_dispatch:
+
+# Si llegan varios pushes seguidos, solo cuenta el último (ahorra minutos de Actions).
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   tests:

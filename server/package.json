@@ -13,7 +13,8 @@
     "informe": "tsx src/scripts/informe.ts",
     "muestra-evaluacion": "tsx src/scripts/muestra-evaluacion.ts",
     "evaluar": "tsx src/scripts/evaluar.ts",
-    "fichas": "tsx src/scripts/fichas.ts"
+    "fichas": "tsx src/scripts/fichas.ts",
+    "contratos": "tsx src/scripts/recolectar-contratos.ts"
   },
   "dependencies": {
     "express": "^5.2.1",
