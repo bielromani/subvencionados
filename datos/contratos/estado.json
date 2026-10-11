@@ -1,5 +1,9 @@
 {
-  "fuentes": {},
+  "fuentes": {
+    "licitaciones": "2026-10-10T19:52:38.034+02:00",
+    "menores": "2026-10-11T02:03:32.678+02:00",
+    "agregadas": "2026-10-10T20:00:03.747+02:00"
+  },
   "historicos": [
     "menores_202609",
     "agregadas_202609",
