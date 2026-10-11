@@ -3,7 +3,7 @@
 #   autonómicas agregadas). Unos pocos minutos.
 # - A mano con "periodos" (p. ej. "202609" o "2025"): descarga esos ficheros históricos. Un mes son
 #   ~300 MB y unos 8 minutos; un año entero puede pasar de una hora.
-# Sin ejecución programada por ahora: los minutos de Actions de la cuenta son limitados (2.000 al mes).
+# Sin ejecución programada mientras el repositorio sea privado (minutos de Actions limitados).
 name: Recolectar contratos
 
 on:
@@ -15,6 +15,9 @@ on:
       tipos:
         description: 'Fuentes de los históricos'
         default: 'licitaciones menores agregadas'
+      dias:
+        description: 'Sin periodos y sin estado previo: cuántos días atrás leer del ATOM'
+        default: '3'
 
 permissions:
   contents: write
@@ -26,7 +29,7 @@ concurrency:
 jobs:
   recolectar:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v5
 
@@ -39,7 +42,7 @@ jobs:
 
       - name: Últimos días
         if: inputs.periodos == ''
-        run: npm run contratos -w server -- --fuentes
+        run: npm run contratos -w server -- --fuentes --dias="${{ inputs.dias || '3' }}"
 
       - name: Históricos
         if: inputs.periodos != ''
@@ -47,6 +50,17 @@ jobs:
           PERIODOS: ${{ inputs.periodos }}
           TIPOS: ${{ inputs.tipos }}
         run: |
+          git config user.name "recolector-contratos"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          subir() {
+            git add datos/contratos
+            git diff --cached --quiet && return 0
+            git commit -q -m "Contratos: $1"
+            for i in 1 2 3 4; do
+              git push -q origin "HEAD:${GITHUB_REF_NAME}" && return 0
+              git fetch -q origin "${GITHUB_REF_NAME}"; git rebase -X theirs "origin/${GITHUB_REF_NAME}" || { git rebase --abort; sleep $((i * 5)); }
+            done
+          }
           B=https://contrataciondelsectorpublico.gob.es/sindicacion
           declare -A RUTA=(
             [licitaciones]=sindicacion_643/licitacionesPerfilesContratanteCompleto3
@@ -61,6 +75,7 @@ jobs:
               rm -f "$f"
               echo "::endgroup::"
             done
+            subir "$p"
           done
 
       - name: Guardar los datos en el repositorio

@@ -1,5 +1,5 @@
 # Descarga de la BDNS las convocatorias de música y sus concesiones y las guarda en datos/bdns/.
-# - Cada dos días: busca las nuevas y refresca las de los últimos 60 días (unos 6 minutos).
+# - Cada día: busca las nuevas y refresca las de los últimos 60 días (unos 6 minutos).
 # - A mano (Actions > Recolectar BDNS > Run workflow): histórico desde la fecha que se indique.
 # Los minutos de Actions del repositorio privado son limitados (2.000 al mes en la cuenta): cada ejecución
 # tiene un tope de 20 minutos de descarga y ya no se relanza sola; lo pendiente se recoge en la siguiente.
@@ -7,7 +7,7 @@ name: Recolectar BDNS
 
 on:
   schedule:
-    - cron: '17 5 */2 * *'
+    - cron: '17 5 * * *'
   workflow_dispatch:
     inputs:
       desde:
