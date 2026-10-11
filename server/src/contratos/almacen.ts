@@ -33,7 +33,8 @@ export class AlmacenContratos {
     const previo = this.contratos.get(c.id);
     if (previo && previo.actualizado >= c.actualizado) return false;
     const anio = previo?.anio ?? Number(c.actualizado.slice(0, 4));
-    this.contratos.set(c.id, { ...c, anio });
+    // Copia profunda: los textos extraídos son trozos del fichero leído y lo mantendrían entero en memoria.
+    this.contratos.set(c.id, { ...(JSON.parse(JSON.stringify(c)) as Contrato), anio });
     this.cambiados.add(anio);
     return true;
   }

@@ -60,7 +60,8 @@ async function procesarFichero(ruta: string, tipo: Tipo): Promise<void> {
     const corte = resto.lastIndexOf('</entry>');
     if (corte < 0) continue;
     procesar(resto.slice(0, corte + 8), tipo);
-    resto = resto.slice(corte + 8);
+    // Copia del resto (es pequeño) para no retener el trozo anterior entero.
+    resto = JSON.parse(JSON.stringify(resto.slice(corte + 8))) as string;
   }
   if (resto.includes('<entry>')) procesar(resto, tipo);
 }
