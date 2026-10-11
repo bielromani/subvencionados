@@ -167,7 +167,7 @@ uno de sus grupos y entiende qué necesita para pedirlas.
 
 ---
 
-## Fase 4 · Contratación pública: quién contrata conciertos
+## Fase 4 · Contratación pública: quién contrata conciertos (en curso)
 
 **Objetivo:** añadir la otra gran fuente de dinero público para conciertos, los contratos (cachés, programación de
 fiestas y temporadas).
@@ -177,6 +177,16 @@ fiestas y temporadas).
 2. Licitaciones **abiertas** de programación musical, con plazo, importe y pliegos.
 3. **Adjudicaciones históricas**: qué organismo contrató, qué, por cuánto y a qué empresa (la competencia del promotor).
 4. Integrarlo en Oportunidades, Calendario, Organismos y Mercado.
+
+Estado:
+- [x] Datos abiertos de la Plataforma de Contratación (ATOM/CODICE): licitaciones, contratos menores y plataformas
+      autonómicas agregadas. Se descargan en GitHub Actions (`npm run contratos`, workflow «Recolectar contratos»).
+- [x] Filtro de música en vivo: CPV de grupos, bandas y orquestas (92312120/130/140), o CPV de servicios artísticos,
+      espectáculos y eventos con un título de música; fuera enseñanza, obras, suministros y teatro/danza/circo sin música.
+- [x] Sin datos de personas físicas adjudicatarias (ni nombre ni NIF, también con NIF enmascarado o extranjero).
+- [x] Histórico desde 2024 y lectura diaria del ATOM.
+- [x] Web: sección Contratos (abiertas y adjudicadas, ficha con adjudicación y pliegos), competencia en Mercado,
+      licitaciones abiertas en Inicio y Calendario, contratos del municipio en la página de cada organismo.
 
 **Terminado cuando:** las licitaciones de servicios musicales se descargan a diario y la ficha de cada organismo muestra
 subvenciones y contratos juntos.

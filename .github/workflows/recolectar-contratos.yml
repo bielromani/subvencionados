@@ -1,12 +1,13 @@
 # Contratos de música en vivo de la Plataforma de Contratación del Sector Público → datos/contratos/.
-# - A mano, sin nada: lee el ATOM de los últimos días (licitaciones, contratos menores y plataformas
+# - Cada día (y a mano sin nada): lee el ATOM de los últimos días (licitaciones, contratos menores y plataformas
 #   autonómicas agregadas). Unos pocos minutos.
 # - A mano con "periodos" (p. ej. "202609" o "2025"): descarga esos ficheros históricos. Un mes son
 #   ~300 MB y unos 8 minutos; un año entero puede pasar de una hora.
-# Sin ejecución programada mientras el repositorio sea privado (minutos de Actions limitados).
 name: Recolectar contratos
 
 on:
+  schedule:
+    - cron: '47 6 * * *'
   workflow_dispatch:
     inputs:
       periodos:
@@ -41,11 +42,11 @@ jobs:
       - run: npm ci
 
       - name: Últimos días
-        if: inputs.periodos == ''
+        if: (inputs.periodos || '') == ''
         run: npm run contratos -w server -- --fuentes --dias="${{ inputs.dias || '3' }}"
 
       - name: Históricos
-        if: inputs.periodos != ''
+        if: (inputs.periodos || '') != ''
         env:
           PERIODOS: ${{ inputs.periodos }}
           TIPOS: ${{ inputs.tipos }}
