@@ -19,6 +19,7 @@ describe('nombres de festivales y ciclos', () => {
     expect(nombreDeEvento('XXIX Festival de Jazz de Lugo 2026, concierto de clausura')).toBe('Festival de Jazz de Lugo');
     expect(nombreDeEvento('Concierto dentro del Ciclo Días Musicales XII')).toBe('Ciclo Días Musicales');
     expect(nombreDeEvento('Actuación en la SEMANA DE MÚSICA RELIGIOSA DE CUENCA')).toBe('Semana de Música Religiosa de Cuenca');
+    expect(nombreDeEvento("Concierto del Festival de Jazz de l'Alfàs del Pi 2025")).toBe("Festival de Jazz de l'Alfàs del Pi");
     expect(nombreDeEvento('Festival de música de verano')).toBeNull();
     expect(nombreDeEvento('Contratación de la orquesta para las fiestas')).toBeNull();
   });

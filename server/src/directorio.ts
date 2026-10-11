@@ -120,7 +120,7 @@ export interface Festival {
 
 const TIPO_EVENTO = '(festival|festivals|festivales|ciclo|cicle|ciclos|certamen|certamenes|muestra|mostra|temporada|semana|setmana|jornadas)';
 const NOMBRE_EVENTO = new RegExp(
-  `\\b${TIPO_EVENTO}\\b((?:\\s+(?:internacional|internacionales|nacional|municipal|provincial|de|del|de la|de las|de los|d'|dels|y|e|i)\\b)*\\s+[^,.;:()\\n«»"“”'\\[\\]]{2,70})`,
+  `\\b${TIPO_EVENTO}\\b((?:\\s+(?:internacional|internacionales|nacional|municipal|provincial|de|del|de la|de las|de los|d'|dels|y|e|i)\\b)*\\s+[^,.;:()\\n«»"“”\\[\\]]{2,70})`,
   'i',
 );
 /** Donde acaba el nombre: fechas, lugares, finalidades... */
@@ -136,7 +136,7 @@ export function nombreDeEvento(texto: string): string | null {
   if (!m) return null;
   const tipo = m[1]!;
   let resto = m[2]!.replace(CORTE, '').trim();
-  resto = resto.replace(/\s+(de|del|de la|y|e|i|en|a)$/i, '').trim();
+  resto = resto.replace(/(\s+(de|del|de la|y|e|i|en|a|d'|l'|la|el))+$/i, '').replace(/['’]$/, '').trim();
   if (resto.split(' ').length < 1 || normalizar(resto).length < 3) return null;
   // Sin ordinales al final ("Días Musicales XII") y sin MAYÚSCULAS sostenidas.
   resto = resto.replace(/\s+(?:[ivxlc]+|\d+\.?[ºª]?)$/i, '').trim();
