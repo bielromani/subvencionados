@@ -184,7 +184,8 @@ Estado:
 - [x] Filtro de música en vivo: CPV de grupos, bandas y orquestas (92312120/130/140), o CPV de servicios artísticos,
       espectáculos y eventos con un título de música; fuera enseñanza, obras, suministros y teatro/danza/circo sin música.
 - [x] Sin datos de personas físicas adjudicatarias (ni nombre ni NIF, también con NIF enmascarado o extranjero).
-- [x] Histórico desde 2024 y lectura diaria del ATOM.
+- [x] Histórico desde 2024 y lectura diaria del ATOM: 32.053 contratos de música (31.586 adjudicados, 23.879 menores),
+      unos 170 M€ adjudicados al año.
 - [x] Web: sección Contratos (abiertas y adjudicadas, ficha con adjudicación y pliegos), competencia en Mercado,
       licitaciones abiertas en Inicio y Calendario, contratos del municipio en la página de cada organismo.
 

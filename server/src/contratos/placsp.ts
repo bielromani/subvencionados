@@ -96,7 +96,9 @@ function bloques(xml: string, etiqueta: string): string[] {
 }
 
 const numero = (t: string | null) => (t === null || t === '' || Number.isNaN(Number(t)) ? null : Number(t));
-const fecha = (t: string | null) => (t && /^\d{4}-\d{2}-\d{2}/.test(t) ? t.slice(0, 10) : null);
+/** Fecha aaaa-mm-dd; algunas plataformas publican años imposibles ("0023-05-12"), que se descartan. */
+export const fechaValida = (t: string | null) => (t && /^(199\d|20\d\d)-\d{2}-\d{2}/.test(t) ? t.slice(0, 10) : null);
+const fecha = fechaValida;
 
 /** NIF de persona física: DNI (8 cifras y letra) o NIE (X, Y, Z). */
 export const esNifPersona = (nif: string | null) => !!nif && /^([0-9]{8}[A-Z]|[XYZ][0-9]{7}[A-Z])$/i.test(nif.replace(/[\s.-]/g, ''));
@@ -238,7 +240,7 @@ const TITULO_MUSICA =
 
 /** Lo que no es contratar música en vivo: enseñanza, obras, suministros, bares... */
 const TITULO_EXCLUIR =
-  /\b(escuelas? (municipal )?de musica|escola de musica|escola municipal de musica|ensenanza|ensenanzas|formacion|clases|profesorado|docente|obras? de|suministro|adquisicion de instrumentos|instrumentos musicales|barra|bar|cafeteria|alquiler de (escenario|sonido)|sonorizacion|hilo musical|ambientacion musical|limpieza|seguridad|vigilancia|instalaciones)\b/;
+  /\b(escuelas? (municipal )?de musica|talleres? de musica|taller musical|escola de musica|escola municipal de musica|ensenanza|ensenanzas|formacion|clases|profesorado|docente|obras? de|suministro|adquisicion de instrumentos|instrumentos musicales|barra|bar|cafeteria|alquiler de (escenario|sonido)|sonorizacion|hilo musical|ambientacion musical|limpieza|seguridad|vigilancia|instalaciones)\b/;
 
 /** Teatro, danza o circo: solo cuentan si el título menciona además música. */
 const TITULO_ESCENICAS = /\b(teatral|teatrales|obra de teatro|representacion teatral|danza|dansa|circo|circ|titeres|monologo|monologos|humor)\b/;

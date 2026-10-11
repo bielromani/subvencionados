@@ -2,7 +2,7 @@ import { clasificar, normalizar } from '../clasificacion/musica.js';
 import { PROVINCIAS_INE } from '../referencias.js';
 import { CCAA_POR_NUTS2, ccaaDesdeNombre, PROVINCIA_POR_NUTS3 } from '../regiones.js';
 import type { Estilo } from '../tipos.js';
-import type { Contrato } from './placsp.js';
+import { type Contrato, fechaValida } from './placsp.js';
 
 /** El contrato con lo que calculamos para la web: territorio, estilos e importe adjudicado. */
 export interface ContratoVista extends Contrato {
@@ -39,7 +39,7 @@ export function enriquecer(c: Contrato): ContratoVista {
     c.organo.jerarquia.map((n) => ccaaDesdeNombre(n)).find(Boolean) ||
     null;
   const importes = c.adjudicaciones.map((a) => a.importe).filter((x): x is number => x != null);
-  const fechas = c.adjudicaciones.map((a) => a.fecha).filter((x): x is string => !!x).sort();
+  const fechas = c.adjudicaciones.map((a) => fechaValida(a.fecha)).filter((x): x is string => !!x).sort();
   return {
     ...c,
     provincia: codigoProvincia ? PROVINCIAS_INE[codigoProvincia]![0] : null,

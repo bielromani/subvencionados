@@ -181,13 +181,16 @@ export function Mercado({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
             <h3>Adjudicado por año</h3>
             <Columnas
               columna="Adjudicado"
-              puntos={mc.porAnio.map((a) => ({
+              puntos={mc.porAnio
+                // Años cargados de verdad: los sueltos anteriores son expedientes viejos actualizados.
+                .filter((a, _, todos) => a.contratos >= Math.max(...todos.map((x) => x.contratos)) * 0.05)
+                .map((a) => ({
                 etiqueta: String(a.anio),
                 valor: a.adjudicado,
                 detalle: `${a.anio}: ${euros.format(a.adjudicado)} en ${numero(a.contratos)} contratos`,
               }))}
             />
-            <p className="ayuda">Solo los años cargados de la Plataforma; el año en curso está incompleto.</p>
+            <p className="ayuda">Cargado desde 2024; el año en curso está incompleto (hasta el {new Date().toLocaleDateString('es-ES')}).</p>
           </section>
           <section className="bloque">
             <h3>Adjudicado por comunidad</h3>
