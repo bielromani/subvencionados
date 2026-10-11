@@ -1,4 +1,4 @@
-import type { Circuito, Coincidencia, Contrato, Festival, Programador, Convocatoria, EventoCalendario, Grupo, Mercado, MercadoContratos, Meta, Organismo, Perfil } from './tipos';
+import type { Circuito, Coincidencia, ContactoMunicipio, Contrato, Festival, Programador, Convocatoria, EventoCalendario, Grupo, Mercado, MercadoContratos, Meta, Organismo, Perfil } from './tipos';
 
 export interface Lista {
   total: number;
@@ -56,7 +56,7 @@ export const api = {
     return pedir<{ total: number; pagina: number; porPagina: number; items: Organismo[] }>(`/api/organismos?${params}`);
   },
   organismo: (id: string) =>
-    pedir<Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] } }>(`/api/organismos/${encodeURIComponent(id)}`),
+    pedir<Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] }; contacto: ContactoMunicipio | null }>(`/api/organismos/${encodeURIComponent(id)}`),
   calendario: (consulta: string) => pedir<{ eventos: EventoCalendario[]; licitaciones: Contrato[] }>(`/api/calendario?${consulta}`),
   mercado: (consulta: string) => pedir<Mercado>(`/api/mercado?${consulta}`),
   inicio: () =>

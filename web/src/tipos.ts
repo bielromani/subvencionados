@@ -350,6 +350,40 @@ export interface Programador {
   ultimo: string | null;
   meses: number[];
   recientes?: FuenteDirectorio[];
+  /** Municipio del directorio de contactos, si el programador es un ayuntamiento o depende de él. */
+  codigoIne?: string | null;
+  /** Se conoce el responsable o el contacto de cultura. */
+  conContacto?: boolean;
+  contacto?: ContactoMunicipio | null;
+}
+
+export interface PersonaCultura {
+  nombre: string;
+  cargo: string | null;
+  area: string | null;
+  partido: string | null;
+  email: string | null;
+  telefono: string | null;
+  web: string | null;
+  direccion: string | null;
+  notas: string | null;
+  fuente: string | null;
+  enlace: string | null;
+  anio: number | null;
+  contactoOmitido: boolean;
+}
+
+export interface ContactoMunicipio {
+  codigoIne: string;
+  municipio: string;
+  provincia: string;
+  ccaa: string;
+  poblacion: number | null;
+  ayuntamiento: { telefono: string | null; email: string | null; web: string | null; direccion: string | null };
+  alcaldia: { nombre: string; partido: string | null } | null;
+  cultura: { email: string | null; telefono: string | null };
+  personas: PersonaCultura[];
+  fuentes: string | null;
 }
 
 export interface Festival {

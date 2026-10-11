@@ -1,0 +1,103 @@
+{
+ "fecha": "2026-10-10",
+ "fuentes": [
+  {
+   "fichero": "cat-carrecs.csv",
+   "url": "https://analisi.transparenciacatalunya.cat/resource/m5nd-xjza.csv?$limit=100000",
+   "descripcion": "Generalitat de Catalunya · Càrrecs electes dels ens locals (Municat)",
+   "licencia": "CC BY 4.0 (dades obertes Generalitat)",
+   "resultado": "1496157 bytes"
+  },
+  {
+   "fichero": "cat-ajuntaments.csv",
+   "url": "https://analisi.transparenciacatalunya.cat/resource/vevv-8fvw.csv?$limit=10000",
+   "descripcion": "Generalitat de Catalunya · Dades d'ens locals - Ajuntaments (Municat)",
+   "licencia": "CC BY 4.0 (dades obertes Generalitat)",
+   "resultado": "975894 bytes"
+  },
+  {
+   "fichero": "euskadi-entidades.json",
+   "url": "https://opendata.euskadi.eus/contenidos/ds_registros/registro_entidades_locales/opendata/entidades.json",
+   "descripcion": "Gobierno Vasco · Registro de entidades locales",
+   "licencia": "CC BY 4.0 (Open Data Euskadi)",
+   "resultado": "751243 bytes"
+  },
+  {
+   "fichero": "galicia-concellos.csv",
+   "url": "https://abertos.xunta.gal/catalogo/administracion-publica/-/dataset/0301/casas-dos-concellos-galicia/102/acceso-aos-datos.csv",
+   "descripcion": "Xunta de Galicia · Casas dos concellos de Galicia",
+   "licencia": "CC BY 4.0 (Abertos Xunta)",
+   "resultado": "44227 bytes"
+  },
+  {
+   "fichero": "clm-ayuntamientos.csv",
+   "url": "https://datosabiertos.castillalamancha.es/sites/datosabiertos.castillalamancha.es/files/Entidades_Locales_CLM%20%28Junio_2025%29.csv",
+   "descripcion": "Junta de Comunidades de Castilla-La Mancha · Directorio de Ayuntamientos (junio 2025)",
+   "licencia": "CC BY-SA 3.0 ES",
+   "resultado": "145297 bytes"
+  },
+  {
+   "fichero": "castellon-ayuntamientos.csv",
+   "url": "https://dipcas.opendatasoft.com/api/v2/catalog/datasets/ayuntamientos/exports/csv",
+   "descripcion": "Diputación de Castellón · Ayuntamientos",
+   "licencia": "CC BY 4.0",
+   "resultado": "50612 bytes"
+  },
+  {
+   "fichero": "gva-entidades-locales.csv",
+   "url": "https://dadesobertes.gva.es/dataset/93721b0e-3a83-4108-a7b5-040058c5d6c6/resource/29864181-c7b1-470c-a4e6-e5958ead7c4a/download/mapets.csv",
+   "descripcion": "Generalitat Valenciana · Recursos de gobierno abierto de las entidades locales",
+   "licencia": "CC BY 4.0 (dadesobertes.gva.es)",
+   "resultado": "149062 bytes"
+  },
+  {
+   "fichero": "navarra-entidades.csv",
+   "url": "https://datosabiertos.navarra.es/dataset/ebce4d71-a914-46ed-b7c6-d7e73046b511/resource/621b149e-4410-4353-b7d1-b08e3ff5d1e2/download/2025-municipios.csv",
+   "descripcion": "Gobierno de Navarra · Guía de entidades locales de Navarra",
+   "licencia": "CC BY 4.0 (Open Data Navarra)",
+   "resultado": "226578 bytes"
+  },
+  {
+   "fichero": "andalucia-rael.txt",
+   "url": "https://datos.juntadeandalucia.es/api/v0/rael/all?format=csv",
+   "descripcion": "Junta de Andalucía · Registro Andaluz de Entidades Locales (RAEL)",
+   "licencia": "CC BY 4.0 (datos abiertos Junta de Andalucía)",
+   "resultado": "3487878 bytes"
+  },
+  {
+   "fichero": "aragon-municipios.csv",
+   "url": "https://opendata.aragon.es/GA_OD_Core/download?resource_id=11&formato=csv",
+   "descripcion": "Gobierno de Aragón · Información general de los municipios de Aragón",
+   "licencia": "CC BY 4.0 (Aragón Open Data)",
+   "resultado": "167076 bytes"
+  },
+  {
+   "fichero": "diba-electes.json",
+   "url": "https://do.diba.cat/api/dataset/electes/format/json/pag-ini/1/pag-fi/10000",
+   "descripcion": "Diputació de Barcelona · Càrrecs electes (amb àmbit de treball)",
+   "licencia": "CC BY 4.0",
+   "resultado": "5373959 bytes"
+  },
+  {
+   "fichero": "salamanca-alcaldes.csv",
+   "url": "https://datosabiertossalamanca.es/dataset/55683da4-954e-4b34-8ab2-bc4a97e70682/resource/204dceb7-50fd-42a7-9aa9-4a4d61f951e9/download/sp02.csv",
+   "descripcion": "Diputación de Salamanca · Alcaldes de la provincia",
+   "licencia": "CC BY 4.0",
+   "resultado": "30619 bytes"
+  },
+  {
+   "fichero": "wikidata-webs.csv",
+   "url": "https://query.wikidata.org/sparql",
+   "descripcion": "Wikidata · web oficial y población de cada municipio (P856 y P1082 por código INE P772)",
+   "licencia": "CC0",
+   "resultado": "291567 bytes"
+  },
+  {
+   "fichero": "cadiz-cultura.json",
+   "url": "https://www.dipucadiz.es/cultura/directorios/provincia/",
+   "descripcion": "Diputación de Cádiz · Personal de cultura de los ayuntamientos de la provincia",
+   "licencia": "Información pública (citar la fuente)",
+   "resultado": "23925 bytes"
+  }
+ ]
+}

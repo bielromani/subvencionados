@@ -2,6 +2,7 @@ import express, { type Request } from 'express';
 import { aICal, calendario } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
+import type { ContactoMunicipio, Contactos } from './contactos.js';
 import { type Circuito, circuitos, type Festival, festivales, type Programador, programadores } from './directorio.js';
 import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
@@ -77,6 +78,8 @@ export interface OpcionesApp {
   fichas?: { leer: (codigoBdns: string) => Ficha | null; tiene: (codigoBdns: string) => boolean };
   /** Contratos de música de la Plataforma de Contratación (datos/contratos/). */
   contratos?: ContratoVista[];
+  /** Directorio de ayuntamientos y responsables de cultura (datos/directorio/). */
+  contactos?: Contactos | null;
 }
 
 /** "Palmas de Gran Canaria, Las" (INE) y "Las Palmas de Gran Canaria" son el mismo municipio. */
@@ -199,11 +202,17 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   });
 
   // Directorio de dónde tocar: se recalcula solo cuando cambian las convocatorias.
-  let directorio: { version: number; programadores: Programador[]; festivales: Festival[]; circuitos: Circuito[] } | null = null;
+  type ProgramadorConContacto = Programador & { codigoIne: string | null; conContacto: boolean };
+  let directorio: { version: number; programadores: ProgramadorConContacto[]; festivales: Festival[]; circuitos: Circuito[] } | null = null;
+  const tieneContactoCultura = (m: ContactoMunicipio | null) => !!m && (m.personas.length > 0 || !!m.cultura.email || !!m.cultura.telefono);
   const dir = () => {
     if (directorio?.version !== repo.version) {
       const conv = repo.listarConvocatorias();
-      directorio = { version: repo.version, programadores: programadores(contratos), festivales: festivales(contratos, conv), circuitos: circuitos(contratos, conv) };
+      const progs = programadores(contratos).map((p) => {
+        const m = opciones.contactos?.deOrgano(p.nombre, p.ciudad, p.codigoProvincia) ?? null;
+        return { ...p, codigoIne: m?.codigoIne ?? null, conContacto: tieneContactoCultura(m) };
+      });
+      directorio = { version: repo.version, programadores: progs, festivales: festivales(contratos, conv), circuitos: circuitos(contratos, conv) };
     }
     return directorio;
   };
@@ -223,6 +232,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         (p) =>
           (!ccaa.length || (p.ccaa && ccaa.includes(p.ccaa))) &&
           (!estilos.length || estilos.some((e) => (p.estilos[e as keyof typeof p.estilos] ?? 0) > 0)) &&
+          (req.query.contacto !== 'si' || p.conContacto) &&
           coincideTexto(req.query.q, p.nombre, p.ciudad, p.provincia),
       )
       .sort((a, b) =>
@@ -241,7 +251,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       res.status(404).json({ error: 'Programador no encontrado' });
       return;
     }
-    res.json(p);
+    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null });
   });
 
   app.get('/api/festivales', (req, res) => {
@@ -358,7 +368,22 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
           .filter((c) => c.codigoProvincia === u.codigoProvincia && mismoMunicipio(c.organo.ciudad, u.municipio))
           .sort((a, b) => (b.fechaAdjudicacion ?? b.actualizado).localeCompare(a.fechaAdjudicacion ?? a.actualizado))
       : [];
-    res.json({ ...resto, convocatorias, contratos: { total: delMunicipio.length, items: delMunicipio.slice(0, 50).map(contratoResumido) } });
+    res.json({
+      ...resto,
+      convocatorias,
+      contratos: { total: delMunicipio.length, items: delMunicipio.slice(0, 50).map(contratoResumido) },
+      // Solo si el organismo es el propio municipio (la ubicación de una diputación no lleva municipio).
+      contacto: opciones.contactos?.porCodigo(u?.codigoMunicipio) ?? null,
+    });
+  });
+
+  app.get('/api/contactos/:ine', (req, res) => {
+    const m = opciones.contactos?.porCodigo(req.params.ine);
+    if (!m) {
+      res.status(404).json({ error: 'Municipio no encontrado en el directorio' });
+      return;
+    }
+    res.json(m);
   });
 
   app.get('/api/perfil', (_req, res) => {

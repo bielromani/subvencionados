@@ -214,6 +214,11 @@ Estado (todo construido con nuestros datos, sin IA y sin descargas nuevas):
       Mancha, Aragón, Programa.cat, Circuit Cultural Valencià, circuitos provinciales… con sus apariciones en los datos.
 - [x] Web: sección «Dónde tocar» con fichas, y en «Mis grupos» los festivales y programadores de su estilo en las
       comunidades del promotor.
+- [x] **A quién contactar** (directorio de cultura del otro proyecto, cruzado por código INE): 1.588 de los 1.675
+      programadores municipales y los organismos que son un municipio enseñan el contacto del ayuntamiento y la alcaldía;
+      227 programadores tienen además responsable o contacto de cultura. Cada persona con su fuente y año; solo contacto
+      institucional (emails gratuitos y móviles personales omitidos). Filtro «solo con contacto de cultura».
+- [ ] Ampliar el directorio de cultura (hoy 562 municipios con responsable): sobre todo los que más contratan música.
 - [ ] Condiciones de acceso a cada circuito (bases de PLATEA y de las redes autonómicas): sus webs están en dominios
       que el entorno de trabajo no alcanza; se puede consultar a mano o desde GitHub Actions.
 

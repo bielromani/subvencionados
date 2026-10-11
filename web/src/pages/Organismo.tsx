@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { Contacto } from '../components/Contacto';
 import { FilaContrato } from '../components/FilaContrato';
 import { TarjetaConvocatoria } from '../components/TarjetaConvocatoria';
-import { NOMBRE_ADMINISTRACION, type Contrato, type Convocatoria, type Organismo } from '../tipos';
+import { NOMBRE_ADMINISTRACION, type ContactoMunicipio, type Contrato, type Convocatoria, type Organismo } from '../tipos';
 import { lugar } from './Organismos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const POR_TANDA = 20;
 
 export function PaginaOrganismo({ id }: { id: string }) {
-  const [o, setO] = useState<(Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] } }) | null>(null);
+  const [o, setO] = useState<(Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] }; contacto: ContactoMunicipio | null }) | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [vistas, setVistas] = useState(POR_TANDA);
   const [soloVigentes, setSoloVigentes] = useState(false);
@@ -58,6 +59,8 @@ export function PaginaOrganismo({ id }: { id: string }) {
           </div>
         </dl>
       </header>
+
+      {o.contacto && <Contacto c={o.contacto} />}
 
       {o.porAnio.length > 0 && (
         <section className="bloque">

@@ -23,6 +23,7 @@ export function FilaProgramador({ p, estilo }: { p: Programador; estilo?: Estilo
             {NOMBRE_ESTILO[e]}: {n}
           </Etiqueta>
         ))}
+        {p.conContacto && <Etiqueta tono="exito">Contacto de cultura</Etiqueta>}
       </div>
       <a className="fila-titulo" href={enlace('programador', p.id)}>
         {p.nombre}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { Contacto } from '../components/Contacto';
 import { aniosTexto, Fuentes, mesesTexto } from '../components/Directorio';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
 import { NOMBRE_ESTILO, type Estilo, type Festival, type Programador } from '../tipos';
@@ -74,6 +75,7 @@ export function PaginaProgramador({ id }: { id: string }) {
           </footer>
         )}
       </article>
+      {p.contacto && <Contacto c={p.contacto} />}
       <section className="bloque">
         <h3>Últimos contratos</h3>
         <Fuentes fuentes={p.recientes ?? []} />

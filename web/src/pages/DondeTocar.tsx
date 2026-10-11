@@ -10,7 +10,7 @@ type Pestana = 'festivales' | 'programadores' | 'circuitos';
 export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const p = ruta.params;
   const [pestana, setPestana] = useState<Pestana>((p.get('ver') as Pestana) || 'festivales');
-  const [filtros, setFiltros] = useState({ q: p.get('q') ?? '', ccaa: p.get('ccaa') ?? '', estilo: p.get('estilo') ?? '', orden: p.get('orden') ?? '', todos: p.get('todos') ?? '', pagina: Number(p.get('pagina')) || 1 });
+  const [filtros, setFiltros] = useState({ q: p.get('q') ?? '', ccaa: p.get('ccaa') ?? '', estilo: p.get('estilo') ?? '', orden: p.get('orden') ?? '', todos: p.get('todos') ?? '', contacto: p.get('contacto') ?? '', pagina: Number(p.get('pagina')) || 1 });
   const [r, setR] = useState<{ total: number; porPagina: number; items: (Festival | Programador)[] } | null>(null);
   const [circuitos, setCircuitos] = useState<Circuito[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -80,6 +80,12 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
             <label className="casilla">
               <input type="checkbox" checked={filtros.todos === 'true'} onChange={(e) => setFiltros((f) => ({ ...f, todos: e.target.checked ? 'true' : '', pagina: 1 }))} /> Incluir
               multidisciplinares y de fiestas
+            </label>
+          )}
+          {pestana === 'programadores' && (
+            <label className="casilla">
+              <input type="checkbox" checked={filtros.contacto === 'si'} onChange={(e) => setFiltros((f) => ({ ...f, contacto: e.target.checked ? 'si' : '', pagina: 1 }))} /> Solo
+              con contacto de cultura
             </label>
           )}
         </div>
