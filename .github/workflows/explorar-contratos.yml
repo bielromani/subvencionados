@@ -1,0 +1,55 @@
+# Diagnóstico manual de la Plataforma de Contratación del Sector Público (datos abiertos):
+# formato del ATOM, tamaño de los ficheros mensuales y cuántas licitaciones hay con CPV de música y eventos.
+name: Explorar contratos
+
+on:
+  workflow_dispatch:
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: ATOM de licitaciones (primera página)
+        run: |
+          U=https://contrataciondelsectorpublico.gob.es/sindicacion/sindicacion_643/licitacionesPerfilesContratanteCompleto3.atom
+          curl -sS -m 120 -D /tmp/cab -o /tmp/p.atom "$U"; head -15 /tmp/cab
+          echo "tamaño: $(stat -c %s /tmp/p.atom) · entradas: $(grep -c '<entry' /tmp/p.atom)"
+          grep -o '<link[^>]*rel="next"[^>]*>' /tmp/p.atom | head -2
+          head -c 1500 /tmp/p.atom; echo; echo ----
+          awk '/<entry/{n++} n==1' /tmp/p.atom | head -c 9000; echo
+
+      - name: Tamaño de los ficheros históricos
+        run: |
+          B=https://contrataciondelsectorpublico.gob.es/sindicacion
+          for f in sindicacion_643/licitacionesPerfilesContratanteCompleto3_202609.zip sindicacion_643/licitacionesPerfilesContratanteCompleto3_2025.zip \
+                   sindicacion_1044/PlataformasAgregadasSinMenores_202609.zip sindicacion_1044/PlataformasAgregadasSinMenores_2025.zip \
+                   sindicacion_1143/contratosMenoresPerfilesContratantes_202609.zip; do
+            echo "$f: $(curl -sSI -m 60 "$B/$f" | grep -iE '^(HTTP|content-length)' | tr '\r\n' '  ')"
+          done
+
+      - name: Un mes completo filtrado por CPV
+        run: |
+          B=https://contrataciondelsectorpublico.gob.es/sindicacion
+          mkdir -p /tmp/m && cd /tmp/m
+          curl -sS -m 900 -o m.zip "$B/sindicacion_643/licitacionesPerfilesContratanteCompleto3_202609.zip"
+          ls -la m.zip; unzip -q m.zip; ls | head; echo "ficheros: $(ls | wc -l)"
+          cat *.atom > todo.xml; echo "entradas: $(grep -c '<entry' todo.xml)"
+          for cpv in 92312 9231 9230 9200 79952 79953 79954 92331 92360; do
+            echo "CPV $cpv*: $(grep -o "<cbc:ItemClassificationCode[^>]*>$cpv[0-9]*<" todo.xml | wc -l)"
+          done
+          echo "--- códigos 9231* y 7995* más frecuentes"
+          grep -oE "<cbc:ItemClassificationCode[^>]*>(9231|7995|9230)[0-9]*<" todo.xml | grep -oE '[0-9]{8}' | sort | uniq -c | sort -rn | head -20
+          echo "--- entrada de ejemplo con 92312"
+          awk 'BEGIN{RS="</entry>"} /ItemClassificationCode[^>]*>92312/{print; exit}' todo.xml | head -c 12000; echo
+          echo "--- títulos con concierto/música"
+          grep -oiE '<title>[^<]*(concierto|musica|música|orquesta|banda de m|festival)[^<]*</title>' todo.xml | head -25
+
+      - name: Contratos menores (un mes)
+        run: |
+          B=https://contrataciondelsectorpublico.gob.es/sindicacion
+          mkdir -p /tmp/n && cd /tmp/n
+          curl -sS -m 900 -o n.zip "$B/sindicacion_1143/contratosMenoresPerfilesContratantes_202609.zip" || exit 0
+          ls -la n.zip; unzip -q n.zip; cat *.atom > todo.xml; echo "entradas: $(grep -c '<entry' todo.xml)"
+          echo "CPV 92312*: $(grep -o '<cbc:ItemClassificationCode[^>]*>92312[0-9]*<' todo.xml | wc -l)"
+          grep -oiE '<title>[^<]*(concierto|actuaci|orquesta|banda de m|grupo musical)[^<]*</title>' todo.xml | head -15
