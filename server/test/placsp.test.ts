@@ -49,6 +49,9 @@ describe('Plataforma de Contratación', () => {
     expect(esDeMusica({ cpv: ['92312000'], titulo: 'Gestión de la escuela municipal de música' })).toBe(false);
     expect(esDeMusica({ cpv: ['79952000'], titulo: 'Organización de la feria del libro' })).toBe(false);
     expect(esDeMusica({ cpv: ['50241100'], titulo: 'Concierto de grúas' })).toBe(false);
+    expect(esDeMusica({ cpv: ['92312000'], titulo: 'Servicio de actuación artística teatral con la representación de la obra' })).toBe(false);
+    expect(esDeMusica({ cpv: ['92312000'], titulo: 'Programación de teatro, música y danza de la temporada' })).toBe(true);
+    expect(esDeMusica({ cpv: ['79952000'], titulo: 'Actuaciones artísticas para las fiestas patronales' })).toBe(true);
   });
 });
 

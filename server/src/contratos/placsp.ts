@@ -237,10 +237,15 @@ const TITULO_MUSICA =
 const TITULO_EXCLUIR =
   /\b(escuelas? (municipal )?de musica|escola de musica|escola municipal de musica|ensenanza|ensenanzas|formacion|clases|profesorado|docente|obras? de|suministro|adquisicion de instrumentos|instrumentos musicales|barra|bar|cafeteria|alquiler de (escenario|sonido)|sonorizacion|hilo musical|ambientacion musical|limpieza|seguridad|vigilancia|instalaciones)\b/;
 
+/** Teatro, danza o circo: solo cuentan si el título menciona además música. */
+const TITULO_ESCENICAS = /\b(teatral|teatrales|obra de teatro|representacion teatral|danza|dansa|circo|circ|titeres|monologo|monologos|humor)\b/;
+const TITULO_MUSICA_CLARA = /\b(concierto|conciertos|concert|concerts|concerto|orquesta|orquestra|banda|musica|musical|musicales|cantante|coro|coral|opera|zarzuela|jazz)\b/;
+
 /** Contratos de música en vivo: CPV de música o CPV afín con un título de música, sin enseñanza ni obras. */
 export function esDeMusica(c: Pick<Contrato, 'cpv' | 'titulo'>): boolean {
   const t = normalizar(c.titulo);
   if (TITULO_EXCLUIR.test(t)) return false;
+  if (TITULO_ESCENICAS.test(t) && !TITULO_MUSICA_CLARA.test(t)) return false;
   if (c.cpv.some((x) => CPV_MUSICA.test(x))) return true;
   return c.cpv.some((x) => CPV_AFINES.test(x)) && TITULO_MUSICA.test(t);
 }

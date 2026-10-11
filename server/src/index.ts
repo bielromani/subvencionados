@@ -5,11 +5,15 @@ import { Repositorio } from './db.js';
 import { AlmacenFichas } from './ficha/fichas.js';
 import { AlmacenContratos } from './contratos/almacen.js';
 import { enriquecer } from './contratos/vista.js';
+import { esDeMusica } from './contratos/placsp.js';
 
 const repo = new Repositorio(config.rutaDb);
 const almacen = new Almacen(config.rutaDatosBdns);
 const fichas = new AlmacenFichas(`${config.rutaDatos}/fichas`);
-const contratos = [...new AlmacenContratos(`${config.rutaDatos}/contratos`).contratos.values()].map(({ anio: _a, ...c }) => enriquecer(c));
+const contratos = [...new AlmacenContratos(`${config.rutaDatos}/contratos`).contratos.values()]
+  // El filtro se vuelve a aplicar al cargar: si se afina, no hace falta volver a descargar.
+  .filter((c) => esDeMusica(c))
+  .map(({ anio: _a, ...c }) => enriquecer(c));
 crearApp(repo, {
   leerTexto: (relativa) => almacen.leerTexto(relativa),
   fichas: { leer: (codigo) => fichas.leer(codigo), tiene: (codigo) => fichas.tiene(codigo) },
