@@ -45,7 +45,7 @@ Un promotor que mueve grupos de jazz, clásica u ópera entra y encuentra, orden
 
 ---
 
-## Fase 0 · Base y datos de la BDNS (casi terminada)
+## Fase 0 · Base y datos de la BDNS (terminada)
 
 **Objetivo:** tener todas las convocatorias de música de la BDNS, actualizadas a diario, y una primera web.
 
@@ -57,8 +57,7 @@ Un promotor que mueve grupos de jazz, clásica u ópera entra y encuentra, orden
 - [x] Descarga del histórico completa (9-oct-2026): 18.568 convocatorias desde 2014, 16.385 de música.
 - [x] Informe del nicho generado a partir de los datos (`npm run informe` → `docs/informe-nicho.md`, se regenera a
       diario) con el histórico completo: por año, comunidad, administración, actividad, beneficiarios y organismos.
-- [ ] Comprobar que el workflow diario funciona varios días seguidos sin fallos (el guardado ya resiste pushes
-      simultáneos, que hicieron fallar una ejecución el 9-oct).
+- [x] El workflow diario funcionó tres días seguidos sin fallos (9, 10 y 11 de octubre de 2026).
 
 **Terminado cuando:** el histórico está completo, el workflow diario funciona varios días seguidos sin fallos y el
 informe de cifras está en `docs/`.
