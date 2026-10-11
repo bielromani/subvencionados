@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { FilaContrato } from '../components/FilaContrato';
 import { TarjetaConvocatoria } from '../components/TarjetaConvocatoria';
-import { NOMBRE_ADMINISTRACION, type Convocatoria, type Organismo } from '../tipos';
+import { NOMBRE_ADMINISTRACION, type Contrato, type Convocatoria, type Organismo } from '../tipos';
 import { lugar } from './Organismos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const POR_TANDA = 20;
 
 export function PaginaOrganismo({ id }: { id: string }) {
-  const [o, setO] = useState<(Organismo & { convocatorias: Convocatoria[] }) | null>(null);
+  const [o, setO] = useState<(Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] } }) | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [vistas, setVistas] = useState(POR_TANDA);
   const [soloVigentes, setSoloVigentes] = useState(false);
@@ -95,6 +96,23 @@ export function PaginaOrganismo({ id }: { id: string }) {
               <li key={b.nombre}>
                 {b.nombre} · {euros.format(b.importe)} en {b.veces} {b.veces === 1 ? 'concesión' : 'concesiones'}
               </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {o.contratos.total > 0 && (
+        <section className="bloque">
+          <h3>
+            Contratos de música en {o.ubicacion?.municipio} <span className="contador">{o.contratos.total}</span>
+          </h3>
+          <p className="ayuda">
+            Contratos públicos de conciertos de los órganos de contratación de este municipio (ayuntamiento, patronatos,
+            empresas municipales…), de la Plataforma de Contratación del Sector Público.
+          </p>
+          <ul className="filas">
+            {o.contratos.items.map((c) => (
+              <FilaContrato key={c.id} c={c} />
             ))}
           </ul>
         </section>

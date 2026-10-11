@@ -2,6 +2,7 @@ import express, { type Request } from 'express';
 import { aICal, calendario } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
+import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
 import { type Coincidencia, emparejar, plazo } from './emparejamiento.js';
@@ -73,11 +74,40 @@ export interface OpcionesApp {
   leerTexto?: (relativa: string) => string | null;
   /** Ficha extraída de las bases (datos/fichas/), si la hay. */
   fichas?: { leer: (codigoBdns: string) => Ficha | null; tiene: (codigoBdns: string) => boolean };
+  /** Contratos de música de la Plataforma de Contratación (datos/contratos/). */
+  contratos?: ContratoVista[];
 }
+
+/** "Palmas de Gran Canaria, Las" (INE) y "Las Palmas de Gran Canaria" son el mismo municipio. */
+export function mismoMunicipio(a: string | null | undefined, b: string | null | undefined): boolean {
+  if (!a || !b) return false;
+  const forma = (x: string) => {
+    const n = normalizar(x);
+    const m = n.match(/^(.*), (el|la|los|las|l|lo|o|a|os|as|es|sa|ses|els|les)$/);
+    return m ? `${m[2]} ${m[1]}` : n;
+  };
+  return forma(a) === forma(b);
+}
+
+const filtroContratos = (q: Request['query']) => ({
+  q: typeof q.q === 'string' ? q.q : undefined,
+  ccaa: lista(q.ccaa),
+  provincia: lista(q.provincia),
+  estilo: lista(q.estilo),
+  estado: (q.estado === 'abiertas' || q.estado === 'adjudicadas' ? q.estado : '') as 'abiertas' | 'adjudicadas' | '',
+  menor: (q.menor === 'si' || q.menor === 'no' ? q.menor : '') as 'si' | 'no' | '',
+  desde: typeof q.desde === 'string' ? q.desde : undefined,
+});
 
 export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const app = express();
   const resumida = (c: Convocatoria) => ({ ...vistaResumida(c), tieneFicha: opciones.fichas?.tiene(c.codigoBdns) ?? false });
+  const contratos = opciones.contratos ?? [];
+  const contratoResumido = (c: ContratoVista) => {
+    const { documentos: _d, ...resto } = c;
+    return { ...resto, abierta: abierta(c) };
+  };
+
 
   // Los organismos se recalculan solo cuando cambian las convocatorias.
   let organismosCache: { version: number; lista: Organismo[]; porId: Map<string, Organismo> } | null = null;
@@ -145,7 +175,11 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     calendario(filtrar(repo.listarConvocatorias(), { ...q, cultura: q.cultura ?? 'true', tipo: undefined, plazo: undefined }));
 
   app.get('/api/calendario', (req, res) => {
-    res.json({ eventos: eventos(req.query) });
+    // Licitaciones de conciertos con plazo abierto: el día que cierran.
+    const licitaciones = filtrarContratos(contratos, { ccaa: lista(req.query.ccaa), estilo: lista(req.query.estilo), estado: 'abiertas' })
+      .sort((a, b) => (a.finPlazo ?? '').localeCompare(b.finPlazo ?? ''))
+      .map(contratoResumido);
+    res.json({ eventos: eventos(req.query), licitaciones });
   });
 
   app.get('/api/calendario.ics', (req, res) => {
@@ -161,6 +195,41 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       (c) => c.clasificacion.estilosCompatibles.length > 0 && (conFormacion || !c.clasificacion.lineas.includes('formacion')),
     );
     res.json(mercado(base));
+  });
+
+  app.get('/api/contratos', (req, res) => {
+    const hoy = new Date();
+    const resultado = filtrarContratos(contratos, filtroContratos(req.query), hoy);
+    const orden = req.query.orden;
+    const clave = (c: ContratoVista) => c.fechaAdjudicacion ?? c.actualizado.slice(0, 10);
+    const ordenados = [...resultado].sort((a, b) =>
+      orden === 'cierre'
+        ? (a.finPlazo ?? '9999').localeCompare(b.finPlazo ?? '9999')
+        : orden === 'importe'
+          ? (b.adjudicado ?? b.importe ?? 0) - (a.adjudicado ?? a.importe ?? 0)
+          : clave(b).localeCompare(clave(a)),
+    );
+    const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 200);
+    const pagina = Math.max(Number(req.query.pagina) || 1, 1);
+    res.json({
+      total: resultado.length,
+      pagina,
+      porPagina,
+      items: ordenados.slice((pagina - 1) * porPagina, pagina * porPagina).map(contratoResumido),
+    });
+  });
+
+  app.get('/api/contratos/mercado', (req, res) => {
+    res.json(mercadoContratos(filtrarContratos(contratos, filtroContratos(req.query))));
+  });
+
+  app.get('/api/contratos/:id', (req, res) => {
+    const c = contratos.find((x) => x.id === req.params.id);
+    if (!c) {
+      res.status(404).json({ error: 'Contrato no encontrado' });
+      return;
+    }
+    res.json({ ...c, abierta: abierta(c) });
   });
 
   app.get('/api/organismos', (req, res) => {
@@ -200,7 +269,14 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       .map((id) => repo.obtenerConvocatoria(id))
       .filter((c): c is Convocatoria => c !== null)
       .map(resumida);
-    res.json({ ...resto, convocatorias });
+    // Contratos de música del mismo municipio (los órganos de contratación no coinciden uno a uno con los de la BDNS).
+    const u = resto.ubicacion;
+    const delMunicipio = u?.municipio
+      ? contratos
+          .filter((c) => c.codigoProvincia === u.codigoProvincia && mismoMunicipio(c.organo.ciudad, u.municipio))
+          .sort((a, b) => (b.fechaAdjudicacion ?? b.actualizado).localeCompare(a.fechaAdjudicacion ?? a.actualizado))
+      : [];
+    res.json({ ...resto, convocatorias, contratos: { total: delMunicipio.length, items: delMunicipio.slice(0, 50).map(contratoResumido) } });
   });
 
   app.get('/api/perfil', (_req, res) => {
@@ -238,6 +314,14 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       },
       artistas: primeras(s.artistas, 5),
       nuevas: primeras(nuevas(todas, hoy), 8),
+      licitaciones: (() => {
+        // Con perfil, solo las de sus comunidades.
+        const zona = conGrupos ? [conGrupos.ccaaSede, ...conGrupos.ccaaActuacion].filter((x): x is string => !!x) : [];
+        const abiertas = filtrarContratos(contratos, { estado: 'abiertas', ccaa: zona }, hoy).sort((a, b) =>
+          (a.finPlazo ?? '').localeCompare(b.finPlazo ?? ''),
+        );
+        return { total: abiertas.length, items: abiertas.slice(0, 8).map(contratoResumido) };
+      })(),
       grupos: conGrupos
         ? porGrupo(repo.listarConvocatorias(), conGrupos, hoy).map((g) => {
             // Solo las que mencionan su estilo: las generales valen para todos los grupos.

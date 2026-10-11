@@ -277,3 +277,48 @@ export interface Mercado {
   porProvincia: { codigo: string; nombre: string; convocatorias: number; concedido: number }[];
   porLinea: { linea: Linea | 'sin'; convocatorias: number; concedido: number }[];
 }
+
+export interface Adjudicacion {
+  adjudicatario: string | null;
+  nif: string | null;
+  personaFisica: boolean;
+  importe: number | null;
+  importeConIva: number | null;
+  fecha: string | null;
+  ofertas: number | null;
+  lote: string | null;
+}
+
+/** Contrato de música de la Plataforma de Contratación del Sector Público. */
+export interface Contrato {
+  id: string;
+  expediente: string | null;
+  titulo: string;
+  estado: string | null;
+  menor: boolean;
+  actualizado: string;
+  enlace: string | null;
+  organo: { nombre: string; dir3: string | null; nif: string | null; ciudad: string | null; codigoPostal: string | null; web: string | null; jerarquia: string[] };
+  procedimiento: string | null;
+  importe: number | null;
+  importeConIva: number | null;
+  cpv: string[];
+  finPlazo: string | null;
+  ejecucion: { inicio: string | null; fin: string | null };
+  adjudicaciones: Adjudicacion[];
+  documentos?: { tipo: 'administrativo' | 'tecnico' | 'otro'; nombre: string | null; url: string }[];
+  provincia: string | null;
+  codigoProvincia: string | null;
+  ccaa: string | null;
+  estilos: Estilo[];
+  adjudicado: number | null;
+  fechaAdjudicacion: string | null;
+  abierta: boolean;
+}
+
+export interface MercadoContratos {
+  porAnio: { anio: number; contratos: number; adjudicado: number }[];
+  porComunidad: { nombre: string; contratos: number; adjudicado: number }[];
+  empresas: { nombre: string; nif: string | null; contratos: number; adjudicado: number; organismos: number }[];
+  adjudicacionesAPersonasFisicas: number;
+}

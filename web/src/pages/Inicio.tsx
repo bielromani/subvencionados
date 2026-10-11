@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api, type Lista, type ListaPrevistas } from '../api';
+import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { enlace } from '../ruta';
 import { NOMBRE_ESTILO } from '../tipos';
@@ -94,6 +95,29 @@ export function Inicio() {
         lista={d.cierranPronto}
         mas={['#/para-ti', 'Ver todas las recomendaciones']}
       />
+      <section className="bloque">
+        <h3>
+          Contratos públicos de conciertos abiertos <span className="contador">{d.licitaciones.total}</span>
+        </h3>
+        <p className="ayuda">
+          Licitaciones de actuaciones musicales en las que se puede presentar oferta
+          {d.perfilCompleto ? ' en tus comunidades' : ''}.
+        </p>
+        {d.licitaciones.items.length === 0 ? (
+          <p className="ayuda">Ninguna abierta ahora mismo.</p>
+        ) : (
+          <ul className="filas">
+            {d.licitaciones.items.map((c) => (
+              <FilaContrato key={c.id} c={c} />
+            ))}
+          </ul>
+        )}
+        {d.licitaciones.total > d.licitaciones.items.length && (
+          <p>
+            <a href="#/contratos">Ver todas →</a>
+          </p>
+        )}
+      </section>
       <Bloque titulo="Abren pronto" explicacion="El plazo aún no ha empezado: buen momento para preparar la solicitud." lista={d.abrenPronto} mas={['#/calendario', 'Ver el calendario']} />
       <Bloque
         titulo="Previstas en los próximos 6 meses"

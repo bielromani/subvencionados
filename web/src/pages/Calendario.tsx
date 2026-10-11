@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { FilaContrato } from '../components/FilaContrato';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
 import { cambiarParams, enlace, type Ruta } from '../ruta';
-import { NOMBRE_ESTILO, type EventoCalendario, type Meta } from '../tipos';
+import { NOMBRE_ESTILO, type Contrato, type EventoCalendario, type Meta } from '../tipos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const nombreMes = (aaaamm: string) =>
@@ -22,12 +23,16 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
     cultura: ruta.params.get('cultura') ?? 'true',
   });
   const [eventos, setEventos] = useState<EventoCalendario[] | null>(null);
+  const [licitaciones, setLicitaciones] = useState<Contrato[]>([]);
   const [error, setError] = useState<string | null>(null);
   const consulta = new URLSearchParams(Object.entries(filtros).filter(([, v]) => v)).toString();
 
   useEffect(() => {
     cambiarParams(filtros);
-    api.calendario(consulta).then((r) => setEventos(r.eventos), (e: Error) => setError(e.message));
+    api.calendario(consulta).then((r) => {
+      setEventos(r.eventos);
+      setLicitaciones(r.licitaciones ?? []);
+    }, (e: Error) => setError(e.message));
   }, [consulta]);
 
   const porMes = new Map<string, EventoCalendario[]>();
@@ -67,6 +72,18 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         </a>
       </div>
       {error && <p className="error">{error}</p>}
+      {licitaciones.length > 0 && (
+        <section className="bloque">
+          <h3>
+            Contratos públicos de conciertos con plazo abierto <span className="contador">{licitaciones.length}</span>
+          </h3>
+          <ul className="filas">
+            {licitaciones.map((c) => (
+              <FilaContrato key={c.id} c={c} />
+            ))}
+          </ul>
+        </section>
+      )}
       {eventos && eventos.length === 0 && <p className="ayuda">No hay nada previsto con estos filtros.</p>}
       {[...porMes].map(([mes, lista]) => (
         <section className="bloque" key={mes}>

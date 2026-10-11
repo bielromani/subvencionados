@@ -912,3 +912,8 @@ select {
   box-shadow: 0 0 0 1px var(--acento);
   font-weight: 600;
 }
+
+.titulo-seccion {
+  margin: 32px 0 4px;
+  font-size: 1.25rem;
+}

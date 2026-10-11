@@ -1,4 +1,4 @@
-import type { Coincidencia, Convocatoria, EventoCalendario, Grupo, Mercado, Meta, Organismo, Perfil } from './tipos';
+import type { Coincidencia, Contrato, Convocatoria, EventoCalendario, Grupo, Mercado, MercadoContratos, Meta, Organismo, Perfil } from './tipos';
 
 export interface Lista {
   total: number;
@@ -56,8 +56,8 @@ export const api = {
     return pedir<{ total: number; pagina: number; porPagina: number; items: Organismo[] }>(`/api/organismos?${params}`);
   },
   organismo: (id: string) =>
-    pedir<Organismo & { convocatorias: Convocatoria[] }>(`/api/organismos/${encodeURIComponent(id)}`),
-  calendario: (consulta: string) => pedir<{ eventos: EventoCalendario[] }>(`/api/calendario?${consulta}`),
+    pedir<Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] } }>(`/api/organismos/${encodeURIComponent(id)}`),
+  calendario: (consulta: string) => pedir<{ eventos: EventoCalendario[]; licitaciones: Contrato[] }>(`/api/calendario?${consulta}`),
   mercado: (consulta: string) => pedir<Mercado>(`/api/mercado?${consulta}`),
   inicio: () =>
     pedir<{
@@ -68,6 +68,7 @@ export const api = {
       previstas: ListaPrevistas;
       artistas: Lista;
       nuevas: Lista;
+      licitaciones: { total: number; items: Contrato[] };
       grupos: { grupo: Grupo; abiertas: number; previstas: number }[];
     }>('/api/inicio'),
   grupos: () =>
@@ -75,6 +76,10 @@ export const api = {
       perfilCompleto: boolean;
       grupos: { grupo: Grupo; abiertas: Lista; previstas: ListaPrevistas; artistas: Lista }[];
     }>('/api/grupos'),
+  contratos: (consulta: string) =>
+    pedir<{ total: number; pagina: number; porPagina: number; items: Contrato[] }>(`/api/contratos?${consulta}`),
+  contrato: (id: string) => pedir<Contrato>(`/api/contratos/${encodeURIComponent(id)}`),
+  mercadoContratos: (consulta: string) => pedir<MercadoContratos>(`/api/contratos/mercado?${consulta}`),
   perfil: () => pedir<Perfil>('/api/perfil'),
   guardarPerfil: (p: Perfil) => pedir<Perfil>('/api/perfil', { method: 'PUT', body: JSON.stringify(p) }),
   paraTi: () =>
