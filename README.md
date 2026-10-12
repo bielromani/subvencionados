@@ -108,3 +108,13 @@ Plan de trabajo por fases: [docs/plan.md](docs/plan.md). Fuentes de datos: [docs
 
 Fuente de los datos: Sistema Nacional de Publicidad de Subvenciones y Ayudas Públicas (BDNS), IGAE, Ministerio de
 Hacienda. Los datos de personas físicas beneficiarias no se guardan.
+
+## Web publicada
+
+https://subvencionados.vercel.app (proyecto `subvencionados` en Vercel, sin indexar en buscadores).
+
+- Cada push a `claude/fervent-knuth-i01xvy` se despliega solo, también los commits diarios de datos.
+- `vercel.json` + `scripts/vercel-build.mjs` (Build Output API): importa la base, construye la web y empaqueta la API
+  con sus datos en una función (región París).
+- Nada se guarda en el servidor: el perfil del promotor vive en su navegador.
+- `noindex, nofollow` en la cabecera `X-Robots-Tag` y en el HTML. Para indexarla más adelante, quitar las dos.
