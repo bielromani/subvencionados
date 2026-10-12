@@ -1,6 +1,6 @@
 # Informe del nicho: subvenciones públicas para música en España
 
-Generado el 2026-10-11 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
+Generado el 2026-10-12 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
 Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por reglas (ver
 `server/src/clasificacion/musica.ts`); la precisión medida está en `docs/evaluacion-clasificador.md`.
 
@@ -9,9 +9,9 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
 - Periodo cubierto: 2014-01-15 a 2026-10-09.
 - Convocatorias de música: **16.391**; compatibles con jazz, clásica u ópera: **11.828**
   (2.572 concursos y 9.256 concesiones directas o nominativas).
-- Importe concedido registrado en las compatibles: **859.172.974 €**
-  (527.608.733 € en concursos y 331.564.241 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
-- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 9.975 convocatorias y 645.806.389 € concedidos.
+- Importe concedido registrado en las compatibles: **859.246.724 €**
+  (527.608.733 € en concursos y 331.637.991 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
+- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 9.975 convocatorias y 645.880.139 € concedidos.
 - Mencionan expresamente el estilo: jazz 426, clásica 3.251, ópera y lírica 427. El resto son ayudas de música en general.
 - Concursos con el plazo abierto hoy: **11**; por abrir: **10**.
 - Convocatorias que se repiten año tras año (series): 1.900; previstas en los próximos 3 meses según su
@@ -34,7 +34,7 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
 | 2023 | 1.337 | 308 | 1.029 | 194.535.516 € | 164.137.166 € |
 | 2024 | 1.406 | 330 | 1.076 | 220.192.455 € | 191.709.550 € |
 | 2025 | 1.470 | 317 | 1.153 | 259.494.941 € | 217.312.510 € |
-| 2026 (en curso) | 1.077 | 271 | 806 | 175.013.481 € | 75.898.403 € |
+| 2026 (en curso) | 1.077 | 271 | 806 | 175.013.481 € | 75.972.153 € |
 
 El concedido de los años recientes crece con el tiempo: las concesiones se registran meses después de la convocatoria.
 
@@ -42,7 +42,7 @@ El concedido de los años recientes crece con el tiempo: las concesiones se regi
 
 | Actividad | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| Sin especificar | 7.608 | 706 | 363.097.587 € |
+| Sin especificar | 7.608 | 706 | 363.171.337 € |
 | Formación (escuelas, conservatorios, becas) | 1.853 | 1.016 | 213.366.585 € |
 | Festivales, ciclos y programación | 1.748 | 585 | 198.574.134 € |
 | Producción y creación | 603 | 516 | 143.432.190 € |
@@ -59,7 +59,7 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Ámbito | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| Cataluña | 2.594 | 515 | 287.824.112 € |
+| Cataluña | 2.594 | 515 | 287.897.862 € |
 | Comunitat Valenciana | 2.292 | 484 | 144.717.610 € |
 | Canarias | 913 | 84 | 78.415.897 € |
 | Andalucía | 815 | 123 | 31.814.585 € |
@@ -85,7 +85,7 @@ importes altos pero no es una oportunidad para el promotor.
 | Administración | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
 | local | 9.897 | 1.735 | 289.062.794 € |
-| autonomica | 1.659 | 748 | 480.833.043 € |
+| autonomica | 1.659 | 748 | 480.906.793 € |
 | estatal | 190 | 36 | 88.958.440 € |
 | otra | 82 | 53 | 318.697 € |
 
@@ -132,7 +132,7 @@ Un concurso puede admitir varios tipos de beneficiario.
 | OFICINA DE SUPORT A LA INICIATIVA CULTURAL | CATALUÑA | 120 | 2018-2026 | 68.183.771 € |
 | DEPARTAMENT D'EDUCACIÓ I FORMACIÓ PROFESSIONAL | CATALUÑA | 34 | 2017-2026 | 66.506.097 € |
 | CABILDO INSULAR DE GRAN CANARIA | CABILDO INSULAR DE GRAN CANARIA | 348 | 2016-2026 | 46.550.800 € |
-| DEPARTAMENT DE CULTURA | CATALUÑA | 38 | 2017-2026 | 42.045.963 € |
+| DEPARTAMENT DE CULTURA | CATALUÑA | 38 | 2017-2026 | 42.119.713 € |
 | DEPARTAMENTO DE EDUCACION | COMUNIDAD FORAL DE NAVARRA | 27 | 2016-2026 | 18.869.370 € |
 | FUNDACIÓN MUNICIPAL DE CULTURA | OVIEDO | 25 | 2016-2026 | 17.775.000 € |
 | DIPUTACIÓN PROVINCIAL DE CORUÑA, A | DIPUTACIÓN PROV. DE A CORUÑA | 72 | 2016-2026 | 17.108.959 € |
