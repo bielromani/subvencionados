@@ -39,8 +39,15 @@ export interface Beneficiarios {
   personasFisicas: boolean | null;
 }
 
+/** A quién le sirve al mánager: a sus grupos (la piden ellos) o a quien les contrata (programadores). */
+export type Destino = 'grupos' | 'programadores';
+
 export interface Clasificacion {
   musical: boolean;
+  /** Para quién es útil; null si no le sirve al mánager (ver `descarte`). */
+  destino: Destino | null;
+  /** Por qué no le sirve, si no le sirve. */
+  descarte: string | null;
   /**
    * No es de música, pero es una ayuda general de cultura (actividades culturales, artes
    * escénicas, fiestas...) en la que un concierto puede encajar.

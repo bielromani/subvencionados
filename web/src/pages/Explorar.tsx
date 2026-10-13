@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { api, type Filtros } from '../api';
-import { TarjetaConvocatoria } from '../components/TarjetaConvocatoria';
+import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { cambiarParams, type Ruta } from '../ruta';
-import { NOMBRE_ADMINISTRACION, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Meta } from '../tipos';
+import { NOMBRE_ESTILO, type Convocatoria, type Meta } from '../tipos';
 
 interface Resultado {
   total: number;
@@ -11,14 +11,14 @@ interface Resultado {
   items: Convocatoria[];
 }
 
-const POR_DEFECTO: Filtros = { tipo: 'concurrencia', plazo: 'abierta', orden: 'cierre' };
+const POR_DEFECTO: Filtros = { plazo: 'vigentes', orden: 'cierre' };
 
 /** Los filtros van en la dirección (#/explorar?estilo=jazz&ccaa=…) para poder guardarlos o compartirlos. */
 function desdeRuta(ruta: Ruta): Filtros {
   if (ruta.params.size === 0) return POR_DEFECTO;
   const f: Record<string, string | number | boolean> = Object.fromEntries(ruta.params);
   if (f.pagina) f.pagina = Number(f.pagina);
-  for (const k of ['todas', 'cultura']) if (f[k]) f[k] = f[k] === 'true';
+  if (f.todas) f.todas = f.todas === 'true';
   return f as Filtros;
 }
 
@@ -51,22 +51,20 @@ export function Explorar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
       <div className="filtros">
         <input
           type="search"
-          placeholder="Buscar: festival, orquesta, Sevilla, ayuntamiento…"
+          placeholder="Buscar: festival, gira, orquesta, Sevilla…"
           value={filtros.q ?? ''}
           onChange={cambiar('q')}
           aria-label="Buscar"
         />
-        <select value={filtros.tipo ?? ''} onChange={cambiar('tipo')} aria-label="Tipo">
-          <option value="">Concursos y concesiones directas</option>
-          <option value="concurrencia">Concursos (se pueden pedir)</option>
-          <option value="directa">Concesiones directas (precedentes)</option>
+        <select value={filtros.para ?? ''} onChange={cambiar('para')} aria-label="Para quién">
+          <option value="">Para tus grupos y para quien te contrata</option>
+          <option value="grupos">Para tus grupos (las piden ellos)</option>
+          <option value="programadores">Para quien te contrata (ayuntamientos, festivales, salas)</option>
         </select>
         <select value={filtros.plazo ?? ''} onChange={cambiar('plazo')} aria-label="Plazo">
-          <option value="">Cualquier plazo (histórico)</option>
-          <option value="abierta">Abiertas ahora</option>
-          <option value="proxima">Por abrir</option>
-          <option value="cerrada">Cerradas</option>
-          <option value="desconocido">Sin fechas</option>
+          <option value="vigentes">Abiertas o a punto de abrir</option>
+          <option value="cerrada">Cerradas (para preparar la próxima edición)</option>
+          <option value="">Todas</option>
         </select>
         <select value={filtros.estilo ?? ''} onChange={cambiar('estilo')} aria-label="Estilo">
           <option value="">Todos los estilos</option>
@@ -82,41 +80,17 @@ export function Explorar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
             <option key={c}>{c}</option>
           ))}
         </select>
-        <select value={filtros.administracion ?? ''} onChange={cambiar('administracion')} aria-label="Administración">
-          <option value="">Cualquier administración</option>
-          {Object.entries(NOMBRE_ADMINISTRACION).map(([k, v]) => (
-            <option key={k} value={k}>
-              {v}
-            </option>
-          ))}
-        </select>
-        <select value={filtros.linea ?? ''} onChange={cambiar('linea')} aria-label="Qué financia">
-          <option value="">Cualquier actividad</option>
-          {meta.lineas.map((l) => (
-            <option key={l} value={l}>
-              {NOMBRE_LINEA[l]}
-            </option>
-          ))}
-        </select>
         <select value={filtros.orden ?? ''} onChange={cambiar('orden')} aria-label="Orden">
-          <option value="">Más recientes primero</option>
           <option value="cierre">Las que cierran antes primero</option>
+          <option value="">Más recientes primero</option>
         </select>
-        <label className="casilla">
-          <input
-            type="checkbox"
-            checked={!!filtros.cultura}
-            onChange={(e) => setFiltros((f) => ({ ...f, cultura: e.target.checked || undefined, pagina: undefined }))}
-          />
-          Incluir ayudas generales de cultura en las que un concierto puede encajar
-        </label>
         <label className="casilla">
           <input
             type="checkbox"
             checked={!!filtros.todas}
             onChange={(e) => setFiltros((f) => ({ ...f, todas: e.target.checked || undefined, pagina: undefined }))}
           />
-          Incluir las descargadas que no se han clasificado como música
+          Ver también lo descartado (becas, fiestas, asociaciones locales…) con el motivo
         </label>
       </div>
 
@@ -125,13 +99,12 @@ export function Explorar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         <>
           <p className="recuento">
             {resultado.total.toLocaleString('es-ES')} {resultado.total === 1 ? 'convocatoria' : 'convocatorias'}
-            <span className="ayuda"> · ★ = el estilo se menciona expresamente</span>
           </p>
-          <div className="lista">
+          <ul className="filas filas-lista">
             {resultado.items.map((c) => (
-              <TarjetaConvocatoria key={c.id} c={c} />
+              <FilaConvocatoria key={c.id} m={{ convocatoria: c, plazo: c.plazo, puntuacion: 0, encaje: 'directo', motivos: [], avisos: c.clasificacion.descarte ? [c.clasificacion.descarte] : [] }} destino motivos={!!filtros.todas} />
             ))}
-          </div>
+          </ul>
           {paginas > 1 && (
             <nav className="paginacion" aria-label="Páginas">
               <button className="boton-secundario" disabled={resultado.pagina <= 1} onClick={() => irA(resultado.pagina - 1)}>

@@ -89,7 +89,7 @@ export function App() {
 
       {meta && (
         <footer className="pie">
-          {meta.musicales.toLocaleString('es-ES')} convocatorias de música de {meta.total.toLocaleString('es-ES')}{' '}
+          {(meta.utiles ?? meta.musicales).toLocaleString('es-ES')} subvenciones útiles para colocar grupos, de {meta.total.toLocaleString('es-ES')}{' '}
           descargadas · Fuente: {meta.fuente}
           {meta.ultimaActualizacion && ` · Actualizado el ${new Date(meta.ultimaActualizacion).toLocaleDateString('es-ES')}`}
         </footer>

@@ -2,6 +2,7 @@
 // puede optar un promotor de jazz/clásica/ópera, qué líneas financia y quién puede
 // pedirla. Es la primera capa; la siguiente será leer las bases (PDF) con un LLM.
 
+import { destinoParaManager } from './destino.js';
 import type {
   Beneficiarios,
   Clasificacion,
@@ -15,6 +16,8 @@ export interface EntradaClasificacion {
   texto: string;
   /** Tipos de beneficiario tal como los publica la BDNS. */
   tiposBeneficiario?: string[];
+  /** Título (y título en lengua cooficial): decide para quién es. Si falta, la primera línea del texto. */
+  titulo?: string;
 }
 
 /** Minúsculas y sin tildes: los títulos de la BDNS llegan a menudo en mayúsculas y sin acentos. */
@@ -55,6 +58,7 @@ const SENALES_MUSICA: Patron[] = [
   ['rondalla', /\brondallas?\b/],
   ['parranda', /\bparrandas?\b/],
   ['cantautor', /\bcantautor(es|a|as)?\b/],
+  ['instrumento', /\b(piano|pianistas?|violin|violinistas?|violonchelo|clarinete|saxofon|trompeta)\b/],
 ];
 
 // "Concierto" tiene acepciones que no son musicales.
@@ -211,7 +215,7 @@ export function encajeParaPromotor(b: Beneficiarios): EncajePromotor {
   return 'desconocido';
 }
 
-export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificacion): Clasificacion {
+export function clasificar({ texto, tiposBeneficiario = [], titulo }: EntradaClasificacion): Clasificacion {
   const t = normalizar(texto).replace(FALSOS_CONCIERTO, ' ').replace(FALSOS_DANZA, ' ').replace(FALSOS_ORGANISMO, ' ');
   const evidencias = coincidencias(t, SENALES_MUSICA);
 
@@ -252,8 +256,14 @@ export function clasificar({ texto, tiposBeneficiario = [] }: EntradaClasificaci
 
   const culturaGeneral = !musical && CULTURA_GENERAL.test(t) && !CULTURA_SIN_CONCIERTOS.test(t);
 
+  const tituloN = normalizar(titulo ?? texto.split('\n')[0] ?? '').replace(FALSOS_CONCIERTO, ' ').replace(FALSOS_ORGANISMO, ' ');
+  const estilosEnTitulo = (Object.values(ESTILOS_PATRONES) as Patron[][]).some((ps) => coincidencias(tituloN, ps).length > 0) || OPERA_CON_TILDE.test(titulo ?? '');
+  const { destino, descarte } = destinoParaManager({ titulo: tituloN, musical, estilosEnTitulo, beneficiarios });
+
   return {
     musical,
+    destino,
+    descarte,
     culturaGeneral,
     estilosExplicitos,
     estilosCompatibles,

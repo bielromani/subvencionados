@@ -1,6 +1,7 @@
 import { plazo } from './emparejamiento.js';
 import { idOrganismo } from './organismos.js';
-import type { Convocatoria } from './tipos.js';
+import { tituloCorto } from './titulo.js';
+import type { Convocatoria, Destino } from './tipos.js';
 
 /**
  * Calendario del promotor: cuándo abren y cierran los plazos de los concursos que puede pedir, y cuándo se
@@ -16,24 +17,29 @@ export interface EventoCalendario {
     id: string;
     codigoBdns: string;
     titulo: string;
+    tituloCorto: string;
     organo: string;
     organismoId: string;
     ambito: string;
     presupuesto: number | null;
     culturaGeneral: boolean;
+    destino: Destino | null;
     /** Las previstas enlazan a la última edición. */
     anio: number | null;
   };
 }
 
-/** Concursos que interesan al promotor: música de jazz, clásica u ópera, o cultura en general; sin formación. */
-export function interesaAlPromotor(c: Convocatoria): boolean {
+/**
+ * Lo que le sirve al mánager: convocatorias abiertas a concurso (no concesiones directas a una entidad concreta)
+ * que pueden pedir sus grupos o que dan dinero a quien les contrata, de estilos compatibles si son de música.
+ */
+export function utilParaManager(c: Convocatoria): boolean {
   const cl = c.clasificacion;
-  return (
-    c.tipo === 'concurrencia' &&
-    !cl.lineas.includes('formacion') &&
-    ((cl.musical && cl.estilosCompatibles.length > 0) || (!cl.musical && cl.culturaGeneral))
-  );
+  return c.tipo !== 'directa' && cl.destino !== null && (!cl.musical || cl.estilosCompatibles.length > 0);
+}
+
+export function interesaAlPromotor(c: Convocatoria): boolean {
+  return c.tipo === 'concurrencia' && utilParaManager(c);
 }
 
 function ambito(c: Convocatoria): string {
@@ -45,11 +51,13 @@ const resumen = (c: Convocatoria): EventoCalendario['convocatoria'] => ({
   id: c.id,
   codigoBdns: c.codigoBdns,
   titulo: c.titulo,
+  tituloCorto: tituloCorto(c.titulo),
   organo: c.organoNiveles.slice(1).join(' · ') || c.organo,
   organismoId: idOrganismo(c.organoNiveles),
   ambito: ambito(c),
   presupuesto: c.presupuesto,
   culturaGeneral: !c.clasificacion.musical,
+  destino: c.clasificacion.destino,
   anio: Number(c.fechaPublicacion?.slice(0, 4)) || null,
 });
 

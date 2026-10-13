@@ -1,5 +1,10 @@
 import { enlace } from '../ruta';
-import { NOMBRE_ESTILO, type Coincidencia } from '../tipos';
+import { NOMBRE_DESTINO, NOMBRE_ESTILO, type Coincidencia, type Convocatoria } from '../tipos';
+
+function ambito(c: Convocatoria): string {
+  if (c.ambitoNacional) return 'Toda España';
+  return (c.provincias.length ? c.provincias : c.ccaa).slice(0, 3).join(', ') || 'Ámbito no indicado';
+}
 import { Etiqueta } from './TarjetaConvocatoria';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
@@ -13,7 +18,7 @@ function diasHasta(iso: string): number {
 }
 
 /** Fila compacta para las listas de la portada y de los grupos: qué es, cuándo y por qué encaja. */
-export function FilaConvocatoria({ m, prevista, motivos = true }: { m: Coincidencia; prevista?: string; motivos?: boolean }) {
+export function FilaConvocatoria({ m, prevista, motivos = false, destino = false }: { m: Coincidencia; prevista?: string; motivos?: boolean; destino?: boolean }) {
   const c = m.convocatoria;
   const organo = c.organoNiveles.slice(1).join(' · ') || c.organo;
   let cuando: { texto: string; tono: string } | null = null;
@@ -29,16 +34,17 @@ export function FilaConvocatoria({ m, prevista, motivos = true }: { m: Coinciden
     <li className="fila-convocatoria">
       <div className="etiquetas">
         {cuando && <Etiqueta tono={cuando.tono}>{cuando.texto}</Etiqueta>}
-        {!c.clasificacion.musical && c.clasificacion.culturaGeneral && <Etiqueta tono="aviso">Cultura general</Etiqueta>}
+        {destino && c.clasificacion.destino && <Etiqueta tono={c.clasificacion.destino === 'grupos' ? 'acento' : 'neutro'}>{NOMBRE_DESTINO[c.clasificacion.destino]}</Etiqueta>}
         {estilos.map((e) => (
           <Etiqueta key={e}>{NOMBRE_ESTILO[e]}</Etiqueta>
         ))}
       </div>
       <a className="fila-titulo" href={enlace('convocatoria', c.id)}>
-        {c.titulo}
+        {c.tituloCorto ?? c.titulo}
       </a>
       <span className="fila-detalle">
         <a href={enlace('organismo', c.organismoId)}>{organo}</a>
+        {` · ${ambito(c)}`}
         {c.presupuesto != null && ` · ${euros.format(c.presupuesto)}`}
         {prevista && c.fechaPublicacion && ` · última: ${c.fechaPublicacion.slice(0, 4)}`}
       </span>

@@ -32,7 +32,7 @@ beforeEach(() => {
         CONCESIONES_FIGUERES,
       ),
       {
-        ...registro(detalle('300', { descripcion: 'Concurso de música 2026', fechaRecepcion: '2026-01-01', documentos: [{ id: 1, descripcion: 'Texto en castellano de la convocatoria', nombreFic: 'bases.pdf' }] })),
+        ...registro(detalle('300', { descripcion: 'Concurso internacional de piano 2026', fechaRecepcion: '2026-01-01', documentos: [{ id: 1, descripcion: 'Texto en castellano de la convocatoria', nombreFic: 'bases.pdf' }] })),
         textos: [{ idDocumento: 1, archivo: 'documentos/2026/1.txt', paginas: 2, caracteres: 15, descargado: '2026-10-09' }],
       },
       registro(
@@ -55,11 +55,17 @@ beforeEach(() => {
 const ids = (res: request.Response) => res.body.items.map((c: { id: string }) => c.id);
 
 describe('GET /api/convocatorias', () => {
-  it('por defecto solo devuelve las de música, sin el texto bruto', async () => {
+  it('por defecto solo lo que le sirve al mánager (sin concesiones directas), sin el texto bruto', async () => {
     const res = await request(app).get('/api/convocatorias').expect(200);
-    expect(ids(res)).toEqual(['bdns-932065', 'bdns-100', 'bdns-300', 'bdns-200']);
+    expect(ids(res)).toEqual(['bdns-100', 'bdns-300', 'bdns-200']);
     expect(res.body.items[0].texto).toBeUndefined();
-    expect(res.body.items[0].concesiones.importeTotal).toBe(28000);
+    const directa = await request(app).get('/api/convocatorias?todas=true&tipo=directa').expect(200);
+    expect(directa.body.items[0].concesiones.importeTotal).toBe(28000);
+  });
+
+  it('para=grupos o para=programadores', async () => {
+    expect(ids(await request(app).get('/api/convocatorias?para=grupos'))).toEqual(['bdns-300']);
+    expect(ids(await request(app).get('/api/convocatorias?para=programadores'))).toEqual(['bdns-100', 'bdns-200']);
   });
 
   it('todas=true incluye las no musicales', async () => {
@@ -72,17 +78,17 @@ describe('GET /api/convocatorias', () => {
     expect(ids(await request(app).get('/api/convocatorias?estilo=opera'))).toEqual(['bdns-300', 'bdns-200']);
     // La 300 no tiene restricción territorial («TODO EL MUNDO»): aparece en cualquier comunidad.
     expect(ids(await request(app).get('/api/convocatorias?ccaa=Andalucía'))).toEqual(['bdns-300', 'bdns-200']);
-    expect(ids(await request(app).get('/api/convocatorias?tipo=directa'))).toEqual(['bdns-932065']);
+    expect(ids(await request(app).get('/api/convocatorias?todas=true&tipo=directa'))).toEqual(['bdns-932065']);
     expect(ids(await request(app).get('/api/convocatorias?plazo=abierta'))).toEqual(['bdns-100']);
-    expect(ids(await request(app).get('/api/convocatorias?q=concurso de musica'))).toEqual(['bdns-300']);
-    expect(ids(await request(app).get('/api/convocatorias?q=figueres'))).toEqual(['bdns-932065']);
-    expect(ids(await request(app).get('/api/convocatorias?desde=2026-01-01'))).toEqual(['bdns-932065', 'bdns-100', 'bdns-300']);
+    expect(ids(await request(app).get('/api/convocatorias?q=concurso internacional de piano'))).toEqual(['bdns-300']);
+    expect(ids(await request(app).get('/api/convocatorias?todas=true&q=figueres'))).toEqual(['bdns-932065']);
+    expect(ids(await request(app).get('/api/convocatorias?desde=2026-01-01'))).toEqual(['bdns-100', 'bdns-300']);
   });
 
   it('pagina', async () => {
     const res = await request(app).get('/api/convocatorias?porPagina=2&pagina=2').expect(200);
-    expect(res.body).toMatchObject({ total: 4, pagina: 2, porPagina: 2 });
-    expect(ids(res)).toEqual(['bdns-300', 'bdns-200']);
+    expect(res.body).toMatchObject({ total: 3, pagina: 2, porPagina: 2 });
+    expect(ids(res)).toEqual(['bdns-200']);
   });
 
   it('texto de un documento por páginas', async () => {
@@ -135,7 +141,8 @@ describe('perfil y recomendaciones', () => {
 
     const res = await request(app).get('/api/para-ti').expect(200);
     expect(res.body.perfilCompleto).toBe(true);
-    expect(res.body.abiertas.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-100', 'bdns-300']);
+    expect(res.body.abiertas.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-300']);
+    expect(res.body.indirectas.map((m: { convocatoria: { id: string } }) => m.convocatoria.id)).toEqual(['bdns-100']);
   });
 });
 

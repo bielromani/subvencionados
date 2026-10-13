@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { enlace } from '../ruta';
 import { FichaPlegable } from './FichaConvocatoria';
-import { NOMBRE_ADMINISTRACION, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Plazo } from '../tipos';
+import { NOMBRE_ADMINISTRACION, NOMBRE_DESTINO, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Plazo } from '../tipos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const fecha = (iso: string | null) => (iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('es-ES') : null);
@@ -47,11 +47,24 @@ export function TarjetaConvocatoria({ c, children, pagina = false }: { c: Convoc
           ) : (
             <Etiqueta tono={TONO_PLAZO[c.plazo]}>{TEXTO_PLAZO[c.plazo]}</Etiqueta>
           )}
-          {!cl.musical && cl.culturaGeneral && <Etiqueta tono="aviso">Cultura general</Etiqueta>}
+          {cl.destino ? (
+            <Etiqueta tono={cl.destino === 'grupos' ? 'acento' : 'neutro'}>{NOMBRE_DESTINO[cl.destino]}</Etiqueta>
+          ) : (
+            <Etiqueta tono="apagado">No encaja: {cl.descarte?.toLowerCase()}</Etiqueta>
+          )}
           <Etiqueta>{NOMBRE_ADMINISTRACION[c.administracion]}</Etiqueta>
           <Etiqueta>{ambito(c)}</Etiqueta>
         </div>
-        {pagina ? <h2>{c.titulo}</h2> : <h3><a href={enlace('convocatoria', c.id)}>{c.titulo}</a></h3>}
+        {pagina ? (
+          <>
+            <h2>{c.tituloCorto ?? c.titulo}</h2>
+            {c.tituloCorto && c.tituloCorto !== c.titulo && <p className="titulo-oficial">{c.titulo}</p>}
+          </>
+        ) : (
+          <h3>
+            <a href={enlace('convocatoria', c.id)}>{c.tituloCorto ?? c.titulo}</a>
+          </h3>
+        )}
         <p className="organo">
           <a href={enlace('organismo', c.organismoId)}>{organo}</a>
           {c.ubicacion?.municipio && ` · ${c.ubicacion.municipio}`}

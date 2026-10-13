@@ -19,7 +19,7 @@ const hoy = new Date('2026-10-08T10:00:00Z');
 const cicloJazz = desdeBdns(
   registro(
     detalle('1', {
-      descripcion: 'Subvenciones para ciclos de conciertos de jazz 2026',
+      descripcion: 'Ayudas para giras de grupos de jazz 2026',
       regiones: [{ descripcion: 'ES511 - Barcelona' }],
       fechaInicioSolicitud: '2026-10-01',
       fechaFinSolicitud: '2026-10-31',
@@ -79,13 +79,14 @@ describe('evaluar', () => {
     expect(evaluar(cicloJazz, { ...perfil, formaJuridica: 'asociacion' }, hoy)).toBeNull();
   });
 
-  it('las ayudas a ayuntamientos salen como indirectas solo si el perfil lo pide', () => {
-    const local = {
-      ...cicloJazz,
-      clasificacion: { ...cicloJazz.clasificacion, beneficiarios: { empresas: false, sinAnimoLucro: false, entidadesLocales: true, personasFisicas: false } },
-    };
-    expect(evaluar(local, perfil, hoy)?.encaje).toBe('indirecto');
-    expect(evaluar(local, { ...perfil, incluirIndirectas: false }, hoy)).toBeNull();
+  it('el dinero para quien contrata (festivales, programación) sale como oportunidad de venta', () => {
+    const festivales = desdeBdns(
+      registro(detalle('4', { descripcion: 'Ayudas a festivales de jazz 2026', regiones: [{ descripcion: 'ES511 - Barcelona' }], fechaInicioSolicitud: '2026-10-01', fechaFinSolicitud: '2026-10-31' })),
+    );
+    expect(festivales.clasificacion.destino).toBe('programadores');
+    const m = evaluar(festivales, { ...perfil, formaJuridica: 'asociacion' }, hoy)!;
+    expect(m.encaje).toBe('indirecto');
+    expect(m.motivos).toContain('La cobran festivales, salas o programadores: ofréceles tus grupos');
   });
 
   it('los premios para personas físicas son para sus músicos', () => {
@@ -99,26 +100,20 @@ describe('evaluar', () => {
     expect(evaluar(premio, perfil, hoy)?.encaje).toBe('artistas');
   });
 
-  it('las becas de formación solo si las busca', () => {
-    const beca = { ...cicloJazz, clasificacion: { ...cicloJazz.clasificacion, lineas: ['formacion' as const] } };
-    expect(evaluar(beca, perfil, hoy)).toBeNull();
-    expect(evaluar(beca, { ...perfil, actividades: ['formacion'] }, hoy)).not.toBeNull();
+  it('becas, fiestas y asociaciones locales no salen nunca', () => {
+    for (const descripcion of [
+      'Becas para estudios de música en el conservatorio 2026/2027',
+      'Subvenciones a peñas y asociaciones con motivo de las Fiestas Patronales de San Roque 2026',
+      'Subvenciones a las asociaciones culturales para actividades culturales 2026',
+    ]) {
+      const c = desdeBdns(registro(detalle('5', { descripcion, fechaInicioSolicitud: '2026-10-01', fechaFinSolicitud: '2026-10-31' })));
+      expect(c.clasificacion.destino).toBeNull();
+      expect(evaluar(c, { ...perfil, actividades: ['formacion'] }, hoy)).toBeNull();
+    }
   });
 
-  it('las concesiones directas son precedentes, sea cual sea el beneficiario', () => {
-    const m = evaluar({ ...cicloJazz, tipo: 'directa' }, perfil, hoy)!;
-    expect(m.encaje).toBe('precedente');
-    expect(m.motivos).not.toContain('Plazo abierto');
-    // Nominativa a una asociación: también sirve de precedente a un autónomo.
-    const aAsociacion = {
-      ...cicloJazz,
-      tipo: 'directa' as const,
-      clasificacion: {
-        ...cicloJazz.clasificacion,
-        beneficiarios: { empresas: false, sinAnimoLucro: true, entidadesLocales: false, personasFisicas: false },
-      },
-    };
-    expect(evaluar(aAsociacion, perfil, hoy)?.encaje).toBe('precedente');
+  it('las concesiones directas a una entidad no salen: no se pueden pedir', () => {
+    expect(evaluar({ ...cicloJazz, tipo: 'directa' }, perfil, hoy)).toBeNull();
   });
 });
 
@@ -131,22 +126,22 @@ describe('emparejar', () => {
   });
 });
 
-describe('cultura general', () => {
+describe('programación cultural de los ayuntamientos', () => {
   it('encaja con poca puntuación y aviso de revisar las bases', () => {
     const cultura = desdeBdns(
       registro(
         detalle('9', {
-          descripcion: 'Convocatoria de subvenciones para apoyar actividades culturales 2026',
+          descripcion: 'Subvenciones a los ayuntamientos para la programación de actividades culturales 2026',
           regiones: [{ descripcion: 'ES511 - Barcelona' }],
           fechaInicioSolicitud: '2026-10-01',
           fechaFinSolicitud: '2026-10-31',
         }),
       ),
     );
-    expect(cultura.clasificacion).toMatchObject({ musical: false, culturaGeneral: true });
+    expect(cultura.clasificacion).toMatchObject({ musical: false, destino: 'programadores' });
     const m = evaluar(cultura, perfil, hoy)!;
-    expect(m.encaje).toBe('directo');
-    expect(m.avisos).toContain('Ayuda general de cultura: los conciertos pueden encajar, revisa las bases');
+    expect(m.encaje).toBe('indirecto');
+    expect(m.avisos).toContain('Programación cultural general: la música es una de las opciones, revisa las bases');
     expect(m.puntuacion).toBeLessThan(evaluar(cicloJazz, perfil, hoy)!.puntuacion);
   });
 });

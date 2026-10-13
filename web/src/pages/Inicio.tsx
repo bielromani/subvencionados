@@ -7,27 +7,33 @@ import { NOMBRE_ESTILO } from '../tipos';
 
 type Datos = Awaited<ReturnType<typeof api.inicio>>;
 
-function Bloque({ titulo, explicacion, lista, mas }: { titulo: string; explicacion: string; lista: Lista | ListaPrevistas; mas?: [string, string] }) {
+function Filas({ lista, vacio }: { lista: Lista | ListaPrevistas; vacio: string }) {
+  if (lista.items.length === 0) return <p className="ayuda">{vacio}</p>;
+  return (
+    <ul className="filas">
+      {lista.items.map((m) => (
+        <FilaConvocatoria key={m.convocatoria.id} m={m} prevista={'prevista' in m ? m.prevista : undefined} />
+      ))}
+    </ul>
+  );
+}
+
+function Columna({ titulo, explicacion, datos, para }: { titulo: string; explicacion: string; datos: Datos['para']['grupos']; para: string }) {
   return (
     <section className="bloque">
-      <h3>
-        {titulo} <span className="contador">{lista.total}</span>
-      </h3>
+      <h3>{titulo}</h3>
       <p className="ayuda">{explicacion}</p>
-      {lista.items.length === 0 ? (
-        <p className="ayuda">Nada por ahora.</p>
-      ) : (
-        <ul className="filas">
-          {lista.items.map((m) => (
-            <FilaConvocatoria key={m.convocatoria.id} m={m} prevista={'prevista' in m ? m.prevista : undefined} />
-          ))}
-        </ul>
-      )}
-      {mas && lista.total > lista.items.length && (
-        <p>
-          <a href={mas[0]}>{mas[1]} →</a>
-        </p>
-      )}
+      <h4 className="subtitulo-bloque">
+        Abiertas o a punto de abrir <span className="contador">{datos.ahora.total}</span>
+      </h4>
+      <Filas lista={datos.ahora} vacio="Ninguna ahora mismo." />
+      <h4 className="subtitulo-bloque">
+        Se esperan en los próximos meses <span className="contador">{datos.previstas.total}</span>
+      </h4>
+      <Filas lista={datos.previstas} vacio="Ninguna prevista." />
+      <p>
+        <a href={`#/explorar?para=${para}&plazo=cerrada&orden=`}>Ver las de años anteriores →</a>
+      </p>
     </section>
   );
 }
@@ -45,66 +51,50 @@ export function Inicio() {
 
   return (
     <section>
-      {!d.perfilCompleto && (
-        <p className="aviso-demo">
-          Estás viendo las ayudas de jazz, clásica y ópera de toda España que admiten autónomos, empresas o asociaciones. <a href="#/perfil">Completa tu perfil</a> con tus
-          grupos, tu forma jurídica y dónde trabajas para ver solo las que puedes pedir.
-        </p>
-      )}
-
-      <div className="cifras">
-        <a className="cifra cifra-enlace" href="#/para-ti">
-          <span className="cifra-etiqueta">Puedes pedir ahora</span>
-          <span className="cifra-valor">{d.abiertas}</span>
-          <span className="cifra-nota">concursos abiertos o a punto de abrir</span>
-        </a>
-        <a className="cifra cifra-enlace" href="#/calendario">
-          <span className="cifra-etiqueta">Cierran en 30 días</span>
-          <span className="cifra-valor">{d.cierranPronto.total}</span>
-          <span className="cifra-nota">ver el calendario</span>
-        </a>
-        <a className="cifra cifra-enlace" href="#/calendario">
-          <span className="cifra-etiqueta">Previstas en 6 meses</span>
-          <span className="cifra-valor">{d.previstas.total}</span>
-          <span className="cifra-nota">según los años anteriores</span>
-        </a>
-      </div>
+      <p className="aviso-demo">
+        Solo salen las subvenciones que sirven para colocar a tus grupos: las que pueden pedir ellos y el dinero que reciben quienes les contratan.
+        {!d.perfilCompleto && (
+          <>
+            {' '}
+            Ahora ves toda España y los tres estilos: <a href="#/perfil">indica tus grupos y dónde trabajas</a> para afinar.
+          </>
+        )}
+      </p>
 
       {d.grupos.length > 0 && (
-        <section className="bloque">
-          <h3>Tus grupos</h3>
-          <p className="ayuda">Ayudas que mencionan el estilo de cada grupo; las generales de música valen para todos.</p>
-          <ul className="grupos-resumen">
-            {d.grupos.map((g, i) => (
-              <li key={i}>
-                <a href={`${enlace('grupos')}?grupo=${i}`}>
-                  <strong>{g.grupo.nombre}</strong> <span className="ayuda">{NOMBRE_ESTILO[g.grupo.estilo]}</span>
-                </a>
-                <span>
-                  {g.abiertas} específicas para pedir ahora · {g.previstas} previstas en 6 meses
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <ul className="grupos-resumen">
+          {d.grupos.map((g, i) => (
+            <li key={i}>
+              <a href={`${enlace('grupos')}?grupo=${i}`}>
+                <strong>{g.grupo.nombre}</strong> <span className="ayuda">{NOMBRE_ESTILO[g.grupo.estilo]}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
       )}
 
-      <Bloque
-        titulo="Cierran pronto"
-        explicacion="Concursos que puedes pedir y cierran en los próximos 30 días."
-        lista={d.cierranPronto}
-        mas={['#/para-ti', 'Ver todas las recomendaciones']}
-      />
+      <div className="dos-columnas">
+        <Columna
+          titulo="Para tus grupos"
+          explicacion="Ayudas que pueden pedir tus grupos: giras, grabación, producción, internacionalización y concursos para intérpretes."
+          datos={d.para.grupos}
+          para="grupos"
+        />
+        <Columna
+          titulo="Para quien te contrata"
+          explicacion="Dinero que reciben ayuntamientos, festivales y salas para programar música: momento de ofrecerles tus grupos."
+          datos={d.para.programadores}
+          para="programadores"
+        />
+      </div>
+
       <section className="bloque">
         <h3>
           Contratos públicos de conciertos abiertos <span className="contador">{d.licitaciones.total}</span>
         </h3>
-        <p className="ayuda">
-          Licitaciones de actuaciones musicales en las que se puede presentar oferta
-          {d.perfilCompleto ? ' en tus comunidades' : ''}.
-        </p>
+        <p className="ayuda">Ayuntamientos que buscan ahora quién toque{d.perfilCompleto ? ' en tus comunidades' : ''}: se puede presentar oferta.</p>
         {d.licitaciones.items.length === 0 ? (
-          <p className="ayuda">Ninguna abierta ahora mismo.</p>
+          <p className="ayuda">Ninguno abierto ahora mismo.</p>
         ) : (
           <ul className="filas">
             {d.licitaciones.items.map((c) => (
@@ -114,21 +104,10 @@ export function Inicio() {
         )}
         {d.licitaciones.total > d.licitaciones.items.length && (
           <p>
-            <a href="#/contratos">Ver todas →</a>
+            <a href="#/contratos">Ver todos →</a>
           </p>
         )}
       </section>
-      <Bloque titulo="Abren pronto" explicacion="El plazo aún no ha empezado: buen momento para preparar la solicitud." lista={d.abrenPronto} mas={['#/calendario', 'Ver el calendario']} />
-      <Bloque
-        titulo="Previstas en los próximos 6 meses"
-        explicacion="Se convocan cada año y se espera la nueva edición pronto (estimación, no es un dato oficial). Las bases del año pasado sirven para adelantar trabajo."
-        lista={d.previstas}
-        mas={['#/calendario', 'Ver el calendario']}
-      />
-      <Bloque titulo="Nuevas en las últimas dos semanas" explicacion="Registradas en la BDNS hace poco y que encajan contigo." lista={d.nuevas} mas={['#/explorar?orden=recientes&tipo=concurrencia', 'Ver las más recientes']} />
-      {d.artistas.total > 0 && (
-        <Bloque titulo="Para tus músicos" explicacion="Premios y concursos abiertos para personas físicas: pueden presentarse tus artistas." lista={d.artistas} mas={['#/para-ti', 'Ver todos']} />
-      )}
     </section>
   );
 }

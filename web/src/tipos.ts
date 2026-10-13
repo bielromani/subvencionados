@@ -14,8 +14,14 @@ export type Administracion = 'estatal' | 'autonomica' | 'local' | 'otra';
 export type Plazo = 'abierta' | 'proxima' | 'cerrada' | 'desconocido';
 export type FormaJuridica = 'autonomo' | 'sociedad' | 'asociacion' | 'fundacion';
 
+/** A quién le sirve al mánager: a sus grupos (la piden ellos) o a quien les contrata. */
+export type Destino = 'grupos' | 'programadores';
+export const NOMBRE_DESTINO: Record<Destino, string> = { grupos: 'Para tus grupos', programadores: 'Para quien te contrata' };
+
 export interface Clasificacion {
   musical: boolean;
+  destino: Destino | null;
+  descarte: string | null;
   culturaGeneral: boolean;
   estilosExplicitos: Estilo[];
   estilosCompatibles: Estilo[];
@@ -35,6 +41,8 @@ export interface ResumenConcesiones {
 
 export interface Convocatoria {
   id: string;
+  /** Título sin la fórmula administrativa (lo calcula la API). */
+  tituloCorto?: string;
   origen: 'bdns';
   tipo: 'concurrencia' | 'directa';
   tipoConvocatoria: string | null;
@@ -178,6 +186,7 @@ export interface Meta {
   lineas: Linea[];
   total: number;
   musicales: number;
+  utiles?: number;
   culturaGeneral: number;
   ultimaActualizacion: string | null;
   fuente: string;
@@ -260,6 +269,7 @@ export interface EventoCalendario {
     id: string;
     codigoBdns: string;
     titulo: string;
+    tituloCorto?: string;
     organo: string;
     organismoId: string;
     ambito: string;

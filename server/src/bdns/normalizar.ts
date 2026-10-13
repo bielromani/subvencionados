@@ -204,7 +204,7 @@ export function desdeBdns(registro: RegistroBdns, referencias?: Referencias | nu
       })),
     serie: null,
     texto,
-    clasificacion: clasificar({ texto, tiposBeneficiario }),
+    clasificacion: clasificar({ texto, tiposBeneficiario, titulo: [titulo, c.descripcionLeng].filter(Boolean).join('\n') }),
     vistaPorPrimeraVez: registro.primeraDescarga,
     actualizada: registro.actualizado,
   };

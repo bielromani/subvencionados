@@ -2,6 +2,7 @@
 // y selección de las convocatorias que merecen ficha.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { utilParaManager } from '../calendario.js';
 import { plazo } from '../emparejamiento.js';
 import type { Convocatoria } from '../tipos.js';
 import { VERSION_FICHA, type Ficha } from './esquema.js';
@@ -74,9 +75,8 @@ export function seleccionarParaFicha(
     (c) =>
       c.tipo === 'concurrencia' &&
       c.documentos.some((d) => d.texto) &&
-      // Becas de estudio y escuelas de música no son para el promotor (se pueden pedir con --codigo).
-      !c.clasificacion.lineas.includes('formacion') &&
-      ((c.clasificacion.musical && c.clasificacion.estilosCompatibles.length > 0) || c.clasificacion.culturaGeneral),
+      // Solo lo que le sirve al mánager (lo demás se puede pedir con --codigo).
+      utilParaManager(c),
   );
   const elegidas: { convocatoria: Convocatoria; motivo: MotivoFicha; orden: string }[] = [];
   for (const c of candidatas) {

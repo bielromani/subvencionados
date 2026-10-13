@@ -1,5 +1,5 @@
 import express, { type Request } from 'express';
-import { aICal, calendario } from './calendario.js';
+import { aICal, calendario, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
@@ -12,6 +12,7 @@ import { agruparOrganismos, idOrganismo, type Organismo } from './organismos.js'
 import { LINEAS, PERFIL_POR_DEFECTO, validarPerfil } from './perfil.js';
 import { CCAA } from './regiones.js';
 import { fichaBasica } from './ficha/basica.js';
+import { tituloCorto } from './titulo.js';
 import type { Ficha } from './ficha/esquema.js';
 import { documentosConTexto } from './ficha/fichas.js';
 import { ESTILOS, type Convocatoria, type Perfil } from './tipos.js';
@@ -22,7 +23,7 @@ const lista = (valor: unknown): string[] =>
 /** Lo que devolvemos al cliente: la convocatoria sin el texto bruto y con el plazo calculado hoy. */
 function vista(c: Convocatoria) {
   const { texto: _texto, ...resto } = c;
-  return { ...resto, plazo: plazo(c), organismoId: idOrganismo(c.organoNiveles) };
+  return { ...resto, tituloCorto: tituloCorto(c.titulo), plazo: plazo(c), organismoId: idOrganismo(c.organoNiveles) };
 }
 
 /** En los listados no hace falta el texto completo de los extractos. */
@@ -38,22 +39,25 @@ function filtrar(convocatorias: Convocatoria[], q: Request['query']): Convocator
   const lineas = lista(q.linea);
   const texto = typeof q.q === 'string' ? normalizar(q.q.trim()) : '';
   const plazoBuscado = typeof q.plazo === 'string' ? q.plazo : '';
-  const incluirNoMusicales = q.todas === 'true';
-  const incluirCultura = q.cultura === 'true';
+  // Por defecto solo lo que le sirve al mánager (para sus grupos o para quien les contrata); todas=true, todo.
+  const incluirDescartadas = q.todas === 'true';
+  const para = q.para === 'grupos' || q.para === 'programadores' ? q.para : '';
   const tipo = typeof q.tipo === 'string' ? q.tipo : '';
   const desde = typeof q.desde === 'string' ? q.desde : '';
 
   return convocatorias.filter((c) => {
     const cl = c.clasificacion;
-    if (!incluirNoMusicales && !cl.musical && !(incluirCultura && cl.culturaGeneral)) return false;
-    if (estilos.length && !estilos.some((e) => cl.estilosCompatibles.includes(e as never))) return false;
+    if (!incluirDescartadas && !utilParaManager(c)) return false;
+    if (para && cl.destino !== para) return false;
+    // La programación cultural general de un ayuntamiento no tiene estilo: vale para todos.
+    if (estilos.length && cl.musical && !estilos.some((e) => cl.estilosCompatibles.includes(e as never))) return false;
     // Una convocatoria sin restricción territorial aplica a cualquier comunidad.
     if (ccaa.length && !c.ambitoNacional && !ccaa.some((x) => c.ccaa.includes(x))) return false;
     if (tipo && c.tipo !== tipo) return false;
     if (desde && (c.fechaPublicacion ?? '') < desde) return false;
     if (administraciones.length && !administraciones.includes(c.administracion)) return false;
     if (lineas.length && !lineas.some((l) => cl.lineas.includes(l as never))) return false;
-    if (plazoBuscado && plazo(c) !== plazoBuscado) return false;
+    if (plazoBuscado === 'vigentes' ? !['abierta', 'proxima'].includes(plazo(c)) : plazoBuscado && plazo(c) !== plazoBuscado) return false;
     if (texto && !normalizar(`${c.titulo} ${c.organoNiveles.join(' ')} ${c.texto}`).includes(texto)) {
       return false;
     }
@@ -136,6 +140,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       lineas: LINEAS,
       total: todas.length,
       musicales: todas.filter((c) => c.clasificacion.musical).length,
+      utiles: todas.filter(utilParaManager).length,
       culturaGeneral: todas.filter((c) => c.clasificacion.culturaGeneral).length,
       ultimaActualizacion: todas.map((c) => c.actualizada).sort().at(-1) ?? null,
       fuente: 'Base de Datos Nacional de Subvenciones (BDNS) · IGAE, Ministerio de Hacienda',
@@ -436,6 +441,24 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       },
       artistas: primeras(s.artistas, 5),
       nuevas: primeras(nuevas(todas, hoy), 8),
+      // Lo que ve el mánager: lo que pueden pedir sus grupos y el dinero de quien les contrata, por separado.
+      para: Object.fromEntries(
+        (['grupos', 'programadores'] as const).map((destino) => {
+          const delDestino = (m: Coincidencia) => m.convocatoria.clasificacion.destino === destino;
+          const ahora = [
+            ...[...s.abiertas, ...s.artistas].filter((m) => delDestino(m) && m.plazo === 'abierta').sort((a, b) => (a.convocatoria.fechaFinSolicitud ?? '9999').localeCompare(b.convocatoria.fechaFinSolicitud ?? '9999')),
+            ...[...s.abiertas, ...s.artistas].filter((m) => delDestino(m) && m.plazo === 'proxima').sort((a, b) => (a.convocatoria.fechaInicioSolicitud ?? '9999').localeCompare(b.convocatoria.fechaInicioSolicitud ?? '9999')),
+          ];
+          const previstas = s.previstas.filter((p) => delDestino(p.coincidencia));
+          return [
+            destino,
+            {
+              ahora: primeras(ahora, 12),
+              previstas: { total: previstas.length, items: previstas.slice(0, 8).map((p) => ({ prevista: p.prevista, ...salidaCoincidencia(p.coincidencia) })) },
+            },
+          ];
+        }),
+      ),
       licitaciones: (() => {
         // Con perfil, solo las de sus comunidades.
         const zona = conGrupos ? [conGrupos.ccaaSede, ...conGrupos.ccaaActuacion].filter((x): x is string => !!x) : [];

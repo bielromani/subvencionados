@@ -59,7 +59,7 @@ export function seleccionar(coincidencias: Coincidencia[], hoy = new Date(), mes
   const en30 = iso(new Date(hoy.getTime() + 30 * DIA));
   const mes = dia.slice(0, 7);
   const hasta = iso(new Date(Date.UTC(hoy.getUTCFullYear(), hoy.getUTCMonth() + mesesPrevistas, 1))).slice(0, 7);
-  const directas = coincidencias.filter((m) => m.encaje === 'directo' && m.convocatoria.tipo === 'concurrencia');
+  const directas = coincidencias.filter((m) => (m.encaje === 'directo' || m.encaje === 'indirecto') && m.convocatoria.tipo === 'concurrencia');
   // Primero las de música y luego las generales de cultura, cada grupo por fecha.
   const porFecha = (campo: 'fechaFinSolicitud' | 'fechaInicioSolicitud') => (a: Coincidencia, b: Coincidencia) =>
     Number(!a.convocatoria.clasificacion.musical) - Number(!b.convocatoria.clasificacion.musical) ||
@@ -71,7 +71,6 @@ export function seleccionar(coincidencias: Coincidencia[], hoy = new Date(), mes
       .sort(porFecha('fechaFinSolicitud')),
     abrenPronto: directas.filter((m) => m.plazo === 'proxima').sort(porFecha('fechaInicioSolicitud')),
     previstas: directas
-      .filter((m) => m.convocatoria.clasificacion.musical)
       .flatMap((m) => {
         const p = prevista(m, mes, hasta);
         return p ? [{ prevista: p, coincidencia: m }] : [];

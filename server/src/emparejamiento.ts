@@ -1,5 +1,6 @@
 // Cruza el perfil del promotor con las convocatorias y explica por qué encaja cada una.
 
+import { utilParaManager } from './calendario.js';
 import type { Convocatoria, Estilo, Linea, Perfil } from './tipos.js';
 
 export type Plazo = 'abierta' | 'proxima' | 'cerrada' | 'desconocido';
@@ -63,7 +64,9 @@ const NOMBRE_LINEA: Record<Linea, string> = {
 /** Devuelve null si la convocatoria no le sirve al promotor. */
 export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coincidencia | null {
   const cl = c.clasificacion;
-  if (!cl.musical && !cl.culturaGeneral) return null;
+  // Solo lo que le sirve al mánager: para sus grupos o para quien les contrata (ver clasificacion/destino.ts).
+  if (!utilParaManager(c)) return null;
+  const paraProgramadores = cl.destino === 'programadores';
 
   const motivos: string[] = [];
   const avisos: string[] = [];
@@ -78,9 +81,9 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
   } else if (cl.generica) {
     puntuacion += 20;
     motivos.push('Ayuda de música sin restricción de estilo');
-  } else if (cl.culturaGeneral) {
+  } else if (!cl.musical) {
     puntuacion += 5;
-    avisos.push('Ayuda general de cultura: los conciertos pueden encajar, revisa las bases');
+    avisos.push('Programación cultural general: la música es una de las opciones, revisa las bases');
   } else if (estilos.length > 0) {
     return null;
   }
@@ -108,15 +111,13 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
   const esEmpresa = perfil.formaJuridica === 'autonomo' || perfil.formaJuridica === 'sociedad';
   const admitido = esEmpresa ? b.empresas : b.sinAnimoLucro;
   let encaje: Coincidencia['encaje'] = 'directo';
-  if (c.tipo === 'directa') {
-    encaje = 'precedente';
+  if (paraProgramadores) {
+    // La cobra quien contrata: ayuntamientos, festivales, salas. Es la oportunidad de venderles el grupo.
+    encaje = 'indirecto';
+    motivos.push(b.entidadesLocales ? 'La cobran ayuntamientos para programar: ofréceles tus grupos' : 'La cobran festivales, salas o programadores: ofréceles tus grupos');
   } else if (admitido === true) {
     puntuacion += 30;
     motivos.push(esEmpresa ? 'Admite autónomos y empresas' : 'Admite entidades sin ánimo de lucro');
-  } else if (b.entidadesLocales) {
-    if (!perfil.incluirIndirectas) return null;
-    encaje = 'indirecto';
-    motivos.push('La cobran ayuntamientos: oportunidad para venderles programación');
   } else if (b.personasFisicas) {
     encaje = 'artistas';
     motivos.push('Para personas físicas: pueden presentarse tus músicos');
@@ -125,9 +126,6 @@ export function evaluar(c: Convocatoria, perfil: Perfil, hoy = new Date()): Coin
   } else {
     avisos.push('No consta qué tipo de beneficiario admite: revisa las bases');
   }
-
-  // Las becas y ayudas de formación solo si las busca.
-  if (cl.lineas.includes('formacion') && !perfil.actividades.includes('formacion')) return null;
 
   // Actividades que le interesan
   const lineas = cl.lineas.filter((l) => perfil.actividades.includes(l));

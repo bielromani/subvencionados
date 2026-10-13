@@ -95,7 +95,7 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
                 <span>
                   <Etiqueta tono={TIPO[e.tipo][1]}>{TIPO[e.tipo][0]}</Etiqueta>
                   {e.convocatoria.culturaGeneral && <Etiqueta tono="aviso">Cultura general</Etiqueta>}{' '}
-                  <a href={enlace('convocatoria', e.convocatoria.id)}>{e.convocatoria.titulo}</a>
+                  <a href={enlace('convocatoria', e.convocatoria.id)}>{e.convocatoria.tituloCorto ?? e.convocatoria.titulo}</a>
                   {e.tipo === 'prevista' && e.convocatoria.anio && <span className="ayuda"> (última: {e.convocatoria.anio})</span>}
                   <span className="evento-detalle">
                     <a href={enlace('organismo', e.convocatoria.organismoId)}>{e.convocatoria.organo}</a> · {e.convocatoria.ambito}

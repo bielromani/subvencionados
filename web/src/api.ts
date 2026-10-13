@@ -56,8 +56,10 @@ export interface Filtros {
   plazo?: string;
   tipo?: string;
   orden?: string;
+  /** grupos | programadores */
+  para?: string;
+  /** Incluir también lo que no le sirve al mánager. */
   todas?: boolean;
-  cultura?: boolean;
   pagina?: number;
 }
 
@@ -89,6 +91,7 @@ export const api = {
       nuevas: Lista;
       licitaciones: { total: number; items: Contrato[] };
       grupos: { grupo: Grupo; abiertas: number; previstas: number }[];
+      para: Record<'grupos' | 'programadores', { ahora: Lista; previstas: ListaPrevistas }>;
     }>('/api/inicio'),
   grupos: () =>
     pedir<{

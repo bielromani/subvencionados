@@ -943,3 +943,35 @@ select {
 .contacto .datos dd .fila-detalle {
   display: block;
 }
+
+.etiqueta-acento {
+  background: color-mix(in srgb, var(--acento) 12%, transparent);
+  color: var(--acento);
+  font-weight: 600;
+}
+
+.titulo-oficial {
+  color: var(--texto-suave);
+  font-size: 0.8125rem;
+  margin: 4px 0 0;
+}
+
+/* Portada: dos columnas (para tus grupos / para quien te contrata) */
+.dos-columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.dos-columnas > .bloque {
+  margin: 0;
+}
+
+.subtitulo-bloque {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+  margin: 16px 0 4px;
+}
