@@ -1,3 +1,4 @@
+import { leerMarcas } from './marcas';
 import type { Circuito, Coincidencia, ContactoMunicipio, Contrato, Festival, Programador, Convocatoria, EventoCalendario, Grupo, Mercado, MercadoContratos, Meta, Organismo, Perfil } from './tipos';
 
 export interface Lista {
@@ -29,9 +30,10 @@ const base64 = (texto: string) => btoa(String.fromCharCode(...new TextEncoder().
 
 async function pedir<T>(url: string, init?: RequestInit): Promise<T> {
   const perfil = perfilGuardado();
+  const ocultas = leerMarcas().ocultas;
   const res = await fetch(url, {
     ...init,
-    headers: { 'Content-Type': 'application/json', ...(perfil ? { 'X-Perfil': base64(perfil) } : {}), ...init?.headers },
+    headers: { 'Content-Type': 'application/json', ...(perfil ? { 'X-Perfil': base64(perfil) } : {}), ...(ocultas.length ? { 'X-Ocultas': ocultas.join(',') } : {}), ...init?.headers },
   });
   const cuerpo = await res.json().catch(() => null);
   if (!res.ok) {
@@ -58,6 +60,8 @@ export interface Filtros {
   orden?: string;
   /** grupos | programadores */
   para?: string;
+  /** Solo estas (las guardadas), separadas por comas. */
+  ids?: string;
   /** Incluir también lo que no le sirve al mánager. */
   todas?: boolean;
   pagina?: number;

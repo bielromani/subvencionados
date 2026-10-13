@@ -975,3 +975,33 @@ select {
   color: var(--texto-suave);
   margin: 16px 0 4px;
 }
+
+/* Guardar / No me interesa */
+.botones-marca {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.marca {
+  font: inherit;
+  font-size: 0.8125rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+
+.marca:hover {
+  color: var(--texto);
+  border-color: var(--texto-suave);
+}
+
+.marca-activa {
+  color: var(--acento);
+  border-color: var(--acento);
+  font-weight: 600;
+}

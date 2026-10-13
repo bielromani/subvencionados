@@ -8,6 +8,7 @@ import { DondeTocar } from './pages/DondeTocar';
 import { Explorar } from './pages/Explorar';
 import { PaginaFestival, PaginaProgramador } from './pages/FichaDirectorio';
 import { Grupos } from './pages/Grupos';
+import { Guardadas } from './pages/Guardadas';
 import { Inicio } from './pages/Inicio';
 import { Mercado } from './pages/Mercado';
 import { PaginaOrganismo } from './pages/Organismo';
@@ -22,6 +23,7 @@ const SECCIONES: [string, string][] = [
   ['', 'Inicio'],
   ['grupos', 'Mis grupos'],
   ['explorar', 'Subvenciones'],
+  ['guardadas', 'Guardadas'],
   ['contratos', 'Contratos'],
   ['donde-tocar', 'Dónde tocar'],
   ['calendario', 'Calendario'],
@@ -73,6 +75,7 @@ export function App() {
         {meta && pagina === 'para-ti' && <ParaTi irAPerfil={() => (window.location.hash = '#/perfil')} />}
         {meta && pagina === 'grupos' && <Grupos ruta={ruta} />}
         {meta && pagina === 'explorar' && <Explorar meta={meta} ruta={ruta} />}
+        {meta && pagina === 'guardadas' && <Guardadas />}
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
         {meta && pagina === 'contratos' && <Contratos meta={meta} ruta={ruta} />}
         {meta && pagina === 'contrato' && id && <PaginaContrato id={id} />}

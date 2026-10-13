@@ -1,4 +1,6 @@
+import { useMarcas } from '../marcas';
 import { enlace } from '../ruta';
+import { BotonesMarca } from './BotonesMarca';
 import { NOMBRE_DESTINO, NOMBRE_ESTILO, type Coincidencia, type Convocatoria } from '../tipos';
 
 function ambito(c: Convocatoria): string {
@@ -18,8 +20,21 @@ function diasHasta(iso: string): number {
 }
 
 /** Fila compacta para las listas de la portada y de los grupos: qué es, cuándo y por qué encaja. */
-export function FilaConvocatoria({ m, prevista, motivos = false, destino = false }: { m: Coincidencia; prevista?: string; motivos?: boolean; destino?: boolean }) {
+export function FilaConvocatoria({
+  m,
+  prevista,
+  motivos = false,
+  destino = false,
+  mostrarOcultas = false,
+}: {
+  m: Coincidencia;
+  prevista?: string;
+  motivos?: boolean;
+  destino?: boolean;
+  mostrarOcultas?: boolean;
+}) {
   const c = m.convocatoria;
+  const { ocultas } = useMarcas();
   const organo = c.organoNiveles.slice(1).join(' · ') || c.organo;
   let cuando: { texto: string; tono: string } | null = null;
   if (prevista) cuando = { texto: `Prevista: ${mes(prevista)}`, tono: 'apagado' };
@@ -30,6 +45,8 @@ export function FilaConvocatoria({ m, prevista, motivos = false, destino = false
   } else if (m.plazo === 'abierta') cuando = { texto: 'Plazo abierto', tono: 'exito' };
   const estilos = c.clasificacion.estilosExplicitos;
 
+  // Al marcarla «no me interesa» desaparece en el momento (el servidor ya no la manda en la siguiente carga).
+  if (ocultas.includes(c.id) && !mostrarOcultas) return null;
   return (
     <li className="fila-convocatoria">
       <div className="etiquetas">
@@ -48,6 +65,7 @@ export function FilaConvocatoria({ m, prevista, motivos = false, destino = false
         {c.presupuesto != null && ` · ${euros.format(c.presupuesto)}`}
         {prevista && c.fechaPublicacion && ` · última: ${c.fechaPublicacion.slice(0, 4)}`}
       </span>
+      <BotonesMarca id={c.id} />
       {motivos && (m.motivos.length > 0 || m.avisos.length > 0) && (
         <span className="fila-motivos">
           {m.motivos.join(' · ')}

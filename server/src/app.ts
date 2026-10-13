@@ -45,8 +45,11 @@ function filtrar(convocatorias: Convocatoria[], q: Request['query']): Convocator
   const tipo = typeof q.tipo === 'string' ? q.tipo : '';
   const desde = typeof q.desde === 'string' ? q.desde : '';
 
+  // ids=a,b: las guardadas por el usuario, sean cuales sean.
+  const ids = new Set(lista(q.ids));
   return convocatorias.filter((c) => {
     const cl = c.clasificacion;
+    if (ids.size) return ids.has(c.id);
     if (!incluirDescartadas && !utilParaManager(c)) return false;
     if (para && cl.destino !== para) return false;
     // La programación cultural general de un ayuntamiento no tiene estilo: vale para todos.
@@ -148,7 +151,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   });
 
   app.get('/api/convocatorias', (req, res) => {
-    const resultado = ordenar(filtrar(repo.listarConvocatorias(), req.query), req.query.orden);
+    const resultado = ordenar(filtrar(visibles(req), req.query), req.query.orden);
     const porPagina = Math.min(Math.max(Number(req.query.porPagina) || 50, 1), 500);
     const pagina = Math.max(Number(req.query.pagina) || 1, 1);
     const items = resultado.slice((pagina - 1) * porPagina, pagina * porPagina);
@@ -180,21 +183,21 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   });
 
   // Mismos filtros que el listado (estilo, ccaa, administracion, linea, q); el tipo y el plazo los fija el calendario.
-  const eventos = (q: Request['query']) =>
-    calendario(filtrar(repo.listarConvocatorias(), { ...q, cultura: q.cultura ?? 'true', tipo: undefined, plazo: undefined }));
+  const eventos = (req: Request) =>
+    calendario(filtrar(visibles(req), { ...req.query, tipo: undefined, plazo: undefined }));
 
   app.get('/api/calendario', (req, res) => {
     // Licitaciones de conciertos con plazo abierto: el día que cierran.
     const licitaciones = filtrarContratos(contratos, { ccaa: lista(req.query.ccaa), estilo: lista(req.query.estilo), estado: 'abiertas' })
       .sort((a, b) => (a.finPlazo ?? '').localeCompare(b.finPlazo ?? ''))
       .map(contratoResumido);
-    res.json({ eventos: eventos(req.query), licitaciones });
+    res.json({ eventos: eventos(req), licitaciones });
   });
 
   app.get('/api/calendario.ics', (req, res) => {
     const base = `${req.protocol}://${req.get('host')}`;
     res.type('text/calendar; charset=utf-8').set('Content-Disposition', 'attachment; filename="subvenciones-musica.ics"');
-    res.send(aICal(eventos(req.query), base));
+    res.send(aICal(eventos(req), base));
   });
 
   // Música compatible con jazz, clásica u ópera (o el estilo pedido), sin formación salvo que se pida.
@@ -391,6 +394,13 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     res.json(m);
   });
 
+  // Las que el usuario ha marcado «no me interesa» (cabecera X-Ocultas, ids separados por comas) no vuelven a salir.
+  const visibles = (req: Request) => {
+    const ocultas = new Set(lista(req.get('x-ocultas')));
+    const todas = repo.listarConvocatorias();
+    return ocultas.size && req.query.ids === undefined ? todas.filter((c) => !ocultas.has(c.id)) : todas;
+  };
+
   // El perfil lo guarda cada navegador y lo manda en la cabecera X-Perfil (JSON en base64): así la web publicada
   // no necesita guardar nada en el servidor. Sin cabecera, el guardado en la base de datos local.
   const perfilDe = (req: Request): Perfil | null => {
@@ -428,7 +438,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const perfil = perfilDe(req);
     const conGrupos = perfil && perfil.grupos.length > 0 ? perfil : null;
     const hoy = new Date();
-    const todas = conGrupos ? emparejar(repo.listarConvocatorias(), conGrupos, hoy) : coincidenciasGenericas(repo.listarConvocatorias(), hoy);
+    const todas = conGrupos ? emparejar(visibles(req), conGrupos, hoy) : coincidenciasGenericas(visibles(req), hoy);
     const s = seleccionar(todas, hoy);
     res.json({
       perfilCompleto: conGrupos !== null,
@@ -468,7 +478,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         return { total: abiertas.length, items: abiertas.slice(0, 8).map(contratoResumido) };
       })(),
       grupos: conGrupos
-        ? porGrupo(repo.listarConvocatorias(), conGrupos, hoy).map((g) => {
+        ? porGrupo(visibles(req), conGrupos, hoy).map((g) => {
             // Solo las que mencionan su estilo: las generales valen para todos los grupos.
             const propia = (m: Coincidencia) => m.convocatoria.clasificacion.estilosExplicitos.includes(g.grupo.estilo);
             return {
@@ -506,7 +516,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
     res.json({
       perfilCompleto: true,
-      grupos: porGrupo(repo.listarConvocatorias(), perfil).map((g) => ({
+      grupos: porGrupo(visibles(req), perfil).map((g) => ({
         grupo: g.grupo,
         abiertas: primeras(g.abiertas, 100),
         previstas: {
@@ -533,7 +543,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const salida = (ms: Coincidencia[]) =>
       ms.slice(0, 50).map((m) => ({ ...m, convocatoria: resumida(m.convocatoria) }));
 
-    const todas = emparejar(repo.listarConvocatorias(), perfil, hoy);
+    const todas = emparejar(visibles(req), perfil, hoy);
     // Las ayudas generales de cultura solo interesan mientras se pueden pedir.
     const musicales = todas.filter((m) => m.convocatoria.clasificacion.musical);
     const directas = musicales.filter((m) => m.encaje === 'directo');

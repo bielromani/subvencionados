@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { enlace } from '../ruta';
+import { BotonesMarca } from './BotonesMarca';
 import { FichaPlegable } from './FichaConvocatoria';
 import { NOMBRE_ADMINISTRACION, NOMBRE_DESTINO, NOMBRE_ESTILO, NOMBRE_LINEA, type Convocatoria, type Plazo } from '../tipos';
 
@@ -147,6 +148,8 @@ export function TarjetaConvocatoria({ c, children, pagina = false }: { c: Convoc
       {!pagina && <FichaPlegable id={c.id} leida={c.tieneFicha ?? false} />}
 
       {children}
+
+      <BotonesMarca id={c.id} />
 
       <footer className="enlaces">
         <a href={c.urlDetalle} target="_blank" rel="noreferrer">

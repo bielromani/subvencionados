@@ -63,6 +63,13 @@ describe('GET /api/convocatorias', () => {
     expect(directa.body.items[0].concesiones.importeTotal).toBe(28000);
   });
 
+  it('guardadas (ids) y ocultas (cabecera X-Ocultas)', async () => {
+    expect(ids(await request(app).get('/api/convocatorias?ids=bdns-932065,bdns-300'))).toEqual(['bdns-932065', 'bdns-300']);
+    expect(ids(await request(app).get('/api/convocatorias').set('X-Ocultas', 'bdns-300,bdns-200'))).toEqual(['bdns-100']);
+    // La lista de ocultas se puede consultar para recuperarlas.
+    expect(ids(await request(app).get('/api/convocatorias?ids=bdns-300').set('X-Ocultas', 'bdns-300'))).toEqual(['bdns-300']);
+  });
+
   it('para=grupos o para=programadores', async () => {
     expect(ids(await request(app).get('/api/convocatorias?para=grupos'))).toEqual(['bdns-300']);
     expect(ids(await request(app).get('/api/convocatorias?para=programadores'))).toEqual(['bdns-100', 'bdns-200']);
