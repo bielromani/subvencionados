@@ -111,6 +111,7 @@ export const api = {
     }>('/api/grupos'),
   contratos: (consulta: string) =>
     pedir<{ total: number; pagina: number; porPagina: number; items: Contrato[] }>(`/api/contratos?${consulta}`),
+  contactos: (consulta: string) => pedir<{ total: number; pagina: number; porPagina: number; items: (ContactoMunicipio & { musica: { contratos: number; adjudicado: number; ultimo: string | null; programadorId: string } | null })[] }>(`/api/contactos?${consulta}`),
   contrato: (id: string) => pedir<Contrato>(`/api/contratos/${encodeURIComponent(id)}`),
   mercadoContratos: (consulta: string) => pedir<MercadoContratos>(`/api/contratos/mercado?${consulta}`),
   programadores: (consulta: string) =>

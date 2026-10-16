@@ -1005,3 +1005,10 @@ select {
   border-color: var(--acento);
   font-weight: 600;
 }
+
+.llamada {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: var(--radio);
+  background: color-mix(in srgb, var(--acento) 8%, transparent);
+}

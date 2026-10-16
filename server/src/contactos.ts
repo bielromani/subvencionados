@@ -169,6 +169,10 @@ export class Contactos {
     );
   }
 
+  listar(): ContactoMunicipio[] {
+    return [...this.porIne.values()];
+  }
+
   get total() {
     return this.porIne.size;
   }

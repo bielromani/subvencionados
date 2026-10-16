@@ -8,6 +8,7 @@ import { DondeTocar } from './pages/DondeTocar';
 import { Explorar } from './pages/Explorar';
 import { PaginaFestival, PaginaProgramador } from './pages/FichaDirectorio';
 import { Grupos } from './pages/Grupos';
+import { Contactos } from './pages/Contactos';
 import { Guardadas } from './pages/Guardadas';
 import { Inicio } from './pages/Inicio';
 import { Mercado } from './pages/Mercado';
@@ -21,16 +22,19 @@ import type { Meta } from './tipos';
 /** Secciones del menú; la página de una convocatoria u organismo marca la sección de la que cuelga. */
 const SECCIONES: [string, string][] = [
   ['', 'Inicio'],
-  ['grupos', 'Mis grupos'],
   ['explorar', 'Subvenciones'],
   ['guardadas', 'Guardadas'],
-  ['contratos', 'Contratos'],
+  ['contactos', 'Contactos'],
   ['donde-tocar', 'Dónde tocar'],
+  ['contratos', 'Contratos'],
+  ['grupos', 'Mis grupos'],
   ['calendario', 'Calendario'],
+  ['perfil', 'Mi perfil'],
+  // Fuera del menú (enlazadas desde el pie y desde las fichas).
   ['organismos', 'Organismos'],
   ['mercado', 'Mercado'],
-  ['perfil', 'Mi perfil'],
 ];
+const EN_EL_PIE = new Set(['organismos', 'mercado']);
 const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos', 'para-ti': '', contrato: 'contratos', programador: 'donde-tocar', festival: 'donde-tocar' };
 
 export function App() {
@@ -54,7 +58,7 @@ export function App() {
           <p className="lema">Ayudas públicas para conciertos de jazz, clásica y ópera</p>
         </div>
         <nav>
-          {SECCIONES.map(([destino, nombre]) => (
+          {SECCIONES.filter(([d]) => !EN_EL_PIE.has(d)).map(([destino, nombre]) => (
             <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
               {nombre}
             </a>
@@ -76,6 +80,7 @@ export function App() {
         {meta && pagina === 'grupos' && <Grupos ruta={ruta} />}
         {meta && pagina === 'explorar' && <Explorar meta={meta} ruta={ruta} />}
         {meta && pagina === 'guardadas' && <Guardadas />}
+        {meta && pagina === 'contactos' && <Contactos meta={meta} ruta={ruta} />}
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
         {meta && pagina === 'contratos' && <Contratos meta={meta} ruta={ruta} />}
         {meta && pagina === 'contrato' && id && <PaginaContrato id={id} />}
@@ -95,6 +100,8 @@ export function App() {
           {(meta.utiles ?? meta.musicales).toLocaleString('es-ES')} subvenciones útiles para colocar grupos, de {meta.total.toLocaleString('es-ES')}{' '}
           descargadas · Fuente: {meta.fuente}
           {meta.ultimaActualizacion && ` · Actualizado el ${new Date(meta.ultimaActualizacion).toLocaleDateString('es-ES')}`}
+          {' · '}
+          <a href="#/organismos">Organismos</a> · <a href="#/mercado">Mercado</a>
         </footer>
       )}
     </div>

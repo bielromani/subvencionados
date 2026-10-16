@@ -1,3 +1,4 @@
+import { Contacto } from '../components/Contacto';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { ESTADO_CONTRATO } from '../components/FilaContrato';
@@ -81,6 +82,8 @@ export function PaginaContrato({ id }: { id: string }) {
           )}
         </footer>
       </article>
+
+      {c.contacto && <Contacto c={c.contacto} />}
 
       {c.adjudicaciones.length > 0 && (
         <section className="bloque">

@@ -149,6 +149,11 @@ export function TarjetaConvocatoria({ c, children, pagina = false }: { c: Convoc
 
       {children}
 
+      {pagina && cl.destino === 'programadores' && cl.beneficiarios.entidadesLocales && c.provincias.length > 0 && (
+        <p className="llamada">
+          La cobran los ayuntamientos: <a href={`#/contactos?provincia=${encodeURIComponent(c.provincias.join(','))}&musica=no`}>ver a quién llamar en {c.provincias.join(', ')} →</a>
+        </p>
+      )}
       <BotonesMarca id={c.id} />
 
       <footer className="enlaces">

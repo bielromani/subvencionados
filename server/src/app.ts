@@ -167,7 +167,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const ficha = opciones.fichas?.leer(c.codigoBdns) ?? null;
     // Sin ficha leída por IA, la básica automática: extracto por apartados y frases literales de las bases.
     const basica = ficha ? null : fichaBasica(c.anuncios, documentosConTexto(c, (a) => opciones.leerTexto?.(a) ?? null));
-    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha, basica });
+    // Si la convoca un ayuntamiento, a quién contactar allí.
+    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha, basica, contacto: opciones.contactos?.porCodigo(c.ubicacion?.codigoMunicipio) ?? null });
   });
 
   app.get('/api/convocatorias/:id/documentos/:idDocumento', (req, res) => {
@@ -329,7 +330,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       res.status(404).json({ error: 'Contrato no encontrado' });
       return;
     }
-    res.json({ ...c, abierta: abierta(c) });
+    res.json({ ...c, abierta: abierta(c), contacto: opciones.contactos?.deOrgano(c.organo.nombre, c.organo.ciudad, c.codigoProvincia) ?? null });
   });
 
   app.get('/api/organismos', (req, res) => {
@@ -383,6 +384,61 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       // Solo si el organismo es el propio municipio (la ubicación de una diputación no lleva municipio).
       contacto: opciones.contactos?.porCodigo(u?.codigoMunicipio) ?? null,
     });
+  });
+
+  // Directorio de contactos: los municipios con su responsable de cultura, ordenados por cuánta música contratan.
+  const musicaPorMunicipio = () => {
+    const porIne = new Map<string, { contratos: number; adjudicado: number; ultimo: string | null; programadorId: string }>();
+    for (const p of dir().programadores) {
+      if (!p.codigoIne) continue;
+      const previo = porIne.get(p.codigoIne);
+      if (!previo || p.contratos > previo.contratos) porIne.set(p.codigoIne, { contratos: p.contratos, adjudicado: p.adjudicado, ultimo: p.ultimo, programadorId: p.id });
+    }
+    return porIne;
+  };
+  const filtrarContactos = (req: Request) => {
+    const ccaa = lista(req.query.ccaa);
+    const provincia = lista(req.query.provincia);
+    const soloCultura = req.query.cultura !== 'no';
+    const musica = musicaPorMunicipio();
+    const xs = (opciones.contactos?.listar() ?? [])
+      .filter(
+        (m) =>
+          (!ccaa.length || ccaa.includes(m.ccaa)) &&
+          (!provincia.length || provincia.includes(m.provincia)) &&
+          (!soloCultura || m.personas.length > 0 || !!m.cultura.email || !!m.cultura.telefono) &&
+          (req.query.musica !== 'si' || musica.has(m.codigoIne)) &&
+          coincideTexto(req.query.q, m.municipio, m.provincia, ...m.personas.map((p) => p.nombre)),
+      )
+      .map((m) => ({ ...m, musica: musica.get(m.codigoIne) ?? null }))
+      .sort((a, b) => (b.musica?.contratos ?? 0) - (a.musica?.contratos ?? 0) || (b.poblacion ?? 0) - (a.poblacion ?? 0));
+    return xs;
+  };
+  app.get('/api/contactos', (req, res) => {
+    res.json(paginar(req, filtrarContactos(req)));
+  });
+  // El mismo listado para abrir en Excel: una fila por persona (o por municipio si no se conoce a nadie).
+  app.get('/api/contactos.csv', (req, res) => {
+    const celda = (x: unknown) => {
+      const t = x == null ? '' : String(x);
+      return /[";\n]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t;
+    };
+    const filas = [
+      ['Comunidad', 'Provincia', 'Municipio', 'Nombre', 'Cargo', 'Área', 'Partido', 'Email cultura', 'Teléfono cultura', 'Email ayuntamiento', 'Teléfono ayuntamiento', 'Web', 'Contratos de música', 'Fuente', 'Año fuente'],
+    ];
+    for (const m of filtrarContactos(req)) {
+      const personas = m.personas.length ? m.personas : [null];
+      for (const p of personas) {
+        filas.push([
+          m.ccaa, m.provincia, m.municipio, p?.nombre ?? '', p?.cargo ?? '', p?.area ?? '', p?.partido ?? '',
+          p?.email ?? m.cultura.email ?? '', p?.telefono ?? m.cultura.telefono ?? '', m.ayuntamiento.email ?? '', m.ayuntamiento.telefono ?? '',
+          m.ayuntamiento.web ?? '', String(m.musica?.contratos ?? ''), p?.fuente ?? m.fuentes ?? '', String(p?.anio ?? ''),
+        ]);
+      }
+    }
+    res.type('text/csv; charset=utf-8').attachment('contactos-cultura.csv');
+    // Punto y coma y BOM: Excel en español lo abre bien con doble clic.
+    res.send('\uFEFF' + filas.map((f) => f.map(celda).join(';')).join('\r\n'));
   });
 
   app.get('/api/contactos/:ine', (req, res) => {

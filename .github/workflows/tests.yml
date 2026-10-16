@@ -1,13 +1,8 @@
-# Tests, comprobación de tipos y compilación de la web en cada cambio de código.
+# Tests, comprobación de tipos y compilación de la web. Solo a mano: para ahorrar minutos de Actions, las
+# pruebas se pasan en local antes de cada push (npm test && npm run typecheck) y Vercel compila la web.
 name: Tests
 
 on:
-  push:
-    paths-ignore:
-      - 'datos/**'
-      - '**.md'
-      - '.github/workflows/recolectar-*.yml'
-      - '.github/workflows/explorar-*.yml'
   workflow_dispatch:
 
 # Si llegan varios pushes seguidos, solo cuenta el último (ahorra minutos de Actions).

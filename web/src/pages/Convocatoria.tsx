@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { Contacto } from '../components/Contacto';
 import { FichaDe } from '../components/FichaConvocatoria';
 import { TarjetaConvocatoria } from '../components/TarjetaConvocatoria';
 import { enlace } from '../ruta';
@@ -74,6 +75,7 @@ export function PaginaConvocatoria({ id }: { id: string }) {
         <a href="#/explorar">← Convocatorias</a>
       </p>
       <TarjetaConvocatoria c={c} pagina />
+      {c.contacto && <Contacto c={c.contacto} />}
       {(c.ficha || c.basica) && (
         <section className="bloque">
           <h3>{c.ficha ? 'Ficha completa de las bases' : 'Ficha básica'}</h3>

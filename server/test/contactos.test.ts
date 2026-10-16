@@ -69,6 +69,16 @@ describe('contactos en la API', () => {
     expect(ficha.body.contacto.personas[0].nombre).toBe('Persona Uno');
   });
 
+  it('directorio de contactos y su CSV para Excel', async () => {
+    const r = await request(app).get('/api/contactos?musica=si');
+    expect(r.body.total).toBe(1);
+    expect(r.body.items[0]).toMatchObject({ municipio: 'Lugo', musica: { contratos: 1 } });
+    const csv = await request(app).get('/api/contactos.csv');
+    expect(csv.headers['content-type']).toContain('text/csv');
+    expect(csv.text).toContain('Persona Uno');
+    expect(csv.text).not.toContain('persona.dos@hotmail.com');
+  });
+
   it('ficha de municipio por código INE', async () => {
     expect((await request(app).get('/api/contactos/27048')).body.municipio).toBe('Pobra do Brollón, A');
     expect((await request(app).get('/api/contactos/99999')).status).toBe(404);

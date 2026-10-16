@@ -28,6 +28,7 @@ export interface Clasificacion {
   generica: boolean;
   otrosGeneros: string[];
   lineas: Linea[];
+  beneficiarios: { empresas: boolean | null; sinAnimoLucro: boolean | null; entidadesLocales: boolean; personasFisicas: boolean | null };
   encajePromotor: 'si' | 'indirecto' | 'artistas' | 'no' | 'desconocido';
   evidencias: string[];
 }
@@ -43,6 +44,8 @@ export interface Convocatoria {
   id: string;
   /** Título sin la fórmula administrativa (lo calcula la API). */
   tituloCorto?: string;
+  /** En la ficha: a quién contactar si la convoca un ayuntamiento. */
+  contacto?: ContactoMunicipio | null;
   origen: 'bdns';
   tipo: 'concurrencia' | 'directa';
   tipoConvocatoria: string | null;
@@ -302,6 +305,8 @@ export interface Adjudicacion {
 /** Contrato de música de la Plataforma de Contratación del Sector Público. */
 export interface Contrato {
   id: string;
+  /** En la ficha: a quién contactar si lo contrata un ayuntamiento. */
+  contacto?: ContactoMunicipio | null;
   expediente: string | null;
   titulo: string;
   estado: string | null;
