@@ -9,7 +9,9 @@ type Pestana = 'festivales' | 'programadores' | 'circuitos';
 /** Dónde colocar a los grupos: festivales y ciclos, programadores públicos y circuitos, con sus fuentes. */
 export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const p = ruta.params;
-  const [pestana, setPestana] = useState<Pestana>((p.get('ver') as Pestana) || 'festivales');
+  // Los programadores tienen ahora su propia sección (Clientes): los enlaces antiguos llevan allí.
+  if (p.get('ver') === 'programadores') window.location.hash = '#/clientes';
+  const [pestana, setPestana] = useState<Pestana>(p.get('ver') === 'circuitos' ? 'circuitos' : 'festivales');
   const [filtros, setFiltros] = useState({ q: p.get('q') ?? '', ccaa: p.get('ccaa') ?? '', estilo: p.get('estilo') ?? '', orden: p.get('orden') ?? '', todos: p.get('todos') ?? '', contacto: p.get('contacto') ?? '', pagina: Number(p.get('pagina')) || 1 });
   const [r, setR] = useState<{ total: number; porPagina: number; items: (Festival | Programador)[] } | null>(null);
   const [circuitos, setCircuitos] = useState<Circuito[] | null>(null);
@@ -36,7 +38,6 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         {(
           [
             ['festivales', 'Festivales y ciclos'],
-            ['programadores', 'Programadores públicos'],
             ['circuitos', 'Circuitos'],
           ] as [Pestana, string][]
         ).map(([id, nombre]) => (

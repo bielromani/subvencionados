@@ -96,6 +96,7 @@ export const api = {
       licitaciones: { total: number; items: Contrato[] };
       grupos: { grupo: Grupo; abiertas: number; previstas: number }[];
       para: Record<'grupos' | 'programadores', { ahora: Lista; previstas: ListaPrevistas }>;
+      llamar: { meses: number[]; total: number; items: Programador[] };
     }>('/api/inicio'),
   grupos: () =>
     pedir<{

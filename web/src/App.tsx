@@ -8,6 +8,7 @@ import { DondeTocar } from './pages/DondeTocar';
 import { Explorar } from './pages/Explorar';
 import { PaginaFestival, PaginaProgramador } from './pages/FichaDirectorio';
 import { Grupos } from './pages/Grupos';
+import { Clientes } from './pages/Clientes';
 import { Contactos } from './pages/Contactos';
 import { Guardadas } from './pages/Guardadas';
 import { Inicio } from './pages/Inicio';
@@ -22,20 +23,21 @@ import type { Meta } from './tipos';
 /** Secciones del menú; la página de una convocatoria u organismo marca la sección de la que cuelga. */
 const SECCIONES: [string, string][] = [
   ['', 'Inicio'],
-  ['explorar', 'Subvenciones'],
-  ['guardadas', 'Guardadas'],
-  ['contactos', 'Contactos'],
-  ['donde-tocar', 'Dónde tocar'],
+  ['clientes', 'Clientes'],
+  ['explorar', 'Ayudas'],
+  ['donde-tocar', 'Festivales'],
   ['contratos', 'Contratos'],
-  ['grupos', 'Mis grupos'],
-  ['calendario', 'Calendario'],
+  ['guardadas', 'Mi lista'],
   ['perfil', 'Mi perfil'],
-  // Fuera del menú (enlazadas desde el pie y desde las fichas).
+  // Fuera del menú (enlazadas desde el pie, la portada y las fichas).
+  ['calendario', 'Calendario'],
+  ['grupos', 'Mis grupos'],
+  ['contactos', 'Contactos'],
   ['organismos', 'Organismos'],
   ['mercado', 'Mercado'],
 ];
-const EN_EL_PIE = new Set(['organismos', 'mercado']);
-const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'organismos', 'para-ti': '', contrato: 'contratos', programador: 'donde-tocar', festival: 'donde-tocar' };
+const EN_EL_PIE = new Set(['calendario', 'grupos', 'contactos', 'organismos', 'mercado']);
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', organismos: 'clientes', mercado: 'clientes' };
 
 export function App() {
   const ruta = useRuta();
@@ -55,7 +57,7 @@ export function App() {
           <h1>
             <a href="#/">Subvencionados</a>
           </h1>
-          <p className="lema">Ayudas públicas para conciertos de jazz, clásica y ópera</p>
+          <p className="lema">Coloca a tus grupos de jazz, clásica y ópera: a quién llamar, qué ayudas pedir y qué contratos están abiertos</p>
         </div>
         <nav>
           {SECCIONES.filter(([d]) => !EN_EL_PIE.has(d)).map(([destino, nombre]) => (
@@ -81,6 +83,7 @@ export function App() {
         {meta && pagina === 'explorar' && <Explorar meta={meta} ruta={ruta} />}
         {meta && pagina === 'guardadas' && <Guardadas />}
         {meta && pagina === 'contactos' && <Contactos meta={meta} ruta={ruta} />}
+        {meta && pagina === 'clientes' && <Clientes meta={meta} ruta={ruta} />}
         {meta && pagina === 'convocatoria' && id && <PaginaConvocatoria id={id} />}
         {meta && pagina === 'contratos' && <Contratos meta={meta} ruta={ruta} />}
         {meta && pagina === 'contrato' && id && <PaginaContrato id={id} />}
@@ -101,7 +104,8 @@ export function App() {
           descargadas · Fuente: {meta.fuente}
           {meta.ultimaActualizacion && ` · Actualizado el ${new Date(meta.ultimaActualizacion).toLocaleDateString('es-ES')}`}
           {' · '}
-          <a href="#/organismos">Organismos</a> · <a href="#/mercado">Mercado</a>
+          <a href="#/calendario">Calendario</a> · <a href="#/contactos">Directorio de cultura</a> · <a href="#/organismos">Organismos</a> ·{' '}
+          <a href="#/mercado">Mercado</a>
         </footer>
       )}
     </div>

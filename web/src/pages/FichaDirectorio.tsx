@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { BotonCliente } from '../components/Cliente';
 import { Contacto } from '../components/Contacto';
+import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { aniosTexto, Fuentes, mesesTexto } from '../components/Directorio';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
 import { NOMBRE_ESTILO, type Estilo, type Festival, type Programador } from '../tipos';
@@ -16,71 +18,88 @@ export function PaginaProgramador({ id }: { id: string }) {
   }, [id]);
   if (error) return <p className="error">{error}</p>;
   if (!p) return <p className="ayuda">Cargando…</p>;
+  const estilos = (Object.entries(p.estilos) as [Estilo, number][]).sort((a, b) => b[1] - a[1]);
+  const nombre = p.contacto && /ayuntamiento|ajuntament|concello|junta de gobierno|alcald/i.test(p.nombre) && !/instituto|patronato|fundaci|consorcio|organismo/i.test(p.nombre) ? `Ayuntamiento de ${p.contacto.municipio}` : p.nombre;
   return (
     <section className="pagina">
       <p className="migas">
-        <a href="#/donde-tocar?ver=programadores">← Programadores</a>
+        <a href="#/clientes">← Clientes</a>
       </p>
       <article className="tarjeta">
-        <div className="etiquetas">
-          {(Object.entries(p.estilos) as [Estilo, number][]).map(([e, n]) => (
-            <Etiqueta key={e}>
-              {NOMBRE_ESTILO[e]}: {n}
-            </Etiqueta>
-          ))}
-          {p.ccaa && <Etiqueta>{p.ccaa}</Etiqueta>}
-        </div>
-        <h2>{p.nombre}</h2>
-        <p className="organo">{[p.ciudad, p.provincia !== p.ciudad ? p.provincia : null].filter(Boolean).join(', ')}</p>
-        <dl className="datos">
+        <h2>{nombre}</h2>
+        <p className="organo">
+          {[p.ciudad, p.provincia !== p.ciudad ? p.provincia : null].filter(Boolean).join(', ')}
+          {nombre !== p.nombre && ` · órgano de contratación: ${p.nombre}`}
+        </p>
+        <dl className="datos datos-grandes">
           <div>
-            <dt>Contratos de música</dt>
+            <dt>Conciertos contratados</dt>
             <dd>
-              {p.contratos} ({p.menores} menores)
+              {p.contratos} <span className="ayuda">desde {fecha(p.primero)}</span>
             </dd>
-          </div>
-          <div>
-            <dt>Adjudicado</dt>
-            <dd>{euros.format(p.adjudicado)} sin IVA</dd>
           </div>
           {p.importeHabitual != null && (
             <div>
-              <dt>Importe habitual</dt>
+              <dt>Suele pagar</dt>
               <dd>{euros.format(p.importeHabitual)}</dd>
             </div>
           )}
-          <div>
-            <dt>Empresas distintas</dt>
-            <dd>{p.empresas}</dd>
-          </div>
-          <div>
-            <dt>Periodo</dt>
-            <dd>
-              {fecha(p.primero)} – {fecha(p.ultimo)}
-            </dd>
-          </div>
           {p.meses.length > 0 && (
             <div>
-              <dt>Meses con más contratos</dt>
+              <dt>Contrata sobre todo en</dt>
               <dd>{mesesTexto(p.meses)}</dd>
             </div>
           )}
+          <div>
+            <dt>Estilos</dt>
+            <dd>{estilos.length ? estilos.map(([e, n]) => `${NOMBRE_ESTILO[e]} (${n})`).join(', ') : 'Otros géneros'}</dd>
+          </div>
+          <div>
+            <dt>Grupos distintos contratados</dt>
+            <dd>{p.empresas}</dd>
+          </div>
+          <div>
+            <dt>Total en música</dt>
+            <dd>{euros.format(p.adjudicado)}</dd>
+          </div>
         </dl>
-        {p.web && (
-          <footer className="enlaces">
+        <div className="botones-marca">
+          <BotonCliente id={p.id} nombre={p.nombre} />
+        </div>
+        <footer className="enlaces">
+          {p.web && (
             <a href={p.web} target="_blank" rel="noreferrer">
-              Web del organismo ↗
+              Web ↗
             </a>
-            <a href={`#/contratos?estado=adjudicadas&q=${encodeURIComponent(p.nombre)}`}>Todos sus contratos</a>
-          </footer>
-        )}
+          )}
+          <a href={`#/contratos?estado=adjudicadas&q=${encodeURIComponent(p.nombre)}`}>Todos sus contratos</a>
+        </footer>
       </article>
-      {p.contacto && <Contacto c={p.contacto} />}
+      {p.contacto ? (
+        <Contacto c={p.contacto} />
+      ) : (
+        <section className="bloque">
+          <h3>A quién contactar</h3>
+          <p className="ayuda">No tenemos un contacto directo de este organismo: escribe por su web o por la sede electrónica.</p>
+        </section>
+      )}
+      {(p.ayudas?.length ?? 0) > 0 && (
+        <section className="bloque">
+          <h3>Ayudas de su ayuntamiento</h3>
+          <p className="ayuda">Ayudas para música o programación que convoca: indican presupuesto y qué tipo de propuestas apoya.</p>
+          <ul className="filas">
+            {p.ayudas!.map((c) => (
+              <FilaConvocatoria key={c.id} m={{ convocatoria: c, plazo: c.plazo, puntuacion: 0, encaje: 'directo', motivos: [], avisos: [] }} destino />
+            ))}
+          </ul>
+        </section>
+      )}
       <section className="bloque">
-        <h3>Últimos contratos</h3>
+        <h3>Últimos conciertos que ha contratado</h3>
+        <p className="ayuda">Qué programa, a quién y por cuánto (importes sin IVA): la mejor pista de qué propuesta le encaja.</p>
         <Fuentes fuentes={p.recientes ?? []} />
       </section>
-      <p className="ayuda">Datos de la Plataforma de Contratación del Sector Público (importes sin IVA).</p>
+      <p className="ayuda">Datos de la Plataforma de Contratación del Sector Público.</p>
     </section>
   );
 }

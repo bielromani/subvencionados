@@ -20,7 +20,6 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const [filtros, setFiltros] = useState({
     estilo: ruta.params.get('estilo') ?? '',
     ccaa: ruta.params.get('ccaa') ?? '',
-    cultura: ruta.params.get('cultura') ?? 'true',
   });
   const [eventos, setEventos] = useState<EventoCalendario[] | null>(null);
   const [licitaciones, setLicitaciones] = useState<Contrato[]>([]);
@@ -59,14 +58,6 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
             <option key={c}>{c}</option>
           ))}
         </select>
-        <label className="casilla">
-          <input
-            type="checkbox"
-            checked={filtros.cultura === 'true'}
-            onChange={(e) => setFiltros((f) => ({ ...f, cultura: e.target.checked ? 'true' : 'false' }))}
-          />{' '}
-          Incluir ayudas generales de cultura
-        </label>
         <a className="boton" href={`/api/calendario.ics?${consulta}`} download>
           Añadir a mi calendario (.ics)
         </a>
@@ -94,7 +85,7 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
                 <span className="evento-dia">{e.tipo === 'prevista' ? '—' : dia(e.fecha)}</span>
                 <span>
                   <Etiqueta tono={TIPO[e.tipo][1]}>{TIPO[e.tipo][0]}</Etiqueta>
-                  {e.convocatoria.culturaGeneral && <Etiqueta tono="aviso">Cultura general</Etiqueta>}{' '}
+
                   <a href={enlace('convocatoria', e.convocatoria.id)}>{e.convocatoria.tituloCorto ?? e.convocatoria.titulo}</a>
                   {e.tipo === 'prevista' && e.convocatoria.anio && <span className="ayuda"> (última: {e.convocatoria.anio})</span>}
                   <span className="evento-detalle">

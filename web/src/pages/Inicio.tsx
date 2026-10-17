@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api, type Lista, type ListaPrevistas } from '../api';
+import { FilaCliente } from '../components/Cliente';
 import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { enlace } from '../ruta';
@@ -19,24 +20,27 @@ function Filas({ lista, vacio }: { lista: Lista | ListaPrevistas; vacio: string 
 }
 
 function Columna({ titulo, explicacion, datos, para }: { titulo: string; explicacion: string; datos: Datos['para']['grupos']; para: string }) {
+  const previstas = { ...datos.previstas, items: datos.previstas.items.slice(0, 4) };
   return (
     <section className="bloque">
       <h3>{titulo}</h3>
       <p className="ayuda">{explicacion}</p>
       <h4 className="subtitulo-bloque">
-        Abiertas o a punto de abrir <span className="contador">{datos.ahora.total}</span>
+        Con plazo abierto o a punto de abrir <span className="contador">{datos.ahora.total}</span>
       </h4>
       <Filas lista={datos.ahora} vacio="Ninguna ahora mismo." />
       <h4 className="subtitulo-bloque">
-        Se esperan en los próximos meses <span className="contador">{datos.previstas.total}</span>
+        Se esperan pronto <span className="contador">{datos.previstas.total}</span>
       </h4>
-      <Filas lista={datos.previstas} vacio="Ninguna prevista." />
+      <Filas lista={previstas} vacio="Ninguna prevista." />
       <p>
-        <a href={`#/explorar?para=${para}&plazo=cerrada&orden=`}>Ver las de años anteriores →</a>
+        <a href={`#/explorar?para=${para}`}>Ver todas →</a> · <a href="#/calendario">Calendario</a>
       </p>
     </section>
   );
 }
+
+const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
 export function Inicio() {
   const [d, setD] = useState<Datos | null>(null);
@@ -52,7 +56,7 @@ export function Inicio() {
   return (
     <section>
       <p className="aviso-demo">
-        Solo salen las subvenciones que sirven para colocar a tus grupos: las que pueden pedir ellos y el dinero que reciben quienes les contratan.
+        Qué hacer hoy para colocar a tus grupos: a quién llamar, qué ayudas pedir y qué contratos están abiertos.
         {!d.perfilCompleto && (
           <>
             {' '}
@@ -72,6 +76,28 @@ export function Inicio() {
           ))}
         </ul>
       )}
+
+      <section className="bloque">
+        <h3>
+          A quién llamar ahora <span className="contador">{d.llamar.total}</span>
+        </h3>
+        <p className="ayuda">
+          Clientes que en años anteriores contrataron música en {d.llamar.meses.map((m) => MESES[m - 1]).join(' y ')}
+          {d.perfilCompleto ? ', en tus comunidades y de tus estilos' : ''}: es buen momento para ofrecerles tus grupos.
+        </p>
+        {d.llamar.items.length === 0 ? (
+          <p className="ayuda">Ninguno en estas fechas.</p>
+        ) : (
+          <ul className="filas">
+            {d.llamar.items.map((p) => (
+              <FilaCliente key={p.id} p={p} />
+            ))}
+          </ul>
+        )}
+        <p>
+          <a href={`#/clientes?mes=${d.llamar.meses.join(',')}`}>Ver todos →</a>
+        </p>
+      </section>
 
       <div className="dos-columnas">
         <Columna

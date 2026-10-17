@@ -106,23 +106,11 @@ export function Perfil({ meta, alGuardar }: { meta: Meta; alGuardar: () => void 
         <button type="button" className="boton-secundario" onClick={() => cambiar('grupos', [...perfil.grupos, { nombre: '', estilo: 'jazz' }])}>
           + Añadir grupo
         </button>
+        <p className="ayuda">
+          Con tus grupos y comunidades, la portada y Clientes muestran solo lo tuyo. <a href="#/grupos">Ver las recomendaciones de cada grupo →</a>
+        </p>
       </fieldset>
 
-      <fieldset>
-        <legend>Qué necesitas financiar</legend>
-        <div className="rejilla-casillas">
-          {meta.lineas.map((l) => (
-            <label key={l} className="casilla">
-              <input type="checkbox" checked={perfil.actividades.includes(l)} onChange={() => cambiar('actividades', alternar(perfil.actividades, l))} />
-              {NOMBRE_LINEA[l]}
-            </label>
-          ))}
-        </div>
-        <label className="casilla">
-          <input type="checkbox" checked={perfil.incluirIndirectas} onChange={(e) => cambiar('incluirIndirectas', e.target.checked)} />
-          Mostrar también ayudas para ayuntamientos (clientes potenciales)
-        </label>
-      </fieldset>
 
       {errores.length > 0 && (
         <ul className="error">
@@ -132,7 +120,7 @@ export function Perfil({ meta, alGuardar }: { meta: Meta; alGuardar: () => void 
         </ul>
       )}
       <button className="boton-principal" disabled={guardando}>
-        {guardando ? 'Guardando…' : 'Guardar y ver recomendaciones'}
+        {guardando ? 'Guardando…' : 'Guardar'}
       </button>
     </form>
   );

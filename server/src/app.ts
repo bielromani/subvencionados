@@ -233,17 +233,42 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const coincideTexto = (q: unknown, ...textos: (string | null)[]) =>
     typeof q !== 'string' || !q.trim() || normalizar(textos.filter(Boolean).join(' ')).includes(normalizar(q.trim()));
 
+  // Lo justo para llamar o escribir desde un listado: la persona de cultura (o el ayuntamiento) con email y teléfono.
+  const contactoBreve = (codigoIne: string | null) => {
+    const m = opciones.contactos?.porCodigo(codigoIne);
+    if (!m) return null;
+    const p = m.personas.find((x) => x.email || x.telefono) ?? m.personas[0];
+    return {
+      municipio: m.municipio,
+      nombre: p?.nombre ?? null,
+      cargo: p?.cargo ?? null,
+      email: p?.email ?? m.cultura.email ?? m.ayuntamiento.email,
+      telefono: p?.telefono ?? m.cultura.telefono ?? m.ayuntamiento.telefono,
+      deCultura: !!(p?.email || p?.telefono || m.cultura.email || m.cultura.telefono),
+    };
+  };
+  const clienteResumido = ({ recientes: _r, ...p }: ProgramadorConContacto) => ({ ...p, contactoBreve: contactoBreve(p.codigoIne) });
+  /** Filtros de clientes: comunidad, provincia, estilo, mes en que suelen contratar, con contacto, guardados (ids). */
+  const filtrarClientes = (q: Request['query'], zona: string[] = []) => {
+    const ccaa = lista(q.ccaa).length ? lista(q.ccaa) : zona;
+    const provincia = lista(q.provincia);
+    const estilos = lista(q.estilo);
+    const meses = lista(q.mes).map(Number).filter(Boolean);
+    const ids = new Set(lista(q.ids));
+    return dir().programadores.filter(
+      (p) =>
+        (ids.size ? ids.has(p.id) : true) &&
+        (!ccaa.length || (p.ccaa && ccaa.includes(p.ccaa))) &&
+        (!provincia.length || (p.provincia && provincia.includes(p.provincia))) &&
+        (!estilos.length || estilos.some((e) => (p.estilos[e as keyof typeof p.estilos] ?? 0) > 0)) &&
+        (!meses.length || meses.some((m) => p.meses.includes(m))) &&
+        (q.contacto !== 'si' || p.conContacto) &&
+        coincideTexto(q.q, p.nombre, p.ciudad, p.provincia),
+    );
+  };
+
   app.get('/api/programadores', (req, res) => {
-    const ccaa = lista(req.query.ccaa);
-    const estilos = lista(req.query.estilo);
-    const xs = dir()
-      .programadores.filter(
-        (p) =>
-          (!ccaa.length || (p.ccaa && ccaa.includes(p.ccaa))) &&
-          (!estilos.length || estilos.some((e) => (p.estilos[e as keyof typeof p.estilos] ?? 0) > 0)) &&
-          (req.query.contacto !== 'si' || p.conContacto) &&
-          coincideTexto(req.query.q, p.nombre, p.ciudad, p.provincia),
-      )
+    const xs = filtrarClientes(req.query)
       .sort((a, b) =>
         req.query.orden === 'adjudicado'
           ? b.adjudicado - a.adjudicado
@@ -251,7 +276,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
             ? (b.ultimo ?? '').localeCompare(a.ultimo ?? '')
             : b.contratos - a.contratos,
       );
-    res.json(paginar(req, xs, ({ recientes: _r, ...p }) => p));
+    res.json(paginar(req, xs, clienteResumido));
   });
 
   app.get('/api/programadores/:id', (req, res) => {
@@ -260,7 +285,16 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       res.status(404).json({ error: 'Programador no encontrado' });
       return;
     }
-    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null });
+    // Ayudas que convoca su ayuntamiento (las útiles primero), para saber de qué dinero dispone.
+    const ayudas = p.codigoIne
+      ? repo
+          .listarConvocatorias()
+          .filter((c) => c.ubicacion?.codigoMunicipio === p.codigoIne && utilParaManager(c))
+          .sort((a, b) => (b.fechaPublicacion ?? '').localeCompare(a.fechaPublicacion ?? ''))
+          .slice(0, 8)
+          .map(resumida)
+      : [];
+    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null, ayudas });
   });
 
   app.get('/api/festivales', (req, res) => {
@@ -507,6 +541,17 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       },
       artistas: primeras(s.artistas, 5),
       nuevas: primeras(nuevas(todas, hoy), 8),
+      // A quién llamar: clientes que suelen contratar en los próximos dos meses, en su zona y de sus estilos.
+      llamar: (() => {
+        const mes = hoy.getMonth() + 1;
+        const meses = [mes % 12 + 1, (mes + 1) % 12 + 1];
+        const zona = conGrupos ? [conGrupos.ccaaSede, ...conGrupos.ccaaActuacion].filter((x): x is string => !!x) : [];
+        const estilos = conGrupos ? [...new Set(conGrupos.grupos.map((g) => g.estilo))] : [];
+        const xs = filtrarClientes({ mes: meses.join(','), estilo: estilos.join(',') }, zona)
+          .filter((p) => (p.ultimo ?? '') >= `${hoy.getFullYear() - 1}`)
+          .sort((a, b) => Number(b.conContacto) - Number(a.conContacto) || b.contratos - a.contratos);
+        return { meses, total: xs.length, items: xs.slice(0, 10).map(clienteResumido) };
+      })(),
       // Lo que ve el mánager: lo que pueden pedir sus grupos y el dinero de quien les contrata, por separado.
       para: Object.fromEntries(
         (['grupos', 'programadores'] as const).map((destino) => {

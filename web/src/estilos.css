@@ -1012,3 +1012,27 @@ select {
   border-radius: var(--radio);
   background: color-mix(in srgb, var(--acento) 8%, transparent);
 }
+
+.linea-contacto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.datos-grandes dd {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.seguimiento {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.seguimiento input {
+  flex: 1 1 260px;
+}

@@ -370,6 +370,20 @@ export interface Programador {
   /** Se conoce el responsable o el contacto de cultura. */
   conContacto?: boolean;
   contacto?: ContactoMunicipio | null;
+  /** En los listados: la persona o el teléfono a quien llamar. */
+  contactoBreve?: ContactoBreve | null;
+  /** En la ficha: ayudas que convoca su ayuntamiento. */
+  ayudas?: Convocatoria[];
+}
+
+export interface ContactoBreve {
+  municipio: string;
+  nombre: string | null;
+  cargo: string | null;
+  email: string | null;
+  telefono: string | null;
+  /** El email o teléfono es de cultura (si no, es el general del ayuntamiento). */
+  deCultura: boolean;
 }
 
 export interface PersonaCultura {
