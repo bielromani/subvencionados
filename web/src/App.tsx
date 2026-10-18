@@ -36,6 +36,31 @@ const SECCIONES: [string, string][] = [
   ['organismos', 'Organismos'],
   ['mercado', 'Mercado'],
 ];
+const BARRA: [string, string, string][] = [
+  ['', 'Inicio', 'inicio'],
+  ['clientes', 'Clientes', 'clientes'],
+  ['explorar', 'Ayudas', 'ayudas'],
+  ['contratos', 'Contratos', 'contratos'],
+  ['guardadas', 'Mi lista', 'lista'],
+];
+
+const TRAZOS: Record<string, string> = {
+  inicio: 'M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10',
+  clientes: 'M4 20v-1a5 5 0 0 1 10 0v1M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M16 20v-1a5 5 0 0 0-2-4M15 4.2a3.5 3.5 0 0 1 0 6.6',
+  ayudas: 'M16.5 6.5A6.5 6.5 0 1 0 16.5 17.5M4 10.5h9M4 13.5h9',
+  contratos: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 12h6M10 15.5h6',
+  lista: 'm12 4 2.4 5 5.4.6-4 3.7 1.1 5.4L12 16l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z',
+  perfil: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M5 20.5a7 7 0 0 1 14 0',
+};
+
+function Icono({ nombre }: { nombre: string }) {
+  return (
+    <svg className="icono" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d={TRAZOS[nombre]} />
+    </svg>
+  );
+}
+
 const EN_EL_PIE = new Set(['calendario', 'grupos', 'contactos', 'organismos', 'mercado']);
 const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', organismos: 'clientes', mercado: 'clientes' };
 
@@ -59,14 +84,31 @@ export function App() {
           </h1>
           <p className="lema">Coloca a tus grupos de jazz, clásica y ópera: a quién llamar, qué ayudas pedir y qué contratos están abiertos</p>
         </div>
-        <nav>
+        <nav className="menu-escritorio">
           {SECCIONES.filter(([d]) => !EN_EL_PIE.has(d)).map(([destino, nombre]) => (
             <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
               {nombre}
             </a>
           ))}
         </nav>
+        {/* En el móvil: festivales y perfil arriba; el resto en la barra inferior. */}
+        <div className="atajos">
+          <a href="#/donde-tocar" className={seccion === 'donde-tocar' ? 'activa' : ''}>
+            Festivales
+          </a>
+          <a href="#/perfil" className={seccion === 'perfil' ? 'activa' : ''} aria-label="Mi perfil">
+            <Icono nombre="perfil" />
+          </a>
+        </div>
       </header>
+      <nav className="barra-inferior" aria-label="Secciones">
+        {BARRA.map(([destino, nombre, icono]) => (
+          <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
+            <Icono nombre={icono} />
+            <span>{nombre}</span>
+          </a>
+        ))}
+      </nav>
 
       {meta && meta.total === 0 && (
         <p className="aviso-demo">

@@ -1,3 +1,4 @@
+import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { aniosTexto, FilaFestival, FilaProgramador, Fuentes } from '../components/Directorio';
@@ -56,8 +57,8 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
       </p>
 
       {pestana !== 'circuitos' && (
-        <div className="filtros">
-          <input type="search" placeholder="Buscar por nombre, ciudad u organizador…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />
+        <Filtros busqueda={<input type="search" placeholder="Buscar por nombre, ciudad u organizador…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />}>
+          
           <select value={filtros.ccaa} onChange={cambiar('ccaa')} aria-label="Comunidad">
             <option value="">Todas las comunidades</option>
             {meta.ccaa.map((c) => (
@@ -89,7 +90,7 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
               con contacto de cultura
             </label>
           )}
-        </div>
+        </Filtros>
       )}
       {error && <p className="error">{error}</p>}
 

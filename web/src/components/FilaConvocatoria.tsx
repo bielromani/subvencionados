@@ -65,7 +65,7 @@ export function FilaConvocatoria({
         {c.presupuesto != null && ` · ${euros.format(c.presupuesto)}`}
         {prevista && c.fechaPublicacion && ` · última: ${c.fechaPublicacion.slice(0, 4)}`}
       </span>
-      <BotonesMarca id={c.id} />
+      <BotonesMarca id={c.id} compacto={!mostrarOcultas} />
       {motivos && (m.motivos.length > 0 || m.avisos.length > 0) && (
         <span className="fila-motivos">
           {m.motivos.join(' · ')}

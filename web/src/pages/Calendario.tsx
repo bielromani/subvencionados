@@ -1,3 +1,4 @@
+import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaContrato } from '../components/FilaContrato';
@@ -43,7 +44,7 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         Cuándo abren y cierran los concursos que se pueden pedir, y cuándo se espera la próxima edición de los que se
         repiten cada año. Las previstas son una estimación a partir de los años anteriores, no un dato oficial.
       </p>
-      <div className="filtros">
+      <Filtros>
         <select value={filtros.estilo} onChange={(e) => setFiltros((f) => ({ ...f, estilo: e.target.value }))} aria-label="Estilo">
           <option value="">Jazz, clásica y ópera</option>
           {meta.estilos.map((e) => (
@@ -61,7 +62,7 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         <a className="boton" href={`/api/calendario.ics?${consulta}`} download>
           Añadir a mi calendario (.ics)
         </a>
-      </div>
+      </Filtros>
       {error && <p className="error">{error}</p>}
       {licitaciones.length > 0 && (
         <section className="bloque">

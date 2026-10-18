@@ -1,3 +1,4 @@
+import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { cambiarParams, enlace, type Ruta } from '../ruta';
@@ -38,8 +39,8 @@ export function Organismos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
       <p className="ayuda">
         Quién convoca ayudas de música y cuánto ha concedido. Útil para saber a qué puerta llamar en cada territorio.
       </p>
-      <div className="filtros">
-        <input type="search" placeholder="Buscar: diputación, ayuntamiento, instituto…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />
+      <Filtros busqueda={<input type="search" placeholder="Buscar: diputación, ayuntamiento, instituto…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />}>
+        
         <select value={filtros.ccaa} onChange={cambiar('ccaa')} aria-label="Comunidad">
           <option value="">Todas las comunidades</option>
           {meta.ccaa.map((c) => (
@@ -61,7 +62,7 @@ export function Organismos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           <option value="convocatorias">Más convocatorias</option>
           <option value="recientes">Activos más recientemente</option>
         </select>
-      </div>
+      </Filtros>
       {error && <p className="error">{error}</p>}
       {resultado && (
         <>

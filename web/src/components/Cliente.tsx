@@ -6,9 +6,22 @@ import { Etiqueta } from './TarjetaConvocatoria';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 
-export function BotonCliente({ id, nombre }: { id: string; nombre: string }) {
+export function BotonCliente({ id, nombre, compacto = false }: { id: string; nombre: string; compacto?: boolean }) {
   const { clientes } = useMarcas();
   const s = clientes[id];
+  if (compacto)
+    return (
+      <button
+        type="button"
+        className={`estrella${s ? ' estrella-activa' : ''}`}
+        aria-pressed={!!s}
+        aria-label={s ? `En mi lista (${NOMBRE_ESTADO[s.estado]}): quitar` : 'Añadir a mi lista'}
+        title={s ? `En mi lista · ${NOMBRE_ESTADO[s.estado]}` : 'Añadir a mi lista'}
+        onClick={() => alternarCliente(id, nombre)}
+      >
+        {s ? '★' : '☆'}
+      </button>
+    );
   return (
     <button type="button" className={`marca${s ? ' marca-activa' : ''}`} aria-pressed={!!s} onClick={() => alternarCliente(id, nombre)}>
       {s ? `★ En mi lista · ${NOMBRE_ESTADO[s.estado]}` : '☆ Añadir a mi lista'}
@@ -28,8 +41,18 @@ export function LineaContacto({ c }: { c: ContactoBreve }) {
           {c.cargo && <span className="ayuda"> · {c.cargo}</span>}
         </span>
       )}
-      {email && <a href={`mailto:${email}`}>✉ {email}</a>}
-      {tel && <a href={`tel:${tel.replace(/[^\d+]/g, '')}`}>☎ {tel}</a>}
+      {tel && (
+        <a className="accion" href={`tel:${tel.replace(/[^\d+]/g, '')}`} title={tel}>
+          ☎ <span className="solo-escritorio">{tel}</span>
+          <span className="solo-movil">Llamar</span>
+        </a>
+      )}
+      {email && (
+        <a className="accion" href={`mailto:${email}`} title={email}>
+          ✉ <span className="solo-escritorio">{email}</span>
+          <span className="solo-movil">Email</span>
+        </a>
+      )}
       {!c.deCultura && <span className="ayuda">(contacto general del ayuntamiento)</span>}
     </span>
   );
@@ -63,9 +86,7 @@ export function FilaCliente({ p, estilo }: { p: Programador; estilo?: Estilo }) 
         {p.ultimo && ` · último ${new Date(`${p.ultimo}T00:00:00`).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}`}
       </span>
       {p.contactoBreve ? <LineaContacto c={p.contactoBreve} /> : <span className="ayuda">Sin contacto directo: escribe por la web del organismo.</span>}
-      <span className="botones-marca">
-        <BotonCliente id={p.id} nombre={p.nombre} />
-      </span>
+      <BotonCliente id={p.id} nombre={p.nombre} compacto />
     </li>
   );
 }

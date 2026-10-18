@@ -1036,3 +1036,268 @@ select {
 .seguimiento input {
   flex: 1 1 260px;
 }
+
+/* ---------- Rediseño móvil y detalles comunes ---------- */
+
+.fila-convocatoria {
+  position: relative;
+  padding-right: 76px;
+}
+
+.fila-cliente {
+  padding-right: 44px;
+}
+
+.marcas-esquina {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  display: flex;
+  gap: 2px;
+}
+
+.fila-cliente > .estrella {
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+
+.estrella {
+  font: inherit;
+  font-size: 1.125rem;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+
+.estrella:hover {
+  border-color: var(--borde);
+  color: var(--texto);
+}
+
+.estrella-activa {
+  color: var(--acento);
+}
+
+.linea-contacto {
+  align-items: center;
+}
+
+.accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: var(--superficie);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.accion:hover {
+  border-color: var(--acento);
+}
+
+.filtros-bloque {
+  margin-bottom: 16px;
+}
+
+.filtros-busqueda input {
+  width: 100%;
+}
+
+.filtros-plegables > summary {
+  display: none;
+}
+
+.filtros-plegables > .filtros {
+  margin-top: 8px;
+}
+
+.atajos,
+.barra-inferior {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding: 12px 12px calc(84px + env(safe-area-inset-bottom));
+  }
+
+  .cabecera {
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 8px;
+  }
+
+  .cabecera h1 {
+    font-size: 1.25rem;
+  }
+
+  .lema,
+  .menu-escritorio {
+    display: none;
+  }
+
+  .atajos {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .atajos a {
+    text-decoration: none;
+    color: var(--texto);
+    padding: 6px 10px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .atajos a.activa {
+    background: var(--apagado-fondo);
+    font-weight: 600;
+  }
+
+  .barra-inferior {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background: var(--superficie);
+    border-top: 1px solid var(--borde);
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    border-radius: 0;
+    justify-content: space-around;
+    gap: 0;
+  }
+
+  .barra-inferior a {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.6875rem;
+    color: var(--texto-suave);
+    text-decoration: none;
+    padding: 4px 0;
+    border-radius: 8px;
+  }
+
+  .barra-inferior a.activa {
+    color: var(--acento);
+    font-weight: 600;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .filtros-plegables > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: var(--superficie);
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.875rem;
+  }
+
+  .filtros-plegables > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .filtros-plegables > summary::before {
+    content: '⚙';
+  }
+
+  .filtros select,
+  .filtros input {
+    width: 100%;
+  }
+
+  .bloque,
+  .tarjeta {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .bloque h3 {
+    font-size: 1.0625rem;
+  }
+
+  .fila-titulo {
+    font-size: 1rem;
+    line-height: 1.35;
+  }
+
+  .fila-detalle,
+  .fila-motivos {
+    font-size: 0.8125rem;
+  }
+
+  .etiquetas {
+    gap: 4px;
+  }
+
+  .linea-contacto {
+    gap: 6px;
+  }
+
+  .linea-contacto > span:first-child {
+    width: 100%;
+  }
+
+  .accion {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+  }
+
+  .datos-grandes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+  }
+
+  .seguimiento select,
+  .seguimiento input {
+    width: 100%;
+  }
+
+  .pie {
+    font-size: 0.75rem;
+  }
+}
+
+.solo-movil {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .solo-movil {
+    display: inline;
+  }
+
+  .solo-escritorio {
+    display: none;
+  }
+
+  .linea-contacto .accion {
+    flex: 0 0 auto;
+  }
+}

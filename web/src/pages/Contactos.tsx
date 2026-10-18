@@ -1,3 +1,4 @@
+import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { cambiarParams, enlace, type Ruta } from '../ruta';
@@ -34,8 +35,8 @@ export function Contactos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         Responsables de cultura de cada ayuntamiento, con su email y teléfono, de fuentes oficiales y webs municipales. Primero los que más
         música contratan. Los cargos cambian: compruébalo antes de escribir.
       </p>
-      <div className="filtros">
-        <input type="search" placeholder="Buscar municipio, provincia o nombre…" value={f.q} onChange={(e) => setF({ ...f, q: e.target.value, pagina: 1 })} aria-label="Buscar" />
+      <Filtros busqueda={<input type="search" placeholder="Buscar municipio, provincia o nombre…" value={f.q} onChange={(e) => setF({ ...f, q: e.target.value, pagina: 1 })} aria-label="Buscar" />}>
+        
         <select value={f.ccaa} onChange={(e) => setF({ ...f, ccaa: e.target.value, pagina: 1 })} aria-label="Comunidad autónoma">
           <option value="">Toda España</option>
           {meta.ccaa.map((c) => (
@@ -51,7 +52,7 @@ export function Contactos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           <input type="checkbox" checked={f.musica === 'si'} onChange={(e) => setF({ ...f, musica: e.target.checked ? 'si' : 'no', pagina: 1 })} /> Solo ayuntamientos
           que contratan música
         </label>
-      </div>
+      </Filtros>
       {error && <p className="error">{error}</p>}
       {r && (
         <>

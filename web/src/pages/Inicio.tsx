@@ -55,15 +55,11 @@ export function Inicio() {
 
   return (
     <section>
-      <p className="aviso-demo">
-        Qué hacer hoy para colocar a tus grupos: a quién llamar, qué ayudas pedir y qué contratos están abiertos.
-        {!d.perfilCompleto && (
-          <>
-            {' '}
-            Ahora ves toda España y los tres estilos: <a href="#/perfil">indica tus grupos y dónde trabajas</a> para afinar.
-          </>
-        )}
-      </p>
+      {!d.perfilCompleto && (
+        <p className="aviso-demo">
+          Ves toda España y los tres estilos. <a href="#/perfil">Indica tus grupos y dónde trabajas</a> para ver solo lo tuyo.
+        </p>
+      )}
 
       {d.grupos.length > 0 && (
         <ul className="grupos-resumen">

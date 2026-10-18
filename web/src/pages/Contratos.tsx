@@ -1,3 +1,4 @@
+import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaContrato } from '../components/FilaContrato';
@@ -39,8 +40,8 @@ export function Contratos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         las plataformas autonómicas agregadas y los contratos menores). Las adjudicaciones anteriores muestran quién contrata
         música, a qué precio y qué empresas se los llevan.
       </p>
-      <div className="filtros">
-        <input type="search" placeholder="Buscar: orquesta, fiestas, Lugo, nombre de empresa…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />
+      <Filtros busqueda={<input type="search" placeholder="Buscar: orquesta, fiestas, Lugo, nombre de empresa…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />}>
+        
         <select value={filtros.estado} onChange={cambiar('estado')} aria-label="Estado">
           <option value="abiertas">Abiertas: se puede presentar oferta</option>
           <option value="adjudicadas">Adjudicadas (precedentes)</option>
@@ -69,7 +70,7 @@ export function Contratos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           <option value="">{filtros.estado === 'abiertas' ? 'Cierran antes' : 'Más recientes'}</option>
           <option value="importe">Mayor importe</option>
         </select>
-      </div>
+      </Filtros>
       {error && <p className="error">{error}</p>}
       {r && (
         <>

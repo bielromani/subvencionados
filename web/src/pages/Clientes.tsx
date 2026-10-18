@@ -1,3 +1,4 @@
+import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaCliente } from '../components/Cliente';
@@ -33,12 +34,9 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const paginas = r ? Math.ceil(r.total / r.porPagina) : 0;
   return (
     <section>
-      <p className="ayuda">
-        Ayuntamientos, diputaciones, teatros y festivales públicos que contratan música en directo: cuántos conciertos contratan, cuánto suelen
-        pagar, en qué meses y a quién llamar. Sale de los contratos públicos de los últimos años.
-      </p>
-      <div className="filtros">
-        <input type="search" placeholder="Buscar: Sevilla, auditorio, diputación…" value={f.q} onChange={cambiar('q')} aria-label="Buscar" />
+      <p className="ayuda">Quién contrata música en directo, cuánto paga, en qué meses y a quién llamar (de los contratos públicos).</p>
+      <Filtros busqueda={<input type="search" placeholder="Buscar: Sevilla, auditorio, diputación…" value={f.q} onChange={cambiar('q')} aria-label="Buscar" />}>
+        
         <select value={f.ccaa} onChange={cambiar('ccaa')} aria-label="Comunidad autónoma">
           <option value="">Toda España</option>
           {meta.ccaa.map((c) => (
@@ -71,7 +69,7 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           <input type="checkbox" checked={f.contacto === 'si'} onChange={(e) => setF({ ...f, contacto: e.target.checked ? 'si' : '', pagina: 1 })} /> Solo con contacto
           directo de cultura
         </label>
-      </div>
+      </Filtros>
       {error && <p className="error">{error}</p>}
       {!r && <p className="ayuda">Cargando…</p>}
       {r && (

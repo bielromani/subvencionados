@@ -1,3 +1,4 @@
+import { Filtros as BloqueFiltros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api, type Filtros } from '../api';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
@@ -48,14 +49,14 @@ export function Explorar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
 
   return (
     <section>
-      <div className="filtros">
-        <input
+      <BloqueFiltros busqueda={<input
           type="search"
           placeholder="Buscar: festival, gira, orquesta, Sevilla…"
           value={filtros.q ?? ''}
           onChange={cambiar('q')}
           aria-label="Buscar"
-        />
+        />}>
+        
         <select value={filtros.para ?? ''} onChange={cambiar('para')} aria-label="Para quién">
           <option value="">Para tus grupos y para quien te contrata</option>
           <option value="grupos">Para tus grupos (las piden ellos)</option>
@@ -92,7 +93,7 @@ export function Explorar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           />
           Ver también lo descartado (becas, fiestas, asociaciones locales…) con el motivo
         </label>
-      </div>
+      </BloqueFiltros>
 
       {error && <p className="error">{error}</p>}
       {resultado && (
