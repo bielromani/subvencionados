@@ -345,6 +345,7 @@ export interface FuenteDirectorio {
   fecha: string | null;
   importe: number | null;
   beneficiario?: string;
+  estilos?: Estilo[];
 }
 
 export interface Programador {
@@ -374,6 +375,11 @@ export interface Programador {
   contactoBreve?: ContactoBreve | null;
   /** En la ficha: ayudas que convoca su ayuntamiento. */
   ayudas?: Convocatoria[];
+  rango?: { min: number; max: number; deEstilo: boolean } | null;
+  proveedores?: { nombre: string; contratos: number; importe: number }[];
+  recientesEstilo?: FuenteDirectorio[];
+  /** En la ficha: sus licitaciones con plazo abierto. */
+  abiertos?: Contrato[];
 }
 
 export interface ContactoBreve {

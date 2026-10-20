@@ -3,7 +3,7 @@ import { aICal, calendario, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
-import { type Circuito, circuitos, type Festival, festivales, type Programador, programadores } from './directorio.js';
+import { type Circuito, circuitos, type Festival, festivales, idProgramador, type Programador, programadores } from './directorio.js';
 import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
@@ -247,7 +247,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       deCultura: !!(p?.email || p?.telefono || m.cultura.email || m.cultura.telefono),
     };
   };
-  const clienteResumido = ({ recientes: _r, ...p }: ProgramadorConContacto) => ({ ...p, contactoBreve: contactoBreve(p.codigoIne) });
+  const clienteResumido = ({ recientes: _r, recientesEstilo: _e, proveedores: _p, ...p }: ProgramadorConContacto) => ({ ...p, contactoBreve: contactoBreve(p.codigoIne) });
   /** Filtros de clientes: comunidad, provincia, estilo, mes en que suelen contratar, con contacto, guardados (ids). */
   const filtrarClientes = (q: Request['query'], zona: string[] = []) => {
     const ccaa = lista(q.ccaa).length ? lista(q.ccaa) : zona;
@@ -294,7 +294,9 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
           .slice(0, 8)
           .map(resumida)
       : [];
-    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null, ayudas });
+    // Sus licitaciones de conciertos con plazo abierto: se puede presentar oferta ya.
+    const abiertos = contratos.filter((c) => abierta(c) && idProgramador(c) === p.id).map(contratoResumido);
+    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null, ayudas, abiertos });
   });
 
   app.get('/api/festivales', (req, res) => {

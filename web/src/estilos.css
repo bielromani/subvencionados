@@ -1301,3 +1301,20 @@ select {
     flex: 0 0 auto;
   }
 }
+
+.fila-fuente {
+  padding-right: 0;
+}
+
+.lista-simple {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+details.bloque > summary {
+  cursor: pointer;
+  list-style-position: inside;
+}

@@ -14,11 +14,19 @@ export interface Fuente {
   titulo: string;
   fecha: string | null;
   importe: number | null;
-  /** En una concesión, quién la recibió. */
+  /** En una concesión, quién la recibió; en un contrato, a quién se adjudicó (si no es una persona física). */
   beneficiario?: string;
+  /** Estilos de jazz, clásica u ópera que menciona. */
+  estilos?: Estilo[];
 }
 
 const anio = (f: string | null) => (f ? Number(f.slice(0, 4)) : null);
+/** Percentil (0-1) de una lista de importes. */
+const percentil = (xs: number[], p: number) => {
+  if (!xs.length) return null;
+  const o = [...xs].sort((a, b) => a - b);
+  return o[Math.min(o.length - 1, Math.floor(p * o.length))]!;
+};
 const mediana = (xs: number[]) => {
   if (!xs.length) return null;
   const o = [...xs].sort((a, b) => a - b);
@@ -49,9 +57,27 @@ export interface Programador {
   /** Meses del año en que más contrata (1-12), de más a menos. */
   meses: number[];
   recientes: Fuente[];
+  /** Rango habitual de lo que paga por concierto (percentiles 25 y 75), de sus contratos de jazz, clásica u ópera si hay 3 o más. */
+  rango: { min: number; max: number; deEstilo: boolean } | null;
+  /** Agencias y empresas que más le venden conciertos (sin personas físicas). */
+  proveedores: { nombre: string; contratos: number; importe: number }[];
+  /** Sus últimos contratos de jazz, clásica u ópera. */
+  recientesEstilo: Fuente[];
 }
 
+/** Id del programador (cliente) al que pertenece un contrato. */
+export const idProgramador = (c: ContratoVista) => `p-${claveOrgano(c).replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`;
 const claveOrgano = (c: ContratoVista) => c.organo.nif ?? c.organo.dir3 ?? normalizar(`${c.organo.nombre} ${c.organo.ciudad ?? ''}`);
+
+const fuenteContrato = (c: ContratoVista): Fuente => ({
+  tipo: 'contrato',
+  id: c.id,
+  titulo: c.titulo,
+  fecha: c.fechaAdjudicacion,
+  importe: c.adjudicado,
+  beneficiario: c.adjudicaciones.find((a) => !a.personaFisica && a.adjudicatario)?.adjudicatario ?? undefined,
+  estilos: c.estilos,
+});
 
 export function programadores(contratos: ContratoVista[]): Programador[] {
   const grupos = new Map<string, ContratoVista[]>();
@@ -88,13 +114,29 @@ export function programadores(contratos: ContratoVista[]): Programador[] {
       primero: fechas[0] ?? null,
       ultimo: fechas.at(-1) ?? null,
       meses: [...meses].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([m]) => m),
-      recientes: orden.slice(0, 10).map((c) => ({
-        tipo: 'contrato' as const,
-        id: c.id,
-        titulo: c.titulo,
-        fecha: c.fechaAdjudicacion,
-        importe: c.adjudicado,
-      })),
+      recientes: orden.slice(0, 10).map(fuenteContrato),
+      rango: (() => {
+        const deEstilo = lista.filter((c) => c.estilos.length).map((c) => c.adjudicado).filter((x): x is number => x != null && x > 0);
+        const todos = lista.map((c) => c.adjudicado).filter((x): x is number => x != null && x > 0);
+        const base = deEstilo.length >= 3 ? deEstilo : todos;
+        const min = percentil(base, 0.25);
+        const max = percentil(base, 0.75);
+        return min != null && max != null ? { min, max, deEstilo: base === deEstilo } : null;
+      })(),
+      proveedores: (() => {
+        const porNombre = new Map<string, { nombre: string; contratos: number; importe: number }>();
+        for (const c of lista)
+          for (const a of c.adjudicaciones) {
+            if (a.personaFisica || !a.adjudicatario) continue;
+            const k = a.nif ?? a.adjudicatario;
+            const x = porNombre.get(k) ?? { nombre: a.adjudicatario, contratos: 0, importe: 0 };
+            x.contratos++;
+            x.importe += a.importe ?? 0;
+            porNombre.set(k, x);
+          }
+        return [...porNombre.values()].sort((a, b) => b.contratos - a.contratos || b.importe - a.importe).slice(0, 6);
+      })(),
+      recientesEstilo: orden.filter((c) => c.estilos.length).slice(0, 10).map(fuenteContrato),
     };
   });
 }

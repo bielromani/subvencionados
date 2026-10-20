@@ -61,6 +61,9 @@ const SENALES_MUSICA: Patron[] = [
   ['instrumento', /\b(piano|pianistas?|violin|violinistas?|violonchelo|clarinete|saxofon|trompeta)\b/],
 ];
 
+// Orquestas de baile: fiestas, ferias, verbenas.
+const VERBENA = /\b(fiestas?|festes|ferias?|fira|verbenas?|revetlla|baile|bailes|ball|patronal(es)?|romeria|festejos|orquesta de baile|orquesta show)\b/;
+
 // "Concierto" tiene acepciones que no son musicales.
 const DANZA = /\b(danzas?|dantza|baile|bailes|balls?|esbart)\b/;
 
@@ -240,6 +243,10 @@ export function clasificar({ texto, tiposBeneficiario = [], titulo }: EntradaCla
 
   // Un coro de otro género (coro rociero, coro de flamenco...) no es música clásica.
   const clasica = coincidencias(t, ESTILOS_PATRONES.clasica);
+  // Una orquesta de fiestas o verbena (orquesta de baile) tampoco.
+  if (VERBENA.test(t) && clasica.length > 0 && clasica.every((x) => x === 'orquesta' || x === 'orquestra') && estilosExplicitos.includes('clasica')) {
+    estilosExplicitos.splice(estilosExplicitos.indexOf('clasica'), 1);
+  }
   if (otrosGeneros.length > 0 && clasica.length > 0 && clasica.every((x) => x === 'coro')) {
     estilosExplicitos.splice(estilosExplicitos.indexOf('clasica'), 1);
   }

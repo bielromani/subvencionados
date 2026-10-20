@@ -37,6 +37,9 @@ describe('directorio', () => {
     const [p] = programadores(cs);
     expect(p).toMatchObject({ nombre: 'Junta de Gobierno del Ayuntamiento de Lugo', contratos: 3, adjudicado: 24000, importeHabitual: 8000, estilos: { jazz: 2 }, ultimo: '2026-08-01' });
     expect(p!.meses[0]).toBe(7);
+    // Rango de lo que paga en sus conciertos de jazz (2 contratos: no llega a 3, usa todos).
+    expect(p!.rango).toMatchObject({ deEstilo: false });
+    expect(p!.recientesEstilo.map((f) => f.id)).toEqual(['2', '1']);
   });
 
   it('festivales: las ediciones se agrupan con sus fuentes', () => {

@@ -55,3 +55,11 @@ describe('títulos legibles', () => {
     expect(tituloCorto('XIV CONCURSO INTERNACIONAL DE MÚSICA DE CÁMARA 2026')).toBe('XIV concurso internacional de música de cámara 2026');
   });
 });
+
+describe('orquestas de verbena', () => {
+  it('una orquesta de fiestas no es música clásica', () => {
+    const c = clasificar({ texto: 'Orquesta La Huella para el 28 de junio de 2026, con motivo de las Ferias y Fiestas de San Pedro' });
+    expect(c.estilosExplicitos).not.toContain('clasica');
+    expect(clasificar({ texto: 'Concierto de la Orquesta Sinfónica en el auditorio' }).estilosExplicitos).toContain('clasica');
+  });
+});

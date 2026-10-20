@@ -82,7 +82,10 @@ export function FilaCliente({ p, estilo }: { p: Programador; estilo?: Estilo }) 
       </a>
       <span className="fila-detalle">
         {[p.ciudad, p.provincia !== p.ciudad ? p.provincia : null].filter(Boolean).join(', ')} · {p.contratos} contratos de música
-        {p.importeHabitual != null && ` · suele pagar ${euros.format(p.importeHabitual)}`}
+        {p.rango
+          ? ` · paga ${p.rango.min === p.rango.max ? euros.format(p.rango.min) : `${euros.format(p.rango.min)}–${euros.format(p.rango.max)}`}`
+          : p.importeHabitual != null && ` · suele pagar ${euros.format(p.importeHabitual)}`}
+        {p.contratos > 0 && p.menores / p.contratos >= 0.7 && ' · sin concurso'}
         {p.ultimo && ` · último ${new Date(`${p.ultimo}T00:00:00`).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })}`}
       </span>
       {p.contactoBreve ? <LineaContacto c={p.contactoBreve} /> : <span className="ayuda">Sin contacto directo: escribe por la web del organismo.</span>}

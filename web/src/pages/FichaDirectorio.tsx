@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { BotonCliente } from '../components/Cliente';
 import { Contacto } from '../components/Contacto';
+import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { aniosTexto, Fuentes, mesesTexto } from '../components/Directorio';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
@@ -9,6 +10,14 @@ import { NOMBRE_ESTILO, type Estilo, type Festival, type Programador } from '../
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const fecha = (iso: string | null) => (iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('es-ES') : '—');
+
+/** Contratos menores (hasta 15.000 € sin IVA en servicios): se adjudican sin concurso, basta con convencer al programador. */
+function comoContrata(p: Programador): string {
+  const pct = p.contratos ? Math.round((p.menores / p.contratos) * 100) : 0;
+  if (pct >= 70) return `El ${pct} % de sus conciertos son contratos menores (sin concurso): lo decide el programador, así que llamar y enviar propuesta funciona.`;
+  if (pct >= 30) return `El ${pct} % son contratos menores (sin concurso) y el resto, licitaciones: llama para lo pequeño y vigila sus contratos abiertos.`;
+  return `Contrata sobre todo por licitación (solo el ${pct} % son contratos menores): vigila sus contratos abiertos y presenta oferta.`;
+}
 
 export function PaginaProgramador({ id }: { id: string }) {
   const [p, setP] = useState<Programador | null>(null);
@@ -38,11 +47,18 @@ export function PaginaProgramador({ id }: { id: string }) {
               {p.contratos} <span className="ayuda">desde {fecha(p.primero)}</span>
             </dd>
           </div>
-          {p.importeHabitual != null && (
+          {p.rango ? (
             <div>
-              <dt>Suele pagar</dt>
-              <dd>{euros.format(p.importeHabitual)}</dd>
+              <dt>Paga normalmente{p.rango.deEstilo ? ' (jazz, clásica, ópera)' : ''}</dt>
+              <dd>{p.rango.min === p.rango.max ? euros.format(p.rango.min) : `${euros.format(p.rango.min)} – ${euros.format(p.rango.max)}`}</dd>
             </div>
+          ) : (
+            p.importeHabitual != null && (
+              <div>
+                <dt>Suele pagar</dt>
+                <dd>{euros.format(p.importeHabitual)}</dd>
+              </div>
+            )
           )}
           {p.meses.length > 0 && (
             <div>
@@ -63,6 +79,7 @@ export function PaginaProgramador({ id }: { id: string }) {
             <dd>{euros.format(p.adjudicado)}</dd>
           </div>
         </dl>
+        <p className="llamada">{comoContrata(p)}</p>
         <div className="botones-marca">
           <BotonCliente id={p.id} nombre={p.nombre} />
         </div>
@@ -83,6 +100,36 @@ export function PaginaProgramador({ id }: { id: string }) {
           <p className="ayuda">No tenemos un contacto directo de este organismo: escribe por su web o por la sede electrónica.</p>
         </section>
       )}
+      {(p.abiertos?.length ?? 0) > 0 && (
+        <section className="bloque">
+          <h3>
+            Contratos abiertos ahora <span className="contador">{p.abiertos!.length}</span>
+          </h3>
+          <p className="ayuda">Licitaciones de conciertos en las que se puede presentar oferta.</p>
+          <ul className="filas">
+            {p.abiertos!.map((c) => (
+              <FilaContrato key={c.id} c={c} />
+            ))}
+          </ul>
+        </section>
+      )}
+      {(p.proveedores?.length ?? 0) > 0 && (
+        <section className="bloque">
+          <h3>Quién le vende conciertos</h3>
+          <p className="ayuda">Agencias, productoras y empresas que más contratos le han ganado (sin artistas que facturan como personas físicas).</p>
+          <ul className="lista-simple">
+            {p.proveedores!.map((x) => (
+              <li key={x.nombre}>
+                <strong>{x.nombre}</strong>
+                <span className="ayuda">
+                  {' '}
+                  · {x.contratos} {x.contratos === 1 ? 'contrato' : 'contratos'} · {euros.format(x.importe)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {(p.ayudas?.length ?? 0) > 0 && (
         <section className="bloque">
           <h3>Ayudas de su ayuntamiento</h3>
@@ -94,11 +141,19 @@ export function PaginaProgramador({ id }: { id: string }) {
           </ul>
         </section>
       )}
-      <section className="bloque">
-        <h3>Últimos conciertos que ha contratado</h3>
-        <p className="ayuda">Qué programa, a quién y por cuánto (importes sin IVA): la mejor pista de qué propuesta le encaja.</p>
+      {(p.recientesEstilo?.length ?? 0) > 0 && (
+        <section className="bloque">
+          <h3>Sus conciertos de jazz, clásica y ópera</h3>
+          <p className="ayuda">Qué programa, por cuánto (sin IVA) y a quién: la mejor pista de qué propuesta le encaja.</p>
+          <Fuentes fuentes={p.recientesEstilo!} />
+        </section>
+      )}
+      <details className="bloque">
+        <summary>
+          <strong>Todo lo último que ha contratado</strong> <span className="ayuda">(incluye orquestas de fiestas, bandas…)</span>
+        </summary>
         <Fuentes fuentes={p.recientes ?? []} />
-      </section>
+      </details>
       <p className="ayuda">Datos de la Plataforma de Contratación del Sector Público.</p>
     </section>
   );

@@ -67,17 +67,22 @@ export function Fuentes({ fuentes }: { fuentes: FuenteDirectorio[] }) {
   return (
     <ul className="filas">
       {fuentes.map((x, i) => (
-        <li key={i} className="fila-convocatoria">
+        <li key={i} className="fila-convocatoria fila-fuente">
           <div className="etiquetas">
-            <Etiqueta tono="apagado">{TIPO_FUENTE[x.tipo]}</Etiqueta>
-            {x.fecha && <Etiqueta>{new Date(`${x.fecha}T00:00:00`).toLocaleDateString('es-ES')}</Etiqueta>}
+            {x.tipo !== 'contrato' && <Etiqueta tono="apagado">{TIPO_FUENTE[x.tipo]}</Etiqueta>}
+            {x.fecha && <Etiqueta>{new Date(`${x.fecha}T00:00:00`).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}</Etiqueta>}
+            {x.estilos?.map((e) => (
+              <Etiqueta key={e} tono="acento">
+                {NOMBRE_ESTILO[e]}
+              </Etiqueta>
+            ))}
           </div>
           <a className="fila-titulo" href={enlace(x.tipo === 'contrato' ? 'contrato' : 'convocatoria', x.id)}>
             {x.titulo}
           </a>
           <span className="fila-detalle">
-            {x.beneficiario && `${x.beneficiario} · `}
-            {x.importe != null && x.importe > 0 ? euros.format(x.importe) : 'Importe no indicado'}
+            {x.importe != null && x.importe > 0 ? <strong>{euros.format(x.importe)}</strong> : 'Importe no indicado'}
+            {x.beneficiario && ` · ${x.beneficiario}`}
           </span>
         </li>
       ))}

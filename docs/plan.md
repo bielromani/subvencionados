@@ -227,6 +227,18 @@ su fuente.
 
 ---
 
+## Mejoras para el promotor (octubre 2026, sin IA)
+
+Tras el rediseño (Inicio · Clientes · Ayudas · Festivales · Contratos · Mi lista), por orden:
+
+1. [x] **Fichas de cliente que ayuden a cerrar conciertos**: rango de lo que paga (percentiles 25-75, de sus
+   conciertos de jazz, clásica u ópera si hay 3 o más), cuánto contrata sin concurso (contratos menores), quién le vende
+   conciertos, sus conciertos de nuestros estilos aparte, y sus contratos abiertos. Orquestas de verbena fuera de clásica.
+2. [ ] **Ficha de ayuda para actuar**: plazo, cuánto dan, quién la puede pedir, bases, «añadir al calendario» y pasos.
+3. [ ] **Seguimiento**: próxima acción con fecha en Mi lista, orden por urgencia, exportar a Excel.
+4. [ ] **Novedades desde tu última visita** y calendario suscribible con tus guardadas.
+5. [ ] **Cuentas y avisos por email** (Supabase): listas en todos los dispositivos. Único paso con coste mensual.
+
 ## Fase 6 · Producto multiusuario en internet
 
 **Objetivo:** que cualquier promotor pueda darse de alta y usarlo desde cualquier sitio.
