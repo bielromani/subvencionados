@@ -239,7 +239,10 @@ Tras el rediseño (Inicio · Clientes · Ayudas · Festivales · Contratos · Mi
    bases), pasos según sea para sus grupos o para quien les contrata, y «añadir al calendario» (.ics de la convocatoria).
    Cierre aproximado para las que solo dan el plazo en días («15 días hábiles desde la publicación»): sin festivos y
    avisando de que es aproximado; con él cuentan como vigentes y salen en el calendario.
-3. [ ] **Seguimiento**: próxima acción con fecha en Mi lista, orden por urgencia, exportar a Excel.
+3. [x] **Seguimiento**: fecha de próxima acción en cada cliente (+1 semana / +1 mes; al marcarlo contactado se propone
+   una semana), Mi lista agrupada por urgencia (hoy y atrasadas, esta semana, más adelante, sin fecha, terminados), aviso
+   en Inicio, Excel de clientes y de ayudas, «mis fechas al calendario» (.ics con llamadas y plazos) y copia de seguridad
+   de la lista para pasarla a otro dispositivo. Todo en el navegador, sin servidor.
 4. [ ] **Novedades desde tu última visita** y calendario suscribible con tus guardadas.
 5. [ ] **Cuentas y avisos por email** (Supabase): listas en todos los dispositivos. Único paso con coste mensual.
 

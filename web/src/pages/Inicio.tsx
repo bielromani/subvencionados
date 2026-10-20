@@ -3,6 +3,7 @@ import { api, type Lista, type ListaPrevistas } from '../api';
 import { FilaCliente } from '../components/Cliente';
 import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
+import { clientesParaHoy, useMarcas } from '../marcas';
 import { enlace } from '../ruta';
 import { NOMBRE_ESTILO } from '../tipos';
 
@@ -45,6 +46,7 @@ const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', '
 export function Inicio() {
   const [d, setD] = useState<Datos | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const paraHoy = clientesParaHoy(useMarcas().clientes);
 
   useEffect(() => {
     api.inicio().then(setD, (e: Error) => setError(e.message));
@@ -58,6 +60,12 @@ export function Inicio() {
       {!d.perfilCompleto && (
         <p className="aviso-demo">
           Ves toda España y los tres estilos. <a href="#/perfil">Indica tus grupos y dónde trabajas</a> para ver solo lo tuyo.
+        </p>
+      )}
+
+      {paraHoy > 0 && (
+        <p className="llamada">
+          Hoy te toca contactar a {paraHoy} {paraHoy === 1 ? 'cliente' : 'clientes'} de tu lista. <a href="#/guardadas">Ver Mi lista →</a>
         </p>
       )}
 

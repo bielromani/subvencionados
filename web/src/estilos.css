@@ -1366,3 +1366,100 @@ details.bloque > summary {
   gap: 8px;
   margin: 12px 0 0;
 }
+
+/* Mi lista: seguimiento por fechas */
+.grupo-lista {
+  list-style: none;
+  margin: 16px 0 4px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+.grupo-lista:first-child {
+  margin-top: 4px;
+}
+
+.seguimiento .proxima {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+}
+
+.seguimiento .proxima input {
+  flex: 0 0 auto;
+}
+
+.proxima-atrasada,
+.proxima-atrasada input {
+  color: var(--error);
+}
+
+.atajos-fecha {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.enlace-boton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--acento);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+button.accion {
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button.accion:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+@media (max-width: 700px) {
+  .seguimiento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    gap: 6px 8px;
+  }
+
+  .seguimiento .proxima {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    font-size: 0.75rem;
+  }
+
+  .seguimiento .proxima input {
+    width: 100%;
+  }
+
+  .seguimiento input[type='text'] {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  .seguimiento .atajos-fecha {
+    grid-row: 2;
+  }
+
+  .seguimiento > .marca {
+    grid-row: 2;
+    justify-self: end;
+  }
+}
+
+.atajos-fecha .marca {
+  white-space: nowrap;
+}

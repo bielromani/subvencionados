@@ -17,6 +17,8 @@ export interface SeguimientoCliente {
   estado: EstadoCliente;
   nota: string;
   actualizado: string;
+  /** Fecha de la próxima acción (volver a llamar, enviar propuesta...), aaaa-mm-dd. */
+  proxima?: string | null;
 }
 
 export interface Marcas {
@@ -55,10 +57,36 @@ export function alternarCliente(id: string, nombre: string) {
   escribir({ ...m, clientes });
 }
 
-export function actualizarCliente(id: string, cambios: Partial<Pick<SeguimientoCliente, 'estado' | 'nota'>>) {
+export function actualizarCliente(id: string, cambios: Partial<Pick<SeguimientoCliente, 'estado' | 'nota' | 'proxima'>>) {
   const m = leerMarcas();
   if (!m.clientes[id]) return;
   escribir({ ...m, clientes: { ...m.clientes, [id]: { ...m.clientes[id]!, ...cambios, actualizado: new Date().toISOString().slice(0, 10) } } });
+}
+
+/**
+ * Restaura una copia de seguridad (fichero exportado desde Mi lista) sumándola a lo que ya hay: en los clientes que
+ * estén en los dos sitios manda el seguimiento actualizado más recientemente.
+ */
+export function importarMarcas(copia: unknown): number {
+  const c = copia as Partial<Marcas> | null;
+  if (!c || typeof c !== 'object' || (!Array.isArray(c.guardadas) && !Array.isArray(c.ocultas) && typeof c.clientes !== 'object')) {
+    throw new Error('El fichero no es una copia de Mi lista');
+  }
+  const m = leerMarcas();
+  const guardadas = [...new Set([...m.guardadas, ...(c.guardadas ?? []).filter((x) => typeof x === 'string')])];
+  const ocultas = [...new Set([...m.ocultas, ...(c.ocultas ?? []).filter((x) => typeof x === 'string')])].filter((x) => !guardadas.includes(x));
+  const clientes = { ...m.clientes };
+  for (const [id, s] of Object.entries(c.clientes ?? {})) {
+    if (!s || typeof s.nombre !== 'string') continue;
+    if (!clientes[id] || (s.actualizado ?? '') > clientes[id]!.actualizado) clientes[id] = s;
+  }
+  escribir({ guardadas, ocultas, clientes });
+  return guardadas.length + Object.keys(clientes).length;
+}
+
+/** Clientes con la próxima acción para hoy o ya pasada (sin contar cerrados ni descartados). */
+export function clientesParaHoy(clientes: Record<string, SeguimientoCliente>, hoy = new Date().toLocaleDateString('sv-SE')): number {
+  return Object.values(clientes).filter((s) => s.proxima && s.proxima <= hoy && s.estado !== 'cerrado' && s.estado !== 'descartado').length;
 }
 
 /** Guardar quita de ocultas y al revés: una convocatoria no puede estar en las dos listas. */
