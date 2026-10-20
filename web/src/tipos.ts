@@ -83,6 +83,24 @@ export interface Convocatoria {
   ficha?: Ficha | null;
   /** Solo en el detalle y si no hay ficha leída: extracto por apartados y frases de las bases, sin IA. */
   basica?: FichaBasica | null;
+  /** Sin fecha de fin publicada: cierre calculado desde el texto del plazo (aaaa-mm-dd). */
+  cierreAproximado?: string | null;
+  /** Solo en el detalle: plazo, cuánto dan, quién la pide y qué hacer. */
+  accion?: Accion;
+}
+
+export interface Accion {
+  plazo: { estado: Plazo; texto: string; nota?: string; dias: number | null; urgente: boolean; estimado?: boolean; cierre?: string };
+  cuanto: {
+    importeMaximo: number | null;
+    porcentajeMaximo: number | null;
+    presupuesto: number | null;
+    concedido: { mediana: number; minimo: number; maximo: number; entidades: number; anio: number | null } | null;
+  };
+  quien: string[];
+  quienLiteral: string | null;
+  pasos: string[];
+  presentacion: { lugar: string | null; url: string | null };
 }
 
 export type ApartadoExtracto = 'beneficiarios' | 'objeto' | 'bases' | 'cuantia' | 'plazo' | 'presentacion' | 'otros';

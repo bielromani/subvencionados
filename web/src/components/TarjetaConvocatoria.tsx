@@ -20,7 +20,7 @@ export function Etiqueta({ children, tono = 'neutro' }: { children: ReactNode; t
 }
 
 /** La BDNS a veces da la URL de las bases sin esquema ("www.ejemplo.org") o con texto libre. */
-function enlaceBases(url: string | null): string | null {
+export function enlaceBases(url: string | null): string | null {
   if (!url) return null;
   if (/^https?:\/\//i.test(url)) return url;
   if (/^www\.[^\s]+$/i.test(url)) return `https://${url}`;

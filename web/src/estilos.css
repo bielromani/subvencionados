@@ -1318,3 +1318,51 @@ details.bloque > summary {
   cursor: pointer;
   list-style-position: inside;
 }
+
+/* Ficha de ayuda: qué hacer */
+.que-hacer .plazo-grande {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.que-hacer .plazo-urgente {
+  color: var(--error);
+}
+
+.que-hacer .plazo-abierta {
+  color: var(--exito);
+}
+
+.que-hacer .plazo-cerrada,
+.que-hacer .plazo-desconocido {
+  color: var(--texto-suave, inherit);
+}
+
+.que-hacer .quien {
+  margin: 12px 0;
+}
+
+.cita-literal {
+  margin: 6px 0 0;
+  padding-left: 10px;
+  border-left: 3px solid var(--borde);
+  font-size: 0.875rem;
+  color: var(--texto-suave, inherit);
+}
+
+.que-hacer .pasos {
+  margin: 12px 0;
+  padding-left: 1.4em;
+}
+
+.que-hacer .pasos li {
+  margin: 4px 0;
+}
+
+.que-hacer .acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+}

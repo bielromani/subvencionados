@@ -42,6 +42,9 @@ export function FilaConvocatoria({
   else if (m.plazo === 'abierta' && c.fechaFinSolicitud) {
     const dias = diasHasta(c.fechaFinSolicitud);
     cuando = { texto: dias <= 0 ? 'Cierra hoy' : `Cierra el ${fecha(c.fechaFinSolicitud)} (${dias} ${dias === 1 ? 'día' : 'días'})`, tono: dias <= 7 ? 'aviso' : 'exito' };
+  } else if (m.plazo === 'abierta' && c.cierreAproximado) {
+    const dias = diasHasta(c.cierreAproximado);
+    cuando = { texto: `Cierra hacia el ${fecha(c.cierreAproximado)} (aprox.)`, tono: dias <= 7 ? 'aviso' : 'exito' };
   } else if (m.plazo === 'abierta') cuando = { texto: 'Plazo abierto', tono: 'exito' };
   const estilos = c.clasificacion.estilosExplicitos;
 

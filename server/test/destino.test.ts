@@ -53,6 +53,7 @@ describe('títulos legibles', () => {
     );
     expect(tituloCorto('CONVOCATORIA DE SUBVENCIONES PARA LA REALIZACIÓN DE FESTIVALES 2026')).toBe('Subvenciones para la realización de festivales 2026');
     expect(tituloCorto('XIV CONCURSO INTERNACIONAL DE MÚSICA DE CÁMARA 2026')).toBe('XIV concurso internacional de música de cámara 2026');
+    expect(tituloCorto('CONVOCATORIA 2026DE SUBVENCIONES CON DESTINO A GRUPOS DE MÚSICA Y SOLISTAS')).toBe('Subvenciones con destino a grupos de música y solistas');
   });
 });
 

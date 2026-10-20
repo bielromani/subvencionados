@@ -6,7 +6,7 @@ const FORMULAS: RegExp[] = [
   /^.{0,250}?\bpor (la|el) que se (convoca[n]?|aprueba[n]?|establece[n]?|regula[n]?)( la convocatoria( de| para)?| las bases reguladoras( y la convocatoria)?( de| para)?)?\s*/i,
   /^.{0,250}?\bque (convoca[n]?|aprueba[n]?)( las bases reguladoras)?( y)?( la convocatoria( de| para)?)?\s*/i,
   /^(extracto|anuncio|acuerdo|decreto|orden|resolucion|resolución)\b[^,:]{0,120}[,:]\s*/i,
-  /^(bases reguladoras( específicas)?( y)?( de la)?( convocatoria( pública)?)?|bases( de la convocatoria)?|convocatoria( pública| anticipada)?)\s+(del(?= )|de|para|que rige)?\s*/i,
+  /^(bases reguladoras( específicas)?( y)?( de la)?( convocatoria( pública)?)?|bases( de la convocatoria)?|convocatoria( pública| anticipada)?( (del? )?(año )?\d{4})?)\s+(del(?= )|de|para|que rige)?\s*/i,
   /^(el |la )?(concesión|concesion|otorgamiento) de\s+/i,
   /^resoluci[oó]n\b.{0,120}?\b(por la que se abre la|de) (\d+ª )?convocatoria( anticipada)?( \d{4})? (para|de) (la concesi[oó]n de\s*)?/i,
   /^en r[ée]gimen de concurrencia (no )?competitiva,?\s*(de\s+)?/i,
@@ -25,7 +25,8 @@ function sinMayusculas(texto: string): string {
 }
 
 export function tituloCorto(titulo: string): string {
-  let t = titulo.replace(/\s+/g, ' ').trim();
+  // "CONVOCATORIA 2026DE SUBVENCIONES": el año pegado a la palabra siguiente.
+  let t = titulo.replace(/\b(\d{4})(?=\p{L})/gu, '$1 ').replace(/\s+/g, ' ').trim();
   for (let i = 0; i < 3; i++) {
     const antes = t;
     for (const re of FORMULAS) {

@@ -1,6 +1,7 @@
 // Cruza el perfil del promotor con las convocatorias y explica por qué encaja cada una.
 
 import { utilParaManager } from './calendario.js';
+import { estimarCierre } from './cierre.js';
 import type { Convocatoria, Estilo, Linea, Perfil } from './tipos.js';
 
 export type Plazo = 'abierta' | 'proxima' | 'cerrada' | 'desconocido';
@@ -20,6 +21,11 @@ export function plazo(c: Convocatoria, hoy = new Date()): Plazo {
     if (!c.fechaInicioSolicitud && c.abierta === false && c.textoInicio) return 'proxima';
     return 'abierta';
   }
+  // Sin fecha de fin pero con plazo en días ("15 días hábiles desde la publicación"): cierre aproximado. Contado
+  // desde el registro en la BDNS es una cota inferior (el boletín sale después): si ya pasó hace poco, no se sabe.
+  const est = estimarCierre(c);
+  if (est && est.fecha >= dia) return !c.fechaInicioSolicitud && c.abierta === false && c.textoInicio && est.base !== 'registro' ? 'proxima' : 'abierta';
+  if (est && (est.base !== 'registro' || est.fecha < new Date(hoy.getTime() - 30 * 86_400_000).toISOString().slice(0, 10))) return 'cerrada';
   // Sin fecha de fin, el indicador "abierto" de la BDNS no se apaga nunca (hay convocatorias de 2017
   // que siguen marcadas): solo se cree si la convocatoria es reciente.
   if (c.abierta === true) {

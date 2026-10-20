@@ -1,3 +1,4 @@
+import { estimarCierre } from './cierre.js';
 import { plazo } from './emparejamiento.js';
 import { idOrganismo } from './organismos.js';
 import { tituloCorto } from './titulo.js';
@@ -11,6 +12,8 @@ export type TipoEvento = 'abre' | 'cierra' | 'prevista';
 
 export interface EventoCalendario {
   tipo: TipoEvento;
+  /** Cierre calculado desde el texto del plazo ("15 días hábiles desde la publicación"), no publicado como fecha. */
+  aproximada?: boolean;
   /** aaaa-mm-dd; en las previstas solo se sabe el mes (aaaa-mm). */
   fecha: string;
   convocatoria: {
@@ -69,10 +72,8 @@ export function calendario(convocatorias: Convocatoria[], hoy = new Date(), mese
   for (const c of convocatorias) {
     if (!interesaAlPromotor(c)) continue;
     const p = plazo(c, hoy);
-    if (p === 'proxima' && c.fechaInicioSolicitud) eventos.push({ tipo: 'abre', fecha: c.fechaInicioSolicitud, convocatoria: resumen(c) });
-    if ((p === 'abierta' || p === 'proxima') && c.fechaFinSolicitud && c.fechaFinSolicitud >= dia) {
-      eventos.push({ tipo: 'cierra', fecha: c.fechaFinSolicitud, convocatoria: resumen(c) });
-    }
+    // Apertura y cierre (también el cierre aproximado de las que solo dan el plazo en días).
+    eventos.push(...eventosDe(c, hoy).filter((e) => e.tipo !== 'prevista'));
     // La próxima edición de una serie, desde su última convocatoria ya cerrada. Solo música: las generales de
     // cultura son demasiadas y casi todas municipales.
     const ultima = c.serie?.convocatorias.at(-1);
@@ -88,6 +89,24 @@ export function calendario(convocatorias: Convocatoria[], hoy = new Date(), mese
     }
   }
   return eventos.sort((a, b) => a.fecha.localeCompare(b.fecha) || a.tipo.localeCompare(b.tipo));
+}
+
+/** Eventos de una sola convocatoria, para "añadir al calendario" desde su ficha (le interese o no al promotor). */
+export function eventosDe(c: Convocatoria, hoy = new Date()): EventoCalendario[] {
+  const dia = hoy.toISOString().slice(0, 10);
+  const p = plazo(c, hoy);
+  const eventos: EventoCalendario[] = [];
+  if (c.tipo === 'directa') return eventos;
+  if (p === 'proxima' && c.fechaInicioSolicitud) eventos.push({ tipo: 'abre', fecha: c.fechaInicioSolicitud, convocatoria: resumen(c) });
+  if ((p === 'abierta' || p === 'proxima') && c.fechaFinSolicitud && c.fechaFinSolicitud >= dia) {
+    eventos.push({ tipo: 'cierra', fecha: c.fechaFinSolicitud, convocatoria: resumen(c) });
+  }
+  const est = eventos.length === 0 && (p === 'desconocido' || p === 'abierta') ? estimarCierre(c) : null;
+  if (est && est.fecha >= dia) eventos.push({ tipo: 'cierra', fecha: est.fecha, convocatoria: resumen(c), aproximada: est.base !== 'literal' });
+  if (p === 'cerrada' && c.serie?.proximaPrevista && c.serie.proximaPrevista >= dia.slice(0, 7)) {
+    eventos.push({ tipo: 'prevista', fecha: c.serie.proximaPrevista, convocatoria: resumen(c) });
+  }
+  return eventos;
 }
 
 const escapar = (t: string) => t.replace(/[\;,]/g, (x) => `\\${x}`).replace(/\r?\n/g, '\\n');
@@ -119,14 +138,16 @@ export function aICal(eventos: EventoCalendario[], urlBase: string, ahora = new 
     const nota =
       e.tipo === 'prevista'
         ? 'Estimación a partir de los años anteriores (no es un dato oficial). '
-        : '';
+        : e.aproximada
+          ? 'Fecha aproximada calculada desde el texto del plazo, sin festivos: confírmala en las bases. '
+          : '';
     lineas.push(
       'BEGIN:VEVENT',
       `UID:${e.tipo}-${e.convocatoria.id}@subvencionados`,
       `DTSTAMP:${sello}`,
       `DTSTART;VALUE=DATE:${inicio}`,
       `DTEND;VALUE=DATE:${fin}`,
-      plegar(`SUMMARY:${escapar(`${TITULO[e.tipo]}: ${e.convocatoria.titulo}`)}`),
+      plegar(`SUMMARY:${escapar(`${TITULO[e.tipo]}${e.aproximada ? ' (aprox.)' : ''}: ${e.convocatoria.tituloCorto}`)}`),
       plegar(`DESCRIPTION:${escapar(`${nota}${e.convocatoria.organo}. ${e.convocatoria.ambito}. BDNS ${e.convocatoria.codigoBdns}.`)}`),
       plegar(`URL:${urlBase}/#/convocatoria/${e.convocatoria.id}`),
       'END:VEVENT',

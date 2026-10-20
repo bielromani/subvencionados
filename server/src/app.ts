@@ -1,5 +1,7 @@
 import express, { type Request } from 'express';
-import { aICal, calendario, utilParaManager } from './calendario.js';
+import { accion } from './accion.js';
+import { estimarCierre } from './cierre.js';
+import { aICal, calendario, eventosDe, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
@@ -23,7 +25,9 @@ const lista = (valor: unknown): string[] =>
 /** Lo que devolvemos al cliente: la convocatoria sin el texto bruto y con el plazo calculado hoy. */
 function vista(c: Convocatoria) {
   const { texto: _texto, ...resto } = c;
-  return { ...resto, tituloCorto: tituloCorto(c.titulo), plazo: plazo(c), organismoId: idOrganismo(c.organoNiveles) };
+  // Sin fecha de fin publicada, el cierre aproximado a partir del texto del plazo ("15 días hábiles...").
+  const cierreAproximado = c.fechaFinSolicitud ? null : (estimarCierre(c)?.fecha ?? null);
+  return { ...resto, tituloCorto: tituloCorto(c.titulo), plazo: plazo(c), cierreAproximado, organismoId: idOrganismo(c.organoNiveles) };
 }
 
 /** En los listados no hace falta el texto completo de los extractos. */
@@ -168,7 +172,27 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     // Sin ficha leída por IA, la básica automática: extracto por apartados y frases literales de las bases.
     const basica = ficha ? null : fichaBasica(c.anuncios, documentosConTexto(c, (a) => opciones.leerTexto?.(a) ?? null));
     // Si la convoca un ayuntamiento, a quién contactar allí.
-    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha, basica, contacto: opciones.contactos?.porCodigo(c.ubicacion?.codigoMunicipio) ?? null });
+    const contacto = opciones.contactos?.porCodigo(c.ubicacion?.codigoMunicipio) ?? null;
+    // Ediciones anteriores, de la más reciente a la más antigua, para saber cuánto se concedió de verdad.
+    const anteriores = (c.serie?.convocatorias ?? [])
+      .filter((s) => s.id !== c.id && (s.anio ?? 0) <= Number(c.fechaPublicacion?.slice(0, 4) ?? 9999))
+      .reverse()
+      .map((s) => repo.obtenerConvocatoria(s.id))
+      .filter((x): x is Convocatoria => x !== null);
+    const hoy = new Date();
+    res.json({ ...vista(c), clasificacion: c.clasificacion, ficha, basica, contacto, accion: accion(c, ficha, basica, anteriores, contacto !== null, hoy) });
+  });
+
+  // "Añadir al calendario" de una convocatoria: apertura y cierre del plazo (o la próxima edición prevista).
+  app.get('/api/convocatorias/:id/calendario.ics', (req, res) => {
+    const c = repo.obtenerConvocatoria(req.params.id);
+    if (!c) {
+      res.status(404).json({ error: 'Convocatoria no encontrada' });
+      return;
+    }
+    const base = `${req.protocol}://${req.get('host')}`;
+    res.type('text/calendar; charset=utf-8').set('Content-Disposition', `attachment; filename="convocatoria-${c.codigoBdns}.ics"`);
+    res.send(aICal(eventosDe(c, new Date()), base));
   });
 
   app.get('/api/convocatorias/:id/documentos/:idDocumento', (req, res) => {
