@@ -1474,3 +1474,56 @@ button.accion:disabled {
   gap: 8px;
   margin: 0 0 4px;
 }
+
+/* Cuenta */
+.aviso-cuenta {
+  margin: 0 0 12px;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+}
+
+.pestanas {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--borde);
+}
+
+.pestanas button {
+  padding: 8px 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font: inherit;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+
+.pestanas button.activa {
+  border-bottom-color: var(--acento);
+  color: var(--texto);
+  font-weight: 600;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  margin: 12px 0;
+}
+
+.formulario label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.formulario .boton {
+  align-self: flex-start;
+}
+
+details.bloque > summary {
+  cursor: pointer;
+  font-weight: 600;
+}

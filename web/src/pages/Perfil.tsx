@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api, ErrorApi } from '../api';
+import { AvisoCuenta } from '../components/AvisoCuenta';
 import { NOMBRE_ESTILO, NOMBRE_FORMA, NOMBRE_LINEA, type Estilo, type Grupo, type Meta, type Perfil as TPerfil } from '../tipos';
 
 export function Perfil({ meta, alGuardar }: { meta: Meta; alGuardar: () => void }) {
@@ -33,6 +34,8 @@ export function Perfil({ meta, alGuardar }: { meta: Meta; alGuardar: () => void 
   }
 
   return (
+    <>
+    <AvisoCuenta />
     <form className="perfil" onSubmit={guardar}>
       <fieldset>
         <legend>Tu actividad</legend>
@@ -123,5 +126,6 @@ export function Perfil({ meta, alGuardar }: { meta: Meta; alGuardar: () => void 
         {guardando ? 'Guardando…' : 'Guardar'}
       </button>
     </form>
+    </>
   );
 }

@@ -10,6 +10,19 @@ export interface ListaPrevistas {
   items: (Coincidencia & { prevista: string })[];
 }
 
+export interface UsuarioCuenta {
+  email: string;
+  avisos: 'diario' | 'semanal' | 'nunca';
+  tokenCalendario: string;
+}
+export interface EstadoCuenta {
+  /** Hay base de datos: se pueden crear cuentas. */
+  activo: boolean;
+  /** Hay servicio de email: avisos y restablecer contraseña. */
+  emails: boolean;
+  usuario: UsuarioCuenta | null;
+}
+
 // El perfil vive en el navegador: se manda en cada petición para que el servidor no tenga que guardarlo.
 const CLAVE_PERFIL = 'subvencionados:perfil';
 function perfilGuardado(): string | null {
@@ -19,12 +32,22 @@ function perfilGuardado(): string | null {
     return null;
   }
 }
-function guardarEnNavegador(p: Perfil) {
+export const EVENTO_PERFIL = 'subvencionados:perfil';
+export function leerPerfilGuardado(): Perfil | null {
+  try {
+    return JSON.parse(perfilGuardado() ?? 'null') as Perfil | null;
+  } catch {
+    return null;
+  }
+}
+export function guardarEnNavegador(p: Perfil, avisar = true) {
   try {
     localStorage.setItem(CLAVE_PERFIL, JSON.stringify(p));
   } catch {
     // Sin almacenamiento (modo privado): el perfil dura lo que la sesión del servidor local.
   }
+  // La sincronización con la cuenta escucha este evento.
+  if (avisar) window.dispatchEvent(new Event(EVENTO_PERFIL));
 }
 const base64 = (texto: string) => btoa(String.fromCharCode(...new TextEncoder().encode(texto)));
 
@@ -38,13 +61,16 @@ async function pedir<T>(url: string, init?: RequestInit): Promise<T> {
   const cuerpo = await res.json().catch(() => null);
   if (!res.ok) {
     const errores: string[] = cuerpo?.errores ?? [cuerpo?.error ?? `Error ${res.status}`];
-    throw new ErrorApi(errores);
+    throw new ErrorApi(errores, res.status);
   }
   return cuerpo as T;
 }
 
 export class ErrorApi extends Error {
-  constructor(readonly errores: string[]) {
+  constructor(
+    readonly errores: string[],
+    readonly estado = 0,
+  ) {
     super(errores.join('\n'));
   }
 }
@@ -84,6 +110,12 @@ export const api = {
     pedir<Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] }; contacto: ContactoMunicipio | null }>(`/api/organismos/${encodeURIComponent(id)}`),
   calendario: (consulta: string) => pedir<{ eventos: EventoCalendario[]; licitaciones: Contrato[] }>(`/api/calendario?${consulta}`),
   mercado: (consulta: string) => pedir<Mercado>(`/api/mercado?${consulta}`),
+  cuenta: () => pedir<EstadoCuenta>('/api/cuenta'),
+  cuentaEnviar: (ruta: string, cuerpo: unknown, metodo = 'POST') =>
+    pedir<{ usuario?: UsuarioCuenta; ok?: boolean }>(`/api/cuenta${ruta}`, { method: metodo, body: JSON.stringify(cuerpo) }),
+  leerLista: () => pedir<{ datos: { marcas: unknown; perfil: Perfil | null } | null; actualizado: string | null }>('/api/cuenta/lista'),
+  guardarLista: (datos: { marcas: unknown; perfil: Perfil | null }) =>
+    pedir<{ actualizado: string }>('/api/cuenta/lista', { method: 'PUT', body: JSON.stringify(datos) }),
   novedades: (desde: string | null, clientes: string[], guardadas: string[]) =>
     pedir<{
       desde: string;

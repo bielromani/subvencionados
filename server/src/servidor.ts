@@ -3,6 +3,8 @@ import { join } from 'node:path';
 import { crearApp } from './app.js';
 import { leerTextoDocumento } from './bdns/almacen.js';
 import { Contactos } from './contactos.js';
+import { AlmacenCuentas } from './cuentas.js';
+import { enviadorDesdeEntorno } from './email.js';
 import { AlmacenContratos } from './contratos/almacen.js';
 import { esDeMusica } from './contratos/placsp.js';
 import { enriquecer } from './contratos/vista.js';
@@ -21,5 +23,8 @@ export function montarApp(rutaDb: string, rutaDatos: string) {
     fichas: { leer: (codigo) => fichas.leer(codigo), tiene: (codigo) => fichas.tiene(codigo) },
     contratos,
     contactos: Contactos.cargar(rutaDatos),
+    // La base de datos de Neon que conecta Vercel (DATABASE_URL); sin ella no hay cuentas.
+    cuentas: process.env.DATABASE_URL || process.env.POSTGRES_URL ? AlmacenCuentas.desdeUrl((process.env.DATABASE_URL || process.env.POSTGRES_URL)!) : null,
+    enviar: enviadorDesdeEntorno(),
   });
 }

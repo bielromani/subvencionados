@@ -1,5 +1,9 @@
 import express, { type Request } from 'express';
 import { accion } from './accion.js';
+import { emailAviso } from './avisos.js';
+import type { AlmacenCuentas, DatosLista } from './cuentas.js';
+import type { Enviar } from './email.js';
+import { rutasCuenta } from './rutasCuenta.js';
 import { estimarCierre } from './cierre.js';
 import { aICal, calendario, type EventoCalendario, eventosDe, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
@@ -91,6 +95,10 @@ export interface OpcionesApp {
   contratos?: ContratoVista[];
   /** Directorio de ayuntamientos y responsables de cultura (datos/directorio/). */
   contactos?: Contactos | null;
+  /** Cuentas de usuario (Postgres); sin ellas, las listas viven solo en el navegador. */
+  cuentas?: AlmacenCuentas | null;
+  /** Envío de emails (avisos y restablecer contraseña). */
+  enviar?: Enviar | null;
 }
 
 /** "Palmas de Gran Canaria, Las" (INE) y "Las Palmas de Gran Canaria" son el mismo municipio. */
@@ -133,7 +141,10 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
     return organismosCache;
   };
+  // Detrás del proxy de Vercel: https y la IP real (para cookies Secure y enlaces en los emails).
+  app.set('trust proxy', true);
   app.use(express.json({ limit: '100kb' }));
+  app.use('/api/cuenta', rutasCuenta(opciones.cuentas ?? null, opciones.enviar ?? null));
 
   app.get('/api/salud', (_req, res) => {
     res.json({ ok: true });
@@ -550,47 +561,71 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const primeras = (ms: Coincidencia[], n: number) => ({ total: ms.length, items: ms.slice(0, n).map(salidaCoincidencia) });
 
   // Calendario personal para suscribirse desde Google Calendar, Outlook o el móvil: los plazos de sus ayudas guardadas
-  // (se actualizan solos si cambian) y las llamadas pendientes a sus clientes (clientes=id:aaaa-mm-dd,...). Va todo en
-  // la dirección porque la lista vive en el navegador; sin notas, solo nombres de organismos públicos y fechas.
-  app.get('/api/mi-calendario.ics', (req, res) => {
+  // (se actualizan solos si cambian) y las llamadas pendientes a sus clientes. Con cuenta va por token
+  // (?token=...: la lista se lee de la base de datos y se actualiza sola); sin cuenta, la lista va en la dirección
+  // (guardadas=...&clientes=id:aaaa-mm-dd,...). Sin notas: solo nombres de organismos públicos y fechas.
+  const miCalendario = (guardadasIds: string[], llamadasPedidas: { id: string; fecha: string }[], base: string) => {
     const hoy = new Date();
-    const eventos: EventoCalendario[] = lista(req.query.guardadas)
+    const eventos: EventoCalendario[] = guardadasIds
       .map((id) => repo.obtenerConvocatoria(id))
       .filter((c): c is Convocatoria => c !== null)
       .flatMap((c) => eventosDe(c, hoy));
-    const llamadas = lista(req.query.clientes)
-      .map((x) => x.split(':'))
-      .filter(([, fecha]) => fecha && /^\d{4}-\d{2}-\d{2}$/.test(fecha))
-      .map(([id, fecha]) => ({ p: dir().programadores.find((p) => p.id === id), fecha: fecha! }))
+    const llamadas = llamadasPedidas
+      .filter(({ fecha }) => /^\d{4}-\d{2}-\d{2}$/.test(fecha))
+      .map(({ id, fecha }) => ({ p: dir().programadores.find((p) => p.id === id), fecha }))
       .filter((x): x is { p: ProgramadorConContacto; fecha: string } => x.p !== undefined);
-    const base = `${req.protocol}://${req.get('host')}`;
-    res.type('text/calendar; charset=utf-8').set('Content-Disposition', 'inline; filename="mi-lista.ics"');
-    res.send(
-      aICal(eventos, base, hoy, {
-        nombre: 'Mi lista · Subvencionados',
-        extra: llamadas.map(({ p, fecha }) => {
-          const c = contactoBreve(p.codigoIne);
-          return {
-            uid: `llamar-${p.id}`,
-            fecha,
-            titulo: `Llamar: ${c?.municipio && /ayuntamiento|ajuntament|concello|alcald|junta de gobierno/i.test(p.nombre) ? `Ayuntamiento de ${c.municipio}` : p.nombre}`,
-            descripcion: [c?.nombre, c?.telefono && `Tel. ${c.telefono}`, c?.email].filter(Boolean).join(' · '),
-            url: `${base}/#/programador/${encodeURIComponent(p.id)}`,
-          };
-        }),
+    return aICal(eventos, base, hoy, {
+      nombre: 'Mi lista · Subvencionados',
+      extra: llamadas.map(({ p, fecha }) => {
+        const c = contactoBreve(p.codigoIne);
+        return {
+          uid: `llamar-${p.id}`,
+          fecha,
+          titulo: `Llamar: ${c?.municipio && /ayuntamiento|ajuntament|concello|alcald|junta de gobierno/i.test(p.nombre) ? `Ayuntamiento de ${c.municipio}` : p.nombre}`,
+          descripcion: [c?.nombre, c?.telefono && `Tel. ${c.telefono}`, c?.email].filter(Boolean).join(' · '),
+          url: `${base}/#/programador/${encodeURIComponent(p.id)}`,
+        };
       }),
-    );
+    });
+  };
+  /** Llamadas pendientes de la lista guardada en la cuenta (sin cerrados ni descartados). */
+  const llamadasDe = (d: DatosLista) =>
+    Object.entries(d.marcas.clientes)
+      .filter(([, s]) => s.proxima && s.estado !== 'cerrado' && s.estado !== 'descartado')
+      .map(([id, s]) => ({ id, fecha: s.proxima! }));
+
+  app.get('/api/mi-calendario.ics', async (req, res) => {
+    const base = `${req.protocol}://${req.get('host')}`;
+    let ics: string;
+    if (typeof req.query.token === 'string') {
+      const datos = opciones.cuentas ? await opciones.cuentas.deCalendario(req.query.token) : null;
+      if (!datos) {
+        res.status(404).json({ error: 'Calendario no encontrado: copia de nuevo el enlace desde tu cuenta' });
+        return;
+      }
+      ics = miCalendario(datos.marcas.guardadas, llamadasDe(datos), base);
+    } else {
+      ics = miCalendario(
+        lista(req.query.guardadas),
+        lista(req.query.clientes).map((x) => {
+          const [id = '', fecha = ''] = x.split(':');
+          return { id, fecha };
+        }),
+        base,
+      );
+    }
+    res.type('text/calendar; charset=utf-8').set('Content-Disposition', 'inline; filename="mi-lista.ics"').send(ics);
   });
 
-  // Novedades desde la última visita (la fecha la guarda el navegador): ayudas nuevas que le sirven, licitaciones de
-  // conciertos abiertas en su zona, conciertos que acaban de adjudicar sus clientes y plazos de sus guardadas.
-  app.get('/api/novedades', (req, res) => {
-    const hoy = new Date();
+  // Novedades desde una fecha: ayudas nuevas que le sirven, licitaciones de conciertos abiertas en su zona,
+  // conciertos que acaban de adjudicar sus clientes y plazos de sus guardadas. Lo usan la portada y los avisos por email.
+  const novedades = (q: { desde: string; perfil: Perfil | null; ocultas: string[]; clientes: string[]; guardadas: string[] }, hoy = new Date()) => {
     const dia = hoy.toISOString().slice(0, 10);
-    const desde = typeof req.query.desde === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(req.query.desde) ? req.query.desde : new Date(hoy.getTime() - 7 * 86_400_000).toISOString().slice(0, 10);
-    const perfil = perfilDe(req);
-    const conGrupos = perfil && perfil.grupos.length > 0 ? perfil : null;
-    const todas = conGrupos ? emparejar(visibles(req), conGrupos, hoy) : coincidenciasGenericas(visibles(req), hoy);
+    const { desde } = q;
+    const conGrupos = q.perfil && q.perfil.grupos.length > 0 ? q.perfil : null;
+    const ocultas = new Set(q.ocultas);
+    const disponibles = repo.listarConvocatorias().filter((c) => !ocultas.has(c.id));
+    const todas = conGrupos ? emparejar(disponibles, conGrupos, hoy) : coincidenciasGenericas(disponibles, hoy);
     const ayudas = todas
       .filter((m) => m.encaje !== 'precedente' && (m.convocatoria.fechaPublicacion ?? '') >= desde)
       .sort((a, b) => (b.convocatoria.fechaPublicacion ?? '').localeCompare(a.convocatoria.fechaPublicacion ?? ''));
@@ -599,16 +634,16 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const licitaciones = filtrarContratos(contratos, { ccaa: zona, estilo: estilos, estado: 'abiertas', desde }, hoy).sort((a, b) =>
       (a.finPlazo ?? '9999').localeCompare(b.finPlazo ?? '9999'),
     );
-    // Lo que han contratado sus clientes desde la última visita: a quién y por cuánto.
-    const deClientes = new Set(lista(req.query.clientes));
+    // Lo que han contratado sus clientes desde entonces: a quién y por cuánto.
+    const deClientes = new Set(q.clientes);
     const adjudicados = deClientes.size
       ? contratos
           .filter((c) => deClientes.has(idProgramador(c)) && c.adjudicaciones.length > 0 && (c.fechaAdjudicacion ?? c.actualizado) >= desde)
           .sort((a, b) => (b.fechaAdjudicacion ?? b.actualizado).localeCompare(a.fechaAdjudicacion ?? a.actualizado))
       : [];
-    // Guardadas: las que han abierto desde la visita y las que cierran en los próximos 7 días.
+    // Guardadas: las que han abierto desde entonces y las que cierran en los próximos 7 días.
     const enSiete = new Date(hoy.getTime() + 7 * 86_400_000).toISOString().slice(0, 10);
-    const guardadas = lista(req.query.guardadas)
+    const guardadas = q.guardadas
       .map((id) => repo.obtenerConvocatoria(id))
       .filter((c): c is Convocatoria => c !== null)
       .map((c) => {
@@ -624,13 +659,64 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       })
       .filter((x) => x !== null)
       .sort((a, b) => (a.cierre ?? '9999').localeCompare(b.cierre ?? '9999'));
-    res.json({
+    return {
       desde,
       ayudas: primeras(ayudas, 8),
       licitaciones: { total: licitaciones.length, items: licitaciones.slice(0, 5).map(contratoResumido) },
       adjudicados: { total: adjudicados.length, items: adjudicados.slice(0, 8).map(contratoResumido) },
       guardadas,
-    });
+    };
+  };
+
+  app.get('/api/novedades', (req, res) => {
+    const hoy = new Date();
+    const desde = typeof req.query.desde === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(req.query.desde) ? req.query.desde : new Date(hoy.getTime() - 7 * 86_400_000).toISOString().slice(0, 10);
+    res.json(
+      novedades({ desde, perfil: perfilDe(req), ocultas: lista(req.get('x-ocultas')), clientes: lista(req.query.clientes), guardadas: lista(req.query.guardadas) }, hoy),
+    );
+  });
+
+  // Avisos por email (lo llama la tarea programada de Vercel cada mañana). A cada usuario se le envía como mucho uno
+  // al día (o a la semana), así que una llamada repetida no manda emails de más. Si Vercel tiene CRON_SECRET, se exige.
+  app.get('/api/avisos', async (req, res) => {
+    const secreto = process.env.CRON_SECRET;
+    if (secreto && req.get('authorization') !== `Bearer ${secreto}`) {
+      res.status(401).json({ error: 'No autorizado' });
+      return;
+    }
+    const { cuentas, enviar } = opciones;
+    if (!cuentas || !enviar) {
+      res.json({ enviados: 0, motivo: !cuentas ? 'Sin base de datos' : 'Sin servicio de email' });
+      return;
+    }
+    const hoy = new Date();
+    const dia = hoy.toISOString().slice(0, 10);
+    const base = `https://${req.get('host')}`;
+    let enviados = 0;
+    let sinNovedades = 0;
+    for (const u of await cuentas.paraAvisar(dia)) {
+      const desde = u.ultimoAviso ?? new Date(hoy.getTime() - (u.avisos === 'diario' ? 1 : 7) * 86_400_000).toISOString().slice(0, 10);
+      const d = u.datos;
+      const perfil = d?.perfil ? validarPerfil(d.perfil) : null;
+      const n = novedades(
+        {
+          desde,
+          perfil: perfil && !('errores' in perfil) ? perfil.perfil : null,
+          ocultas: d?.marcas.ocultas ?? [],
+          clientes: Object.keys(d?.marcas.clientes ?? {}),
+          guardadas: d?.marcas.guardadas ?? [],
+        },
+        hoy,
+      );
+      const llamadas = d ? llamadasDe(d).filter((l) => l.fecha <= dia).length : 0;
+      const email = emailAviso(n, llamadas, base);
+      if (email) {
+        if (await enviar({ para: u.email, ...email })) enviados++;
+        else continue; // Si falla el envío, se reintenta en la próxima ejecución.
+      } else sinNovedades++;
+      await cuentas.marcarAvisado(u.id, dia);
+    }
+    res.json({ enviados, sinNovedades });
   });
 
   // Portada: lo urgente. Sin perfil, con uno genérico de jazz, clásica y ópera en toda España.

@@ -247,7 +247,13 @@ Tras el rediseño (Inicio · Clientes · Ayudas · Festivales · Contratos · Mi
    cierran en 7 días, ayudas nuevas que le sirven, conciertos adjudicados por los clientes de Mi lista (a quién y por
    cuánto) y licitaciones nuevas con plazo abierto en su zona. Calendarios suscribibles (webcal o «Desde URL» en Google):
    el general con los filtros del calendario y el de Mi lista (plazos de las guardadas y llamadas a clientes, sin notas).
-5. [ ] **Cuentas y avisos por email** (Supabase): listas en todos los dispositivos. Único paso con coste mensual.
+5. [x] **Cuentas y avisos por email** (Neon Postgres conectado desde Vercel, plan gratuito; Supabase no tenía hueco
+   gratuito): email y contraseña (scrypt, cookie de sesión HttpOnly), la lista y el perfil se sincronizan entre
+   dispositivos (se suman si hay cambios en los dos), calendario personal por token que se actualiza con todo, resumen
+   por email diario o semanal (tarea programada de Vercel a las 6:00 UTC, como mucho uno por periodo), restablecer
+   contraseña por email, cambiar contraseña y borrar la cuenta. Sin `DATABASE_URL` la web funciona como antes (todo
+   en el navegador). Los emails necesitan `BREVO_API_KEY` (o `RESEND_API_KEY`) y `AVISOS_REMITENTE` en Vercel.
+   Pruebas contra Postgres: `TEST_DATABASE_URL=postgresql://... npx vitest run`.
 
 ## Fase 6 · Producto multiusuario en internet
 

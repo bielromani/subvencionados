@@ -32,6 +32,8 @@ await build({
   platform: 'node',
   format: 'esm',
   target: 'node22',
+  // pg intenta cargar su versión nativa solo si se pide: no se incluye.
+  external: ['pg-native'],
   // Express es CommonJS: en un paquete ESM necesita require.
   banner: { js: "import { createRequire as __crearRequire } from 'node:module'; const require = __crearRequire(import.meta.url);" },
 });
@@ -49,7 +51,7 @@ for (const d of ['fichas', 'contratos', 'bdns/documentos']) {
 mkdirSync(join(datos, 'directorio'), { recursive: true });
 for (const f of ['ayuntamientos.csv', 'cultura.csv']) cpSync(join(raiz, 'datos/directorio', f), join(datos, 'directorio', f));
 
-// 5. Rutas: /api/* a la función, el resto a la web; noindex en todo.
+// 5. Rutas: /api/* a la función, el resto a la web; noindex en todo. Y la tarea diaria de avisos.
 writeFileSync(
   join(salida, 'config.json'),
   JSON.stringify(
@@ -61,6 +63,8 @@ writeFileSync(
         { handle: 'filesystem' },
         { src: '/(.*)', dest: '/index.html' },
       ],
+      // Avisos por email cada mañana (6:00 UTC, 7:00 u 8:00 en la península).
+      crons: [{ path: '/api/avisos', schedule: '0 6 * * *' }],
     },
     null,
     2,

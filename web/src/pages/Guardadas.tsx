@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { LineaContacto, nombreCliente } from '../components/Cliente';
+import { AvisoCuenta } from '../components/AvisoCuenta';
 import { Suscribir } from '../components/Suscribir';
+import { useCuenta } from '../sincronizar';
 import { csv, descargar, type EventoDia, ics } from '../exportar';
 import { actualizarCliente, alternarCliente, importarMarcas, NOMBRE_ESTADO, useMarcas, type EstadoCliente, type SeguimientoCliente } from '../marcas';
 import { enlace } from '../ruta';
@@ -147,6 +149,7 @@ const cierreDe = (c: Convocatoria) => c.fechaFinSolicitud ?? c.cierreAproximado 
 /** Excel, calendario y copia de seguridad de todo lo de Mi lista. */
 function Descargas({ clientes, programadores, ayudas }: { clientes: Record<string, SeguimientoCliente>; programadores: Record<string, Programador>; ayudas: Convocatoria[] }) {
   const marcas = useMarcas();
+  const usuario = useCuenta().cuenta?.usuario;
   const [aviso, setAviso] = useState<string | null>(null);
   const hoy = diaLocal();
   const excelClientes = () => {
@@ -252,6 +255,9 @@ function Descargas({ clientes, programadores, ayudas }: { clientes: Record<strin
         </button>
       </p>
       <h4 className="subtitulo-bloque">Calendario que se actualiza solo</h4>
+      {usuario ? (
+        <Suscribir ruta={`/api/mi-calendario.ics?token=${encodeURIComponent(usuario.tokenCalendario)}`} nota="Con tu cuenta, lo que cambies en Mi lista aparece solo en el calendario. Tus notas no se incluyen." />
+      ) : (
       <Suscribir
         ruta={`/api/mi-calendario.ics?${new URLSearchParams({
           guardadas: marcas.guardadas.join(','),
@@ -260,10 +266,11 @@ function Descargas({ clientes, programadores, ayudas }: { clientes: Record<strin
             .map(([id, s]) => `${id}:${s.proxima}`)
             .join(','),
         })}`}
-        nota="Los plazos de tus ayudas guardadas se actualizan solos; si guardas más ayudas o cambias las fechas de tus clientes, vuelve a suscribirte. Tus notas no se incluyen."
+        nota="Los plazos de tus ayudas guardadas se actualizan solos; si guardas más ayudas o cambias las fechas de tus clientes, vuelve a suscribirte (o crea una cuenta y se actualiza todo solo). Tus notas no se incluyen."
       />
+      )}
       <p className="ayuda">
-        Tu lista se guarda solo en este navegador. Para pasarla a otro dispositivo o no perderla:{' '}
+        {usuario ? 'Tu lista está en tu cuenta. También puedes guardar una copia en un fichero:' : 'Tu lista se guarda solo en este navegador. Para pasarla a otro dispositivo o no perderla:'}{' '}
         <button type="button" className="enlace-boton" onClick={copia}>
           descargar copia
         </button>{' '}
@@ -313,6 +320,7 @@ export function Guardadas() {
   return (
     <section>
       {error && <p className="error">{error}</p>}
+      <AvisoCuenta />
       <MisClientes datos={programadores} />
       <section className="bloque">
         <h3>

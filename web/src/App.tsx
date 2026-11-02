@@ -17,6 +17,7 @@ import { PaginaOrganismo } from './pages/Organismo';
 import { Organismos } from './pages/Organismos';
 import { ParaTi } from './pages/ParaTi';
 import { Perfil } from './pages/Perfil';
+import { Cuenta } from './pages/Cuenta';
 import { useRuta } from './ruta';
 import type { Meta } from './tipos';
 
@@ -62,7 +63,7 @@ function Icono({ nombre }: { nombre: string }) {
 }
 
 const EN_EL_PIE = new Set(['calendario', 'grupos', 'contactos', 'organismos', 'mercado']);
-const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', organismos: 'clientes', mercado: 'clientes' };
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', cuenta: 'perfil', organismos: 'clientes', mercado: 'clientes' };
 
 export function App() {
   const ruta = useRuta();
@@ -136,6 +137,7 @@ export function App() {
         {meta && pagina === 'organismos' && <Organismos meta={meta} ruta={ruta} />}
         {meta && pagina === 'mercado' && <Mercado meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismo' && id && <PaginaOrganismo id={id} />}
+        {meta && pagina === 'cuenta' && <Cuenta ruta={ruta} />}
         {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}
         {meta && !SECCIONES.some(([d]) => d === seccion) && <p className="error">Esta página no existe.</p>}
       </main>

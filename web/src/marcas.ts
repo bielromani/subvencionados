@@ -28,7 +28,8 @@ export interface Marcas {
 }
 
 const CLAVE = 'subvencionados:marcas';
-const EVENTO = 'subvencionados:marcas';
+export const EVENTO_MARCAS = 'subvencionados:marcas';
+const EVENTO = EVENTO_MARCAS;
 
 export function leerMarcas(): Marcas {
   try {
@@ -63,25 +64,32 @@ export function actualizarCliente(id: string, cambios: Partial<Pick<SeguimientoC
   escribir({ ...m, clientes: { ...m.clientes, [id]: { ...m.clientes[id]!, ...cambios, actualizado: new Date().toISOString().slice(0, 10) } } });
 }
 
-/**
- * Restaura una copia de seguridad (fichero exportado desde Mi lista) sumándola a lo que ya hay: en los clientes que
- * estén en los dos sitios manda el seguimiento actualizado más recientemente.
- */
+/** Suma dos listas: guardadas y ocultas se juntan; en los clientes que estén en las dos, manda el más reciente. */
+export function fusionar(a: Marcas, b: Partial<Marcas>): Marcas {
+  const guardadas = [...new Set([...a.guardadas, ...(b.guardadas ?? []).filter((x) => typeof x === 'string')])];
+  const ocultas = [...new Set([...a.ocultas, ...(b.ocultas ?? []).filter((x) => typeof x === 'string')])].filter((x) => !guardadas.includes(x));
+  const clientes = { ...a.clientes };
+  for (const [id, s] of Object.entries(b.clientes ?? {})) {
+    if (!s || typeof s.nombre !== 'string') continue;
+    if (!clientes[id] || (s.actualizado ?? '') > clientes[id]!.actualizado) clientes[id] = s;
+  }
+  return { guardadas, ocultas, clientes };
+}
+
+/** Sustituye la lista entera (al traerla de la cuenta). */
+export function reemplazarMarcas(m: Marcas) {
+  escribir({ guardadas: m.guardadas ?? [], ocultas: m.ocultas ?? [], clientes: m.clientes ?? {} });
+}
+
+/** Restaura una copia de seguridad (fichero exportado desde Mi lista) sumándola a lo que ya hay. */
 export function importarMarcas(copia: unknown): number {
   const c = copia as Partial<Marcas> | null;
   if (!c || typeof c !== 'object' || (!Array.isArray(c.guardadas) && !Array.isArray(c.ocultas) && typeof c.clientes !== 'object')) {
     throw new Error('El fichero no es una copia de Mi lista');
   }
-  const m = leerMarcas();
-  const guardadas = [...new Set([...m.guardadas, ...(c.guardadas ?? []).filter((x) => typeof x === 'string')])];
-  const ocultas = [...new Set([...m.ocultas, ...(c.ocultas ?? []).filter((x) => typeof x === 'string')])].filter((x) => !guardadas.includes(x));
-  const clientes = { ...m.clientes };
-  for (const [id, s] of Object.entries(c.clientes ?? {})) {
-    if (!s || typeof s.nombre !== 'string') continue;
-    if (!clientes[id] || (s.actualizado ?? '') > clientes[id]!.actualizado) clientes[id] = s;
-  }
-  escribir({ guardadas, ocultas, clientes });
-  return guardadas.length + Object.keys(clientes).length;
+  const m = fusionar(leerMarcas(), c);
+  escribir(m);
+  return m.guardadas.length + Object.keys(m.clientes).length;
 }
 
 /** Clientes con la próxima acción para hoy o ya pasada (sin contar cerrados ni descartados). */
