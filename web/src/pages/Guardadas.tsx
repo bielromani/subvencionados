@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { LineaContacto, nombreCliente } from '../components/Cliente';
+import { Suscribir } from '../components/Suscribir';
 import { csv, descargar, type EventoDia, ics } from '../exportar';
 import { actualizarCliente, alternarCliente, importarMarcas, NOMBRE_ESTADO, useMarcas, type EstadoCliente, type SeguimientoCliente } from '../marcas';
 import { enlace } from '../ruta';
@@ -250,6 +251,17 @@ function Descargas({ clientes, programadores, ayudas }: { clientes: Record<strin
           📅 Mis fechas al calendario
         </button>
       </p>
+      <h4 className="subtitulo-bloque">Calendario que se actualiza solo</h4>
+      <Suscribir
+        ruta={`/api/mi-calendario.ics?${new URLSearchParams({
+          guardadas: marcas.guardadas.join(','),
+          clientes: Object.entries(clientes)
+            .filter(([, s]) => s.proxima && s.estado !== 'cerrado' && s.estado !== 'descartado')
+            .map(([id, s]) => `${id}:${s.proxima}`)
+            .join(','),
+        })}`}
+        nota="Los plazos de tus ayudas guardadas se actualizan solos; si guardas más ayudas o cambias las fechas de tus clientes, vuelve a suscribirte. Tus notas no se incluyen."
+      />
       <p className="ayuda">
         Tu lista se guarda solo en este navegador. Para pasarla a otro dispositivo o no perderla:{' '}
         <button type="button" className="enlace-boton" onClick={copia}>

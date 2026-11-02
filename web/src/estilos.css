@@ -1463,3 +1463,14 @@ button.accion:disabled {
 .atajos-fecha .marca {
   white-space: nowrap;
 }
+
+.suscribir {
+  margin: 8px 0 16px;
+}
+
+.suscribir .acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 4px;
+}

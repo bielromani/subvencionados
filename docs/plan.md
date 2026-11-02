@@ -243,7 +243,10 @@ Tras el rediseño (Inicio · Clientes · Ayudas · Festivales · Contratos · Mi
    una semana), Mi lista agrupada por urgencia (hoy y atrasadas, esta semana, más adelante, sin fecha, terminados), aviso
    en Inicio, Excel de clientes y de ayudas, «mis fechas al calendario» (.ics con llamadas y plazos) y copia de seguridad
    de la lista para pasarla a otro dispositivo. Todo en el navegador, sin servidor.
-4. [ ] **Novedades desde tu última visita** y calendario suscribible con tus guardadas.
+4. [x] **Novedades desde tu última visita** (la fecha la guarda el navegador): plazos de las ayudas guardadas que abren o
+   cierran en 7 días, ayudas nuevas que le sirven, conciertos adjudicados por los clientes de Mi lista (a quién y por
+   cuánto) y licitaciones nuevas con plazo abierto en su zona. Calendarios suscribibles (webcal o «Desde URL» en Google):
+   el general con los filtros del calendario y el de Mi lista (plazos de las guardadas y llamadas a clientes, sin notas).
 5. [ ] **Cuentas y avisos por email** (Supabase): listas en todos los dispositivos. Único paso con coste mensual.
 
 ## Fase 6 · Producto multiusuario en internet

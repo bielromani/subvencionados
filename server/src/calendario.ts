@@ -127,10 +127,19 @@ function plegar(linea: string): string {
 }
 
 /** Exportación iCal: eventos de día completo; las previstas, el día 1 de su mes. */
-export function aICal(eventos: EventoCalendario[], urlBase: string, ahora = new Date()): string {
+/** Eventos sueltos que no son de convocatorias (las llamadas a clientes de Mi lista). */
+export interface EventoLibre {
+  uid: string;
+  fecha: string;
+  titulo: string;
+  descripcion: string;
+  url: string;
+}
+
+export function aICal(eventos: EventoCalendario[], urlBase: string, ahora = new Date(), opciones: { nombre?: string; extra?: EventoLibre[] } = {}): string {
   const sello = ahora.toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
   const TITULO: Record<TipoEvento, string> = { abre: 'Abre', cierra: 'Cierra', prevista: 'Prevista' };
-  const lineas = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Subvencionados//Calendario//ES', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:Subvenciones de música'];
+  const lineas = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Subvencionados//Calendario//ES', 'CALSCALE:GREGORIAN', `X-WR-CALNAME:${escapar(opciones.nombre ?? 'Subvenciones de música')}`, 'REFRESH-INTERVAL;VALUE=DURATION:PT12H', 'X-PUBLISHED-TTL:PT12H'];
   for (const e of eventos) {
     const inicio = (e.tipo === 'prevista' ? `${e.fecha}-01` : e.fecha).replace(/-/g, '');
     const d = new Date(`${e.tipo === 'prevista' ? `${e.fecha}-01` : e.fecha}T00:00:00Z`);
@@ -150,6 +159,20 @@ export function aICal(eventos: EventoCalendario[], urlBase: string, ahora = new 
       plegar(`SUMMARY:${escapar(`${TITULO[e.tipo]}${e.aproximada ? ' (aprox.)' : ''}: ${e.convocatoria.tituloCorto}`)}`),
       plegar(`DESCRIPTION:${escapar(`${nota}${e.convocatoria.organo}. ${e.convocatoria.ambito}. BDNS ${e.convocatoria.codigoBdns}.`)}`),
       plegar(`URL:${urlBase}/#/convocatoria/${e.convocatoria.id}`),
+      'END:VEVENT',
+    );
+  }
+  for (const e of opciones.extra ?? []) {
+    const fin = new Date(Date.parse(`${e.fecha}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10).replace(/-/g, '');
+    lineas.push(
+      'BEGIN:VEVENT',
+      `UID:${e.uid}@subvencionados`,
+      `DTSTAMP:${sello}`,
+      `DTSTART;VALUE=DATE:${e.fecha.replace(/-/g, '')}`,
+      `DTEND;VALUE=DATE:${fin}`,
+      plegar(`SUMMARY:${escapar(e.titulo)}`),
+      ...(e.descripcion ? [plegar(`DESCRIPTION:${escapar(e.descripcion)}`)] : []),
+      plegar(`URL:${e.url}`),
       'END:VEVENT',
     );
   }

@@ -1,7 +1,7 @@
 import express, { type Request } from 'express';
 import { accion } from './accion.js';
 import { estimarCierre } from './cierre.js';
-import { aICal, calendario, eventosDe, utilParaManager } from './calendario.js';
+import { aICal, calendario, type EventoCalendario, eventosDe, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
@@ -548,6 +548,90 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
 
   const salidaCoincidencia = (m: Coincidencia) => ({ ...m, convocatoria: resumida(m.convocatoria) });
   const primeras = (ms: Coincidencia[], n: number) => ({ total: ms.length, items: ms.slice(0, n).map(salidaCoincidencia) });
+
+  // Calendario personal para suscribirse desde Google Calendar, Outlook o el móvil: los plazos de sus ayudas guardadas
+  // (se actualizan solos si cambian) y las llamadas pendientes a sus clientes (clientes=id:aaaa-mm-dd,...). Va todo en
+  // la dirección porque la lista vive en el navegador; sin notas, solo nombres de organismos públicos y fechas.
+  app.get('/api/mi-calendario.ics', (req, res) => {
+    const hoy = new Date();
+    const eventos: EventoCalendario[] = lista(req.query.guardadas)
+      .map((id) => repo.obtenerConvocatoria(id))
+      .filter((c): c is Convocatoria => c !== null)
+      .flatMap((c) => eventosDe(c, hoy));
+    const llamadas = lista(req.query.clientes)
+      .map((x) => x.split(':'))
+      .filter(([, fecha]) => fecha && /^\d{4}-\d{2}-\d{2}$/.test(fecha))
+      .map(([id, fecha]) => ({ p: dir().programadores.find((p) => p.id === id), fecha: fecha! }))
+      .filter((x): x is { p: ProgramadorConContacto; fecha: string } => x.p !== undefined);
+    const base = `${req.protocol}://${req.get('host')}`;
+    res.type('text/calendar; charset=utf-8').set('Content-Disposition', 'inline; filename="mi-lista.ics"');
+    res.send(
+      aICal(eventos, base, hoy, {
+        nombre: 'Mi lista · Subvencionados',
+        extra: llamadas.map(({ p, fecha }) => {
+          const c = contactoBreve(p.codigoIne);
+          return {
+            uid: `llamar-${p.id}`,
+            fecha,
+            titulo: `Llamar: ${c?.municipio && /ayuntamiento|ajuntament|concello|alcald|junta de gobierno/i.test(p.nombre) ? `Ayuntamiento de ${c.municipio}` : p.nombre}`,
+            descripcion: [c?.nombre, c?.telefono && `Tel. ${c.telefono}`, c?.email].filter(Boolean).join(' · '),
+            url: `${base}/#/programador/${encodeURIComponent(p.id)}`,
+          };
+        }),
+      }),
+    );
+  });
+
+  // Novedades desde la última visita (la fecha la guarda el navegador): ayudas nuevas que le sirven, licitaciones de
+  // conciertos abiertas en su zona, conciertos que acaban de adjudicar sus clientes y plazos de sus guardadas.
+  app.get('/api/novedades', (req, res) => {
+    const hoy = new Date();
+    const dia = hoy.toISOString().slice(0, 10);
+    const desde = typeof req.query.desde === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(req.query.desde) ? req.query.desde : new Date(hoy.getTime() - 7 * 86_400_000).toISOString().slice(0, 10);
+    const perfil = perfilDe(req);
+    const conGrupos = perfil && perfil.grupos.length > 0 ? perfil : null;
+    const todas = conGrupos ? emparejar(visibles(req), conGrupos, hoy) : coincidenciasGenericas(visibles(req), hoy);
+    const ayudas = todas
+      .filter((m) => m.encaje !== 'precedente' && (m.convocatoria.fechaPublicacion ?? '') >= desde)
+      .sort((a, b) => (b.convocatoria.fechaPublicacion ?? '').localeCompare(a.convocatoria.fechaPublicacion ?? ''));
+    const zona = conGrupos ? [conGrupos.ccaaSede, ...conGrupos.ccaaActuacion].filter((x): x is string => !!x) : [];
+    const estilos = conGrupos ? [...new Set(conGrupos.grupos.map((g) => g.estilo))] : [...ESTILOS];
+    const licitaciones = filtrarContratos(contratos, { ccaa: zona, estilo: estilos, estado: 'abiertas', desde }, hoy).sort((a, b) =>
+      (a.finPlazo ?? '9999').localeCompare(b.finPlazo ?? '9999'),
+    );
+    // Lo que han contratado sus clientes desde la última visita: a quién y por cuánto.
+    const deClientes = new Set(lista(req.query.clientes));
+    const adjudicados = deClientes.size
+      ? contratos
+          .filter((c) => deClientes.has(idProgramador(c)) && c.adjudicaciones.length > 0 && (c.fechaAdjudicacion ?? c.actualizado) >= desde)
+          .sort((a, b) => (b.fechaAdjudicacion ?? b.actualizado).localeCompare(a.fechaAdjudicacion ?? a.actualizado))
+      : [];
+    // Guardadas: las que han abierto desde la visita y las que cierran en los próximos 7 días.
+    const enSiete = new Date(hoy.getTime() + 7 * 86_400_000).toISOString().slice(0, 10);
+    const guardadas = lista(req.query.guardadas)
+      .map((id) => repo.obtenerConvocatoria(id))
+      .filter((c): c is Convocatoria => c !== null)
+      .map((c) => {
+        const p = plazo(c, hoy);
+        const cierre = c.fechaFinSolicitud ?? (p === 'abierta' ? (estimarCierre(c)?.fecha ?? null) : null);
+        const motivo =
+          p === 'abierta' && cierre && cierre >= dia && cierre <= enSiete
+            ? ('cierra' as const)
+            : p === 'abierta' && c.fechaInicioSolicitud && c.fechaInicioSolicitud >= desde
+              ? ('abre' as const)
+              : null;
+        return motivo ? { motivo, cierre, convocatoria: resumida(c) } : null;
+      })
+      .filter((x) => x !== null)
+      .sort((a, b) => (a.cierre ?? '9999').localeCompare(b.cierre ?? '9999'));
+    res.json({
+      desde,
+      ayudas: primeras(ayudas, 8),
+      licitaciones: { total: licitaciones.length, items: licitaciones.slice(0, 5).map(contratoResumido) },
+      adjudicados: { total: adjudicados.length, items: adjudicados.slice(0, 8).map(contratoResumido) },
+      guardadas,
+    });
+  });
 
   // Portada: lo urgente. Sin perfil, con uno genérico de jazz, clásica y ópera en toda España.
   app.get('/api/inicio', (req, res) => {

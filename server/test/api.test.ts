@@ -32,7 +32,7 @@ beforeEach(() => {
         CONCESIONES_FIGUERES,
       ),
       {
-        ...registro(detalle('300', { descripcion: 'Concurso internacional de piano 2026', fechaRecepcion: '2026-01-01', documentos: [{ id: 1, descripcion: 'Texto en castellano de la convocatoria', nombreFic: 'bases.pdf' }] })),
+        ...registro(detalle('300', { descripcion: 'Concurso internacional de piano 2026', fechaRecepcion: '2026-01-01', fechaFinSolicitud: '2999-10-31', documentos: [{ id: 1, descripcion: 'Texto en castellano de la convocatoria', nombreFic: 'bases.pdf' }] })),
         textos: [{ idDocumento: 1, archivo: 'documentos/2026/1.txt', paginas: 2, caracteres: 15, descargado: '2026-10-09' }],
       },
       registro(

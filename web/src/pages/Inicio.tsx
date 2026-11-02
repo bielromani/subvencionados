@@ -5,7 +5,8 @@ import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { clientesParaHoy, useMarcas } from '../marcas';
 import { enlace } from '../ruta';
-import { NOMBRE_ESTILO } from '../tipos';
+import { NOMBRE_ESTILO, type Convocatoria } from '../tipos';
+import { visitaAnterior } from '../visitas';
 
 type Datos = Awaited<ReturnType<typeof api.inicio>>;
 
@@ -41,6 +42,80 @@ function Columna({ titulo, explicacion, datos, para }: { titulo: string; explica
   );
 }
 
+type DatosNovedades = Awaited<ReturnType<typeof api.novedades>>;
+const fechaCorta = (iso: string) => new Date(`${iso}T00:00:00`).toLocaleDateString('es-ES', { day: 'numeric', month: 'long' });
+const comoFila = (c: Convocatoria) => ({ convocatoria: c, plazo: c.plazo, puntuacion: 0, encaje: 'directo' as const, motivos: [], avisos: [] });
+
+/** Lo que ha pasado desde la última visita: plazos de sus guardadas, ayudas nuevas y lo que han contratado sus clientes. */
+function Novedades() {
+  const marcas = useMarcas();
+  const [anterior] = useState(() => visitaAnterior());
+  const [n, setN] = useState<DatosNovedades | null>(null);
+  const clientes = Object.keys(marcas.clientes);
+  useEffect(() => {
+    api.novedades(anterior, clientes, marcas.guardadas).then(setN, () => setN(null));
+  }, [anterior, clientes.join(','), marcas.guardadas.join(',')]);
+  if (!n) return null;
+  const nada = n.guardadas.length + n.ayudas.total + n.adjudicados.total + n.licitaciones.total === 0;
+  return (
+    <section className="bloque novedades">
+      <h3>{anterior ? `Novedades desde tu última visita (${fechaCorta(n.desde)})` : 'Novedades de la última semana'}</h3>
+      {nada && <p className="ayuda">Nada nuevo para ti desde el {fechaCorta(n.desde)}.</p>}
+      {n.guardadas.length > 0 && (
+        <>
+          <h4 className="subtitulo-bloque">De tus ayudas guardadas</h4>
+          <ul className="filas">
+            {n.guardadas.map((g) => (
+              <FilaConvocatoria key={g.convocatoria.id} m={comoFila(g.convocatoria)} />
+            ))}
+          </ul>
+        </>
+      )}
+      {n.ayudas.total > 0 && (
+        <>
+          <h4 className="subtitulo-bloque">
+            Ayudas nuevas que te sirven <span className="contador">{n.ayudas.total}</span>
+          </h4>
+          <Filas lista={n.ayudas} vacio="" />
+          {n.ayudas.total > n.ayudas.items.length && (
+            <p>
+              <a href={`#/explorar?desde=${n.desde}`}>Ver las {n.ayudas.total} →</a>
+            </p>
+          )}
+        </>
+      )}
+      {n.adjudicados.total > 0 && (
+        <>
+          <h4 className="subtitulo-bloque">
+            Lo que han contratado tus clientes <span className="contador">{n.adjudicados.total}</span>
+          </h4>
+          <p className="ayuda">Conciertos adjudicados por los clientes de Mi lista: a quién y por cuánto.</p>
+          <ul className="filas">
+            {n.adjudicados.items.map((c) => (
+              <FilaContrato key={c.id} c={c} />
+            ))}
+          </ul>
+        </>
+      )}
+      {n.licitaciones.total > 0 && (
+        <>
+          <h4 className="subtitulo-bloque">
+            Licitaciones de conciertos nuevas con plazo abierto <span className="contador">{n.licitaciones.total}</span>
+          </h4>
+          <ul className="filas">
+            {n.licitaciones.items.map((c) => (
+              <FilaContrato key={c.id} c={c} />
+            ))}
+          </ul>
+          <p>
+            <a href="#/contratos?estado=abiertas">Ver todas →</a>
+          </p>
+        </>
+      )}
+    </section>
+  );
+}
+
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
 export function Inicio() {
@@ -68,6 +143,8 @@ export function Inicio() {
           Hoy te toca contactar a {paraHoy} {paraHoy === 1 ? 'cliente' : 'clientes'} de tu lista. <a href="#/guardadas">Ver Mi lista →</a>
         </p>
       )}
+
+      <Novedades />
 
       {d.grupos.length > 0 && (
         <ul className="grupos-resumen">

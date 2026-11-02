@@ -2,6 +2,7 @@ import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaContrato } from '../components/FilaContrato';
+import { Suscribir } from '../components/Suscribir';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
 import { cambiarParams, enlace, type Ruta } from '../ruta';
 import { NOMBRE_ESTILO, type Contrato, type EventoCalendario, type Meta } from '../tipos';
@@ -60,9 +61,10 @@ export function Calendario({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           ))}
         </select>
         <a className="boton" href={`/api/calendario.ics?${consulta}`} download>
-          Añadir a mi calendario (.ics)
+          Descargar (.ics)
         </a>
       </Filtros>
+      <Suscribir ruta={`/api/calendario.ics?${consulta}`} nota="Recibirás las nuevas ayudas y plazos con los filtros que tengas ahora." />
       {error && <p className="error">{error}</p>}
       {licitaciones.length > 0 && (
         <section className="bloque">

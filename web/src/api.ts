@@ -84,6 +84,16 @@ export const api = {
     pedir<Organismo & { convocatorias: Convocatoria[]; contratos: { total: number; items: Contrato[] }; contacto: ContactoMunicipio | null }>(`/api/organismos/${encodeURIComponent(id)}`),
   calendario: (consulta: string) => pedir<{ eventos: EventoCalendario[]; licitaciones: Contrato[] }>(`/api/calendario?${consulta}`),
   mercado: (consulta: string) => pedir<Mercado>(`/api/mercado?${consulta}`),
+  novedades: (desde: string | null, clientes: string[], guardadas: string[]) =>
+    pedir<{
+      desde: string;
+      ayudas: Lista;
+      licitaciones: { total: number; items: Contrato[] };
+      adjudicados: { total: number; items: Contrato[] };
+      guardadas: { motivo: 'abre' | 'cierra'; cierre: string | null; convocatoria: Convocatoria }[];
+    }>(
+      `/api/novedades?${new URLSearchParams({ ...(desde && { desde }), clientes: clientes.join(','), guardadas: guardadas.join(',') })}`,
+    ),
   inicio: () =>
     pedir<{
       perfilCompleto: boolean;

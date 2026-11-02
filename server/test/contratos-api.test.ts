@@ -55,3 +55,25 @@ describe('contratos', () => {
     expect(mismoMunicipio('Lugo', 'Ourense')).toBe(false);
   });
 });
+
+describe('novedades y calendario personal', () => {
+  it('lo que han contratado los clientes de Mi lista desde la última visita', async () => {
+    const p = (await request(app).get('/api/programadores').expect(200)).body.items[0];
+    const r = await request(app).get(`/api/novedades?desde=2026-09-01&clientes=${encodeURIComponent(p.id)}`).expect(200);
+    expect(r.body.desde).toBe('2026-09-01');
+    expect(r.body.adjudicados.items.map((c: { id: string }) => c.id)).toEqual(['20585917']);
+    // Antes de la adjudicación no hay nada; sin clientes, tampoco.
+    expect((await request(app).get(`/api/novedades?desde=2026-10-01&clientes=${encodeURIComponent(p.id)}`)).body.adjudicados.total).toBe(0);
+    expect((await request(app).get('/api/novedades?desde=2026-09-01')).body.adjudicados.total).toBe(0);
+  });
+
+  it('calendario suscribible con las llamadas a clientes', async () => {
+    const p = (await request(app).get('/api/programadores').expect(200)).body.items[0];
+    const r = await request(app).get(`/api/mi-calendario.ics?clientes=${encodeURIComponent(`${p.id}:2026-12-01`)},otro:2026-12-02,${encodeURIComponent(p.id)}:mal`).expect(200);
+    expect(r.headers['content-type']).toContain('text/calendar');
+    expect(r.text).toContain('X-WR-CALNAME:Mi lista · Subvencionados');
+    expect(r.text.match(/BEGIN:VEVENT/g)).toHaveLength(1);
+    expect(r.text).toContain('DTSTART;VALUE=DATE:20261201');
+    expect(r.text).toContain('SUMMARY:Llamar: ');
+  });
+});
