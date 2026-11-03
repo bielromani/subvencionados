@@ -18,6 +18,8 @@ import { Organismos } from './pages/Organismos';
 import { ParaTi } from './pages/ParaTi';
 import { Perfil } from './pages/Perfil';
 import { Cuenta } from './pages/Cuenta';
+import { crm } from './crm';
+import { useCuenta } from './sincronizar';
 import { Bandeja } from './pages/Bandeja';
 import { Catalogo } from './pages/Catalogo';
 import { PaginaEntidad, Seguimiento } from './pages/Seguimiento';
@@ -40,12 +42,32 @@ const SECCIONES: [string, string][] = [
   ['organismos', 'Organismos'],
   ['mercado', 'Mercado'],
 ];
+/** Con cuenta, el trabajo diario: bandeja de aprobación, entidades en seguimiento y catálogo. */
+const SECCIONES_CUENTA: [string, string][] = [
+  ['', 'Inicio'],
+  ['bandeja', 'Bandeja'],
+  ['clientes', 'Clientes'],
+  ['seguimiento', 'Mis entidades'],
+  ['explorar', 'Ayudas'],
+  ['donde-tocar', 'Festivales'],
+  ['contratos', 'Contratos'],
+  ['catalogo', 'Catálogo'],
+  ['guardadas', 'Mi lista'],
+  ['perfil', 'Mi perfil'],
+];
 const BARRA: [string, string, string][] = [
   ['', 'Inicio', 'inicio'],
   ['clientes', 'Clientes', 'clientes'],
   ['explorar', 'Ayudas', 'ayudas'],
   ['contratos', 'Contratos', 'contratos'],
   ['guardadas', 'Mi lista', 'lista'],
+];
+const BARRA_CUENTA: [string, string, string][] = [
+  ['', 'Inicio', 'inicio'],
+  ['bandeja', 'Bandeja', 'bandeja'],
+  ['clientes', 'Clientes', 'clientes'],
+  ['seguimiento', 'Entidades', 'entidades'],
+  ['explorar', 'Ayudas', 'ayudas'],
 ];
 
 const TRAZOS: Record<string, string> = {
@@ -55,6 +77,10 @@ const TRAZOS: Record<string, string> = {
   contratos: 'M7 3.5h7l4 4v13H7zM14 3.5v4h4M10 12h6M10 15.5h6',
   lista: 'm12 4 2.4 5 5.4.6-4 3.7 1.1 5.4L12 16l-4.9 2.7 1.1-5.4-4-3.7 5.4-.6z',
   perfil: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M5 20.5a7 7 0 0 1 14 0',
+  bandeja: 'M3.5 13.5 6 5h12l2.5 8.5v5h-17zM3.5 13.5h5l1 2.5h5l1-2.5h5',
+  entidades: 'M4 20V9l8-5 8 5v11M9 20v-6h6v6M4 20h16',
+  catalogo: 'M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10',
+  festivales: 'M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0M19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0',
 };
 
 function Icono({ nombre }: { nombre: string }) {
@@ -66,7 +92,7 @@ function Icono({ nombre }: { nombre: string }) {
 }
 
 const EN_EL_PIE = new Set(['calendario', 'grupos', 'contactos', 'organismos', 'mercado']);
-const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', cuenta: 'perfil', bandeja: '', catalogo: 'perfil', seguimiento: 'guardadas', entidad: 'clientes', organismos: 'clientes', mercado: 'clientes' };
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', cuenta: 'perfil', entidad: 'seguimiento', organismos: 'clientes', mercado: 'clientes' };
 
 export function App() {
   const ruta = useRuta();
@@ -74,6 +100,16 @@ export function App() {
   const seccion = SECCION_DE[pagina] ?? pagina;
   const [meta, setMeta] = useState<Meta | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const usuario = useCuenta().cuenta?.usuario;
+  const secciones = usuario ? SECCIONES_CUENTA : SECCIONES.filter(([d]) => !EN_EL_PIE.has(d));
+  const barra = usuario ? BARRA_CUENTA : BARRA;
+  // Borradores y aprobados pendientes de enviar: el número junto a «Bandeja».
+  const [pendientes, setPendientes] = useState(0);
+  useEffect(() => {
+    if (!usuario) return;
+    crm.bandeja().then((r) => setPendientes(r.items.filter((m) => m.estado !== 'programado').length), () => setPendientes(0));
+  }, [usuario?.email, ruta.partes.join('/')]);
+  const contador = (destino: string) => (destino === 'bandeja' && pendientes > 0 ? <span className="insignia">{pendientes}</span> : null);
 
   useEffect(() => {
     api.meta().then(setMeta, () => setError('No se puede conectar con la API. ¿Está arrancado el servidor (npm run dev)?'));
@@ -89,27 +125,43 @@ export function App() {
           <p className="lema">Coloca a tus grupos de jazz, clásica y ópera: a quién llamar, qué ayudas pedir y qué contratos están abiertos</p>
         </div>
         <nav className="menu-escritorio">
-          {SECCIONES.filter(([d]) => !EN_EL_PIE.has(d)).map(([destino, nombre]) => (
+          {secciones.map(([destino, nombre]) => (
             <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
               {nombre}
+              {contador(destino)}
             </a>
           ))}
         </nav>
         {/* En el móvil: festivales y perfil arriba; el resto en la barra inferior. */}
         <div className="atajos">
-          <a href="#/donde-tocar" className={seccion === 'donde-tocar' ? 'activa' : ''}>
-            Festivales
-          </a>
+          {usuario ? (
+            <>
+              <a href="#/contratos" className={seccion === 'contratos' ? 'activa' : ''} aria-label="Contratos" title="Contratos">
+                <Icono nombre="contratos" />
+              </a>
+              <a href="#/donde-tocar" className={seccion === 'donde-tocar' ? 'activa' : ''} aria-label="Festivales" title="Festivales">
+                <Icono nombre="festivales" />
+              </a>
+              <a href="#/catalogo" className={seccion === 'catalogo' ? 'activa' : ''} aria-label="Catálogo" title="Catálogo">
+                <Icono nombre="catalogo" />
+              </a>
+            </>
+          ) : (
+            <a href="#/donde-tocar" className={seccion === 'donde-tocar' ? 'activa' : ''}>
+              Festivales
+            </a>
+          )}
           <a href="#/perfil" className={seccion === 'perfil' ? 'activa' : ''} aria-label="Mi perfil">
             <Icono nombre="perfil" />
           </a>
         </div>
       </header>
       <nav className="barra-inferior" aria-label="Secciones">
-        {BARRA.map(([destino, nombre, icono]) => (
+        {barra.map(([destino, nombre, icono]) => (
           <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
             <Icono nombre={icono} />
             <span>{nombre}</span>
+            {contador(destino)}
           </a>
         ))}
       </nav>
@@ -146,7 +198,7 @@ export function App() {
         {meta && pagina === 'seguimiento' && <Seguimiento />}
         {meta && pagina === 'entidad' && id && <PaginaEntidad id={id} />}
         {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}
-        {meta && !SECCIONES.some(([d]) => d === seccion) && <p className="error">Esta página no existe.</p>}
+        {meta && !SECCIONES.some(([d]) => d === seccion) && !SECCIONES_CUENTA.some(([d]) => d === seccion) && <p className="error">Esta página no existe.</p>}
       </main>
 
       {meta && (
