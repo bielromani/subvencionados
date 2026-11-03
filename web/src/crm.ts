@@ -209,7 +209,31 @@ export interface AlertaCrm {
   espectaculos: { id: string; nombre: string }[];
 }
 
+export interface PropuestaPreparada {
+  id: string;
+  ref: string;
+  nombre: string;
+  municipio: string | null;
+  provincia: string | null;
+  ccaa: string | null;
+  persona: string | null;
+  cargo: string | null;
+  destinatario: string;
+  telefono: string | null;
+  revisarEmail: string | null;
+  idioma: 'es' | 'ca';
+  motivos: string[];
+  espectaculos: { id: string; nombre: string; tipo: TipoEspectaculo; motivos: string[]; avisos: string[] }[];
+  ayudas: { id: string; titulo: string; fin: string | null }[];
+  licitaciones: { id: string; titulo: string; fin: string | null }[];
+  gestion: string[];
+  asunto: string;
+  cuerpo: string;
+  puntos: number;
+}
+
 export interface Panel {
+  propuestas: number;
   llamar: Pendiente[];
   alertas: AlertaCrm[];
   bandeja: { total: number; items: MensajeBandeja[] };
@@ -251,6 +275,12 @@ export const crm = {
   guardarEntidad: (id: string, datos: Partial<Entidad>) => pedir<Entidad>(`/entidades/${id}`, 'PUT', datos),
   anotar: (id: string, a: { tipo: TipoHistorial; texto?: string; oportunidad?: string | null; vence?: string | null }) => pedir(`/entidades/${id}/anotar`, 'POST', a),
   corregirEstado: (id: string, c: { estadoRelacion?: EstadoRelacion; noContactar?: boolean }) => pedir(`/entidades/${id}/estado`, 'POST', c),
+  propuestas: () => pedir<{ items: PropuestaPreparada[] }>('/propuestas'),
+  prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
+  guardarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) => pedir(`/propuestas/${id}`, 'PUT', c),
+  descartarPropuesta: (id: string) => pedir(`/propuestas/${id}/descartar`, 'POST', {}),
+  aceptarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) =>
+    pedir<{ mensaje: Mensaje; entidad: Entidad }>(`/propuestas/${id}/aceptar`, 'POST', c),
   descartarAlerta: (entidad: string, ref: string) => pedir('/alertas/descartar', 'POST', { entidad, ref }),
   hecho: (id: string, hecho = true) => pedir(`/historial/${id}/hecho`, 'POST', { hecho }),
   crearOportunidad: (o: { entidad: string; tipo: TipoOportunidad; titulo: string; ref?: string | null; espectaculos: string[]; certeza?: Certeza; notas?: string }) =>

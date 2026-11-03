@@ -7,6 +7,7 @@
 import type pg from 'pg';
 import type { AlmacenCuentas } from '../cuentas.js';
 import { generarCarta } from './plantillas.js';
+import type { PropuestaPreparada } from './prospeccion.js';
 import {
   AJUSTES_POR_DEFECTO,
   type AjustesCrm,
@@ -97,6 +98,17 @@ create table if not exists crm_historial (
   hecho boolean not null default false
 );
 create index if not exists crm_historial_entidad on crm_historial (entidad, fecha desc);
+create table if not exists crm_propuestas (
+  id uuid primary key default gen_random_uuid(),
+  usuario uuid not null references usuarios(id) on delete cascade,
+  ref text not null,
+  datos jsonb not null,
+  puntos real not null default 0,
+  estado text not null default 'pendiente',
+  creado timestamptz not null default now(),
+  actualizado timestamptz not null default now()
+);
+create unique index if not exists crm_propuesta_pendiente on crm_propuestas (usuario, ref) where estado = 'pendiente';
 create table if not exists crm_alertas_vistas (
   usuario uuid not null references usuarios(id) on delete cascade,
   entidad uuid not null references crm_entidades(id) on delete cascade,
@@ -378,7 +390,14 @@ export class AlmacenCrm {
    * - Si la entidad ya tiene otra secuencia activa, no se abre sin una decisión del usuario: «sustituir» (cierra la
    *   anterior) o «nueva» (convivirán). «Esperar» es simplemente no abrirla todavía.
    */
-  async abrirSecuencia(u: string, oportunidadId: string, destinatario: string, decision?: 'sustituir' | 'nueva'): Promise<{ secuencia: Secuencia; mensaje: Mensaje }> {
+  async abrirSecuencia(
+    u: string,
+    oportunidadId: string,
+    destinatario: string,
+    decision?: 'sustituir' | 'nueva',
+    /** Primera carta ya redactada (propuestas preparadas) y, si el usuario ya la ha revisado, aprobada. */
+    opciones: { carta?: { asunto: string; cuerpo: string }; aprobada?: boolean } = {},
+  ): Promise<{ secuencia: Secuencia; mensaje: Mensaje }> {
     const o = await this.oportunidad(u, oportunidadId);
     const e = await this.entidad(u, o.entidad);
     if (e.noContactar) throw new ErrorCrm(`${e.nombre} pidió no recibir más comunicaciones${e.motivoNoContactar ? ` (${e.motivoNoContactar})` : ''}`, 409);
@@ -391,20 +410,28 @@ export class AlmacenCrm {
     }
     const ajustes = await this.ajustes(u);
     const catalogo = await this.espectaculos(u);
-    const carta = generarCarta({
-      paso: 1,
-      entidad: e,
-      oportunidad: o,
-      espectaculos: catalogo.filter((x) => o.espectaculos.includes(x.id)),
-      ayuda: o.tipo === 'subvencion' ? { titulo: o.titulo, enlace: null } : null,
-      ajustes,
-    });
+    const carta =
+      opciones.carta ??
+      generarCarta({
+        paso: 1,
+        entidad: e,
+        oportunidad: o,
+        espectaculos: catalogo.filter((x) => o.espectaculos.includes(x.id)),
+        ayuda: o.tipo === 'subvencion' ? { titulo: o.titulo, enlace: null } : null,
+        ajustes,
+      });
     return this.transaccion(async (q) => {
       if (decision === 'sustituir') {
         for (const s of activas) await this.cerrarSecuencia(q, s.id, 'sustituida', 'Sustituida por una propuesta nueva');
       }
       const [s] = await q<FilaSecuencia>('insert into crm_secuencias (usuario, oportunidad, entidad, destinatario) values ($1, $2, $3, $4) returning *', [u, o.id, e.id, destinatario.trim()]);
-      const [m] = await q<FilaMensaje>('insert into crm_mensajes (usuario, secuencia, paso, asunto, cuerpo) values ($1, $2, 1, $3, $4) returning *', [u, s!.id, carta.asunto, carta.cuerpo]);
+      const [m] = await q<FilaMensaje>('insert into crm_mensajes (usuario, secuencia, paso, asunto, cuerpo, estado) values ($1, $2, 1, $3, $4, $5) returning *', [
+        u,
+        s!.id,
+        carta.asunto,
+        carta.cuerpo,
+        opciones.aprobada ? 'aprobado' : 'borrador',
+      ]);
       await q("update crm_entidades set estado_relacion = 'en_secuencia', actualizado = now() where id = $1", [e.id]);
       await q('insert into crm_historial (usuario, entidad, oportunidad, secuencia, tipo, texto) values ($1, $2, $3, $4, $5, $6)', [u, e.id, o.id, s!.id, 'secuencia', `Secuencia iniciada con ${destinatario}`]);
       return { secuencia: aSecuencia(s!), mensaje: aMensaje(m!) };
@@ -616,6 +643,77 @@ export class AlmacenCrm {
       c.estadoRelacion ?? e.estadoRelacion,
       c.noContactar ?? e.noContactar,
     ]);
+  }
+
+  // ---------- Propuestas preparadas (un correo por sitio, pendiente de revisar) ----------
+
+  async propuestas(u: string): Promise<(PropuestaPreparada & { id: string; creado: string })[]> {
+    const filas = await this.q<{ id: string; datos: PropuestaPreparada; creado: Date }>("select id, datos, creado from crm_propuestas where usuario = $1 and estado = 'pendiente' order by puntos desc, creado", [u]);
+    return filas.map((f) => ({ ...f.datos, id: f.id, creado: f.creado.toISOString() }));
+  }
+
+  async contarPropuestas(u: string): Promise<number> {
+    const [f] = await this.q<{ n: string }>("select count(*) as n from crm_propuestas where usuario = $1 and estado = 'pendiente'", [u]);
+    return Number(f?.n ?? 0);
+  }
+
+  /** Sitios que no hay que volver a proponer: pendientes, aceptados, o descartados hace menos de 90 días. */
+  async refsBloqueadas(u: string): Promise<Set<string>> {
+    const filas = await this.q<{ ref: string }>(
+      "select ref from crm_propuestas where usuario = $1 and (estado in ('pendiente', 'aceptada') or (estado = 'descartada' and actualizado > now() - interval '90 days'))",
+      [u],
+    );
+    return new Set(filas.map((f) => f.ref));
+  }
+
+  async guardarPropuestas(u: string, ps: PropuestaPreparada[]) {
+    for (const p of ps) {
+      await this.q("insert into crm_propuestas (usuario, ref, datos, puntos) values ($1, $2, $3, $4) on conflict (usuario, ref) where estado = 'pendiente' do nothing", [
+        u,
+        p.ref,
+        JSON.stringify(p),
+        p.puntos,
+      ]);
+    }
+  }
+
+  async editarPropuesta(u: string, id: string, c: { asunto: string; cuerpo: string; destinatario: string }) {
+    const [f] = await this.q<{ datos: PropuestaPreparada }>("select datos from crm_propuestas where id = $1 and usuario = $2 and estado = 'pendiente'", [id, u]);
+    if (!f) throw new ErrorCrm('Esta propuesta ya no está pendiente', 409);
+    await this.q('update crm_propuestas set datos = $3, actualizado = now() where id = $1 and usuario = $2', [id, u, JSON.stringify({ ...f.datos, ...c })]);
+  }
+
+  /** Cuentas con catálogo (para preparar propuestas cada día). */
+  async usuariosConCatalogo(): Promise<string[]> {
+    return (await this.q<{ usuario: string }>('select distinct usuario from crm_espectaculos')).map((f) => f.usuario);
+  }
+
+  async descartarPropuesta(u: string, id: string) {
+    await this.q("update crm_propuestas set estado = 'descartada', actualizado = now() where id = $1 and usuario = $2 and estado = 'pendiente'", [id, u]);
+  }
+
+  /**
+   * Visto bueno a una propuesta: la entidad entra en seguimiento con su oportunidad y su secuencia, y la primera carta
+   * (con los cambios del usuario) queda aprobada para enviarla desde su correo.
+   */
+  async aceptarPropuesta(u: string, id: string, carta: { asunto: string; cuerpo: string; destinatario: string }, entidadBase: Omit<Entidad, 'id' | 'estadoRelacion' | 'noContactar' | 'motivoNoContactar'>) {
+    const [f] = await this.q<{ datos: PropuestaPreparada }>("select datos from crm_propuestas where id = $1 and usuario = $2 and estado = 'pendiente'", [id, u]);
+    if (!f) throw new ErrorCrm('Esta propuesta ya no está pendiente', 409);
+    const p = f.datos;
+    const e = await this.guardarEntidad(u, { ...entidadBase, email: entidadBase.email ?? carta.destinatario });
+    const o = await this.crearOportunidad(u, {
+      entidad: e.id,
+      tipo: p.ayudas.length ? 'subvencion' : p.licitaciones.length ? 'licitacion' : 'propuesta',
+      ref: p.ayudas[0]?.id ?? p.licitaciones[0]?.id ?? null,
+      titulo: p.ayudas[0]?.titulo ?? p.licitaciones[0]?.titulo ?? carta.asunto,
+      espectaculos: p.espectaculos.map((x) => x.id),
+      certeza: 'potencial',
+      enlaceConfirmacion: null,
+      notas: p.motivos.join('\n'),
+    });
+    const r = await this.abrirSecuencia(u, o.id, carta.destinatario, 'nueva', { carta, aprobada: true });
+    await this.q("update crm_propuestas set estado = 'aceptada', actualizado = now() where id = $1", [id]);
+    return { ...r, entidad: e };
   }
 
   /** Alertas de convocatorias o licitaciones nuevas ya vistas o descartadas (no se vuelven a enseñar). */

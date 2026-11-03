@@ -24,6 +24,11 @@ export function PanelTrabajo() {
           Empieza por <a href="#/catalogo">tu catálogo de espectáculos</a>: con él se proponen las cartas y se cruzan las ayudas y licitaciones.
         </p>
       )}
+      {p.propuestas > 0 && (
+        <p className="llamada">
+          <strong>{p.propuestas} propuestas preparadas</strong>: correos ya escritos para sitios donde encaja tu catálogo, listos para revisar y enviar. <a href="#/propuestas">Revisarlas →</a>
+        </p>
+      )}
       <div className="dos-columnas">
         <section className="bloque">
           <h3>

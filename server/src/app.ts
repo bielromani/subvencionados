@@ -4,7 +4,7 @@ import { emailAviso } from './avisos.js';
 import type { AlmacenCuentas, DatosLista } from './cuentas.js';
 import { type Enviar, escaparHtml } from './email.js';
 import { rutasCuenta } from './rutasCuenta.js';
-import { alertasCrm, type ContextoCrm, rutasCrm } from './rutasCrm.js';
+import { alertasCrm, type ContextoCrm, prepararParaCuenta, rutasCrm } from './rutasCrm.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
 import { cubreTerritorio, type OportunidadGestion, oportunidadesGestion } from './gestionFestivales.js';
 import type { AlmacenCrm } from './crm/almacen.js';
@@ -319,6 +319,9 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
             .sort((a, b) => (b.fechaPublicacion ?? '').localeCompare(a.fechaPublicacion ?? '')),
         resumida,
         contratoResumido,
+        programadores: () => dir().programadores,
+        ayudasProgramadores: () => repo.listarConvocatorias().filter((c) => utilParaManager(c) && c.clasificacion.destino === 'programadores' && vigente(c)),
+        gestionDe: (id) => oportunidadesDeGestion().find((o) => o.programador === id),
   };
   app.use('/api/crm', rutasCrm(opciones.cuentas ?? null, crm, ctxCrm, opciones.enviar ?? null));
 
@@ -810,9 +813,17 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         // Si la web no responde hoy, se vuelve a intentar mañana.
       }
     }
+    // Propuestas preparadas: cada mañana, hasta 20 sitios nuevos por cuenta con catálogo (sin pasar de 60 pendientes).
+    let propuestas = 0;
+    if (crm) {
+      for (const u of await crm.usuariosConCatalogo()) {
+        const pendientes = await crm.contarPropuestas(u);
+        if (pendientes < 60) propuestas += await prepararParaCuenta(crm, ctxCrm, u, { limite: Math.min(20, 60 - pendientes) });
+      }
+    }
     const { cuentas, enviar } = opciones;
     if (!cuentas || !enviar) {
-      res.json({ enviados: 0, catalogos, motivo: !cuentas ? 'Sin base de datos' : 'Sin servicio de email' });
+      res.json({ enviados: 0, catalogos, propuestas, motivo: !cuentas ? 'Sin base de datos' : 'Sin servicio de email' });
       return;
     }
     const hoy = new Date();
@@ -848,7 +859,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       } else sinNovedades++;
       await cuentas.marcarAvisado(u.id, dia);
     }
-    res.json({ enviados, sinNovedades, catalogos });
+    res.json({ enviados, sinNovedades, catalogos, propuestas });
   });
 
   // Portada: lo urgente. Sin perfil, con uno genérico de jazz, clásica y ópera en toda España.

@@ -1696,3 +1696,40 @@ details.bloque > summary {
     font-size: 0.875rem;
   }
 }
+
+/* Propuestas preparadas */
+.propuesta h3 a {
+  color: inherit;
+}
+
+.motivos-propuesta li {
+  font-size: 0.9375rem;
+}
+
+.propuesta .destinatario {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0 4px;
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+}
+
+.correo-propuesta {
+  margin: 10px 0;
+}
+
+.correo-propuesta summary {
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.correo-propuesta .mensaje-asunto {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.propuesta .etiquetas .etiqueta {
+  white-space: normal;
+  text-align: left;
+}

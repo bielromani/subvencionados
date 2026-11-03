@@ -6,6 +6,8 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
+import { prepararPropuestas } from './crm/prospeccion.js';
+import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
 import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
 import type { Programador } from './directorio.js';
@@ -19,7 +21,7 @@ type ProgramadorConContacto = Programador & { codigoIne: string | null };
 /** Lo que el CRM necesita de los datos públicos de la app. */
 export interface ContextoCrm {
   programador: (id: string) => ProgramadorConContacto | undefined;
-  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null } | null;
+  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean } | null;
   convocatoria: (id: string) => Convocatoria | null;
   contrato: (id: string) => ContratoVista | undefined;
   /** Ayudas útiles para quien contrata, vigentes y que cubren el territorio de la entidad. */
@@ -28,6 +30,10 @@ export interface ContextoCrm {
   licitacionesAbiertas: () => ContratoVista[];
   /** Las abiertas de un programador concreto. */
   licitacionesDe: (programadorId: string) => ContratoVista[];
+  /** Para las propuestas preparadas: todos los programadores, las ayudas vigentes para quien contrata y la gestión. */
+  programadores: () => ProgramadorConContacto[];
+  ayudasProgramadores: () => Convocatoria[];
+  gestionDe: (programadorId: string) => OportunidadGestion | undefined;
   /** Ayudas útiles registradas desde una fecha. */
   ayudasNuevas: (desde: string) => Convocatoria[];
   resumida: (c: Convocatoria) => unknown;
@@ -103,6 +109,27 @@ export async function alertasCrm(crm: AlmacenCrm, ctx: ContextoCrm, u: string, h
     }
   }
   return alertas.sort((a, b) => (b.fecha ?? '').localeCompare(a.fecha ?? ''));
+}
+
+/** Entidades que no hay que proponer: ya en seguimiento (salvo recién añadidas sin contactar) o con «no contactar». */
+async function excluidas(crm: AlmacenCrm, u: string): Promise<Set<string>> {
+  const fuera = await crm.refsBloqueadas(u);
+  for (const e of await crm.entidades(u)) if (e.ref && (e.noContactar || e.estadoRelacion !== 'nueva')) fuera.add(e.ref);
+  return fuera;
+}
+
+/** Prepara hasta `limite` propuestas nuevas para la cuenta y las guarda. */
+export async function prepararParaCuenta(crm: AlmacenCrm, ctx: ContextoCrm, u: string, opciones: { limite: number; ccaa?: string[] }): Promise<number> {
+  const [catalogo, ajustes, fuera] = await Promise.all([crm.espectaculos(u), crm.ajustes(u), excluidas(crm, u)]);
+  const nuevas = prepararPropuestas(
+    { programadores: ctx.programadores, contacto: ctx.contacto, ayudasProgramadores: ctx.ayudasProgramadores, licitacionesAbiertas: ctx.licitacionesAbiertas, gestionDe: ctx.gestionDe },
+    catalogo,
+    ajustes,
+    fuera,
+    opciones,
+  );
+  await crm.guardarPropuestas(u, nuevas);
+  return nuevas.length;
 }
 
 export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null, ctx: ContextoCrm, enviar: Enviar | null) {
@@ -359,6 +386,49 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
   /** El usuario confirma que lo ha enviado desde su correo: es el envío efectivo. */
   r.post('/mensajes/:id/enviado', ruta(async (req, _r, u, c) => c.registrarEnvio(u.id, String(req.params.id))));
 
+  // ---------- Propuestas preparadas ----------
+
+  r.get('/propuestas', ruta(async (_q, _r, u, c) => ({ items: await c.propuestas(u.id) })));
+  r.post(
+    '/propuestas/preparar',
+    ruta(async (req, _r, u, c) => {
+      const limite = Math.min(Math.max(Math.round(Number(req.body?.limite) || 20), 1), 100);
+      const ccaa = Array.isArray(req.body?.ccaa) ? req.body.ccaa.filter((x: unknown) => typeof x === 'string') : typeof req.body?.ccaa === 'string' && req.body.ccaa ? [req.body.ccaa] : [];
+      if (!(await c.espectaculos(u.id)).length) throw new ErrorCrm('Primero añade tu catálogo de espectáculos', 400);
+      return { nuevas: await prepararParaCuenta(c, ctx, u.id, { limite, ccaa }) };
+    }),
+  );
+  const cartaDe = (b: Record<string, unknown> | undefined) => {
+    const destinatario = texto(b?.destinatario, 200).trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(destinatario)) throw new ErrorCrm('Falta un email válido del destinatario', 400);
+    return { asunto: texto(b?.asunto, 300), cuerpo: texto(b?.cuerpo, 20000), destinatario };
+  };
+  r.put('/propuestas/:id', ruta(async (req, _r, u, c) => c.editarPropuesta(u.id, String(req.params.id), cartaDe(req.body))));
+  r.post('/propuestas/:id/descartar', ruta(async (req, _r, u, c) => c.descartarPropuesta(u.id, String(req.params.id))));
+  /** Visto bueno: la entidad entra en seguimiento y la carta queda aprobada para enviarla desde el correo propio. */
+  r.post(
+    '/propuestas/:id/aceptar',
+    ruta(async (req, _r, u, c) => {
+      const carta = cartaDe(req.body);
+      const p = (await c.propuestas(u.id)).find((x) => x.id === req.params.id);
+      if (!p) throw new ErrorCrm('Esta propuesta ya no está pendiente', 409);
+      const prog = ctx.programador(p.ref);
+      return c.aceptarPropuesta(u.id, p.id, carta, {
+        ref: p.ref,
+        nombre: p.nombre,
+        tipo: /ayuntamiento|ajuntament|concello/i.test(p.nombre) ? 'ayuntamiento' : 'otro',
+        municipio: p.municipio,
+        provincia: prog?.provincia ?? p.provincia,
+        ccaa: prog?.ccaa ?? p.ccaa,
+        persona: p.persona,
+        email: carta.destinatario,
+        telefono: p.telefono,
+        idioma: p.idioma,
+        notas: '',
+      });
+    }),
+  );
+
   // ---------- Panel de trabajo ----------
 
   r.get(
@@ -384,6 +454,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       const bandeja = await c.bandeja(u.id);
       return {
         llamar: await c.pendientes(u.id),
+        propuestas: await c.contarPropuestas(u.id),
         alertas: await alertasCrm(c, ctx, u.id),
         bandeja: { total: bandeja.length, items: bandeja.slice(0, 5) },
         respuestas: await c.respuestas(u.id),

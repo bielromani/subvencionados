@@ -380,3 +380,23 @@ sus entidades y sus secuencias, así que sirve para varios perfiles.
   - alertas de convocatorias nuevas sobre oportunidades abiertas.
   - Las licitaciones ya se cruzan con el catálogo.
 - [ ] **Fase 3:** estadísticas de conversión y mejoras móviles.
+
+### Propuestas preparadas (noviembre 2026)
+
+Cada mañana (y a petición), el catálogo de la cuenta se cruza con todos los programadores de España. Se miran:
+- lo que han contratado de los estilos del catálogo;
+- si suelen contratar en los próximos meses;
+- las ayudas vigentes que cubren su territorio;
+- las licitaciones abiertas que encajan;
+- las señales de gestión integral.
+
+Para cada sitio con email de contacto queda **un correo ya escrito**:
+- va a la persona de cultura, o al email general marcado para revisar;
+- incluye lo mejor de cada estilo del catálogo que programa;
+- menciona la licitación y las ayudas como apoyo opcional.
+
+El usuario lo retoca, da el visto bueno (la entidad entra en seguimiento con su secuencia), lo envía desde su correo
+o lo descarta. No se repiten los descartados (90 días), los que ya están en seguimiento ni los de «no contactar».
+Hasta 20 nuevas al día, con un máximo de 60 pendientes.
+
+Siguiente: plantillas con el tono de Joan (cuando las pase).

@@ -21,6 +21,7 @@ import { Cuenta } from './pages/Cuenta';
 import { crm } from './crm';
 import { useCuenta } from './sincronizar';
 import { Bandeja } from './pages/Bandeja';
+import { Propuestas } from './pages/Propuestas';
 import { Catalogo } from './pages/Catalogo';
 import { PaginaEntidad, Seguimiento } from './pages/Seguimiento';
 import { useRuta } from './ruta';
@@ -45,6 +46,7 @@ const SECCIONES: [string, string][] = [
 /** Con cuenta, el trabajo diario: bandeja de aprobación, entidades en seguimiento y catálogo. */
 const SECCIONES_CUENTA: [string, string][] = [
   ['', 'Inicio'],
+  ['propuestas', 'Propuestas'],
   ['bandeja', 'Bandeja'],
   ['clientes', 'Clientes'],
   ['seguimiento', 'Mis entidades'],
@@ -64,10 +66,10 @@ const BARRA: [string, string, string][] = [
 ];
 const BARRA_CUENTA: [string, string, string][] = [
   ['', 'Inicio', 'inicio'],
+  ['propuestas', 'Propuestas', 'propuestas'],
   ['bandeja', 'Bandeja', 'bandeja'],
   ['clientes', 'Clientes', 'clientes'],
   ['seguimiento', 'Entidades', 'entidades'],
-  ['explorar', 'Ayudas', 'ayudas'],
 ];
 
 const TRAZOS: Record<string, string> = {
@@ -80,6 +82,7 @@ const TRAZOS: Record<string, string> = {
   bandeja: 'M3.5 13.5 6 5h12l2.5 8.5v5h-17zM3.5 13.5h5l1 2.5h5l1-2.5h5',
   entidades: 'M4 20V9l8-5 8 5v11M9 20v-6h6v6M4 20h16',
   catalogo: 'M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10',
+  propuestas: 'M4 6.5 12 12l8-5.5M4 6h16v12H4zM14.5 3.5l1.2 1.8M17.5 2.5v2',
   festivales: 'M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0M19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0',
 };
 
@@ -105,11 +108,16 @@ export function App() {
   const barra = usuario ? BARRA_CUENTA : BARRA;
   // Borradores y aprobados pendientes de enviar: el número junto a «Bandeja».
   const [pendientes, setPendientes] = useState(0);
+  const [propuestas, setPropuestas] = useState(0);
   useEffect(() => {
     if (!usuario) return;
     crm.bandeja().then((r) => setPendientes(r.items.filter((m) => m.estado !== 'programado').length), () => setPendientes(0));
+    crm.propuestas().then((r) => setPropuestas(r.items.length), () => setPropuestas(0));
   }, [usuario?.email, ruta.partes.join('/')]);
-  const contador = (destino: string) => (destino === 'bandeja' && pendientes > 0 ? <span className="insignia">{pendientes}</span> : null);
+  const contador = (destino: string) => {
+    const n = destino === 'bandeja' ? pendientes : destino === 'propuestas' ? propuestas : 0;
+    return n > 0 ? <span className="insignia">{n}</span> : null;
+  };
 
   useEffect(() => {
     api.meta().then(setMeta, () => setError('No se puede conectar con la API. ¿Está arrancado el servidor (npm run dev)?'));
@@ -136,6 +144,9 @@ export function App() {
         <div className="atajos">
           {usuario ? (
             <>
+              <a href="#/explorar" className={seccion === 'explorar' ? 'activa' : ''} aria-label="Ayudas" title="Ayudas">
+                <Icono nombre="ayudas" />
+              </a>
               <a href="#/contratos" className={seccion === 'contratos' ? 'activa' : ''} aria-label="Contratos" title="Contratos">
                 <Icono nombre="contratos" />
               </a>
@@ -194,6 +205,7 @@ export function App() {
         {meta && pagina === 'organismo' && id && <PaginaOrganismo id={id} />}
         {meta && pagina === 'cuenta' && <Cuenta ruta={ruta} />}
         {meta && pagina === 'bandeja' && <Bandeja />}
+        {meta && pagina === 'propuestas' && <Propuestas meta={meta} />}
         {meta && pagina === 'catalogo' && <Catalogo />}
         {meta && pagina === 'seguimiento' && <Seguimiento />}
         {meta && pagina === 'entidad' && id && <PaginaEntidad id={id} />}

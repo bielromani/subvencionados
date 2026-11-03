@@ -14,7 +14,7 @@ export interface DatosCarta {
   ajustes: AjustesCrm;
 }
 
-const NOMBRE_TIPO: Record<'es' | 'ca', Record<TipoEspectaculo, string>> = {
+export const NOMBRE_TIPO: Record<'es' | 'ca', Record<TipoEspectaculo, string>> = {
   es: {
     opera: 'ópera',
     sinfonico_coral: 'repertorio sinfónico-coral',
@@ -48,10 +48,11 @@ function lista(xs: string[], y: string): string {
 }
 
 /** «Ayuntamiento de Lugo» → «el Ayuntamiento de Lugo»; para el saludo, la persona si se conoce. */
-function saludo(e: DatosCarta['entidad'], idioma: 'es' | 'ca'): string {
-  if (e.persona) return idioma === 'ca' ? `Benvolgut/da ${e.persona},` : `Estimado/a ${e.persona}:`;
+export function saludoA(persona: string | null, idioma: 'es' | 'ca'): string {
+  if (persona) return idioma === 'ca' ? `Benvolgut/da ${persona},` : `Estimado/a ${persona}:`;
   return idioma === 'ca' ? 'Bon dia,' : 'Buenos días:';
 }
+const saludo = (e: DatosCarta['entidad'], idioma: 'es' | 'ca') => saludoA(e.persona, idioma);
 
 function propuestas(d: DatosCarta, idioma: 'es' | 'ca'): string {
   const xs = d.espectaculos.slice(0, 4);
@@ -75,7 +76,7 @@ function fraseAyuda(d: DatosCarta, idioma: 'es' | 'ca'): string {
     : `Por otra parte, hemos detectado una convocatoria («${t}») que quizá podría facilitar la programación de esta propuesta. Si lo consideráis interesante, podemos estudiar conjuntamente las posibilidades, sin ningún compromiso.`;
 }
 
-function firma(a: AjustesCrm, idioma: 'es' | 'ca'): string {
+export function firmaDe(a: AjustesCrm, idioma: 'es' | 'ca'): string {
   if (a.firma.trim()) return a.firma.trim();
   const lineas = [a.remitente, a.organizacion, a.telefono, a.email, a.web].filter((x) => x.trim());
   return lineas.length ? lineas.join('\n') : idioma === 'ca' ? '[La teva signatura]' : '[Tu firma]';
@@ -95,7 +96,7 @@ export function generarCarta(d: DatosCarta): { asunto: string; cuerpo: string } 
   const lineasPropuestas = propuestas(d, idioma);
   const ayuda = fraseAyuda(d, idioma);
   const s = saludo(d.entidad, idioma);
-  const f = firma(d.ajustes, idioma);
+  const f = firmaDe(d.ajustes, idioma);
   const contexto =
     d.oportunidad.tipo === 'licitacion'
       ? ca
