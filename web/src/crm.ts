@@ -199,8 +199,19 @@ export interface AjustesCrm {
 export type MensajeBandeja = Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string };
 export type Pendiente = EntradaHistorial & { entidadDatos: Entidad };
 
+export interface AlertaCrm {
+  entidad: { id: string; nombre: string; ref: string | null };
+  oportunidades: { id: string; titulo: string }[];
+  tipo: 'convocatoria' | 'licitacion';
+  ref: string;
+  titulo: string;
+  fecha: string | null;
+  espectaculos: { id: string; nombre: string }[];
+}
+
 export interface Panel {
   llamar: Pendiente[];
+  alertas: AlertaCrm[];
   bandeja: { total: number; items: MensajeBandeja[] };
   respuestas: Pendiente[];
   ayudas: { convocatoria: Convocatoria; certeza: Certeza; espectaculos: EspectaculoBreve[] }[];
@@ -240,6 +251,7 @@ export const crm = {
   guardarEntidad: (id: string, datos: Partial<Entidad>) => pedir<Entidad>(`/entidades/${id}`, 'PUT', datos),
   anotar: (id: string, a: { tipo: TipoHistorial; texto?: string; oportunidad?: string | null; vence?: string | null }) => pedir(`/entidades/${id}/anotar`, 'POST', a),
   corregirEstado: (id: string, c: { estadoRelacion?: EstadoRelacion; noContactar?: boolean }) => pedir(`/entidades/${id}/estado`, 'POST', c),
+  descartarAlerta: (entidad: string, ref: string) => pedir('/alertas/descartar', 'POST', { entidad, ref }),
   hecho: (id: string, hecho = true) => pedir(`/historial/${id}/hecho`, 'POST', { hecho }),
   crearOportunidad: (o: { entidad: string; tipo: TipoOportunidad; titulo: string; ref?: string | null; espectaculos: string[]; certeza?: Certeza; notas?: string }) =>
     pedir<Oportunidad>('/oportunidades', 'POST', o),

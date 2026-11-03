@@ -1,18 +1,19 @@
 import { Filtros } from '../components/Filtros';
+import { GestionIntegral } from '../components/GestionIntegral';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { aniosTexto, FilaFestival, FilaProgramador, Fuentes } from '../components/Directorio';
 import { cambiarParams, type Ruta } from '../ruta';
 import { NOMBRE_ESTILO, type Circuito, type Festival, type Meta, type Programador } from '../tipos';
 
-type Pestana = 'festivales' | 'programadores' | 'circuitos';
+type Pestana = 'festivales' | 'programadores' | 'circuitos' | 'gestion';
 
 /** Dónde colocar a los grupos: festivales y ciclos, programadores públicos y circuitos, con sus fuentes. */
 export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const p = ruta.params;
   // Los programadores tienen ahora su propia sección (Clientes): los enlaces antiguos llevan allí.
   if (p.get('ver') === 'programadores') window.location.hash = '#/clientes';
-  const [pestana, setPestana] = useState<Pestana>(p.get('ver') === 'circuitos' ? 'circuitos' : 'festivales');
+  const [pestana, setPestana] = useState<Pestana>(p.get('ver') === 'circuitos' ? 'circuitos' : p.get('ver') === 'gestion' ? 'gestion' : 'festivales');
   const [filtros, setFiltros] = useState({ q: p.get('q') ?? '', ccaa: p.get('ccaa') ?? '', estilo: p.get('estilo') ?? '', orden: p.get('orden') ?? '', todos: p.get('todos') ?? '', contacto: p.get('contacto') ?? '', pagina: Number(p.get('pagina')) || 1 });
   const [r, setR] = useState<{ total: number; porPagina: number; items: (Festival | Programador)[] } | null>(null);
   const [circuitos, setCircuitos] = useState<Circuito[] | null>(null);
@@ -21,6 +22,7 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
 
   useEffect(() => {
     cambiarParams({ ver: pestana, ...filtros, pagina: filtros.pagina > 1 ? filtros.pagina : undefined });
+    if (pestana === 'gestion') return;
     if (pestana === 'circuitos') {
       if (!circuitos) api.circuitos().then((x) => setCircuitos(x.items), (e: Error) => setError(e.message));
       return;
@@ -39,6 +41,7 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         {(
           [
             ['festivales', 'Festivales y ciclos'],
+            ['gestion', 'Gestión integral'],
             ['circuitos', 'Circuitos'],
           ] as [Pestana, string][]
         ).map(([id, nombre]) => (
@@ -56,7 +59,9 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           'Redes públicas de programación que aparecen en los contratos y convocatorias. La lista de circuitos es nuestra; lo que se muestra de cada uno son sus apariciones en los datos oficiales.'}
       </p>
 
-      {pestana !== 'circuitos' && (
+      {pestana === 'gestion' && <GestionIntegral meta={meta} />}
+
+      {pestana !== 'circuitos' && pestana !== 'gestion' && (
         <Filtros busqueda={<input type="search" placeholder="Buscar por nombre, ciudad u organizador…" value={filtros.q} onChange={cambiar('q')} aria-label="Buscar" />}>
           
           <select value={filtros.ccaa} onChange={cambiar('ccaa')} aria-label="Comunidad">
@@ -94,7 +99,7 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
       )}
       {error && <p className="error">{error}</p>}
 
-      {pestana !== 'circuitos' && r && (
+      {pestana !== 'circuitos' && pestana !== 'gestion' && r && (
         <>
           <p className="ayuda">{r.total.toLocaleString('es-ES')} resultados</p>
           <ul className="filas bloque">

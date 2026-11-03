@@ -80,6 +80,37 @@ export function PanelTrabajo() {
         </section>
       </div>
 
+      {p.alertas.length > 0 && (
+        <section className="bloque">
+          <h3>
+            Novedades para tus oportunidades abiertas <span className="contador">{p.alertas.length}</span>
+          </h3>
+          <p className="ayuda">Convocatorias publicadas en el último mes y licitaciones abiertas que afectan a entidades con las que ya tienes una oportunidad en marcha. Encaje potencial: verifica los requisitos.</p>
+          <ul className="filas">
+            {p.alertas.map((a) => (
+              <li key={`${a.entidad.id}-${a.ref}`} className="fila-convocatoria">
+                <a className="fila-titulo" href={a.tipo === 'convocatoria' ? enlace('convocatoria', a.ref) : enlace('contrato', a.ref)}>
+                  {a.titulo}
+                </a>
+                <span className="fila-detalle">
+                  {a.tipo === 'convocatoria' ? 'Convocatoria nueva' : 'Licitación abierta'} para{' '}
+                  <a href={a.entidad.ref ? enlace('programador', a.entidad.ref) : enlace('entidad', a.entidad.id)}>{a.entidad.nombre}</a> · oportunidad abierta: {a.oportunidades.map((o) => o.titulo).join(', ')}
+                </span>
+                {a.espectaculos.length > 0 && <span className="fila-motivos">Podría encajar: {a.espectaculos.map((x) => x.nombre).join(', ')}</span>}
+                <p className="acciones">
+                  <a className="accion" href={a.entidad.ref ? enlace('programador', a.entidad.ref) : enlace('entidad', a.entidad.id)}>
+                    Abrir su ficha
+                  </a>
+                  <button type="button" className="accion" onClick={() => void crm.descartarAlerta(a.entidad.id, a.ref).then(cargar)}>
+                    No me interesa
+                  </button>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {p.respuestas.length > 0 && (
         <section className="bloque">
           <h3>

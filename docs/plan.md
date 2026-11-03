@@ -363,7 +363,19 @@ sus entidades y sus secuencias, así que sirve para varios perfiles.
   oficina, rebotes y automáticos). Necesita saber qué correo usa ArsVia.
 - [ ] **Importar el catálogo de arsvia.org:** el dominio está bloqueado en el entorno de desarrollo; o desde una hoja de
   cálculo.
-- [ ] **Fase 2:**
+- [x] **Fase 2 (hecha):**
+  - Pestaña «Gestión integral» en Festivales, con municipios y equipamientos donde ofrecer el diseño, la producción y
+    la gestión completa de un festival o ciclo. Señales, cada una con su fuente:
+    - licitación de gestión abierta;
+    - ya externaliza la gestión (suele volver a licitarse);
+    - ciclo contratado concierto a concierto (4 o más en 45 días);
+    - organiza un festival;
+    - ayudas vigentes para festivales en su territorio.
+  - Botón para proponerlo, que crea la oportunidad «gestión integral».
+  - Avisos de convocatorias nuevas (último mes) y licitaciones abiertas para entidades con oportunidades abiertas: en el
+    panel de Inicio (con «No me interesa») y en el resumen por email.
+  - Ayudas provinciales o comarcales: solo en su provincia.
+- [ ] **Antigua Fase 2 (referencia):**
   - categoría «Oportunidades de diseño, producción y gestión integral de festivales/ciclos» en Festivales;
   - alertas de convocatorias nuevas sobre oportunidades abiertas.
   - Las licitaciones ya se cruzan con el catálogo.

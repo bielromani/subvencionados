@@ -11,6 +11,7 @@ import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Entidad, type Espectaculo, t
 import type { Programador } from './directorio.js';
 import type { Enviar } from './email.js';
 import { usuarioDeSesion } from './rutasCuenta.js';
+import { tituloCorto } from './titulo.js';
 import type { Convocatoria } from './tipos.js';
 
 type ProgramadorConContacto = Programador & { codigoIne: string | null };
@@ -62,6 +63,47 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
 }
 
 const IDIOMA_CATALAN = /catalu|catalunya/i;
+
+export interface AlertaCrm {
+  entidad: { id: string; nombre: string; ref: string | null };
+  /** Oportunidades abiertas con esa entidad (para decidir si se suma o se abre otra). */
+  oportunidades: { id: string; titulo: string }[];
+  tipo: 'convocatoria' | 'licitacion';
+  ref: string;
+  titulo: string;
+  fecha: string | null;
+  espectaculos: { id: string; nombre: string }[];
+}
+
+const DIAS_ALERTA = 30;
+
+/**
+ * Convocatorias nuevas (últimos 30 días) y licitaciones abiertas que afectan a entidades con oportunidades abiertas y
+ * que aún no están en ninguna de sus oportunidades ni se han descartado.
+ */
+export async function alertasCrm(crm: AlmacenCrm, ctx: ContextoCrm, u: string, hoy = new Date()): Promise<AlertaCrm[]> {
+  const [entidades, oportunidades, vistas, catalogo] = await Promise.all([crm.entidades(u), crm.oportunidades(u), crm.alertasVistas(u), crm.espectaculos(u)]);
+  const desde = new Date(hoy.getTime() - DIAS_ALERTA * 86_400_000).toISOString().slice(0, 10);
+  const alertas: AlertaCrm[] = [];
+  for (const e of entidades) {
+    if (e.noContactar) continue;
+    const abiertas = oportunidades.filter((o) => o.entidad === e.id && o.estado === 'abierta');
+    if (!abiertas.length) continue;
+    const usadas = new Set(oportunidades.filter((o) => o.entidad === e.id && o.ref).map((o) => o.ref!));
+    const p = e.ref ? ctx.programador(e.ref) : undefined;
+    const territorio = { codigoIne: p?.codigoIne ?? null, provincia: p?.provincia ?? e.provincia, ccaa: p?.ccaa ?? e.ccaa };
+    const base = { entidad: { id: e.id, nombre: e.nombre, ref: e.ref }, oportunidades: abiertas.map((o) => ({ id: o.id, titulo: o.titulo })) };
+    for (const c of ctx.ayudasPara(territorio)) {
+      if ((c.fechaPublicacion ?? '') < desde || usadas.has(c.id) || vistas.has(`${e.id}|${c.id}`)) continue;
+      alertas.push({ ...base, tipo: 'convocatoria', ref: c.id, titulo: tituloCorto(c.titulo), fecha: c.fechaPublicacion, espectaculos: encajeAyuda(catalogo, c).slice(0, 3).map((x) => ({ id: x.espectaculo.id, nombre: x.espectaculo.nombre })) });
+    }
+    for (const x of e.ref ? ctx.licitacionesDe(e.ref) : []) {
+      if (usadas.has(x.id) || vistas.has(`${e.id}|${x.id}`)) continue;
+      alertas.push({ ...base, tipo: 'licitacion', ref: x.id, titulo: x.titulo, fecha: x.finPlazo, espectaculos: encajeLicitacion(catalogo, x).slice(0, 3).map((m) => ({ id: m.espectaculo.id, nombre: m.espectaculo.nombre })) });
+    }
+  }
+  return alertas.sort((a, b) => (b.fecha ?? '').localeCompare(a.fecha ?? ''));
+}
 
 export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null, ctx: ContextoCrm, enviar: Enviar | null) {
   const r = express.Router();
@@ -342,6 +384,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       const bandeja = await c.bandeja(u.id);
       return {
         llamar: await c.pendientes(u.id),
+        alertas: await alertasCrm(c, ctx, u.id),
         bandeja: { total: bandeja.length, items: bandeja.slice(0, 5) },
         respuestas: await c.respuestas(u.id),
         ayudas,
@@ -349,6 +392,11 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         catalogo: catalogo.length,
       };
     }),
+  );
+
+  r.post(
+    '/alertas/descartar',
+    ruta(async (req, _r, u, c) => c.descartarAlerta(u.id, String(req.body?.entidad), texto(req.body?.ref, 200))),
   );
 
   // ---------- Encaje con ayudas y licitaciones ----------

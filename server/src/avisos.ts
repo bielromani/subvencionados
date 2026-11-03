@@ -35,8 +35,19 @@ interface Linea {
   url: string;
 }
 
-export function emailAviso(n: Novedades, llamadasHoy: number, base: string): { asunto: string; html: string; texto: string } | null {
+export function emailAviso(
+  n: Novedades,
+  llamadasHoy: number,
+  base: string,
+  alertasCrm: { titulo: string; entidad: string; url: string }[] = [],
+): { asunto: string; html: string; texto: string } | null {
   const secciones: { titulo: string; lineas: Linea[]; mas?: { texto: string; url: string } }[] = [];
+  if (alertasCrm.length) {
+    secciones.push({
+      titulo: `Convocatorias nuevas para tus oportunidades abiertas (${alertasCrm.length})`,
+      lineas: alertasCrm.map((a) => ({ texto: a.titulo, detalle: `Para ${a.entidad} · encaje potencial, requisitos por verificar`, url: a.url })),
+    });
+  }
   const conv = (id: string) => `${base}/#/convocatoria/${encodeURIComponent(id)}`;
   const contrato = (id: string) => `${base}/#/contrato/${encodeURIComponent(id)}`;
   if (n.guardadas.length) {
@@ -76,6 +87,7 @@ export function emailAviso(n: Novedades, llamadasHoy: number, base: string): { a
   if (!secciones.length && !llamadasHoy) return null;
 
   const partes: string[] = [];
+  if (alertasCrm.length) partes.push(`${alertasCrm.length} ${alertasCrm.length === 1 ? 'convocatoria nueva' : 'convocatorias nuevas'} para tus oportunidades`);
   if (llamadasHoy) partes.push(`${llamadasHoy} ${llamadasHoy === 1 ? 'cliente para contactar' : 'clientes para contactar'}`);
   if (n.guardadas.some((g) => g.motivo === 'cierra')) partes.push('plazos que cierran');
   if (n.ayudas.total) partes.push(`${n.ayudas.total} ${n.ayudas.total === 1 ? 'ayuda nueva' : 'ayudas nuevas'}`);

@@ -97,6 +97,13 @@ create table if not exists crm_historial (
   hecho boolean not null default false
 );
 create index if not exists crm_historial_entidad on crm_historial (entidad, fecha desc);
+create table if not exists crm_alertas_vistas (
+  usuario uuid not null references usuarios(id) on delete cascade,
+  entidad uuid not null references crm_entidades(id) on delete cascade,
+  ref text not null,
+  vista timestamptz not null default now(),
+  primary key (usuario, entidad, ref)
+);
 `;
 
 /** Error de regla de negocio: la API lo devuelve con su código (409 conflicto, 400 dato, 404 no existe). */
@@ -609,6 +616,21 @@ export class AlmacenCrm {
       c.estadoRelacion ?? e.estadoRelacion,
       c.noContactar ?? e.noContactar,
     ]);
+  }
+
+  /** Alertas de convocatorias o licitaciones nuevas ya vistas o descartadas (no se vuelven a enseñar). */
+  async alertasVistas(u: string): Promise<Set<string>> {
+    return new Set((await this.q<{ entidad: string; ref: string }>('select entidad, ref from crm_alertas_vistas where usuario = $1', [u])).map((f) => `${f.entidad}|${f.ref}`));
+  }
+
+  async descartarAlerta(u: string, entidad: string, ref: string) {
+    await this.entidad(u, entidad);
+    await this.q('insert into crm_alertas_vistas (usuario, entidad, ref) values ($1, $2, $3) on conflict do nothing', [u, entidad, ref]);
+  }
+
+  /** Cuentas con oportunidades abiertas (para los avisos por email). */
+  async usuariosConOportunidades(): Promise<string[]> {
+    return (await this.q<{ usuario: string }>("select distinct usuario from crm_oportunidades where estado = 'abierta'")).map((f) => f.usuario);
   }
 
   async marcarHecho(u: string, historialId: string, hecho = true) {

@@ -126,3 +126,27 @@ describe.skipIf(!url)('API del CRM', async () => {
     expect((await pedir('get', '/panel')).body.llamar[0].texto).toBe('Después de Reyes');
   });
 });
+
+describe.skipIf(!url)('avisos sobre oportunidades abiertas', async () => {
+  const { alertasCrm } = await import('../src/rutasCrm.js');
+  const { desdeBdns } = await import('../src/bdns/normalizar.js');
+  const { detalle, registro } = await import('./ayudas.js');
+  const cuentas = url ? AlmacenCuentas.desdeUrl(url) : null!;
+  const crm = url ? new AlmacenCrm(cuentas) : null!;
+  afterAll(() => cuentas?.cerrar());
+
+  it('convocatoria nueva en su territorio: aviso hasta que se usa o se descarta', async () => {
+    const u = (await cuentas.crear(`alertas-${Date.now()}@example.com`, 'una clave larga'))!.id;
+    const e = await crm.guardarEntidad(u, { ref: null, nombre: 'Ayuntamiento de Olot', tipo: 'ayuntamiento', municipio: 'Olot', provincia: 'Girona', ccaa: 'Cataluña', persona: null, email: null, telefono: null, idioma: 'ca', notas: '' });
+    const hoy = new Date('2026-11-03T10:00:00Z');
+    const conv = { ...desdeBdns(registro(detalle('77', { descripcion: 'Ayudas a festivales de música para ayuntamientos', fechaRecepcion: '2026-10-20' }))), provincias: ['Girona'] };
+    const ctx = { ayudasPara: () => [conv], licitacionesDe: () => [], programador: () => undefined } as unknown as Parameters<typeof alertasCrm>[1];
+    // Sin oportunidad abierta no hay aviso.
+    expect(await alertasCrm(crm, ctx, u, hoy)).toHaveLength(0);
+    await crm.crearOportunidad(u, { entidad: e.id, tipo: 'propuesta', ref: null, titulo: 'Temporada 2027', espectaculos: [], certeza: 'potencial', enlaceConfirmacion: null, notas: '' });
+    const [a] = await alertasCrm(crm, ctx, u, hoy);
+    expect(a).toMatchObject({ tipo: 'convocatoria', ref: conv.id, entidad: { nombre: 'Ayuntamiento de Olot' } });
+    await crm.descartarAlerta(u, e.id, conv.id);
+    expect(await alertasCrm(crm, ctx, u, hoy)).toHaveLength(0);
+  });
+});

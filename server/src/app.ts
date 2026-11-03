@@ -4,8 +4,9 @@ import { emailAviso } from './avisos.js';
 import type { AlmacenCuentas, DatosLista } from './cuentas.js';
 import { type Enviar, escaparHtml } from './email.js';
 import { rutasCuenta } from './rutasCuenta.js';
-import { rutasCrm } from './rutasCrm.js';
+import { alertasCrm, type ContextoCrm, rutasCrm } from './rutasCrm.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
+import { cubreTerritorio, type OportunidadGestion, oportunidadesGestion } from './gestionFestivales.js';
 import type { AlmacenCrm } from './crm/almacen.js';
 import { estimarCierre } from './cierre.js';
 import { aICal, calendario, type EventoCalendario, eventosDe, utilParaManager } from './calendario.js';
@@ -293,12 +294,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const p = plazo(c);
     return p === 'abierta' || p === 'proxima';
   };
-  app.use(
-    '/api/crm',
-    rutasCrm(
-      opciones.cuentas ?? null,
-      crm,
-      {
+  const ctxCrm: ContextoCrm = {
         programador: (id) => dir().programadores.find((p) => p.id === id),
         contacto: contactoBreve,
         convocatoria: (id) => repo.obtenerConvocatoria(id),
@@ -311,7 +307,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
                 utilParaManager(c) &&
                 c.clasificacion.destino === 'programadores' &&
                 vigente(c) &&
-                ((t.codigoIne && c.ubicacion?.codigoMunicipio === t.codigoIne) || c.ambitoNacional || (t.provincia && c.provincias.includes(t.provincia)) || (t.ccaa && c.ccaa.includes(t.ccaa))),
+                cubreTerritorio(c, t),
             )
             .sort((a, b) => (a.fechaFinSolicitud ?? '9999').localeCompare(b.fechaFinSolicitud ?? '9999')),
         licitacionesAbiertas: () => contratos.filter((c) => abierta(c)).sort((a, b) => (a.finPlazo ?? '9999').localeCompare(b.finPlazo ?? '9999')),
@@ -323,10 +319,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
             .sort((a, b) => (b.fechaPublicacion ?? '').localeCompare(a.fechaPublicacion ?? '')),
         resumida,
         contratoResumido,
-      },
-      opciones.enviar ?? null,
-    ),
-  );
+  };
+  app.use('/api/crm', rutasCrm(opciones.cuentas ?? null, crm, ctxCrm, opciones.enviar ?? null));
 
   const clienteResumido = ({ recientes: _r, recientesEstilo: _e, proveedores: _p, ...p }: ProgramadorConContacto) => ({ ...p, contactoBreve: contactoBreve(p.codigoIne) });
   /** Filtros de clientes: comunidad, provincia, estilo, mes en que suelen contratar, con contacto, guardados (ids). */
@@ -388,6 +382,32 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     // Sus licitaciones de conciertos con plazo abierto: se puede presentar oferta ya.
     const abiertos = contratos.filter((c) => abierta(c) && idProgramador(c) === p.id).map(contratoResumido);
     res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null, ayudas, abiertos });
+  });
+
+  // Oportunidades de gestión integral de festivales y ciclos (se recalculan cuando cambian los datos).
+  let gestion: { version: number; items: OportunidadGestion[] } | null = null;
+  const oportunidadesDeGestion = () => {
+    if (gestion?.version !== repo.version) {
+      const ayudas = repo
+        .listarConvocatorias()
+        .filter((c) => utilParaManager(c) && c.clasificacion.destino === 'programadores' && c.clasificacion.lineas.includes('festivales') && vigente(c));
+      gestion = { version: repo.version, items: oportunidadesGestion(dir().programadores, contratos, dir().festivales, ayudas) };
+    }
+    return gestion.items;
+  };
+
+  app.get('/api/gestion-festivales', (req, res) => {
+    const ccaa = lista(req.query.ccaa);
+    const provincia = lista(req.query.provincia);
+    const xs = oportunidadesDeGestion().filter(
+      (o) =>
+        (!ccaa.length || (o.ccaa && ccaa.includes(o.ccaa))) &&
+        (!provincia.length || (o.provincia && provincia.includes(o.provincia))) &&
+        (req.query.abiertas !== 'si' || o.abierta) &&
+        (!req.query.senal || o.senales.some((s) => s.tipo === req.query.senal)) &&
+        coincideTexto(req.query.q, o.nombre, o.ciudad, o.provincia),
+    );
+    res.json(paginar(req, xs));
   });
 
   app.get('/api/festivales', (req, res) => {
@@ -815,7 +835,13 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         hoy,
       );
       const llamadas = d ? llamadasDe(d).filter((l) => l.fecha <= dia).length : 0;
-      const email = emailAviso(n, llamadas, base);
+      // Convocatorias nuevas desde el último aviso para entidades con oportunidades abiertas.
+      const alertas = crm
+        ? (await alertasCrm(crm, ctxCrm, u.id, hoy))
+            .filter((a) => a.tipo === 'convocatoria' && (a.fecha ?? '') >= desde)
+            .map((a) => ({ titulo: a.titulo, entidad: a.entidad.nombre, url: `${base}/#/convocatoria/${encodeURIComponent(a.ref)}` }))
+        : [];
+      const email = emailAviso(n, llamadas, base, alertas);
       if (email) {
         if (await enviar({ para: u.email, ...email })) enviados++;
         else continue; // Si falla el envío, se reintenta en la próxima ejecución.
