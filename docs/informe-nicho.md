@@ -1,22 +1,22 @@
 # Informe del nicho: subvenciones públicas para música en España
 
-Generado el 2026-11-02 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
+Generado el 2026-11-03 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
 Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por reglas (ver
 `server/src/clasificacion/musica.ts`); la precisión medida está en `docs/evaluacion-clasificador.md`.
 
 ## Resumen
 
-- Periodo cubierto: 2014-01-15 a 2026-10-30.
-- Convocatorias de música: **16.531**; compatibles con jazz, clásica u ópera: **11.929**
-  (2.585 concursos y 9.344 concesiones directas o nominativas).
+- Periodo cubierto: 2014-01-15 a 2026-11-02.
+- Convocatorias de música: **16.535**; compatibles con jazz, clásica u ópera: **11.930**
+  (2.585 concursos y 9.345 concesiones directas o nominativas).
 - Importe concedido registrado en las compatibles: **861.478.839 €**
   (526.154.718 € en concursos y 335.324.121 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
 - Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.063 convocatorias y 649.379.270 € concedidos.
 - Mencionan expresamente el estilo: jazz 428, clásica 3.262, ópera y lírica 432. El resto son ayudas de música en general.
-- Concursos con el plazo abierto hoy: **18**; por abrir: **12**.
+- Concursos con el plazo abierto hoy: **17**; por abrir: **12**.
 - Convocatorias que se repiten año tras año (series): 1.915; previstas en los próximos 3 meses según su
   historial (estimación): 274.
-- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.325.
+- Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.326.
 
 ## Por año (compatibles con jazz, clásica u ópera)
 
@@ -34,7 +34,7 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
 | 2023 | 1.337 | 308 | 1.029 | 194.535.516 € | 164.137.166 € |
 | 2024 | 1.405 | 329 | 1.076 | 219.492.455 € | 191.026.791 € |
 | 2025 | 1.469 | 316 | 1.153 | 258.694.941 € | 216.539.310 € |
-| 2026 (en curso) | 1.183 | 289 | 894 | 179.971.850 € | 79.660.226 € |
+| 2026 (en curso) | 1.184 | 289 | 895 | 180.096.850 € | 79.660.226 € |
 
 El concedido de los años recientes crece con el tiempo: las concesiones se registran meses después de la convocatoria.
 
@@ -43,7 +43,7 @@ El concedido de los años recientes crece con el tiempo: las concesiones se regi
 | Actividad | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
 | Sin especificar | 7.677 | 709 | 365.202.468 € |
-| Formación (escuelas, conservatorios, becas) | 1.866 | 1.022 | 212.099.570 € |
+| Formación (escuelas, conservatorios, becas) | 1.867 | 1.022 | 212.099.570 € |
 | Festivales, ciclos y programación | 1.759 | 584 | 198.298.118 € |
 | Producción y creación | 609 | 519 | 143.712.190 € |
 | Internacionalización | 489 | 216 | 63.369.039 € |
@@ -69,7 +69,7 @@ importes altos pero no es una oportunidad para el promotor.
 | País Vasco | 529 | 132 | 35.340.192 € |
 | Aragón | 462 | 124 | 7.793.511 € |
 | Sin restricción territorial | 370 | 127 | 90.519.315 € |
-| Región de Murcia | 351 | 36 | 14.247.022 € |
+| Región de Murcia | 352 | 36 | 14.247.022 € |
 | Illes Balears | 323 | 97 | 18.758.696 € |
 | Principado de Asturias | 291 | 76 | 29.671.590 € |
 | Extremadura | 282 | 72 | 15.699.244 € |
@@ -84,7 +84,7 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Administración | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| local | 9.983 | 1.745 | 289.225.967 € |
+| local | 9.984 | 1.745 | 289.225.967 € |
 | autonomica | 1.673 | 751 | 482.923.793 € |
 | estatal | 191 | 36 | 89.008.440 € |
 | otra | 82 | 53 | 320.639 € |
