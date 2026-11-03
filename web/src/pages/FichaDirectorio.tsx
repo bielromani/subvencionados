@@ -1,3 +1,4 @@
+import { EntidadCrm } from '../components/EntidadCrm';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { BotonCliente } from '../components/Cliente';
@@ -92,6 +93,7 @@ export function PaginaProgramador({ id }: { id: string }) {
           <a href={`#/contratos?estado=adjudicadas&q=${encodeURIComponent(p.nombre)}`}>Todos sus contratos</a>
         </footer>
       </article>
+      <EntidadCrm refId={p.id} />
       {p.contacto ? (
         <Contacto c={p.contacto} />
       ) : (

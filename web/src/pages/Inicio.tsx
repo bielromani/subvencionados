@@ -5,6 +5,8 @@ import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { clientesParaHoy, useMarcas } from '../marcas';
 import { enlace } from '../ruta';
+import { PanelTrabajo } from '../components/PanelTrabajo';
+import { useCuenta } from '../sincronizar';
 import { NOMBRE_ESTILO, type Convocatoria } from '../tipos';
 import { visitaAnterior } from '../visitas';
 
@@ -118,7 +120,7 @@ function Novedades() {
 
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
-export function Inicio() {
+function InicioGeneral() {
   const [d, setD] = useState<Datos | null>(null);
   const [error, setError] = useState<string | null>(null);
   const paraHoy = clientesParaHoy(useMarcas().clientes);
@@ -216,5 +218,17 @@ export function Inicio() {
         )}
       </section>
     </section>
+  );
+}
+
+/** Con cuenta, Inicio es el panel de trabajo (solo acciones pendientes); sin ella, el resumen general. */
+export function Inicio() {
+  const usuario = useCuenta().cuenta?.usuario;
+  return usuario ? (
+    <section>
+      <PanelTrabajo />
+    </section>
+  ) : (
+    <InicioGeneral />
   );
 }

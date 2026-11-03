@@ -1,3 +1,4 @@
+import { EncajeCatalogo } from '../components/EncajeCatalogo';
 import { Contacto } from '../components/Contacto';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
@@ -82,6 +83,7 @@ export function PaginaContrato({ id }: { id: string }) {
           )}
         </footer>
       </article>
+      <EncajeCatalogo tipo="contrato" id={c.id} />
 
       {c.contacto && <Contacto c={c.contacto} />}
 

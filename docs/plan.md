@@ -341,3 +341,30 @@ justificar) sin salir de la herramienta, salvo para el registro oficial.
 | Dónde alojarlo (p. ej. Supabase + Vercel) y presupuesto de hosting | Antes de la Fase 6 |
 | Proveedor de email y alta en WhatsApp Business | Antes de la Fase 7 |
 | Condiciones del servicio de tramitación (porcentaje, mínimo, alcance) | Antes de la Fase 9 |
+
+## ArsVia: prospección y seguimiento con visto bueno (noviembre 2026)
+
+Requisitos de ArsVia (documento de Joan Romaní); respuesta en `docs/arsvia-resposta.md`. Cada cuenta tiene su catálogo,
+sus entidades y sus secuencias, así que sirve para varios perfiles.
+
+- [x] **Fase 1 (imprescindible):**
+  - catálogo con vigencia;
+  - encaje con grados de certeza (potencial / revisada / confirmada);
+  - borradores con plantillas (castellano y catalán, sin IA) y bandeja de aprobación;
+  - secuencia de cinco envíos, con alertas de llamada tras el 2.º y el 4.º envío efectivo;
+  - cancelar programados y estados manuales;
+  - opt-out y archivo sin respuesta;
+  - una sola secuencia activa por oportunidad y destinatario;
+  - ficha dinámica de entidad;
+  - Inicio como panel de trabajo;
+  - filtro por tipo de entidad.
+  - Sin correo conectado: «Abrir en mi correo» y «Ya lo he enviado» (ese es el envío efectivo).
+- [ ] **Conectar el correo de ArsVia:** envío programado real y detección automática de respuestas (separando fuera de
+  oficina, rebotes y automáticos). Necesita saber qué correo usa ArsVia.
+- [ ] **Importar el catálogo de arsvia.org:** el dominio está bloqueado en el entorno de desarrollo; o desde una hoja de
+  cálculo.
+- [ ] **Fase 2:**
+  - categoría «Oportunidades de diseño, producción y gestión integral de festivales/ciclos» en Festivales;
+  - alertas de convocatorias nuevas sobre oportunidades abiertas.
+  - Las licitaciones ya se cruzan con el catálogo.
+- [ ] **Fase 3:** estadísticas de conversión y mejoras móviles.

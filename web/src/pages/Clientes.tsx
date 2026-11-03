@@ -16,6 +16,7 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
     estilo: p.get('estilo') ?? '',
     mes: p.get('mes') ?? '',
     contacto: p.get('contacto') ?? '',
+    tipo: p.get('tipo') ?? '',
     orden: p.get('orden') ?? '',
     pagina: Number(p.get('pagina')) || 1,
   });
@@ -42,6 +43,14 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           {meta.ccaa.map((c) => (
             <option key={c}>{c}</option>
           ))}
+        </select>
+        <select value={f.tipo} onChange={cambiar('tipo')} aria-label="Tipo de entidad">
+          <option value="">Cualquier entidad</option>
+          <option value="ayuntamiento">Ayuntamientos</option>
+          <option value="auditorio">Auditorios</option>
+          <option value="teatro">Teatros</option>
+          <option value="festival">Festivales</option>
+          <option value="otro">Otros organismos</option>
         </select>
         <select value={f.estilo} onChange={cambiar('estilo')} aria-label="Estilo">
           <option value="">Cualquier estilo</option>

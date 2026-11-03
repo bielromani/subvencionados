@@ -1,3 +1,4 @@
+import { EncajeCatalogo } from '../components/EncajeCatalogo';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { Contacto } from '../components/Contacto';
@@ -156,6 +157,7 @@ export function PaginaConvocatoria({ id }: { id: string }) {
       </p>
       <TarjetaConvocatoria c={c} pagina />
       {c.accion && <QueHacer c={c} a={c.accion} />}
+      <EncajeCatalogo tipo="convocatoria" id={c.id} />
       {c.contacto && <Contacto c={c.contacto} />}
       {(c.ficha || c.basica) && (
         <section className="bloque">

@@ -329,6 +329,15 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
 
   const clienteResumido = ({ recientes: _r, recientesEstilo: _e, proveedores: _p, ...p }: ProgramadorConContacto) => ({ ...p, contactoBreve: contactoBreve(p.codigoIne) });
   /** Filtros de clientes: comunidad, provincia, estilo, mes en que suelen contratar, con contacto, guardados (ids). */
+  /** Tipo de entidad por el nombre del órgano que contrata (lo que dicen los contratos públicos). */
+  const tipoEntidad = (nombre: string) => {
+    const n = normalizar(nombre);
+    if (/\b(festival|festivales|jaialdi)\b/.test(n)) return 'festival';
+    if (/\b(auditori|auditorio|palau de la musica|palacio de (la musica|congresos|festivales))/.test(n)) return 'auditorio';
+    if (/\b(teatro|teatre|teatros|teatres|antzoki)/.test(n)) return 'teatro';
+    if (/\b(ayuntamiento|ajuntament|concello|udala|alcaldia|alcalde|junta de gobierno|pleno|municipal)/.test(n)) return 'ayuntamiento';
+    return 'otro';
+  };
   const filtrarClientes = (q: Request['query'], zona: string[] = []) => {
     const ccaa = lista(q.ccaa).length ? lista(q.ccaa) : zona;
     const provincia = lista(q.provincia);
@@ -343,6 +352,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         (!estilos.length || estilos.some((e) => (p.estilos[e as keyof typeof p.estilos] ?? 0) > 0)) &&
         (!meses.length || meses.some((m) => p.meses.includes(m))) &&
         (q.contacto !== 'si' || p.conContacto) &&
+        (!q.tipo || tipoEntidad(p.nombre) === q.tipo) &&
         coincideTexto(q.q, p.nombre, p.ciudad, p.provincia),
     );
   };
