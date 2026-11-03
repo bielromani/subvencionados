@@ -8,6 +8,10 @@ export interface Email {
   asunto: string;
   html: string;
   texto: string;
+  /** Remitente propio (cartas del CRM): debe estar verificado en el servicio de envío. Sin él, AVISOS_REMITENTE. */
+  de?: { email: string; nombre: string };
+  /** Las respuestas van a esta dirección. */
+  responderA?: string;
 }
 
 export type Enviar = (e: Email) => Promise<boolean>;
@@ -21,7 +25,14 @@ export function enviadorDesdeEntorno(env = process.env): Enviar | null {
       const r = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: { 'api-key': clave, 'content-type': 'application/json', accept: 'application/json' },
-        body: JSON.stringify({ sender: { email: remitente, name: 'Subvencionados' }, to: [{ email: e.para }], subject: e.asunto, htmlContent: e.html, textContent: e.texto }),
+        body: JSON.stringify({
+          sender: e.de ? { email: e.de.email, name: e.de.nombre } : { email: remitente, name: 'Subvencionados' },
+          to: [{ email: e.para }],
+          ...(e.responderA && { replyTo: { email: e.responderA } }),
+          subject: e.asunto,
+          htmlContent: e.html,
+          textContent: e.texto,
+        }),
       });
       return r.ok;
     };
@@ -32,7 +43,14 @@ export function enviadorDesdeEntorno(env = process.env): Enviar | null {
       const r = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { authorization: `Bearer ${clave}`, 'content-type': 'application/json' },
-        body: JSON.stringify({ from: `Subvencionados <${remitente}>`, to: [e.para], subject: e.asunto, html: e.html, text: e.texto }),
+        body: JSON.stringify({
+          from: e.de ? `${e.de.nombre} <${e.de.email}>` : `Subvencionados <${remitente}>`,
+          to: [e.para],
+          ...(e.responderA && { reply_to: e.responderA }),
+          subject: e.asunto,
+          html: e.html,
+          text: e.texto,
+        }),
       });
       return r.ok;
     };

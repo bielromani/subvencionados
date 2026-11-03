@@ -84,7 +84,7 @@ const COLUMNAS = 'id, email, avisos, ultimo_aviso::text as ultimo_aviso, token_c
 
 export class AlmacenCuentas {
   private listo: Promise<void> | null = null;
-  constructor(private readonly pool: pg.Pool) {}
+  constructor(readonly pool: pg.Pool) {}
 
   static desdeUrl(url: string): AlmacenCuentas {
     // Neon exige SSL; en local (localhost) no hace falta.
@@ -92,9 +92,14 @@ export class AlmacenCuentas {
     return new AlmacenCuentas(new pg.Pool({ connectionString: url, ssl, max: 3, idleTimeoutMillis: 10_000 }));
   }
 
-  private async q<T extends pg.QueryResultRow>(sql: string, params: unknown[] = []): Promise<T[]> {
+  /** Crea las tablas de cuentas la primera vez (las del CRM dependen de ellas). */
+  preparar(): Promise<void> {
     this.listo ??= this.pool.query(ESQUEMA).then(() => undefined);
-    await this.listo;
+    return this.listo;
+  }
+
+  private async q<T extends pg.QueryResultRow>(sql: string, params: unknown[] = []): Promise<T[]> {
+    await this.preparar();
     return (await this.pool.query<T>(sql, params)).rows;
   }
 

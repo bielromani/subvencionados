@@ -2,8 +2,10 @@ import express, { type Request } from 'express';
 import { accion } from './accion.js';
 import { emailAviso } from './avisos.js';
 import type { AlmacenCuentas, DatosLista } from './cuentas.js';
-import type { Enviar } from './email.js';
+import { type Enviar, escaparHtml } from './email.js';
 import { rutasCuenta } from './rutasCuenta.js';
+import { rutasCrm } from './rutasCrm.js';
+import type { AlmacenCrm } from './crm/almacen.js';
 import { estimarCierre } from './cierre.js';
 import { aICal, calendario, type EventoCalendario, eventosDe, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
@@ -99,6 +101,8 @@ export interface OpcionesApp {
   cuentas?: AlmacenCuentas | null;
   /** Envío de emails (avisos y restablecer contraseña). */
   enviar?: Enviar | null;
+  /** Prospección y seguimiento de cada cuenta (necesita las cuentas). */
+  crm?: AlmacenCrm | null;
 }
 
 /** "Palmas de Gran Canaria, Las" (INE) y "Las Palmas de Gran Canaria" son el mismo municipio. */
@@ -282,6 +286,47 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       deCultura: !!(p?.email || p?.telefono || m.cultura.email || m.cultura.telefono),
     };
   };
+  // Prospección y seguimiento (CRM) de cada cuenta, con los datos públicos de la app.
+  const crm = opciones.crm ?? null;
+  const vigente = (c: Convocatoria) => {
+    const p = plazo(c);
+    return p === 'abierta' || p === 'proxima';
+  };
+  app.use(
+    '/api/crm',
+    rutasCrm(
+      opciones.cuentas ?? null,
+      crm,
+      {
+        programador: (id) => dir().programadores.find((p) => p.id === id),
+        contacto: contactoBreve,
+        convocatoria: (id) => repo.obtenerConvocatoria(id),
+        contrato: (id) => contratos.find((c) => c.id === id),
+        ayudasPara: (t) =>
+          repo
+            .listarConvocatorias()
+            .filter(
+              (c) =>
+                utilParaManager(c) &&
+                c.clasificacion.destino === 'programadores' &&
+                vigente(c) &&
+                ((t.codigoIne && c.ubicacion?.codigoMunicipio === t.codigoIne) || c.ambitoNacional || (t.provincia && c.provincias.includes(t.provincia)) || (t.ccaa && c.ccaa.includes(t.ccaa))),
+            )
+            .sort((a, b) => (a.fechaFinSolicitud ?? '9999').localeCompare(b.fechaFinSolicitud ?? '9999')),
+        licitacionesAbiertas: () => contratos.filter((c) => abierta(c)).sort((a, b) => (a.finPlazo ?? '9999').localeCompare(b.finPlazo ?? '9999')),
+        licitacionesDe: (id) => contratos.filter((c) => abierta(c) && idProgramador(c) === id),
+        ayudasNuevas: (desde) =>
+          repo
+            .listarConvocatorias()
+            .filter((c) => utilParaManager(c) && (c.fechaPublicacion ?? '') >= desde)
+            .sort((a, b) => (b.fechaPublicacion ?? '').localeCompare(a.fechaPublicacion ?? '')),
+        resumida,
+        contratoResumido,
+      },
+      opciones.enviar ?? null,
+    ),
+  );
+
   const clienteResumido = ({ recientes: _r, recientesEstilo: _e, proveedores: _p, ...p }: ProgramadorConContacto) => ({ ...p, contactoBreve: contactoBreve(p.codigoIne) });
   /** Filtros de clientes: comunidad, provincia, estilo, mes en que suelen contratar, con contacto, guardados (ids). */
   const filtrarClientes = (q: Request['query'], zona: string[] = []) => {
@@ -674,6 +719,43 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     res.json(
       novedades({ desde, perfil: perfilDe(req), ocultas: lista(req.get('x-ocultas')), clientes: lista(req.query.clientes), guardadas: lista(req.query.guardadas) }, hoy),
     );
+  });
+
+  // Envío de los correos programados del CRM (tarea programada cada hora). Solo salen los que tienen el visto bueno
+  // y siguen programados (si se cancelan antes, ya no están). Cada envío cuenta como efectivo al salir.
+  app.get('/api/crm-envios', async (req, res) => {
+    const secreto = process.env.CRON_SECRET;
+    if (secreto && req.get('authorization') !== `Bearer ${secreto}`) {
+      res.status(401).json({ error: 'No autorizado' });
+      return;
+    }
+    const { enviar } = opciones;
+    if (!crm || !enviar) {
+      res.json({ enviados: 0, motivo: !crm ? 'Sin base de datos' : 'Sin servicio de email' });
+      return;
+    }
+    let enviados = 0;
+    const fallidos: string[] = [];
+    for (const m of await crm.programadosPendientes()) {
+      const a = await crm.ajustes(m.usuario);
+      if (!a.email) {
+        fallidos.push(m.id);
+        continue;
+      }
+      const ok = await enviar({
+        para: m.destinatario,
+        asunto: m.asunto,
+        texto: m.cuerpo,
+        html: `<div style="font-family:system-ui,sans-serif;white-space:pre-wrap">${escaparHtml(m.cuerpo)}</div>`,
+        de: { email: a.email, nombre: a.remitente || a.organizacion || a.email },
+        responderA: a.email,
+      });
+      if (ok) {
+        await crm.registrarEnvio(m.usuario, m.id);
+        enviados++;
+      } else fallidos.push(m.id);
+    }
+    res.json({ enviados, fallidos: fallidos.length });
   });
 
   // Avisos por email (lo llama la tarea programada de Vercel cada mañana). A cada usuario se le envía como mucho uno

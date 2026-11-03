@@ -60,6 +60,12 @@ export function validarLista(x: unknown): DatosLista | null {
 
 const publico = (u: Usuario) => ({ email: u.email, avisos: u.avisos, tokenCalendario: u.tokenCalendario });
 
+/** Usuario de la cookie de sesión (o null). Lo usan también las rutas del CRM. */
+export async function usuarioDeSesion(almacen: AlmacenCuentas | null, req: Request): Promise<Usuario | null> {
+  const token = leerCookie(req);
+  return token && almacen ? almacen.deSesion(token) : null;
+}
+
 export function rutasCuenta(almacen: AlmacenCuentas | null, enviar: Enviar | null) {
   const r = express.Router();
   const base = (req: Request) => `${req.protocol}://${req.get('host')}`;

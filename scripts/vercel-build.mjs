@@ -64,7 +64,11 @@ writeFileSync(
         { src: '/(.*)', dest: '/index.html' },
       ],
       // Avisos por email cada mañana (6:00 UTC, 7:00 u 8:00 en la península).
-      crons: [{ path: '/api/avisos', schedule: '0 6 * * *' }],
+      // Y cada hora, los correos programados del CRM (solo los aprobados que siguen programados).
+      crons: [
+        { path: '/api/avisos', schedule: '0 6 * * *' },
+        { path: '/api/crm-envios', schedule: '0 * * * *' },
+      ],
     },
     null,
     2,
