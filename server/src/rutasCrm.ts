@@ -5,6 +5,7 @@ import express, { type NextFunction, type Request, type Response } from 'express
 import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
+import { descargarCatalogoArsvia } from './crm/importar.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
 import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
 import type { Programador } from './directorio.js';
@@ -53,6 +54,10 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
     enlace: /^https?:\/\//.test(texto(b.enlace, 500)) ? texto(b.enlace, 500) : '',
     estadoInfo: b.estadoInfo === 'vigente' ? 'vigente' : 'pendiente',
     revisado,
+    // Lo que viene de una importación se conserva al editar la ficha.
+    ...(typeof b.origen === 'string' && /^[a-z0-9.-]+#\d+$/.test(b.origen) && { origen: b.origen }),
+    ...(typeof b.enWeb === 'boolean' && { enWeb: b.enWeb }),
+    ...(typeof b.huellaWeb === 'string' && { huellaWeb: b.huellaWeb.slice(0, 20000) }),
   };
 }
 
@@ -109,6 +114,8 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
 
   r.get('/catalogo', ruta(async (_q, _r, u, c) => ({ items: await c.espectaculos(u.id) })));
   r.post('/catalogo', ruta(async (req, _r, u, c) => ({ id: await c.guardarEspectaculo(u.id, validarEspectaculo(req.body ?? {})) })));
+  // Importar el catálogo publicado en arsvia.org (sin duplicar; lo que no dice la web queda vacío y pendiente).
+  r.post('/catalogo/importar', ruta(async (_q, _r, u, c) => c.importarCatalogo(u.id, await descargarCatalogoArsvia(), 'arsvia.org#')));
   r.put('/catalogo/:id', ruta(async (req, _r, u, c) => ({ id: await c.guardarEspectaculo(u.id, validarEspectaculo(req.body ?? {}), String(req.params.id)) })));
   r.delete('/catalogo/:id', ruta(async (req, _r, u, c) => c.borrarEspectaculo(u.id, String(req.params.id))));
 

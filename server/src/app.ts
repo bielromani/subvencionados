@@ -5,6 +5,7 @@ import type { AlmacenCuentas, DatosLista } from './cuentas.js';
 import { type Enviar, escaparHtml } from './email.js';
 import { rutasCuenta } from './rutasCuenta.js';
 import { rutasCrm } from './rutasCrm.js';
+import { descargarCatalogoArsvia } from './crm/importar.js';
 import type { AlmacenCrm } from './crm/almacen.js';
 import { estimarCierre } from './cierre.js';
 import { aICal, calendario, type EventoCalendario, eventosDe, utilParaManager } from './calendario.js';
@@ -776,9 +777,22 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       res.status(401).json({ error: 'No autorizado' });
       return;
     }
+    // Vigencia del catálogo: las cuentas que importaron de arsvia.org se comparan cada día con la web.
+    let catalogos = 0;
+    if (crm) {
+      try {
+        const web = await descargarCatalogoArsvia();
+        for (const u of await crm.usuariosConOrigen('arsvia.org#')) {
+          await crm.importarCatalogo(u, web, 'arsvia.org#');
+          catalogos++;
+        }
+      } catch {
+        // Si la web no responde hoy, se vuelve a intentar mañana.
+      }
+    }
     const { cuentas, enviar } = opciones;
     if (!cuentas || !enviar) {
-      res.json({ enviados: 0, motivo: !cuentas ? 'Sin base de datos' : 'Sin servicio de email' });
+      res.json({ enviados: 0, catalogos, motivo: !cuentas ? 'Sin base de datos' : 'Sin servicio de email' });
       return;
     }
     const hoy = new Date();
@@ -808,7 +822,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       } else sinNovedades++;
       await cuentas.marcarAvisado(u.id, dia);
     }
-    res.json({ enviados, sinNovedades });
+    res.json({ enviados, sinNovedades, catalogos });
   });
 
   // Portada: lo urgente. Sin perfil, con uno genérico de jazz, clásica y ópera en toda España.

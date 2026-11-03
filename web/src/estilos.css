@@ -1659,3 +1659,7 @@ details.bloque > summary {
 .lista-simple .fila-aviso {
   display: block;
 }
+
+.texto-lineas {
+  white-space: pre-line;
+}

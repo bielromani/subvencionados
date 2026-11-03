@@ -235,6 +235,47 @@ export class AlmacenCrm {
     return f!.id;
   }
 
+  /**
+   * Importa (o vuelve a importar) fichas de la web sin duplicar, por su origen. Si lo que dice la web ha cambiado desde
+   * la última vez, se actualizan los campos de la web y la ficha vuelve a «pendiente» para revisarla; si no, se respeta
+   * lo que haya editado el usuario. Las que ya no están en la web se marcan.
+   */
+  async importarCatalogo(u: string, items: Omit<Espectaculo, 'id'>[], prefijo: string) {
+    const actuales = (await this.espectaculos(u)).filter((e) => e.origen?.startsWith(prefijo));
+    const porOrigen = new Map(actuales.map((e) => [e.origen!, e]));
+    const huella = (e: Omit<Espectaculo, 'id'>) => JSON.stringify([e.nombre, e.tipo, e.formato, e.requisitos, e.disponibilidad, e.enlace]);
+    const cuenta = { nuevos: 0, actualizados: 0, retirados: 0, sinCambios: 0 };
+    for (const item of items) {
+      const h = huella(item);
+      const ya = porOrigen.get(item.origen!);
+      porOrigen.delete(item.origen!);
+      if (!ya) {
+        await this.guardarEspectaculo(u, { ...item, huellaWeb: h });
+        cuenta.nuevos++;
+      } else if (ya.huellaWeb !== h || ya.enWeb === false) {
+        const { id, ...resto } = ya;
+        await this.guardarEspectaculo(
+          u,
+          { ...resto, nombre: item.nombre, tipo: item.tipo, formato: item.formato, requisitos: item.requisitos || ya.requisitos, disponibilidad: item.disponibilidad, enlace: item.enlace, enWeb: true, estadoInfo: 'pendiente', huellaWeb: h },
+          id,
+        );
+        cuenta.actualizados++;
+      } else cuenta.sinCambios++;
+    }
+    for (const e of porOrigen.values()) {
+      if (e.enWeb === false) continue;
+      const { id, ...resto } = e;
+      await this.guardarEspectaculo(u, { ...resto, enWeb: false, estadoInfo: 'pendiente' }, id);
+      cuenta.retirados++;
+    }
+    return cuenta;
+  }
+
+  /** Cuentas que han importado fichas de una web (para revisar su vigencia cada día). */
+  async usuariosConOrigen(prefijo: string): Promise<string[]> {
+    return (await this.q<{ usuario: string }>("select distinct usuario from crm_espectaculos where datos->>'origen' like $1", [`${prefijo}%`])).map((f) => f.usuario);
+  }
+
   async borrarEspectaculo(u: string, id: string) {
     await this.q('delete from crm_espectaculos where id = $1 and usuario = $2', [id, u]);
   }

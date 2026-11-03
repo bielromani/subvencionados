@@ -14,7 +14,7 @@ import type { Certeza, Espectaculo, TipoEspectaculo } from './tipos.js';
 /** Qué tipos del catálogo corresponden a cada estilo de los datos públicos. */
 const TIPOS_DE_ESTILO: Record<Estilo, TipoEspectaculo[]> = {
   opera: ['opera'],
-  clasica: ['sinfonico_coral', 'religiosa', 'camara'],
+  clasica: ['sinfonico_coral', 'sinfonica', 'religiosa', 'camara'],
   jazz: ['jazz'],
 };
 
@@ -33,8 +33,10 @@ export interface Encaje {
 /** Avisos de vigencia de una ficha: lo que no se puede ofrecer como cerrado. */
 export function avisosFicha(e: Espectaculo, hoy = new Date()): string[] {
   const avisos: string[] = [];
+  if (e.enWeb === false) avisos.push('Ya no aparece en la web: comprobar si sigue disponible');
   if (e.estadoInfo === 'pendiente') avisos.push('Ficha pendiente de actualización: no ofrecer precio ni fechas como cerrados');
-  else if (!e.revisado || Date.parse(e.revisado) < hoy.getTime() - DIAS_VIGENCIA * 86_400_000) avisos.push(`Ficha sin revisar desde hace más de ${DIAS_VIGENCIA / 30} meses`);
+  else if (!e.revisado) avisos.push('Ficha sin revisar');
+  else if (Date.parse(e.revisado) < hoy.getTime() - DIAS_VIGENCIA * 86_400_000) avisos.push(`Ficha sin revisar desde hace más de ${DIAS_VIGENCIA / 30} meses`);
   if (e.precioMin == null && e.precioMax == null) avisos.push('Sin precio orientativo');
   if (!e.requisitos.trim()) avisos.push('Requisitos técnicos sin confirmar');
   return avisos;

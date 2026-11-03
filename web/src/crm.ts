@@ -1,15 +1,17 @@
 // Cliente de la API del CRM (prospección y seguimiento de cada cuenta).
 import type { Contrato, Convocatoria } from './tipos';
 
-export type TipoEspectaculo = 'opera' | 'sinfonico_coral' | 'religiosa' | 'camara' | 'jazz' | 'rock' | 'navidad' | 'festivales' | 'otro';
+export type TipoEspectaculo = 'opera' | 'sinfonico_coral' | 'sinfonica' | 'religiosa' | 'camara' | 'jazz' | 'rock' | 'navidad' | 'fusion' | 'festivales' | 'otro';
 export const NOMBRE_TIPO: Record<TipoEspectaculo, string> = {
   opera: 'Ópera',
   sinfonico_coral: 'Sinfónico-coral',
+  sinfonica: 'Sinfónica',
   religiosa: 'Música religiosa',
   camara: 'Cámara',
   jazz: 'Jazz',
   rock: 'Rock clásico',
   navidad: 'Navidad',
+  fusion: 'Mediterránea y fusión lírica',
   festivales: 'Gestión de festivales',
   otro: 'Otros',
 };
@@ -28,6 +30,9 @@ export interface Espectaculo {
   enlace: string;
   estadoInfo: 'vigente' | 'pendiente';
   revisado: string | null;
+  origen?: string;
+  enWeb?: boolean;
+  huellaWeb?: string;
 }
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';
@@ -227,6 +232,7 @@ export const crm = {
   catalogo: () => pedir<{ items: Espectaculo[] }>('/catalogo'),
   guardarEspectaculo: (e: Omit<Espectaculo, 'id'>, id?: string) => pedir<{ id: string }>(id ? `/catalogo/${id}` : '/catalogo', id ? 'PUT' : 'POST', e),
   borrarEspectaculo: (id: string) => pedir(`/catalogo/${id}`, 'DELETE'),
+  importarCatalogo: () => pedir<{ nuevos: number; actualizados: number; retirados: number; sinCambios: number }>('/catalogo/importar', 'POST', {}),
   entidades: () => pedir<{ items: Entidad[] }>('/entidades'),
   ficha: (id: string) => pedir<FichaEntidad>(`/entidades/${id}`),
   fichaRef: (ref: string) => pedir<FichaEntidad>(`/ref/${encodeURIComponent(ref)}`),

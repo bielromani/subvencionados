@@ -150,6 +150,23 @@ export function Catalogo() {
   const [items, setItems] = useState<Espectaculo[] | null>(null);
   const [editando, setEditando] = useState<string | 'nuevo' | null>(null);
   const cargar = () => crm.catalogo().then((r) => setItems(r.items));
+  const [importando, setImportando] = useState(false);
+  const [resultado, setResultado] = useState<string | null>(null);
+  const importar = async () => {
+    setImportando(true);
+    setResultado(null);
+    try {
+      const r = await crm.importarCatalogo();
+      setResultado(
+        `${r.nuevos} nuevas, ${r.actualizados} actualizadas, ${r.retirados} que ya no están en la web, ${r.sinCambios} sin cambios. La web no publica precios: revisa cada ficha y márcala como vigente.`,
+      );
+      await cargar();
+    } catch (e) {
+      setResultado((e as Error).message);
+    } finally {
+      setImportando(false);
+    }
+  };
   useEffect(() => {
     if (usuario) void cargar();
   }, [usuario?.email]);
@@ -172,10 +189,16 @@ export function Catalogo() {
         {editando === 'nuevo' ? (
           <FormEspectaculo inicial={VACIO} alGuardar={terminado} alCancelar={() => setEditando(null)} />
         ) : (
-          <button type="button" className="boton" onClick={() => setEditando('nuevo')}>
-            + Añadir espectáculo
-          </button>
+          <p className="acciones">
+            <button type="button" className="boton" onClick={() => setEditando('nuevo')}>
+              + Añadir espectáculo
+            </button>
+            <button type="button" className="accion" disabled={importando} onClick={() => void importar()}>
+              {importando ? 'Importando…' : '⤓ Importar de arsvia.org'}
+            </button>
+          </p>
         )}
+        {resultado && <p className="llamada">{resultado}</p>}
       </section>
       {items.map((e) =>
         editando === e.id ? (
@@ -188,20 +211,17 @@ export function Catalogo() {
             <p className="etiquetas">
               <span className="etiqueta etiqueta-neutro">{NOMBRE_TIPO[e.tipo]}</span>
               <span className={`etiqueta etiqueta-${e.estadoInfo === 'vigente' ? 'exito' : 'aviso'}`}>{e.estadoInfo === 'vigente' ? 'Vigente' : 'Pendiente de actualización'}</span>
+              {e.enWeb === false && <span className="etiqueta etiqueta-apagado">Ya no está en la web</span>}
+              {e.origen && <span className="ayuda">De arsvia.org</span>}
               {e.revisado && <span className="ayuda">Revisado el {new Date(`${e.revisado}T00:00:00`).toLocaleDateString('es-ES')}</span>}
             </p>
-            {e.formato && <p>{e.formato}</p>}
+            {e.formato && <p className="texto-lineas">{e.formato}</p>}
+            {e.disponibilidad && <p className="texto-lineas ayuda">{e.disponibilidad}</p>}
             <dl className="datos">
               <div>
                 <dt>Precio orientativo</dt>
                 <dd>{e.precioMin != null || e.precioMax != null ? [e.precioMin, e.precioMax].filter((x) => x != null).map((x) => euros(x!)).join(' – ') : 'Sin precio'}</dd>
               </div>
-              {e.disponibilidad && (
-                <div>
-                  <dt>Disponibilidad</dt>
-                  <dd>{e.disponibilidad}</dd>
-                </div>
-              )}
               {e.ambito && (
                 <div>
                   <dt>Ámbito</dt>
@@ -216,7 +236,7 @@ export function Catalogo() {
             <p className="acciones">
               {e.enlace && (
                 <a className="accion" href={e.enlace} target="_blank" rel="noreferrer">
-                  Dosier ↗
+                  {/\.pdf($|\?)/i.test(e.enlace) ? 'Dosier' : 'Web'} ↗
                 </a>
               )}
               <button type="button" className="accion" onClick={() => setEditando(e.id)}>

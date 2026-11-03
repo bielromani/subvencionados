@@ -18,6 +18,8 @@ const NOMBRE_TIPO: Record<'es' | 'ca', Record<TipoEspectaculo, string>> = {
   es: {
     opera: 'ópera',
     sinfonico_coral: 'repertorio sinfónico-coral',
+    sinfonica: 'repertorio sinfónico',
+    fusion: 'música mediterránea y fusión lírica',
     religiosa: 'música religiosa',
     camara: 'música de cámara',
     jazz: 'jazz',
@@ -29,6 +31,8 @@ const NOMBRE_TIPO: Record<'es' | 'ca', Record<TipoEspectaculo, string>> = {
   ca: {
     opera: 'òpera',
     sinfonico_coral: 'repertori simfònico-coral',
+    sinfonica: 'repertori simfònic',
+    fusion: 'música mediterrània i fusió lírica',
     religiosa: 'música religiosa',
     camara: 'música de cambra',
     jazz: 'jazz',

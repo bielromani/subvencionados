@@ -1,8 +1,8 @@
 // Prospección y seguimiento (CRM) de cada cuenta: su catálogo, las entidades a las que ofrece programación, las
 // oportunidades concretas con cada una y las secuencias de cinco envíos escritos con aprobación humana.
 
-export type TipoEspectaculo = 'opera' | 'sinfonico_coral' | 'religiosa' | 'camara' | 'jazz' | 'rock' | 'navidad' | 'festivales' | 'otro';
-export const TIPOS_ESPECTACULO: TipoEspectaculo[] = ['opera', 'sinfonico_coral', 'religiosa', 'camara', 'jazz', 'rock', 'navidad', 'festivales', 'otro'];
+export type TipoEspectaculo = 'opera' | 'sinfonico_coral' | 'sinfonica' | 'religiosa' | 'camara' | 'jazz' | 'rock' | 'navidad' | 'fusion' | 'festivales' | 'otro';
+export const TIPOS_ESPECTACULO: TipoEspectaculo[] = ['opera', 'sinfonico_coral', 'sinfonica', 'religiosa', 'camara', 'jazz', 'rock', 'navidad', 'fusion', 'festivales', 'otro'];
 
 /** Ficha del catálogo. Lo que no está confirmado se enseña como provisional y no se ofrece como cerrado. */
 export interface Espectaculo {
@@ -20,6 +20,12 @@ export interface Espectaculo {
   estadoInfo: 'vigente' | 'pendiente';
   /** Última vez que se revisó la ficha (aaaa-mm-dd). */
   revisado: string | null;
+  /** De dónde se importó («arsvia.org#3»), para actualizarla sin duplicar. */
+  origen?: string;
+  /** Sigue publicada en la web de origen. */
+  enWeb?: boolean;
+  /** Resumen de lo que decía la web en la última importación (para saber si ha cambiado). */
+  huellaWeb?: string;
 }
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';
