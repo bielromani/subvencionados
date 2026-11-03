@@ -80,7 +80,14 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
 
   // ---------- Ajustes y catálogo ----------
 
-  r.get('/ajustes', ruta(async (_q, _r, u, c) => ({ ajustes: await c.ajustes(u.id), envioConectado: enviar !== null })));
+  // Sin remitente configurado, el email de la cuenta (las cartas salen de su dirección y las respuestas le llegan a ella).
+  r.get(
+    '/ajustes',
+    ruta(async (_q, _r, u, c) => {
+      const a = await c.ajustes(u.id);
+      return { ajustes: { ...a, email: a.email || u.email }, envioConectado: enviar !== null };
+    }),
+  );
   r.put(
     '/ajustes',
     ruta(async (req, _r, u, c) => {
