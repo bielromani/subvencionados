@@ -6,6 +6,7 @@ import { type Enviar, escaparHtml } from './email.js';
 import { rutasCuenta } from './rutasCuenta.js';
 import { alertasCrm, type ContextoCrm, prepararParaCuenta, rutasCrm } from './rutasCrm.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
+import { noEncaja } from './crm/prospeccion.js';
 import { cubreTerritorio, type OportunidadGestion, oportunidadesGestion } from './gestionFestivales.js';
 import type { AlmacenCrm } from './crm/almacen.js';
 import { estimarCierre } from './cierre.js';
@@ -450,7 +451,9 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
 
   app.get('/api/contratos', (req, res) => {
     const hoy = new Date();
-    const resultado = filtrarContratos(contratos, filtroContratos(req.query), hoy);
+    const todos = filtrarContratos(contratos, filtroContratos(req.query), hoy);
+    // Por defecto fuera lo que no es para un catálogo de conciertos (pirotecnia, animación infantil, verbenas...).
+    const resultado = req.query.todos === 'si' ? todos : todos.filter((c) => !noEncaja(c.titulo));
     const orden = req.query.orden;
     const clave = (c: ContratoVista) => c.fechaAdjudicacion ?? c.actualizado.slice(0, 10);
     const ordenados = [...resultado].sort((a, b) =>
@@ -464,6 +467,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const pagina = Math.max(Number(req.query.pagina) || 1, 1);
     res.json({
       total: resultado.length,
+      ocultos: todos.length - resultado.length,
       pagina,
       porPagina,
       items: ordenados.slice((pagina - 1) * porPagina, pagina * porPagina).map(contratoResumido),

@@ -95,10 +95,11 @@ export function Contratos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
     ccaa: p.get('ccaa') ?? '',
     estilo: p.get('estilo') ?? '',
     menor: p.get('menor') ?? '',
+    todos: p.get('todos') ?? '',
     orden: p.get('orden') ?? '',
     pagina: Number(p.get('pagina')) || 1,
   });
-  const [r, setR] = useState<{ total: number; porPagina: number; items: Contrato[] } | null>(null);
+  const [r, setR] = useState<{ total: number; ocultos?: number; porPagina: number; items: Contrato[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const consulta = new URLSearchParams(
     Object.entries({ ...filtros, orden: filtros.orden || (filtros.estado === 'abiertas' ? 'cierre' : ''), pagina: String(filtros.pagina) }).filter(([, v]) => v && v !== '1'),
@@ -154,6 +155,12 @@ export function Contratos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
       {error && <p className="error">{error}</p>}
       <div className="cabecera-resultados">
         <p className="recuento">{r ? <><strong>{r.total.toLocaleString('es-ES')}</strong> {r.total === 1 ? 'contrato' : 'contratos'}</> : 'Cargando…'}</p>
+        {(filtros.todos === 'si' || (r?.ocultos ?? 0) > 0) && (
+          <label className="casilla">
+            <input type="checkbox" checked={filtros.todos === 'si'} onChange={(e) => setFiltros((f) => ({ ...f, todos: e.target.checked ? 'si' : '', pagina: 1 }))} />
+            Mostrar también pirotecnia, animación infantil, verbenas…{filtros.todos !== 'si' && r?.ocultos ? ` (${r.ocultos})` : ''}
+          </label>
+        )}
         <select value={filtros.orden} onChange={cambiar('orden')} aria-label="Orden">
           <option value="">{filtros.estado === 'abiertas' ? 'Cierran antes primero' : 'Más recientes primero'}</option>
           <option value="importe">Mayor importe</option>
