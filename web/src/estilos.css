@@ -4161,3 +4161,115 @@ kbd {
     padding: 14px;
   }
 }
+
+/* ───────────── Licitaciones y Festivales ───────────── */
+.intro-pestana {
+  margin: -6px 0 16px;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+  max-width: 80ch;
+}
+
+.nota-fuente {
+  margin: 16px 0 0;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  max-width: 90ch;
+}
+
+.buscador-filtros-corto {
+  grid-template-columns: minmax(240px, 2fr) repeat(2, minmax(160px, 1fr));
+}
+
+.senales {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.senales a {
+  color: var(--texto);
+}
+
+.fila-gestion .sigla {
+  margin-top: 2px;
+}
+
+.rejilla-circuitos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.circuito {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.circuito header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.circuito h3 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.circuito .ayuda {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.circuito .concesiones {
+  margin-top: auto;
+}
+
+@media (max-width: 900px) {
+  .buscador-filtros-corto {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .buscador-filtros-corto select:last-child {
+    grid-column: auto;
+  }
+
+  .fila-gestion .fila-ayuda-lado {
+    padding-left: 50px;
+  }
+}
+
+.senales a {
+  text-decoration: none;
+}
+
+.senales a:hover {
+  text-decoration: underline;
+}
+
+.senales li {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ver-mas {
+  align-self: flex-start;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}

@@ -3,7 +3,6 @@ import { crm } from '../crm';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
 import type { Meta } from '../tipos';
-import { Filtros } from './Filtros';
 
 type TipoSenal = 'licitacion_abierta' | 'gestion_externalizada' | 'ciclo_por_piezas' | 'festival_propio' | 'ayuda_festivales';
 interface OportunidadGestion {
@@ -35,6 +34,7 @@ export function GestionIntegral({ meta }: { meta: Meta }) {
   const [f, setF] = useState({ q: '', ccaa: '', senal: '', pagina: 1 });
   const [r, setR] = useState<{ total: number; porPagina: number; items: OportunidadGestion[] } | null>(null);
   const [aviso, setAviso] = useState<Record<string, string>>({});
+  const [abiertos, setAbiertos] = useState<Set<string>>(new Set());
   const consulta = new URLSearchParams(Object.entries({ ...f, pagina: String(f.pagina) }).filter(([, v]) => v && v !== '1')).toString();
   useEffect(() => {
     setR(null);
@@ -55,11 +55,14 @@ export function GestionIntegral({ meta }: { meta: Meta }) {
 
   return (
     <>
-      <p className="ayuda">
-        Municipios y equipamientos donde ofrecer el diseño, la producción y la gestión completa de un festival o ciclo: los que ya licitan su organización, los que
-        montan un ciclo contratando concierto a concierto y los que organizan festivales propios. Cada señal enlaza su fuente oficial.
-      </p>
-      <Filtros busqueda={<input type="search" placeholder="Buscar municipio u organismo…" value={f.q} onChange={(e) => setF({ ...f, q: e.target.value, pagina: 1 })} aria-label="Buscar" />}>
+      <div className="buscador-filtros buscador-filtros-corto">
+        <label className="buscador">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-4-4" />
+          </svg>
+          <input type="search" placeholder="Buscar municipio u organismo…" value={f.q} onChange={(e) => setF({ ...f, q: e.target.value, pagina: 1 })} aria-label="Buscar" />
+        </label>
         <select value={f.ccaa} onChange={(e) => setF({ ...f, ccaa: e.target.value, pagina: 1 })} aria-label="Comunidad autónoma">
           <option value="">Toda España</option>
           {meta.ccaa.map((c) => (
@@ -68,52 +71,75 @@ export function GestionIntegral({ meta }: { meta: Meta }) {
         </select>
         <select value={f.senal} onChange={(e) => setF({ ...f, senal: e.target.value, pagina: 1 })} aria-label="Señal">
           <option value="">Cualquier señal</option>
-          {(Object.keys(NOMBRE_SENAL) as TipoSenal[]).filter((t) => t !== 'ayuda_festivales').map((t) => (
-            <option key={t} value={t}>
-              {NOMBRE_SENAL[t]}
-            </option>
-          ))}
+          {(Object.keys(NOMBRE_SENAL) as TipoSenal[])
+            .filter((t) => t !== 'ayuda_festivales')
+            .map((t) => (
+              <option key={t} value={t}>
+                {NOMBRE_SENAL[t]}
+              </option>
+            ))}
         </select>
-      </Filtros>
-      {r && <p className="ayuda">{r.total.toLocaleString('es-ES')} oportunidades</p>}
-      <ul className="filas bloque">
-        {r?.items.map((o) => (
-          <li key={o.programador} className="fila-convocatoria">
-            <a className="fila-titulo" href={enlace('programador', o.programador)}>
-              {o.nombre}
-            </a>
-            <span className="fila-detalle">{[o.ciudad, o.provincia, o.ccaa].filter(Boolean).join(' · ')}</span>
-            <ul className="lista-simple">
-              {o.senales.map((s, i) => {
-                const url = enlaceSenal(s.ref, s.tipo);
-                return (
-                  <li key={i}>
-                    <span className={`etiqueta etiqueta-${TONO[s.tipo]}`}>{NOMBRE_SENAL[s.tipo]}</span> {url ? <a href={url}>{s.texto}</a> : s.texto}
-                  </li>
-                );
-              })}
-            </ul>
-            {usuario && (
-              <button type="button" className="enlace-boton" onClick={() => void proponer(o)}>
-                Proponer gestión integral →
-              </button>
-            )}
-            {aviso[o.programador] && <p className="error">{aviso[o.programador]}</p>}
-          </li>
-        ))}
-      </ul>
+      </div>
+      <div className="cabecera-resultados">
+        <p className="recuento">{r ? <><strong>{r.total.toLocaleString('es-ES')}</strong> {r.total === 1 ? 'oportunidad' : 'oportunidades'}</> : 'Cargando…'}</p>
+      </div>
+      {r && r.items.length === 0 && (
+        <div className="bloque vacio">
+          <h2>Ninguna oportunidad con estos filtros</h2>
+        </div>
+      )}
+      {r && r.items.length > 0 && (
+        <ul className="lista-ayudas">
+          {r.items.map((o) => (
+            <li key={o.programador} className="fila-ayuda fila-gestion">
+              <span className={`sigla ${o.abierta ? 'tono-verde' : 'tono-azul'}`} title={o.abierta ? 'Con licitación abierta ahora' : 'Señales de interés'}>
+                {o.abierta ? 'LIC' : o.senales.length}
+              </span>
+              <div className="fila-ayuda-texto">
+                <a className="fila-ayuda-titulo" href={enlace('programador', o.programador)}>
+                  {o.nombre}
+                </a>
+                <span className="fila-ayuda-detalle">{[o.ciudad, o.provincia, o.ccaa].filter(Boolean).join(' · ')}</span>
+                <ul className="senales">
+                  {(abiertos.has(o.programador) ? o.senales : o.senales.slice(0, 3)).map((s, i) => {
+                    const url = enlaceSenal(s.ref, s.tipo);
+                    return (
+                      <li key={i}>
+                        <span className={`etiqueta etiqueta-${TONO[s.tipo]}`}>{NOMBRE_SENAL[s.tipo]}</span> {url ? <a href={url}>{s.texto}</a> : s.texto}
+                      </li>
+                    );
+                  })}
+                </ul>
+                {o.senales.length > 3 && (
+                  <button type="button" className="enlace-boton ver-mas" onClick={() => setAbiertos((x) => new Set(x.has(o.programador) ? [...x].filter((y) => y !== o.programador) : [...x, o.programador]))}>
+                    {abiertos.has(o.programador) ? 'Ver menos' : `Ver las ${o.senales.length - 3} señales más`}
+                  </button>
+                )}
+                {aviso[o.programador] && <p className="error">{aviso[o.programador]}</p>}
+              </div>
+              {usuario && (
+                <div className="fila-ayuda-lado">
+                  <button type="button" className="accion" onClick={() => void proponer(o)}>
+                    Proponer gestión integral
+                  </button>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
       {paginas > 1 && (
-        <div className="paginacion">
-          <button disabled={f.pagina <= 1} onClick={() => setF({ ...f, pagina: f.pagina - 1 })}>
+        <nav className="paginacion" aria-label="Páginas">
+          <button className="boton-secundario" disabled={f.pagina <= 1} onClick={() => setF({ ...f, pagina: f.pagina - 1 })}>
             ← Anterior
           </button>
           <span>
             Página {f.pagina} de {paginas}
           </span>
-          <button disabled={f.pagina >= paginas} onClick={() => setF({ ...f, pagina: f.pagina + 1 })}>
+          <button className="boton-secundario" disabled={f.pagina >= paginas} onClick={() => setF({ ...f, pagina: f.pagina + 1 })}>
             Siguiente →
           </button>
-        </div>
+        </nav>
       )}
     </>
   );
