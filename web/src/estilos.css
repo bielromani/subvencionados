@@ -5179,3 +5179,32 @@ kbd {
     width: 100%;
   }
 }
+
+/* Vistas hermanas bajo la misma cabecera (Clientes · Directorio, Ayudas · Calendario, Mercado · Organismos) */
+.subsecciones {
+  display: inline-flex;
+  margin: 16px 0 0;
+}
+
+.subsecciones a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 16px;
+  border-radius: 6px;
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.subsecciones a:hover {
+  color: var(--texto);
+}
+
+.subsecciones a.activa {
+  background: var(--superficie);
+  color: var(--texto);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgb(18 23 34 / 0.1);
+}

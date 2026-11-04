@@ -86,7 +86,7 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         <p className="recuento">
           {r ? (
             <>
-              <strong>{r.total.toLocaleString('es-ES')}</strong> {r.total === 1 ? 'cliente' : 'clientes'} · <a href="#/contactos">directorio de responsables de cultura</a>
+              <strong>{r.total.toLocaleString('es-ES')}</strong> {r.total === 1 ? 'cliente' : 'clientes'}
             </>
           ) : (
             'Cargando…'

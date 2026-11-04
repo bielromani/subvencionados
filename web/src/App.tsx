@@ -32,20 +32,22 @@ type Entrada = [destino: string, nombre: string, icono: string];
 const MENU: [string, Entrada[]][] = [
   ['Explorar', [['', 'Inicio', 'inicio'], ['clientes', 'Clientes', 'clientes'], ['explorar', 'Ayudas', 'ayudas'], ['donde-tocar', 'Festivales', 'festivales'], ['contratos', 'Licitaciones', 'contratos']]],
   ['Mi trabajo', [['guardadas', 'Mi lista', 'lista'], ['perfil', 'Mi perfil', 'perfil']]],
+  ['Consulta', [['mercado', 'Datos del sector', 'grafico']]],
 ];
 const MENU_CUENTA: [string, Entrada[]][] = [
   ['Trabajo', [['', 'Hoy', 'inicio'], ['propuestas', 'Propuestas', 'propuestas'], ['bandeja', 'Bandeja', 'bandeja'], ['seguimiento', 'Mis entidades', 'entidades'], ['clientes', 'Clientes', 'clientes']]],
   ['Oportunidades', [['explorar', 'Ayudas', 'ayudas'], ['contratos', 'Licitaciones', 'contratos'], ['donde-tocar', 'Festivales', 'festivales']]],
   ['Mi cartera', [['catalogo', 'Catálogo y cartas', 'catalogo'], ['guardadas', 'Mi lista', 'lista']]],
+  ['Consulta', [['mercado', 'Datos del sector', 'grafico']]],
 ];
 /** Páginas fuera del menú (enlazadas desde el pie, la portada y las fichas). */
-const OTRAS = ['perfil', 'calendario', 'grupos', 'contactos', 'organismos', 'mercado'];
+const OTRAS = ['perfil', 'grupos'];
 const BARRA: Entrada[] = [
   ['', 'Inicio', 'inicio'],
   ['clientes', 'Clientes', 'clientes'],
   ['explorar', 'Ayudas', 'ayudas'],
   ['contratos', 'Licitaciones', 'contratos'],
-  ['guardadas', 'Mi lista', 'lista'],
+  ['mas', 'Más', 'mas'],
 ];
 const BARRA_CUENTA: Entrada[] = [
   ['', 'Hoy', 'inicio'],
@@ -67,11 +69,11 @@ const CABECERAS: Record<string, [string, string]> = {
   catalogo: ['Catálogo y cartas', 'Tus producciones, las plantillas de los correos y tu firma.'],
   guardadas: ['Mi lista', 'Lo que has marcado para seguir.'],
   perfil: ['Mi perfil', 'Tus grupos, estilos y territorio.'],
-  calendario: ['Calendario', 'Plazos de las ayudas, mes a mes.'],
+  calendario: ['Ayudas', 'Subvenciones públicas para tus grupos y para quien los contrata.'],
   grupos: ['Mis grupos', 'Lo que encaja con cada uno de tus grupos.'],
-  contactos: ['Directorio de cultura', 'Contactos institucionales de cultura por municipio.'],
-  organismos: ['Organismos', 'Quién convoca ayudas de música.'],
-  mercado: ['Mercado', 'Cuánto se paga y quién toca en los contratos públicos.'],
+  contactos: ['Clientes', 'Quién contrata música en España, qué estilos programa y cuándo.'],
+  organismos: ['Datos del sector', 'Cuánto dinero público va a la música y quién lo da.'],
+  mercado: ['Datos del sector', 'Cuánto dinero público va a la música y quién lo da.'],
 };
 
 const TRAZOS: Record<string, string> = {
@@ -88,6 +90,7 @@ const TRAZOS: Record<string, string> = {
   festivales: 'M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0M19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0',
   marca: 'M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0',
   mas: 'M5 12h.01M12 12h.01M19 12h.01',
+  grafico: 'M4 20V11M10 20V5M16 20v-6M21 20H3',
 };
 
 function Icono({ nombre, tam = 20 }: { nombre: string; tam?: number }) {
@@ -98,7 +101,23 @@ function Icono({ nombre, tam = 20 }: { nombre: string; tam?: number }) {
   );
 }
 
-const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', cuenta: 'perfil', entidad: 'seguimiento', organismos: 'clientes', mercado: 'clientes' };
+/** Páginas hermanas que se muestran como pestañas bajo la misma cabecera. */
+const SUBSECCIONES: [string, string][][] = [
+  [
+    ['clientes', 'Quién contrata'],
+    ['contactos', 'Directorio de cultura'],
+  ],
+  [
+    ['explorar', 'Lista'],
+    ['calendario', 'Calendario'],
+  ],
+  [
+    ['mercado', 'Mercado'],
+    ['organismos', 'Organismos'],
+  ],
+];
+
+const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', cuenta: 'perfil', entidad: 'seguimiento', organismos: 'mercado', organismo: 'mercado' };
 
 export function App() {
   const ruta = useRuta();
@@ -113,6 +132,7 @@ export function App() {
   useEffect(() => setMasAbierto(false), [ruta.partes.join('/')]);
   const conocida = OTRAS.includes(seccion) || MENU.concat(MENU_CUENTA).some(([, xs]) => xs.some(([d]) => d === seccion)) || pagina === 'cuenta';
   const cabecera = !id && pagina !== '' && pagina !== 'para-ti' ? CABECERAS[pagina] : undefined;
+  const subsecciones = SUBSECCIONES.find((g) => g.some(([d]) => d === pagina));
   // Borradores y aprobados pendientes de enviar: el número junto a «Bandeja».
   const [pendientes, setPendientes] = useState(0);
   const [propuestas, setPropuestas] = useState(0);
@@ -219,6 +239,15 @@ export function App() {
           <header className="cabecera-pagina">
             <h1>{cabecera[0]}</h1>
             {cabecera[1] && <p>{cabecera[1]}</p>}
+            {subsecciones && (
+              <nav className="subsecciones segmentado" aria-label="Vistas">
+                {subsecciones.map(([d, n]) => (
+                  <a key={d} href={`#/${d}`} className={d === pagina ? 'activa' : ''} aria-current={d === pagina ? 'page' : undefined}>
+                    {n}
+                  </a>
+                ))}
+              </nav>
+            )}
           </header>
         )}
         {error && <p className="error">{error}</p>}
@@ -254,9 +283,6 @@ export function App() {
           {(meta.utiles ?? meta.musicales).toLocaleString('es-ES')} subvenciones útiles para colocar grupos, de {meta.total.toLocaleString('es-ES')}{' '}
           descargadas · Fuente: {meta.fuente}
           {meta.ultimaActualizacion && ` · Actualizado el ${new Date(meta.ultimaActualizacion).toLocaleDateString('es-ES')}`}
-          {' · '}
-          <a href="#/calendario">Calendario</a> · <a href="#/contactos">Directorio de cultura</a> · <a href="#/organismos">Organismos</a> ·{' '}
-          <a href="#/mercado">Mercado</a>
         </footer>
       )}
       </div>
