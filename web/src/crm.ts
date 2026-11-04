@@ -263,7 +263,20 @@ export interface PropuestaPreparada {
   puntos: number;
 }
 
+export interface Estadisticas {
+  propuestas: { total: number; pendientes: number; aceptadas: number; descartadas: number };
+  entidades: { contactadas: number; respuesta: number; reunion: number; interesadas: number; noInteresadas: number; sinRespuesta: number; noContactar: number };
+  actividad: { correos: number; llamadas: number; respuestas: number };
+  porPaso: { paso: number; respuestas: number }[];
+  porTipo: { tipo: TipoEspectaculo; contactadas: number; respuesta: number }[];
+  porCcaa: { ccaa: string; contactadas: number; respuesta: number }[];
+  diasHastaRespuesta: number | null;
+  respuestasConFecha: number;
+  semanas: { semana: string; correos: number; respuestas: number; llamadas: number }[];
+}
+
 export interface Panel {
+  puesta: { catalogo: number; completas: number; plantillas: boolean; firma: boolean };
   propuestas: number;
   embudo: { preparadas: number; contactadas: number; respuesta: number; reunion: number; interesadas: number };
   llamar: Pendiente[];
@@ -323,6 +336,7 @@ export const crm = {
   abrirSecuencia: (oportunidad: string, destinatario: string, decision?: 'sustituir' | 'nueva') => pedir<{ secuencia: Secuencia; mensaje: Mensaje }>('/secuencias', 'POST', { oportunidad, destinatario, decision }),
   pausar: (id: string) => pedir(`/secuencias/${id}/pausar`, 'POST', {}),
   reanudar: (id: string) => pedir(`/secuencias/${id}/reanudar`, 'POST', {}),
+  estadisticas: () => pedir<Estadisticas>('/estadisticas'),
   bandeja: () => pedir<{ items: MensajeBandeja[]; envioConectado: boolean }>('/bandeja'),
   editar: (id: string, asunto: string, cuerpo: string) => pedir(`/mensajes/${id}`, 'PUT', { asunto, cuerpo }),
   aprobar: (id: string, programarPara?: string) => pedir(`/mensajes/${id}/aprobar`, 'POST', { programarPara }),

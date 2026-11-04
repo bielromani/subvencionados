@@ -33,6 +33,55 @@ interface Tarea {
   accion: { texto: string; href?: string; alPulsar?: () => void };
 }
 
+/** Lista de puesta en marcha: visible hasta que el catálogo, las cartas y la firma están listos. */
+function PuestaEnMarcha({ p }: { p: Panel['puesta'] }) {
+  const pasos = [
+    { hecho: p.catalogo > 0, titulo: 'Añade tus producciones', detalle: p.catalogo ? `${p.catalogo} en el catálogo` : 'O impórtalas de tu web', href: '#/catalogo', accion: 'Ir al catálogo' },
+    { hecho: p.plantillas, titulo: 'Prepara tus cartas', detalle: 'Las plantillas con tu tono: los correos se escriben con ellas', href: '#/cartas', accion: 'Ir a las cartas' },
+    { hecho: p.firma, titulo: 'Pon tu firma', detalle: 'Nombre, cargo y contacto al pie de cada correo', href: '#/cartas', accion: 'Poner la firma' },
+    {
+      hecho: p.catalogo > 0 && p.completas === p.catalogo,
+      titulo: 'Completa las fichas',
+      detalle: p.catalogo ? `${p.completas} de ${p.catalogo} con precio, requisitos y texto para las cartas` : 'Precio, requisitos y texto para las cartas',
+      href: '#/catalogo',
+      accion: 'Completar',
+    },
+  ];
+  const hechos = pasos.filter((x) => x.hecho).length;
+  if (hechos === pasos.length) return null;
+  return (
+    <section className="bloque puesta-en-marcha" aria-labelledby="t-puesta">
+      <div className="puesta-cabecera">
+        <h2 id="t-puesta">Prepara tu cuenta</h2>
+        <span className="ayuda">
+          {hechos} de {pasos.length} hechos
+        </span>
+      </div>
+      <span className="completitud-barra" aria-hidden="true">
+        <span style={{ width: `${(hechos / pasos.length) * 100}%` }} />
+      </span>
+      <ol>
+        {pasos.map((x) => (
+          <li key={x.titulo} className={x.hecho ? 'hecho' : ''}>
+            <span className="check" aria-hidden="true">
+              {x.hecho ? '✓' : ''}
+            </span>
+            <span className="tarea-texto">
+              <strong>{x.titulo}</strong>
+              <span>{x.detalle}</span>
+            </span>
+            {!x.hecho && (
+              <a className="accion" href={x.href}>
+                {x.accion}
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 /** Inicio con cuenta: qué hacer hoy, ordenado por urgencia, con el estado de la temporada y lo que cierra pronto. */
 export function PanelTrabajo() {
   const usuario = useCuenta().cuenta?.usuario;
@@ -130,11 +179,7 @@ export function PanelTrabajo() {
         </a>
       </header>
 
-      {p.catalogo === 0 && (
-        <p className="llamada">
-          Empieza por <a href="#/catalogo">tu catálogo de espectáculos</a>: con él se preparan los correos y se cruzan las ayudas y licitaciones.
-        </p>
-      )}
+      <PuestaEnMarcha p={p.puesta} />
 
       <section className="kpis" aria-label="Resumen">
         <a className="kpi" href="#/propuestas">

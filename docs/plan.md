@@ -379,7 +379,13 @@ sus entidades y sus secuencias, así que sirve para varios perfiles.
   - categoría «Oportunidades de diseño, producción y gestión integral de festivales/ciclos» en Festivales;
   - alertas de convocatorias nuevas sobre oportunidades abiertas.
   - Las licitaciones ya se cruzan con el catálogo.
-- [ ] **Fase 3:** estadísticas de conversión y mejoras móviles.
+- [x] **Fase 3 (hecha):**
+  - Página «Resultados»: sitios contactados, tasa de respuesta, reuniones e interesados, días hasta la respuesta
+    (mediana), embudo del correo al concierto, en qué correo de la secuencia responden, correos por semana (12 semanas)
+    y tasa de respuesta por tipo de propuesta y por comunidad. Cuenta solo lo registrado en la app.
+  - Móvil: en Propuestas y Bandeja, lista y correo a pantalla completa con «Volver» y los botones fijos abajo.
+  - «Prepara tu cuenta» en Hoy (catálogo, cartas, firma, fichas completas) hasta que está todo listo; menú con
+    «Catálogo» y «Cartas y firma» por separado.
 
 ### Propuestas preparadas (noviembre 2026)
 

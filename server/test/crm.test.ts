@@ -104,6 +104,35 @@ describe.skipIf(!url)('secuencias con Postgres', () => {
     // «Confirmada» exige el enlace oficial.
     await expect(crm.actualizarOportunidad(u, o2.id, { certeza: 'confirmada' })).rejects.toThrow(/resolución/);
   });
+
+  it('estadísticas: contactadas, respuestas, en qué correo contestan y por línea y comunidad', async () => {
+    const v = (await cuentas.crear(`stats-${Date.now()}@example.com`, 'una clave larga'))!.id;
+    const jazz = await crm.guardarEspectaculo(v, { nombre: 'Trío de jazz', tipo: 'jazz', formato: '', requisitos: '', precioMin: null, precioMax: null, disponibilidad: '', fechasCerradas: '', ambito: '', enlace: '', estadoInfo: 'pendiente', revisado: null });
+    const enviar = async (nombre: string, pasos: number) => {
+      const e = await crm.guardarEntidad(v, { ...entidadBase, nombre, email: `${nombre.length}@x.example` });
+      const o = await crm.crearOportunidad(v, { entidad: e.id, tipo: 'propuesta', ref: null, titulo: 'Jazz', espectaculos: [jazz], certeza: 'potencial', enlaceConfirmacion: null, notas: '' });
+      const { secuencia, mensaje } = await crm.abrirSecuencia(v, o.id, `${nombre.length}@x.example`);
+      let m = mensaje;
+      for (let paso = 1; paso <= pasos; paso++) {
+        await crm.aprobar(v, m.id);
+        await crm.registrarEnvio(v, m.id, new Date(Date.now() - (pasos - paso + 1) * 86_400_000));
+        m = (await crm.mensajes(v, secuencia.id)).find((x) => x.paso === paso + 1) ?? m;
+      }
+      return e;
+    };
+    const a = await enviar('Ayuntamiento A', 2);
+    await enviar('Ayuntamiento BB', 1);
+    await crm.anotar(v, a.id, { tipo: 'respuesta', texto: 'Les interesa' });
+    const st = await crm.estadisticas(v);
+    expect(st.entidades.contactadas).toBe(2);
+    expect(st.entidades.respuesta).toBe(1);
+    expect(st.actividad.correos).toBe(3);
+    expect(st.porPaso.find((x) => x.paso === 2)!.respuestas).toBe(1);
+    expect(st.porTipo).toEqual([{ tipo: 'jazz', contactadas: 2, respuesta: 1 }]);
+    expect(st.porCcaa).toEqual([{ ccaa: 'Cataluña', contactadas: 2, respuesta: 1 }]);
+    expect(st.diasHastaRespuesta).not.toBeNull();
+    expect(st.semanas).toHaveLength(12);
+  });
 });
 
 describe.skipIf(!url)('API del CRM', async () => {

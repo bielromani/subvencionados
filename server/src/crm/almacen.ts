@@ -680,6 +680,104 @@ export class AlmacenCrm {
     };
   }
 
+  /**
+   * Resultados de la cuenta: embudo completo, en qué correo responden, qué líneas y comunidades responden más, cuánto
+   * tardan y la actividad de las últimas 12 semanas. Solo cuenta lo registrado en la app (envíos confirmados y
+   * respuestas anotadas).
+   */
+  async estadisticas(u: string) {
+    const RESPUESTA = "('respondio', 'reunion', 'interesado', 'no_interesado')";
+    const n = (x: unknown) => Number(x ?? 0);
+    const [prop] = await this.q<Record<string, string>>(
+      `select count(*) filter (where estado = 'pendiente') as pendientes, count(*) filter (where estado = 'aceptada') as aceptadas,
+              count(*) filter (where estado = 'descartada') as descartadas, count(*) as total
+       from crm_propuestas where usuario = $1`,
+      [u],
+    );
+    const [ent] = await this.q<Record<string, string>>(
+      `with contactadas as (
+         select distinct s.entidad from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.usuario = $1 and m.estado = 'enviado')
+       select (select count(*) from contactadas) as contactadas,
+              count(*) filter (where e.estado_relacion in ${RESPUESTA}) as respuesta,
+              count(*) filter (where e.estado_relacion in ('reunion', 'interesado')) as reunion,
+              count(*) filter (where e.estado_relacion = 'interesado') as interesadas,
+              count(*) filter (where e.estado_relacion = 'no_interesado') as no_interesadas,
+              count(*) filter (where e.estado_relacion = 'sin_respuesta') as sin_respuesta,
+              count(*) filter (where e.no_contactar) as no_contactar
+       from crm_entidades e where e.usuario = $1 and (e.id in (select entidad from contactadas) or e.estado_relacion in ${RESPUESTA})`,
+      [u],
+    );
+    const [act] = await this.q<Record<string, string>>(
+      `select (select count(*) from crm_mensajes where usuario = $1 and estado = 'enviado') as correos,
+              (select count(*) from crm_historial where usuario = $1 and tipo = 'llamada') as llamadas,
+              (select count(*) from crm_historial where usuario = $1 and tipo = 'respuesta') as respuestas`,
+      [u],
+    );
+    // En qué correo de la secuencia contestan: el último enviado antes de que se cerrara por respuesta.
+    const porPaso = await this.q<{ paso: number; n: string }>(
+      `select m.paso, count(*) as n from crm_secuencias s
+         join lateral (select max(paso) as paso from crm_mensajes where secuencia = s.id and estado = 'enviado') m on m.paso is not null
+       where s.usuario = $1 and s.estado = 'respondida' group by m.paso order by m.paso`,
+      [u],
+    );
+    // Por línea del catálogo: entidades contactadas con una oportunidad que lleva ese tipo de espectáculo, y cuántas responden.
+    const porTipo = await this.q<{ tipo: string; contactadas: string; respuesta: string }>(
+      `with env as (
+         select distinct s.entidad, s.oportunidad from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.usuario = $1 and m.estado = 'enviado')
+       select es.datos->>'tipo' as tipo, count(distinct env.entidad) as contactadas,
+              count(distinct env.entidad) filter (where e.estado_relacion in ${RESPUESTA}) as respuesta
+       from env join crm_oportunidades o on o.id = env.oportunidad
+         join crm_espectaculos es on es.id = any(o.espectaculos)
+         join crm_entidades e on e.id = env.entidad
+       group by 1 order by 2 desc`,
+      [u],
+    );
+    const porCcaa = await this.q<{ ccaa: string | null; contactadas: string; respuesta: string }>(
+      `with env as (select distinct s.entidad from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.usuario = $1 and m.estado = 'enviado')
+       select e.datos->>'ccaa' as ccaa, count(*) as contactadas, count(*) filter (where e.estado_relacion in ${RESPUESTA}) as respuesta
+       from env join crm_entidades e on e.id = env.entidad group by 1 order by 2 desc`,
+      [u],
+    );
+    // Días desde el primer correo enviado hasta la primera respuesta anotada.
+    const [dias] = await this.q<{ mediana: string | null; n: string }>(
+      `with primero as (
+         select s.entidad, min(m.enviado_en) as enviado from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
+         where m.usuario = $1 and m.estado = 'enviado' group by s.entidad),
+       resp as (select entidad, min(fecha) as fecha from crm_historial where usuario = $1 and tipo = 'respuesta' group by entidad)
+       select percentile_cont(0.5) within group (order by extract(epoch from r.fecha - p.enviado) / 86400) as mediana, count(*) as n
+       from primero p join resp r on r.entidad = p.entidad and r.fecha >= p.enviado`,
+      [u],
+    );
+    const semanas = await this.q<{ semana: string; correos: string; respuestas: string; llamadas: string }>(
+      `with s as (select generate_series(date_trunc('week', now()) - interval '11 weeks', date_trunc('week', now()), interval '1 week') as semana)
+       select to_char(s.semana, 'YYYY-MM-DD') as semana,
+         (select count(*) from crm_mensajes where usuario = $1 and estado = 'enviado' and date_trunc('week', enviado_en) = s.semana) as correos,
+         (select count(*) from crm_historial where usuario = $1 and tipo = 'respuesta' and date_trunc('week', fecha) = s.semana) as respuestas,
+         (select count(*) from crm_historial where usuario = $1 and tipo = 'llamada' and date_trunc('week', fecha) = s.semana) as llamadas
+       from s order by s.semana`,
+      [u],
+    );
+    return {
+      propuestas: { total: n(prop?.total), pendientes: n(prop?.pendientes), aceptadas: n(prop?.aceptadas), descartadas: n(prop?.descartadas) },
+      entidades: {
+        contactadas: n(ent?.contactadas),
+        respuesta: n(ent?.respuesta),
+        reunion: n(ent?.reunion),
+        interesadas: n(ent?.interesadas),
+        noInteresadas: n(ent?.no_interesadas),
+        sinRespuesta: n(ent?.sin_respuesta),
+        noContactar: n(ent?.no_contactar),
+      },
+      actividad: { correos: n(act?.correos), llamadas: n(act?.llamadas), respuestas: n(act?.respuestas) },
+      porPaso: [1, 2, 3, 4, 5].map((paso) => ({ paso, respuestas: n(porPaso.find((x) => Number(x.paso) === paso)?.n) })),
+      porTipo: porTipo.map((x) => ({ tipo: x.tipo, contactadas: n(x.contactadas), respuesta: n(x.respuesta) })),
+      porCcaa: porCcaa.map((x) => ({ ccaa: x.ccaa ?? 'Sin comunidad', contactadas: n(x.contactadas), respuesta: n(x.respuesta) })),
+      diasHastaRespuesta: dias?.mediana == null ? null : Math.round(Number(dias.mediana) * 10) / 10,
+      respuestasConFecha: n(dias?.n),
+      semanas: semanas.map((x) => ({ semana: x.semana, correos: n(x.correos), respuestas: n(x.respuestas), llamadas: n(x.llamadas) })),
+    };
+  }
+
   /** Sitios que no hay que volver a proponer: pendientes, aceptados, o descartados hace menos de 90 días. */
   async refsBloqueadas(u: string): Promise<Set<string>> {
     const filas = await this.q<{ ref: string }>(

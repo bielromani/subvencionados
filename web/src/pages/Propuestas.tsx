@@ -25,7 +25,7 @@ function Chips({ p }: { p: PropuestaPreparada }) {
 }
 
 /** El correo de una propuesta, editable, con las acciones: descartar, abrir en el correo y marcar como enviado. */
-function DetallePropuesta({ p, posicion, alTerminar }: { p: PropuestaPreparada; posicion: string; alTerminar: (texto: string) => void }) {
+function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaPreparada; posicion: string; alTerminar: (texto: string) => void; alVolver: () => void }) {
   const [asunto, setAsunto] = useState(p.asunto);
   const [cuerpo, setCuerpo] = useState(p.cuerpo);
   const [destinatario, setDestinatario] = useState(p.destinatario);
@@ -70,6 +70,9 @@ function DetallePropuesta({ p, posicion, alTerminar }: { p: PropuestaPreparada; 
     <>
       <article className="correo" aria-label={`Correo para ${p.nombre}`}>
         <header className="correo-barra">
+          <button type="button" className="volver-movil" onClick={alVolver}>
+            ← Volver a la lista
+          </button>
           <div className="correo-titulo">
             <span className="ayuda">{posicion}</span>
             <h2>
@@ -81,7 +84,8 @@ function DetallePropuesta({ p, posicion, alTerminar }: { p: PropuestaPreparada; 
               Descartar
             </button>
             <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
-              Abrir en mi correo
+              <span className="solo-escritorio">Abrir en mi correo</span>
+              <span className="solo-movil">Abrir correo</span>
             </button>
             <button type="button" className="boton" disabled={ocupado} onClick={() => void enviado()}>
               Ya lo he enviado
@@ -197,6 +201,8 @@ export function Propuestas({ meta }: { meta: Meta }) {
   const usuario = useCuenta().cuenta?.usuario;
   const [items, setItems] = useState<PropuestaPreparada[] | null>(null);
   const [actual, setActual] = useState<string | null>(null);
+  // En el móvil: la lista o el correo a pantalla completa.
+  const [detalleMovil, setDetalleMovil] = useState(false);
   const [filtro, setFiltro] = useState<Filtro>('todas');
   const [ccaa, setCcaa] = useState('');
   const [cuantas, setCuantas] = useState(20);
@@ -288,7 +294,7 @@ export function Propuestas({ meta }: { meta: Meta }) {
           <p className="ayuda">Pulsa «Preparar más» o vuelve mañana: se preparan solas cada día.</p>
         </div>
       ) : (
-        <div className="tres-paneles">
+        <div className={`tres-paneles${detalleMovil ? ' ver-detalle' : ''}`}>
           <section className="lista-propuestas" aria-label="Lista de propuestas">
             <div className="segmentado" role="tablist" aria-label="Filtrar">
               {(
@@ -307,7 +313,7 @@ export function Propuestas({ meta }: { meta: Meta }) {
               {!items && <p className="vacio-suave">Cargando…</p>}
               {items && visibles.length === 0 && <p className="vacio-suave">Ninguna con este filtro.</p>}
               {visibles.map((p) => (
-                <button key={p.id} type="button" data-id={p.id} className={`item-propuesta${p.id === seleccionada?.id ? ' activa' : ''}`} onClick={() => setActual(p.id)}>
+                <button key={p.id} type="button" data-id={p.id} className={`item-propuesta${p.id === seleccionada?.id ? ' activa' : ''}`} onClick={() => (setActual(p.id), setDetalleMovil(true), window.scrollTo({ top: 0 }))}>
                   <span className="item-cabecera">
                     <strong>{p.nombre}</strong>
                     <span>{p.provincia ?? p.ccaa}</span>
@@ -318,7 +324,7 @@ export function Propuestas({ meta }: { meta: Meta }) {
               ))}
             </div>
           </section>
-          {seleccionada && <DetallePropuesta key={seleccionada.id} p={seleccionada} posicion={`Propuesta ${indice + 1} de ${visibles.length}`} alTerminar={terminar(seleccionada.id)} />}
+          {seleccionada && <DetallePropuesta key={seleccionada.id} p={seleccionada} posicion={`Propuesta ${indice + 1} de ${visibles.length}`} alTerminar={terminar(seleccionada.id)} alVolver={() => setDetalleMovil(false)} />}
         </div>
       )}
     </div>

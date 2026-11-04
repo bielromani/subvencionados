@@ -23,6 +23,7 @@ import { useCuenta } from './sincronizar';
 import { Bandeja } from './pages/Bandeja';
 import { Propuestas } from './pages/Propuestas';
 import { Catalogo } from './pages/Catalogo';
+import { Resultados } from './pages/Resultados';
 import { PaginaEntidad, Seguimiento } from './pages/Seguimiento';
 import { useRuta } from './ruta';
 import type { Meta } from './tipos';
@@ -35,9 +36,9 @@ const MENU: [string, Entrada[]][] = [
   ['Consulta', [['mercado', 'Datos del sector', 'grafico']]],
 ];
 const MENU_CUENTA: [string, Entrada[]][] = [
-  ['Trabajo', [['', 'Hoy', 'inicio'], ['propuestas', 'Propuestas', 'propuestas'], ['bandeja', 'Bandeja', 'bandeja'], ['seguimiento', 'Mis entidades', 'entidades'], ['clientes', 'Clientes', 'clientes']]],
+  ['Trabajo', [['', 'Hoy', 'inicio'], ['propuestas', 'Propuestas', 'propuestas'], ['bandeja', 'Bandeja', 'bandeja'], ['seguimiento', 'Mis entidades', 'entidades'], ['resultados', 'Resultados', 'resultados'], ['clientes', 'Clientes', 'clientes']]],
   ['Oportunidades', [['explorar', 'Ayudas', 'ayudas'], ['contratos', 'Licitaciones', 'contratos'], ['donde-tocar', 'Festivales', 'festivales']]],
-  ['Mi cartera', [['catalogo', 'Catálogo y cartas', 'catalogo'], ['guardadas', 'Mi lista', 'lista']]],
+  ['Mi cartera', [['catalogo', 'Catálogo', 'catalogo'], ['cartas', 'Cartas y firma', 'cartas'], ['guardadas', 'Mi lista', 'lista']]],
   ['Consulta', [['mercado', 'Datos del sector', 'grafico']]],
 ];
 /** Páginas fuera del menú (enlazadas desde el pie, la portada y las fichas). */
@@ -66,7 +67,9 @@ const CABECERAS: Record<string, [string, string]> = {
   explorar: ['Ayudas', 'Subvenciones públicas para tus grupos y para quien los contrata.'],
   contratos: ['Licitaciones', 'Contratos públicos de conciertos: abiertos y adjudicados.'],
   'donde-tocar': ['Festivales', 'Festivales, ciclos y circuitos, y dónde se externaliza su gestión.'],
-  catalogo: ['Catálogo y cartas', 'Tus producciones, las plantillas de los correos y tu firma.'],
+  catalogo: ['Catálogo', 'Tus producciones: con ellas se eligen los sitios y se escriben los correos.'],
+  cartas: ['Cartas y firma', 'Cómo se escriben tus correos y quién los firma.'],
+  resultados: ['Resultados', 'Qué funciona: cuántos contactos responden, en qué correo y con qué propuestas.'],
   guardadas: ['Mi lista', 'Lo que has marcado para seguir.'],
   perfil: ['Mi perfil', 'Tus grupos, estilos y territorio.'],
   calendario: ['Ayudas', 'Subvenciones públicas para tus grupos y para quien los contrata.'],
@@ -91,6 +94,8 @@ const TRAZOS: Record<string, string> = {
   marca: 'M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0',
   mas: 'M5 12h.01M12 12h.01M19 12h.01',
   grafico: 'M4 20V11M10 20V5M16 20v-6M21 20H3',
+  resultados: 'M3 17l6-6 4 4 8-8M15 7h6v6',
+  cartas: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
 };
 
 function Icono({ nombre, tam = 20 }: { nombre: string; tam?: number }) {
@@ -271,7 +276,8 @@ export function App() {
         {meta && pagina === 'cuenta' && <Cuenta ruta={ruta} />}
         {meta && pagina === 'bandeja' && <Bandeja />}
         {meta && pagina === 'propuestas' && <Propuestas meta={meta} />}
-        {meta && pagina === 'catalogo' && <Catalogo />}
+        {meta && (pagina === 'catalogo' || pagina === 'cartas') && <Catalogo key={pagina} modo={pagina === 'cartas' ? 'cartas' : 'producciones'} />}
+        {meta && pagina === 'resultados' && <Resultados />}
         {meta && pagina === 'seguimiento' && <Seguimiento />}
         {meta && pagina === 'entidad' && id && <PaginaEntidad id={id} />}
         {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}

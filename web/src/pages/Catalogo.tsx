@@ -418,11 +418,11 @@ function TarjetaProduccion({ e, editar, borrar }: { e: Espectaculo; editar: () =
 }
 
 /** Catálogo y cartas: las producciones que se ofrecen, cómo se escriben los correos y quién los firma. */
-export function Catalogo() {
+export function Catalogo({ modo = 'producciones' }: { modo?: 'producciones' | 'cartas' }) {
   const usuario = useCuenta().cuenta?.usuario;
   const [items, setItems] = useState<Espectaculo[] | null>(null);
   const [editando, setEditando] = useState<string | 'nuevo' | null>(null);
-  const [pestana, setPestana] = useState<Pestana>('producciones');
+  const [pestana, setPestana] = useState<Pestana>(modo === 'cartas' ? 'cartas' : 'producciones');
   const [filtro, setFiltro] = useState<FiltroCatalogo>('todas');
   const [tipo, setTipo] = useState<TipoEspectaculo | ''>('');
   const cargar = () => crm.catalogo().then((r) => setItems(r.items));
@@ -462,19 +462,20 @@ export function Catalogo() {
 
   return (
     <section className="catalogo">
-      <div className="pestanas-pagina" role="tablist" aria-label="Secciones del catálogo">
-        {(
-          [
-            ['producciones', `Producciones · ${items.length}`],
-            ['cartas', 'Plantillas de las cartas'],
-            ['firma', 'Remitente y firma'],
-          ] as [Pestana, string][]
-        ).map(([v, n]) => (
-          <button key={v} type="button" role="tab" aria-selected={pestana === v} className={pestana === v ? 'activa' : ''} onClick={() => setPestana(v)}>
-            {n}
-          </button>
-        ))}
-      </div>
+      {modo === 'cartas' && (
+        <div className="pestanas-pagina" role="tablist" aria-label="Cartas y firma">
+          {(
+            [
+              ['cartas', 'Plantillas de las cartas'],
+              ['firma', 'Remitente y firma'],
+            ] as [Pestana, string][]
+          ).map(([v, n]) => (
+            <button key={v} type="button" role="tab" aria-selected={pestana === v} className={pestana === v ? 'activa' : ''} onClick={() => setPestana(v)}>
+              {n}
+            </button>
+          ))}
+        </div>
+      )}
 
       {pestana === 'cartas' && <Plantillas alCambiarCatalogo={() => void cargar()} />}
       {pestana === 'firma' && <Remitente />}

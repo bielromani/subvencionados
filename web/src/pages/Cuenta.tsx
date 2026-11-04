@@ -187,9 +187,14 @@ function MiCuenta({ u, emails, estado }: { u: UsuarioCuenta; emails: boolean; es
             <strong>Catálogo, cartas y firma</strong>
             <span>Tus producciones, las plantillas de los correos y quién firma.</span>
           </div>
-          <a className="accion" href="#/catalogo">
-            Abrir
-          </a>
+          <span className="botones-fila">
+            <a className="accion" href="#/catalogo">
+              Catálogo
+            </a>
+            <a className="accion" href="#/cartas">
+              Cartas y firma
+            </a>
+          </span>
         </div>
       </section>
 

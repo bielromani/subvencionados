@@ -14,7 +14,7 @@ const GRUPOS: [EstadoMensaje, string, string][] = [
 ];
 
 /** El correo de un paso de la secuencia, editable mientras es borrador, con las acciones de su estado. */
-function DetalleMensaje({ m, envioConectado, alCambiar }: { m: MensajeBandeja; envioConectado: boolean; alCambiar: (texto?: string) => void }) {
+function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: MensajeBandeja; envioConectado: boolean; alCambiar: (texto?: string) => void; alVolver: () => void }) {
   const [asunto, setAsunto] = useState(m.asunto);
   const [cuerpo, setCuerpo] = useState(m.cuerpo);
   const [programar, setProgramar] = useState('');
@@ -56,6 +56,9 @@ function DetalleMensaje({ m, envioConectado, alCambiar }: { m: MensajeBandeja; e
     <>
       <article className="correo" aria-label={`Correo para ${m.entidad.nombre}`}>
         <header className="correo-barra">
+          <button type="button" className="volver-movil" onClick={alVolver}>
+            ← Volver a la lista
+          </button>
           <div className="correo-titulo">
             <span className="ayuda">
               {m.paso === 1 ? 'Primer correo' : `Seguimiento · ${m.paso}.º de 5`}
@@ -81,7 +84,8 @@ function DetalleMensaje({ m, envioConectado, alCambiar }: { m: MensajeBandeja; e
                   </button>
                 )}
                 <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
-                  Abrir en mi correo
+                  <span className="solo-escritorio">Abrir en mi correo</span>
+                  <span className="solo-movil">Abrir correo</span>
                 </button>
                 <button type="button" className="boton" disabled={ocupado} onClick={() => void enviado()}>
                   Ya lo he enviado
@@ -175,6 +179,8 @@ export function Bandeja() {
   const usuario = useCuenta().cuenta?.usuario;
   const [datos, setDatos] = useState<{ items: MensajeBandeja[]; envioConectado: boolean } | null>(null);
   const [actual, setActual] = useState<string | null>(null);
+  // En el móvil: la lista o el correo a pantalla completa.
+  const [detalleMovil, setDetalleMovil] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const lista = useRef<HTMLDivElement>(null);
@@ -223,7 +229,7 @@ export function Bandeja() {
           {aviso}
         </p>
       )}
-      <div className="tres-paneles">
+      <div className={`tres-paneles${detalleMovil ? ' ver-detalle' : ''}`}>
         <section className="lista-propuestas" aria-label="Correos de la bandeja">
           <div className="lista-desplazable" ref={lista}>
             {GRUPOS.map(([estado, nombre, tono]) => {
@@ -235,7 +241,7 @@ export function Bandeja() {
                     {nombre} <span className="contador">{xs.length}</span>
                   </p>
                   {xs.map((m) => (
-                    <button key={m.id} type="button" data-id={m.id} className={`item-propuesta${m.id === seleccionado?.id ? ' activa' : ''}`} onClick={() => setActual(m.id)}>
+                    <button key={m.id} type="button" data-id={m.id} className={`item-propuesta${m.id === seleccionado?.id ? ' activa' : ''}`} onClick={() => (setActual(m.id), setDetalleMovil(true), window.scrollTo({ top: 0 }))}>
                       <span className="item-cabecera">
                         <strong>{m.entidad.nombre}</strong>
                         <span>{m.paso}.º de 5</span>
@@ -249,7 +255,7 @@ export function Bandeja() {
             })}
           </div>
         </section>
-        {seleccionado && <DetalleMensaje key={`${seleccionado.id}-${seleccionado.estado}`} m={seleccionado} envioConectado={datos.envioConectado} alCambiar={cambiado} />}
+        {seleccionado && <DetalleMensaje key={`${seleccionado.id}-${seleccionado.estado}`} m={seleccionado} envioConectado={datos.envioConectado} alCambiar={cambiado} alVolver={() => setDetalleMovil(false)} />}
       </div>
     </div>
   );

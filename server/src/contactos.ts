@@ -134,6 +134,7 @@ export class Contactos {
         this.porNombre.set(clave, [...(this.porNombre.get(clave) ?? []), codigo]);
       }
     }
+    this.quitarEmailsAjenos();
     for (const c of cultura) {
       const m = this.porIne.get(c['Código INE'] ?? '');
       // Solo ayuntamientos: los consejos comarcales no son el municipio de su capital.
@@ -155,6 +156,39 @@ export class Contactos {
         anio: Number(c['Año de la fuente']) || null,
         contactoOmitido: email.omitido || telefono.omitido,
       });
+    }
+  }
+
+  /**
+   * La fuente a veces repite en varios municipios el email de otro ayuntamiento (el registro andaluz pone
+   * info@aytopuentegenil.es a Olivares, Palomares del Río...). Si un email con dominio propio (no gratuito) sale en
+   * varios municipios y su dueño (la web es de ese dominio o el dominio lleva el nombre del municipio) es de otra
+   * provincia, se quita. Las secretarías compartidas entre pueblos de la misma provincia y los emails gratuitos se
+   * mantienen.
+   */
+  private quitarEmailsAjenos() {
+    const usos = new Map<string, ContactoMunicipio[]>();
+    for (const m of this.porIne.values()) {
+      for (const e of (m.ayuntamiento.email ?? '').split(/\s*[;/]\s*/).filter(Boolean)) {
+        const k = e.toLowerCase();
+        if (!EMAIL_GRATUITO.test(k)) usos.set(k, [...(usos.get(k) ?? []), m]);
+      }
+    }
+    const compacto = (x: string) => normalizar(x).replace(/[^a-z0-9]/g, '');
+    for (const [email, ms] of usos) {
+      if (ms.length < 2) continue;
+      const dominio = email.split('@')[1] ?? '';
+      const encaja = (m: ContactoMunicipio) => {
+        const host = (m.ayuntamiento.web ?? '').replace(/^https?:\/\//i, '').replace(/^www\./i, '').split('/')[0]!.toLowerCase();
+        return host === dominio || clavesMunicipio(m.municipio).some((k) => compacto(k).length >= 4 && compacto(dominio).includes(compacto(k)));
+      };
+      // Pueblos pequeños que comparten secretaría con la cabecera (misma provincia): el email es bueno para todos.
+      const duenos = ms.filter(encaja);
+      if (!duenos.length) continue;
+      for (const m of ms.filter((x) => !encaja(x) && !duenos.some((d) => d.provincia === x.provincia))) {
+        const resto = (m.ayuntamiento.email ?? '').split(/\s*[;/]\s*/).filter((e) => e && e.toLowerCase() !== email);
+        m.ayuntamiento.email = resto.length ? resto.join('; ') : null;
+      }
     }
   }
 

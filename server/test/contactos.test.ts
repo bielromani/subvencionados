@@ -26,6 +26,25 @@ const cultura = leerCsv(
 const contactos = new Contactos(ayuntamientos, cultura);
 
 describe('directorio de contactos', () => {
+  it('quita el email de otro ayuntamiento de otra provincia, pero no las secretarías compartidas', () => {
+    const cab = 'Comunidad autónoma,Provincia,Municipio,Código INE,Población,Responsable de cultura,Cargo y área,Email cultura,Teléfono cultura,Teléfono ayuntamiento,Email ayuntamiento,Web,Alcalde/sa,Partido alcaldía,Dirección,Fuentes';
+    const c = new Contactos(
+      leerCsv(
+        [
+          cab,
+          'Andalucía,Córdoba,Villa Grande,14001,30000,,,,,,info@aytovillagrande.example,https://www.villagrande.example,,,,',
+          'Andalucía,Sevilla,Otro Pueblo,41001,9000,,,,,,info@aytovillagrande.example,https://www.otropueblo.example,,,,',
+          'Navarra,Navarra,Cabecera,31001,900,,,,,,udala@cabecera.example,https://www.cabecera.example,,,,',
+          'Navarra,Navarra,Aldea,31002,80,,,,,,udala@cabecera.example,https://www.aldea.example,,,,',
+        ].join('\n'),
+      ),
+      [],
+    );
+    expect(c.porCodigo('14001')!.ayuntamiento.email).toBe('info@aytovillagrande.example');
+    expect(c.porCodigo('41001')!.ayuntamiento.email).toBeNull();
+    expect(c.porCodigo('31002')!.ayuntamiento.email).toBe('udala@cabecera.example');
+  });
+
   it('lee CSV con comillas y comas dentro de los campos', () => {
     expect(ayuntamientos[0]!['Dirección']).toBe('Praza Maior, 1, 27001 Lugo');
     expect(ayuntamientos[1]!['Municipio']).toBe('Pobra do Brollón, A');

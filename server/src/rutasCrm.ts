@@ -7,7 +7,7 @@ import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
 import { noEncaja, prepararPropuestas, redactarPropuesta } from './crm/prospeccion.js';
-import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
+import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, PLANTILLAS_GENERICAS, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
 import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
@@ -491,7 +491,19 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
           espectaculos: x.encaje.slice(0, 3).map((e) => ({ id: e.espectaculo.id, nombre: e.espectaculo.nombre, viabilidad: e.viabilidad, motivo: e.motivoViabilidad })),
         }));
       const bandeja = await c.bandeja(u.id);
+      const ajustes = await c.ajustes(u.id);
+      const hace180 = Date.now() - 180 * 86_400_000;
+      const completa = (e: (typeof catalogo)[number]) =>
+        e.estadoInfo === 'vigente' && !!e.revisado && Date.parse(e.revisado) >= hace180 && (e.precioMin != null || e.precioMax != null) && !!e.requisitos.trim() && !!e.textoCarta?.trim();
+      const puesta = {
+        catalogo: catalogo.length,
+        completas: catalogo.filter(completa).length,
+        // Hechas si las plantillas guardadas no son las genéricas (al guardar la firma se guardan también).
+        plantillas: !!ajustes.plantillas && JSON.stringify(completarPlantillas(ajustes.plantillas)) !== JSON.stringify(PLANTILLAS_GENERICAS),
+        firma: !!(ajustes.firma.trim() || ajustes.remitente.trim()),
+      };
       return {
+        puesta,
         llamar: await c.pendientes(u.id),
         propuestas: await c.contarPropuestas(u.id),
         embudo: await c.embudo(u.id),
@@ -503,6 +515,11 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         catalogo: catalogo.length,
       };
     }),
+  );
+
+  r.get(
+    '/estadisticas',
+    ruta(async (_q, _r, u, c) => c.estadisticas(u.id)),
   );
 
   r.post(
