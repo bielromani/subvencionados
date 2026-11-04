@@ -12,7 +12,7 @@ import type { Convocatoria, Estilo } from '../tipos.js';
 import { avisosFicha, encajeEntidad, encajeLicitacion, type Encaje } from './encaje.js';
 import { idProgramador } from '../directorio.js';
 import { normalizar } from '../clasificacion/musica.js';
-import { firmaDe, NOMBRE_TIPO, saludoA } from './plantillas.js';
+import { componerCarta } from './cartas.js';
 import type { AjustesCrm, Espectaculo, TipoEspectaculo } from './tipos.js';
 
 export interface PropuestaPreparada {
@@ -35,6 +35,8 @@ export interface PropuestaPreparada {
   ayudas: { id: string; titulo: string; fin: string | null }[];
   licitaciones: { id: string; titulo: string; fin: string | null }[];
   gestion: string[];
+  /** Estilos que ha programado (para volver a redactar el correo si cambian las plantillas). */
+  historial: Estilo[];
   asunto: string;
   cuerpo: string;
   puntos: number;
@@ -59,89 +61,46 @@ const NOMBRE_ESTILO: Record<'es' | 'ca', Record<Estilo, string>> = {
 const ES_AYUNTAMIENTO = /ayuntamiento|ajuntament|concello|alcald|junta de gobierno|udala/i;
 const CATALAN = /catalu/i;
 
-const lista = (xs: string[], y: string) => (xs.length <= 1 ? (xs[0] ?? '') : `${xs.slice(0, -1).join(', ')} ${y} ${xs.at(-1)}`);
-const fecha = (iso: string | null, idioma: 'es' | 'ca') =>
-  iso ? new Date(`${iso.slice(0, 10)}T00:00:00Z`).toLocaleDateString(idioma === 'ca' ? 'ca-ES' : 'es-ES', { day: 'numeric', month: 'long', timeZone: 'UTC' }) : null;
-
 /**
- * Las mejores propuestas, variadas: primero la mejor de cada tipo (por orden de encaje), luego el resto. Dentro de un
- * mismo encaje, antes las fichas vigentes y con más información.
+ * Las mejores propuestas: por orden de encaje (pesa más el estilo que más programa el sitio), como mucho dos del mismo
+ * tipo para que haya variedad. Con el mismo encaje, antes las fichas vigentes y con más información. Sin historial
+ * (abanico amplio), una de cada tipo.
  */
 function variadas(xs: Encaje[], n: number): Encaje[] {
-  const calidad = (x: Encaje) => (x.espectaculo.estadoInfo === 'vigente' ? 2 : 0) + (x.espectaculo.formato ? 1 : 0);
+  const calidad = (x: Encaje) => (x.espectaculo.estadoInfo === 'vigente' ? 2 : 0) + (x.espectaculo.textoCarta ? 2 : 0) + (x.espectaculo.formato ? 1 : 0);
   const orden = [...xs].sort((a, b) => b.puntos - a.puntos || calidad(b) - calidad(a));
+  const conMotivo = orden.filter((x) => x.puntos > 0);
+  const porTipo = new Map<string, number>();
   const elegidas: Encaje[] = [];
-  const tipos = new Set<string>();
-  for (const x of orden) if (x.puntos > 0 && !tipos.has(x.espectaculo.tipo) && elegidas.length < n) (tipos.add(x.espectaculo.tipo), elegidas.push(x));
-  for (const x of orden) if (elegidas.length < n && !elegidas.includes(x) && x.puntos > 0) elegidas.push(x);
-  // Sin historial (abanico amplio): uno de cada tipo.
-  if (!elegidas.length) for (const x of orden) if (!tipos.has(x.espectaculo.tipo) && elegidas.length < n) (tipos.add(x.espectaculo.tipo), elegidas.push(x));
+  const maximo = conMotivo.length ? 2 : 1;
+  for (const x of conMotivo.length ? conMotivo : orden) {
+    if (elegidas.length >= n) break;
+    const k = porTipo.get(x.espectaculo.tipo) ?? 0;
+    if (k >= maximo) continue;
+    porTipo.set(x.espectaculo.tipo, k + 1);
+    elegidas.push(x);
+  }
   return elegidas;
 }
 
-/** El correo de la propuesta, en castellano o catalán. Sin precios ni fechas cerrados; la ayuda, como apoyo opcional. */
+/** El correo de la propuesta, por bloques con las plantillas de la cuenta (ver cartas.ts). */
 export function redactarPropuesta(
-  p: Omit<PropuestaPreparada, 'asunto' | 'cuerpo' | 'puntos' | 'motivos'>,
-  historial: Estilo[],
+  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial'>,
   ajustes: AjustesCrm,
   catalogo: Espectaculo[],
 ): { asunto: string; cuerpo: string } {
-  const ca = p.idioma === 'ca';
-  const lugar = p.municipio ?? p.nombre;
-  const org = ajustes.organizacion || (ca ? 'la nostra companyia' : 'nuestra compañía');
-  const tipos = [...new Set(p.espectaculos.map((e) => NOMBRE_TIPO[p.idioma][e.tipo]))];
-  const queOfrece = tipos.length ? lista(tipos.slice(0, 3), ca ? 'i' : 'y') : ca ? 'la nostra programació' : 'nuestra programación';
-  // Enlace propio de cada propuesta (su dosier); la web general, una sola vez al final.
-  const web = ajustes.web.replace(/\/$/, '');
-  const enlace = (id: string) => {
-    const u = catalogo.find((c) => c.id === id)?.enlace?.replace(/\/$/, '');
-    return u && u !== web ? u : null;
-  };
-  const lineas = p.espectaculos.map((e) => `- ${e.nombre} (${NOMBRE_TIPO[p.idioma][e.tipo]})${enlace(e.id) ? `: ${enlace(e.id)}` : ''}`).join('\n');
-  const estilos = lista(historial.map((e) => NOMBRE_ESTILO[p.idioma][e]), ca ? 'i' : 'y');
-  const pendiente = p.espectaculos.some((e) => e.avisos.length > 0);
-  const parrafos: string[] = [];
-  parrafos.push(saludoA(p.persona, p.idioma));
-  parrafos.push(
-    ca
-      ? `Em dic ${ajustes.remitente || '[nom]'}, de ${org}. ${historial.length ? `Us escric perquè he vist que a ${lugar} heu programat ${estilos} en els darrers anys, i crec que algunes de les nostres propostes hi podrien encaixar.` : `Us escric perquè crec que la programació cultural de ${lugar} podria tenir interès en ${queOfrece}.`}`
-      : `Me llamo ${ajustes.remitente || '[nombre]'}, de ${org}. ${historial.length ? `Os escribo porque he visto que en ${lugar} habéis programado ${estilos} en los últimos años, y creo que algunas de nuestras propuestas podrían encajar.` : `Os escribo porque creo que la programación cultural de ${lugar} podría tener interés en ${queOfrece}.`}`,
-  );
-  if (lineas) parrafos.push(`${ca ? 'Us en comparteixo algunes:' : 'Os comparto algunas:'}\n\n${lineas}`);
-  for (const l of p.licitaciones.slice(0, 1)) {
-    const f = fecha(l.fin, p.idioma);
-    parrafos.push(
-      ca
-        ? `També he vist que teniu oberta la licitació «${l.titulo}»${f ? ` (ofertes fins al ${f})` : ''}; si us encaixa, hi podem presentar oferta.`
-        : `También he visto que tenéis abierta la licitación «${l.titulo}»${f ? ` (ofertas hasta el ${f})` : ''}; si os encaja, podemos presentar oferta.`,
-    );
-  }
-  if (p.ayudas.length) {
-    const t = lista(
-      p.ayudas.slice(0, 2).map((a) => `«${a.titulo}»`),
-      ca ? 'i' : 'y',
-    );
-    parrafos.push(
-      ca
-        ? `D'altra banda, hem detectat ${p.ayudas.length > 1 ? 'algunes convocatòries' : 'una convocatòria'} (${t}) que potser podri${p.ayudas.length > 1 ? 'en' : 'a'} facilitar la programació d'aquestes propostes. Si ho considereu interessant, en podem estudiar conjuntament les possibilitats, sense cap compromís.`
-        : `Por otra parte, hemos detectado ${p.ayudas.length > 1 ? 'algunas convocatorias' : 'una convocatoria'} (${t}) que quizá podría${p.ayudas.length > 1 ? 'n' : ''} facilitar la programación de estas propuestas. Si lo consideráis interesante, podemos estudiar conjuntamente las posibilidades, sin ningún compromiso.`,
-    );
-  }
-  if (p.gestion.length) {
-    parrafos.push(
-      ca
-        ? `A més de concerts, dissenyem, produïm i gestionem festivals i cicles complets; si en algun moment us interessa, us ho explico.`
-        : `Además de conciertos, diseñamos, producimos y gestionamos festivales y ciclos completos; si en algún momento os interesa, os lo explico.`,
-    );
-  }
-  parrafos.push(
-    ca
-      ? `Les condicions, el format i les dates les podem concretar segons les vostres necessitats${pendiente ? ' (algunes dades encara les estem actualitzant)' : ''}. Si us ve de gust, us envio el dossier complet o en parlem per telèfon quan us vagi bé.${web ? ` Teniu totes les propostes a ${web}.` : ''}`
-      : `Las condiciones, el formato y las fechas las podemos concretar según vuestras necesidades${pendiente ? ' (algunos datos los estamos actualizando todavía)' : ''}. Si os apetece, os envío el dosier completo o lo hablamos por teléfono cuando os vaya bien.${web ? ` Tenéis todas las propuestas en ${web}.` : ''}`,
-  );
-  parrafos.push(`${ca ? 'Una salutació cordial,' : 'Un saludo cordial,'}\n${firmaDe(ajustes, p.idioma)}`);
-  const asunto = ca ? `Propostes de ${queOfrece} per a ${lugar}` : `Propuestas de ${queOfrece} para ${lugar}`;
-  return { asunto, cuerpo: parrafos.join('\n\n') };
+  const porId = new Map(catalogo.map((e) => [e.id, e]));
+  return componerCarta({
+    idioma: p.idioma,
+    lugar: p.municipio ?? p.nombre,
+    persona: p.persona,
+    historial: p.historial,
+    espectaculos: p.espectaculos.map((e) => porId.get(e.id) ?? { id: e.id, nombre: e.nombre, tipo: e.tipo, enlace: '' }),
+    licitaciones: p.licitaciones,
+    ayudas: p.ayudas,
+    gestion: p.gestion.length > 0,
+    ajustes,
+  });
 }
 
 /**
@@ -202,7 +161,7 @@ export function prepararPropuestas(
     // Hace falta una razón concreta: historial del estilo, una ayuda o una licitación.
     if (!conciertos && !suyas.length && !licitaciones.length) continue;
     const encaje = encajeEntidad(disponibles, p, hoy);
-    const espectaculos = variadas(encaje.propuestas, 5).map((x) => ({ id: x.espectaculo.id, nombre: x.espectaculo.nombre, tipo: x.espectaculo.tipo, motivos: x.motivos, avisos: avisosFicha(x.espectaculo, hoy) }));
+    const espectaculos = variadas(encaje.propuestas, 6).map((x) => ({ id: x.espectaculo.id, nombre: x.espectaculo.nombre, tipo: x.espectaculo.tipo, motivos: x.motivos, avisos: avisosFicha(x.espectaculo, hoy) }));
     const idioma: 'es' | 'ca' = p.ccaa && CATALAN.test(p.ccaa) ? 'ca' : 'es';
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
@@ -229,8 +188,9 @@ export function prepararPropuestas(
       ayudas: suyas.map((a) => ({ id: a.id, titulo: tituloCortoDe(a.titulo), fin: a.fechaFinSolicitud })),
       licitaciones: licitaciones.slice(0, 2).map((l) => ({ id: l.id, titulo: l.titulo, fin: l.finPlazo })),
       gestion: senalesGestion.slice(0, 2),
+      historial,
     };
-    candidatos.push({ ...base, motivos, puntos, ...redactarPropuesta(base, historial, ajustes, disponibles) });
+    candidatos.push({ ...base, motivos, puntos, ...redactarPropuesta(base, ajustes, disponibles) });
   }
   return candidatos.sort((a, b) => b.puntos - a.puntos).slice(0, opciones.limite);
 }

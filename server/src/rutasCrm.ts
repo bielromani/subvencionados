@@ -6,7 +6,8 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
-import { prepararPropuestas } from './crm/prospeccion.js';
+import { prepararPropuestas, redactarPropuesta } from './crm/prospeccion.js';
+import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
 import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
@@ -61,6 +62,8 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
     enlace: /^https?:\/\//.test(texto(b.enlace, 500)) ? texto(b.enlace, 500) : '',
     estadoInfo: b.estadoInfo === 'vigente' ? 'vigente' : 'pendiente',
     revisado,
+    textoCarta: texto(b.textoCarta, 4000),
+    textoCartaCa: texto(b.textoCartaCa, 4000),
     // Lo que viene de una importación se conserva al editar la ficha.
     ...(typeof b.origen === 'string' && /^[a-z0-9.-]+#\d+$/.test(b.origen) && { origen: b.origen }),
     ...(typeof b.enWeb === 'boolean' && { enWeb: b.enWeb }),
@@ -69,6 +72,9 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
 }
 
 const IDIOMA_CATALAN = /catalu|catalunya/i;
+
+/** Plantillas que manda el navegador: misma forma que las genéricas, solo textos (los que falten, los genéricos). */
+const validarPlantillas = (x: unknown): PlantillasCarta => completarPlantillas(x);
 
 export interface AlertaCrm {
   entidad: { id: string; nombre: string; ref: string | null };
@@ -159,7 +165,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     '/ajustes',
     ruta(async (_q, _r, u, c) => {
       const a = await c.ajustes(u.id);
-      return { ajustes: { ...a, email: a.email || u.email }, envioConectado: enviar !== null };
+      return { ajustes: { ...a, email: a.email || u.email, plantillas: plantillasDe(a) }, envioConectado: enviar !== null };
     }),
   );
   r.put(
@@ -174,10 +180,42 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         telefono: texto(b.telefono, 100),
         web: texto(b.web, 300),
         firma: texto(b.firma, 1000),
+        cargo: texto(b.cargo, 200),
+        ...(b.plantillas && { plantillas: validarPlantillas(b.plantillas) }),
         diasEntreEnvios: Math.min(60, Math.max(3, Math.round(Number(b.diasEntreEnvios) || 10))),
       };
       await c.guardarAjustes(u.id, a);
       return { ajustes: a };
+    }),
+  );
+
+  // Preajuste ArsVia: las cartas modelo de Joan (plantillas, firma) y el texto de cada producción en sus fichas
+  // (solo en las que aún no tienen texto). Después se vuelven a redactar las propuestas pendientes.
+  r.post(
+    '/plantillas/arsvia',
+    ruta(async (_q, _r, u, c) => {
+      const a = await c.ajustes(u.id);
+      await c.guardarAjustes(u.id, { ...a, plantillas: PLANTILLAS_ARSVIA, firma: a.firma.trim() ? a.firma : FIRMA_ARSVIA, cargo: a.cargo || 'Coordinación de proyectos y giras' });
+      let textos = 0;
+      for (const e of await c.espectaculos(u.id)) {
+        const t = TEXTOS_PRODUCCIONES_ARSVIA.find((x) => x.patron.test(e.nombre));
+        if (!t || e.textoCarta) continue;
+        const { id, ...resto } = e;
+        await c.guardarEspectaculo(u.id, { ...resto, textoCarta: t.es, textoCartaCa: t.ca }, id);
+        textos++;
+      }
+      const ajustes = await c.ajustes(u.id);
+      const catalogo = await c.espectaculos(u.id);
+      const reescritas = await c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo));
+      return { textos, reescritas };
+    }),
+  );
+  r.post(
+    '/propuestas/reescribir',
+    ruta(async (_q, _r, u, c) => {
+      const ajustes = await c.ajustes(u.id);
+      const catalogo = await c.espectaculos(u.id);
+      return { reescritas: await c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo)) };
     }),
   );
 

@@ -33,6 +33,8 @@ export interface Espectaculo {
   origen?: string;
   enWeb?: boolean;
   huellaWeb?: string;
+  textoCarta?: string;
+  textoCartaCa?: string;
 }
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';
@@ -186,6 +188,31 @@ export interface FichaEntidad {
   licitaciones: { contrato: Contrato; espectaculos: EspectaculoBreve[] }[];
 }
 
+export interface TextoLinea {
+  titulo: string;
+  intro: string;
+  texto: string;
+}
+export type LineaCarta = 'lirica' | 'camara' | 'popular' | 'navidad';
+export interface TextosIdioma {
+  saludo: string;
+  saludoPersona: string;
+  introVarias: string;
+  historial: string;
+  lineas: Record<LineaCarta, TextoLinea>;
+  licitacion: string;
+  ayudas: string;
+  gestion: string;
+  colaboracion: string;
+  despedida: string;
+  seguimientos: [string, string, string, string];
+  asunto: string;
+}
+export interface PlantillasCarta {
+  es: TextosIdioma;
+  ca: TextosIdioma;
+}
+
 export interface AjustesCrm {
   remitente: string;
   organizacion: string;
@@ -193,7 +220,9 @@ export interface AjustesCrm {
   telefono: string;
   web: string;
   firma: string;
+  cargo?: string;
   diasEntreEnvios: number;
+  plantillas: PlantillasCarta;
 }
 
 export type MensajeBandeja = Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string };
@@ -276,6 +305,8 @@ export const crm = {
   anotar: (id: string, a: { tipo: TipoHistorial; texto?: string; oportunidad?: string | null; vence?: string | null }) => pedir(`/entidades/${id}/anotar`, 'POST', a),
   corregirEstado: (id: string, c: { estadoRelacion?: EstadoRelacion; noContactar?: boolean }) => pedir(`/entidades/${id}/estado`, 'POST', c),
   propuestas: () => pedir<{ items: PropuestaPreparada[] }>('/propuestas'),
+  cargarPlantillasArsvia: () => pedir<{ textos: number; reescritas: number }>('/plantillas/arsvia', 'POST', {}),
+  reescribirPropuestas: () => pedir<{ reescritas: number }>('/propuestas/reescribir', 'POST', {}),
   prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
   guardarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) => pedir(`/propuestas/${id}`, 'PUT', c),
   descartarPropuesta: (id: string) => pedir(`/propuestas/${id}/descartar`, 'POST', {}),

@@ -56,7 +56,8 @@ export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, ho
     let puntos = 0;
     const n = tiposConocidos.get(e.tipo);
     if (n) {
-      puntos += 3 + Math.min(n, 10) / 10;
+      // Pesa cuánto lo programa: a quien hace mucha ópera, primero las óperas.
+      puntos += 3 + Math.min(n, 40) / 10;
       motivos.push(`Ha contratado ${n} ${n === 1 ? 'concierto' : 'conciertos'} de este estilo`);
     }
     if (e.tipo === 'navidad' && navidad) {

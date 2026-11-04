@@ -16,13 +16,31 @@ describe('plantillas', () => {
     const c = generarCarta({ ...base, paso: 1, ayuda: { titulo: 'Ayudas a la programación musical 2026', enlace: null } });
     expect(c.cuerpo).toContain('quizá podría facilitar');
     expect(c.cuerpo).not.toMatch(/concedid|garantiz/i);
-    expect(c.cuerpo).toContain('algunos datos los estamos actualizando');
     expect(c.cuerpo).toContain('Réquiem de Brahms');
   });
-  it('en catalán para entidades de Cataluña', () => {
-    const c = generarCarta({ ...base, entidad: { ...base.entidad, idioma: 'ca' }, paso: 2 });
-    expect(c.asunto).toMatch(/^Re: Proposta/);
-    expect(c.cuerpo).toContain('Una salutació cordial');
+  it('en catalán para entidades de Cataluña; los seguimientos responden a la primera carta', () => {
+    const primera = generarCarta({ ...base, entidad: { ...base.entidad, idioma: 'ca' }, paso: 1 });
+    expect(primera.asunto).toMatch(/^Propostes de/);
+    const c = generarCarta({ ...base, entidad: { ...base.entidad, idioma: 'ca' }, paso: 2, asuntoInicial: primera.asunto });
+    expect(c.asunto).toBe(`Re: ${primera.asunto}`);
+    expect(c.cuerpo).toContain('Atentament,');
+  });
+
+  it('cartas modelo de ArsVia: presentación de la línea, texto de cada producción y firma', async () => {
+    const { PLANTILLAS_ARSVIA, FIRMA_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } = await import('../src/crm/cartas.js');
+    const requiem = TEXTOS_PRODUCCIONES_ARSVIA.find((t) => t.patron.test('Réquiem alemán – Brahms'))!;
+    expect(TEXTOS_PRODUCCIONES_ARSVIA.find((t) => t.patron.test('La flauta mágica – Mozart'))).toBeDefined();
+    const c = generarCarta({
+      ...base,
+      paso: 1,
+      espectaculos: [{ ...base.espectaculos[0]!, textoCarta: requiem.es }],
+      ajustes: { ...base.ajustes, plantillas: PLANTILLAS_ARSVIA, firma: FIRMA_ARSVIA },
+    });
+    expect(c.cuerpo).toContain('Òpera Popular de Barcelona, Orquestra Simfònica Segle XXI, Jeloudoli S.L. y ArsVia');
+    expect(c.cuerpo).toContain('Avance de programación · 2027-2029');
+    expect(c.cuerpo).toContain('Jordi Mora, discípulo directo de Sergiu Celibidache');
+    expect(c.cuerpo).toContain('me gustaría proponerle una breve entrevista');
+    expect(c.cuerpo).toMatch(/Coordinación de proyectos y giras/);
   });
 });
 

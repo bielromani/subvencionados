@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { type AjustesCrm, crm, type Espectaculo, NOMBRE_TIPO, type TipoEspectaculo } from '../crm';
+import { type AjustesCrm, crm, type Espectaculo, type LineaCarta, NOMBRE_TIPO, type TextosIdioma, type TipoEspectaculo } from '../crm';
 import { useCuenta } from '../sincronizar';
 
 const VACIO: Omit<Espectaculo, 'id'> = {
@@ -67,6 +67,14 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
         </label>
       </div>
       <label>
+        Texto para las cartas (cómo se presenta en los correos)
+        <textarea rows={4} value={e.textoCarta ?? ''} onChange={(x) => campo('textoCarta', x.target.value)} placeholder="Fidelio, de Beethoven. Producción operística…" />
+      </label>
+      <label>
+        Texto para las cartas en catalán (opcional)
+        <textarea rows={3} value={e.textoCartaCa ?? ''} onChange={(x) => campo('textoCartaCa', x.target.value)} />
+      </label>
+      <label>
         Disponibilidad temporal
         <input value={e.disponibilidad} onChange={(x) => campo('disponibilidad', x.target.value)} placeholder="Temporada 2026-2027, todo el año…" />
       </label>
@@ -106,41 +114,117 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
   );
 }
 
-function Ajustes() {
-  const [a, setA] = useState<AjustesCrm | null>(null);
-  const [aviso, setAviso] = useState<string | null>(null);
-  useEffect(() => {
-    void crm.ajustes().then((r) => setA(r.ajustes));
-  }, []);
-  if (!a) return null;
-  const campo = (k: keyof AjustesCrm, etiqueta: string, tipo = 'text') => (
+const NOMBRE_LINEA: Record<LineaCarta, string> = { lirica: 'Ópera y sinfónico-coral', camara: 'Música de cámara', popular: 'Jazz, rock y festivo', navidad: 'Navidad y Año Nuevo' };
+
+/** Editor de los textos de las cartas en un idioma. Entre llaves, lo que se rellena solo: {lugar}, {persona}... */
+function EditorTextos({ t, cambiar }: { t: TextosIdioma; cambiar: (t: TextosIdioma) => void }) {
+  const area = (etiqueta: string, valor: string, poner: (v: string) => void, filas = 3) => (
     <label>
       {etiqueta}
-      <input type={tipo} value={String(a[k])} onChange={(e) => setA({ ...a, [k]: tipo === 'number' ? Number(e.target.value) : e.target.value })} />
+      <textarea rows={filas} value={valor} onChange={(e) => poner(e.target.value)} />
     </label>
   );
   return (
-    <details className="bloque">
-      <summary>Remitente, firma y pauta de la secuencia</summary>
-      <div className="formulario formulario-ancho">
-        {campo('remitente', 'Tu nombre')}
-        {campo('organizacion', 'Organización')}
-        {campo('email', 'Email')}
-        {campo('telefono', 'Teléfono')}
-        {campo('web', 'Web')}
-        <label>
-          Firma (si la dejas vacía se usan los datos de arriba)
-          <textarea rows={4} value={a.firma} onChange={(e) => setA({ ...a, firma: e.target.value })} />
-        </label>
-        {campo('diasEntreEnvios', 'Días entre envíos (desde el envío efectivo del anterior)', 'number')}
+    <div className="formulario formulario-ancho">
+      {area('Asunto ({propuestas}, {lugar})', t.asunto, (v) => cambiar({ ...t, asunto: v }), 1)}
+      {area('Saludo', t.saludo, (v) => cambiar({ ...t, saludo: v }), 1)}
+      {area('Saludo con la persona ({persona})', t.saludoPersona, (v) => cambiar({ ...t, saludoPersona: v }), 1)}
+      {area('Presentación cuando el correo junta varias líneas ({lugar})', t.introVarias, (v) => cambiar({ ...t, introVarias: v }))}
+      {area('Lo que han programado ({lugar}, {estilos})', t.historial, (v) => cambiar({ ...t, historial: v }))}
+      {(Object.keys(NOMBRE_LINEA) as LineaCarta[]).map((l) => (
+        <fieldset key={l}>
+          <legend>{NOMBRE_LINEA[l]}</legend>
+          {area('Título de la sección', t.lineas[l].titulo, (v) => cambiar({ ...t, lineas: { ...t.lineas, [l]: { ...t.lineas[l], titulo: v } } }), 1)}
+          {area('Presentación (si es la línea principal del correo)', t.lineas[l].intro, (v) => cambiar({ ...t, lineas: { ...t.lineas, [l]: { ...t.lineas[l], intro: v } } }))}
+          {area('Texto de la sección (solo en la línea principal)', t.lineas[l].texto, (v) => cambiar({ ...t, lineas: { ...t.lineas, [l]: { ...t.lineas[l], texto: v } } }), 5)}
+        </fieldset>
+      ))}
+      {area('Licitación abierta ({titulo}, {fecha})', t.licitacion, (v) => cambiar({ ...t, licitacion: v }))}
+      {area('Ayudas ({convocatorias})', t.ayudas, (v) => cambiar({ ...t, ayudas: v }))}
+      {area('Gestión integral de festivales', t.gestion, (v) => cambiar({ ...t, gestion: v }))}
+      {area('Propuesta de colaboración', t.colaboracion, (v) => cambiar({ ...t, colaboracion: v }), 5)}
+      {area('Despedida', t.despedida, (v) => cambiar({ ...t, despedida: v }))}
+      {t.seguimientos.map((x, i) => (
+        <span key={i}>{area(`Seguimiento ${i + 2}.º ({lugar})`, x, (v) => cambiar({ ...t, seguimientos: t.seguimientos.map((y, j) => (j === i ? v : y)) as TextosIdioma['seguimientos'] }))}</span>
+      ))}
+    </div>
+  );
+}
+
+function Ajustes({ alCambiarCatalogo }: { alCambiarCatalogo: () => void }) {
+  const [a, setA] = useState<AjustesCrm | null>(null);
+  const [aviso, setAviso] = useState<string | null>(null);
+  const cargar = () => crm.ajustes().then((r) => setA(r.ajustes));
+  useEffect(() => {
+    void cargar();
+  }, []);
+  if (!a) return null;
+  const campo = (k: 'remitente' | 'organizacion' | 'cargo' | 'email' | 'telefono' | 'web' | 'diasEntreEnvios', etiqueta: string, tipo = 'text') => (
+    <label>
+      {etiqueta}
+      <input type={tipo} value={String(a[k] ?? '')} onChange={(e) => setA({ ...a, [k]: tipo === 'number' ? Number(e.target.value) : e.target.value })} />
+    </label>
+  );
+  const guardar = async () => {
+    await crm.guardarAjustes(a);
+    const r = await crm.reescribirPropuestas();
+    setAviso(`Guardado.${r.reescritas ? ` ${r.reescritas} propuestas pendientes vueltas a redactar.` : ''}`);
+  };
+  const arsvia = async () => {
+    if (!window.confirm('Se cargarán las cartas modelo de ArsVia (plantillas y firma) y los textos de cada producción en las fichas que aún no tengan. ¿Seguir?')) return;
+    const r = await crm.cargarPlantillasArsvia();
+    await cargar();
+    alCambiarCatalogo();
+    setAviso(`Plantillas de ArsVia cargadas. ${r.textos} fichas con texto nuevo; ${r.reescritas} propuestas vueltas a redactar.`);
+  };
+  return (
+    <>
+      <details className="bloque">
+        <summary>Remitente, firma y pauta de la secuencia</summary>
+        <div className="formulario formulario-ancho">
+          {campo('remitente', 'Tu nombre')}
+          {campo('cargo', 'Cargo')}
+          {campo('organizacion', 'Organización')}
+          {campo('email', 'Email')}
+          {campo('telefono', 'Teléfono')}
+          {campo('web', 'Web')}
+          <label>
+            Firma (si la dejas vacía se usan los datos de arriba)
+            <textarea rows={5} value={a.firma} onChange={(e) => setA({ ...a, firma: e.target.value })} />
+          </label>
+          {campo('diasEntreEnvios', 'Días entre envíos (desde el envío efectivo del anterior)', 'number')}
+          <p className="acciones">
+            <button type="button" className="boton" onClick={() => void guardar()}>
+              Guardar
+            </button>
+          </p>
+        </div>
+      </details>
+      <details className="bloque">
+        <summary>Plantillas de las cartas</summary>
+        <p className="ayuda">
+          Cada correo se monta por bloques: saludo, presentación, lo que el sitio ha programado, una sección por cada línea que encaja (con el texto de cada propuesta), la licitación,
+          las ayudas, la colaboración y la firma. Entre llaves, lo que se rellena solo.
+        </p>
         <p className="acciones">
-          <button type="button" className="boton" onClick={() => void crm.guardarAjustes(a).then(() => setAviso('Guardado.'))}>
-            Guardar
+          <button type="button" className="accion" onClick={() => void arsvia()}>
+            Cargar las cartas modelo de ArsVia
           </button>
         </p>
-        {aviso && <p className="ayuda">{aviso}</p>}
-      </div>
-    </details>
+        <h4 className="subtitulo-bloque">Castellano</h4>
+        <EditorTextos t={a.plantillas.es} cambiar={(t) => setA({ ...a, plantillas: { ...a.plantillas, es: t } })} />
+        <details>
+          <summary>Catalán (para entidades de Cataluña)</summary>
+          <EditorTextos t={a.plantillas.ca} cambiar={(t) => setA({ ...a, plantillas: { ...a.plantillas, ca: t } })} />
+        </details>
+        <p className="acciones">
+          <button type="button" className="boton" onClick={() => void guardar()}>
+            Guardar y volver a redactar las propuestas
+          </button>
+        </p>
+      </details>
+      {aviso && <p className="llamada">{aviso}</p>}
+    </>
   );
 }
 
@@ -178,7 +262,7 @@ export function Catalogo() {
   };
   return (
     <section>
-      <Ajustes />
+      <Ajustes alCambiarCatalogo={() => void cargar()} />
       <section className="bloque">
         <h3>
           Catálogo <span className="contador">{items.length}</span>
@@ -215,7 +299,8 @@ export function Catalogo() {
               {e.origen && <span className="ayuda">De arsvia.org</span>}
               {e.revisado && <span className="ayuda">Revisado el {new Date(`${e.revisado}T00:00:00`).toLocaleDateString('es-ES')}</span>}
             </p>
-            {e.formato && <p className="texto-lineas">{e.formato}</p>}
+            {e.textoCarta && <p className="texto-lineas">{e.textoCarta}</p>}
+            {!e.textoCarta && e.formato && <p className="texto-lineas">{e.formato}</p>}
             {e.disponibilidad && <p className="texto-lineas ayuda">{e.disponibilidad}</p>}
             <dl className="datos">
               <div>

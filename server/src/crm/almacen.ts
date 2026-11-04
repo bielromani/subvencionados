@@ -537,6 +537,8 @@ export class AlmacenCrm {
     const [o] = await q<FilaOportunidad>('select * from crm_oportunidades where id = $1', [s.oportunidad]);
     const [e] = await q<FilaEntidad>('select * from crm_entidades where id = $1', [s.entidad]);
     const catalogo = await this.espectaculos(u);
+    // Los seguimientos responden a la primera carta: «Re:» con su asunto.
+    const [primera] = await q<{ asunto: string }>('select asunto from crm_mensajes where secuencia = $1 and paso = 1 order by creado limit 1', [s.id]);
     const carta = generarCarta({
       paso,
       entidad: aEntidad(e!),
@@ -544,6 +546,7 @@ export class AlmacenCrm {
       espectaculos: catalogo.filter((x) => o!.espectaculos.includes(x.id)),
       ayuda: o!.tipo === 'subvencion' ? { titulo: o!.titulo, enlace: null } : null,
       ajustes: await this.ajustes(u),
+      asuntoInicial: primera?.asunto.replace(/^Re:\s*/i, ''),
     });
     await q('insert into crm_mensajes (usuario, secuencia, paso, asunto, cuerpo, disponible_desde) values ($1, $2, $3, $4, $5, $6)', [u, s.id, paso, carta.asunto, carta.cuerpo, disponible]);
   }
@@ -686,6 +689,16 @@ export class AlmacenCrm {
   /** Cuentas con catálogo (para preparar propuestas cada día). */
   async usuariosConCatalogo(): Promise<string[]> {
     return (await this.q<{ usuario: string }>('select distinct usuario from crm_espectaculos')).map((f) => f.usuario);
+  }
+
+  /** Vuelve a redactar las propuestas pendientes (tras cambiar plantillas, firma o textos del catálogo). */
+  async reescribirPropuestas(u: string, redactar: (p: PropuestaPreparada) => { asunto: string; cuerpo: string }): Promise<number> {
+    const filas = await this.q<{ id: string; datos: PropuestaPreparada }>("select id, datos from crm_propuestas where usuario = $1 and estado = 'pendiente'", [u]);
+    for (const f of filas) {
+      if (!f.datos.historial) continue;
+      await this.q('update crm_propuestas set datos = $2, actualizado = now() where id = $1', [f.id, JSON.stringify({ ...f.datos, ...redactar(f.datos) })]);
+    }
+    return filas.length;
   }
 
   async descartarPropuesta(u: string, id: string) {

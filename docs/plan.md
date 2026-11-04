@@ -399,4 +399,15 @@ El usuario lo retoca, da el visto bueno (la entidad entra en seguimiento con su 
 o lo descarta. No se repiten los descartados (90 días), los que ya están en seguimiento ni los de «no contactar».
 Hasta 20 nuevas al día, con un máximo de 60 pendientes.
 
-Siguiente: plantillas con el tono de Joan (cuando las pase).
+**Plantillas de las cartas** (noviembre 2026). Los correos se montan por bloques con las plantillas de cada cuenta,
+editables en Catálogo → Plantillas. Las líneas son: lírica y sinfónico-coral, cámara, jazz/rock/festivo, y Navidad.
+- La línea principal va completa; las demás, solo con sus propuestas.
+- Cada producción se presenta con su «texto para las cartas».
+- El preajuste «ArsVia» carga las tres cartas modelo de Joan Romaní:
+  - la presentación del equipo de producción y el avance 2027-2029;
+  - la línea de cámara;
+  - la línea de jazz y rock;
+  - su firma;
+  - el texto de Fidelio, el Réquiem, la Pasión, La flauta mágica, Ella Fitzgerald, Creedence e Historia del rock.
+- A quien programa sobre todo ópera, primero las óperas; a los sinfónico-corales, primero Brahms y Bach.
+- El texto de «Romaní-Zhulyev Hot Jazz» no se asigna solo: en la web la propuesta se llama «Oriol Romaní & Friends».

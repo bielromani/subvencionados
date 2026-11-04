@@ -25,7 +25,7 @@ describe('propuestas preparadas', () => {
     expect(p).toMatchObject({ ref: 'a', nombre: 'Ayuntamiento de Alcañiz', destinatario: 'cultura@alcaniz.es', persona: 'Persona de Cultura', revisarEmail: null });
     expect(p!.espectaculos.map((e) => e.id)).toEqual(['00000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000002']);
     expect(p!.cuerpo).toContain('Estimado/a Persona de Cultura:');
-    expect(p!.cuerpo).toContain('habéis programado jazz');
+    expect(p!.cuerpo).toContain('han programado jazz');
     expect(p!.cuerpo).not.toMatch(/€|garantiz|concedid/);
     expect(p!.motivos[0]).toContain('6 de jazz');
   });

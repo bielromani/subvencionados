@@ -1,6 +1,8 @@
 // Prospección y seguimiento (CRM) de cada cuenta: su catálogo, las entidades a las que ofrece programación, las
 // oportunidades concretas con cada una y las secuencias de cinco envíos escritos con aprobación humana.
 
+import type { PlantillasCarta } from './cartas.js';
+
 export type TipoEspectaculo = 'opera' | 'sinfonico_coral' | 'sinfonica' | 'religiosa' | 'camara' | 'jazz' | 'rock' | 'navidad' | 'fusion' | 'festivales' | 'otro';
 export const TIPOS_ESPECTACULO: TipoEspectaculo[] = ['opera', 'sinfonico_coral', 'sinfonica', 'religiosa', 'camara', 'jazz', 'rock', 'navidad', 'fusion', 'festivales', 'otro'];
 
@@ -26,6 +28,9 @@ export interface Espectaculo {
   enWeb?: boolean;
   /** Resumen de lo que decía la web en la última importación (para saber si ha cambiado). */
   huellaWeb?: string;
+  /** Párrafo con que se presenta en las cartas (castellano y catalán). */
+  textoCarta?: string;
+  textoCartaCa?: string;
 }
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';
@@ -137,8 +142,12 @@ export interface AjustesCrm {
   telefono: string;
   web: string;
   firma: string;
+  /** Cargo que figura en la firma («Coordinación de proyectos y giras»). */
+  cargo?: string;
   /** Días entre envíos de la secuencia (orientativo, desde el envío efectivo del anterior). */
   diasEntreEnvios: number;
+  /** Textos de las cartas por bloques (si no hay, los genéricos). */
+  plantillas?: PlantillasCarta;
 }
 
 export const AJUSTES_POR_DEFECTO: AjustesCrm = { remitente: '', organizacion: '', email: '', telefono: '', web: '', firma: '', diasEntreEnvios: 10 };
