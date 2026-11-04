@@ -287,7 +287,8 @@ export function EntidadCrm({ refId, id }: { refId?: string; id?: string }) {
   const nombreEsp = (i: string) => f.encaje.propuestas.find((p) => p.espectaculo.id === i)?.espectaculo.nombre ?? 'Espectáculo borrado';
 
   return (
-    <>
+    <div className="ficha-crm">
+      <div className="ficha-crm-principal">
       <section className="bloque seguimiento-crm">
         <h3>Seguimiento</h3>
         {!e ? (
@@ -311,34 +312,6 @@ export function EntidadCrm({ refId, id }: { refId?: string; id?: string }) {
             <Contacto e={e} alCambiar={() => void cargar()} />
             <Anotar e={e} alCambiar={() => void cargar()} />
           </>
-        )}
-      </section>
-
-      <section className="bloque">
-        <h3>Propuestas de tu catálogo que podrían encajar</h3>
-        {f.encaje.amplio && f.encaje.propuestas.length > 0 && <p className="ayuda">Sin historial conocido de sus gustos: abanico amplio del catálogo.</p>}
-        {f.encaje.propuestas.length === 0 ? (
-          <p className="ayuda">
-            Tu catálogo está vacío. <a href="#/catalogo">Añade tus espectáculos</a>.
-          </p>
-        ) : (
-          <ul className="lista-simple">
-            {f.encaje.propuestas.map((p) => (
-              <li key={p.espectaculo.id}>
-                <strong>{p.espectaculo.nombre}</strong> <span className="ayuda">{NOMBRE_TIPO[p.espectaculo.tipo]}</span>
-                {p.motivos.map((m) => (
-                  <span key={m} className="fila-motivos">
-                    {m}
-                  </span>
-                ))}
-                {p.avisos.map((m) => (
-                  <span key={m} className="fila-aviso">
-                    ⚠ {m}
-                  </span>
-                ))}
-              </li>
-            ))}
-          </ul>
         )}
       </section>
 
@@ -375,10 +348,15 @@ export function EntidadCrm({ refId, id }: { refId?: string; id?: string }) {
                     <ol className="pasos-secuencia">
                       {[1, 2, 3, 4, 5].map((paso) => {
                         const m = [...s.mensajes].reverse().find((x) => x.paso === paso);
+                        const estado = m?.estado === 'enviado' ? 'hecho' : m && ['borrador', 'aprobado', 'programado'].includes(m.estado) ? 'en-curso' : '';
                         return (
-                          <li key={paso} className={m?.estado === 'enviado' ? 'hecho' : ''}>
-                            {m ? `${NOMBRE_MENSAJE[m.estado]}${m.enviadoEn ? ` el ${fecha(m.enviadoEn)}` : m.estado === 'borrador' && m.disponibleDesde ? ` (desde el ${fecha(m.disponibleDesde)})` : ''}` : 'Pendiente'}
-                            {(paso === 2 || paso === 4) && <span className="ayuda"> + llamada</span>}
+                          <li key={paso} className={estado}>
+                            <span className="paso-barra" />
+                            <strong>{paso}.º correo</strong>
+                            <span>
+                              {m ? `${NOMBRE_MENSAJE[m.estado]}${m.enviadoEn ? ` el ${fecha(m.enviadoEn)}` : m.estado === 'borrador' && m.disponibleDesde ? ` desde el ${fecha(m.disponibleDesde)}` : ''}` : 'Pendiente'}
+                            </span>
+                            {(paso === 2 || paso === 4) && <span className="paso-llamada">+ llamada</span>}
                           </li>
                         );
                       })}
@@ -408,6 +386,56 @@ export function EntidadCrm({ refId, id }: { refId?: string; id?: string }) {
           })}
         </section>
       )}
+
+      {e && f.historial.length > 0 && (
+        <section className="bloque">
+          <h3>Actividad</h3>
+          <ul className="historial">
+            {f.historial.map((h) => (
+              <li key={h.id} className={h.hecho ? 'hecho' : ''}>
+                <span className="ayuda">{fecha(h.fecha)}</span> <strong>{NOMBRE_HISTORIAL[h.tipo]}</strong>
+                {h.texto && ` · ${h.texto}`}
+                {h.vence && ` · ${fecha(h.vence)}`}
+                {(h.tipo === 'alerta_llamada' || h.tipo === 'recontactar') && !h.hecho && (
+                  <button type="button" className="enlace-boton" onClick={() => void crm.hecho(h.id).then(cargar)}>
+                    hecho
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      </div>
+      <div className="ficha-crm-lateral">
+      <section className="bloque">
+        <h3>Encaja con tu catálogo</h3>
+        {f.encaje.amplio && f.encaje.propuestas.length > 0 && <p className="ayuda">Sin historial conocido de sus gustos: abanico amplio del catálogo.</p>}
+        {f.encaje.propuestas.length === 0 ? (
+          <p className="ayuda">
+            Tu catálogo está vacío. <a href="#/catalogo">Añade tus espectáculos</a>.
+          </p>
+        ) : (
+          <ul className="lista-simple">
+            {f.encaje.propuestas.map((p) => (
+              <li key={p.espectaculo.id}>
+                <strong>{p.espectaculo.nombre}</strong> <span className="ayuda">{NOMBRE_TIPO[p.espectaculo.tipo]}</span>
+                {p.motivos.map((m) => (
+                  <span key={m} className="fila-motivos">
+                    {m}
+                  </span>
+                ))}
+                {p.avisos.length > 0 && (
+                  <span className="fila-aviso" title={p.avisos.join(' · ')}>
+                    {p.avisos[0]}
+                    {p.avisos.length > 1 && ` (+${p.avisos.length - 1})`}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       <section className="bloque">
         <h3>Ayudas relacionadas</h3>
@@ -450,25 +478,7 @@ export function EntidadCrm({ refId, id }: { refId?: string; id?: string }) {
         </section>
       )}
 
-      {e && f.historial.length > 0 && (
-        <section className="bloque">
-          <h3>Historial</h3>
-          <ul className="historial">
-            {f.historial.map((h) => (
-              <li key={h.id} className={h.hecho ? 'hecho' : ''}>
-                <span className="ayuda">{fecha(h.fecha)}</span> <strong>{NOMBRE_HISTORIAL[h.tipo]}</strong>
-                {h.texto && ` · ${h.texto}`}
-                {h.vence && ` · ${fecha(h.vence)}`}
-                {(h.tipo === 'alerta_llamada' || h.tipo === 'recontactar') && !h.hecho && (
-                  <button type="button" className="enlace-boton" onClick={() => void crm.hecho(h.id).then(cargar)}>
-                    hecho
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </>
+      </div>
+    </div>
   );
 }

@@ -252,6 +252,8 @@ export interface PropuestaPreparada {
   revisarEmail: string | null;
   idioma: 'es' | 'ca';
   motivos: string[];
+  /** Estilos que ha programado (de más a menos). */
+  historial?: ('opera' | 'clasica' | 'jazz')[];
   espectaculos: { id: string; nombre: string; tipo: TipoEspectaculo; motivos: string[]; avisos: string[] }[];
   ayudas: { id: string; titulo: string; fin: string | null }[];
   licitaciones: { id: string; titulo: string; fin: string | null }[];
@@ -263,6 +265,7 @@ export interface PropuestaPreparada {
 
 export interface Panel {
   propuestas: number;
+  embudo: { preparadas: number; contactadas: number; respuesta: number; reunion: number; interesadas: number };
   llamar: Pendiente[];
   alertas: AlertaCrm[];
   bandeja: { total: number; items: MensajeBandeja[] };

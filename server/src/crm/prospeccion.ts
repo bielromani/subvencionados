@@ -107,6 +107,10 @@ export function redactarPropuesta(
  * Prepara propuestas para los sitios que mejor encajan con el catálogo y que no estén ya en seguimiento, descartados o
  * con «no contactar». Solo sitios con email de contacto (los demás se pueden llamar desde Clientes).
  */
+/** Licitaciones que no son para un catálogo de conciertos: pirotecnia, animación infantil, verbenas, charangas... */
+const NO_ENCAJA = /pirotecn|\bpiro|animacion infantil|infantil|verbena|orquesta de baile|discomovil|\bdj\b|charanga|batucada|pasacalles/;
+export const noEncaja = (titulo: string) => NO_ENCAJA.test(normalizar(titulo));
+
 export function prepararPropuestas(
   f: FuentesProspeccion,
   catalogo: Espectaculo[],
@@ -122,10 +126,9 @@ export function prepararPropuestas(
   const anioPasado = `${hoy.getUTCFullYear() - 1}`;
   const proximosMeses = [1, 2, 3].map((n) => ((hoy.getUTCMonth() + n) % 12) + 1);
   // Licitaciones abiertas que encajan con el catálogo (no pirotecnia, animación infantil, verbenas...), por programador.
-  const NO_ENCAJA = /pirotecn|\bpiro|animacion infantil|infantil|verbena|orquesta de baile|discomovil|\bdj\b|charanga|batucada|pasacalles/;
   const licitacionesPorProgramador = new Map<string, ContratoVista[]>();
   for (const l of f.licitacionesAbiertas()) {
-    if (NO_ENCAJA.test(normalizar(l.titulo)) || !encajeLicitacion(disponibles, l, hoy).length) continue;
+    if (noEncaja(l.titulo) || !encajeLicitacion(disponibles, l, hoy).length) continue;
     const id = idProgramador(l);
     licitacionesPorProgramador.set(id, [...(licitacionesPorProgramador.get(id) ?? []), l]);
   }

@@ -6,7 +6,7 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
-import { prepararPropuestas, redactarPropuesta } from './crm/prospeccion.js';
+import { noEncaja, prepararPropuestas, redactarPropuesta } from './crm/prospeccion.js';
 import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
@@ -482,6 +482,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         .map((x) => ({ convocatoria: ctx.resumida(x.conv), certeza: 'potencial', espectaculos: x.encaje.slice(0, 3).map((e) => ({ id: e.espectaculo.id, nombre: e.espectaculo.nombre })) }));
       const licitaciones = ctx
         .licitacionesAbiertas()
+        .filter((x) => !noEncaja(x.titulo))
         .map((x) => ({ contrato: x, encaje: encajeLicitacion(catalogo, x) }))
         .filter((x) => !catalogo.length || x.encaje.length > 0)
         .slice(0, 10)
@@ -493,6 +494,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       return {
         llamar: await c.pendientes(u.id),
         propuestas: await c.contarPropuestas(u.id),
+        embudo: await c.embudo(u.id),
         alertas: await alertasCrm(c, ctx, u.id),
         bandeja: { total: bandeja.length, items: bandeja.slice(0, 5) },
         respuestas: await c.respuestas(u.id),

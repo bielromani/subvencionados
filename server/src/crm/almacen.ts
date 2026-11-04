@@ -660,6 +660,26 @@ export class AlmacenCrm {
     return Number(f?.n ?? 0);
   }
 
+  /** Embudo de la temporada: propuestas pendientes, entidades contactadas, con respuesta, con reunión e interesadas. */
+  async embudo(u: string): Promise<{ preparadas: number; contactadas: number; respuesta: number; reunion: number; interesadas: number }> {
+    const [e] = await this.q<{ contactadas: string; respuesta: string; reunion: string; interesadas: string }>(
+      `select
+         (select count(distinct s.entidad) from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.usuario = $1 and m.estado = 'enviado') as contactadas,
+         count(*) filter (where estado_relacion in ('respondio', 'reunion', 'interesado', 'no_interesado')) as respuesta,
+         count(*) filter (where estado_relacion in ('reunion', 'interesado')) as reunion,
+         count(*) filter (where estado_relacion = 'interesado') as interesadas
+       from crm_entidades where usuario = $1`,
+      [u],
+    );
+    return {
+      preparadas: await this.contarPropuestas(u),
+      contactadas: Number(e?.contactadas ?? 0),
+      respuesta: Number(e?.respuesta ?? 0),
+      reunion: Number(e?.reunion ?? 0),
+      interesadas: Number(e?.interesadas ?? 0),
+    };
+  }
+
   /** Sitios que no hay que volver a proponer: pendientes, aceptados, o descartados hace menos de 90 días. */
   async refsBloqueadas(u: string): Promise<Set<string>> {
     const filas = await this.q<{ ref: string }>(

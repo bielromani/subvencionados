@@ -27,50 +27,53 @@ import { PaginaEntidad, Seguimiento } from './pages/Seguimiento';
 import { useRuta } from './ruta';
 import type { Meta } from './tipos';
 
-/** Secciones del menú; la página de una convocatoria u organismo marca la sección de la que cuelga. */
-const SECCIONES: [string, string][] = [
-  ['', 'Inicio'],
-  ['clientes', 'Clientes'],
-  ['explorar', 'Ayudas'],
-  ['donde-tocar', 'Festivales'],
-  ['contratos', 'Contratos'],
-  ['guardadas', 'Mi lista'],
-  ['perfil', 'Mi perfil'],
-  // Fuera del menú (enlazadas desde el pie, la portada y las fichas).
-  ['calendario', 'Calendario'],
-  ['grupos', 'Mis grupos'],
-  ['contactos', 'Contactos'],
-  ['organismos', 'Organismos'],
-  ['mercado', 'Mercado'],
+/** Grupos del menú lateral. Con cuenta, el trabajo diario va primero; sin ella, la exploración de datos públicos. */
+type Entrada = [destino: string, nombre: string, icono: string];
+const MENU: [string, Entrada[]][] = [
+  ['Explorar', [['', 'Inicio', 'inicio'], ['clientes', 'Clientes', 'clientes'], ['explorar', 'Ayudas', 'ayudas'], ['donde-tocar', 'Festivales', 'festivales'], ['contratos', 'Licitaciones', 'contratos']]],
+  ['Mi trabajo', [['guardadas', 'Mi lista', 'lista'], ['perfil', 'Mi perfil', 'perfil']]],
 ];
-/** Con cuenta, el trabajo diario: bandeja de aprobación, entidades en seguimiento y catálogo. */
-const SECCIONES_CUENTA: [string, string][] = [
-  ['', 'Inicio'],
-  ['propuestas', 'Propuestas'],
-  ['bandeja', 'Bandeja'],
-  ['clientes', 'Clientes'],
-  ['seguimiento', 'Mis entidades'],
-  ['explorar', 'Ayudas'],
-  ['donde-tocar', 'Festivales'],
-  ['contratos', 'Contratos'],
-  ['catalogo', 'Catálogo'],
-  ['guardadas', 'Mi lista'],
-  ['perfil', 'Mi perfil'],
+const MENU_CUENTA: [string, Entrada[]][] = [
+  ['Trabajo', [['', 'Hoy', 'inicio'], ['propuestas', 'Propuestas', 'propuestas'], ['bandeja', 'Bandeja', 'bandeja'], ['seguimiento', 'Mis entidades', 'entidades'], ['clientes', 'Clientes', 'clientes']]],
+  ['Oportunidades', [['explorar', 'Ayudas', 'ayudas'], ['contratos', 'Licitaciones', 'contratos'], ['donde-tocar', 'Festivales', 'festivales']]],
+  ['Mi cartera', [['catalogo', 'Catálogo y cartas', 'catalogo'], ['guardadas', 'Mi lista', 'lista']]],
 ];
-const BARRA: [string, string, string][] = [
+/** Páginas fuera del menú (enlazadas desde el pie, la portada y las fichas). */
+const OTRAS = ['perfil', 'calendario', 'grupos', 'contactos', 'organismos', 'mercado'];
+const BARRA: Entrada[] = [
   ['', 'Inicio', 'inicio'],
   ['clientes', 'Clientes', 'clientes'],
   ['explorar', 'Ayudas', 'ayudas'],
-  ['contratos', 'Contratos', 'contratos'],
+  ['contratos', 'Licitaciones', 'contratos'],
   ['guardadas', 'Mi lista', 'lista'],
 ];
-const BARRA_CUENTA: [string, string, string][] = [
-  ['', 'Inicio', 'inicio'],
-  ['propuestas', 'Propuestas', 'propuestas'],
+const BARRA_CUENTA: Entrada[] = [
+  ['', 'Hoy', 'inicio'],
+  ['propuestas', 'Correos', 'propuestas'],
   ['bandeja', 'Bandeja', 'bandeja'],
-  ['clientes', 'Clientes', 'clientes'],
   ['seguimiento', 'Entidades', 'entidades'],
+  ['mas', 'Más', 'mas'],
 ];
+/** Título y explicación de cada sección (las fichas y el panel «Hoy» llevan el suyo). */
+const CABECERAS: Record<string, [string, string]> = {
+  '': ['Inicio', 'Coloca a tus grupos de jazz, clásica y ópera: a quién llamar, qué ayudas pedir y qué contratos están abiertos.'],
+  propuestas: ['Propuestas', 'Un correo ya escrito para cada sitio donde encaja tu catálogo. Revísalo, ajústalo y envíalo tú.'],
+  bandeja: ['Bandeja', 'Seguimientos y correos aprobados pendientes de enviar.'],
+  seguimiento: ['Mis entidades', 'Ayuntamientos, teatros y festivales con los que estás en contacto.'],
+  clientes: ['Clientes', 'Quién contrata música en España, qué estilos programa y cuándo.'],
+  explorar: ['Ayudas', 'Subvenciones públicas para tus grupos y para quien los contrata.'],
+  contratos: ['Licitaciones', 'Contratos públicos de conciertos: abiertos y adjudicados.'],
+  'donde-tocar': ['Festivales', 'Festivales, ciclos y circuitos, y dónde se externaliza su gestión.'],
+  catalogo: ['Catálogo y cartas', 'Tus producciones, las plantillas de los correos y tu firma.'],
+  guardadas: ['Mi lista', 'Lo que has marcado para seguir.'],
+  perfil: ['Mi perfil', 'Tus grupos, estilos y territorio.'],
+  calendario: ['Calendario', 'Plazos de las ayudas, mes a mes.'],
+  grupos: ['Mis grupos', 'Lo que encaja con cada uno de tus grupos.'],
+  contactos: ['Directorio de cultura', 'Contactos institucionales de cultura por municipio.'],
+  organismos: ['Organismos', 'Quién convoca ayudas de música.'],
+  mercado: ['Mercado', 'Cuánto se paga y quién toca en los contratos públicos.'],
+  cuenta: ['Mi cuenta', ''],
+};
 
 const TRAZOS: Record<string, string> = {
   inicio: 'M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10',
@@ -84,17 +87,18 @@ const TRAZOS: Record<string, string> = {
   catalogo: 'M5 4.5h10a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3zM5 16.5a3 3 0 0 1 3-3h10',
   propuestas: 'M4 6.5 12 12l8-5.5M4 6h16v12H4zM14.5 3.5l1.2 1.8M17.5 2.5v2',
   festivales: 'M9 18V6l10-2v12M9 18a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0M19 16a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0',
+  marca: 'M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0',
+  mas: 'M5 12h.01M12 12h.01M19 12h.01',
 };
 
-function Icono({ nombre }: { nombre: string }) {
+function Icono({ nombre, tam = 20 }: { nombre: string; tam?: number }) {
   return (
-    <svg className="icono" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg className="icono" viewBox="0 0 24 24" width={tam} height={tam} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d={TRAZOS[nombre]} />
     </svg>
   );
 }
 
-const EN_EL_PIE = new Set(['calendario', 'grupos', 'contactos', 'organismos', 'mercado']);
 const SECCION_DE: Record<string, string> = { convocatoria: 'explorar', organismo: 'clientes', 'para-ti': '', contrato: 'contratos', programador: 'clientes', festival: 'donde-tocar', contactos: 'clientes', calendario: 'explorar', grupos: 'perfil', cuenta: 'perfil', entidad: 'seguimiento', organismos: 'clientes', mercado: 'clientes' };
 
 export function App() {
@@ -104,8 +108,12 @@ export function App() {
   const [meta, setMeta] = useState<Meta | null>(null);
   const [error, setError] = useState<string | null>(null);
   const usuario = useCuenta().cuenta?.usuario;
-  const secciones = usuario ? SECCIONES_CUENTA : SECCIONES.filter(([d]) => !EN_EL_PIE.has(d));
+  const menu = usuario ? MENU_CUENTA : MENU;
   const barra = usuario ? BARRA_CUENTA : BARRA;
+  const [masAbierto, setMasAbierto] = useState(false);
+  useEffect(() => setMasAbierto(false), [ruta.partes.join('/')]);
+  const conocida = OTRAS.includes(seccion) || MENU.concat(MENU_CUENTA).some(([, xs]) => xs.some(([d]) => d === seccion)) || pagina === 'cuenta';
+  const cabecera = !id && !(usuario && pagina === '') && pagina !== 'para-ti' ? CABECERAS[pagina] : undefined;
   // Borradores y aprobados pendientes de enviar: el número junto a «Bandeja».
   const [pendientes, setPendientes] = useState(0);
   const [propuestas, setPropuestas] = useState(0);
@@ -123,60 +131,83 @@ export function App() {
     api.meta().then(setMeta, () => setError('No se puede conectar con la API. ¿Está arrancado el servidor (npm run dev)?'));
   }, []);
 
+  const entrada = ([destino, nombre, icono]: Entrada) => (
+    <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''} aria-current={destino === seccion ? 'page' : undefined}>
+      <Icono nombre={icono} />
+      <span className="entrada-nombre">{nombre}</span>
+      {contador(destino)}
+    </a>
+  );
+
   return (
     <div className="app">
-      <header className="cabecera">
-        <div>
-          <h1>
-            <a href="#/">Subvencionados</a>
-          </h1>
-          <p className="lema">Coloca a tus grupos de jazz, clásica y ópera: a quién llamar, qué ayudas pedir y qué contratos están abiertos</p>
-        </div>
-        <nav className="menu-escritorio">
-          {secciones.map(([destino, nombre]) => (
-            <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
-              {nombre}
-              {contador(destino)}
-            </a>
+      <aside className="lateral" aria-label="Menú">
+        <a className="marca-app" href="#/">
+          <span className="marca-logo">
+            <Icono nombre="marca" tam={18} />
+          </span>
+          <span>
+            <strong>Subvencionados</strong>
+            <small>{usuario ? usuario.email : 'Música en directo · España'}</small>
+          </span>
+        </a>
+        <nav className="menu-lateral" aria-label="Principal">
+          {menu.map(([grupo, xs]) => (
+            <div key={grupo} className="menu-grupo">
+              <p className="menu-titulo">{grupo}</p>
+              {xs.map(entrada)}
+            </div>
           ))}
         </nav>
-        {/* En el móvil: festivales y perfil arriba; el resto en la barra inferior. */}
-        <div className="atajos">
-          {usuario ? (
-            <>
-              <a href="#/explorar" className={seccion === 'explorar' ? 'activa' : ''} aria-label="Ayudas" title="Ayudas">
-                <Icono nombre="ayudas" />
-              </a>
-              <a href="#/contratos" className={seccion === 'contratos' ? 'activa' : ''} aria-label="Contratos" title="Contratos">
-                <Icono nombre="contratos" />
-              </a>
-              <a href="#/donde-tocar" className={seccion === 'donde-tocar' ? 'activa' : ''} aria-label="Festivales" title="Festivales">
-                <Icono nombre="festivales" />
-              </a>
-              <a href="#/catalogo" className={seccion === 'catalogo' ? 'activa' : ''} aria-label="Catálogo" title="Catálogo">
-                <Icono nombre="catalogo" />
-              </a>
-            </>
-          ) : (
-            <a href="#/donde-tocar" className={seccion === 'donde-tocar' ? 'activa' : ''}>
-              Festivales
-            </a>
-          )}
-          <a href="#/perfil" className={seccion === 'perfil' ? 'activa' : ''} aria-label="Mi perfil">
-            <Icono nombre="perfil" />
-          </a>
-        </div>
-      </header>
-      <nav className="barra-inferior" aria-label="Secciones">
-        {barra.map(([destino, nombre, icono]) => (
-          <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
-            <Icono nombre={icono} />
-            <span>{nombre}</span>
-            {contador(destino)}
-          </a>
-        ))}
-      </nav>
+        <a className={`menu-cuenta${seccion === 'perfil' ? ' activa' : ''}`} href={usuario ? '#/cuenta' : '#/perfil'}>
+          <span className="avatar">{usuario ? usuario.email.slice(0, 2).toUpperCase() : <Icono nombre="perfil" tam={18} />}</span>
+          <span>
+            <strong>{usuario ? 'Mi cuenta' : 'Mi perfil'}</strong>
+            <small>{usuario ? 'Perfil, avisos y sesión' : 'Entra o crea una cuenta'}</small>
+          </span>
+        </a>
+      </aside>
 
+      <header className="barra-movil">
+        <a className="marca-app" href="#/">
+          <span className="marca-logo">
+            <Icono nombre="marca" tam={16} />
+          </span>
+          <strong>Subvencionados</strong>
+        </a>
+        <a className="avatar" href={usuario ? '#/cuenta' : '#/perfil'} aria-label={usuario ? 'Mi cuenta' : 'Mi perfil'}>
+          {usuario ? usuario.email.slice(0, 2).toUpperCase() : <Icono nombre="perfil" tam={18} />}
+        </a>
+      </header>
+
+      <nav className="barra-inferior" aria-label="Secciones">
+        {barra.map(([destino, nombre, icono]) =>
+          destino === 'mas' ? (
+            <button key="mas" type="button" className={masAbierto ? 'activa' : ''} aria-expanded={masAbierto} onClick={() => setMasAbierto((x) => !x)}>
+              <Icono nombre={icono} />
+              <span>{nombre}</span>
+            </button>
+          ) : (
+            <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''}>
+              <Icono nombre={icono} />
+              <span>{nombre}</span>
+              {contador(destino)}
+            </a>
+          ),
+        )}
+      </nav>
+      {masAbierto && (
+        <div className="hoja-mas" role="dialog" aria-label="Más secciones">
+          {menu.map(([grupo, xs]) => (
+            <div key={grupo} className="menu-grupo">
+              <p className="menu-titulo">{grupo}</p>
+              {xs.map(entrada)}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="contenido">
       {meta && meta.total === 0 && (
         <p className="aviso-demo">
           La base de datos está vacía. Ejecuta <code>npm run importar</code> para cargar lo descargado en{' '}
@@ -184,7 +215,13 @@ export function App() {
         </p>
       )}
 
-      <main>
+      <main className="principal">
+        {cabecera && (
+          <header className="cabecera-pagina">
+            <h1>{cabecera[0]}</h1>
+            {cabecera[1] && <p>{cabecera[1]}</p>}
+          </header>
+        )}
         {error && <p className="error">{error}</p>}
         {meta && pagina === '' && <Inicio />}
         {meta && pagina === 'para-ti' && <ParaTi irAPerfil={() => (window.location.hash = '#/perfil')} />}
@@ -210,7 +247,7 @@ export function App() {
         {meta && pagina === 'seguimiento' && <Seguimiento />}
         {meta && pagina === 'entidad' && id && <PaginaEntidad id={id} />}
         {meta && pagina === 'perfil' && <Perfil meta={meta} alGuardar={() => (window.location.hash = '#/')} />}
-        {meta && !SECCIONES.some(([d]) => d === seccion) && !SECCIONES_CUENTA.some(([d]) => d === seccion) && <p className="error">Esta página no existe.</p>}
+        {meta && !conocida && <p className="error">Esta página no existe.</p>}
       </main>
 
       {meta && (
@@ -223,6 +260,7 @@ export function App() {
           <a href="#/mercado">Mercado</a>
         </footer>
       )}
+      </div>
     </div>
   );
 }
