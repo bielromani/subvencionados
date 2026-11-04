@@ -113,7 +113,7 @@ export function App() {
   const [masAbierto, setMasAbierto] = useState(false);
   useEffect(() => setMasAbierto(false), [ruta.partes.join('/')]);
   const conocida = OTRAS.includes(seccion) || MENU.concat(MENU_CUENTA).some(([, xs]) => xs.some(([d]) => d === seccion)) || pagina === 'cuenta';
-  const cabecera = !id && !(usuario && pagina === '') && pagina !== 'para-ti' ? CABECERAS[pagina] : undefined;
+  const cabecera = !id && pagina !== '' && pagina !== 'para-ti' ? CABECERAS[pagina] : undefined;
   // Borradores y aprobados pendientes de enviar: el número junto a «Bandeja».
   const [pendientes, setPendientes] = useState(0);
   const [propuestas, setPropuestas] = useState(0);

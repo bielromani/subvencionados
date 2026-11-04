@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api, type Lista, type ListaPrevistas } from '../api';
-import { FilaCliente } from '../components/Cliente';
+import { FilaClienteNueva } from '../components/Cliente';
 import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { clientesParaHoy, useMarcas } from '../marcas';
@@ -132,10 +132,45 @@ function InicioGeneral() {
   if (error) return <p className="error">{error}</p>;
   if (!d) return <p className="ayuda">Cargando…</p>;
 
+  const ayudasAbiertas = d.para.grupos.ahora.total + d.para.programadores.ahora.total;
+  const mesActual = new Date().getMonth() + 1;
   return (
-    <section>
+    <section className="portada">
+      <header className="portada-hero">
+        <div className="portada-texto">
+          <p className="portada-antetitulo">Música en directo · toda España</p>
+          <h1>Coloca a tus grupos de jazz, clásica y ópera</h1>
+          <p>A quién llamar, qué ayudas pedir y qué contratos están abiertos, con datos públicos que se actualizan cada día.</p>
+          <div className="portada-botones">
+            <a className="boton" href="#/cuenta">
+              Crear cuenta gratis
+            </a>
+            <a className="accion" href="#/perfil">
+              {d.perfilCompleto ? 'Cambiar mis grupos' : 'Indicar mis grupos y territorio'}
+            </a>
+          </div>
+        </div>
+        <div className="portada-cifras">
+          <a className="kpi" href={`#/clientes?mes=${d.llamar.meses.join(',')}`}>
+            <span className="kpi-titulo">Clientes a los que llamar ahora</span>
+            <strong>{d.llamar.total.toLocaleString('es-ES')}</strong>
+            <span className="kpi-pie tono-azul">Contratan en {d.llamar.meses.map((m) => MESES[m - 1]).join(' y ')} →</span>
+          </a>
+          <a className="kpi" href="#/explorar">
+            <span className="kpi-titulo">Ayudas abiertas o por abrir</span>
+            <strong>{ayudasAbiertas.toLocaleString('es-ES')}</strong>
+            <span className="kpi-pie tono-azul">Ver ayudas →</span>
+          </a>
+          <a className="kpi" href="#/contratos">
+            <span className="kpi-titulo">Licitaciones de conciertos abiertas</span>
+            <strong>{d.licitaciones.total.toLocaleString('es-ES')}</strong>
+            <span className="kpi-pie tono-azul">Ver licitaciones →</span>
+          </a>
+        </div>
+      </header>
+
       {!d.perfilCompleto && (
-        <p className="aviso-demo">
+        <p className="llamada">
           Ves toda España y los tres estilos. <a href="#/perfil">Indica tus grupos y dónde trabajas</a> para ver solo lo tuyo.
         </p>
       )}
@@ -160,26 +195,25 @@ function InicioGeneral() {
         </ul>
       )}
 
-      <section className="bloque">
-        <h3>
-          A quién llamar ahora <span className="contador">{d.llamar.total}</span>
-        </h3>
-        <p className="ayuda">
-          Clientes que en años anteriores contrataron música en {d.llamar.meses.map((m) => MESES[m - 1]).join(' y ')}
-          {d.perfilCompleto ? ', en tus comunidades y de tus estilos' : ''}: es buen momento para ofrecerles tus grupos.
-        </p>
+      <section className="seccion-portada" aria-labelledby="t-llamar">
+        <div className="seccion-cabecera">
+          <div>
+            <h2 id="t-llamar">A quién llamar ahora</h2>
+            <p className="ayuda">
+              Contrataron música en {d.llamar.meses.map((m) => MESES[m - 1]).join(' y ')} en años anteriores{d.perfilCompleto ? ', en tus comunidades y de tus estilos' : ''}: es buen momento para ofrecerles tus grupos.
+            </p>
+          </div>
+          <a href={`#/clientes?mes=${d.llamar.meses.join(',')}`}>Ver los {d.llamar.total.toLocaleString('es-ES')} →</a>
+        </div>
         {d.llamar.items.length === 0 ? (
           <p className="ayuda">Ninguno en estas fechas.</p>
         ) : (
-          <ul className="filas">
+          <ul className="lista-ayudas lista-clientes">
             {d.llamar.items.map((p) => (
-              <FilaCliente key={p.id} p={p} />
+              <FilaClienteNueva key={p.id} p={p} mesActual={mesActual} />
             ))}
           </ul>
         )}
-        <p>
-          <a href={`#/clientes?mes=${d.llamar.meses.join(',')}`}>Ver todos →</a>
-        </p>
       </section>
 
       <div className="dos-columnas">
