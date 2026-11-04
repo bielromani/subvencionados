@@ -45,9 +45,18 @@ function Acceso({ emails, restablecer }: { emails: boolean; restablecer: string 
   };
 
   return (
-    <section className="bloque acceso">
+    <div className="acceso-pagina">
+    <section className="acceso">
+      <div className="acceso-marca">
+        <span className="marca-logo">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0M21 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+          </svg>
+        </span>
+        <h1>{{ entrar: 'Entra en tu cuenta', registro: 'Crea tu cuenta', olvido: 'Cambiar la contraseña', restablecer: 'Elige una contraseña nueva' }[modo]}</h1>
+      </div>
       {modo !== 'restablecer' && modo !== 'olvido' && (
-        <div className="pestanas" role="tablist">
+        <div className="segmentado" role="tablist">
           <button type="button" role="tab" aria-selected={modo === 'entrar'} className={modo === 'entrar' ? 'activa' : ''} onClick={() => setModo('entrar')}>
             Entrar
           </button>
@@ -57,10 +66,8 @@ function Acceso({ emails, restablecer }: { emails: boolean; restablecer: string 
         </div>
       )}
       {modo === 'registro' && (
-        <p className="ayuda">Gratis. Tu lista de clientes, ayudas guardadas y perfil quedan en tu cuenta y los ves en el móvil y en el ordenador. Lo que ya tienes en este navegador se añade a la cuenta.</p>
+        <p className="ayuda">Lo que ya tienes en este navegador (lista y perfil) se añade a la cuenta.</p>
       )}
-      {modo === 'olvido' && <h3>Cambiar la contraseña</h3>}
-      {modo === 'restablecer' && <h3>Elige una contraseña nueva</h3>}
       <form onSubmit={enviar} className="formulario">
         {modo !== 'restablecer' && (
           <label>
@@ -84,7 +91,7 @@ function Acceso({ emails, restablecer }: { emails: boolean; restablecer: string 
         )}
         {error && <p className="error">{error}</p>}
         {aviso && <p className="llamada">{aviso}</p>}
-        <button type="submit" className="boton" disabled={enviando}>
+        <button type="submit" className="boton boton-ancho" disabled={enviando}>
           {enviando ? 'Un momento…' : { entrar: 'Entrar', registro: 'Crear cuenta', olvido: 'Enviarme el enlace', restablecer: 'Guardar y entrar' }[modo]}
         </button>
       </form>
@@ -102,6 +109,25 @@ function Acceso({ emails, restablecer }: { emails: boolean; restablecer: string 
         </button>
       )}
     </section>
+    <aside className="acceso-ventajas" aria-label="Qué incluye la cuenta">
+      <h2>Con tu cuenta</h2>
+      <ul>
+        <li>
+          <strong>Correos ya escritos</strong> para cada sitio donde encaja tu catálogo, con tu voz y tu firma.
+        </li>
+        <li>
+          <strong>Seguimiento</strong> de cada contacto: cuándo escribir de nuevo y cuándo llamar.
+        </li>
+        <li>
+          <strong>Avisos</strong> de ayudas y licitaciones nuevas que te sirven.
+        </li>
+        <li>
+          <strong>Tu lista y tu perfil</strong> en el móvil y en el ordenador.
+        </li>
+      </ul>
+      <p className="ayuda">Gratis. Nada se envía nunca sin tu visto bueno.</p>
+    </aside>
+    </div>
   );
 }
 
@@ -122,89 +148,122 @@ function MiCuenta({ u, emails, estado }: { u: UsuarioCuenta; emails: boolean; es
   const [claves, setClaves] = useState({ actual: '', nueva: '', borrar: '' });
 
   return (
-    <>
-      <section className="bloque">
-        <h3>Mi cuenta</h3>
+    <div className="ajustes">
+      <header className="cabecera-pagina">
+        <h1>Mi cuenta</h1>
         <p>
-          <strong>{u.email}</strong>
+          {estado === 'subiendo' ? 'Guardando cambios…' : estado === 'error' ? 'No se ha podido sincronizar: se reintentará al volver a la web.' : 'Tu lista, tu perfil y tu trabajo se guardan en la cuenta y se ven en todos tus dispositivos.'}
         </p>
-        <p className="ayuda">
-          {estado === 'subiendo' ? 'Guardando cambios…' : estado === 'error' ? 'No se ha podido sincronizar: se reintentará al volver a la web.' : 'Tu lista y tu perfil están guardados en la cuenta y se sincronizan con tus otros dispositivos.'}
+      </header>
+      {error && <p className="error">{error}</p>}
+      {aviso && (
+        <p className="llamada" role="status">
+          {aviso}
         </p>
-        {error && <p className="error">{error}</p>}
-        {aviso && <p className="llamada">{aviso}</p>}
-        <p className="acciones">
+      )}
+
+      <section className="grupo-ajustes" aria-labelledby="a-cuenta">
+        <h2 id="a-cuenta">Cuenta</h2>
+        <div className="fila-ajuste">
+          <div>
+            <strong>Email</strong>
+            <span>{u.email}</span>
+          </div>
           <button type="button" className="accion" onClick={accion(() => api.cuentaEnviar('/salir', {}).then(alSalir))}>
             Cerrar sesión
           </button>
-        </p>
-      </section>
-
-      <section className="bloque">
-        <h3>Avisos por email</h3>
-        <p className="ayuda">Un resumen con los plazos de tus ayudas guardadas, las ayudas nuevas que te sirven, lo que han contratado tus clientes y a quién te toca llamar.</p>
-        <select
-          value={u.avisos}
-          onChange={(e) => void accion(() => api.cuentaEnviar('/ajustes', { avisos: e.target.value }, 'PUT'), 'Guardado.')()}
-          aria-label="Frecuencia de los avisos"
-        >
-          {(Object.keys(TEXTO_AVISOS) as UsuarioCuenta['avisos'][]).map((f) => (
-            <option key={f} value={f}>
-              {TEXTO_AVISOS[f]}
-            </option>
-          ))}
-        </select>
-        {!emails && <p className="ayuda">Los emails todavía no están activados en la web: se empezarán a enviar en cuanto lo estén.</p>}
-      </section>
-
-      <section className="bloque">
-        <h3>Calendario de Mi lista</h3>
-        <p className="ayuda">Plazos de tus ayudas guardadas y llamadas a tus clientes, siempre al día: lo que cambies en Mi lista aparece solo en tu calendario.</p>
-        <Suscribir ruta={`/api/mi-calendario.ics?token=${encodeURIComponent(u.tokenCalendario)}`} nota="El enlace es personal: no lo compartas." />
-        <button type="button" className="enlace-boton" onClick={accion(() => api.cuentaEnviar('/calendario', {}), 'Enlace cambiado: el anterior ya no funciona. Vuelve a suscribirte con el nuevo.')}>
-          Cambiar el enlace (si lo has compartido sin querer)
-        </button>
-      </section>
-
-      <details className="bloque">
-        <summary>Cambiar la contraseña</summary>
-        <div className="formulario">
-          <label>
-            Contraseña actual
-            <input type="password" autoComplete="current-password" value={claves.actual} onChange={(e) => setClaves((c) => ({ ...c, actual: e.target.value }))} />
-          </label>
-          <label>
-            Contraseña nueva
-            <input type="password" autoComplete="new-password" minLength={8} value={claves.nueva} onChange={(e) => setClaves((c) => ({ ...c, nueva: e.target.value }))} />
-          </label>
-          <button type="button" className="boton" onClick={accion(() => api.cuentaEnviar('/clave', { actual: claves.actual, nueva: claves.nueva }), 'Contraseña cambiada. Se ha cerrado la sesión en tus otros dispositivos.')}>
-            Cambiar
-          </button>
         </div>
-      </details>
-
-      <details className="bloque">
-        <summary>Borrar mi cuenta</summary>
-        <p className="ayuda">Se borran tu cuenta, tu lista y tu perfil del servidor. Lo que hay en este navegador se queda.</p>
-        <div className="formulario">
-          <label>
-            Contraseña
-            <input type="password" autoComplete="current-password" value={claves.borrar} onChange={(e) => setClaves((c) => ({ ...c, borrar: e.target.value }))} />
-          </label>
-          <button
-            type="button"
-            className="boton-secundario"
-            onClick={accion(async () => {
-              if (!window.confirm('¿Seguro que quieres borrar tu cuenta? No se puede deshacer.')) return;
-              await api.cuentaEnviar('', { clave: claves.borrar }, 'DELETE');
-              await alSalir();
-            })}
-          >
-            Borrar mi cuenta
-          </button>
+        <div className="fila-ajuste">
+          <div>
+            <strong>Mi perfil</strong>
+            <span>Tus grupos, estilos y dónde trabajas: filtran la portada, Clientes y las ayudas.</span>
+          </div>
+          <a className="accion" href="#/perfil">
+            Editar perfil
+          </a>
         </div>
-      </details>
-    </>
+        <div className="fila-ajuste">
+          <div>
+            <strong>Catálogo, cartas y firma</strong>
+            <span>Tus producciones, las plantillas de los correos y quién firma.</span>
+          </div>
+          <a className="accion" href="#/catalogo">
+            Abrir
+          </a>
+        </div>
+      </section>
+
+      <section className="grupo-ajustes" aria-labelledby="a-avisos">
+        <h2 id="a-avisos">Avisos</h2>
+        <div className="fila-ajuste">
+          <div>
+            <strong>Resumen por email</strong>
+            <span>Plazos de tus ayudas guardadas, ayudas nuevas que te sirven, lo que han contratado tus clientes y a quién llamar.{!emails && ' Los emails aún no están activados: empezarán a llegar en cuanto lo estén.'}</span>
+          </div>
+          <select value={u.avisos} onChange={(e) => void accion(() => api.cuentaEnviar('/ajustes', { avisos: e.target.value }, 'PUT'), 'Guardado.')()} aria-label="Frecuencia de los avisos">
+            {(Object.keys(TEXTO_AVISOS) as UsuarioCuenta['avisos'][]).map((f) => (
+              <option key={f} value={f}>
+                {TEXTO_AVISOS[f]}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="fila-ajuste fila-ajuste-ancha">
+          <div>
+            <strong>Calendario de Mi lista</strong>
+            <span>Plazos de tus ayudas guardadas y llamadas a tus clientes en tu calendario, siempre al día. El enlace es personal.</span>
+          </div>
+          <div className="ajuste-control">
+            <Suscribir ruta={`/api/mi-calendario.ics?token=${encodeURIComponent(u.tokenCalendario)}`} nota="" />
+            <button type="button" className="enlace-boton" onClick={accion(() => api.cuentaEnviar('/calendario', {}), 'Enlace cambiado: el anterior ya no funciona. Vuelve a suscribirte con el nuevo.')}>
+              Cambiar el enlace
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="grupo-ajustes" aria-labelledby="a-seguridad">
+        <h2 id="a-seguridad">Seguridad</h2>
+        <div className="fila-ajuste fila-ajuste-ancha">
+          <div>
+            <strong>Contraseña</strong>
+            <span>Al cambiarla se cierra la sesión en tus otros dispositivos.</span>
+          </div>
+          <div className="ajuste-control campos-en-linea">
+            <input type="password" autoComplete="current-password" placeholder="Contraseña actual" aria-label="Contraseña actual" value={claves.actual} onChange={(e) => setClaves((c) => ({ ...c, actual: e.target.value }))} />
+            <input type="password" autoComplete="new-password" placeholder="Nueva (mín. 8)" aria-label="Contraseña nueva" minLength={8} value={claves.nueva} onChange={(e) => setClaves((c) => ({ ...c, nueva: e.target.value }))} />
+            <button type="button" className="accion" disabled={!claves.actual || claves.nueva.length < 8} onClick={accion(() => api.cuentaEnviar('/clave', { actual: claves.actual, nueva: claves.nueva }), 'Contraseña cambiada. Se ha cerrado la sesión en tus otros dispositivos.')}>
+              Cambiar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section className="grupo-ajustes zona-peligro" aria-labelledby="a-borrar">
+        <h2 id="a-borrar">Borrar la cuenta</h2>
+        <div className="fila-ajuste fila-ajuste-ancha">
+          <div>
+            <strong>Borrar mi cuenta</strong>
+            <span>Se borran del servidor tu cuenta, tu lista, tu perfil, tu catálogo y tu seguimiento. No se puede deshacer.</span>
+          </div>
+          <div className="ajuste-control campos-en-linea">
+            <input type="password" autoComplete="current-password" placeholder="Tu contraseña" aria-label="Contraseña para borrar la cuenta" value={claves.borrar} onChange={(e) => setClaves((c) => ({ ...c, borrar: e.target.value }))} />
+            <button
+              type="button"
+              className="accion boton-peligro"
+              disabled={!claves.borrar}
+              onClick={accion(async () => {
+                if (!window.confirm('¿Seguro que quieres borrar tu cuenta? No se puede deshacer.')) return;
+                await api.cuentaEnviar('', { clave: claves.borrar }, 'DELETE');
+                await alSalir();
+              })}
+            >
+              Borrar mi cuenta
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
 

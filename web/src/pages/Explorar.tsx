@@ -39,9 +39,9 @@ function Cuando({ c }: { c: Convocatoria }) {
 }
 
 /** Una convocatoria en la lista: cuándo, qué, quién la da, dónde y cuánto. */
-function FilaAyuda({ c, motivo }: { c: Convocatoria; motivo: string | null }) {
+export function FilaAyuda({ c, motivo = null, mostrarOcultas = false }: { c: Convocatoria; motivo?: string | null; mostrarOcultas?: boolean }) {
   const { ocultas } = useMarcas();
-  if (ocultas.includes(c.id)) return null;
+  if (ocultas.includes(c.id) && !mostrarOcultas) return null;
   const organo = c.organoNiveles.slice(1).join(' · ') || c.organo;
   const ambito = c.ambitoNacional ? 'Toda España' : (c.provincias.length ? c.provincias : c.ccaa).slice(0, 3).join(', ');
   return (
@@ -72,7 +72,7 @@ function FilaAyuda({ c, motivo }: { c: Convocatoria; motivo: string | null }) {
             <small>presupuesto</small>
           </span>
         )}
-        <BotonesMarca id={c.id} compacto />
+        <BotonesMarca id={c.id} compacto={!mostrarOcultas} />
       </div>
     </li>
   );

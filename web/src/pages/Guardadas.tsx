@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
-import { FilaConvocatoria } from '../components/FilaConvocatoria';
-import { LineaContacto, nombreCliente } from '../components/Cliente';
+import { nombreCliente } from '../components/Cliente';
+import { FilaAyuda } from './Explorar';
 import { AvisoCuenta } from '../components/AvisoCuenta';
 import { Suscribir } from '../components/Suscribir';
 import { useCuenta } from '../sincronizar';
@@ -55,21 +55,34 @@ function FilaSeguimiento({ id, s, p, hoy }: { id: string; s: SeguimientoCliente;
     // Al contactar sin fecha de próxima acción, se propone volver a llamar en una semana.
     actualizarCliente(id, { estado, ...((estado === 'contactado' || estado === 'interesado') && !s.proxima && { proxima: sumarDias(7) }) });
   const atrasada = s.proxima && s.proxima < hoy && grupoDe(s, hoy) === 'atrasadas';
+  const c = p?.contactoBreve;
+  const tel = c?.telefono?.split(/\s*[;/]\s*/)[0];
+  const email = c?.email?.split(/;\s*/)[0];
   return (
-    <li className="fila-convocatoria fila-cliente">
-      <a className="fila-titulo" href={enlace('programador', id)}>
-        {p ? nombreCliente(p) : s.nombre}
-      </a>
-      {p && (
-        <span className="fila-detalle">
-          {[p.ciudad, p.provincia].filter(Boolean).join(', ')} · {p.contratos} conciertos
-          {p.rango && ` · paga ${euros.format(p.rango.min)}–${euros.format(p.rango.max)}`}
-          {p.meses.length > 0 && ` · contrata en ${p.meses.map((m) => MES_CORTO[m - 1]).join(', ')}`}
-        </span>
-      )}
-      {p?.contactoBreve && <LineaContacto c={p.contactoBreve} />}
-      <div className="seguimiento">
-        <select value={s.estado} onChange={(e) => cambiarEstado(e.target.value as EstadoCliente)} aria-label="Estado">
+    <li className="fila-lista">
+      <div className="fila-lista-quien">
+        <a className="fila-ayuda-titulo" href={enlace('programador', id)}>
+          {p ? nombreCliente(p) : s.nombre}
+        </a>
+        {p && (
+          <span className="fila-ayuda-detalle">
+            {[p.ciudad, p.provincia].filter(Boolean).join(', ')} · {p.contratos} conciertos
+            {p.rango && ` · paga ${euros.format(p.rango.min)}–${euros.format(p.rango.max)}`}
+            {p.meses.length > 0 && ` · contrata en ${p.meses.map((m) => MES_CORTO[m - 1]).join(', ')}`}
+          </span>
+        )}
+        {c && (
+          <span className="fila-ayuda-detalle">
+            {c.nombre && <strong>{c.nombre}</strong>}
+            {c.nombre && (tel || email) && ' · '}
+            {tel && <a href={`tel:${tel.replace(/[^\d+]/g, '')}`}>{tel}</a>}
+            {tel && email && ' · '}
+            {email && <a href={`mailto:${email}`}>{email}</a>}
+          </span>
+        )}
+      </div>
+      <div className="fila-lista-control">
+        <select value={s.estado} onChange={(e) => cambiarEstado(e.target.value as EstadoCliente)} aria-label="Estado" className={`estado-${s.estado}`}>
           {ORDEN_ESTADO.map((e) => (
             <option key={e} value={e}>
               {NOMBRE_ESTADO[e]}
@@ -77,28 +90,29 @@ function FilaSeguimiento({ id, s, p, hoy }: { id: string; s: SeguimientoCliente;
           ))}
         </select>
         <label className={`proxima${atrasada ? ' proxima-atrasada' : ''}`}>
-          Próxima acción
+          <span>Próxima acción</span>
           <input type="date" value={s.proxima ?? ''} onChange={(e) => actualizarCliente(id, { proxima: e.target.value || null })} />
         </label>
         <span className="atajos-fecha">
-          <button type="button" className="marca" onClick={() => actualizarCliente(id, { proxima: sumarDias(7) })}>
+          <button type="button" className="accion" onClick={() => actualizarCliente(id, { proxima: sumarDias(7) })}>
             +1 sem.
           </button>
-          <button type="button" className="marca" onClick={() => actualizarCliente(id, { proxima: sumarDias(30) })}>
+          <button type="button" className="accion" onClick={() => actualizarCliente(id, { proxima: sumarDias(30) })}>
             +1 mes
           </button>
         </span>
-        <input
-          type="text"
-          defaultValue={s.nota}
-          placeholder="Nota: con quién hablaste, qué grupo le ofreciste…"
-          onBlur={(e) => e.target.value !== s.nota && actualizarCliente(id, { nota: e.target.value })}
-          aria-label="Nota"
-        />
-        <button type="button" className="marca" onClick={() => alternarCliente(id, s.nombre)}>
-          Quitar
+        <button type="button" className="boton-icono" aria-label={`Quitar ${s.nombre} de mi lista`} title="Quitar de mi lista" onClick={() => alternarCliente(id, s.nombre)}>
+          ×
         </button>
       </div>
+      <input
+        className="nota-cliente"
+        type="text"
+        defaultValue={s.nota}
+        placeholder="Nota: con quién hablaste, qué grupo le ofreciste…"
+        onBlur={(e) => e.target.value !== s.nota && actualizarCliente(id, { nota: e.target.value })}
+        aria-label="Nota"
+      />
     </li>
   );
 }
@@ -112,28 +126,30 @@ function MisClientes({ datos }: { datos: Record<string, Programador> }) {
   const pendientesHoy = orden.filter((id) => grupoDe(clientes[id]!, hoy) === 'atrasadas').length;
   let anterior: Grupo | null = null;
   return (
-    <section className="bloque">
-      <h3>
-        Clientes <span className="contador">{ids.length}</span>
-      </h3>
-      <p className="ayuda">
-        Ayuntamientos y programadores a los que quieres vender tus grupos. Pon fecha a la próxima acción y la lista se ordena sola por urgencia.
-      </p>
+    <section aria-label="Clientes en seguimiento">
       {pendientesHoy > 0 && (
         <p className="llamada">
           Tienes {pendientesHoy} {pendientesHoy === 1 ? 'cliente' : 'clientes'} para hoy o con la fecha pasada.
         </p>
       )}
       {ids.length === 0 ? (
-        <p className="ayuda">
-          Aún no has añadido ninguno: en <a href="#/clientes">Clientes</a> pulsa «☆ Añadir a mi lista».
-        </p>
+        <div className="bloque vacio">
+          <h2>Aún no sigues a ningún cliente</h2>
+          <p className="ayuda">
+            En <a href="#/clientes">Clientes</a> pulsa la estrella para añadirlo. Pon fecha a la próxima acción y la lista se ordena sola por urgencia.
+          </p>
+        </div>
       ) : (
-        <ul className="filas">
+        <ul className="lista-ayudas lista-seguimiento">
           {orden.map((id) => {
             const s = clientes[id]!;
             const g = grupoDe(s, hoy);
-            const cabecera = g !== anterior ? <li key={`g-${g}`} className="grupo-lista">{TITULO_GRUPO[g]}</li> : null;
+            const cabecera =
+              g !== anterior ? (
+                <li key={`g-${g}`} className={`grupo-bandeja${g === 'atrasadas' ? ' tono-ambar' : ''}`}>
+                  {TITULO_GRUPO[g]}
+                </li>
+              ) : null;
             anterior = g;
             return [cabecera, <FilaSeguimiento key={id} id={id} s={s} p={datos[id]} hoy={hoy} />];
           })}
@@ -241,8 +257,9 @@ function Descargas({ clientes, programadores, ayudas }: { clientes: Record<strin
       );
   };
   return (
-    <section className="bloque descargas">
-      <h3>Descargar</h3>
+    <section className="descargas">
+      <section className="grupo-ajustes">
+      <h2>Descargar</h2>
       <p className="acciones">
         <button type="button" className="accion" onClick={excelClientes} disabled={!Object.keys(clientes).length}>
           Clientes en Excel
@@ -251,10 +268,12 @@ function Descargas({ clientes, programadores, ayudas }: { clientes: Record<strin
           Ayudas en Excel
         </button>
         <button type="button" className="accion" onClick={calendario}>
-          📅 Mis fechas al calendario
+          Mis fechas al calendario (.ics)
         </button>
       </p>
-      <h4 className="subtitulo-bloque">Calendario que se actualiza solo</h4>
+      </section>
+      <section className="grupo-ajustes">
+      <h2>Calendario que se actualiza solo</h2>
       {usuario ? (
         <Suscribir ruta={`/api/mi-calendario.ics?token=${encodeURIComponent(usuario.tokenCalendario)}`} nota="Con tu cuenta, lo que cambies en Mi lista aparece solo en el calendario. Tus notas no se incluyen." />
       ) : (
@@ -280,12 +299,12 @@ function Descargas({ clientes, programadores, ayudas }: { clientes: Record<strin
           <input type="file" accept="application/json,.json" hidden onChange={(e) => restaurar(e.target.files?.[0])} />
         </label>
       </p>
-      {aviso && <p className="ayuda">{aviso}</p>}
+      {aviso && <p className="llamada">{aviso}</p>}
+      </section>
     </section>
   );
 }
 
-const fila = (c: Convocatoria) => ({ convocatoria: c, plazo: c.plazo, puntuacion: 0, encaje: 'directo' as const, motivos: [], avisos: [] });
 // Primero las que se pueden pedir (por fecha de cierre o apertura), luego el resto por fecha de publicación.
 const orden = (c: Convocatoria) =>
   c.plazo === 'abierta' ? `0${cierreDe(c) ?? '9999'}` : c.plazo === 'proxima' ? `1${c.fechaInicioSolicitud ?? '9999'}` : `2${9999 - Number(c.fechaPublicacion?.slice(0, 4) ?? 0)}`;
@@ -317,40 +336,57 @@ export function Guardadas() {
 
   const lista = (xs: string[]) => xs.map((id) => datos[id]).filter((c): c is Convocatoria => !!c).sort((a, b) => orden(a).localeCompare(orden(b)));
 
+  const [pestana, setPestana] = useState<'clientes' | 'ayudas' | 'ocultas' | 'descargar'>('clientes');
+  const PESTANAS: [typeof pestana, string][] = [
+    ['clientes', `Clientes · ${idsClientes.length}`],
+    ['ayudas', `Ayudas guardadas · ${guardadas.length}`],
+    ['ocultas', `No me interesan · ${ocultas.length}`],
+    ['descargar', 'Descargar y calendario'],
+  ];
   return (
-    <section>
+    <section className="mi-lista">
       {error && <p className="error">{error}</p>}
       <AvisoCuenta />
-      <MisClientes datos={programadores} />
-      <section className="bloque">
-        <h3>
-          Ayudas guardadas <span className="contador">{guardadas.length}</span>
-        </h3>
-        <p className="ayuda">Las que te interesan de verdad.</p>
-        {guardadas.length === 0 ? (
-          <p className="ayuda">Aún no has guardado ninguna: pulsa «☆ Guardar» en cualquier subvención.</p>
+      <div className="pestanas-pagina" role="tablist" aria-label="Mi lista">
+        {PESTANAS.map(([v, n]) => (
+          <button key={v} type="button" role="tab" aria-selected={pestana === v} className={pestana === v ? 'activa' : ''} onClick={() => setPestana(v)}>
+            {n}
+          </button>
+        ))}
+      </div>
+      {pestana === 'clientes' && <MisClientes datos={programadores} />}
+      {pestana === 'ayudas' &&
+        (guardadas.length === 0 ? (
+          <div className="bloque vacio">
+            <h2>Aún no has guardado ninguna ayuda</h2>
+            <p className="ayuda">
+              Pulsa la estrella en cualquier ayuda de <a href="#/explorar">Ayudas</a> para tenerla aquí, con su plazo.
+            </p>
+          </div>
         ) : (
-          <ul className="filas">
+          <ul className="lista-ayudas">
             {lista(guardadas).map((c) => (
-              <FilaConvocatoria key={c.id} m={fila(c)} destino />
+              <FilaAyuda key={c.id} c={c} />
             ))}
           </ul>
-        )}
-      </section>
-      <Descargas clientes={clientes} programadores={programadores} ayudas={lista(guardadas)} />
-      <section className="bloque">
-        <h3>
-          Ayudas que no me interesan <span className="contador">{ocultas.length}</span>
-        </h3>
-        <p className="ayuda">Ya no te aparecen en ninguna lista. Pulsa «recuperar» para que vuelvan.</p>
-        {ocultas.length > 0 && (
-          <ul className="filas">
-            {lista(ocultas).map((c) => (
-              <FilaConvocatoria key={c.id} m={fila(c)} destino mostrarOcultas />
-            ))}
-          </ul>
-        )}
-      </section>
+        ))}
+      {pestana === 'ocultas' &&
+        (ocultas.length === 0 ? (
+          <div className="bloque vacio">
+            <h2>Nada descartado</h2>
+            <p className="ayuda">Las ayudas que marques con «No me interesa» dejan de salir en las listas y aparecen aquí, por si quieres recuperarlas.</p>
+          </div>
+        ) : (
+          <>
+            <p className="intro-pestana">Ya no te aparecen en ninguna lista. Pulsa «Oculta · recuperar» para que vuelvan.</p>
+            <ul className="lista-ayudas">
+              {lista(ocultas).map((c) => (
+                <FilaAyuda key={c.id} c={c} mostrarOcultas />
+              ))}
+            </ul>
+          </>
+        ))}
+      {pestana === 'descargar' && <Descargas clientes={clientes} programadores={programadores} ayudas={lista(guardadas)} />}
     </section>
   );
 }

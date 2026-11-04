@@ -72,7 +72,6 @@ const CABECERAS: Record<string, [string, string]> = {
   contactos: ['Directorio de cultura', 'Contactos institucionales de cultura por municipio.'],
   organismos: ['Organismos', 'Quién convoca ayudas de música.'],
   mercado: ['Mercado', 'Cuánto se paga y quién toca en los contratos públicos.'],
-  cuenta: ['Mi cuenta', ''],
 };
 
 const TRAZOS: Record<string, string> = {

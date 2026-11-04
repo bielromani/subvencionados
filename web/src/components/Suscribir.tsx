@@ -19,7 +19,7 @@ export function Suscribir({ ruta, nota }: { ruta: string; nota?: string }) {
     <div className="suscribir">
       <p className="acciones">
         <a className="accion" href={url.replace(/^https?:/, 'webcal:')}>
-          🔔 Suscribirme
+          Suscribirme
         </a>
         <button type="button" className="accion" onClick={copiar}>
           {copiado ? '✓ Enlace copiado' : 'Copiar enlace'}
