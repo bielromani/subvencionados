@@ -28,6 +28,7 @@ import type { Ficha } from './ficha/esquema.js';
 import { documentosConTexto } from './ficha/fichas.js';
 import { ESTILOS, type Convocatoria, type Perfil } from './tipos.js';
 import { type AjustesCrm, cupoDiario } from './crm/tipos.js';
+import { configImapDesdeEntorno, detectarRespuestas, leerBuzon } from './crm/respuestas.js';
 
 const lista = (valor: unknown): string[] =>
   typeof valor === 'string' && valor ? valor.split(',').map((x) => x.trim()).filter(Boolean) : [];
@@ -770,6 +771,27 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     );
   });
 
+  /** Lee el buzón configurado (IMAP) y anota las respuestas de los sitios en seguimiento. */
+  async function leerRespuestas(): Promise<{ anotadas: number } | { error: string } | null> {
+    const imap = configImapDesdeEntorno();
+    if (!crm || !imap) return null;
+    try {
+      const usuarios = await crm.usuariosConRemitente(imap.usuario);
+      if (!usuarios.length) return { error: `Ninguna cuenta tiene ${imap.usuario} como email del remitente` };
+      const recibidos = await leerBuzon(imap, new Date(Date.now() - 3 * 86_400_000));
+      let anotadas = 0;
+      for (const u of usuarios) {
+        for (const r of detectarRespuestas(recibidos, await crm.seguimientosActivos(u))) {
+          await crm.anotar(u, r.entidad, { tipo: r.tipo, texto: r.texto });
+          anotadas++;
+        }
+      }
+      return { anotadas };
+    } catch (e) {
+      return { error: `No se ha podido leer el buzón: ${(e as Error).message}` };
+    }
+  }
+
   // Envío de los correos programados del CRM (tarea programada cada hora). Solo salen los que tienen el visto bueno
   // y siguen programados (si se cancelan antes, ya no están). Cada envío cuenta como efectivo al salir.
   app.get('/api/crm-envios', async (req, res) => {
@@ -779,8 +801,10 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       return;
     }
     const { enviar } = opciones;
+    // Antes de enviar: las respuestas que hayan llegado al buzón paran sus seguimientos (también sin envío conectado).
+    const respuestas = await leerRespuestas();
     if (!crm || !enviar) {
-      res.json({ enviados: 0, motivo: !crm ? 'Sin base de datos' : 'Sin servicio de email' });
+      res.json({ enviados: 0, respuestas, motivo: !crm ? 'Sin base de datos' : 'Sin servicio de email' });
       return;
     }
     let enviados = 0;
@@ -817,7 +841,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         for (const m of await crm.colaAutomatica(u, quedan, ahora)) await mandar(u, m, a, true);
       }
     }
-    res.json({ enviados, fallidos: fallidos.length });
+    res.json({ enviados, fallidos: fallidos.length, respuestas });
   });
 
   // Avisos por email (lo llama la tarea programada de Vercel cada mañana). A cada usuario se le envía como mucho uno

@@ -310,7 +310,7 @@ async function pedir<T>(ruta: string, metodo = 'GET', cuerpo?: unknown): Promise
 
 export const crm = {
   panel: () => pedir<Panel>('/panel'),
-  ajustes: () => pedir<{ ajustes: AjustesCrm; envioConectado: boolean; cupoHoy: number }>('/ajustes'),
+  ajustes: () => pedir<{ ajustes: AjustesCrm; envioConectado: boolean; cupoHoy: number; buzonConectado?: boolean }>('/ajustes'),
   guardarAjustes: (a: AjustesCrm) => pedir('/ajustes', 'PUT', a),
   catalogo: () => pedir<{ items: Espectaculo[] }>('/catalogo'),
   guardarEspectaculo: (e: Omit<Espectaculo, 'id'>, id?: string) => pedir<{ id: string }>(id ? `/catalogo/${id}` : '/catalogo', id ? 'PUT' : 'POST', e),

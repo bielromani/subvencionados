@@ -613,6 +613,20 @@ export class AlmacenCrm {
     });
   }
 
+  /** Cuentas cuyo remitente es este email (para leer las respuestas de su buzón). */
+  async usuariosConRemitente(email: string): Promise<string[]> {
+    return (await this.q<{ usuario: string }>("select usuario from crm_ajustes where lower(datos->>'email') = lower($1)", [email])).map((f) => f.usuario);
+  }
+
+  /** A quién se le está haciendo el seguimiento (activo o en pausa) y desde cuándo, para reconocer sus respuestas. */
+  async seguimientosActivos(u: string): Promise<{ entidad: string; destinatario: string; desde: Date }[]> {
+    return this.q(
+      `select s.entidad, s.destinatario, min(m.enviado_en) as desde from crm_secuencias s join crm_mensajes m on m.secuencia = s.id
+       where s.usuario = $1 and s.estado in ('activa', 'pausada') and m.estado = 'enviado' group by s.entidad, s.destinatario`,
+      [u],
+    );
+  }
+
   /** Cuentas con el envío automático activado. */
   async usuariosConEnvioAutomatico(): Promise<string[]> {
     return (await this.q<{ usuario: string }>("select usuario from crm_ajustes where datos->>'envioAutomatico' = 'true'")).map((f) => f.usuario);

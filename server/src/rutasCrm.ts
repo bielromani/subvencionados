@@ -6,6 +6,7 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
+import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
 import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, PLANTILLAS_GENERICAS, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
@@ -165,7 +166,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     '/ajustes',
     ruta(async (_q, _r, u, c) => {
       const a = await c.ajustes(u.id);
-      return { ajustes: { ...a, email: a.email || u.email, plantillas: plantillasDe(a) }, envioConectado: enviar !== null, cupoHoy: cupoDiario(a) };
+      return { ajustes: { ...a, email: a.email || u.email, plantillas: plantillasDe(a) }, envioConectado: enviar !== null, cupoHoy: cupoDiario(a), buzonConectado: configImapDesdeEntorno() !== null };
     }),
   );
   r.put(

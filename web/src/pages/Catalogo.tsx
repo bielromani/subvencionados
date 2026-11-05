@@ -164,8 +164,8 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
 function useAjustes() {
   const [a, setA] = useState<AjustesCrm | null>(null);
   const [guardado, setGuardado] = useState<AjustesCrm | null>(null);
-  const [envio, setEnvio] = useState({ conectado: false, cupoHoy: 0 });
-  const cargar = () => crm.ajustes().then((r) => (setA(r.ajustes), setGuardado(r.ajustes), setEnvio({ conectado: r.envioConectado, cupoHoy: r.cupoHoy })));
+  const [envio, setEnvio] = useState({ conectado: false, cupoHoy: 0, buzon: false });
+  const cargar = () => crm.ajustes().then((r) => (setA(r.ajustes), setGuardado(r.ajustes), setEnvio({ conectado: r.envioConectado, cupoHoy: r.cupoHoy, buzon: !!r.buzonConectado })));
   useEffect(() => {
     void cargar();
   }, []);
@@ -252,13 +252,19 @@ function Remitente() {
             </label>
             <p className="ayuda">
               Salen desde {a.email || 'tu email'} de lunes a viernes, de 9 a 18 h, repartidos a lo largo del día. Para no caer en spam, el primer día salen como mucho 20 y el tope sube 10 cada
-              semana hasta tu máximo{a.envioAutomatico && !cambiado ? ` (hoy: ${envio.cupoHoy})` : ''}. Recibes una copia oculta de cada correo y las respuestas te llegan a tu buzón:
-              anótalas en la ficha del sitio para que no le salgan más seguimientos. Cada correo lleva al final una línea para pedir no recibir más.
+              semana hasta tu máximo{a.envioAutomatico && !cambiado ? ` (hoy: ${envio.cupoHoy})` : ''}. Recibes una copia oculta de cada correo y las respuestas te llegan a tu buzón.
+              Cada correo lleva al final una línea para pedir no recibir más.
             </p>
           </>
         ) : (
           <p className="ayuda">Para que los correos salgan solos hay que conectar antes un servicio de envío (Brevo). Mientras tanto, se envían desde tu programa de correo.</p>
         )}
+        <h3>Respuestas</h3>
+        <p className="ayuda">
+          {envio.buzon
+            ? 'Tu buzón está conectado: cada hora se mira si ha respondido algún sitio en seguimiento. Si es así, se anota en su ficha y se paran sus seguimientos (y si pide la baja, queda en «no contactar»). Solo se lee: no se mueve ni se borra nada.'
+            : 'Tu buzón no está conectado: cuando un sitio responda, anótalo en su ficha («Ha respondido») para que no le salgan más seguimientos.'}
+        </p>
       </section>
       <section className="bloque vista-firma">
         <h3>Así se verá la firma</h3>
