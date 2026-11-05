@@ -23,7 +23,9 @@ describe('propuestas preparadas', () => {
   it('un correo por sitio, a la persona de cultura, con los grupos del estilo que programa', () => {
     const [p] = prepararPropuestas(fuentes([prog('a', 'Alcañiz', { jazz: 6 })]), catalogo, { ...AJUSTES_POR_DEFECTO, remitente: 'Joan', organizacion: 'ARS VIA' }, new Set(), { limite: 5, hoy });
     expect(p).toMatchObject({ ref: 'a', nombre: 'Ayuntamiento de Alcañiz', destinatario: 'cultura@alcaniz.es', persona: 'Persona de Cultura', revisarEmail: null });
-    expect(p!.espectaculos.map((e) => e.id)).toEqual(['00000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000002']);
+    // Primero los de jazz; detrás, el rock como afín (Fidelio y el cuarteto no encajan).
+    expect(p!.espectaculos.map((e) => e.id)).toEqual(['00000000-0000-4000-8000-000000000001', '00000000-0000-4000-8000-000000000002', '00000000-0000-4000-8000-000000000005']);
+    expect(p!.espectaculos[2]!.motivos[0]).toContain('Afín');
     expect(p!.cuerpo).toContain('Estimado/a Persona de Cultura:');
     expect(p!.cuerpo).toContain('han programado jazz');
     expect(p!.cuerpo).not.toMatch(/€|garantiz|concedid/);

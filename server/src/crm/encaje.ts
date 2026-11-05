@@ -18,6 +18,32 @@ const TIPOS_DE_ESTILO: Record<Estilo, TipoEspectaculo[]> = {
   jazz: ['jazz'],
 };
 
+/** Tipos afines: a quien programa uno, se le puede ofrecer el otro (por detrás de lo que programa). */
+const AFINES: Partial<Record<TipoEspectaculo, TipoEspectaculo[]>> = {
+  opera: ['sinfonico_coral', 'religiosa'],
+  sinfonico_coral: ['opera', 'religiosa', 'sinfonica'],
+  religiosa: ['sinfonico_coral', 'camara'],
+  sinfonica: ['sinfonico_coral', 'camara'],
+  camara: ['sinfonica', 'religiosa', 'fusion'],
+  jazz: ['fusion', 'rock'],
+  rock: ['jazz', 'fusion'],
+  fusion: ['jazz', 'camara'],
+};
+
+const NOMBRE_TIPO_CORTO: Record<TipoEspectaculo, string> = {
+  opera: 'ópera',
+  sinfonico_coral: 'sinfónico-coral',
+  sinfonica: 'sinfónico',
+  religiosa: 'música religiosa',
+  camara: 'cámara',
+  jazz: 'jazz',
+  rock: 'rock',
+  navidad: 'Navidad',
+  fusion: 'fusión',
+  festivales: 'festivales',
+  otro: 'otros',
+};
+
 /** Meses de diciembre y enero: programación de Navidad. */
 const MESES_NAVIDAD = [11, 12, 1];
 /** Una ficha sin revisar en este tiempo pasa a «pendiente de actualización». */
@@ -45,10 +71,13 @@ export function avisosFicha(e: Espectaculo, hoy = new Date()): string[] {
 const euros = (n: number) => `${Math.round(n).toLocaleString('es-ES')} €`;
 
 /** Propuestas del catálogo que podrían encajar con una entidad (ordenadas; nunca vacío si hay catálogo). */
-export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, hoy = new Date()): { amplio: boolean; propuestas: Encaje[] } {
+export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, hoy = new Date(), opciones: { afines?: boolean } = {}): { amplio: boolean; propuestas: Encaje[] } {
   const historial = p ? (Object.entries(p.estilos) as [Estilo, number][]).filter(([, n]) => n > 0) : [];
   const tiposConocidos = new Map<TipoEspectaculo, number>();
   for (const [estilo, n] of historial) for (const t of TIPOS_DE_ESTILO[estilo]) tiposConocidos.set(t, (tiposConocidos.get(t) ?? 0) + n);
+  // Afines: el tipo del que viene (para explicarlo), solo si no lo programa ya.
+  const afinDe = new Map<TipoEspectaculo, TipoEspectaculo>();
+  if (opciones.afines) for (const t of tiposConocidos.keys()) for (const a of AFINES[t] ?? []) if (!tiposConocidos.has(a) && !afinDe.has(a)) afinDe.set(a, t);
   const navidad = p?.meses.some((m) => MESES_NAVIDAD.includes(m)) ?? false;
   const propuestas = catalogo.map((e): Encaje => {
     const motivos: string[] = [];
@@ -59,6 +88,10 @@ export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, ho
       // Pesa cuánto lo programa: a quien hace mucha ópera, primero las óperas.
       puntos += 3 + Math.min(n, 40) / 10;
       motivos.push(`Ha contratado ${n} ${n === 1 ? 'concierto' : 'conciertos'} de este estilo`);
+    } else if (afinDe.has(e.tipo)) {
+      // Por detrás de lo que programa: solo completa el correo si faltan propuestas.
+      puntos += 1.5;
+      motivos.push(`Afín a lo que programa (${NOMBRE_TIPO_CORTO[afinDe.get(e.tipo)!]})`);
     }
     if (e.tipo === 'navidad' && navidad) {
       puntos += 2;

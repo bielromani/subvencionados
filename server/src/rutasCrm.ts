@@ -188,6 +188,9 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         cargo: texto(b.cargo, 200),
         ...(b.plantillas && { plantillas: validarPlantillas(b.plantillas) }),
         diasEntreEnvios: Math.min(60, Math.max(3, Math.round(Number(b.diasEntreEnvios) || 10))),
+        obrasPorCorreo: Math.min(8, Math.max(1, Math.round(Number(b.obrasPorCorreo) || 6))),
+        obrasPorTipo: Math.min(4, Math.max(1, Math.round(Number(b.obrasPorTipo) || 2))),
+        afines: b.afines !== false,
         envioAutomatico: automatico,
         limiteDiario: Math.min(300, Math.max(5, Math.round(Number(b.limiteDiario) || 30))),
         // Al activarlo empieza la subida gradual; si ya estaba activo, se mantiene la fecha.
@@ -232,7 +235,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     const disponibles = catalogo.filter((e) => e.enWeb !== false);
     return (p: PropuestaPreparada) => {
       const prog = ctx.programador(p.ref);
-      const espectaculos = prog && disponibles.length ? elegirEspectaculos(disponibles, prog) : p.espectaculos;
+      const espectaculos = prog && disponibles.length ? elegirEspectaculos(disponibles, prog, ajustes) : p.espectaculos;
       return { espectaculos, ...redactarPropuesta({ ...p, espectaculos }, ajustes, catalogo) };
     };
   }

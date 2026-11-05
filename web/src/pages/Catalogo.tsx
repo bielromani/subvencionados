@@ -256,6 +256,25 @@ function Remitente() {
         <h3>Pauta de seguimiento</h3>
         {campo('diasEntreEnvios', 'Días entre un correo y el siguiente (desde que envías el anterior)', 'number')}
         <p className="ayuda">Cinco correos como máximo; tras el 2.º y el 4.º, la app te recuerda llamar.</p>
+        <h3>Qué lleva cada correo</h3>
+        <div className="fila-campos">
+          <label>
+            Producciones como máximo por correo
+            <input type="number" min={1} max={8} value={a.obrasPorCorreo ?? 6} onChange={(e) => setA({ ...a, obrasPorCorreo: Number(e.target.value) })} />
+          </label>
+          <label>
+            Como mucho, del mismo tipo
+            <input type="number" min={1} max={4} value={a.obrasPorTipo ?? 2} onChange={(e) => setA({ ...a, obrasPorTipo: Number(e.target.value) })} />
+          </label>
+        </div>
+        <label className="casilla">
+          <input type="checkbox" checked={a.afines ?? true} onChange={(e) => setA({ ...a, afines: e.target.checked })} />
+          Completar con producciones afines (a quien programa ópera, también sinfónico-coral, y al revés)
+        </label>
+        <p className="ayuda">
+          Primero van las del estilo que programa cada sitio; las afines solo completan el correo si quedan huecos. Más de seis producciones alarga mucho el correo. Al guardar, las propuestas
+          pendientes se vuelven a hacer.
+        </p>
         <h3>Envío automático</h3>
         {envio.conectado ? (
           <>

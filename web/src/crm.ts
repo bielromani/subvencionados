@@ -224,6 +224,9 @@ export interface AjustesCrm {
   cargo?: string;
   diasEntreEnvios: number;
   plantillas: PlantillasCarta;
+  obrasPorCorreo?: number;
+  obrasPorTipo?: number;
+  afines?: boolean;
   envioAutomatico?: boolean;
   limiteDiario?: number;
   automaticoDesde?: string | null;

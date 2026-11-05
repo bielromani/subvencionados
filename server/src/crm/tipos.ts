@@ -153,6 +153,12 @@ export interface AjustesCrm {
   diasEntreEnvios: number;
   /** Textos de las cartas por bloques (si no hay, los genéricos). */
   plantillas?: PlantillasCarta;
+  /** Producciones como máximo en cada correo (1–8). */
+  obrasPorCorreo?: number;
+  /** Como mucho, cuántas del mismo tipo (1–4). */
+  obrasPorTipo?: number;
+  /** Completar con producciones de tipos afines (ópera ↔ sinfónico-coral...) cuando falte variedad. */
+  afines?: boolean;
   /** Envío automático (con el correo conectado): los primeros correos aceptados y los seguimientos salen solos. */
   envioAutomatico?: boolean;
   /** Tope de correos al día (primeros y seguimientos juntos). */
