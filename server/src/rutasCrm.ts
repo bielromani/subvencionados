@@ -6,11 +6,11 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
-import { noEncaja, prepararPropuestas, redactarPropuesta } from './crm/prospeccion.js';
+import { noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
 import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, PLANTILLAS_GENERICAS, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
-import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
+import { type AjustesCrm, AJUSTES_POR_DEFECTO, cupoDiario, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
 import type { Programador } from './directorio.js';
 import type { Enviar } from './email.js';
 import { usuarioDeSesion } from './rutasCuenta.js';
@@ -165,13 +165,16 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     '/ajustes',
     ruta(async (_q, _r, u, c) => {
       const a = await c.ajustes(u.id);
-      return { ajustes: { ...a, email: a.email || u.email, plantillas: plantillasDe(a) }, envioConectado: enviar !== null };
+      return { ajustes: { ...a, email: a.email || u.email, plantillas: plantillasDe(a) }, envioConectado: enviar !== null, cupoHoy: cupoDiario(a) };
     }),
   );
   r.put(
     '/ajustes',
     ruta(async (req, _r, u, c) => {
       const b = req.body ?? {};
+      const previo = await c.ajustes(u.id);
+      const automatico = b.envioAutomatico === true;
+      if (automatico && !enviar) throw new ErrorCrm('Para el envío automático hay que conectar antes el correo (Brevo)', 409);
       const a: AjustesCrm = {
         ...AJUSTES_POR_DEFECTO,
         remitente: texto(b.remitente, 200),
@@ -183,6 +186,10 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         cargo: texto(b.cargo, 200),
         ...(b.plantillas && { plantillas: validarPlantillas(b.plantillas) }),
         diasEntreEnvios: Math.min(60, Math.max(3, Math.round(Number(b.diasEntreEnvios) || 10))),
+        envioAutomatico: automatico,
+        limiteDiario: Math.min(300, Math.max(5, Math.round(Number(b.limiteDiario) || 30))),
+        // Al activarlo empieza la subida gradual; si ya estaba activo, se mantiene la fecha.
+        automaticoDesde: automatico ? (previo.envioAutomatico && previo.automaticoDesde ? previo.automaticoDesde : new Date().toISOString().slice(0, 10)) : null,
       };
       await c.guardarAjustes(u.id, a);
       return { ajustes: a };
@@ -408,7 +415,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
 
   // ---------- Bandeja de aprobación ----------
 
-  r.get('/bandeja', ruta(async (_q, _r, u, c) => ({ items: await c.bandeja(u.id), envioConectado: enviar !== null })));
+  r.get('/bandeja', ruta(async (_q, _r, u, c) => ({ items: await c.bandeja(u.id), envioConectado: enviar !== null, automatico: enviar !== null && !!(await c.ajustes(u.id)).envioAutomatico })));
   r.put('/mensajes/:id', ruta(async (req, _r, u, c) => c.editar(u.id, String(req.params.id), { asunto: texto(req.body?.asunto, 300), cuerpo: texto(req.body?.cuerpo, 20000) })));
   r.post(
     '/mensajes/:id/aprobar',
@@ -450,8 +457,31 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       const carta = cartaDe(req.body);
       const p = (await c.propuestas(u.id)).find((x) => x.id === req.params.id);
       if (!p) throw new ErrorCrm('Esta propuesta ya no está pendiente', 409);
-      const prog = ctx.programador(p.ref);
-      return c.aceptarPropuesta(u.id, p.id, carta, {
+      return aceptar(u.id, c, p, carta);
+    }),
+  );
+  // Visto bueno a varias de golpe, con el texto que tienen (para el envío automático). Las de email dudoso no se tocan.
+  r.post(
+    '/propuestas/aceptar-todas',
+    ruta(async (req, _r, u, c) => {
+      const ids = Array.isArray(req.body?.ids) ? new Set(req.body.ids.filter((x: unknown) => typeof x === 'string')) : null;
+      let aceptadas = 0;
+      let porRevisar = 0;
+      for (const p of await c.propuestas(u.id)) {
+        if (ids && !ids.has(p.id)) continue;
+        if (p.revisarEmail) {
+          porRevisar++;
+          continue;
+        }
+        await aceptar(u.id, c, p, { asunto: p.asunto, cuerpo: p.cuerpo, destinatario: p.destinatario });
+        aceptadas++;
+      }
+      return { aceptadas, porRevisar };
+    }),
+  );
+  function aceptar(uid: string, c: AlmacenCrm, p: PropuestaPreparada & { id: string }, carta: { asunto: string; cuerpo: string; destinatario: string }) {
+    const prog = ctx.programador(p.ref);
+    return c.aceptarPropuesta(uid, p.id, carta, {
         ref: p.ref,
         nombre: p.nombre,
         tipo: /ayuntamiento|ajuntament|concello/i.test(p.nombre) ? 'ayuntamiento' : 'otro',
@@ -464,8 +494,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         idioma: p.idioma,
         notas: '',
       });
-    }),
-  );
+  }
 
   // ---------- Panel de trabajo ----------
 

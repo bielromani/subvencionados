@@ -27,6 +27,7 @@ import { tituloCorto } from './titulo.js';
 import type { Ficha } from './ficha/esquema.js';
 import { documentosConTexto } from './ficha/fichas.js';
 import { ESTILOS, type Convocatoria, type Perfil } from './tipos.js';
+import { type AjustesCrm, cupoDiario } from './crm/tipos.js';
 
 const lista = (valor: unknown): string[] =>
   typeof valor === 'string' && valor ? valor.split(',').map((x) => x.trim()).filter(Boolean) : [];
@@ -128,6 +129,16 @@ const filtroContratos = (q: Request['query']) => ({
   menor: (q.menor === 'si' || q.menor === 'no' ? q.menor : '') as 'si' | 'no' | '',
   desde: typeof q.desde === 'string' ? q.desde : undefined,
 });
+
+const PIE_BAJA = 'Si no desea recibir más correos nuestros, responda a este mensaje indicándolo y no volveremos a escribirle.';
+
+/** Hora, minuto y si es día laborable en Madrid. */
+function horaMadrid(d: Date) {
+  const p = Object.fromEntries(
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', weekday: 'short', hourCycle: 'h23' }).formatToParts(d).map((x) => [x.type, x.value]),
+  );
+  return { hora: Number(p.hour), minuto: Number(p.minute), laborable: !['Sat', 'Sun'].includes(p.weekday!) };
+}
 
 export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const app = express();
@@ -774,24 +785,37 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
     let enviados = 0;
     const fallidos: string[] = [];
-    for (const m of await crm.programadosPendientes()) {
-      const a = await crm.ajustes(m.usuario);
-      if (!a.email) {
-        fallidos.push(m.id);
-        continue;
-      }
+    const mandar = async (usuario: string, m: { id: string; asunto: string; cuerpo: string; destinatario: string; estado: string }, a: AjustesCrm, automatico: boolean) => {
+      if (!a.email) return fallidos.push(m.id);
+      // En el envío automático: una forma clara de pedir no recibir más, y copia oculta para el buzón del remitente.
+      const cuerpo = automatico ? `${m.cuerpo}\n\n${PIE_BAJA}` : m.cuerpo;
       const ok = await enviar({
         para: m.destinatario,
         asunto: m.asunto,
-        texto: m.cuerpo,
-        html: `<div style="font-family:system-ui,sans-serif;white-space:pre-wrap">${escaparHtml(m.cuerpo)}</div>`,
+        texto: cuerpo,
+        html: `<div style="font-family:system-ui,sans-serif;white-space:pre-wrap">${escaparHtml(cuerpo)}</div>`,
         de: { email: a.email, nombre: a.remitente || a.organizacion || a.email },
         responderA: a.email,
+        ...(automatico && { copiaOculta: a.email }),
       });
-      if (ok) {
-        await crm.registrarEnvio(m.usuario, m.id);
-        enviados++;
-      } else fallidos.push(m.id);
+      if (!ok) return fallidos.push(m.id);
+      if (m.estado === 'borrador') await crm.aprobar(usuario, m.id);
+      await crm.registrarEnvio(usuario, m.id);
+      enviados++;
+    };
+    for (const m of await crm.programadosPendientes()) await mandar(m.usuario, m, await crm.ajustes(m.usuario), false);
+    // Envío automático: de lunes a viernes de 9 a 18 h (hora de Madrid), repartido por horas y sin pasar del tope del día.
+    const ahora = new Date();
+    const h = horaMadrid(ahora);
+    if (h.laborable && h.hora >= 9 && h.hora < 18) {
+      const inicioDia = new Date(ahora.getTime() - (h.hora * 3600 + h.minuto * 60) * 1000);
+      for (const u of await crm.usuariosConEnvioAutomatico()) {
+        const a = await crm.ajustes(u);
+        const cupo = cupoDiario(a, ahora);
+        const quedan = Math.min(cupo - (await crm.enviadosDesde(u, inicioDia)), Math.ceil(cupo / 9));
+        if (quedan <= 0) continue;
+        for (const m of await crm.colaAutomatica(u, quedan, ahora)) await mandar(u, m, a, true);
+      }
     }
     res.json({ enviados, fallidos: fallidos.length });
   });

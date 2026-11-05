@@ -223,6 +223,9 @@ export interface AjustesCrm {
   cargo?: string;
   diasEntreEnvios: number;
   plantillas: PlantillasCarta;
+  envioAutomatico?: boolean;
+  limiteDiario?: number;
+  automaticoDesde?: string | null;
 }
 
 export type MensajeBandeja = Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string; secuenciaEstado?: string };
@@ -307,7 +310,7 @@ async function pedir<T>(ruta: string, metodo = 'GET', cuerpo?: unknown): Promise
 
 export const crm = {
   panel: () => pedir<Panel>('/panel'),
-  ajustes: () => pedir<{ ajustes: AjustesCrm; envioConectado: boolean }>('/ajustes'),
+  ajustes: () => pedir<{ ajustes: AjustesCrm; envioConectado: boolean; cupoHoy: number }>('/ajustes'),
   guardarAjustes: (a: AjustesCrm) => pedir('/ajustes', 'PUT', a),
   catalogo: () => pedir<{ items: Espectaculo[] }>('/catalogo'),
   guardarEspectaculo: (e: Omit<Espectaculo, 'id'>, id?: string) => pedir<{ id: string }>(id ? `/catalogo/${id}` : '/catalogo', id ? 'PUT' : 'POST', e),
@@ -325,6 +328,7 @@ export const crm = {
   reescribirPropuestas: () => pedir<{ reescritas: number; aMano: number }>('/propuestas/reescribir', 'POST', {}),
   prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
   guardarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) => pedir(`/propuestas/${id}`, 'PUT', c),
+  aceptarTodas: (ids: string[]) => pedir<{ aceptadas: number; porRevisar: number }>('/propuestas/aceptar-todas', 'POST', { ids }),
   descartarPropuesta: (id: string) => pedir(`/propuestas/${id}/descartar`, 'POST', {}),
   aceptarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) =>
     pedir<{ mensaje: Mensaje; entidad: Entidad }>(`/propuestas/${id}/aceptar`, 'POST', c),
@@ -338,7 +342,7 @@ export const crm = {
   reanudar: (id: string) => pedir(`/secuencias/${id}/reanudar`, 'POST', {}),
   estadisticas: () => pedir<Estadisticas>('/estadisticas'),
   enviados: () => pedir<{ items: MensajeBandeja[] }>('/enviados'),
-  bandeja: () => pedir<{ items: MensajeBandeja[]; envioConectado: boolean }>('/bandeja'),
+  bandeja: () => pedir<{ items: MensajeBandeja[]; envioConectado: boolean; automatico?: boolean }>('/bandeja'),
   editar: (id: string, asunto: string, cuerpo: string) => pedir(`/mensajes/${id}`, 'PUT', { asunto, cuerpo }),
   aprobar: (id: string, programarPara?: string) => pedir(`/mensajes/${id}/aprobar`, 'POST', { programarPara }),
   cancelar: (id: string) => pedir(`/mensajes/${id}/cancelar`, 'POST', {}),

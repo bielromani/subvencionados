@@ -164,7 +164,8 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
 function useAjustes() {
   const [a, setA] = useState<AjustesCrm | null>(null);
   const [guardado, setGuardado] = useState<AjustesCrm | null>(null);
-  const cargar = () => crm.ajustes().then((r) => (setA(r.ajustes), setGuardado(r.ajustes)));
+  const [envio, setEnvio] = useState({ conectado: false, cupoHoy: 0 });
+  const cargar = () => crm.ajustes().then((r) => (setA(r.ajustes), setGuardado(r.ajustes), setEnvio({ conectado: r.envioConectado, cupoHoy: r.cupoHoy })));
   useEffect(() => {
     void cargar();
   }, []);
@@ -173,10 +174,11 @@ function useAjustes() {
     if (!a) return '';
     await crm.guardarAjustes(a);
     setGuardado(a);
+    void cargar();
     const r = await crm.reescribirPropuestas();
     return `Guardado.${r.reescritas ? ` ${r.reescritas} propuestas pendientes vueltas a redactar con la plantilla nueva.` : ''}${r.aMano ? ` ${r.aMano} que habías retocado a mano se quedan como las dejaste.` : ''}`;
   };
-  return { a, setA, cambiado, guardar, cargar };
+  return { a, setA, cambiado, guardar, cargar, envio };
 }
 
 /** Barra fija al pie cuando hay cambios sin guardar. */
@@ -207,7 +209,7 @@ function BarraGuardar({ cambiado, guardar, texto = 'Guardar' }: { cambiado: bool
 }
 
 function Remitente() {
-  const { a, setA, cambiado, guardar } = useAjustes();
+  const { a, setA, cambiado, guardar, envio } = useAjustes();
   if (!a) return <p className="ayuda">Cargando…</p>;
   const campo = (k: 'remitente' | 'organizacion' | 'cargo' | 'email' | 'telefono' | 'web' | 'diasEntreEnvios', etiqueta: string, tipo = 'text') => (
     <label>
@@ -237,6 +239,26 @@ function Remitente() {
         <h3>Pauta de seguimiento</h3>
         {campo('diasEntreEnvios', 'Días entre un correo y el siguiente (desde que envías el anterior)', 'number')}
         <p className="ayuda">Cinco correos como máximo; tras el 2.º y el 4.º, la app te recuerda llamar.</p>
+        <h3>Envío automático</h3>
+        {envio.conectado ? (
+          <>
+            <label className="casilla">
+              <input type="checkbox" checked={!!a.envioAutomatico} onChange={(e) => setA({ ...a, envioAutomatico: e.target.checked })} />
+              Enviar solos los correos aceptados y los seguimientos
+            </label>
+            <label>
+              Máximo de correos al día (primeros y seguimientos juntos)
+              <input type="number" min={5} max={300} value={a.limiteDiario ?? 30} onChange={(e) => setA({ ...a, limiteDiario: Number(e.target.value) })} />
+            </label>
+            <p className="ayuda">
+              Salen desde {a.email || 'tu email'} de lunes a viernes, de 9 a 18 h, repartidos a lo largo del día. Para no caer en spam, el primer día salen como mucho 20 y el tope sube 10 cada
+              semana hasta tu máximo{a.envioAutomatico && !cambiado ? ` (hoy: ${envio.cupoHoy})` : ''}. Recibes una copia oculta de cada correo y las respuestas te llegan a tu buzón:
+              anótalas en la ficha del sitio para que no le salgan más seguimientos. Cada correo lleva al final una línea para pedir no recibir más.
+            </p>
+          </>
+        ) : (
+          <p className="ayuda">Para que los correos salgan solos hay que conectar antes un servicio de envío (Brevo). Mientras tanto, se envían desde tu programa de correo.</p>
+        )}
       </section>
       <section className="bloque vista-firma">
         <h3>Así se verá la firma</h3>

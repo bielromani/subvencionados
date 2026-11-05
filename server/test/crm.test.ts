@@ -3,7 +3,17 @@ import { afterAll, describe, expect, it } from 'vitest';
 import { AlmacenCuentas } from '../src/cuentas.js';
 import { AlmacenCrm, ErrorCrm } from '../src/crm/almacen.js';
 import { generarCarta } from '../src/crm/plantillas.js';
-import { AJUSTES_POR_DEFECTO } from '../src/crm/tipos.js';
+import { AJUSTES_POR_DEFECTO, cupoDiario } from '../src/crm/tipos.js';
+
+describe('envío automático: tope diario', () => {
+  it('empieza en 20 y sube 10 por semana hasta el límite', () => {
+    const a = { ...AJUSTES_POR_DEFECTO, envioAutomatico: true, limiteDiario: 60, automaticoDesde: '2026-11-02' };
+    expect(cupoDiario(a, new Date('2026-11-03T10:00:00Z'))).toBe(20);
+    expect(cupoDiario(a, new Date('2026-11-10T10:00:00Z'))).toBe(30);
+    expect(cupoDiario(a, new Date('2027-01-10T10:00:00Z'))).toBe(60);
+    expect(cupoDiario({ ...a, limiteDiario: 10 }, new Date('2026-11-03T10:00:00Z'))).toBe(10);
+  });
+});
 
 describe('plantillas', () => {
   const base = {
@@ -137,6 +147,29 @@ describe.skipIf(!url)('secuencias con Postgres', () => {
     expect(env).toHaveLength(3);
     expect(env[0]!.enviadoEn! >= env[2]!.enviadoEn!).toBe(true);
     expect(env.every((m) => m.entidad && m.destinatario)).toBe(true);
+  });
+
+  it('cola automática: seguimientos que tocan y primeros con visto bueno, sin borradores del 1.º ni «no contactar»', async () => {
+    const w = (await cuentas.crear(`auto-${Date.now()}@example.com`, 'una clave larga'))!.id;
+    const abrir = async (nombre: string) => {
+      const e = await crm.guardarEntidad(w, { ...entidadBase, nombre, email: `${nombre}@x.example` });
+      const o = await crm.crearOportunidad(w, { entidad: e.id, tipo: 'propuesta', ref: null, titulo: 'T', espectaculos: [], certeza: 'potencial', enlaceConfirmacion: null, notas: '' });
+      return { e, ...(await crm.abrirSecuencia(w, o.id, `${nombre}@x.example`)) };
+    };
+    const a = await abrir('a');
+    const b = await abrir('b');
+    await crm.aprobar(w, b.mensaje.id);
+    const c = await abrir('c');
+    await crm.aprobar(w, c.mensaje.id);
+    await crm.anotar(w, c.e.id, { tipo: 'optout', texto: 'No' });
+    const cola = await crm.colaAutomatica(w, 10);
+    expect(cola.map((m) => m.id)).toEqual([b.mensaje.id]);
+    expect(a.mensaje.estado).toBe('borrador');
+    // Enviado el 1.º, el 2.º (borrador) entra en la cola cuando toca.
+    await crm.registrarEnvio(w, b.mensaje.id);
+    const futuro = new Date(Date.now() + 30 * 86_400_000);
+    expect((await crm.colaAutomatica(w, 10, futuro)).map((m) => m.paso)).toEqual([2]);
+    expect(await crm.enviadosDesde(w, new Date(Date.now() - 3600_000))).toBe(1);
   });
 
   it('al cambiar la plantilla se reescriben las pendientes (también las antiguas) y se respetan las retocadas a mano', async () => {

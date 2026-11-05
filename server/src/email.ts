@@ -12,6 +12,8 @@ export interface Email {
   de?: { email: string; nombre: string };
   /** Las respuestas van a esta dirección. */
   responderA?: string;
+  /** Copia oculta (el remitente guarda constancia en su buzón). */
+  copiaOculta?: string;
 }
 
 export type Enviar = (e: Email) => Promise<boolean>;
@@ -28,6 +30,7 @@ export function enviadorDesdeEntorno(env = process.env): Enviar | null {
         body: JSON.stringify({
           sender: e.de ? { email: e.de.email, name: e.de.nombre } : { email: remitente, name: 'Subvencionados' },
           to: [{ email: e.para }],
+          ...(e.copiaOculta && { bcc: [{ email: e.copiaOculta }] }),
           ...(e.responderA && { replyTo: { email: e.responderA } }),
           subject: e.asunto,
           htmlContent: e.html,
@@ -46,6 +49,7 @@ export function enviadorDesdeEntorno(env = process.env): Enviar | null {
         body: JSON.stringify({
           from: e.de ? `${e.de.nombre} <${e.de.email}>` : `Subvencionados <${remitente}>`,
           to: [e.para],
+          ...(e.copiaOculta && { bcc: [e.copiaOculta] }),
           ...(e.responderA && { reply_to: e.responderA }),
           subject: e.asunto,
           html: e.html,

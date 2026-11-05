@@ -26,7 +26,7 @@ function Chips({ p }: { p: PropuestaPreparada }) {
 }
 
 /** El correo de una propuesta, editable, con las acciones: descartar, abrir en el correo y marcar como enviado. */
-function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaPreparada; posicion: string; alTerminar: (texto: string) => void; alVolver: () => void }) {
+function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p: PropuestaPreparada; posicion: string; automatico: boolean; alTerminar: (texto: string) => void; alVolver: () => void }) {
   const [asunto, setAsunto] = useState(p.asunto);
   const [cuerpo, setCuerpo] = useState(p.cuerpo);
   const [destinatario, setDestinatario] = useState(p.destinatario);
@@ -66,6 +66,12 @@ function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaP
       await crm.enviado(m.id);
       alTerminar(`Enviado a ${p.nombre}. Queda en seguimiento: el próximo correo aparecerá en la Bandeja y te avisaremos de cuándo llamar.`);
     });
+  // Con el envío automático: el visto bueno basta, la web lo envía desde el correo de la cuenta.
+  const aceptar = () =>
+    hacer(async () => {
+      await asegurarAprobado();
+      alTerminar(`Aceptada. El correo a ${p.nombre} saldrá solo en el próximo envío (de lunes a viernes, de 9 a 18 h).`);
+    });
   const descartar = () => hacer(async () => (await crm.descartarPropuesta(p.id), alTerminar(`Descartada la propuesta a ${p.nombre}.`)));
 
   return (
@@ -85,13 +91,21 @@ function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaP
             <button type="button" className="accion" disabled={ocupado || !!aprobado} onClick={() => void descartar()}>
               Descartar
             </button>
-            <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
-              <span className="solo-escritorio">Abrir en mi correo</span>
-              <span className="solo-movil">Abrir correo</span>
-            </button>
-            <button type="button" className="boton" disabled={ocupado} onClick={() => void enviado()}>
-              Ya lo he enviado
-            </button>
+            {automatico ? (
+              <button type="button" className="boton" disabled={ocupado} onClick={() => void aceptar()}>
+                Aceptar y enviar
+              </button>
+            ) : (
+              <>
+                <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
+                  <span className="solo-escritorio">Abrir en mi correo</span>
+                  <span className="solo-movil">Abrir correo</span>
+                </button>
+                <button type="button" className="boton" disabled={ocupado} onClick={() => void enviado()}>
+                  Ya lo he enviado
+                </button>
+              </>
+            )}
           </div>
         </header>
         <div className="correo-hoja">
@@ -128,7 +142,7 @@ function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaP
                 </button>
               </>
             ) : (
-              <span>{guardado ? 'Cambios guardados.' : 'Haz clic en el texto para editarlo. Nada se envía sin ti.'}</span>
+              <span>{guardado ? 'Cambios guardados.' : automatico ? 'Haz clic en el texto para editarlo. Solo sale lo que aceptas.' : 'Haz clic en el texto para editarlo. Nada se envía sin ti.'}</span>
             )}
             <a className="enlace-pie" href="#/cartas">
               Cambiar la plantilla de todos los correos →
@@ -214,10 +228,13 @@ export function Propuestas({ meta }: { meta: Meta }) {
   const [cuantas, setCuantas] = useState(20);
   const [aviso, setAviso] = useState<string | null>(null);
   const [preparando, setPreparando] = useState(false);
+  const [automatico, setAutomatico] = useState(false);
   const lista = useRef<HTMLDivElement>(null);
   const cargar = () => crm.propuestas().then((r) => setItems(r.items), (e: Error) => setAviso(e.message));
   useEffect(() => {
-    if (usuario) void cargar();
+    if (!usuario) return;
+    void cargar();
+    crm.ajustes().then((r) => setAutomatico(r.envioConectado && !!r.ajustes.envioAutomatico), () => undefined);
   }, [usuario?.email]);
 
   const visibles = (items ?? []).filter((p) => (filtro === 'ayuda' ? p.ayudas.length > 0 : filtro === 'licitacion' ? p.licitaciones.length > 0 : true));
@@ -247,6 +264,20 @@ export function Propuestas({ meta }: { meta: Meta }) {
     try {
       const r = await crm.prepararPropuestas(cuantas, ccaa);
       setAviso(r.nuevas ? `${r.nuevas} propuestas nuevas preparadas.` : 'No hay más sitios que encajen con estos filtros (o ya están en seguimiento o descartados).');
+      await cargar();
+    } catch (e) {
+      setAviso((e as Error).message);
+    } finally {
+      setPreparando(false);
+    }
+  };
+  const aceptarTodas = async () => {
+    const ids = visibles.map((p) => p.id);
+    if (!window.confirm(`¿Aceptar las ${ids.length} propuestas de la lista tal como están? Saldrán solas poco a poco, sin pasar del tope diario. Las que tienen un email por revisar se quedan aquí.`)) return;
+    setPreparando(true);
+    try {
+      const r = await crm.aceptarTodas(ids);
+      setAviso(`${r.aceptadas} aceptadas: saldrán solas, sin pasar del tope diario.${r.porRevisar ? ` ${r.porRevisar} con el email por revisar se quedan aquí.` : ''}`);
       await cargar();
     } catch (e) {
       setAviso((e as Error).message);
@@ -286,6 +317,11 @@ export function Propuestas({ meta }: { meta: Meta }) {
         <button type="button" className="boton" disabled={preparando} onClick={() => void preparar()}>
           {preparando ? 'Preparando… (medio minuto)' : 'Preparar más'}
         </button>
+        {automatico && visibles.length > 0 && (
+          <button type="button" className="accion" disabled={preparando} onClick={() => void aceptarTodas()}>
+            Aceptar todas ({visibles.length})
+          </button>
+        )}
         <span className="ayuda">Se preparan solas cada día cruzando tu catálogo con lo que programa cada sitio, sus ayudas y sus licitaciones.</span>
       </div>
       {aviso && (
@@ -330,7 +366,7 @@ export function Propuestas({ meta }: { meta: Meta }) {
               ))}
             </div>
           </section>
-          {seleccionada && <DetallePropuesta key={seleccionada.id} p={seleccionada} posicion={`Propuesta ${indice + 1} de ${visibles.length}`} alTerminar={terminar(seleccionada.id)} alVolver={() => setDetalleMovil(false)} />}
+          {seleccionada && <DetallePropuesta key={seleccionada.id} p={seleccionada} posicion={`Propuesta ${indice + 1} de ${visibles.length}`} automatico={automatico} alTerminar={terminar(seleccionada.id)} alVolver={() => setDetalleMovil(false)} />}
         </div>
       )}
     </div>

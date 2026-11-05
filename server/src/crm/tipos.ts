@@ -148,6 +148,20 @@ export interface AjustesCrm {
   diasEntreEnvios: number;
   /** Textos de las cartas por bloques (si no hay, los genéricos). */
   plantillas?: PlantillasCarta;
+  /** Envío automático (con el correo conectado): los primeros correos aceptados y los seguimientos salen solos. */
+  envioAutomatico?: boolean;
+  /** Tope de correos al día (primeros y seguimientos juntos). */
+  limiteDiario?: number;
+  /** Día en que se activó el envío automático: el tope sube poco a poco desde aquí para no caer en spam. */
+  automaticoDesde?: string | null;
+}
+
+/** El tope del día: empieza en 20 y sube 10 por semana hasta el límite elegido. */
+export function cupoDiario(a: AjustesCrm, hoy = new Date()): number {
+  const max = a.limiteDiario ?? 30;
+  if (!a.automaticoDesde) return Math.min(max, 20);
+  const semanas = Math.floor((hoy.getTime() - new Date(`${a.automaticoDesde}T00:00:00Z`).getTime()) / (7 * 86_400_000));
+  return Math.min(max, 20 + 10 * Math.max(0, semanas));
 }
 
 export const AJUSTES_POR_DEFECTO: AjustesCrm = { remitente: '', organizacion: '', email: '', telefono: '', web: '', firma: '', diasEntreEnvios: 10 };

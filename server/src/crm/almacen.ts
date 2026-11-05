@@ -613,6 +613,32 @@ export class AlmacenCrm {
     });
   }
 
+  /** Cuentas con el envío automático activado. */
+  async usuariosConEnvioAutomatico(): Promise<string[]> {
+    return (await this.q<{ usuario: string }>("select usuario from crm_ajustes where datos->>'envioAutomatico' = 'true'")).map((f) => f.usuario);
+  }
+
+  /** Correos que han salido desde una hora (para el tope diario). */
+  async enviadosDesde(u: string, desde: Date): Promise<number> {
+    const [f] = await this.q<{ n: string }>("select count(*) as n from crm_mensajes where usuario = $1 and estado = 'enviado' and enviado_en >= $2", [u, desde]);
+    return Number(f?.n ?? 0);
+  }
+
+  /**
+   * Lo que el envío automático puede mandar hoy: primeros correos con visto bueno (al aceptar la propuesta) y
+   * seguimientos que ya tocan. Primero los seguimientos (tienen fecha), después los primeros, del más antiguo al nuevo.
+   */
+  async colaAutomatica(u: string, limite: number, hoy = new Date()) {
+    return this.q<FilaMensaje & { destinatario: string }>(
+      `select m.*, s.destinatario from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
+       join crm_entidades e on e.id = s.entidad
+       where m.usuario = $1 and s.estado = 'activa' and not e.no_contactar and m.disponible_desde <= $2::date
+         and (m.estado = 'aprobado' or (m.estado = 'borrador' and m.paso > 1))
+       order by m.paso = 1, m.disponible_desde, m.creado limit $3`,
+      [u, hoy.toISOString().slice(0, 10), limite],
+    );
+  }
+
   /** Programados que ya toca enviar (para la tarea automática, si hay envío conectado). */
   async programadosPendientes(hasta = new Date()) {
     return this.q<FilaMensaje & { usuario: string; destinatario: string }>(

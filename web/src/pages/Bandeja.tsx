@@ -289,7 +289,7 @@ export function Bandeja() {
 /** Seguimientos por revisar, aprobados por enviar y envíos programados. */
 function PorEnviar() {
   const usuario = useCuenta().cuenta?.usuario;
-  const [datos, setDatos] = useState<{ items: MensajeBandeja[]; envioConectado: boolean } | null>(null);
+  const [datos, setDatos] = useState<{ items: MensajeBandeja[]; envioConectado: boolean; automatico?: boolean } | null>(null);
   const [actual, setActual] = useState<string | null>(null);
   // En el móvil: la lista o el correo a pantalla completa.
   const [detalleMovil, setDetalleMovil] = useState(false);
@@ -338,6 +338,12 @@ function PorEnviar() {
 
   return (
     <div className="bandeja">
+      {datos.automatico && (
+        <p className="llamada" role="note">
+          El envío automático está activado: los seguimientos y los primeros correos aceptados salen solos desde tu correo, de lunes a viernes de 9 a 18 h. No hace falta enviarlos a mano; si
+          quieres que uno no salga, descártalo o pausa su seguimiento en la ficha.
+        </p>
+      )}
       {aviso && (
         <p className="llamada" role="status">
           {aviso}
