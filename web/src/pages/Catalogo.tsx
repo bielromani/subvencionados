@@ -174,7 +174,7 @@ function useAjustes() {
     await crm.guardarAjustes(a);
     setGuardado(a);
     const r = await crm.reescribirPropuestas();
-    return `Guardado.${r.reescritas ? ` ${r.reescritas} propuestas pendientes vueltas a redactar.` : ''}`;
+    return `Guardado.${r.reescritas ? ` ${r.reescritas} propuestas pendientes vueltas a redactar con la plantilla nueva.` : ''}${r.aMano ? ` ${r.aMano} que habías retocado a mano se quedan como las dejaste.` : ''}`;
   };
   return { a, setA, cambiado, guardar, cargar };
 }

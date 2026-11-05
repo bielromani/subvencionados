@@ -817,7 +817,7 @@ export class AlmacenCrm {
   async editarPropuesta(u: string, id: string, c: { asunto: string; cuerpo: string; destinatario: string }) {
     const [f] = await this.q<{ datos: PropuestaPreparada }>("select datos from crm_propuestas where id = $1 and usuario = $2 and estado = 'pendiente'", [id, u]);
     if (!f) throw new ErrorCrm('Esta propuesta ya no está pendiente', 409);
-    await this.q('update crm_propuestas set datos = $3, actualizado = now() where id = $1 and usuario = $2', [id, u, JSON.stringify({ ...f.datos, ...c })]);
+    await this.q('update crm_propuestas set datos = $3, actualizado = now() where id = $1 and usuario = $2', [id, u, JSON.stringify({ ...f.datos, ...c, editadaAMano: true })]);
   }
 
   /** Cuentas con catálogo (para preparar propuestas cada día). */
@@ -826,13 +826,22 @@ export class AlmacenCrm {
   }
 
   /** Vuelve a redactar las propuestas pendientes (tras cambiar plantillas, firma o textos del catálogo). */
-  async reescribirPropuestas(u: string, redactar: (p: PropuestaPreparada) => { asunto: string; cuerpo: string }): Promise<number> {
-    const filas = await this.q<{ id: string; datos: PropuestaPreparada }>("select id, datos from crm_propuestas where usuario = $1 and estado = 'pendiente'", [u]);
+  async reescribirPropuestas(u: string, redactar: (p: PropuestaPreparada) => { asunto: string; cuerpo: string }): Promise<{ reescritas: number; aMano: number }> {
+    const filas = await this.q<{ id: string; datos: PropuestaPreparada & { editadaAMano?: boolean } }>("select id, datos from crm_propuestas where usuario = $1 and estado = 'pendiente'", [u]);
+    let reescritas = 0;
+    let aMano = 0;
     for (const f of filas) {
-      if (!f.datos.historial) continue;
-      await this.q('update crm_propuestas set datos = $2, actualizado = now() where id = $1', [f.id, JSON.stringify({ ...f.datos, ...redactar(f.datos) })]);
+      // Las retocadas a mano se dejan como están: no se pierde lo escrito.
+      if (f.datos.editadaAMano) {
+        aMano++;
+        continue;
+      }
+      // Las preparadas antes de guardar el historial de estilos se redactan sin él.
+      const datos = { ...f.datos, historial: f.datos.historial ?? [] };
+      await this.q('update crm_propuestas set datos = $2, actualizado = now() where id = $1', [f.id, JSON.stringify({ ...datos, ...redactar(datos) })]);
+      reescritas++;
     }
-    return filas.length;
+    return { reescritas, aMano };
   }
 
   async descartarPropuesta(u: string, id: string) {

@@ -206,8 +206,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       }
       const ajustes = await c.ajustes(u.id);
       const catalogo = await c.espectaculos(u.id);
-      const reescritas = await c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo));
-      return { textos, reescritas };
+      return { textos, ...(await c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo))) };
     }),
   );
   r.post(
@@ -215,7 +214,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     ruta(async (_q, _r, u, c) => {
       const ajustes = await c.ajustes(u.id);
       const catalogo = await c.espectaculos(u.id);
-      return { reescritas: await c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo)) };
+      return c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo));
     }),
   );
 

@@ -138,6 +138,19 @@ describe.skipIf(!url)('secuencias con Postgres', () => {
     expect(env[0]!.enviadoEn! >= env[2]!.enviadoEn!).toBe(true);
     expect(env.every((m) => m.entidad && m.destinatario)).toBe(true);
   });
+
+  it('al cambiar la plantilla se reescriben las pendientes (también las antiguas) y se respetan las retocadas a mano', async () => {
+    const w = (await cuentas.crear(`plant-${Date.now()}@example.com`, 'una clave larga'))!.id;
+    const base = { nombre: 'Ayto X', municipio: 'X', provincia: null, ccaa: null, persona: null, cargo: null, destinatario: 'a@x.example', telefono: null, revisarEmail: null, idioma: 'es' as const, motivos: [], espectaculos: [], ayudas: [], licitaciones: [], gestion: [], historial: [], asunto: 'viejo', cuerpo: 'viejo', puntos: 1 };
+    const { historial: _h, ...antigua } = base;
+    await crm.guardarPropuestas(w, [{ ...base, ref: 'p-1' }, { ...(antigua as typeof base), ref: 'p-2' }, { ...base, ref: 'p-3' }]);
+    const p3 = (await crm.propuestas(w)).find((p) => p.ref === 'p-3')!;
+    await crm.editarPropuesta(w, p3.id, { asunto: 'mío', cuerpo: 'mío', destinatario: 'a@x.example' });
+    expect(await crm.reescribirPropuestas(w, () => ({ asunto: 'nuevo', cuerpo: 'nuevo' }))).toEqual({ reescritas: 2, aMano: 1 });
+    const ps = await crm.propuestas(w);
+    expect(ps.find((p) => p.ref === 'p-2')!.cuerpo).toBe('nuevo');
+    expect(ps.find((p) => p.ref === 'p-3')!.cuerpo).toBe('mío');
+  });
 });
 
 describe.skipIf(!url)('API del CRM', async () => {
