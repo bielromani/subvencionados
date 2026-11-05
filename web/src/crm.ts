@@ -35,6 +35,7 @@ export interface Espectaculo {
   huellaWeb?: string;
   textoCarta?: string;
   textoCartaCa?: string;
+  prioridad?: 'alta' | 'normal' | 'baja';
 }
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';

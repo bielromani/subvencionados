@@ -7,7 +7,7 @@ import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
-import { noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
+import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
 import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, PLANTILLAS_GENERICAS, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
@@ -65,6 +65,7 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
     revisado,
     textoCarta: texto(b.textoCarta, 4000),
     textoCartaCa: texto(b.textoCartaCa, 4000),
+    ...((b.prioridad === 'alta' || b.prioridad === 'baja') && { prioridad: b.prioridad }),
     // Lo que viene de una importación se conserva al editar la ficha.
     ...(typeof b.origen === 'string' && /^[a-z0-9.-]+#\d+$/.test(b.origen) && { origen: b.origen }),
     ...(typeof b.enWeb === 'boolean' && { enWeb: b.enWeb }),
@@ -214,7 +215,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       }
       const ajustes = await c.ajustes(u.id);
       const catalogo = await c.espectaculos(u.id);
-      return { textos, ...(await c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo))) };
+      return { textos, ...(await c.reescribirPropuestas(u.id, rehacer(ajustes, catalogo))) };
     }),
   );
   r.post(
@@ -222,9 +223,19 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     ruta(async (_q, _r, u, c) => {
       const ajustes = await c.ajustes(u.id);
       const catalogo = await c.espectaculos(u.id);
-      return c.reescribirPropuestas(u.id, (p) => redactarPropuesta(p, ajustes, catalogo));
+      return c.reescribirPropuestas(u.id, rehacer(ajustes, catalogo));
     }),
   );
+
+  // Al volver a redactar: también se vuelven a elegir las producciones (por si han cambiado las fichas o su prioridad).
+  function rehacer(ajustes: AjustesCrm, catalogo: Espectaculo[]) {
+    const disponibles = catalogo.filter((e) => e.enWeb !== false);
+    return (p: PropuestaPreparada) => {
+      const prog = ctx.programador(p.ref);
+      const espectaculos = prog && disponibles.length ? elegirEspectaculos(disponibles, prog) : p.espectaculos;
+      return { espectaculos, ...redactarPropuesta({ ...p, espectaculos }, ajustes, catalogo) };
+    };
+  }
 
   r.get('/catalogo', ruta(async (_q, _r, u, c) => ({ items: await c.espectaculos(u.id) })));
   r.post('/catalogo', ruta(async (req, _r, u, c) => ({ id: await c.guardarEspectaculo(u.id, validarEspectaculo(req.body ?? {})) })));

@@ -31,7 +31,12 @@ export interface Espectaculo {
   /** Párrafo con que se presenta en las cartas (castellano y catalán). */
   textoCarta?: string;
   textoCartaCa?: string;
+  /** Con qué frecuencia proponerla frente a las del mismo estilo (la decide el usuario). */
+  prioridad?: 'alta' | 'normal' | 'baja';
 }
+
+/** Peso de la prioridad en el encaje (solo entre las que ya encajan por algún motivo). */
+export const PESO_PRIORIDAD = { alta: 2, normal: 0, baja: -2 } as const;
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';
 export type EstadoRelacion = 'nueva' | 'en_secuencia' | 'respondio' | 'llamada' | 'reunion' | 'interesado' | 'no_interesado' | 'recontactar' | 'sin_respuesta';

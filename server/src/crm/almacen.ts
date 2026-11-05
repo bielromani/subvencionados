@@ -866,7 +866,7 @@ export class AlmacenCrm {
   }
 
   /** Vuelve a redactar las propuestas pendientes (tras cambiar plantillas, firma o textos del catálogo). */
-  async reescribirPropuestas(u: string, redactar: (p: PropuestaPreparada) => { asunto: string; cuerpo: string }): Promise<{ reescritas: number; aMano: number }> {
+  async reescribirPropuestas(u: string, redactar: (p: PropuestaPreparada) => Partial<PropuestaPreparada>): Promise<{ reescritas: number; aMano: number }> {
     const filas = await this.q<{ id: string; datos: PropuestaPreparada & { editadaAMano?: boolean } }>("select id, datos from crm_propuestas where usuario = $1 and estado = 'pendiente'", [u]);
     let reescritas = 0;
     let aMano = 0;

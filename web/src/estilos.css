@@ -5618,3 +5618,10 @@ kbd {
 .tres-paneles.enviados {
   grid-template-columns: 320px minmax(0, 1fr);
 }
+
+.etiqueta-campo {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+}

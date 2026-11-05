@@ -9,7 +9,7 @@ import { normalizar } from '../clasificacion/musica.js';
 import type { ContratoVista } from '../contratos/vista.js';
 import type { Programador } from '../directorio.js';
 import type { Convocatoria, Estilo } from '../tipos.js';
-import type { Certeza, Espectaculo, TipoEspectaculo } from './tipos.js';
+import { type Certeza, type Espectaculo, PESO_PRIORIDAD, type TipoEspectaculo } from './tipos.js';
 
 /** Qué tipos del catálogo corresponden a cada estilo de los datos públicos. */
 const TIPOS_DE_ESTILO: Record<Estilo, TipoEspectaculo[]> = {
@@ -75,6 +75,8 @@ export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, ho
       } else avisos.push(`Por encima de lo que suele pagar (${euros(p.rango.min)}–${euros(p.rango.max)}): valorar con ayudas o coproducción`);
     }
     if (e.estadoInfo === 'pendiente') puntos -= 0.5;
+    // La prioridad que le da el usuario reordena entre las que ya encajan; no hace encajar a las demás.
+    if (motivos.length && e.prioridad && e.prioridad !== 'normal') puntos = Math.max(0.5, puntos + PESO_PRIORIDAD[e.prioridad]);
     return { espectaculo: e, puntos, motivos, avisos };
   });
   const conMotivo = propuestas.filter((x) => x.motivos.length > 0);

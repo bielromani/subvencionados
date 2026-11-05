@@ -38,6 +38,8 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
   const guardar = async () => {
     try {
       await crm.guardarEspectaculo(e, id);
+      // Las propuestas pendientes se rehacen con la ficha nueva (texto, prioridad...).
+      await crm.reescribirPropuestas().catch(() => undefined);
       alGuardar();
     } catch (err) {
       setError((err as Error).message);
@@ -92,6 +94,21 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
               En catalán (opcional, para Cataluña)
               <textarea rows={4} value={e.textoCartaCa ?? ''} onChange={(x) => campo('textoCartaCa', x.target.value)} />
             </label>
+            <span className="etiqueta-campo">Con qué frecuencia proponerla</span>
+            <div className="segmentado" role="radiogroup" aria-label="Con qué frecuencia proponerla">
+              {(
+                [
+                  ['alta', 'Más a menudo'],
+                  ['normal', 'Normal'],
+                  ['baja', 'Menos a menudo'],
+                ] as ['alta' | 'normal' | 'baja', string][]
+              ).map(([v, t]) => (
+                <button key={v} type="button" role="radio" aria-checked={(e.prioridad ?? 'normal') === v} className={(e.prioridad ?? 'normal') === v ? 'activa' : ''} onClick={() => campo('prioridad', v)}>
+                  {t}
+                </button>
+              ))}
+            </div>
+            <p className="ayuda">Frente a las otras del mismo estilo, en los sitios donde encaja. No la propone donde no encaja (una ópera, solo a quien programa ópera).</p>
           </fieldset>
           <fieldset>
             <legend>Condiciones</legend>

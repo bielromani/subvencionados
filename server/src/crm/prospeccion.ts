@@ -63,12 +63,14 @@ const CATALAN = /catalu/i;
 
 /**
  * Las mejores propuestas: por orden de encaje (pesa más el estilo que más programa el sitio), como mucho dos del mismo
- * tipo para que haya variedad. Con el mismo encaje, antes las fichas vigentes y con más información. Sin historial
+ * tipo para que haya variedad. Con el mismo encaje, antes las fichas vigentes y con más información; y si siguen
+ * empatadas, se reparten entre los sitios (sorteo fijo por sitio) para que no salga siempre la misma. Sin historial
  * (abanico amplio), una de cada tipo.
  */
-function variadas(xs: Encaje[], n: number): Encaje[] {
+export function variadas(xs: Encaje[], n: number, semilla: string): Encaje[] {
   const calidad = (x: Encaje) => (x.espectaculo.estadoInfo === 'vigente' ? 2 : 0) + (x.espectaculo.textoCarta ? 2 : 0) + (x.espectaculo.formato ? 1 : 0);
-  const orden = [...xs].sort((a, b) => b.puntos - a.puntos || calidad(b) - calidad(a));
+  const sorteo = (x: Encaje) => huella(`${semilla}|${x.espectaculo.id}`);
+  const orden = [...xs].sort((a, b) => b.puntos - a.puntos || calidad(b) - calidad(a) || sorteo(a) - sorteo(b));
   const conMotivo = orden.filter((x) => x.puntos > 0);
   const porTipo = new Map<string, number>();
   const elegidas: Encaje[] = [];
@@ -81,6 +83,18 @@ function variadas(xs: Encaje[], n: number): Encaje[] {
     elegidas.push(x);
   }
   return elegidas;
+}
+
+/** Las producciones que se ofrecen a un sitio (hasta seis, variadas). */
+export function elegirEspectaculos(disponibles: Espectaculo[], p: Programador, hoy = new Date()): PropuestaPreparada['espectaculos'] {
+  return variadas(encajeEntidad(disponibles, p, hoy).propuestas, 6, p.id).map((x) => ({ id: x.espectaculo.id, nombre: x.espectaculo.nombre, tipo: x.espectaculo.tipo, motivos: x.motivos, avisos: avisosFicha(x.espectaculo, hoy) }));
+}
+
+/** Número estable a partir de un texto (FNV-1a): el mismo sitio recibe siempre el mismo sorteo. */
+function huella(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  return h >>> 0;
 }
 
 /** El correo de la propuesta, por bloques con las plantillas de la cuenta (ver cartas.ts). */
@@ -163,8 +177,7 @@ export function prepararPropuestas(
     if (senalesGestion.length) puntos += 2;
     // Hace falta una razón concreta: historial del estilo, una ayuda o una licitación.
     if (!conciertos && !suyas.length && !licitaciones.length) continue;
-    const encaje = encajeEntidad(disponibles, p, hoy);
-    const espectaculos = variadas(encaje.propuestas, 6).map((x) => ({ id: x.espectaculo.id, nombre: x.espectaculo.nombre, tipo: x.espectaculo.tipo, motivos: x.motivos, avisos: avisosFicha(x.espectaculo, hoy) }));
+    const espectaculos = elegirEspectaculos(disponibles, p, hoy);
     const idioma: 'es' | 'ca' = p.ccaa && CATALAN.test(p.ccaa) ? 'ca' : 'es';
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
