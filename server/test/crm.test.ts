@@ -132,6 +132,11 @@ describe.skipIf(!url)('secuencias con Postgres', () => {
     expect(st.porCcaa).toEqual([{ ccaa: 'Cataluña', contactadas: 2, respuesta: 1 }]);
     expect(st.diasHastaRespuesta).not.toBeNull();
     expect(st.semanas).toHaveLength(12);
+    // Constancia de lo enviado: los tres correos, el más reciente primero.
+    const env = await crm.enviados(v);
+    expect(env).toHaveLength(3);
+    expect(env[0]!.enviadoEn! >= env[2]!.enviadoEn!).toBe(true);
+    expect(env.every((m) => m.entidad && m.destinatario)).toBe(true);
   });
 });
 

@@ -225,7 +225,7 @@ export interface AjustesCrm {
   plantillas: PlantillasCarta;
 }
 
-export type MensajeBandeja = Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string };
+export type MensajeBandeja = Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string; secuenciaEstado?: string };
 export type Pendiente = EntradaHistorial & { entidadDatos: Entidad };
 
 export interface AlertaCrm {
@@ -337,6 +337,7 @@ export const crm = {
   pausar: (id: string) => pedir(`/secuencias/${id}/pausar`, 'POST', {}),
   reanudar: (id: string) => pedir(`/secuencias/${id}/reanudar`, 'POST', {}),
   estadisticas: () => pedir<Estadisticas>('/estadisticas'),
+  enviados: () => pedir<{ items: MensajeBandeja[] }>('/enviados'),
   bandeja: () => pedir<{ items: MensajeBandeja[]; envioConectado: boolean }>('/bandeja'),
   editar: (id: string, asunto: string, cuerpo: string) => pedir(`/mensajes/${id}`, 'PUT', { asunto, cuerpo }),
   aprobar: (id: string, programarPara?: string) => pedir(`/mensajes/${id}/aprobar`, 'POST', { programarPara }),

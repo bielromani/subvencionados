@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { crm, enlaceCorreo, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada } from '../crm';
+import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
 import type { Meta } from '../tipos';
@@ -59,6 +60,7 @@ function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaP
       window.location.href = enlaceCorreo(destinatario, m.asunto, m.cuerpo);
     });
   const enviado = () =>
+    confirmarEnviado() &&
     hacer(async () => {
       const m = await asegurarAprobado();
       await crm.enviado(m.id);
@@ -128,8 +130,12 @@ function DetallePropuesta({ p, posicion, alTerminar, alVolver }: { p: PropuestaP
             ) : (
               <span>{guardado ? 'Cambios guardados.' : 'Haz clic en el texto para editarlo. Nada se envía sin ti.'}</span>
             )}
+            <a className="enlace-pie" href="#/cartas">
+              Cambiar la plantilla de todos los correos →
+            </a>
           </footer>
         </div>
+        <CopiarCorreo para={destinatario} asunto={asunto} cuerpo={cuerpo} />
         {error && <p className="error">{error}</p>}
         <p className="atajos-teclado ayuda">
           <kbd>J</kbd>/<kbd>K</kbd> siguiente y anterior

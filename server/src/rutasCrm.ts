@@ -422,6 +422,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
   r.post('/mensajes/:id/cancelar', ruta(async (req, _r, u, c) => c.cancelar(u.id, String(req.params.id))));
   r.post('/mensajes/:id/descartar', ruta(async (req, _r, u, c) => c.descartar(u.id, String(req.params.id))));
   /** El usuario confirma que lo ha enviado desde su correo: es el envío efectivo. */
+  r.get('/enviados', ruta(async (_q, _r, u, c) => ({ items: await c.enviados(u.id) })));
   r.post('/mensajes/:id/enviado', ruta(async (req, _r, u, c) => c.registrarEnvio(u.id, String(req.params.id))));
 
   // ---------- Propuestas preparadas ----------

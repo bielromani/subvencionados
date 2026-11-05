@@ -471,6 +471,22 @@ export class AlmacenCrm {
     return filas.map((f) => ({ ...aMensaje(f), entidad: entidades.get(f.entidad_id)!, oportunidad: oportunidades.get(f.oportunidad_id)!, destinatario: f.destinatario, secuenciaEstado: f.sec_estado }));
   }
 
+  /** Correos marcados como enviados, del más reciente al más antiguo: la constancia de lo que ha salido. */
+  async enviados(u: string, limite = 300): Promise<(Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string; secuenciaEstado: Secuencia['estado'] })[]> {
+    const filas = await this.q<FilaMensaje & { sec_estado: Secuencia['estado']; destinatario: string; oportunidad_id: string; entidad_id: string }>(
+      `select m.*, s.estado as sec_estado, s.destinatario, s.oportunidad as oportunidad_id, s.entidad as entidad_id
+       from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
+       where m.usuario = $1 and m.estado = 'enviado'
+       order by m.enviado_en desc limit $2`,
+      [u, limite],
+    );
+    const entidades = new Map((await this.entidades(u)).map((e) => [e.id, e]));
+    const oportunidades = new Map((await this.oportunidades(u)).map((o) => [o.id, o]));
+    return filas
+      .filter((f) => entidades.has(f.entidad_id))
+      .map((f) => ({ ...aMensaje(f), entidad: entidades.get(f.entidad_id)!, oportunidad: oportunidades.get(f.oportunidad_id)!, destinatario: f.destinatario, secuenciaEstado: f.sec_estado }));
+  }
+
   async mensajes(u: string, secuencia: string): Promise<Mensaje[]> {
     return (await this.q<FilaMensaje>('select * from crm_mensajes where usuario = $1 and secuencia = $2 order by paso', [u, secuencia])).map(aMensaje);
   }

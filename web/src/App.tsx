@@ -61,7 +61,7 @@ const BARRA_CUENTA: Entrada[] = [
 const CABECERAS: Record<string, [string, string]> = {
   '': ['Inicio', 'Coloca a tus grupos de jazz, clásica y ópera: a quién llamar, qué ayudas pedir y qué contratos están abiertos.'],
   propuestas: ['Propuestas', 'Un correo ya escrito para cada sitio donde encaja tu catálogo. Revísalo, ajústalo y envíalo tú.'],
-  bandeja: ['Bandeja', 'Seguimientos y correos aprobados pendientes de enviar.'],
+  bandeja: ['Bandeja', 'Lo que tienes por enviar y la constancia de lo que ya has enviado.'],
   seguimiento: ['Mis entidades', 'Ayuntamientos, teatros y festivales con los que estás en contacto.'],
   clientes: ['Clientes', 'Quién contrata música en España, qué estilos programa y cuándo.'],
   explorar: ['Ayudas', 'Subvenciones públicas para tus grupos y para quien los contrata.'],

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { crm, enlaceCorreo, type EstadoMensaje, type MensajeBandeja, NOMBRE_OPORTUNIDAD } from '../crm';
+import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
 
@@ -46,6 +47,7 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
       window.location.href = enlaceCorreo(m.destinatario, asunto, cuerpo);
     });
   const enviado = () =>
+    confirmarEnviado() &&
     hacer(async () => {
       await aprobarSiHace();
       await crm.enviado(m.id);
@@ -121,6 +123,7 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
             )}
           </footer>
         </div>
+        {m.estado !== 'programado' && <CopiarCorreo para={m.destinatario} asunto={asunto} cuerpo={cuerpo} />}
         {error && <p className="error">{error}</p>}
         {envioConectado && editable && (
           <div className="programar-envio">
@@ -174,8 +177,117 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
   );
 }
 
-/** Bandeja: seguimientos por revisar, aprobados por enviar y envíos programados. */
+const ESTADO_SECUENCIA: Record<string, string> = {
+  activa: 'Seguimiento en marcha',
+  pausada: 'Seguimiento en pausa',
+  respondida: 'Han respondido',
+  sin_respuesta: 'Sin respuesta tras 5 correos',
+  anulada: 'Seguimiento cancelado',
+  sustituida: 'Sustituido por otro seguimiento',
+};
+
+/** Lo enviado: cada correo marcado como enviado, con fecha, destinatario y texto, para tener constancia. */
+function Enviados() {
+  const [items, setItems] = useState<MensajeBandeja[] | null>(null);
+  const [actual, setActual] = useState<string | null>(null);
+  const [detalleMovil, setDetalleMovil] = useState(false);
+  const [busca, setBusca] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    crm.enviados().then((r) => setItems(r.items), (e: Error) => setError(e.message));
+  }, []);
+  if (error) return <p className="error">{error}</p>;
+  if (!items) return <p className="ayuda">Cargando…</p>;
+  if (!items.length)
+    return (
+      <div className="bloque vacio">
+        <h2>Aún no has marcado ningún correo como enviado</h2>
+        <p className="ayuda">Cuando envíes un correo desde tu programa de correo y pulses «Ya lo he enviado», quedará aquí con su fecha y su texto.</p>
+      </div>
+    );
+  const q = busca.trim().toLowerCase();
+  const visibles = items.filter((m) => !q || `${m.entidad.nombre} ${m.destinatario} ${m.asunto}`.toLowerCase().includes(q));
+  const m = visibles.find((x) => x.id === actual) ?? visibles[0] ?? null;
+  return (
+    <div className={`tres-paneles enviados${detalleMovil ? ' ver-detalle' : ''}`}>
+      <section className="lista-propuestas" aria-label="Correos enviados">
+        <label className="buscador buscador-lista">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-4-4" />
+          </svg>
+          <input type="search" placeholder="Buscar sitio o email…" value={busca} onChange={(e) => setBusca(e.target.value)} aria-label="Buscar en enviados" />
+        </label>
+        <div className="lista-desplazable">
+          {visibles.map((x) => (
+            <button key={x.id} type="button" className={`item-propuesta${x.id === m?.id ? ' activa' : ''}`} onClick={() => (setActual(x.id), setDetalleMovil(true), window.scrollTo({ top: 0 }))}>
+              <span className="item-cabecera">
+                <strong>{x.entidad.nombre}</strong>
+                <span>{x.enviadoEn ? new Date(x.enviadoEn).toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }) : ''}</span>
+              </span>
+              <span className="item-asunto">
+                {x.paso}.º correo · {x.destinatario}
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+      {m && (
+        <article className="correo" aria-label={`Correo enviado a ${m.entidad.nombre}`}>
+          <header className="correo-barra">
+            <button type="button" className="volver-movil" onClick={() => setDetalleMovil(false)}>
+              ← Volver a la lista
+            </button>
+            <div className="correo-titulo">
+              <span className="ayuda">
+                {m.paso}.º correo de 5 · marcado como enviado el {m.enviadoEn ? fechaHora(m.enviadoEn) : '—'}
+              </span>
+              <h2>
+                <a href={fichaDe(m)}>{m.entidad.nombre}</a>
+              </h2>
+            </div>
+            <span className="etiqueta">{ESTADO_SECUENCIA[m.secuenciaEstado ?? ''] ?? ''}</span>
+          </header>
+          <div className="correo-hoja">
+            <div className="correo-campo">
+              <span>Para</span>
+              <span className="correo-valor">{m.destinatario}</span>
+            </div>
+            <div className="correo-campo">
+              <span>Asunto</span>
+              <span className="correo-valor correo-asunto">{m.asunto}</span>
+            </div>
+            <div className="correo-cuerpo correo-leido">{m.cuerpo}</div>
+          </div>
+          <CopiarCorreo para={m.destinatario} asunto={m.asunto} cuerpo={m.cuerpo} />
+        </article>
+      )}
+    </div>
+  );
+}
+
+/** Bandeja: lo pendiente de enviar (seguimientos, aprobados, programados) y lo ya enviado. */
 export function Bandeja() {
+  const usuario = useCuenta().cuenta?.usuario;
+  const [vista, setVista] = useState<'pendientes' | 'enviados'>('pendientes');
+  if (!usuario) return <p className="llamada">La bandeja es de tu cuenta: <a href="#/cuenta">entra o crea una cuenta</a>.</p>;
+  return (
+    <>
+      <div className="pestanas-pagina" role="tablist" aria-label="Bandeja">
+        <button type="button" role="tab" aria-selected={vista === 'pendientes'} className={vista === 'pendientes' ? 'activa' : ''} onClick={() => setVista('pendientes')}>
+          Por enviar
+        </button>
+        <button type="button" role="tab" aria-selected={vista === 'enviados'} className={vista === 'enviados' ? 'activa' : ''} onClick={() => setVista('enviados')}>
+          Enviados
+        </button>
+      </div>
+      {vista === 'pendientes' ? <PorEnviar /> : <Enviados />}
+    </>
+  );
+}
+
+/** Seguimientos por revisar, aprobados por enviar y envíos programados. */
+function PorEnviar() {
   const usuario = useCuenta().cuenta?.usuario;
   const [datos, setDatos] = useState<{ items: MensajeBandeja[]; envioConectado: boolean } | null>(null);
   const [actual, setActual] = useState<string | null>(null);
@@ -217,8 +329,10 @@ export function Bandeja() {
   if (datos.items.length === 0)
     return (
       <div className="bloque vacio">
-        <h2>Bandeja vacía</h2>
-        <p className="ayuda">Los seguimientos aparecen aquí unos días después de cada envío. Los primeros correos se preparan en <a href="#/propuestas">Propuestas</a>.</p>
+        <h2>Nada pendiente de enviar</h2>
+        <p className="ayuda">
+          Los seguimientos aparecen aquí unos diez días después de cada envío. Los primeros correos se preparan en <a href="#/propuestas">Propuestas</a>. Lo que ya has enviado está en la pestaña «Enviados».
+        </p>
       </div>
     );
 

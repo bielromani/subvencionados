@@ -110,6 +110,10 @@ export function espectaculoDeWeb(p: PropuestaWeb, seccion: SeccionWeb, base = WE
 export async function descargarCatalogoArsvia(base = WEB_ARSVIA, pedir: typeof fetch = fetch): Promise<Omit<Espectaculo, 'id'>[]> {
   const json = async <T>(accion: string): Promise<T> => {
     const r = await pedir(`${base}/api.php?action=${accion}`, { headers: { accept: 'application/json' } });
+    if (r.status === 403)
+      throw new Error(
+        'La web de ArsVia está bloqueando la descarga automática (error 403, probablemente el cortafuegos del alojamiento). Puedes seguir editando las fichas a mano; para volver a importar, hay que permitir el acceso a /api.php en el alojamiento de arsvia.org.',
+      );
     if (!r.ok) throw new Error(`arsvia.org respondió ${r.status}`);
     return (await r.json()) as T;
   };

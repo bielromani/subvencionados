@@ -5562,3 +5562,59 @@ kbd {
     display: none;
   }
 }
+
+/* Copiar el correo y enviados */
+.copiar-correo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0 22px 14px;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+.accion-pequena {
+  min-height: 32px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+}
+
+.enlace-pie {
+  margin-left: auto;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.correo-pie {
+  flex-wrap: wrap;
+}
+
+.correo-leido {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.buscador-lista {
+  margin: 12px;
+  min-height: 38px;
+}
+
+.enviados .correo-barra .etiqueta {
+  align-self: center;
+}
+
+@media (max-width: 900px) {
+  .copiar-correo {
+    margin: 0 12px 12px;
+  }
+
+  .enlace-pie {
+    margin-left: 0;
+  }
+}
+
+.tres-paneles.enviados {
+  grid-template-columns: 320px minmax(0, 1fr);
+}
