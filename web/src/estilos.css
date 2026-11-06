@@ -5625,3 +5625,13 @@ kbd {
   font-weight: 500;
   margin-top: 0.75rem;
 }
+
+/* Web privada sin sesión: solo la pantalla de entrar, centrada. */
+.app-privada {
+  min-height: 100vh;
+  background: var(--fondo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}

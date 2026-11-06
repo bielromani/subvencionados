@@ -130,7 +130,10 @@ export function App() {
   const seccion = SECCION_DE[pagina] ?? pagina;
   const [meta, setMeta] = useState<Meta | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const usuario = useCuenta().cuenta?.usuario;
+  const cuentaEstado = useCuenta().cuenta;
+  const usuario = cuentaEstado?.usuario;
+  // Web privada sin sesión: solo la pantalla de entrar (nada más se pide a la API).
+  const cerrada = !cuentaEstado || (!!cuentaEstado.privado && !usuario);
   const menu = usuario ? MENU_CUENTA : MENU;
   const barra = usuario ? BARRA_CUENTA : BARRA;
   const [masAbierto, setMasAbierto] = useState(false);
@@ -142,7 +145,7 @@ export function App() {
   const [pendientes, setPendientes] = useState(0);
   const [propuestas, setPropuestas] = useState(0);
   useEffect(() => {
-    if (!usuario) return;
+    if (!usuario || cerrada) return;
     crm.bandeja().then((r) => setPendientes(r.items.filter((m) => m.estado !== 'programado').length), () => setPendientes(0));
     crm.propuestas().then((r) => setPropuestas(r.items.length), () => setPropuestas(0));
   }, [usuario?.email, ruta.partes.join('/')]);
@@ -152,8 +155,9 @@ export function App() {
   };
 
   useEffect(() => {
+    if (cerrada) return;
     api.meta().then(setMeta, () => setError('No se puede conectar con la API. ¿Está arrancado el servidor (npm run dev)?'));
-  }, []);
+  }, [cerrada]);
 
   const entrada = ([destino, nombre, icono]: Entrada) => (
     <a key={destino} href={`#/${destino}`} className={destino === seccion ? 'activa' : ''} aria-current={destino === seccion ? 'page' : undefined}>
@@ -162,6 +166,15 @@ export function App() {
       {contador(destino)}
     </a>
   );
+
+  if (cerrada)
+    return cuentaEstado ? (
+      <main className="app-privada">
+        <Cuenta ruta={ruta} />
+      </main>
+    ) : (
+      <p className="ayuda app-privada">Cargando…</p>
+    );
 
   return (
     <div className="app">

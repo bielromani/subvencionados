@@ -13,7 +13,7 @@ const TEXTO_AVISOS: Record<UsuarioCuenta['avisos'], string> = {
 };
 
 /** Entrar, registrarse o restablecer la contraseña. */
-function Acceso({ emails, restablecer }: { emails: boolean; restablecer: string | null }) {
+function Acceso({ emails, restablecer, privado }: { emails: boolean; restablecer: string | null; privado: boolean }) {
   const [modo, setModo] = useState<'entrar' | 'registro' | 'olvido' | 'restablecer'>(restablecer ? 'restablecer' : 'entrar');
   const [email, setEmail] = useState('');
   const [clave, setClave] = useState('');
@@ -65,8 +65,11 @@ function Acceso({ emails, restablecer }: { emails: boolean; restablecer: string 
           </button>
         </div>
       )}
+      {privado && modo === 'entrar' && <p className="ayuda">Esta web es privada. La sesión queda abierta en este dispositivo: no tendrás que volver a entrar.</p>}
       {modo === 'registro' && (
-        <p className="ayuda">Lo que ya tienes en este navegador (lista y perfil) se añade a la cuenta.</p>
+        <p className="ayuda">
+          {privado ? 'Solo pueden crear cuenta las personas autorizadas: usa el email con el que te han dado acceso.' : 'Lo que ya tienes en este navegador (lista y perfil) se añade a la cuenta.'}
+        </p>
       )}
       <form onSubmit={enviar} className="formulario">
         {modo !== 'restablecer' && (
@@ -283,5 +286,5 @@ export function Cuenta({ ruta }: { ruta: Ruta }) {
       </section>
     );
   }
-  return cuenta.usuario ? <MiCuenta u={cuenta.usuario} emails={cuenta.emails} estado={estado} /> : <Acceso emails={cuenta.emails} restablecer={ruta.params.get('restablecer')} />;
+  return cuenta.usuario ? <MiCuenta u={cuenta.usuario} emails={cuenta.emails} estado={estado} /> : <Acceso emails={cuenta.emails} restablecer={ruta.params.get('restablecer')} privado={!!cuenta.privado} />;
 }

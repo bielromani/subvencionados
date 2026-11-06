@@ -20,6 +20,8 @@ export interface EstadoCuenta {
   activo: boolean;
   /** Hay servicio de email: avisos y restablecer contraseña. */
   emails: boolean;
+  /** Web privada: sin sesión no se ve nada; solo crean cuenta los emails autorizados. */
+  privado?: boolean;
   usuario: UsuarioCuenta | null;
 }
 

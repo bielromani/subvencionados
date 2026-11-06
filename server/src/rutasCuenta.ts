@@ -2,6 +2,7 @@
 
 import express, { type Request, type Response } from 'express';
 import { type AlmacenCuentas, type DatosLista, FRECUENCIAS, type FrecuenciaAvisos, type Usuario } from './cuentas.js';
+import { puedeEntrar, puedeRegistrarse } from './acceso.js';
 import { type Enviar, escaparHtml } from './email.js';
 
 const COOKIE = 'subv_sesion';
@@ -66,13 +67,14 @@ export async function usuarioDeSesion(almacen: AlmacenCuentas | null, req: Reque
   return token && almacen ? almacen.deSesion(token) : null;
 }
 
-export function rutasCuenta(almacen: AlmacenCuentas | null, enviar: Enviar | null) {
+export function rutasCuenta(almacen: AlmacenCuentas | null, enviar: Enviar | null, privado = false) {
   const r = express.Router();
   const base = (req: Request) => `${req.protocol}://${req.get('host')}`;
 
   const usuarioDe = async (req: Request): Promise<Usuario | null> => {
     const token = leerCookie(req);
-    return token && almacen ? almacen.deSesion(token) : null;
+    const u = token && almacen ? await almacen.deSesion(token) : null;
+    return u && privado && !puedeEntrar(u.email) ? null : u;
   };
   /** Las rutas que necesitan sesión: sin ella, 401. */
   const conUsuario =
@@ -87,7 +89,7 @@ export function rutasCuenta(almacen: AlmacenCuentas | null, enviar: Enviar | nul
 
   r.get('/', async (req, res) => {
     const u = almacen ? await usuarioDe(req) : null;
-    res.set('Cache-Control', 'no-store').json({ activo: almacen !== null, emails: enviar !== null, usuario: u ? publico(u) : null });
+    res.set('Cache-Control', 'no-store').json({ activo: almacen !== null, emails: enviar !== null, privado, usuario: u ? publico(u) : null });
   });
 
   r.post('/registro', async (req, res) => {
@@ -103,6 +105,10 @@ export function rutasCuenta(almacen: AlmacenCuentas | null, enviar: Enviar | nul
     }
     if (clave.length < CLAVE_MINIMA || clave.length > 200) {
       res.status(400).json({ error: `La contraseña debe tener al menos ${CLAVE_MINIMA} caracteres` });
+      return;
+    }
+    if (privado && !puedeRegistrarse(email)) {
+      res.status(403).json({ error: 'Esta web es privada: para crear una cuenta, pide acceso a quien la administra.' });
       return;
     }
     const u = await almacen.crear(email, clave);
@@ -125,6 +131,10 @@ export function rutasCuenta(almacen: AlmacenCuentas | null, enviar: Enviar | nul
       return;
     }
     const u = await almacen.entrar(email, typeof req.body?.clave === 'string' ? req.body.clave : '');
+    if (u && privado && !puedeEntrar(u.email)) {
+      res.status(403).json({ error: 'Esta cuenta ya no tiene acceso a la web. Pídelo a quien la administra.' });
+      return;
+    }
     if (!u) {
       anotarFallo(email);
       res.status(401).json({ error: 'Email o contraseña incorrectos' });

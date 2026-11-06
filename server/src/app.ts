@@ -3,7 +3,7 @@ import { accion } from './accion.js';
 import { emailAviso } from './avisos.js';
 import type { AlmacenCuentas, DatosLista } from './cuentas.js';
 import { type Enviar, escaparHtml } from './email.js';
-import { rutasCuenta } from './rutasCuenta.js';
+import { rutasCuenta, usuarioDeSesion } from './rutasCuenta.js';
 import { alertasCrm, type ContextoCrm, prepararParaCuenta, rutasCrm } from './rutasCrm.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
 import { noEncaja } from './crm/prospeccion.js';
@@ -28,6 +28,7 @@ import type { Ficha } from './ficha/esquema.js';
 import { documentosConTexto } from './ficha/fichas.js';
 import { ESTILOS, type Convocatoria, type Perfil } from './tipos.js';
 import { type AjustesCrm, cupoDiario } from './crm/tipos.js';
+import { puedeEntrar } from './acceso.js';
 import { configImapDesdeEntorno, detectarRespuestas, leerBuzon } from './crm/respuestas.js';
 
 const lista = (valor: unknown): string[] =>
@@ -108,7 +109,12 @@ export interface OpcionesApp {
   enviar?: Enviar | null;
   /** Prospección y seguimiento de cada cuenta (necesita las cuentas). */
   crm?: AlmacenCrm | null;
+  /** Web privada: toda la información pide sesión de una persona autorizada (ver acceso.ts). */
+  privado?: boolean;
 }
+
+/** Lo que responde sin sesión en la web privada: entrar, la salud, las tareas programadas (con su secreto) y el calendario personal (con su enlace secreto). */
+const SIN_SESION = [/^\/cuenta(\/|$)/, /^\/salud$/, /^\/crm-envios$/, /^\/avisos$/, /^\/mi-calendario\.ics$/];
 
 /** "Palmas de Gran Canaria, Las" (INE) y "Las Palmas de Gran Canaria" son el mismo municipio. */
 export function mismoMunicipio(a: string | null | undefined, b: string | null | undefined): boolean {
@@ -163,7 +169,19 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   // Detrás del proxy de Vercel: https y la IP real (para cookies Secure y enlaces en los emails).
   app.set('trust proxy', true);
   app.use(express.json({ limit: '100kb' }));
-  app.use('/api/cuenta', rutasCuenta(opciones.cuentas ?? null, opciones.enviar ?? null));
+  if (opciones.privado) {
+    app.use('/api', async (req, res, next) => {
+      if (SIN_SESION.some((r) => r.test(req.path))) return next();
+      const u = await usuarioDeSesion(opciones.cuentas ?? null, req).catch(() => null);
+      if (!u || !puedeEntrar(u.email)) {
+        res.status(401).set('Cache-Control', 'no-store').json({ error: 'Esta web es privada: entra con tu cuenta.', privado: true });
+        return;
+      }
+      res.set('Cache-Control', 'private, no-store');
+      next();
+    });
+  }
+  app.use('/api/cuenta', rutasCuenta(opciones.cuentas ?? null, opciones.enviar ?? null, !!opciones.privado));
 
   app.get('/api/salud', (_req, res) => {
     res.json({ ok: true });
