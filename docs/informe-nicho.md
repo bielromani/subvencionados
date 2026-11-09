@@ -1,6 +1,6 @@
 # Informe del nicho: subvenciones públicas para música en España
 
-Generado el 2026-11-08 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
+Generado el 2026-11-09 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
 Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por reglas (ver
 `server/src/clasificacion/musica.ts`); la precisión medida está en `docs/evaluacion-clasificador.md`.
 
@@ -13,7 +13,7 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
   (526.154.718 € en concursos y 335.889.742 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
 - Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.094 convocatorias y 649.944.891 € concedidos.
 - Mencionan expresamente el estilo: jazz 428, clásica 3.276, ópera y lírica 432. El resto son ayudas de música en general.
-- Concursos con el plazo abierto hoy: **12**; por abrir: **15**.
+- Concursos con el plazo abierto hoy: **10**; por abrir: **15**.
 - Convocatorias que se repiten año tras año (series): 1.920; previstas en los próximos 3 meses según su
   historial (estimación): 275.
 - Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.328.
