@@ -30,10 +30,11 @@ const importe = (x: string | null) => {
   const n = Number(x.replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.'));
   return Number.isFinite(n) && n > 0 ? n : null;
 };
-/** «28/12/2023» → «2023-12-28» */
+/** «28/12/2023» o «28/12/23» → «2023-12-28» */
 const fecha = (x: string | null) => {
-  const m = x?.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
-  return m ? `${m[3]}-${m[2]!.padStart(2, '0')}-${m[1]!.padStart(2, '0')}` : null;
+  // Algunos años traen el año con dos cifras («23/12/21»).
+  const m = x?.match(/(\d{1,2})\/(\d{1,2})\/(\d{4}|\d{2})\b/);
+  return m ? `${m[3]!.length === 2 ? `20${m[3]}` : m[3]}-${m[2]!.padStart(2, '0')}-${m[1]!.padStart(2, '0')}` : null;
 };
 
 /** Filas de un CSV de Madrid (salta las líneas de título que algunos años llevan antes de la cabecera). */
