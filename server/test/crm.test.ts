@@ -184,6 +184,16 @@ describe.skipIf(!url)('secuencias con Postgres', () => {
     expect(ps.find((p) => p.ref === 'p-2')!.cuerpo).toBe('nuevo');
     expect(ps.find((p) => p.ref === 'p-3')!.cuerpo).toBe('mío');
   });
+
+  it('rehacer la tanda borra las pendientes sin retocar y deja las retocadas a mano', async () => {
+    const w = (await cuentas.crear(`rehacer-${Date.now()}@example.com`, 'una clave larga'))!.id;
+    const base = { nombre: 'Ayto X', municipio: 'X', provincia: null, ccaa: null, persona: null, cargo: null, destinatario: 'a@x.example', telefono: null, revisarEmail: null, idioma: 'es' as const, motivos: [], espectaculos: [], ayudas: [], licitaciones: [], gestion: [], historial: [], asunto: 'a', cuerpo: 'a', puntos: 1 };
+    await crm.guardarPropuestas(w, [{ ...base, ref: 'p-1' }, { ...base, ref: 'p-2', destinatario: 'b@x.example' }]);
+    const p2 = (await crm.propuestas(w)).find((p) => p.ref === 'p-2')!;
+    await crm.editarPropuesta(w, p2.id, { asunto: 'mío', cuerpo: 'mío', destinatario: 'b@x.example' });
+    expect(await crm.borrarPendientes(w)).toBe(1);
+    expect((await crm.propuestas(w)).map((p) => p.ref)).toEqual(['p-2']);
+  });
 });
 
 describe.skipIf(!url)('API del CRM', async () => {
@@ -254,7 +264,7 @@ describe.skipIf(!url)('festivales en el seguimiento', async () => {
   const { crearApp } = await import('../src/app.js');
   const { Repositorio } = await import('../src/db.js');
   const cuentas = url ? AlmacenCuentas.desdeUrl(url) : null!;
-  const externo = { directorio: 'FestClásica', url: 'https://x.example/f', nombre: 'Festival de Música Antigua de Prueba', municipio: 'Prueba', provincia: null, ccaa: 'Aragón', organizador: 'Fundación Prueba', web: 'https://festival.example', telefono: '976 000 000', email: 'info@festival.example', inicio: null, fin: null, descripcion: null };
+  const externo = { directorio: 'FestClásica' as const, url: 'https://x.example/f', nombre: 'Festival de Música Antigua de Prueba', municipio: 'Prueba', provincia: null, ccaa: 'Aragón', organizador: 'Fundación Prueba', web: 'https://festival.example', telefono: '976 000 000', email: 'info@festival.example', inicio: null, fin: null, descripcion: null };
   const app = crearApp(new Repositorio(':memory:'), { cuentas, crm: url ? new AlmacenCrm(cuentas) : null, festivalesExternos: [externo] });
   afterAll(() => cuentas?.cerrar());
 

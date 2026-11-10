@@ -885,6 +885,12 @@ export class AlmacenCrm {
     return { reescritas, aMano };
   }
 
+  /** Borra las pendientes sin tocar (no las retocadas a mano): vuelven a poder salir con las reglas nuevas. */
+  async borrarPendientes(u: string): Promise<number> {
+    const filas = await this.q<{ id: string }>("delete from crm_propuestas where usuario = $1 and estado = 'pendiente' and coalesce((datos->>'editadaAMano')::boolean, false) = false returning id", [u]);
+    return filas.length;
+  }
+
   async descartarPropuesta(u: string, id: string) {
     await this.q("update crm_propuestas set estado = 'descartada', actualizado = now() where id = $1 and usuario = $2 and estado = 'pendiente'", [id, u]);
   }

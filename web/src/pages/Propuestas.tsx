@@ -271,6 +271,21 @@ export function Propuestas({ meta }: { meta: Meta }) {
       setPreparando(false);
     }
   };
+  const rehacer = async () => {
+    if (!window.confirm('¿Rehacer la tanda? Se borran las propuestas pendientes que no has retocado y se preparan otras nuevas para toda España. Las que ya aceptaste o enviaste no cambian.')) return;
+    setPreparando(true);
+    setAviso(null);
+    try {
+      const r = await crm.rehacerPropuestas(cuantas);
+      setAviso(`Borradas ${r.borradas}; preparadas ${r.nuevas} nuevas.`);
+      setActual(null);
+      await cargar();
+    } catch (e) {
+      setAviso((e as Error).message);
+    } finally {
+      setPreparando(false);
+    }
+  };
   const aceptarTodas = async () => {
     const ids = visibles.map((p) => p.id);
     if (!window.confirm(`¿Aceptar las ${ids.length} propuestas de la lista tal como están? Saldrán solas poco a poco, sin pasar del tope diario. Las que tienen un email por revisar se quedan aquí.`)) return;
@@ -317,6 +332,11 @@ export function Propuestas({ meta }: { meta: Meta }) {
         <button type="button" className="boton" disabled={preparando} onClick={() => void preparar()}>
           {preparando ? 'Preparando… (medio minuto)' : 'Preparar más'}
         </button>
+        {visibles.length > 0 && (
+          <button type="button" className="accion" disabled={preparando} onClick={() => void rehacer()}>
+            Rehacer la tanda
+          </button>
+        )}
         {automatico && visibles.length > 0 && (
           <button type="button" className="accion" disabled={preparando} onClick={() => void aceptarTodas()}>
             Aceptar todas ({visibles.length})

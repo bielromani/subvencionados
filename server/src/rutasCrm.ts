@@ -461,6 +461,16 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       return { nuevas: await prepararParaCuenta(c, ctx, u.id, { limite, ccaa }) };
     }),
   );
+  /** Rehacer la tanda: borra las pendientes sin retocar y prepara otras con las reglas de hoy. */
+  r.post(
+    '/propuestas/rehacer',
+    ruta(async (req, _r, u, c) => {
+      if (!(await c.espectaculos(u.id)).length) throw new ErrorCrm('Primero añade tu catálogo de espectáculos', 400);
+      const borradas = await c.borrarPendientes(u.id);
+      const limite = Math.min(Math.max(Math.round(Number(req.body?.limite) || 20), 1), 100);
+      return { borradas, nuevas: await prepararParaCuenta(c, ctx, u.id, { limite }) };
+    }),
+  );
   const cartaDe = (b: Record<string, unknown> | undefined) => {
     const destinatario = texto(b?.destinatario, 200).trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(destinatario)) throw new ErrorCrm('Falta un email válido del destinatario', 400);

@@ -330,6 +330,7 @@ export const crm = {
   propuestas: () => pedir<{ items: PropuestaPreparada[] }>('/propuestas'),
   cargarPlantillasArsvia: () => pedir<{ textos: number; reescritas: number; aMano: number }>('/plantillas/arsvia', 'POST', {}),
   reescribirPropuestas: () => pedir<{ reescritas: number; aMano: number }>('/propuestas/reescribir', 'POST', {}),
+  rehacerPropuestas: (limite: number) => pedir<{ borradas: number; nuevas: number }>('/propuestas/rehacer', 'POST', { limite }),
   prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
   guardarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) => pedir(`/propuestas/${id}`, 'PUT', c),
   aceptarTodas: (ids: string[]) => pedir<{ aceptadas: number; porRevisar: number }>('/propuestas/aceptar-todas', 'POST', { ids }),
