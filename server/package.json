@@ -18,6 +18,8 @@
     "catalunya": "tsx src/scripts/recolectar-catalunya.ts",
     "festivales": "tsx src/scripts/recolectar-festivales.ts",
     "euskadi": "tsx src/scripts/recolectar-euskadi.ts",
+    "madrid": "tsx src/scripts/recolectar-madrid.ts",
+    "pedanias": "tsx src/scripts/recolectar-pedanias.ts",
     "limpiar-contratos": "tsx src/scripts/limpiar-contratos.ts"
   },
   "dependencies": {

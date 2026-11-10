@@ -17,7 +17,7 @@ import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
 import { type Circuito, circuitos, type Festival, festivales, idProgramador, type Programador, programadores } from './directorio.js';
 import type { FestivalExterno } from './festivalesExternos.js';
-import { indiceSubvenciones, type IndiceSubvenciones, PEDANIA } from './subvencionesMunicipio.js';
+import { indiceSubvenciones, type IndiceSubvenciones, PEDANIA, type Pedania } from './subvencionesMunicipio.js';
 import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
@@ -104,6 +104,8 @@ export interface OpcionesApp {
   fichas?: { leer: (codigoBdns: string) => Ficha | null; tiene: (codigoBdns: string) => boolean };
   /** Festivales de los directorios del sector (datos/festivales/directorios.json). */
   festivalesExternos?: FestivalExterno[];
+  /** Pedanías de los registros oficiales con su municipio (datos/directorio/pedanias.json). */
+  pedanias?: Pedania[];
   /** Contratos de música de la Plataforma de Contratación (datos/contratos/). */
   contratos?: ContratoVista[];
   /** Directorio de ayuntamientos y responsables de cultura (datos/directorio/). */
@@ -328,7 +330,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const dir = () => {
     if (directorio?.version !== repo.version) {
       const conv = repo.listarConvocatorias();
-      const indice = indiceSubvenciones(conv, opciones.contactos ?? null);
+      const indice = indiceSubvenciones(conv, opciones.contactos ?? null, opciones.pedanias ?? []);
       const deMunicipio = (ine: string | null) => {
         const s = ine ? indice.porMunicipio.get(ine) : undefined;
         if (!s) return null;
@@ -352,7 +354,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       for (const x of indice.pedanias) {
         if (nombres.has(`${normalizar(x.nombre)}|${x.codigoProvincia ?? ''}`)) continue;
         const id = `p-ped-${normalizar(`${x.nombre} ${x.codigoProvincia ?? ''}`).replace(/[^a-z0-9]+/g, '-')}`;
-        progs.push({ ...sinContratos(id, x.nombre, null, x.codigoProvincia), ciudad: x.municipio?.municipio ?? null, codigoIne: null, conContacto: false, subvenciones: { importe: x.importe, numero: x.numero, ultima: x.ultima } });
+        progs.push({ ...sinContratos(id, x.nombre, x.municipio, x.codigoProvincia), web: null, codigoIne: null, conContacto: false, subvenciones: { importe: x.importe, numero: x.numero, ultima: x.ultima } });
       }
       directorio = {
         version: repo.version,

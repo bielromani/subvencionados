@@ -48,6 +48,16 @@ describe('Subvenciones que reciben los municipios', () => {
     expect(i.pedanias).toMatchObject([{ nombre: 'ENTITAT MUNICIPAL DESCENTRALITZADA JESUS', codigoProvincia: '43', importe: 1000 }]);
   });
 
+  it('el municipio de la pedanía sale del registro oficial', () => {
+    const i = indiceSubvenciones(
+      [conv({ entidades: [{ nombre: 'ENTITAT MUNICIPAL DESCENTRALITZADA JESUS', importe: 1000, fecha: '2025-01-01', nif: 'P9359001F' }] })],
+      new Contactos([fila('43155', 'Tortosa', 'Tarragona')], []),
+      [{ nombre: 'Entitat Municipal Descentralitzada de Jesús', codigoIne: '43155', fuente: 'Generalitat de Catalunya' }],
+    );
+    expect(i.pedanias[0]?.municipio?.municipio).toBe('Tortosa');
+    expect(i.porMunicipio.get('43155')?.entidades.map((e) => e.nombre)).toEqual(['ENTITAT MUNICIPAL DESCENTRALITZADA JESUS']);
+  });
+
   it('una asociación con «ELA» en el nombre no es una pedanía', () => {
     const i = indiceSubvenciones([conv({ entidades: [{ nombre: 'ASOC DALECANDELA A LA ELA', importe: 100, fecha: '2025-01-01' }] })], contactos);
     expect(i.pedanias).toEqual([]);

@@ -1,4 +1,5 @@
-# Festivales de los directorios de las asociaciones del sector (FestClásica, Redescena, REMA) → datos/festivales/.
+# Festivales de los directorios de las asociaciones del sector (FestClásica, Redescena, REMA) → datos/festivales/,
+# y pedanías con su municipio (registros oficiales de Cataluña y Euskadi) → datos/directorio/pedanias.json.
 # Una vez al mes (cambian poco) y a mano. Unos minutos: una petición por segundo a cada web.
 name: Recolectar festivales
 
@@ -26,11 +27,13 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run festivales -w server
+      - run: npm run pedanias -w server
+        continue-on-error: true
       - name: Guardar los datos en el repositorio
         run: |
           git config user.name "recolector-festivales"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add datos/festivales
+          git add datos/festivales datos/directorio/pedanias.json
           if git diff --cached --quiet; then echo "Sin cambios."; exit 0; fi
           git commit -m "Festivales $(date -u +%Y-%m-%d): directorios del sector"
           rama="${GITHUB_REF_NAME}"

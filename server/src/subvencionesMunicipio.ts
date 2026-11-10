@@ -79,13 +79,40 @@ const anotar = (x: { importe: number; numero: number; ultima: string | null; con
   x.concesiones.push(c);
 };
 
+/** Pedanía de un registro oficial, con el código INE de su municipio. */
+export interface Pedania {
+  nombre: string;
+  codigoIne: string;
+  fuente: string;
+}
+
+/** «Entitat Municipal Descentralitzada d'Arànser» → «aranser»; «ENTIDAD LOCAL MENOR DE VALDIVIA» → «valdivia». */
+export const lugarDePedania = (nombre: string) =>
+  normalizar(nombre)
+    .replace(PEDANIA, ' ')
+    .replace(/\b(entitat|entidad|municipal|descentralitzada|descentralizada|local|menor|autonoma|de|del|d|la|el|l)\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+
 export interface IndiceSubvenciones {
   porMunicipio: Map<string, SubvencionesMunicipio>;
   /** Pedanías y entidades locales menores que reciben ayudas, con su provincia (no siempre se sabe su municipio). */
   pedanias: (EntidadSubvencionada & { codigoProvincia: string | null; municipio: ContactoMunicipio | null })[];
 }
 
-export function indiceSubvenciones(convocatorias: Convocatoria[], contactos: Contactos | null): IndiceSubvenciones {
+export function indiceSubvenciones(convocatorias: Convocatoria[], contactos: Contactos | null, registro: Pedania[] = []): IndiceSubvenciones {
+  // Municipio de cada pedanía de los registros oficiales: por provincia y lugar, y solo por lugar si es único.
+  const porLugar = new Map<string, Set<string>>();
+  for (const r of registro) {
+    const l = lugarDePedania(r.nombre);
+    if (!l) continue;
+    for (const k of [`${r.codigoIne.slice(0, 2)}|${l}`, `*|${l}`]) porLugar.set(k, (porLugar.get(k) ?? new Set()).add(r.codigoIne));
+  }
+  const municipioDePedania = (nombre: string, prov: string | null) => {
+    const l = lugarDePedania(nombre);
+    const xs = porLugar.get(`${prov ?? '*'}|${l}`) ?? porLugar.get(`*|${l}`);
+    return xs?.size === 1 ? (contactos?.porCodigo([...xs][0]!) ?? null) : null;
+  };
   const porMunicipio = new Map<string, SubvencionesMunicipio>();
   const entidadesPorIne = new Map<string, Map<string, EntidadSubvencionada>>();
   const pedanias = new Map<string, EntidadSubvencionada & { codigoProvincia: string | null; municipio: ContactoMunicipio | null }>();
@@ -106,7 +133,7 @@ export function indiceSubvenciones(convocatorias: Convocatoria[], contactos: Con
       const n = normalizar(e.nombre);
       if (PEDANIA.test(n)) {
         const k = e.nif ?? `${n}|${prov ?? ''}`;
-        const x = pedanias.get(k) ?? { nombre: e.nombre, pedania: true, ...resumen(), codigoProvincia: prov, municipio: deUnAyuntamiento ? contactos.porCodigo(deUnAyuntamiento) : null };
+        const x = pedanias.get(k) ?? { nombre: e.nombre, pedania: true, ...resumen(), codigoProvincia: prov, municipio: (deUnAyuntamiento ? contactos.porCodigo(deUnAyuntamiento) : null) ?? municipioDePedania(e.nombre, prov) };
         anotar(x, concesion);
         pedanias.set(k, x);
         continue;

@@ -45,11 +45,13 @@ writeFileSync(
 // 4. Datos que lee la API.
 cpSync(rutaDb, join(funcion, 'subvencionados.db'));
 const datos = join(funcion, 'datos');
-for (const d of ['fichas', 'contratos', 'bdns/documentos']) {
+for (const d of ['fichas', 'contratos', 'festivales', 'bdns/documentos']) {
   if (existsSync(join(raiz, 'datos', d))) cpSync(join(raiz, 'datos', d), join(datos, d), { recursive: true });
 }
 mkdirSync(join(datos, 'directorio'), { recursive: true });
 for (const f of ['ayuntamientos.csv', 'cultura.csv']) cpSync(join(raiz, 'datos/directorio', f), join(datos, 'directorio', f));
+// Pedanías con su municipio (lo genera el recolector mensual; puede no estar todavía).
+if (existsSync(join(raiz, 'datos/directorio/pedanias.json'))) cpSync(join(raiz, 'datos/directorio/pedanias.json'), join(datos, 'directorio', 'pedanias.json'));
 
 // 5. Rutas: /api/* a la función, el resto a la web; noindex en todo. Y la tarea diaria de avisos.
 writeFileSync(

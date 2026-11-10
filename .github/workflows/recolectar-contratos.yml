@@ -54,6 +54,12 @@ jobs:
         run: npm run contratos -w server -- --fuentes --dias="${{ inputs.dias || '3' }}"
 
       # Los ayuntamientos catalanes (y sus contratos menores) publican en el Registre de la Generalitat, no en la Plataforma.
+      # El Ayuntamiento de Madrid publica sus menores en su portal de datos abiertos (un CSV por año).
+      - name: Madrid (contratos menores del Ayuntamiento)
+        if: ${{ !cancelled() && (inputs.periodos || '') == '' }}
+        continue-on-error: true
+        run: npm run madrid -w server
+
       - name: Cataluña (Registre públic de contractes)
         if: ${{ !cancelled() && (inputs.periodos || '') == '' }}
         run: npm run catalunya -w server
