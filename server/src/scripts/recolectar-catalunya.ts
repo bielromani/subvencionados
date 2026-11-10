@@ -3,6 +3,7 @@
 //
 //   npm run catalunya            desde la última fecha leída menos 60 días (las inscripciones llegan con retraso);
 //                                la primera vez, todo el registro
+//   npm run catalunya -- --todo  vuelve a leer todo el registro (al cambiar el criterio de qué es música)
 
 import { join } from 'node:path';
 import { normalizar } from '../clasificacion/musica.js';
@@ -23,7 +24,8 @@ const PAGINA = 20_000;
 
 const almacen = new AlmacenContratos(join(config.rutaDatos, 'contratos'));
 const ultima = almacen.estado.fuentes[FUENTE];
-const desde = ultima ? new Date(Date.parse(ultima) - 60 * 86_400_000).toISOString().slice(0, 10) : null;
+const todo = process.argv.includes('--todo');
+const desde = ultima && !todo ? new Date(Date.parse(ultima) - 60 * 86_400_000).toISOString().slice(0, 10) : null;
 const delEstado = new Set<string>();
 // Datos del órgano tal como vienen en la Plataforma (NIF, DIR3, dirección): así el mismo ayuntamiento es un solo cliente.
 const organos = new Map<string, Contrato['organo']>();

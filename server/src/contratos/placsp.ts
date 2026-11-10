@@ -240,7 +240,7 @@ const TITULO_MUSICA =
   /\b(concierto|conciertos|concerto|concertos|concert|concerts|orquesta|orquestas|orquestra|orquestras|bandas? de musica|banda municipal|charangas?|txarangas?|actuacion(es)? (musical|musicales|artistica|artisticas)|actuacions musicals|actuacio musical|grups? musicals?|cobla|cobles|sardanes|sardana|havaneres|xaranga|grupos? musical(es)?|musica|musicas|musical|musicales|musicais|musicals|festival de (jazz|musica)|coral|corales|coro|coros|recital|recitales|opera|operas|zarzuela|jazz|verbena|verbenas|cantantes?|cantautor(es|a)?|flamenco|dj|disc jockey|rondalla|mariachi)\b/;
 
 /** Lo que no es contratar música en vivo: enseñanza, obras, suministros, bares... */
-const TITULO_EXCLUIR =
+export const TITULO_EXCLUIR =
   /\b(premios?|publicaciones|exposicion(es)?|conferencias|escuelas?|escola|pirotecn\w*|luz y sonido|homologacion|bibliotecas?|escuelas? (municipal )?de musica|taller(es)? de musica|taller(es)? musicales?|taller(es)?|tallers?|gestion de (los )?(centros|centres)|gestio de (centres|centros)|centres? de creacio|centros? de creacion|escola de musica|escola municipal de musica|ensenanza|ensenanzas|formacion|clases|profesorado|docente|obras? de|suministro|adquisicion de instrumentos|instrumentos musicales|barra|bar|cafeteria|alquiler de (escenario|sonido)|sonorizacion|hilo musical|ambientacion musical|limpieza|seguridad|vigilancia|instalaciones)\b/;
 
 /** Teatro, danza o circo: solo cuentan si el título menciona además música. */

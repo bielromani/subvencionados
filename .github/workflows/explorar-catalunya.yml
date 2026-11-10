@@ -1,5 +1,5 @@
-# Diagnóstico manual (solo lee y escribe en el registro): qué contratos de música se nos escapan en Cataluña,
-# qué publican en datos abiertos otras comunidades y cómo están hechas las webs de festivales.
+# Diagnóstico manual (solo lee y escribe en el registro): formato de las fuentes de contratos de otras comunidades
+# y de las webs de festivales.
 name: Explorar fuentes
 
 on:
@@ -13,60 +13,51 @@ jobs:
       run:
         shell: bash {0}
     env:
-      D: https://analisi.transparenciacatalunya.cat/resource/hb6v-jcbf.json
       UA: "Mozilla/5.0 (compatible; subvencionados-exploracion)"
     steps:
-      - name: Montblanc y Valls en el Registre (todo, sin filtrar)
+      - name: Euskadi (api.euskadi.eus/procurements)
         run: |
-          for m in MONTBLANC VALLS; do
-            echo "=== $m: por año y situación"
-            curl -sS -m 120 -G "$D" --data-urlencode "\$select=exercici,situaci_contractual,count(*)" --data-urlencode "\$where=upper(organisme_contractant) like '%$m'" --data-urlencode "\$group=exercici,situaci_contractual" --data-urlencode "\$order=exercici" | jq -c '.[]'
-            echo "=== $m: contratos (menor/adjudicació) con su CPV"
-            curl -sS -m 120 -G "$D" --data-urlencode "\$select=exercici,codi_cpv,import_adjudicacio,descripcio_expedient" --data-urlencode "\$where=upper(organisme_contractant) like '%$m' AND situaci_contractual in('menor','adjudicació')" --data-urlencode "\$order=exercici DESC" --data-urlencode "\$limit=400" | jq -r '.[] | "\(.exercici) | \(.codi_cpv // "-") | \(.import_adjudicacio) | \(.descripcio_expedient)"' | grep -iE "concert|music|músic|orquestr|cobla|banda|coral|grup|actuaci|espectacl|festa|medieval|jordi|nadal|revetlla|ball|cantada|havaner|dj|teatre|animaci" | head -80
-          done
-          echo "=== Registre: importe mínimo de los menores (¿se registran los pequeños?)"
-          curl -sS -m 120 -G "$D" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=situaci_contractual='menor' AND import_adjudicacio < 1000"; echo
-          curl -sS -m 120 -G "$D" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=situaci_contractual='menor'"; echo
+          curl -sS -m 60 "https://api.euskadi.eus/procurements/contracts?_page=1&_pageSize=2" | jq '.items[0]' | head -120
+          curl -sS -m 60 "https://api.euskadi.eus/procurements/contracts?_page=1&_pageSize=2" | jq -c 'del(.items) ' | head -c 1500; echo
+          curl -sS -m 60 -L -A "$UA" "https://opendata.euskadi.eus/webopd00-apicontract/es/?api=procurements" | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -oiE "(/procurements/[a-z0-9/{}_-]+|_[a-zA-Z]+=)" | sort -u | head -60
+          curl -sS -m 60 "https://api.euskadi.eus/procurements/openapi.json" | head -c 3000; echo
+          curl -sS -m 60 "https://api.euskadi.eus/procurements/v3/api-docs" | jq -r '.paths | keys[]' 2>/dev/null | head -40
 
-      - name: Agenda cultural de Cataluña en Montblanc y Valls
+      - name: Navarra (Registro de contratos)
         run: |
-          A=https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json
-          for m in Montblanc Valls; do
-            echo "=== $m"
-            curl -sS -m 60 -G "$A" --data-urlencode "\$select=min(data_inici),max(data_inici),count(*)" --data-urlencode "\$where=municipi='$m' OR localitat='$m'"; echo
-            curl -sS -m 60 -G "$A" --data-urlencode "\$select=data_inici,denominaci,tags_categor_es,espai" --data-urlencode "\$where=(municipi='$m' OR localitat='$m') AND tags_categor_es like '%concert%'" --data-urlencode "\$order=data_inici DESC" --data-urlencode "\$limit=15" | jq -r '.[] | "\(.data_inici[0:10]) | \(.denominaci) | \(.espai // "")"'
-          done
-          echo "=== Agenda: rango y categorías"
-          curl -sS -m 60 -G "$A" --data-urlencode "\$select=min(data_inici),max(data_inici),count(*)"; echo
-          curl -sS -m 60 -G "$A" --data-urlencode "\$select=tags_categor_es,count(*)" --data-urlencode "\$group=tags_categor_es" --data-urlencode "\$order=count(*) DESC" --data-urlencode "\$limit=15" | jq -c '.[]'
+          curl -sS -m 120 -L "https://datosabiertos.navarra.es/dataset/af6e7a24-2747-4c2e-bfb4-9e0de2a852c4/resource/ee871941-17ac-40fd-838b-7469e8a2e477/download/contrataciones_contratos_2025.csv" -o /tmp/n.csv; wc -lc /tmp/n.csv; file /tmp/n.csv; head -3 /tmp/n.csv | iconv -f latin1 -t utf8 2>/dev/null | cut -c1-1500
+          iconv -f latin1 -t utf8 /tmp/n.csv 2>/dev/null | grep -iE "concierto|orquesta|musica|música|charanga|banda" | head -8 | cut -c1-600
+          iconv -f latin1 -t utf8 /tmp/n.csv 2>/dev/null | grep -ciE "menor"
 
-      - name: Catálogos de datos abiertos (contratos) de otras comunidades
+      - name: Andalucía (menores 2025)
         run: |
-          ck() { echo "=== $1 · $2"; curl -sS -m 60 -A "$UA" -G "$1/api/3/action/package_search" --data-urlencode "q=$2" --data-urlencode "rows=8" | jq -r '.result.results[]? | "\(.name) · \(.title | if type=="object" then (.es // .gl // .eu // .ca // tostring) else . end) · " + ([.resources[]? | .format + " " + .url] | .[0:3] | join(" ; "))' 2>&1 | head -12; }
-          ck https://datosabiertos.navarra.es "contratos"
-          ck https://abertos.xunta.gal "contratos"
-          ck https://datos.comunidad.madrid "contratos menores"
-          ck https://datos.madrid.es "contratos menores"
-          ck https://catalegdades.caib.cat "contractes"
-          ck https://www.juntadeandalucia.es/datosabiertos/portal "contratos menores"
-          ck https://datos.gob.es "contratos menores"
-          echo "=== datos.gob.es apidata"
-          curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/contratos%20menores.json?_pageSize=20" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \(.publisher // "") · \([.distribution[]?.accessURL] | .[0:2] | join(" ; "))"' | head -25
-          curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/registro%20de%20contratos.json?_pageSize=10" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \([.distribution[]?.accessURL] | .[0:2] | join(" ; "))"' | head -12
-          echo "=== Euskadi opendata"
-          for u in "https://opendata.euskadi.eus/catalogo-datos/?q=contratos" "https://www.contratacion.euskadi.eus/webkpe00-kpeperfi/es/ac70cPublicidadWar/busquedaAnuncios?locale=es" "https://api.euskadi.eus/procurements/contracts?_page=1&_pageSize=1"; do
-            curl -sS -m 40 -L -A "$UA" -o /tmp/e -w "$u → HTTP %{http_code} %{size_download}b %{content_type}\n" "$u"; grep -oiE 'href="[^"]*(opendata|json|xml|csv|contrat)[^"]*"' /tmp/e | sort -u | head -15; head -c 600 /tmp/e | tr -d '\n'; echo
-          done
+          u=$(curl -sS -m 60 -G "https://www.juntadeandalucia.es/datosabiertos/portal/api/3/action/package_show" --data-urlencode "id=contratacion-menor-plataforma-de-contratacion-andalucia-2025" | jq -r '.result.resources[] | select(.format|test("CSV";"i")) | .url' | head -1); echo "$u"
+          curl -sS -m 120 -L "$u" -o /tmp/a.csv; wc -lc /tmp/a.csv; head -3 /tmp/a.csv | cut -c1-1200
+          grep -iE "concierto|orquesta|actuaci" /tmp/a.csv | head -5 | cut -c1-500; grep -ciE "ayuntamiento" /tmp/a.csv
 
-      - name: Webs de festivales (estructura)
+      - name: Festivales
         run: |
           get() { curl -sS -m 40 -L -A "$UA" -o /tmp/p.html -w "$1 → HTTP %{http_code} %{size_download}b\n" "$1"; }
-          get https://www.festclasica.com/es/festivales.html; grep -oE 'href="[^"]*/festivales/c/[^"]*"' /tmp/p.html | sort -u | wc -l
-          F=$(grep -oE 'https://www.festclasica.com/es/festivales/c/[^"]*' /tmp/p.html | head -1); get "$F"; sed 's/<[^>]*>/ /g' /tmp/p.html | tr -s ' \n' | grep -iE "web|mail|@|tel|fecha|lugar|direcci" | head -20
-          get https://www.redescena.net/festivales-socios/; grep -oE 'href="[^"]*festival[^"]*"' /tmp/p.html | sort -u | head -15; grep -oE 'href="[^"]*festival[^"]*"' /tmp/p.html | sort -u | wc -l
-          get https://www.redescena.net/festivales/; grep -oE 'href="[^"]*"' /tmp/p.html | grep -i festival | sort -u | head -10
-          get "https://www.festivalfinder.eu/festivals?country=spain"; grep -oE 'href="/festivals/[^"]*"' /tmp/p.html | sort -u | head -10; grep -oE 'href="/festivals/[^"]*"' /tmp/p.html | sort -u | wc -l; grep -oiE '(country|filter)[^"]{0,40}"[^"]{0,60}' /tmp/p.html | sort -u | head -10
-          get "https://www.rema-eemn.net/members/"; grep -oiE 'spain|españa|espagne' /tmp/p.html | wc -l; grep -oE 'href="/members/[^"]*"' /tmp/p.html | sort -u | wc -l
-          for u in https://www.esjazz.es https://www.festivalesdejazz.es https://www.asociacionfestivalesdejazz.com https://www.fma.es https://www.festivalsmusica.cat https://www.associaciofestivals.cat https://www.lafede.cat https://www.fundaciosgae.org https://www.circuitofestivalesmusica.es https://www.mapadefestivales.es; do
-            get "$u"; grep -oi '<title>[^<]*' /tmp/p.html | head -1
-          done
+          get https://www.festclasica.com/es/festivales.html; grep -oE 'https://www.festclasica.com/es/festivales/c/[0-9][^"]*' /tmp/p.html | sort -u > /tmp/fc.txt; wc -l < /tmp/fc.txt; head -60 /tmp/fc.txt
+          get "$(head -1 /tmp/fc.txt)"; python3 -c "
+          import re,html,sys
+          s=open('/tmp/p.html',encoding='utf8',errors='ignore').read()
+          s=re.sub(r'<(script|style)[^>]*>.*?</\1>','',s,flags=re.S)
+          i=s.find('<main'); s=s[i if i>0 else 0:]
+          t=html.unescape(re.sub(r'<[^>]+>','\n',s)); t=re.sub(r'\n\s*\n+','\n',t)
+          print(t[:2500])
+          print([h for h in re.findall(r'href=\"(https?://[^\"]+)\"',s) if 'festclasica' not in h][:15])
+          print(re.findall(r'[\w.+-]+@[\w-]+\.[\w.]+',s)[:5])"
+          get https://www.rema-eemn.net/members/; python3 -c "
+          import re
+          s=open('/tmp/p.html',encoding='utf8',errors='ignore').read()
+          i=[m.start() for m in re.finditer('Spain',s)][:3]
+          for k in i: print(re.sub(r'\s+',' ',s[max(0,k-700):k+100])); print('----')"
+          get https://www.redescena.net/festival/3522/festival-de-la-guitarra-de-cordoba/; python3 -c "
+          import re,html
+          s=open('/tmp/p.html',encoding='utf8',errors='ignore').read()
+          s=re.sub(r'<(script|style)[^>]*>.*?</\1>','',s,flags=re.S)
+          t=html.unescape(re.sub(r'<[^>]+>','\n',s)); t=re.sub(r'\n\s*\n+','\n',t)
+          k=t.find('Guitarra'); print(t[k:k+2000])"
+          get "https://www.festivalfinder.eu/festivals?country%5B%5D=Spain"; grep -oE 'href="/festivals/[a-z0-9-]+"' /tmp/p.html | sort -u | head -5; grep -oE 'href="/festivals/[a-z0-9-]+"' /tmp/p.html | sort -u | wc -l
+          grep -oE '(api|ajax|json)[^"'"'"' ]{0,80}' /tmp/p.html | sort -u | head -10

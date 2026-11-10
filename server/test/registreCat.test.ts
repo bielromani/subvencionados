@@ -51,3 +51,25 @@ describe('Registre públic de contractes de Catalunya', () => {
     expect(q).toContain("data_adjudicacio >= '2026-09-01'");
   });
 });
+
+describe('Actuaciones de los ayuntamientos catalanes', () => {
+  const si = [
+    ['Actuació Anna Tena - Festa 90 anys', '98390000'],
+    ['Actuació DUET YAS per la Festa Comarcal de la gent gran', '98390000'],
+    ["Actuació Mariona Escoda, dia 17 d'octubre de 2026, al Teatre Principal de Valls", ''],
+    ["Contractació artística del Dj Pep Sanchez per a l'activitat Valls Mira al Cel.", ''],
+    ['Ball dels diumenges a la sala Kursaal de Valls, de setembre a desembre de 2026', ''],
+    ['Concert Sasha', '92312100'],
+  ];
+  const no = [
+    ['Sonorització concert Sta Ceciliaz', '98390000'],
+    ["Servei preventiu d'ambulància per a l'actuació castellera dels Xiquets de Valls", ''],
+    ["Participació a l'activitat del Bingo musical a l'Estiu Actiu", ''],
+    ['Ponent a la taula rodona dels 40 anys de l\'Escola de Música', ''],
+    ["Drets d'autor \"DJ refrescos\" . Estiu actiu 2026", ''],
+    ['Espectacle "H" de la companyia la Corcoles', ''],
+    ['Un receptor de radioenllaç de banda UHF', ''],
+  ];
+  it.each(si)('sí: %s', (t, c) => expect(contratoDeRegistre({ ...fila, descripcio_expedient: t, codi_cpv: c || undefined })).not.toBeNull());
+  it.each(no)('no: %s', (t, c) => expect(contratoDeRegistre({ ...fila, descripcio_expedient: t, codi_cpv: c || undefined })).toBeNull());
+});
