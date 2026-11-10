@@ -7,17 +7,75 @@ import { FilaContrato } from '../components/FilaContrato';
 import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { aniosTexto, Fuentes, mesesTexto } from '../components/Directorio';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
-import { NOMBRE_ESTILO, type Estilo, type Festival, type Programador } from '../tipos';
+import { enlace } from '../ruta';
+import { type ConcesionRecibida, NOMBRE_ESTILO, type Estilo, type Festival, type Programador, type SubvencionesRecibidas } from '../tipos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const fecha = (iso: string | null) => (iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('es-ES') : '—');
 
 /** Contratos menores (hasta 15.000 € sin IVA en servicios): se adjudican sin concurso, basta con convencer al programador. */
 function comoContrata(p: Programador): string {
+  if (!p.contratos) return 'No publica contratos de música, pero recibe ayudas de cultura o fiestas (abajo): suele contratar directamente con factura o a través de las entidades del pueblo. Llama y envía propuesta.';
   const pct = p.contratos ? Math.round((p.menores / p.contratos) * 100) : 0;
   if (pct >= 70) return `El ${pct} % de sus conciertos son contratos menores (sin concurso): lo decide el programador, así que llamar y enviar propuesta funciona.`;
   if (pct >= 30) return `El ${pct} % son contratos menores (sin concurso) y el resto, licitaciones: llama para lo pequeño y vigila sus contratos abiertos.`;
   return `Contrata sobre todo por licitación (solo el ${pct} % son contratos menores): vigila sus contratos abiertos y presenta oferta.`;
+}
+
+/** Ayudas de cultura y música que llegan al municipio: dinero para programar, y a quién ofrecer un concierto. */
+function SubvencionesRecibidasBloque({ s, pedania }: { s: SubvencionesRecibidas; pedania: boolean }) {
+  const fechaCorta = (x: string | null) => (x ? new Date(`${x}T12:00:00`).toLocaleDateString('es-ES') : '');
+  const lista = (cs: ConcesionRecibida[]) => (
+    <ul className="lista-concesiones">
+      {cs.map((c, i) => (
+        <li key={`${c.convocatoria}-${i}`}>
+          <a href={enlace('convocatoria', c.convocatoria)}>{c.titulo}</a>
+          <span className="ayuda">
+            {' '}
+            · {c.convocante} · {euros.format(c.importe)}
+            {c.fecha && ` · ${fechaCorta(c.fecha)}`}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+  return (
+    <section className="bloque">
+      <h3>Subvenciones recibidas</h3>
+      <p className="ayuda">
+        Ayudas de cultura, música y fiestas concedidas (BDNS). Quien recibe dinero para su programación, su festa major o su ciclo
+        de conciertos tiene presupuesto para contratar: es a quien ofrecer el concierto.
+      </p>
+      {s.ayuntamiento.numero > 0 && (
+        <>
+          <h4>
+            {pedania ? 'La pedanía' : 'El ayuntamiento'}: {euros.format(s.ayuntamiento.importe)} en {s.ayuntamiento.numero} {s.ayuntamiento.numero === 1 ? 'ayuda' : 'ayudas'}
+          </h4>
+          {lista(s.ayuntamiento.concesiones)}
+        </>
+      )}
+      {s.entidades.length > 0 && (
+        <>
+          <h4>Entidades del municipio (asociaciones, comisiones de fiestas, pedanías…)</h4>
+          <ul className="lista-entidades-subvencionadas">
+            {s.entidades.slice(0, 20).map((e) => (
+              <li key={e.nombre}>
+                <details>
+                  <summary>
+                    <strong>{e.nombre}</strong>
+                    {e.pedania && ' (pedanía)'} · {euros.format(e.importe)} en {e.numero} {e.numero === 1 ? 'ayuda' : 'ayudas'}
+                    {e.ultima && ` · última ${fechaCorta(e.ultima)}`}
+                  </summary>
+                  {lista(e.concesiones)}
+                </details>
+              </li>
+            ))}
+          </ul>
+          <p className="ayuda">Entidades que subvenciona el propio ayuntamiento o que llevan el nombre del municipio. Pueden faltar o colarse algunas.</p>
+        </>
+      )}
+    </section>
+  );
 }
 
 export function PaginaProgramador({ id }: { id: string }) {
@@ -131,6 +189,9 @@ export function PaginaProgramador({ id }: { id: string }) {
             ))}
           </ul>
         </section>
+      )}
+      {p.subvencionesRecibidas && (p.subvencionesRecibidas.ayuntamiento.numero > 0 || p.subvencionesRecibidas.entidades.length > 0) && (
+        <SubvencionesRecibidasBloque s={p.subvencionesRecibidas} pedania={p.id.startsWith('p-ped-')} />
       )}
       {(p.ayudas?.length ?? 0) > 0 && (
         <section className="bloque">

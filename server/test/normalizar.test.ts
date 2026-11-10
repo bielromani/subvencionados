@@ -68,7 +68,7 @@ describe('concesiones', () => {
       numero: 1,
       importeTotal: 28000,
       ultimaFecha: '2026-03-18',
-      entidades: [{ nombre: 'CASINO MENESTRAL FIGUERENC', importe: 28000, fecha: '2026-03-18' }],
+      entidades: [{ nombre: 'CASINO MENESTRAL FIGUERENC', importe: 28000, fecha: '2026-03-18', nif: 'G17057910' }],
     });
   });
 

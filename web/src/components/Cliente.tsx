@@ -122,8 +122,14 @@ export function FilaClienteNueva({ p, estilo, mesActual }: { p: Programador; est
       <dl className="fila-cli-datos">
         <div>
           <dt>Conciertos</dt>
-          <dd>{p.contratos}</dd>
+          <dd>{p.contratos || (p.subvenciones ? <span title="No hay contratos de música publicados, pero recibe ayudas para programar">—</span> : 0)}</dd>
         </div>
+        {p.subvenciones && (
+          <div>
+            <dt>Ayudas recibidas</dt>
+            <dd title={`${p.subvenciones.numero} ayudas de cultura y música (ayuntamiento y entidades del municipio)`}>{euros.format(p.subvenciones.importe)}</dd>
+          </div>
+        )}
         <div>
           <dt>Paga</dt>
           <dd>{p.rango ? (p.rango.min === p.rango.max ? euros.format(p.rango.min) : `${euros.format(p.rango.min)}–${euros.format(p.rango.max)}`) : p.importeHabitual != null ? euros.format(p.importeHabitual) : '—'}</dd>

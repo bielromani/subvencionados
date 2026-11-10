@@ -12,6 +12,7 @@ const TIPOS: [string, string][] = [
   ['auditorio', 'Auditorios'],
   ['teatro', 'Teatros'],
   ['festival', 'Festivales'],
+  ['pedania', 'Pedanías'],
   ['otro', 'Otros'],
 ];
 
@@ -23,6 +24,7 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
     estilo: p.get('estilo') ?? '',
     mes: p.get('mes') ?? '',
     contacto: p.get('contacto') ?? '',
+    subvenciones: p.get('subvenciones') ?? '',
     tipo: p.get('tipo') ?? '',
     orden: p.get('orden') ?? '',
     pagina: Number(p.get('pagina')) || 1,
@@ -97,10 +99,14 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         <label className="casilla">
           <input type="checkbox" checked={f.contacto === 'si'} onChange={(e) => setF({ ...f, contacto: e.target.checked ? 'si' : '', pagina: 1 })} /> Solo con contacto de cultura
         </label>
+        <label className="casilla" title="Ayuntamientos, pedanías y entidades del municipio que reciben ayudas de cultura o música">
+          <input type="checkbox" checked={f.subvenciones === 'si'} onChange={(e) => setF({ ...f, subvenciones: e.target.checked ? 'si' : '', pagina: 1 })} /> Solo con ayudas recibidas
+        </label>
         <select value={f.orden} onChange={cambiar('orden')} aria-label="Orden">
           <option value="">Más conciertos</option>
           <option value="adjudicado">Más dinero en música</option>
           <option value="reciente">Contratación más reciente</option>
+          <option value="subvenciones">Más ayudas recibidas</option>
         </select>
       </div>
       {r && (

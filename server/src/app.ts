@@ -12,10 +12,12 @@ import type { AlmacenCrm } from './crm/almacen.js';
 import { estimarCierre } from './cierre.js';
 import { aICal, calendario, type EventoCalendario, eventosDe, utilParaManager } from './calendario.js';
 import { normalizar } from './clasificacion/musica.js';
+import { PROVINCIAS_INE } from './referencias.js';
 import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
 import { type Circuito, circuitos, type Festival, festivales, idProgramador, type Programador, programadores } from './directorio.js';
 import type { FestivalExterno } from './festivalesExternos.js';
+import { indiceSubvenciones, type IndiceSubvenciones, PEDANIA } from './subvencionesMunicipio.js';
 import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
@@ -286,17 +288,79 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   });
 
   // Directorio de dónde tocar: se recalcula solo cuando cambian las convocatorias.
-  type ProgramadorConContacto = Programador & { codigoIne: string | null; conContacto: boolean };
-  let directorio: { version: number; programadores: ProgramadorConContacto[]; festivales: Festival[]; circuitos: Circuito[] } | null = null;
+  type ProgramadorConContacto = Programador & {
+    codigoIne: string | null;
+    conContacto: boolean;
+    /** Ayudas de cultura y música recibidas por el ayuntamiento y las entidades del municipio (o por la pedanía). */
+    subvenciones: { importe: number; numero: number; ultima: string | null } | null;
+  };
+  let directorio: {
+    version: number;
+    programadores: ProgramadorConContacto[];
+    festivales: Festival[];
+    circuitos: Circuito[];
+    subvenciones: IndiceSubvenciones;
+  } | null = null;
+  /** Un sitio que no contrata por la Plataforma pero recibe ayudas para programar: también es un cliente. */
+  const sinContratos = (id: string, nombre: string, m: ContactoMunicipio | null, codigoProvincia: string | null): Programador => ({
+    id,
+    nombre,
+    ciudad: m?.municipio ?? null,
+    provincia: m?.provincia ?? (codigoProvincia ? (PROVINCIAS_INE[codigoProvincia]?.[0] ?? null) : null),
+    codigoProvincia: m?.codigoIne.slice(0, 2) ?? codigoProvincia,
+    ccaa: m?.ccaa ?? (codigoProvincia ? (PROVINCIAS_INE[codigoProvincia]?.[1] ?? null) : null),
+    web: m?.ayuntamiento.web ?? null,
+    contratos: 0,
+    menores: 0,
+    adjudicado: 0,
+    importeHabitual: null,
+    estilos: {},
+    empresas: 0,
+    primero: null,
+    ultimo: null,
+    meses: [],
+    recientes: [],
+    rango: null,
+    proveedores: [],
+    recientesEstilo: [],
+  });
   const tieneContactoCultura = (m: ContactoMunicipio | null) => !!m && (m.personas.length > 0 || !!m.cultura.email || !!m.cultura.telefono);
   const dir = () => {
     if (directorio?.version !== repo.version) {
       const conv = repo.listarConvocatorias();
-      const progs = programadores(contratos).map((p) => {
+      const indice = indiceSubvenciones(conv, opciones.contactos ?? null);
+      const deMunicipio = (ine: string | null) => {
+        const s = ine ? indice.porMunicipio.get(ine) : undefined;
+        if (!s) return null;
+        const todas = [s.ayuntamiento, ...s.entidades];
+        const ultima = todas.map((x) => x.ultima).filter((x): x is string => !!x).sort().at(-1) ?? null;
+        return { importe: todas.reduce((t, x) => t + x.importe, 0), numero: todas.reduce((t, x) => t + x.numero, 0), ultima };
+      };
+      const progs: ProgramadorConContacto[] = programadores(contratos).map((p) => {
         const m = opciones.contactos?.deOrgano(p.nombre, p.ciudad, p.codigoProvincia) ?? null;
-        return { ...p, codigoIne: m?.codigoIne ?? null, conContacto: tieneContactoCultura(m) };
+        return { ...p, codigoIne: m?.codigoIne ?? null, conContacto: tieneContactoCultura(m), subvenciones: deMunicipio(m?.codigoIne ?? null) };
       });
-      directorio = { version: repo.version, programadores: progs, festivales: festivales(contratos, conv, opciones.festivalesExternos ?? []), circuitos: circuitos(contratos, conv) };
+      // Ayuntamientos y pedanías sin contratos de música, pero con ayudas de cultura o música.
+      const conFicha = new Set(progs.map((p) => p.codigoIne).filter(Boolean));
+      for (const [ine, s] of indice.porMunicipio) {
+        if (conFicha.has(ine) || !s.ayuntamiento.numero) continue;
+        const m = opciones.contactos?.porCodigo(ine) ?? null;
+        if (!m) continue;
+        progs.push({ ...sinContratos(`p-ine-${ine}`, `Ayuntamiento de ${m.municipio}`, m, null), codigoIne: ine, conContacto: tieneContactoCultura(m), subvenciones: deMunicipio(ine) });
+      }
+      const nombres = new Set(progs.map((p) => `${normalizar(p.nombre)}|${p.codigoProvincia ?? ''}`));
+      for (const x of indice.pedanias) {
+        if (nombres.has(`${normalizar(x.nombre)}|${x.codigoProvincia ?? ''}`)) continue;
+        const id = `p-ped-${normalizar(`${x.nombre} ${x.codigoProvincia ?? ''}`).replace(/[^a-z0-9]+/g, '-')}`;
+        progs.push({ ...sinContratos(id, x.nombre, null, x.codigoProvincia), ciudad: x.municipio?.municipio ?? null, codigoIne: null, conContacto: false, subvenciones: { importe: x.importe, numero: x.numero, ultima: x.ultima } });
+      }
+      directorio = {
+        version: repo.version,
+        programadores: progs,
+        festivales: festivales(contratos, conv, opciones.festivalesExternos ?? []),
+        circuitos: circuitos(contratos, conv),
+        subvenciones: indice,
+      };
     }
     return directorio;
   };
@@ -367,6 +431,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     if (/\b(festival|festivales|jaialdi)\b/.test(n)) return 'festival';
     if (/\b(auditori|auditorio|palau de la musica|palacio de (la musica|congresos|festivales))/.test(n)) return 'auditorio';
     if (/\b(teatro|teatre|teatros|teatres|antzoki)/.test(n)) return 'teatro';
+    if (PEDANIA.test(n)) return 'pedania';
     if (/\b(ayuntamiento|ajuntament|concello|udala|alcaldia|alcalde|junta de gobierno|pleno|municipal)/.test(n)) return 'ayuntamiento';
     return 'otro';
   };
@@ -384,6 +449,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         (!estilos.length || estilos.some((e) => (p.estilos[e as keyof typeof p.estilos] ?? 0) > 0)) &&
         (!meses.length || meses.some((m) => p.meses.includes(m))) &&
         (q.contacto !== 'si' || p.conContacto) &&
+        (q.subvenciones !== 'si' || !!p.subvenciones) &&
         (!q.tipo || tipoEntidad(p.nombre) === q.tipo) &&
         coincideTexto(q.q, p.nombre, p.ciudad, p.provincia),
     );
@@ -411,7 +477,9 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
           ? b.adjudicado - a.adjudicado
           : req.query.orden === 'reciente'
             ? (b.ultimo ?? '').localeCompare(a.ultimo ?? '')
-            : b.contratos - a.contratos,
+            : req.query.orden === 'subvenciones'
+              ? (b.subvenciones?.importe ?? 0) - (a.subvenciones?.importe ?? 0)
+              : b.contratos - a.contratos || (b.subvenciones?.importe ?? 0) - (a.subvenciones?.importe ?? 0),
       );
     res.json(paginar(req, xs, clienteResumido));
   });
@@ -433,7 +501,13 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       : [];
     // Sus licitaciones de conciertos con plazo abierto: se puede presentar oferta ya.
     const abiertos = contratos.filter((c) => abierta(c) && idProgramador(c) === p.id).map(contratoResumido);
-    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null, ayudas, abiertos });
+    // Ayudas de cultura y música que recibe: el ayuntamiento y las entidades del pueblo (o la propia pedanía).
+    const s = dir().subvenciones;
+    const pedania = p.id.startsWith('p-ped-') ? s.pedanias.find((x) => `p-ped-${normalizar(`${x.nombre} ${x.codigoProvincia ?? ''}`).replace(/[^a-z0-9]+/g, '-')}` === p.id) : undefined;
+    const subvencionesRecibidas = pedania
+      ? { ayuntamiento: { importe: pedania.importe, numero: pedania.numero, ultima: pedania.ultima, concesiones: pedania.concesiones }, entidades: [] }
+      : ((p.codigoIne && s.porMunicipio.get(p.codigoIne)) || null);
+    res.json({ ...p, contacto: opciones.contactos?.porCodigo(p.codigoIne) ?? null, ayudas, abiertos, subvencionesRecibidas });
   });
 
   // Oportunidades de gestión integral de festivales y ciclos (se recalculan cuando cambian los datos).

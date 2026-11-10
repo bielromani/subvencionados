@@ -70,8 +70,9 @@ export function resumirConcesiones(concesiones: BdnsConcesion[]): ResumenConcesi
       nombre: beneficiarioPublico(c.beneficiario),
       importe: c.importe ?? 0,
       fecha: fechaIso(c.fechaConcesion),
+      nif: beneficiarioPublico(c.beneficiario) ? (c.beneficiario ?? '').trim().split(/\s+/)[0]!.toUpperCase() : null,
     }))
-    .filter((e): e is { nombre: string; importe: number; fecha: string | null } => e.nombre !== null)
+    .filter((e): e is { nombre: string; importe: number; fecha: string | null; nif: string | null } => e.nombre !== null)
     .sort((a, b) => b.importe - a.importe);
   const fechas = concesiones.map((c) => fechaIso(c.fechaConcesion)).filter((f): f is string => !!f).sort();
   return {

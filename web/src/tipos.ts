@@ -398,6 +398,23 @@ export interface Programador {
   recientesEstilo?: FuenteDirectorio[];
   /** En la ficha: sus licitaciones con plazo abierto. */
   abiertos?: Contrato[];
+  /** Ayudas de cultura y música recibidas por el ayuntamiento y las entidades del municipio (o por la pedanía). */
+  subvenciones?: { importe: number; numero: number; ultima: string | null } | null;
+  /** En la ficha: el detalle de esas ayudas. */
+  subvencionesRecibidas?: SubvencionesRecibidas | null;
+}
+
+export interface ConcesionRecibida {
+  convocatoria: string;
+  titulo: string;
+  convocante: string;
+  importe: number;
+  fecha: string | null;
+}
+
+export interface SubvencionesRecibidas {
+  ayuntamiento: { importe: number; numero: number; ultima: string | null; concesiones: ConcesionRecibida[] };
+  entidades: { nombre: string; pedania: boolean; importe: number; numero: number; ultima: string | null; concesiones: ConcesionRecibida[] }[];
 }
 
 export interface ContactoBreve {

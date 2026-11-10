@@ -75,7 +75,7 @@ export interface ResumenConcesiones {
   /** Fecha de la concesión más reciente. */
   ultimaFecha: string | null;
   /** Personas jurídicas beneficiarias (las personas físicas no se guardan por privacidad). */
-  entidades: { nombre: string; importe: number; fecha: string | null }[];
+  entidades: { nombre: string; importe: number; fecha: string | null; /** NIF de la entidad (público: son personas jurídicas). */ nif?: string | null }[];
 }
 
 export interface Ubicacion {
