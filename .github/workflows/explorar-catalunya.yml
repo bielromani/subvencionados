@@ -15,27 +15,25 @@ jobs:
     env:
       UA: "Mozilla/5.0 (compatible; subvencionados-exploracion)"
     steps:
-      - name: Euskadi (api.euskadi.eus/procurements)
+      - name: Euskadi (parámetros de la API)
+        continue-on-error: true
         run: |
-          curl -sS -m 60 "https://api.euskadi.eus/procurements/contracts?_page=1&_pageSize=2" | jq '.items[0]' | head -120
-          curl -sS -m 60 "https://api.euskadi.eus/procurements/contracts?_page=1&_pageSize=2" | jq -c 'del(.items) ' | head -c 1500; echo
-          curl -sS -m 60 -L -A "$UA" "https://opendata.euskadi.eus/webopd00-apicontract/es/?api=procurements" | sed 's/<[^>]*>/ /g' | tr -s ' \n' | grep -oiE "(/procurements/[a-z0-9/{}_-]+|_[a-zA-Z]+=)" | sort -u | head -60
-          curl -sS -m 60 "https://api.euskadi.eus/procurements/openapi.json" | head -c 3000; echo
-          curl -sS -m 60 "https://api.euskadi.eus/procurements/v3/api-docs" | jq -r '.paths | keys[]' 2>/dev/null | head -40
-
-      - name: Navarra (Registro de contratos)
-        run: |
-          curl -sS -m 120 -L "https://datosabiertos.navarra.es/dataset/af6e7a24-2747-4c2e-bfb4-9e0de2a852c4/resource/ee871941-17ac-40fd-838b-7469e8a2e477/download/contrataciones_contratos_2025.csv" -o /tmp/n.csv; wc -lc /tmp/n.csv; file /tmp/n.csv; head -3 /tmp/n.csv | iconv -f latin1 -t utf8 2>/dev/null | cut -c1-1500
-          iconv -f latin1 -t utf8 /tmp/n.csv 2>/dev/null | grep -iE "concierto|orquesta|musica|música|charanga|banda" | head -8 | cut -c1-600
-          iconv -f latin1 -t utf8 /tmp/n.csv 2>/dev/null | grep -ciE "menor"
-
-      - name: Andalucía (menores 2025)
-        run: |
-          u=$(curl -sS -m 60 -G "https://www.juntadeandalucia.es/datosabiertos/portal/api/3/action/package_show" --data-urlencode "id=contratacion-menor-plataforma-de-contratacion-andalucia-2025" | jq -r '.result.resources[] | select(.format|test("CSV";"i")) | .url' | head -1); echo "$u"
-          curl -sS -m 120 -L "$u" -o /tmp/a.csv; wc -lc /tmp/a.csv; head -3 /tmp/a.csv | cut -c1-1200
-          grep -iE "concierto|orquesta|actuaci" /tmp/a.csv | head -5 | cut -c1-500; grep -ciE "ayuntamiento" /tmp/a.csv
+          B=https://api.euskadi.eus/procurements
+          curl -sS -m 60 -L -A "$UA" "https://opendata.euskadi.eus/api-procurements?api=procurements" -o /tmp/d.html; python3 -c "
+          import re,html
+          s=open('/tmp/d.html',encoding='utf8',errors='ignore').read()
+          print(sorted(set(re.findall(r'(?:/procurements)?/contracts[a-zA-Z0-9/{}_?=&.-]*',s)))[:40])
+          print(sorted(set(re.findall(r'[?&](\w+)=',s)))[:60])
+          print(sorted(set(re.findall(r'https?://[^\"<> ]+(?:json|yaml|swagger|openapi)[^\"<> ]*',s)))[:10])"
+          for q in "_pageSize=100" "cpv=92312000" "CPV=92312000-1" "minorContract=true" "awardDateFrom=2026-01-01" "_filter=CPV:92312000*" "q=concierto"; do
+            printf "%s → " "$q"; curl -sS -m 60 "$B/contracts?_page=1&$q" | jq -c '{total:.totalItems, n:.itemsOfPage, cpv:[.items[]?.CPV][0:5]}' ; done
+          curl -sS -m 60 "$B/contracting-authorities/597" | jq -c '.' | head -c 1500; echo
+          curl -sS -m 60 "$B/contracting-notices/entities/1048" | jq -c '.' | head -c 800; echo
+          curl -sS -m 60 "$B/contracts?_page=1&_pageSize=100" | jq -r '.items[] | .awardDate' | sort | uniq -c | head
+          curl -sS -m 60 "$B/contracts?_page=73000&_pageSize=10" | jq -r '.items[] | .awardDate' | head -3
 
       - name: Festivales
+        continue-on-error: true
         run: |
           get() { curl -sS -m 40 -L -A "$UA" -o /tmp/p.html -w "$1 → HTTP %{http_code} %{size_download}b\n" "$1"; }
           get https://www.festclasica.com/es/festivales.html; grep -oE 'https://www.festclasica.com/es/festivales/c/[0-9][^"]*' /tmp/p.html | sort -u > /tmp/fc.txt; wc -l < /tmp/fc.txt; head -60 /tmp/fc.txt
