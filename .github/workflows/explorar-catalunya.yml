@@ -1,0 +1,63 @@
+# Diagnóstico manual: qué publica la Generalitat en datos abiertos sobre contratos (incluidos los menores) y la
+# agenda cultural, y qué ofrecen las webs de festivales y circuitos privados. Solo lee y escribe en el registro.
+name: Explorar Cataluña y festivales
+
+on:
+  workflow_dispatch:
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Catálogo de datos abiertos de la Generalitat (contratos, agenda, festivales)
+        run: |
+          for q in contractes contractacio "contractes menors" "registre public de contractes" agenda festivals; do
+            echo "=== $q"
+            curl -sS -m 60 -G "https://api.eu.socrata.com/api/catalog/v1" --data-urlencode "domains=analisi.transparenciacatalunya.cat" \
+              --data-urlencode "q=$q" --data-urlencode "limit=8" \
+              | jq -r '.results[] | "\(.resource.id) · \(.resource.name) · filas? \(.resource.page_views.page_views_total // "") · actualizado \(.resource.data_updated_at)"' || true
+          done
+
+      - name: Columnas y ejemplo de los conjuntos de contratos
+        run: |
+          D=https://analisi.transparenciacatalunya.cat
+          for id in ybgg-dgi6 hb6v-jcbf a23c-d6vp; do
+            echo "=== $id"
+            curl -sS -m 60 "$D/api/views/$id.json" | jq -r '"\(.name) | filas: \(.rowsUpdatedAt) | " + ([.columns[].fieldName] | join(", "))' || true
+            curl -sS -m 60 "$D/resource/$id.json?\$limit=1" | head -c 2500; echo
+            echo "-- total filas:"; curl -sS -m 60 "$D/resource/$id.json?\$select=count(*)" ; echo
+          done
+
+      - name: Montblanc y música en los contratos de Cataluña
+        run: |
+          D=https://analisi.transparenciacatalunya.cat
+          for id in ybgg-dgi6 hb6v-jcbf a23c-d6vp; do
+            echo "=== $id · Montblanc"
+            curl -sS -m 90 -G "$D/resource/$id.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=5" | head -c 4000; echo
+            echo "=== $id · concert / música (cuántos)"
+            for w in concert musica orquestra cobla "festa major" actuacions; do
+              printf "%s: " "$w"; curl -sS -m 90 -G "$D/resource/$id.json" --data-urlencode "\$q=$w" --data-urlencode "\$select=count(*)"; echo
+            done
+          done
+
+      - name: Agenda cultural de Cataluña (conciertos por municipio)
+        run: |
+          D=https://analisi.transparenciacatalunya.cat
+          for id in rhpv-yr4f; do
+            curl -sS -m 60 "$D/api/views/$id.json" | jq -r '"\(.name) | " + ([.columns[].fieldName] | join(", "))' || true
+            curl -sS -m 60 -G "$D/resource/$id.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=3" | head -c 3000; echo
+            printf "conciertos (total): "; curl -sS -m 60 -G "$D/resource/$id.json" --data-urlencode "\$q=concert" --data-urlencode "\$select=count(*)"; echo
+          done
+
+      - name: Webs de festivales y circuitos privados (qué publican)
+        run: |
+          for u in https://www.festclasica.com https://www.operaxxi.com https://www.salasdeconciertos.com https://www.apmusicales.com \
+                   https://www.redescena.net https://www.rema-eemn.net https://www.efa-aef.eu https://www.festivalfinder.eu \
+                   https://www.musicaclasica.es https://www.esmusica.es https://www.asaco.org https://www.adeteatros.es; do
+            echo "=== $u"
+            curl -sS -m 40 -L -A "Mozilla/5.0 (compatible; subvencionados-exploracion)" -o /tmp/p.html -w "HTTP %{http_code} · %{size_download} bytes · %{url_effective}\n" "$u" || true
+            grep -oi '<title>[^<]*' /tmp/p.html | head -1
+            grep -oiE 'href="[^"]*(festival|socio|miembro|members|asociad|directorio|ciclo|programador|sala)[^"]*"' /tmp/p.html | sort -u | head -12
+            curl -sS -m 20 "$u/robots.txt" | head -8
+          done
