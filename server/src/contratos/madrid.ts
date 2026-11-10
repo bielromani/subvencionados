@@ -90,4 +90,7 @@ export function contratoDeMadrid(f: Record<string, string>): Contrato | null {
 }
 
 /** Sin CPV en los CSV: cuenta si el título habla de música (92000000 hace de CPV afín, que exige título de música). */
-export const esMusicaMadrid = (c: Pick<Contrato, 'titulo'>) => esDeMusica({ titulo: c.titulo, cpv: ['92000000'] });
+/** Lo que no es contratar un concierto: refuerzos de la Banda Municipal, transporte, mesas redondas, sintonías... */
+const NO_ES_CONCIERTO = /\b(transporte|mesas? redondas?|composicion|colaboracion(es)? en (la|las) categoria|identidad sonora|alquiler|sonorizacion|grabacion)\b/;
+export const esMusicaMadrid = (c: Pick<Contrato, 'titulo'>) =>
+  !NO_ES_CONCIERTO.test(normalizar(c.titulo)) && esDeMusica({ titulo: c.titulo, cpv: ['92000000'] });

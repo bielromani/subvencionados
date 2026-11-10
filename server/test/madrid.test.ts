@@ -35,6 +35,11 @@ describe('Contratos menores del Ayuntamiento de Madrid', () => {
 1;E1;DISTRITO CENTRO;Concierto de Navidad;B12345678;X PRODUCCIONES SL;16.335,00€;23/12/21`;
     expect(filasMadrid(t).map(contratoDeMadrid)[0]).toMatchObject({ actualizado: '2021-12-23', adjudicaciones: [{ importeConIva: 16335 }] });
   });
+  it('fuera lo que no es un concierto', () => {
+    expect(esMusicaMadrid({ titulo: 'GASTO MENOR DE SERVICIO DE TRANSPORTE DE INSTRUMENTOS PARA LOS CONCIERTOS' })).toBe(false);
+    expect(esMusicaMadrid({ titulo: 'CONTRATO MENOR PARA LA CONTRATACIÓN DE COLABORACIONES EN LAS CATEGORÍAS DE OBOE PARA LA BANDA SINFÓNICA MUNICIPAL' })).toBe(false);
+    expect(esMusicaMadrid({ titulo: 'CONTRATO PRIVADO ACTUACIÓN MUSICAL DE “The Cinelli Brothers” EN EL RECINTO FERIAL' })).toBe(true);
+  });
   it('detecta Latin-1', () => {
     expect(decodificarCsv(new Uint8Array([0x4d, 0xfa, 0x73, 0x69, 0x63, 0x61]))).toBe('Música');
   });
