@@ -159,6 +159,8 @@ export const api = {
   contactos: (consulta: string) => pedir<{ total: number; pagina: number; porPagina: number; items: (ContactoMunicipio & { musica: { contratos: number; adjudicado: number; ultimo: string | null; programadorId: string } | null })[] }>(`/api/contactos?${consulta}`),
   contrato: (id: string) => pedir<Contrato>(`/api/contratos/${encodeURIComponent(id)}`),
   mercadoContratos: (consulta: string) => pedir<MercadoContratos>(`/api/contratos/mercado?${consulta}`),
+  emailsContactos: (consulta: string) => pedir<{ emails: string[]; deCultura: number }>(`/api/contactos/emails?${consulta}`),
+  emailsClientes: (consulta: string) => pedir<{ clientes: number; emails: string[]; deCultura: number }>(`/api/programadores/emails?${consulta}`),
   programadores: (consulta: string) =>
     pedir<{ total: number; pagina: number; porPagina: number; items: Programador[] }>(`/api/programadores?${consulta}`),
   programador: (id: string) => pedir<Programador>(`/api/programadores/${encodeURIComponent(id)}`),

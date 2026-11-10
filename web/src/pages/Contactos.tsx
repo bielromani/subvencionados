@@ -1,6 +1,7 @@
 import { Filtros } from '../components/Filtros';
 import { useEffect, useState } from 'react';
 import { api } from '../api';
+import { CopiarEmails } from '../components/CopiarEmails';
 import { cambiarParams, enlace, type Ruta } from '../ruta';
 import type { ContactoMunicipio, Meta } from '../tipos';
 
@@ -17,7 +18,7 @@ const correo = (lista: string) => lista.split(/;\s*/).map((e, i) => (
 /** A quién llamar en cada ayuntamiento para venderle conciertos: responsables de cultura con su email y teléfono. */
 export function Contactos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const p = ruta.params;
-  const [f, setF] = useState({ q: p.get('q') ?? '', ccaa: p.get('ccaa') ?? '', provincia: p.get('provincia') ?? '', musica: p.get('musica') ?? 'si', pagina: Number(p.get('pagina')) || 1 });
+  const [f, setF] = useState({ q: p.get('q') ?? '', ccaa: p.get('ccaa') ?? '', provincia: p.get('provincia') ?? '', musica: p.get('musica') ?? '', cultura: p.get('cultura') ?? '', pagina: Number(p.get('pagina')) || 1 });
   const [r, setR] = useState<{ total: number; porPagina: number; items: Fila[] } | null>(null);
   const [error, setError] = useState<string | null>(null);
   const consulta = new URLSearchParams(Object.entries({ ...f, pagina: String(f.pagina) }).filter(([, v]) => v && v !== '1')).toString();
@@ -32,8 +33,8 @@ export function Contactos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   return (
     <section>
       <p className="ayuda">
-        Responsables de cultura de cada ayuntamiento, con su email y teléfono, de fuentes oficiales y webs municipales. Primero los que más
-        música contratan. Los cargos cambian: compruébalo antes de escribir.
+        El contacto de cada ayuntamiento: el responsable de cultura cuando se conoce y, si no, el email y el teléfono generales. De fuentes
+        oficiales y webs municipales; primero los que más música contratan. Los cargos cambian: compruébalo antes de escribir.
       </p>
       <Filtros busqueda={<input type="search" placeholder="Buscar municipio, provincia o nombre…" value={f.q} onChange={(e) => setF({ ...f, q: e.target.value, pagina: 1 })} aria-label="Buscar" />}>
         
@@ -49,15 +50,19 @@ export function Contactos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
           </button>
         )}
         <label className="casilla">
-          <input type="checkbox" checked={f.musica === 'si'} onChange={(e) => setF({ ...f, musica: e.target.checked ? 'si' : 'no', pagina: 1 })} /> Solo ayuntamientos
+          <input type="checkbox" checked={f.musica === 'si'} onChange={(e) => setF({ ...f, musica: e.target.checked ? 'si' : '', pagina: 1 })} /> Solo ayuntamientos
           que contratan música
+        </label>
+        <label className="casilla">
+          <input type="checkbox" checked={f.cultura === 'si'} onChange={(e) => setF({ ...f, cultura: e.target.checked ? 'si' : '', pagina: 1 })} /> Solo con contacto de cultura
         </label>
       </Filtros>
       {error && <p className="error">{error}</p>}
+      <CopiarEmails consulta={consulta} cargar={api.emailsContactos} />
       {r && (
         <>
           <p className="recuento">
-            {r.total.toLocaleString('es-ES')} municipios con contacto de cultura · <a href={`/api/contactos.csv?${consulta}`}>Descargar en Excel (CSV)</a>
+            {r.total.toLocaleString('es-ES')} municipios · <a href={`/api/contactos.csv?${consulta}`}>Descargar en Excel (CSV)</a>
           </p>
           <ul className="filas filas-lista">
             {r.items.map((m) => (

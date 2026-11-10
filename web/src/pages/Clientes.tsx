@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api';
 import { FilaClienteNueva } from '../components/Cliente';
+import { CopiarEmails } from '../components/CopiarEmails';
 import { cambiarParams, type Ruta } from '../ruta';
 import { NOMBRE_ESTILO, type Estilo, type Meta, type Programador } from '../tipos';
 
@@ -82,6 +83,7 @@ export function Clientes({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
         </select>
       </div>
       {error && <p className="error">{error}</p>}
+      <CopiarEmails consulta={consulta} cargar={api.emailsClientes} />
       <div className="cabecera-resultados">
         <p className="recuento">
           {r ? (

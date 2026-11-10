@@ -386,6 +386,21 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     );
   };
 
+  // Emails de los clientes del filtro (para un envío en copia oculta): uno por sitio, sin repetir.
+  app.get('/api/programadores/emails', (req, res) => {
+    const vistos = new Set<string>();
+    let deCultura = 0;
+    const xs = filtrarClientes(req.query);
+    for (const p of xs) {
+      const c = contactoBreve(p.codigoIne);
+      const email = c?.email?.split(/[;,\s]+/).find((x) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x))?.toLowerCase();
+      if (!email || vistos.has(email)) continue;
+      vistos.add(email);
+      if (c?.deCultura) deCultura++;
+    }
+    res.json({ clientes: xs.length, emails: [...vistos], deCultura });
+  });
+
   app.get('/api/programadores', (req, res) => {
     const xs = filtrarClientes(req.query)
       .sort((a, b) =>
@@ -583,14 +598,15 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const filtrarContactos = (req: Request) => {
     const ccaa = lista(req.query.ccaa);
     const provincia = lista(req.query.provincia);
-    const soloCultura = req.query.cultura !== 'no';
+    // Por defecto, todos los municipios con algún contacto (aunque sea el general del ayuntamiento).
+    const soloCultura = req.query.cultura === 'si';
     const musica = musicaPorMunicipio();
     const xs = (opciones.contactos?.listar() ?? [])
       .filter(
         (m) =>
           (!ccaa.length || ccaa.includes(m.ccaa)) &&
           (!provincia.length || provincia.includes(m.provincia)) &&
-          (!soloCultura || m.personas.length > 0 || !!m.cultura.email || !!m.cultura.telefono) &&
+          (soloCultura ? m.personas.length > 0 || !!m.cultura.email || !!m.cultura.telefono : !!(m.personas.length || m.cultura.email || m.cultura.telefono || m.ayuntamiento.email || m.ayuntamiento.telefono)) &&
           (req.query.musica !== 'si' || musica.has(m.codigoIne)) &&
           coincideTexto(req.query.q, m.municipio, m.provincia, ...m.personas.map((p) => p.nombre)),
       )
@@ -598,6 +614,21 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       .sort((a, b) => (b.musica?.contratos ?? 0) - (a.musica?.contratos ?? 0) || (b.poblacion ?? 0) - (a.poblacion ?? 0));
     return xs;
   };
+  // Emails del directorio filtrado (copia oculta): el de cultura si lo hay; si no, el general del ayuntamiento.
+  app.get('/api/contactos/emails', (req, res) => {
+    const vistos = new Set<string>();
+    let deCultura = 0;
+    for (const m of filtrarContactos(req)) {
+      const p = m.personas.find((x) => x.email);
+      const cultura = p?.email ?? m.cultura.email;
+      const email = (cultura ?? m.ayuntamiento.email)?.split(/[;,\s]+/).find((x) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x))?.toLowerCase();
+      if (!email || vistos.has(email)) continue;
+      vistos.add(email);
+      if (cultura) deCultura++;
+    }
+    res.json({ emails: [...vistos], deCultura });
+  });
+
   app.get('/api/contactos', (req, res) => {
     res.json(paginar(req, filtrarContactos(req)));
   });
