@@ -8,56 +8,53 @@ on:
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    defaults:
+      run:
+        shell: bash {0}
+    env:
+      D: https://analisi.transparenciacatalunya.cat
     steps:
-      - name: Catálogo de datos abiertos de la Generalitat (contratos, agenda, festivales)
+      - name: Columnas completas
         run: |
-          for q in contractes contractacio "contractes menors" "registre public de contractes" agenda festivals; do
-            echo "=== $q"
-            curl -sS -m 60 -G "https://api.eu.socrata.com/api/catalog/v1" --data-urlencode "domains=analisi.transparenciacatalunya.cat" \
-              --data-urlencode "q=$q" --data-urlencode "limit=8" \
-              | jq -r '.results[] | "\(.resource.id) · \(.resource.name) · filas? \(.resource.page_views.page_views_total // "") · actualizado \(.resource.data_updated_at)"' || true
+          for id in ybgg-dgi6 hb6v-jcbf qjue-2pk9 rhpv-yr4f 2n2k-gg9s; do
+            echo "=== $id"; curl -sS -m 60 "$D/api/views/$id.json" | jq -r '.name, ([.columns[].fieldName] | join(", "))'
           done
 
-      - name: Columnas y ejemplo de los conjuntos de contratos
+      - name: Montblanc en contratos (PSCP y Registre)
         run: |
-          D=https://analisi.transparenciacatalunya.cat
-          for id in ybgg-dgi6 hb6v-jcbf a23c-d6vp; do
-            echo "=== $id"
-            curl -sS -m 60 "$D/api/views/$id.json" | jq -r '"\(.name) | filas: \(.rowsUpdatedAt) | " + ([.columns[].fieldName] | join(", "))' || true
-            curl -sS -m 60 "$D/resource/$id.json?\$limit=1" | head -c 2500; echo
-            echo "-- total filas:"; curl -sS -m 60 "$D/resource/$id.json?\$select=count(*)" ; echo
-          done
+          q() { curl -sS -m 120 -G "$D/resource/$1.json" --data-urlencode "\$where=$2" --data-urlencode "\$limit=${3:-15}" ${4:+--data-urlencode "\$select=$4"} | head -c 6000; echo; }
+          echo "=== ybgg Montblanc (órganos)"; q ybgg-dgi6 "upper(nom_organ) like '%MONTBLANC%'" 50 "nom_organ,count(*)&\$group=nom_organ"
+          echo "=== ybgg Montblanc (muestra)"; q ybgg-dgi6 "upper(nom_organ) like '%MONTBLANC%'" 8
+          echo "=== hb6v Montblanc (órganos)"; curl -sS -m 120 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$select=organisme_contractant,situaci_contractual,count(*)" --data-urlencode "\$where=upper(organisme_contractant) like '%MONTBLANC%'" --data-urlencode "\$group=organisme_contractant,situaci_contractual" | head -c 4000; echo
+          echo "=== hb6v Montblanc (muestra)"; q hb6v-jcbf "upper(organisme_contractant) like '%MONTBLANC%'" 10
 
-      - name: Montblanc y música en los contratos de Cataluña
+      - name: Música en el Registre (CPV 9231 / 9232) por tipo y año
         run: |
-          D=https://analisi.transparenciacatalunya.cat
-          for id in ybgg-dgi6 hb6v-jcbf a23c-d6vp; do
-            echo "=== $id · Montblanc"
-            curl -sS -m 90 -G "$D/resource/$id.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=5" | head -c 4000; echo
-            echo "=== $id · concert / música (cuántos)"
-            for w in concert musica orquestra cobla "festa major" actuacions; do
-              printf "%s: " "$w"; curl -sS -m 90 -G "$D/resource/$id.json" --data-urlencode "\$q=$w" --data-urlencode "\$select=count(*)"; echo
-            done
-          done
+          curl -sS -m 180 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$select=exercici,situaci_contractual,count(*)" \
+            --data-urlencode "\$where=starts_with(codi_cpv,'9231') OR starts_with(codi_cpv,'9232')" --data-urlencode "\$group=exercici,situaci_contractual" --data-urlencode "\$order=exercici" | head -c 4000; echo
+          echo "=== muestra música menor ayuntamientos"
+          curl -sS -m 180 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$where=starts_with(codi_cpv,'92312') AND situaci_contractual='menor' AND upper(organisme_contractant) like 'AJUNTAMENT%'" --data-urlencode "\$limit=6" --data-urlencode "\$order=data_adjudicacio DESC" | head -c 6000; echo
+          echo "=== palabras (concert) en registro"
+          curl -sS -m 180 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=upper(descripcio_expedient) like '%CONCERT%'"; echo
 
-      - name: Agenda cultural de Cataluña (conciertos por municipio)
+      - name: Música en PSCP (ybgg) por fase
         run: |
-          D=https://analisi.transparenciacatalunya.cat
-          for id in rhpv-yr4f; do
-            curl -sS -m 60 "$D/api/views/$id.json" | jq -r '"\(.name) | " + ([.columns[].fieldName] | join(", "))' || true
-            curl -sS -m 60 -G "$D/resource/$id.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=3" | head -c 3000; echo
-            printf "conciertos (total): "; curl -sS -m 60 -G "$D/resource/$id.json" --data-urlencode "\$q=concert" --data-urlencode "\$select=count(*)"; echo
-          done
+          curl -sS -m 180 -G "$D/resource/ybgg-dgi6.json" --data-urlencode "\$select=fase_publicacio,count(*)" \
+            --data-urlencode "\$where=upper(objecte_contracte) like '%CONCERT%' OR upper(denominacio) like '%CONCERT%'" --data-urlencode "\$group=fase_publicacio" | head -c 3000; echo
+          curl -sS -m 180 -G "$D/resource/ybgg-dgi6.json" --data-urlencode "\$where=upper(denominacio) like '%CONCERT%' AND fase_publicacio like 'Formal%'" --data-urlencode "\$limit=3" | head -c 5000; echo
 
-      - name: Webs de festivales y circuitos privados (qué publican)
+      - name: Agenda cultural Montblanc
         run: |
-          for u in https://www.festclasica.com https://www.operaxxi.com https://www.salasdeconciertos.com https://www.apmusicales.com \
-                   https://www.redescena.net https://www.rema-eemn.net https://www.efa-aef.eu https://www.festivalfinder.eu \
-                   https://www.musicaclasica.es https://www.esmusica.es https://www.asaco.org https://www.adeteatros.es; do
+          curl -sS -m 60 -G "$D/resource/rhpv-yr4f.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=3" | head -c 4000; echo
+          curl -sS -m 60 -G "$D/resource/2n2k-gg9s.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=2" | head -c 3000; echo
+
+      - name: Webs de festivales y circuitos
+        run: |
+          for u in https://www.festclasica.com https://www.redescena.net https://www.rema-eemn.net https://www.efa-aef.eu https://www.festivalfinder.eu \
+                   https://www.asaco.org https://www.adeteatros.es https://www.apmusicales.com https://www.lafede.cat https://www.acpcultura.cat; do
             echo "=== $u"
-            curl -sS -m 40 -L -A "Mozilla/5.0 (compatible; subvencionados-exploracion)" -o /tmp/p.html -w "HTTP %{http_code} · %{size_download} bytes · %{url_effective}\n" "$u" || true
+            curl -sS -m 40 -L -A "Mozilla/5.0 (compatible; subvencionados-exploracion)" -o /tmp/p.html -w "HTTP %{http_code} · %{size_download} bytes · %{url_effective}\n" "$u"
             grep -oi '<title>[^<]*' /tmp/p.html | head -1
-            grep -oiE 'href="[^"]*(festival|socio|miembro|members|asociad|directorio|ciclo|programador|sala)[^"]*"' /tmp/p.html | sort -u | head -12
-            curl -sS -m 20 "$u/robots.txt" | head -8
+            grep -oiE 'href="[^"]*(festival|socio|miembro|members|asociad|directori|ciclo|programador|sala|associats)[^"]*"' /tmp/p.html | sort -u | head -12
           done
