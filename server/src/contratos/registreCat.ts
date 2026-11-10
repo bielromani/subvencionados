@@ -54,7 +54,7 @@ const limpio = (x: string | undefined) => x?.replace(/\s+/g, ' ').trim() || null
 const ACTUACION = /\b(actuacio|actuacions|concert|concerts|recital|dj|musics|cantada|cantades|grallers|ball (dels diumenges|de tarda|de nit|amb orquestra|de gent gran|de festa major)|balls (de tarda|de nit))\b/;
 /** Actuaciones que no son música, o servicios alrededor de un concierto. */
 const NO_ES_ACTUACION =
-  /\b(castell\w*|teatr\w*|titell\w*|pallass\w*|clown|magia|mag|circ|contes|conta ?contes|lectura|ambulancia|aigua|seguretat|so|sonoritzacio|llums?|lloguer|neteja|bingo|ponent|xerrada|drets d.autor|sgae|transport|dinar|sopar|cartell\w*|disseny|impressio|fotograf\w*|video|enregistrament|assegurança|muntatge|carpa|escenari|cadires|wc|lavabos)\b/;
+  /\b(castell\w*|teatr\w*|titell\w*|pallass\w*|clown|magia|mag|circ|contes|conta ?contes|lectura|ambulancia|aigua|seguretat|so|sonoritzacio|llums?|lloguer|neteja|bingo|ponent|xerrada|drets d.autor|sgae|transport|dinar|sopar|cartell\w*|disseny|impressio|fotograf\w*|video|enregistrament|assegurança|muntatge|carpa|escenari|cadires|wc|lavabos|autoproteccio|pla de|companyia|cia)\b/;
 
 /** Música en vivo: la regla general de la Plataforma o, si no, una actuación en directo que no sea teatro, castells... */
 export function esMusicaRegistre(titulo: string, cpv: string[]): boolean {

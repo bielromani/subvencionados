@@ -69,6 +69,8 @@ describe('Actuaciones de los ayuntamientos catalanes', () => {
     ["Drets d'autor \"DJ refrescos\" . Estiu actiu 2026", ''],
     ['Espectacle "H" de la companyia la Corcoles', ''],
     ['Un receptor de radioenllaç de banda UHF', ''],
+    ["Pla d'autoprotecció segons Decret 30/2015 de l'Esdeveniment Concert", ''],
+    ['Actuació de la companyia Kanbahiota, espectacle "La Coquette"', ''],
   ];
   it.each(si)('sí: %s', (t, c) => expect(contratoDeRegistre({ ...fila, descripcio_expedient: t, codi_cpv: c || undefined })).not.toBeNull());
   it.each(no)('no: %s', (t, c) => expect(contratoDeRegistre({ ...fila, descripcio_expedient: t, codi_cpv: c || undefined })).toBeNull());
