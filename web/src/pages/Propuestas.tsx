@@ -128,7 +128,7 @@ function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p
           />
           <footer className="correo-pie">
             {aprobado ? (
-              <span>Correo abierto en tu programa de correo. Cuando lo envíes, pulsa «Ya lo he enviado».</span>
+              <span>Correo abierto en tu programa de correo. Aún no cuenta como enviado: queda en la Bandeja como «Aprobado, falta enviarlo» hasta que pulses «Ya lo he enviado».</span>
             ) : editado ? (
               <>
                 <span>Has cambiado el correo.</span>

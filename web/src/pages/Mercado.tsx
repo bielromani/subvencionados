@@ -221,7 +221,7 @@ export function Mercado({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
                       </td>
                       <td className="num">{numero(e.contratos)}</td>
                       <td className="num">{numero(e.organismos)}</td>
-                      <td className="num">{euros.format(e.adjudicado)}</td>
+                      <td className="num">{e.adjudicado > 0 ? euros.format(e.adjudicado) : '—'}</td>
                     </tr>
                   ))}
                 </tbody>

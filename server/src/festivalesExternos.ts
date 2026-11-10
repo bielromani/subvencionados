@@ -66,7 +66,14 @@ const telefono = (x: string | null | undefined) => {
   // Fijos (8 y 9); los móviles (6 y 7) pueden ser personales.
   return t && /^[89]\d{8}$/.test(t) ? t.replace(/^(\d{3})(\d{3})(\d{3})$/, '$1 $2 $3') : null;
 };
-const recorte = (t: string | undefined, n = 400) => (t ? (t.length > n ? `${t.slice(0, n).replace(/\s+\S*$/, '')}…` : t) : null);
+/** Hasta `n` caracteres, cortando en la última frase completa (o, si no hay, en la última palabra). */
+function recorte(t: string | undefined, n = 700): string | null {
+  if (!t) return null;
+  if (t.length <= n) return t;
+  const trozo = t.slice(0, n);
+  const fin = Math.max(trozo.lastIndexOf('. '), trozo.lastIndexOf('.\n'));
+  return fin > n / 3 ? trozo.slice(0, fin + 1) : `${trozo.replace(/\s+\S*$/, '')}…`;
+}
 
 /** El valor que sigue a una etiqueta («Teléfono» / «: 935 038 646»). */
 function tras(ls: string[], etiqueta: RegExp): string | null {

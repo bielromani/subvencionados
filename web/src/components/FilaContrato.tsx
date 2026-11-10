@@ -45,7 +45,9 @@ export function FilaContrato({ c }: { c: Contrato }) {
         {c.provincia && c.provincia !== c.organo.ciudad && ` (${c.provincia})`}
         {c.adjudicado != null
           ? ` · adjudicado por ${euros.format(c.adjudicado)} sin IVA`
-          : c.importe != null && ` · presupuesto ${euros.format(c.importe)} sin IVA`}
+          : c.importe != null
+            ? ` · presupuesto ${euros.format(c.importe)} sin IVA`
+            : c.importeConIva != null && ` · ${euros.format(c.importeConIva)} con IVA`}
       </span>
       {quien && (
         <span className="fila-motivos">

@@ -152,7 +152,7 @@ export function PaginaProgramador({ id }: { id: string }) {
           </div>
           <div>
             <dt>Total en música</dt>
-            <dd>{euros.format(p.adjudicado)}</dd>
+            <dd>{p.adjudicado > 0 ? euros.format(p.adjudicado) : '—'}</dd>
           </div>
         </dl>
         <p className="llamada">{comoContrata(p)}</p>
@@ -200,7 +200,7 @@ export function PaginaProgramador({ id }: { id: string }) {
                 <strong>{x.nombre}</strong>
                 <span className="ayuda">
                   {' '}
-                  · {x.contratos} {x.contratos === 1 ? 'contrato' : 'contratos'} · {euros.format(x.importe)}
+                  · {x.contratos} {x.contratos === 1 ? 'contrato' : 'contratos'}{x.importe > 0 ? ` · ${euros.format(x.importe)}` : ''}
                 </span>
               </li>
             ))}
