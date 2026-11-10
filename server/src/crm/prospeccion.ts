@@ -9,7 +9,7 @@ import type { OportunidadGestion } from '../gestionFestivales.js';
 import { cubreTerritorio } from '../gestionFestivales.js';
 import { tituloCorto as tituloCortoDe } from '../titulo.js';
 import type { Convocatoria, Estilo } from '../tipos.js';
-import { avisosFicha, encajeEntidad, encajeLicitacion, type Encaje } from './encaje.js';
+import { avisosFicha, encajeAyuda, encajeEntidad, encajeLicitacion, type Encaje } from './encaje.js';
 import { idProgramador } from '../directorio.js';
 import { normalizar } from '../clasificacion/musica.js';
 import { componerCarta } from './cartas.js';
@@ -127,6 +127,16 @@ export function redactarPropuesta(
 const NO_ENCAJA = /pirotecn|\bpiro|animacion infantil|infantil|verbena|orquesta de baile|discomovil|\bdj\b|charanga|batucada|pasacalles/;
 export const noEncaja = (titulo: string) => NO_ENCAJA.test(normalizar(titulo));
 
+/** Una ayuda que se puede proponer a un ayuntamiento para pagar el concierto. */
+export function ayudaParaEntidadLocal(a: Convocatoria, catalogo: Espectaculo[], hoy = new Date()): boolean {
+  if (!a.clasificacion.beneficiarios.entidadesLocales) return false;
+  const encaje = encajeAyuda(catalogo, a, hoy);
+  if (!encaje.length) return false;
+  const deEstilo = encaje.some((x) => x.motivos.some((m) => m !== 'Programación cultural general: cabe cualquier propuesta'));
+  // Cultura popular, tradicional o fiestas: solo si el estilo encaja de verdad.
+  return deEstilo || !/\b(cultura popular|tradicional|tradicionals|folklore|folclore|fiestas? populares?|festes populars)\b/.test(normalizar(a.titulo));
+}
+
 export function prepararPropuestas(
   f: FuentesProspeccion,
   catalogo: Espectaculo[],
@@ -138,7 +148,9 @@ export function prepararPropuestas(
   const disponibles = catalogo.filter((e) => e.enWeb !== false);
   if (!disponibles.length) return [];
   const estilosCatalogo = new Set(disponibles.map((e) => ESTILO_DE_TIPO[e.tipo]).filter((x): x is Estilo => !!x));
-  const ayudas = f.ayudasProgramadores();
+  // Solo ayudas que puede pedir el propio ayuntamiento (no las de asociaciones) y que encajan con el catálogo: una
+  // ayuda de cultura popular no financia una Pasión de Bach aunque cubra el territorio.
+  const ayudas = f.ayudasProgramadores().filter((a) => ayudaParaEntidadLocal(a, disponibles, hoy));
   const anioPasado = `${hoy.getUTCFullYear() - 1}`;
   const proximosMeses = [1, 2, 3].map((n) => ((hoy.getUTCMonth() + n) % 12) + 1);
   // Licitaciones abiertas que encajan con el catálogo (no pirotecnia, animación infantil, verbenas...), por programador.
