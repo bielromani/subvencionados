@@ -17,6 +17,10 @@ on:
       tipos:
         description: 'Fuentes de los históricos'
         default: 'licitaciones menores agregadas'
+      solo_catalunya:
+        description: 'Solo el Registre de Cataluña (sin la Plataforma del Estado)'
+        type: boolean
+        default: false
       dias:
         description: 'Sin periodos y sin estado previo: cuántos días atrás leer del ATOM'
         default: '3'
@@ -46,12 +50,12 @@ jobs:
       - run: npm ci
 
       - name: Últimos días
-        if: (inputs.periodos || '') == ''
+        if: (inputs.periodos || '') == '' && !inputs.solo_catalunya
         run: npm run contratos -w server -- --fuentes --dias="${{ inputs.dias || '3' }}"
 
       # Los ayuntamientos catalanes (y sus contratos menores) publican en el Registre de la Generalitat, no en la Plataforma.
       - name: Cataluña (Registre públic de contractes)
-        if: (inputs.periodos || '') == ''
+        if: ${{ !cancelled() && (inputs.periodos || '') == '' }}
         run: npm run catalunya -w server
 
       - name: Históricos
