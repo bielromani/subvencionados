@@ -237,7 +237,7 @@ const CPV_MUSICA = /^923121[234]0$/;
 const CPV_AFINES = /^(923|7995[0-4]|92000000)/;
 
 const TITULO_MUSICA =
-  /\b(concierto|conciertos|concerto|concertos|concert|concerts|orquesta|orquestas|orquestra|orquestras|bandas? de musica|banda municipal|charangas?|txarangas?|actuacion(es)? (musical|musicales|artistica|artisticas)|actuacions musicals|actuacio musical|grups? musicals?|cobla|cobles|sardanes|sardana|havaneres|xaranga|grupos? musical(es)?|musica|musicas|musical|musicales|musicais|musicals|festival de (jazz|musica)|coral|corales|coro|coros|recital|recitales|opera|operas|zarzuela|jazz|verbena|verbenas|cantantes?|cantautor(es|a)?|flamenco|dj|disc jockey|rondalla|mariachi)\b/;
+  /\b(concierto|conciertos|concerto|concertos|concert|concerts|orquesta|orquestas|orquestra|orquestras|bandas? de musica|banda municipal|charangas?|txarangas?|actuacion(es)? (musical|musicales|artistica|artisticas)|actuacions musicals|actuacio musical|kontzertua|kontzertuak|kontzertu|kontzertuen|musika|musikala|musikaldia|musikariak|txaranga|txarangak|trikitilariak|trikitixa|abesbatza|abesbatzak|erromeria|erromeriak|grups? musicals?|cobla|cobles|sardanes|sardana|havaneres|xaranga|grupos? musical(es)?|musica|musicas|musical|musicales|musicais|musicals|festival de (jazz|musica)|coral|corales|coro|coros|recital|recitales|opera|operas|zarzuela|jazz|verbena|verbenas|cantantes?|cantautor(es|a)?|flamenco|dj|disc jockey|rondalla|mariachi)\b/;
 
 /** Lo que no es contratar música en vivo: enseñanza, obras, suministros, bares... */
 export const TITULO_EXCLUIR =

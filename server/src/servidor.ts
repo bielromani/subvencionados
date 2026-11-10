@@ -8,8 +8,11 @@ import { AlmacenCrm } from './crm/almacen.js';
 import { enviadorDesdeEntorno } from './email.js';
 import { AlmacenContratos } from './contratos/almacen.js';
 import { esDeMusica } from './contratos/placsp.js';
+import { esMusicaRegistre, PREFIJO_REGISTRE } from './contratos/registreCat.js';
 import { enriquecer } from './contratos/vista.js';
 import { Repositorio } from './db.js';
+import { existsSync, readFileSync } from 'node:fs';
+import type { FestivalExterno } from './festivalesExternos.js';
 import { AlmacenFichas } from './ficha/fichas.js';
 
 export function montarApp(rutaDb: string, rutaDatos: string) {
@@ -17,8 +20,10 @@ export function montarApp(rutaDb: string, rutaDatos: string) {
   const fichas = new AlmacenFichas(join(rutaDatos, 'fichas'));
   const contratos = [...new AlmacenContratos(join(rutaDatos, 'contratos')).contratos.values()]
     // El filtro se vuelve a aplicar al cargar: si se afina, no hace falta volver a descargar.
-    .filter((c) => esDeMusica(c))
+    .filter((c) => (c.id.startsWith(PREFIJO_REGISTRE) ? esMusicaRegistre(c.titulo, c.cpv) : esDeMusica(c)))
     .map(({ anio: _a, ...c }) => enriquecer(c));
+  const rutaFestivales = join(rutaDatos, 'festivales', 'directorios.json');
+  const festivalesExternos = existsSync(rutaFestivales) ? (JSON.parse(readFileSync(rutaFestivales, 'utf8')) as FestivalExterno[]) : [];
   const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
   const cuentas = url ? AlmacenCuentas.desdeUrl(url) : null;
   return crearApp(repo, {
@@ -26,6 +31,7 @@ export function montarApp(rutaDb: string, rutaDatos: string) {
     fichas: { leer: (codigo) => fichas.leer(codigo), tiene: (codigo) => fichas.tiene(codigo) },
     contratos,
     contactos: Contactos.cargar(rutaDatos),
+    festivalesExternos,
     // La base de datos de Neon que conecta Vercel (DATABASE_URL); sin ella no hay cuentas.
     cuentas,
     crm: cuentas ? new AlmacenCrm(cuentas) : null,

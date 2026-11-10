@@ -15,6 +15,7 @@ import { normalizar } from './clasificacion/musica.js';
 import { mercado } from './mercado.js';
 import type { ContactoMunicipio, Contactos } from './contactos.js';
 import { type Circuito, circuitos, type Festival, festivales, idProgramador, type Programador, programadores } from './directorio.js';
+import type { FestivalExterno } from './festivalesExternos.js';
 import { abierta, type ContratoVista, filtrarContratos, mercadoContratos } from './contratos/vista.js';
 import { coincidenciasGenericas, nuevas, porGrupo, seleccionar } from './inicio.js';
 import type { Repositorio } from './db.js';
@@ -99,6 +100,8 @@ export interface OpcionesApp {
   leerTexto?: (relativa: string) => string | null;
   /** Ficha extraída de las bases (datos/fichas/), si la hay. */
   fichas?: { leer: (codigoBdns: string) => Ficha | null; tiene: (codigoBdns: string) => boolean };
+  /** Festivales de los directorios del sector (datos/festivales/directorios.json). */
+  festivalesExternos?: FestivalExterno[];
   /** Contratos de música de la Plataforma de Contratación (datos/contratos/). */
   contratos?: ContratoVista[];
   /** Directorio de ayuntamientos y responsables de cultura (datos/directorio/). */
@@ -293,7 +296,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         const m = opciones.contactos?.deOrgano(p.nombre, p.ciudad, p.codigoProvincia) ?? null;
         return { ...p, codigoIne: m?.codigoIne ?? null, conContacto: tieneContactoCultura(m) };
       });
-      directorio = { version: repo.version, programadores: progs, festivales: festivales(contratos, conv), circuitos: circuitos(contratos, conv) };
+      directorio = { version: repo.version, programadores: progs, festivales: festivales(contratos, conv, opciones.festivalesExternos ?? []), circuitos: circuitos(contratos, conv) };
     }
     return directorio;
   };

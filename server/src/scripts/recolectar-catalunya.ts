@@ -54,6 +54,7 @@ async function pedir(offset: number): Promise<FilaRegistre[]> {
   }
 }
 
+const hoy = new Date().toISOString().slice(0, 10);
 const recuento = { leidas: 0, musica: 0, repetidas: 0, guardadas: 0 };
 let reciente = ultima ?? '';
 for (let offset = 0; ; offset += PAGINA) {
@@ -70,7 +71,8 @@ for (let offset = 0; ; offset += PAGINA) {
     }
     const o = organos.get(normalizar(c.organo.nombre));
     if (o) c.organo = { ...o, nombre: c.organo.nombre };
-    if (c.actualizado > reciente) reciente = c.actualizado;
+    // Las fechas futuras son erratas del registro: no cuentan para saber hasta dónde se ha leído.
+    if (c.actualizado > reciente && c.actualizado <= hoy) reciente = c.actualizado;
     if (almacen.guardar(c)) recuento.guardadas++;
   }
   console.log(`… ${offset + filas.length} filas`);

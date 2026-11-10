@@ -33,6 +33,7 @@ function FilaFestivalNueva({ f }: { f: Festival }) {
           {[f.lugar, f.provincia !== f.lugar ? f.provincia : null].filter(Boolean).join(', ') || f.ccaa || 'Lugar no indicado'} · {aniosTexto(f.anios)}
         </span>
         {f.organizadores.length > 0 && <span className="fila-ayuda-detalle">Organiza: {f.organizadores.slice(0, 2).join(' · ')}</span>}
+        {!!f.directorios?.length && <span className="fila-ayuda-detalle">En {f.directorios.map((d) => d.directorio).join(' y ')}</span>}
       </div>
       <div className="fila-ayuda-lado">
         {f.dinero > 0 && (
@@ -76,7 +77,7 @@ export function DondeTocar({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
   const paginas = r ? Math.ceil(r.total / r.porPagina) : 0;
 
   const PESTANAS: [Pestana, string, string][] = [
-    ['festivales', 'Festivales y ciclos', 'Festivales y ciclos que aparecen en contratos públicos y subvenciones: dónde son, desde cuándo hay datos, quién los organiza y cuánto mueven. Cada ficha enlaza sus fuentes.'],
+    ['festivales', 'Festivales y ciclos', 'Festivales y ciclos que aparecen en contratos públicos y subvenciones, y los de los directorios del sector (FestClásica, Redescena, REMA): dónde son, quién los organiza, cómo contactar y cuánto mueven. Cada ficha enlaza sus fuentes.'],
     ['gestion', 'Gestión integral', 'Dónde ofrecer el diseño, la producción y la gestión completa de un festival o ciclo: quien ya licita su organización, quien monta un ciclo concierto a concierto y quien organiza festivales propios.'],
     ['circuitos', 'Circuitos', 'Redes públicas de programación que aparecen en los contratos y convocatorias, con sus apariciones en los datos oficiales.'],
   ];

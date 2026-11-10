@@ -452,6 +452,18 @@ export interface Festival {
   dinero: number;
   numFuentes?: number;
   fuentes?: FuenteDirectorio[];
+  /** Su ficha en los directorios del sector: contacto de la entidad y fechas. */
+  directorios?: {
+    directorio: string;
+    url: string;
+    organizador: string | null;
+    web: string | null;
+    telefono: string | null;
+    email: string | null;
+    inicio: string | null;
+    fin: string | null;
+    descripcion: string | null;
+  }[];
 }
 
 export interface Circuito {

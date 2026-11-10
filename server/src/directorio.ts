@@ -1,5 +1,6 @@
 import { clasificar, normalizar } from './clasificacion/musica.js';
 import type { ContratoVista } from './contratos/vista.js';
+import { claveNombreFestival, type FestivalExterno } from './festivalesExternos.js';
 import type { Convocatoria, Estilo } from './tipos.js';
 
 /**
@@ -158,6 +159,8 @@ export interface Festival {
   anios: number[];
   dinero: number;
   fuentes: Fuente[];
+  /** Su ficha en los directorios del sector (FestClásica, Redescena, REMA): contacto de la entidad y fechas. */
+  directorios: Omit<FestivalExterno, 'nombre' | 'municipio' | 'provincia' | 'ccaa'>[];
 }
 
 const TIPO_EVENTO = '(festival|festivals|festivales|ciclo|cicle|ciclos|certamen|certamenes|muestra|mostra|temporada|semana|setmana|jornadas)';
@@ -205,7 +208,7 @@ interface Mencion {
   fuente: Fuente;
 }
 
-export function festivales(contratos: ContratoVista[], convocatorias: Convocatoria[]): Festival[] {
+export function festivales(contratos: ContratoVista[], convocatorias: Convocatoria[], externos: FestivalExterno[] = []): Festival[] {
   const menciones: Mencion[] = [];
   for (const c of contratos) {
     const nombre = nombreDeEvento(c.titulo);
@@ -255,7 +258,7 @@ export function festivales(contratos: ContratoVista[], convocatorias: Convocator
     const k = claveEvento(m.nombre, m.provincia);
     grupos.set(k, [...(grupos.get(k) ?? []), m]);
   }
-  return [...grupos].map(([k, ms]) => {
+  const lista: Festival[] = [...grupos].map(([k, ms]) => {
     const orden = [...ms].sort((a, b) => (b.fuente.fecha ?? '').localeCompare(a.fuente.fecha ?? ''));
     const nombre = orden[0]!.nombre;
     const texto = `${nombre} ${ms.map((m) => m.fuente.titulo).join(' ')}`;
@@ -271,8 +274,56 @@ export function festivales(contratos: ContratoVista[], convocatorias: Convocator
       anios: [...new Set(ms.map((m) => anio(m.fuente.fecha)).filter((x): x is number => !!x && x >= 2000))].sort(),
       dinero: ms.reduce((s, m) => s + (m.fuente.importe ?? 0), 0),
       fuentes: orden.slice(0, 15).map((m) => m.fuente),
+      directorios: [],
     };
   });
+  return conDirectorios(lista, externos);
+}
+
+/**
+ * Añade los festivales de los directorios del sector: a la ficha que ya sale de contratos y subvenciones si se llama
+ * igual (y es de la misma comunidad), o como ficha nueva. El mismo festival en dos directorios va en una sola ficha.
+ */
+function conDirectorios(lista: Festival[], externos: FestivalExterno[]): Festival[] {
+  const porClave = new Map<string, Festival[]>();
+  for (const f of lista) {
+    const k = claveNombreFestival(f.nombre);
+    if (k) porClave.set(k, [...(porClave.get(k) ?? []), f]);
+  }
+  for (const e of externos) {
+    const k = claveNombreFestival(e.nombre);
+    if (!k) continue;
+    const { nombre, municipio, provincia, ccaa, ...ficha } = e;
+    const candidatos = porClave.get(k) ?? [];
+    const f = candidatos.find((x) => !ccaa || !x.ccaa || x.ccaa === ccaa);
+    if (f) {
+      f.directorios.push(ficha);
+      f.musical = true;
+      f.lugar ??= municipio;
+      f.ccaa ??= ccaa;
+      if (e.organizador && !f.organizadores.includes(e.organizador)) f.organizadores.unshift(e.organizador);
+      const anioEd = anio(e.inicio);
+      if (anioEd && !f.anios.includes(anioEd)) f.anios = [...f.anios, anioEd].sort();
+      continue;
+    }
+    const nuevo: Festival = {
+      id: `f-dir-${k.replace(/[^a-z0-9]+/g, '-').slice(0, 70)}`,
+      nombre,
+      musical: true,
+      estilos: clasificar({ texto: `${nombre} ${e.descripcion ?? ''} ${e.directorio === 'REMA' ? 'música antigua barroca' : ''}` }).estilosExplicitos,
+      lugar: municipio,
+      provincia,
+      ccaa,
+      organizadores: e.organizador ? [e.organizador] : [],
+      anios: anio(e.inicio) ? [anio(e.inicio)!] : [],
+      dinero: 0,
+      fuentes: [],
+      directorios: [ficha],
+    };
+    lista.push(nuevo);
+    porClave.set(k, [...candidatos, nuevo]);
+  }
+  return lista;
 }
 
 // ---------------------------------------------------------------------------------------------------------------

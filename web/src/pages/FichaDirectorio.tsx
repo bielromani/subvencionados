@@ -201,11 +201,68 @@ export function PaginaFestival({ id }: { id: string }) {
           </div>
         </dl>
       </article>
-      <section className="bloque">
-        <h3>Fuentes</h3>
-        <p className="ayuda">Contratos y subvenciones donde aparece este festival o ciclo, de lo más reciente a lo más antiguo.</p>
-        <Fuentes fuentes={f.fuentes ?? []} />
-      </section>
+      {!!f.directorios?.length && (
+        <section className="bloque">
+          <h3>Contacto</h3>
+          {f.directorios.map((d) => (
+            <div key={d.url} className="ficha-directorio-externo">
+              <dl className="datos">
+                {d.organizador && (
+                  <div>
+                    <dt>Entidad organizadora</dt>
+                    <dd>{d.organizador}</dd>
+                  </div>
+                )}
+                {d.web && (
+                  <div>
+                    <dt>Web</dt>
+                    <dd>
+                      <a href={d.web} target="_blank" rel="noreferrer">
+                        {d.web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')} ↗
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {d.email && (
+                  <div>
+                    <dt>Email</dt>
+                    <dd>
+                      <a href={`mailto:${d.email}`}>{d.email}</a>
+                    </dd>
+                  </div>
+                )}
+                {d.telefono && (
+                  <div>
+                    <dt>Teléfono</dt>
+                    <dd>{d.telefono}</dd>
+                  </div>
+                )}
+                {d.inicio && (
+                  <div>
+                    <dt>Última edición publicada</dt>
+                    <dd>{[d.inicio, d.fin].filter(Boolean).map((x) => new Date(`${x}T12:00:00`).toLocaleDateString('es-ES')).join(' – ')}</dd>
+                  </div>
+                )}
+              </dl>
+              {d.descripcion && <p>{d.descripcion}</p>}
+              <p className="ayuda">
+                Ficha en{' '}
+                <a href={d.url} target="_blank" rel="noreferrer">
+                  {d.directorio} ↗
+                </a>
+                . Solo datos de la entidad, no de personas.
+              </p>
+            </div>
+          ))}
+        </section>
+      )}
+      {!!f.fuentes?.length && (
+        <section className="bloque">
+          <h3>Fuentes</h3>
+          <p className="ayuda">Contratos y subvenciones donde aparece este festival o ciclo, de lo más reciente a lo más antiguo.</p>
+          <Fuentes fuentes={f.fuentes ?? []} />
+        </section>
+      )}
       <p className="ayuda">
         Ficha construida automáticamente a partir de los títulos oficiales: puede juntar ediciones con nombres algo distintos o
         separar un mismo festival si cambia de nombre.

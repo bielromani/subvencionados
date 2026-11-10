@@ -1,0 +1,48 @@
+# Contratos de música del sector público vasco (API de datos abiertos de Euskadi) → datos/contratos/.
+# La API no filtra: se recorre entera (unas 73.000 páginas, varias horas). Cada ejecución sigue donde lo dejó la
+# anterior; al acabar una vuelta empieza otra. Dos veces por semana y a mano.
+name: Recolectar Euskadi
+
+on:
+  schedule:
+    - cron: '17 1 * * 2,5'
+  workflow_dispatch:
+    inputs:
+      minutos:
+        description: 'Minutos como máximo leyendo la API'
+        default: '320'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: recolectar-euskadi
+  cancel-in-progress: false
+
+jobs:
+  recolectar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run euskadi -w server -- --minutos="${{ inputs.minutos || '320' }}"
+      - name: Guardar los datos en el repositorio
+        if: always()
+        run: |
+          git config user.name "recolector-contratos"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/contratos
+          if git diff --cached --quiet; then echo "Sin cambios."; exit 0; fi
+          git commit -m "Contratos $(date -u +%Y-%m-%d): Euskadi"
+          rama="${GITHUB_REF_NAME}"
+          for i in 1 2 3 4; do
+            git push origin "HEAD:$rama" && exit 0
+            git fetch origin "$rama"
+            git rebase -X theirs "origin/$rama" || { git rebase --abort; sleep $((i * 5)); }
+          done
+          exit 1
