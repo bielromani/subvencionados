@@ -15,6 +15,7 @@
     "evaluar": "tsx src/scripts/evaluar.ts",
     "fichas": "tsx src/scripts/fichas.ts",
     "contratos": "tsx src/scripts/recolectar-contratos.ts",
+    "catalunya": "tsx src/scripts/recolectar-catalunya.ts",
     "limpiar-contratos": "tsx src/scripts/limpiar-contratos.ts"
   },
   "dependencies": {

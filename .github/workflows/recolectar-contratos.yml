@@ -1,6 +1,7 @@
 # Contratos de música en vivo de la Plataforma de Contratación del Sector Público → datos/contratos/.
 # - Cada día (y a mano sin nada): lee el ATOM de los últimos días (licitaciones, contratos menores y plataformas
 #   autonómicas agregadas). Unos pocos minutos.
+# - Cada día también: contratos de música del Registre públic de contractes de Catalunya (Generalitat).
 # - A mano con "periodos" (p. ej. "202609" o "2025"): descarga esos ficheros históricos. Un mes son
 #   ~300 MB y unos 8 minutos; un año entero puede pasar de una hora.
 name: Recolectar contratos
@@ -47,6 +48,11 @@ jobs:
       - name: Últimos días
         if: (inputs.periodos || '') == ''
         run: npm run contratos -w server -- --fuentes --dias="${{ inputs.dias || '3' }}"
+
+      # Los ayuntamientos catalanes (y sus contratos menores) publican en el Registre de la Generalitat, no en la Plataforma.
+      - name: Cataluña (Registre públic de contractes)
+        if: (inputs.periodos || '') == ''
+        run: npm run catalunya -w server
 
       - name: Históricos
         if: (inputs.periodos || '') != ''

@@ -194,7 +194,7 @@ export function Contratos({ meta, ruta }: { meta: Meta; ruta: Ruta }) {
             </nav>
           )}
           <p className="nota-fuente">
-            Fuente: Plataforma de Contratación del Sector Público, con las plataformas autonómicas agregadas y los contratos menores. Las adjudicaciones muestran quién contrata
+            Fuente: Plataforma de Contratación del Sector Público, con las plataformas autonómicas agregadas y los contratos menores, y el Registre públic de contractes de Catalunya (Generalitat). Las adjudicaciones muestran quién contrata
             música, a qué precio y qué empresas se los llevan; las personas físicas no se muestran.
           </p>
         </>

@@ -165,7 +165,12 @@ export function PaginaContrato({ id }: { id: string }) {
                 <dd>{c.cpv.join(', ') || '—'}</dd>
               </div>
             </dl>
-            <p className="ayuda">Datos de la Plataforma de Contratación del Sector Público. Ante cualquier duda, prevalece el anuncio oficial.</p>
+            <p className="ayuda">
+              {c.id.startsWith('rpc-')
+                ? 'Datos del Registre públic de contractes de Catalunya (datos abiertos de la Generalitat).'
+                : 'Datos de la Plataforma de Contratación del Sector Público.'}{' '}
+              Ante cualquier duda, prevalece el anuncio oficial.
+            </p>
           </section>
         </aside>
       </div>

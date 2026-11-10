@@ -107,7 +107,7 @@ export const esNifPersona = (nif: string | null) => !!nif && /^([0-9]{8}[A-Z]|[X
 /** Nombre de sociedad, asociación, fundación, administración...: no es una persona física. */
 export const pareceEntidad = (nombre: string | null) =>
   !!nombre &&
-  /(^|[^\p{L}])(s\.? ?l\.?|s\.? ?a\.?|s\.? ?l\.? ?u\.?|s\.? ?c\.?|s\.? ?coop\.?|c\.? ?b\.?|lda\.?|corp\.?|ltd\.?|gmbh|sas|srl)($|[^\p{L}])|sociedad|cooperativa|asociaci|associaci|ass\.|fundaci|federaci|agrupaci|ayuntamiento|ajuntament|concello|banda|orquesta|orquestra|uni[oó]n musical|producciones|produccions|eventos|events|management|espect[aá]culos|entertainment|music|m[uú]sica|teatro|compa[nñ][ií]a|colla|coral|charanga/iu.test(nombre);
+  /(^|[^\p{L}])(s\.? ?l\.?|s\.? ?a\.?|s\.? ?l\.? ?u\.?|s\.? ?c\.?|s\.? ?coop\.?|c\.? ?b\.?|lda\.?|corp\.?|ltd\.?|gmbh|sas|srl)($|[^\p{L}])|sociedad|cooperativa|asociaci|associaci|ass\.|fundaci|federaci|agrupaci|ayuntamiento|ajuntament|concello|banda|orquesta|orquestra|uni[oó]n musical|producciones|produccions|eventos|events|management|espect[aá]culos|espectacles|sccl|cobla|grup|xaranga|entertainment|music|m[uú]sica|teatro|compa[nñ][ií]a|colla|coral|charanga/iu.test(nombre);
 
 /** NIF de persona jurídica española (letra de entidad y cifras). */
 const esNifEntidad = (nif: string) => /^[A-HJ-NP-SUVW][0-9]{7}[0-9A-J]$/i.test(nif.replace(/[\s.-]/g, ''));
@@ -237,7 +237,7 @@ const CPV_MUSICA = /^923121[234]0$/;
 const CPV_AFINES = /^(923|7995[0-4]|92000000)/;
 
 const TITULO_MUSICA =
-  /\b(concierto|conciertos|concerto|concertos|concert|concerts|orquesta|orquestas|orquestra|orquestras|bandas? de musica|banda municipal|charangas?|txarangas?|actuacion(es)? (musical|musicales|artistica|artisticas)|actuacions musicals|grupos? musical(es)?|musica|musicas|musical|musicales|musicais|musicals|festival de (jazz|musica)|coral|corales|coro|coros|recital|recitales|opera|operas|zarzuela|jazz|verbena|verbenas|cantantes?|cantautor(es|a)?|flamenco|dj|disc jockey|rondalla|mariachi)\b/;
+  /\b(concierto|conciertos|concerto|concertos|concert|concerts|orquesta|orquestas|orquestra|orquestras|bandas? de musica|banda municipal|charangas?|txarangas?|actuacion(es)? (musical|musicales|artistica|artisticas)|actuacions musicals|actuacio musical|grups? musicals?|cobla|cobles|sardanes|sardana|havaneres|xaranga|grupos? musical(es)?|musica|musicas|musical|musicales|musicais|musicals|festival de (jazz|musica)|coral|corales|coro|coros|recital|recitales|opera|operas|zarzuela|jazz|verbena|verbenas|cantantes?|cantautor(es|a)?|flamenco|dj|disc jockey|rondalla|mariachi)\b/;
 
 /** Lo que no es contratar música en vivo: enseñanza, obras, suministros, bares... */
 const TITULO_EXCLUIR =
