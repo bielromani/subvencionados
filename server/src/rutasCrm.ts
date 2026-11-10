@@ -23,6 +23,8 @@ type ProgramadorConContacto = Programador & { codigoIne: string | null };
 /** Lo que el CRM necesita de los datos públicos de la app. */
 export interface ContextoCrm {
   programador: (id: string) => ProgramadorConContacto | undefined;
+  /** Email y teléfono genéricos de un festival (de FestClásica, Redescena…). */
+  contactoFestival?: (id: string) => { email: string | null; telefono: string | null } | undefined;
   contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null } | null;
   convocatoria: (id: string) => Convocatoria | null;
   contrato: (id: string) => ContratoVista | undefined;
@@ -311,19 +313,20 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       const p = ref ? ctx.programador(ref) : undefined;
       if (ref && !p) throw new ErrorCrm('No está en el directorio', 404);
       const contacto = p ? ctx.contacto(p.codigoIne) : null;
+      const deFestival = ref ? ctx.contactoFestival?.(ref) : undefined;
       const ccaa = p?.ccaa ?? (texto(b.ccaa, 100) || null);
       const nombre = texto(b.nombre, 300) || (contacto?.municipio && /ayuntamiento|ajuntament|concello|alcald|junta de gobierno/i.test(p?.nombre ?? '') ? `Ayuntamiento de ${contacto.municipio}` : (p?.nombre ?? ''));
       if (!nombre) throw new ErrorCrm('Falta el nombre', 400);
       return c.guardarEntidad(u.id, {
         ref,
         nombre,
-        tipo: ['ayuntamiento', 'auditorio', 'teatro', 'festival', 'otro'].includes(b.tipo) ? b.tipo : /ayuntamiento|ajuntament|concello|alcald|junta de gobierno/i.test(p?.nombre ?? nombre) ? 'ayuntamiento' : 'otro',
+        tipo: ['ayuntamiento', 'auditorio', 'teatro', 'festival', 'otro'].includes(b.tipo) ? b.tipo : deFestival ? 'festival' : /ayuntamiento|ajuntament|concello|alcald|junta de gobierno/i.test(p?.nombre ?? nombre) ? 'ayuntamiento' : 'otro',
         municipio: contacto?.municipio ?? p?.ciudad ?? (texto(b.municipio, 200) || null),
         provincia: p?.provincia ?? (texto(b.provincia, 100) || null),
         ccaa,
         persona: texto(b.persona, 200) || contacto?.nombre || null,
-        email: texto(b.email, 200) || contacto?.email?.split(/[;,\s]+/)[0] || null,
-        telefono: texto(b.telefono, 100) || contacto?.telefono || null,
+        email: texto(b.email, 200) || contacto?.email?.split(/[;,\s]+/)[0] || deFestival?.email || null,
+        telefono: texto(b.telefono, 100) || contacto?.telefono || deFestival?.telefono || null,
         idioma: b.idioma === 'ca' || b.idioma === 'es' ? b.idioma : ccaa && IDIOMA_CATALAN.test(ccaa) ? 'ca' : 'es',
         notas: texto(b.notas),
       });

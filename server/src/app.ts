@@ -391,6 +391,24 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       poblacion: m.poblacion,
     };
   };
+  /** Un festival también se puede seguir y recibir propuestas: como cliente, con su estilo y su web. */
+  const festivalComoCliente = (id: string): ProgramadorConContacto | undefined => {
+    if (!id.startsWith('f-')) return undefined;
+    const f = dir().festivales.find((x) => x.id === id);
+    if (!f) return undefined;
+    return {
+      ...sinContratos(f.id, f.nombre, null, null),
+      ciudad: f.lugar,
+      provincia: f.provincia,
+      ccaa: f.ccaa,
+      web: f.directorios.find((d) => d.web)?.web ?? null,
+      contratos: f.fuentes.filter((x) => x.tipo === 'contrato').length,
+      estilos: Object.fromEntries(f.estilos.map((e) => [e, 1])),
+      codigoIne: null,
+      conContacto: f.directorios.some((d) => d.email || d.telefono),
+      subvenciones: null,
+    };
+  };
   // Prospección y seguimiento (CRM) de cada cuenta, con los datos públicos de la app.
   const crm = opciones.crm ?? null;
   const vigente = (c: Convocatoria) => {
@@ -398,7 +416,13 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     return p === 'abierta' || p === 'proxima';
   };
   const ctxCrm: ContextoCrm = {
-        programador: (id) => dir().programadores.find((p) => p.id === id),
+        programador: (id) => dir().programadores.find((p) => p.id === id) ?? festivalComoCliente(id),
+        contactoFestival: (id) => {
+          const f = dir().festivales.find((x) => x.id === id);
+          if (!f) return undefined;
+          const d = f.directorios;
+          return { email: d.find((x) => x.email)?.email ?? null, telefono: d.find((x) => x.telefono)?.telefono ?? null };
+        },
         contacto: contactoBreve,
         convocatoria: (id) => repo.obtenerConvocatoria(id),
         contrato: (id) => contratos.find((c) => c.id === id),

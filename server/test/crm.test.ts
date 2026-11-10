@@ -248,3 +248,23 @@ describe.skipIf(!url)('avisos sobre oportunidades abiertas', async () => {
     expect(await alertasCrm(crm, ctx, u, hoy)).toHaveLength(0);
   });
 });
+
+describe.skipIf(!url)('festivales en el seguimiento', async () => {
+  const { default: request } = await import('supertest');
+  const { crearApp } = await import('../src/app.js');
+  const { Repositorio } = await import('../src/db.js');
+  const cuentas = url ? AlmacenCuentas.desdeUrl(url) : null!;
+  const externo = { directorio: 'FestClásica', url: 'https://x.example/f', nombre: 'Festival de Música Antigua de Prueba', municipio: 'Prueba', provincia: null, ccaa: 'Aragón', organizador: 'Fundación Prueba', web: 'https://festival.example', telefono: '976 000 000', email: 'info@festival.example', inicio: null, fin: null, descripcion: null };
+  const app = crearApp(new Repositorio(':memory:'), { cuentas, crm: url ? new AlmacenCrm(cuentas) : null, festivalesExternos: [externo] });
+  afterAll(() => cuentas?.cerrar());
+
+  it('un festival se añade al seguimiento con su email y teléfono genéricos', async () => {
+    const r = await request(app).post('/api/cuenta/registro').send({ email: `fest-${Date.now()}@example.com`, clave: 'una clave larga' }).expect(201);
+    const cookie = r.headers['set-cookie']![0]!.split(';')[0]!;
+    const id = (await request(app).get('/api/festivales')).body.items[0].id as string;
+    expect(id).toMatch(/^f-/);
+    const e = (await request(app).post('/api/crm/entidades').set('Cookie', cookie).send({ ref: id }).expect(200)).body;
+    expect(e).toMatchObject({ nombre: 'Festival de Música Antigua de Prueba', tipo: 'festival', email: 'info@festival.example', telefono: '976 000 000', ccaa: 'Aragón' });
+    expect((await request(app).get(`/api/crm/ref/${id}`).set('Cookie', cookie).expect(200)).body.entidad.id).toBe(e.id);
+  });
+});

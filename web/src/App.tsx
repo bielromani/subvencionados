@@ -280,7 +280,7 @@ export function App() {
         {meta && pagina === 'contratos' && <Contratos meta={meta} ruta={ruta} />}
         {meta && pagina === 'contrato' && id && <PaginaContrato id={id} />}
         {meta && pagina === 'donde-tocar' && <DondeTocar key={ruta.params.get('ver') ?? ''} meta={meta} ruta={ruta} />}
-        {meta && pagina === 'programador' && id && <PaginaProgramador id={id} />}
+        {meta && pagina === 'programador' && id && (id.startsWith('f-') ? <PaginaFestival id={id} /> : <PaginaProgramador id={id} />)}
         {meta && pagina === 'festival' && id && <PaginaFestival id={id} />}
         {meta && pagina === 'calendario' && <Calendario meta={meta} ruta={ruta} />}
         {meta && pagina === 'organismos' && <Organismos meta={meta} ruta={ruta} />}

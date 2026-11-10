@@ -279,6 +279,7 @@ export function PaginaFestival({ id }: { id: string }) {
           </div>
         </dl>
       </article>
+      <EntidadCrm refId={f.id} />
       {!!f.directorios?.length && (
         <section className="bloque">
           <h3>Contacto</h3>
