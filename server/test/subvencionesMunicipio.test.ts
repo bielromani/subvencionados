@@ -18,6 +18,13 @@ const conv = (over: Partial<Convocatoria> & { entidades: { nombre: string; impor
     concesiones: { numero: over.entidades.length, importeTotal: 0, ultimaFecha: null, entidades: over.entidades },
   }) as unknown as Convocatoria;
 
+import { puedeContratar } from '../src/subvencionesMunicipio.js';
+
+describe('Quién puede contratar un concierto', () => {
+  it.each(['FUNDACIO CIUTAT DE VALLS', 'ASSOCIACIO AMICS DE LA MÚSICA', 'CASINO MENESTRAL FIGUERENC', 'COMISSIO DE FESTES DE SALO', 'JOVENTUTS MUSICALS DE MOIA', 'ASSOCIACIO JAZZ GRANOLLERS', 'SOCIEDAD FILARMONICA DE BADAJOZ', 'ENTITAT MUNICIPAL DESCENTRALITZADA JESUS'])('sí: %s', (n) => expect(puedeContratar(n)).toBe(true));
+  it.each(['ASSOCIACIÓ CULTURAL PASTORETS DE MONTBLANC', 'COLLA JOVES XIQUETS DE VALLS', 'COLLA DE GRALLERS DE MONTBLANC', 'ASSOCIACIO CULTURAL EL BOU DE VALLS', 'PEÑA TAURINA TOMELLOSO', 'ASOCIACION EL GARAJE TEATRO', 'CORAL TERPSÍCORE', 'SOCIEDAD MUSICAL BANDA DE PICASSENT'])('no: %s', (n) => expect(puedeContratar(n)).toBe(false));
+});
+
 describe('Subvenciones que reciben los municipios', () => {
   it('provincia del NIF de la administración local (no la de las EMD)', () => {
     expect(provinciaDeNif('P4308700F')).toBe('43');
@@ -28,7 +35,7 @@ describe('Subvenciones que reciben los municipios', () => {
     const i = indiceSubvenciones(
       [
         conv({ entidades: [{ nombre: 'AJUNTAMENT DE VALLS', importe: 5000, fecha: '2025-05-01', nif: 'P4316100A' }] }),
-        conv({ entidades: [{ nombre: 'ASSOCIACIÓ CULTURAL PASTORETS DE MONTBLANC', importe: 2000, fecha: '2025-11-11', nif: 'G55752125' }] }, { musical: false, descarte: 'Asociaciones, entidades o barrios del municipio' }),
+        conv({ entidades: [{ nombre: 'COMISSIO DE FESTES DE MONTBLANC', importe: 2000, fecha: '2025-11-11', nif: 'G55752125' }] }, { musical: false, descarte: 'Asociaciones, entidades o barrios del municipio' }),
         conv({ entidades: [{ nombre: 'ENTITAT MUNICIPAL DESCENTRALITZADA JESUS', importe: 1000, fecha: '2025-01-01', nif: 'P9359001F' }] }),
         // Escuelas de música: no es dinero para programar.
         conv({ entidades: [{ nombre: 'AJUNTAMENT DE MONTBLANC', importe: 9000, fecha: '2025-01-01', nif: 'P4308700F' }] }, { descarte: 'Formación, becas o estudios' }),
@@ -37,7 +44,7 @@ describe('Subvenciones que reciben los municipios', () => {
     );
     expect(i.porMunicipio.get('43161')?.ayuntamiento).toMatchObject({ importe: 5000, numero: 1 });
     expect(i.porMunicipio.get('43086')?.ayuntamiento.numero ?? 0).toBe(0);
-    expect(i.porMunicipio.get('43086')?.entidades.map((e) => e.nombre)).toEqual(['ASSOCIACIÓ CULTURAL PASTORETS DE MONTBLANC']);
+    expect(i.porMunicipio.get('43086')?.entidades.map((e) => e.nombre)).toEqual(['COMISSIO DE FESTES DE MONTBLANC']);
     expect(i.pedanias).toMatchObject([{ nombre: 'ENTITAT MUNICIPAL DESCENTRALITZADA JESUS', codigoProvincia: '43', importe: 1000 }]);
   });
 

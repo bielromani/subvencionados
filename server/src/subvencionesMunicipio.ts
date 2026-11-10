@@ -54,8 +54,22 @@ export function paraProgramar(c: Convocatoria): boolean {
   return !descarte || (culturaGeneral && /^No es de música$/.test(descarte));
 }
 
+/**
+ * Entidades que pueden contratar un concierto: organizan fiestas, ciclos o festivales, o gestionan una sala.
+ * Lo demás (castellers, pastorets, gegants, bandas y corales aficionadas, escuelas, deporte...) no es cliente.
+ */
+const CONTRATA =
+  /\b(festes|fiestas|festa major|fiesta mayor|comissio de festes|comision de fiestas|comisio|festers|festeros|festeres|penya|penyes|pena|penas|amics de la musica|amigos de la musica|filarmonica|filharmonica|joventuts musicals|juventudes musicales|pro musica|ateneu|ateneo|casino|casal|cercle|circulo|liceo|societat recreativa|sociedad recreativa|centre cultural|centro cultural|festival|festivals|cicle|ciclo|concerts|conciertos|jazz|blues|auditori|auditorio|sala de concerts|sala de conciertos|fundacio (ciutat|municipal|privada? de cultura)|fundacion (ciudad|municipal)|fundacio\w* .*(cultur|music|teatr)|fundacion\w* .*(cultur|music|teatr)|promocio cultural|promocion cultural|patronat|patronato)\b/;
+const NO_CONTRATA =
+  /\b(castell\w*|xiquets|minyons|pastorets|gegant\w*|capgros\w*|diables|dimonis|grallers|esbart|bastoners|trabucaires|escola|escuela|escoles|escuelas|ampa|afa|apa|esport\w*|deport\w*|futbol|club|banda|bandes|bandas|coral|corals|corales|orfeo|orfeon|coro|coros|escolania|rondalla|txaranga|charanga|agrupacio teatral|grup de teatre|grupo de teatro|teatre amateur|aficionat\w*|aficionad\w*|gent gran|jubilats|jubilados|veins|vecinos|bombers|protecc\w* civil|caritat|caritas|taurin\w*|esplai|historia|teatro joven|companyia|compania|cia|parroquia|germandat|hermandad|cofradia|confraria)\b/;
+export const puedeContratar = (nombre: string) => {
+  const n = normalizar(nombre);
+  return PEDANIA.test(n) || (CONTRATA.test(n) && !NO_CONTRATA.test(n));
+};
+
 /** «Associació Cultural Pastorets de Montblanc» → «Montblanc». */
-const lugarDelNombre = (nombre: string) => nombre.match(/\b(?:de|del|de la|d['’])\s*([^,()'’]+?)\s*$/i)?.[1]?.trim() ?? null;
+const lugaresDelNombre = (nombre: string) =>
+  [...nombre.matchAll(/\b(?:de|del|d['’])\s*/gi)].map((m) => nombre.slice(m.index! + m[0].length).replace(/[,(].*$/, '').trim()).filter(Boolean);
 
 const resumen = () => ({ importe: 0, numero: 0, ultima: null as string | null, concesiones: [] as ConcesionRecibida[] });
 const anotar = (x: { importe: number; numero: number; ultima: string | null; concesiones: ConcesionRecibida[] }, c: ConcesionRecibida) => {
@@ -103,8 +117,9 @@ export function indiceSubvenciones(convocatorias: Convocatoria[], contactos: Con
         if (m && m.codigoIne !== deUnAyuntamiento) anotar(de(m.codigoIne).ayuntamiento, concesion);
         continue;
       }
+      if (!puedeContratar(e.nombre)) continue;
       // Entidades del pueblo: las que subvenciona su propio ayuntamiento, o las que llevan su nombre («... de Montblanc»).
-      const m = (deUnAyuntamiento && contactos.porCodigo(deUnAyuntamiento)) || contactos.buscar(lugarDelNombre(e.nombre), prov);
+      const m = (deUnAyuntamiento && contactos.porCodigo(deUnAyuntamiento)) || (prov ? lugaresDelNombre(e.nombre).map((l) => contactos.buscar(l, prov)).find(Boolean) : null);
       if (!m) continue;
       const mapa = entidadesPorIne.get(m.codigoIne) ?? new Map<string, EntidadSubvencionada>();
       const x = mapa.get(n) ?? { nombre: e.nombre, pedania: false, ...resumen() };
