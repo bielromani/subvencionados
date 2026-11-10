@@ -1,5 +1,4 @@
-# Diagnóstico manual (solo lee y escribe en el registro): formato de las fuentes de contratos de otras comunidades
-# y de las webs de festivales.
+# Diagnóstico manual (solo lee y escribe en el registro): tamaño de página y filtros de la API de contratos de Euskadi.
 name: Explorar fuentes
 
 on:
@@ -8,54 +7,18 @@ on:
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
     defaults:
       run:
         shell: bash {0}
-    env:
-      UA: "Mozilla/5.0 (compatible; subvencionados-exploracion)"
     steps:
-      - name: Euskadi (parámetros de la API)
-        continue-on-error: true
+      - name: Euskadi
         run: |
-          B=https://api.euskadi.eus/procurements
-          curl -sS -m 60 -L -A "$UA" "https://opendata.euskadi.eus/api-procurements?api=procurements" -o /tmp/d.html; python3 -c "
-          import re,html
-          s=open('/tmp/d.html',encoding='utf8',errors='ignore').read()
-          print(sorted(set(re.findall(r'(?:/procurements)?/contracts[a-zA-Z0-9/{}_?=&.-]*',s)))[:40])
-          print(sorted(set(re.findall(r'[?&](\w+)=',s)))[:60])
-          print(sorted(set(re.findall(r'https?://[^\"<> ]+(?:json|yaml|swagger|openapi)[^\"<> ]*',s)))[:10])"
-          for q in "_pageSize=100" "cpv=92312000" "CPV=92312000-1" "minorContract=true" "awardDateFrom=2026-01-01" "_filter=CPV:92312000*" "q=concierto"; do
-            printf "%s → " "$q"; curl -sS -m 60 "$B/contracts?_page=1&$q" | jq -c '{total:.totalItems, n:.itemsOfPage, cpv:[.items[]?.CPV][0:5]}' ; done
-          curl -sS -m 60 "$B/contracting-authorities/597" | jq -c '.' | head -c 1500; echo
-          curl -sS -m 60 "$B/contracting-notices/entities/1048" | jq -c '.' | head -c 800; echo
-          curl -sS -m 60 "$B/contracts?_page=1&_pageSize=100" | jq -r '.items[] | .awardDate' | sort | uniq -c | head
-          curl -sS -m 60 "$B/contracts?_page=73000&_pageSize=10" | jq -r '.items[] | .awardDate' | head -3
-
-      - name: Festivales
-        continue-on-error: true
-        run: |
-          get() { curl -sS -m 40 -L -A "$UA" -o /tmp/p.html -w "$1 → HTTP %{http_code} %{size_download}b\n" "$1"; }
-          get https://www.festclasica.com/es/festivales.html; grep -oE 'https://www.festclasica.com/es/festivales/c/[0-9][^"]*' /tmp/p.html | sort -u > /tmp/fc.txt; wc -l < /tmp/fc.txt; head -60 /tmp/fc.txt
-          get "$(head -1 /tmp/fc.txt)"; python3 -c "
-          import re,html,sys
-          s=open('/tmp/p.html',encoding='utf8',errors='ignore').read()
-          s=re.sub(r'<(script|style)[^>]*>.*?</\1>','',s,flags=re.S)
-          i=s.find('<main'); s=s[i if i>0 else 0:]
-          t=html.unescape(re.sub(r'<[^>]+>','\n',s)); t=re.sub(r'\n\s*\n+','\n',t)
-          print(t[:2500])
-          print([h for h in re.findall(r'href=\"(https?://[^\"]+)\"',s) if 'festclasica' not in h][:15])
-          print(re.findall(r'[\w.+-]+@[\w-]+\.[\w.]+',s)[:5])"
-          get https://www.rema-eemn.net/members/; python3 -c "
-          import re
-          s=open('/tmp/p.html',encoding='utf8',errors='ignore').read()
-          i=[m.start() for m in re.finditer('Spain',s)][:3]
-          for k in i: print(re.sub(r'\s+',' ',s[max(0,k-700):k+100])); print('----')"
-          get https://www.redescena.net/festival/3522/festival-de-la-guitarra-de-cordoba/; python3 -c "
-          import re,html
-          s=open('/tmp/p.html',encoding='utf8',errors='ignore').read()
-          s=re.sub(r'<(script|style)[^>]*>.*?</\1>','',s,flags=re.S)
-          t=html.unescape(re.sub(r'<[^>]+>','\n',s)); t=re.sub(r'\n\s*\n+','\n',t)
-          k=t.find('Guitarra'); print(t[k:k+2000])"
-          get "https://www.festivalfinder.eu/festivals?country%5B%5D=Spain"; grep -oE 'href="/festivals/[a-z0-9-]+"' /tmp/p.html | sort -u | head -5; grep -oE 'href="/festivals/[a-z0-9-]+"' /tmp/p.html | sort -u | wc -l
-          grep -oE '(api|ajax|json)[^"'"'"' ]{0,80}' /tmp/p.html | sort -u | head -10
+          B=https://api.euskadi.eus/procurements/contracts
+          for q in "_elements=1000" "_elements=100" "pageSize=100" "size=100" "_limit=100" "limit=100" "elements=100"; do
+            printf "%s → " "$q"; curl -sS -m 90 "$B?_page=1&$q" | jq -c '{total:.totalItems, pages:.totalPages, n:(.items|length)}'; done
+          for q in "contractType=2" "contractTypeId=2" "minorContract=true" "cpv=92312000-1" "CPV=92312000-1" "awardDate=2025-07-01" "_fullText=concierto" "fullText=concierto" "object=concierto" "contractingAuthority=597" "contractingAuthorityId=597" "authority=597"; do
+            printf "%s → " "$q"; curl -sS -m 90 "$B?_page=1&$q" | jq -c '{total:.totalItems, o:[.items[0:2][]?.object[0:40]]}'; done
+          curl -sS -m 90 "https://api.euskadi.eus/procurements/contracting-authorities/597/contracts?_page=1" | jq -c '{total:.totalItems, o:[.items[0:2][]?.object[0:40]]}' 
+          curl -sS -m 90 "https://api.euskadi.eus/procurements/contracting-authorities?_page=1" | jq -c '{total:.totalItems, n:(.items|length), x:.items[0]}' | head -c 600; echo
+          time curl -sS -m 90 -o /dev/null "$B?_page=5000&_elements=1000"
