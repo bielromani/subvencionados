@@ -1,6 +1,6 @@
-# Diagnóstico manual: qué publica la Generalitat en datos abiertos sobre contratos (incluidos los menores) y la
-# agenda cultural, y qué ofrecen las webs de festivales y circuitos privados. Solo lee y escribe en el registro.
-name: Explorar Cataluña y festivales
+# Diagnóstico manual (solo lee y escribe en el registro): qué contratos de música se nos escapan en Cataluña,
+# qué publican en datos abiertos otras comunidades y cómo están hechas las webs de festivales.
+name: Explorar fuentes
 
 on:
   workflow_dispatch:
@@ -8,53 +8,65 @@ on:
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     defaults:
       run:
         shell: bash {0}
     env:
-      D: https://analisi.transparenciacatalunya.cat
+      D: https://analisi.transparenciacatalunya.cat/resource/hb6v-jcbf.json
+      UA: "Mozilla/5.0 (compatible; subvencionados-exploracion)"
     steps:
-      - name: Columnas completas
+      - name: Montblanc y Valls en el Registre (todo, sin filtrar)
         run: |
-          for id in ybgg-dgi6 hb6v-jcbf qjue-2pk9 rhpv-yr4f 2n2k-gg9s; do
-            echo "=== $id"; curl -sS -m 60 "$D/api/views/$id.json" | jq -r '.name, ([.columns[].fieldName] | join(", "))'
+          for m in MONTBLANC VALLS; do
+            echo "=== $m: por año y situación"
+            curl -sS -m 120 -G "$D" --data-urlencode "\$select=exercici,situaci_contractual,count(*)" --data-urlencode "\$where=upper(organisme_contractant) like '%$m'" --data-urlencode "\$group=exercici,situaci_contractual" --data-urlencode "\$order=exercici" | jq -c '.[]'
+            echo "=== $m: contratos (menor/adjudicació) con su CPV"
+            curl -sS -m 120 -G "$D" --data-urlencode "\$select=exercici,codi_cpv,import_adjudicacio,descripcio_expedient" --data-urlencode "\$where=upper(organisme_contractant) like '%$m' AND situaci_contractual in('menor','adjudicació')" --data-urlencode "\$order=exercici DESC" --data-urlencode "\$limit=400" | jq -r '.[] | "\(.exercici) | \(.codi_cpv // "-") | \(.import_adjudicacio) | \(.descripcio_expedient)"' | grep -iE "concert|music|músic|orquestr|cobla|banda|coral|grup|actuaci|espectacl|festa|medieval|jordi|nadal|revetlla|ball|cantada|havaner|dj|teatre|animaci" | head -80
+          done
+          echo "=== Registre: importe mínimo de los menores (¿se registran los pequeños?)"
+          curl -sS -m 120 -G "$D" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=situaci_contractual='menor' AND import_adjudicacio < 1000"; echo
+          curl -sS -m 120 -G "$D" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=situaci_contractual='menor'"; echo
+
+      - name: Agenda cultural de Cataluña en Montblanc y Valls
+        run: |
+          A=https://analisi.transparenciacatalunya.cat/resource/rhpv-yr4f.json
+          for m in Montblanc Valls; do
+            echo "=== $m"
+            curl -sS -m 60 -G "$A" --data-urlencode "\$select=min(data_inici),max(data_inici),count(*)" --data-urlencode "\$where=municipi='$m' OR localitat='$m'"; echo
+            curl -sS -m 60 -G "$A" --data-urlencode "\$select=data_inici,denominaci,tags_categor_es,espai" --data-urlencode "\$where=(municipi='$m' OR localitat='$m') AND tags_categor_es like '%concert%'" --data-urlencode "\$order=data_inici DESC" --data-urlencode "\$limit=15" | jq -r '.[] | "\(.data_inici[0:10]) | \(.denominaci) | \(.espai // "")"'
+          done
+          echo "=== Agenda: rango y categorías"
+          curl -sS -m 60 -G "$A" --data-urlencode "\$select=min(data_inici),max(data_inici),count(*)"; echo
+          curl -sS -m 60 -G "$A" --data-urlencode "\$select=tags_categor_es,count(*)" --data-urlencode "\$group=tags_categor_es" --data-urlencode "\$order=count(*) DESC" --data-urlencode "\$limit=15" | jq -c '.[]'
+
+      - name: Catálogos de datos abiertos (contratos) de otras comunidades
+        run: |
+          ck() { echo "=== $1 · $2"; curl -sS -m 60 -A "$UA" -G "$1/api/3/action/package_search" --data-urlencode "q=$2" --data-urlencode "rows=8" | jq -r '.result.results[]? | "\(.name) · \(.title | if type=="object" then (.es // .gl // .eu // .ca // tostring) else . end) · " + ([.resources[]? | .format + " " + .url] | .[0:3] | join(" ; "))' 2>&1 | head -12; }
+          ck https://datosabiertos.navarra.es "contratos"
+          ck https://abertos.xunta.gal "contratos"
+          ck https://datos.comunidad.madrid "contratos menores"
+          ck https://datos.madrid.es "contratos menores"
+          ck https://catalegdades.caib.cat "contractes"
+          ck https://www.juntadeandalucia.es/datosabiertos/portal "contratos menores"
+          ck https://datos.gob.es "contratos menores"
+          echo "=== datos.gob.es apidata"
+          curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/contratos%20menores.json?_pageSize=20" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \(.publisher // "") · \([.distribution[]?.accessURL] | .[0:2] | join(" ; "))"' | head -25
+          curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/registro%20de%20contratos.json?_pageSize=10" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \([.distribution[]?.accessURL] | .[0:2] | join(" ; "))"' | head -12
+          echo "=== Euskadi opendata"
+          for u in "https://opendata.euskadi.eus/catalogo-datos/?q=contratos" "https://www.contratacion.euskadi.eus/webkpe00-kpeperfi/es/ac70cPublicidadWar/busquedaAnuncios?locale=es" "https://api.euskadi.eus/procurements/contracts?_page=1&_pageSize=1"; do
+            curl -sS -m 40 -L -A "$UA" -o /tmp/e -w "$u → HTTP %{http_code} %{size_download}b %{content_type}\n" "$u"; grep -oiE 'href="[^"]*(opendata|json|xml|csv|contrat)[^"]*"' /tmp/e | sort -u | head -15; head -c 600 /tmp/e | tr -d '\n'; echo
           done
 
-      - name: Montblanc en contratos (PSCP y Registre)
+      - name: Webs de festivales (estructura)
         run: |
-          q() { curl -sS -m 120 -G "$D/resource/$1.json" --data-urlencode "\$where=$2" --data-urlencode "\$limit=${3:-15}" ${4:+--data-urlencode "\$select=$4"} | head -c 6000; echo; }
-          echo "=== ybgg Montblanc (órganos)"; q ybgg-dgi6 "upper(nom_organ) like '%MONTBLANC%'" 50 "nom_organ,count(*)&\$group=nom_organ"
-          echo "=== ybgg Montblanc (muestra)"; q ybgg-dgi6 "upper(nom_organ) like '%MONTBLANC%'" 8
-          echo "=== hb6v Montblanc (órganos)"; curl -sS -m 120 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$select=organisme_contractant,situaci_contractual,count(*)" --data-urlencode "\$where=upper(organisme_contractant) like '%MONTBLANC%'" --data-urlencode "\$group=organisme_contractant,situaci_contractual" | head -c 4000; echo
-          echo "=== hb6v Montblanc (muestra)"; q hb6v-jcbf "upper(organisme_contractant) like '%MONTBLANC%'" 10
-
-      - name: Música en el Registre (CPV 9231 / 9232) por tipo y año
-        run: |
-          curl -sS -m 180 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$select=exercici,situaci_contractual,count(*)" \
-            --data-urlencode "\$where=starts_with(codi_cpv,'9231') OR starts_with(codi_cpv,'9232')" --data-urlencode "\$group=exercici,situaci_contractual" --data-urlencode "\$order=exercici" | head -c 4000; echo
-          echo "=== muestra música menor ayuntamientos"
-          curl -sS -m 180 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$where=starts_with(codi_cpv,'92312') AND situaci_contractual='menor' AND upper(organisme_contractant) like 'AJUNTAMENT%'" --data-urlencode "\$limit=6" --data-urlencode "\$order=data_adjudicacio DESC" | head -c 6000; echo
-          echo "=== palabras (concert) en registro"
-          curl -sS -m 180 -G "$D/resource/hb6v-jcbf.json" --data-urlencode "\$select=count(*)" --data-urlencode "\$where=upper(descripcio_expedient) like '%CONCERT%'"; echo
-
-      - name: Música en PSCP (ybgg) por fase
-        run: |
-          curl -sS -m 180 -G "$D/resource/ybgg-dgi6.json" --data-urlencode "\$select=fase_publicacio,count(*)" \
-            --data-urlencode "\$where=upper(objecte_contracte) like '%CONCERT%' OR upper(denominacio) like '%CONCERT%'" --data-urlencode "\$group=fase_publicacio" | head -c 3000; echo
-          curl -sS -m 180 -G "$D/resource/ybgg-dgi6.json" --data-urlencode "\$where=upper(denominacio) like '%CONCERT%' AND fase_publicacio like 'Formal%'" --data-urlencode "\$limit=3" | head -c 5000; echo
-
-      - name: Agenda cultural Montblanc
-        run: |
-          curl -sS -m 60 -G "$D/resource/rhpv-yr4f.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=3" | head -c 4000; echo
-          curl -sS -m 60 -G "$D/resource/2n2k-gg9s.json" --data-urlencode "\$q=Montblanc" --data-urlencode "\$limit=2" | head -c 3000; echo
-
-      - name: Webs de festivales y circuitos
-        run: |
-          for u in https://www.festclasica.com https://www.redescena.net https://www.rema-eemn.net https://www.efa-aef.eu https://www.festivalfinder.eu \
-                   https://www.asaco.org https://www.adeteatros.es https://www.apmusicales.com https://www.lafede.cat https://www.acpcultura.cat; do
-            echo "=== $u"
-            curl -sS -m 40 -L -A "Mozilla/5.0 (compatible; subvencionados-exploracion)" -o /tmp/p.html -w "HTTP %{http_code} · %{size_download} bytes · %{url_effective}\n" "$u"
-            grep -oi '<title>[^<]*' /tmp/p.html | head -1
-            grep -oiE 'href="[^"]*(festival|socio|miembro|members|asociad|directori|ciclo|programador|sala|associats)[^"]*"' /tmp/p.html | sort -u | head -12
+          get() { curl -sS -m 40 -L -A "$UA" -o /tmp/p.html -w "$1 → HTTP %{http_code} %{size_download}b\n" "$1"; }
+          get https://www.festclasica.com/es/festivales.html; grep -oE 'href="[^"]*/festivales/c/[^"]*"' /tmp/p.html | sort -u | wc -l
+          F=$(grep -oE 'https://www.festclasica.com/es/festivales/c/[^"]*' /tmp/p.html | head -1); get "$F"; sed 's/<[^>]*>/ /g' /tmp/p.html | tr -s ' \n' | grep -iE "web|mail|@|tel|fecha|lugar|direcci" | head -20
+          get https://www.redescena.net/festivales-socios/; grep -oE 'href="[^"]*festival[^"]*"' /tmp/p.html | sort -u | head -15; grep -oE 'href="[^"]*festival[^"]*"' /tmp/p.html | sort -u | wc -l
+          get https://www.redescena.net/festivales/; grep -oE 'href="[^"]*"' /tmp/p.html | grep -i festival | sort -u | head -10
+          get "https://www.festivalfinder.eu/festivals?country=spain"; grep -oE 'href="/festivals/[^"]*"' /tmp/p.html | sort -u | head -10; grep -oE 'href="/festivals/[^"]*"' /tmp/p.html | sort -u | wc -l; grep -oiE '(country|filter)[^"]{0,40}"[^"]{0,60}' /tmp/p.html | sort -u | head -10
+          get "https://www.rema-eemn.net/members/"; grep -oiE 'spain|españa|espagne' /tmp/p.html | wc -l; grep -oE 'href="/members/[^"]*"' /tmp/p.html | sort -u | wc -l
+          for u in https://www.esjazz.es https://www.festivalesdejazz.es https://www.asociacionfestivalesdejazz.com https://www.fma.es https://www.festivalsmusica.cat https://www.associaciofestivals.cat https://www.lafede.cat https://www.fundaciosgae.org https://www.circuitofestivalesmusica.es https://www.mapadefestivales.es; do
+            get "$u"; grep -oi '<title>[^<]*' /tmp/p.html | head -1
           done
