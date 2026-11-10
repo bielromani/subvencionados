@@ -10,6 +10,7 @@ import { AlmacenContratos } from './contratos/almacen.js';
 import { esDeMusica } from './contratos/placsp.js';
 import { esMusicaMadrid, PREFIJO_MADRID } from './contratos/madrid.js';
 import { esMusicaRegistre, PREFIJO_REGISTRE } from './contratos/registreCat.js';
+import { esRuidoParaPromotor, limpiarTitulo, repararTexto } from './contratos/ruido.js';
 import { enriquecer } from './contratos/vista.js';
 import { Repositorio } from './db.js';
 import { existsSync, readFileSync } from 'node:fs';
@@ -23,7 +24,16 @@ export function montarApp(rutaDb: string, rutaDatos: string) {
   const contratos = [...new AlmacenContratos(join(rutaDatos, 'contratos')).contratos.values()]
     // El filtro se vuelve a aplicar al cargar: si se afina, no hace falta volver a descargar.
     .filter((c) => (c.id.startsWith(PREFIJO_REGISTRE) ? esMusicaRegistre(c.titulo, c.cpv) : c.id.startsWith(PREFIJO_MADRID) ? esMusicaMadrid(c) : esDeMusica(c)))
-    .map(({ anio: _a, ...c }) => enriquecer(c));
+    // Cultura popular, música de fiesta y servicios técnicos: no son conciertos que se puedan ofrecer.
+    .filter((c) => !esRuidoParaPromotor(c.titulo))
+    .map(({ anio: _a, ...c }) =>
+      enriquecer({
+        ...c,
+        titulo: limpiarTitulo(repararTexto(c.titulo)),
+        organo: { ...c.organo, nombre: repararTexto(c.organo.nombre) },
+        adjudicaciones: c.adjudicaciones.map((a) => ({ ...a, adjudicatario: a.adjudicatario && repararTexto(a.adjudicatario) })),
+      }),
+    );
   const rutaFestivales = join(rutaDatos, 'festivales', 'directorios.json');
   const festivalesExternos = existsSync(rutaFestivales) ? (JSON.parse(readFileSync(rutaFestivales, 'utf8')) as FestivalExterno[]) : [];
   const rutaPedanias = join(rutaDatos, 'directorio', 'pedanias.json');
