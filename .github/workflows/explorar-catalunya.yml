@@ -1,5 +1,5 @@
-# Diagnóstico manual (solo lee y escribe en el registro): contratos menores del Ayuntamiento de Madrid y registros
-# de pedanías (entidades locales menores, EMD) con su municipio.
+# Diagnóstico manual (solo lee y escribe en el registro): formato de los CSV de contratos menores de Madrid y de las
+# listas de pedanías con su municipio.
 name: Explorar fuentes
 
 on:
@@ -15,24 +15,19 @@ jobs:
     env:
       UA: "Mozilla/5.0 (compatible; subvencionados-exploracion)"
     steps:
-      - name: Madrid (contratos menores)
+      - name: Madrid (cabeceras de cada CSV)
         continue-on-error: true
         run: |
-          for id in 300253-0-contratos-actividad-menores 216876-0-contratos-actividad; do
-            echo "=== $id"; curl -sS -m 60 -A "$UA" -G "https://datos.madrid.es/api/3/action/package_show" --data-urlencode "id=$id" | jq -r '.result.resources[] | "\(.format) · \(.name) · \(.url)"' | head -30
-          done
-          u=$(curl -sS -m 60 -A "$UA" -G "https://datos.madrid.es/api/3/action/package_show" --data-urlencode "id=300253-0-contratos-actividad-menores" | jq -r '[.result.resources[] | select(.format|test("CSV";"i"))][0].url'); echo "CSV: $u"
-          [ "$u" != "null" ] && curl -sS -m 120 -L -A "$UA" "$u" -o /tmp/m.csv && wc -lc /tmp/m.csv && head -3 /tmp/m.csv | iconv -f latin1 -t utf8 | cut -c1-1200 && iconv -f latin1 -t utf8 /tmp/m.csv | grep -iE "concierto|actuaci|musical" | head -5 | cut -c1-500
-
-      - name: Pedanías con su municipio
+          curl -sS -m 60 -A "$UA" -G "https://datos.madrid.es/api/3/action/package_show" --data-urlencode "id=300253-0-contratos-actividad-menores" | jq -r '.result.resources[] | select(.format|test("CSV";"i")) | "\(.name)\t\(.description // "" | .[0:80])\t\(.url)"' > /tmp/l.tsv
+          while IFS=$'\t' read -r n d u; do printf "%s | %s | " "$n" "$d"; curl -sS -m 60 -L -A "$UA" "$u" | head -c 400 | head -1 | iconv -f latin1 -t utf8 | cut -c1-330; done < /tmp/l.tsv
+      - name: Pedanías
         continue-on-error: true
         run: |
-          echo "=== Socrata Generalitat: EMD"
-          curl -sS -m 60 -G "https://api.eu.socrata.com/api/catalog/v1" --data-urlencode "domains=analisi.transparenciacatalunya.cat" --data-urlencode "q=entitats municipals descentralitzades" --data-urlencode "limit=6" | jq -r '.results[] | "\(.resource.id) · \(.resource.name) · \(.resource.columns_name | join(","))"'
-          echo "=== datos.gob.es: entidades locales menores / EATIM"
-          for t in "entidades%20locales%20menores" "entidades%20de%20ambito%20territorial%20inferior" "EATIM" "registro%20de%20entidades%20locales"; do
-            curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/$t.json?_pageSize=8" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \([.distribution[]? | (.accessURL // "")] | .[0:2] | join(" ; "))"' 2>/dev/null | head -8
+          echo "=== Cataluña EMD"; curl -sS -m 60 "https://analisi.transparenciacatalunya.cat/resource/cum6-qrjz.json?\$limit=3"; echo; curl -sS -m 60 "https://analisi.transparenciacatalunya.cat/resource/cum6-qrjz.json?\$select=count(*)"; echo
+          echo "=== CLM"; curl -sS -m 60 -L -A "$UA" "https://datosabiertos.castillalamancha.es/sites/datosabiertos.castillalamancha.es/files/Listado%20EATIMS%20CLM.csv" -o /tmp/c.csv; wc -l /tmp/c.csv; file /tmp/c.csv; head -4 /tmp/c.csv | iconv -f latin1 -t utf8 | cut -c1-400
+          echo "=== Alicante"; curl -sS -m 60 -L -A "$UA" "https://datosabiertos.diputacionalicante.es/resource/csv/entidades-locales-menores-y-pedanias" -o /tmp/a.csv; wc -l /tmp/a.csv; head -4 /tmp/a.csv | cut -c1-400
+          echo "=== Euskadi"; curl -sS -m 60 -L -A "$UA" "https://opendata.euskadi.eus/contenidos/ds_registros/registro_entidades_locales/opendata/entidades.json" -o /tmp/e.json; wc -c /tmp/e.json; head -c 1500 /tmp/e.json; echo; jq -r '.[]? | .tipoEntidad // .entityType // empty' /tmp/e.json 2>/dev/null | sort | uniq -c | head
+          echo "=== Más listas (datos.gob.es)"
+          for t in "pedanias" "juntas%20vecinales" "entidades%20locales%20autonomas" "concejos"; do
+            curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/$t.json?_pageSize=8" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \([.distribution[]? | (.accessURL // "")] | .[0:1] | join(" ; "))"' 2>/dev/null | head -6
           done
-          echo "=== REL (Ministerio)"
-          curl -sS -m 60 -L -A "$UA" -o /tmp/r.html -w "HTTP %{http_code} %{size_download}b %{url_effective}\n" "https://ssweb.seap.minhap.es/REL/frontend/inicio/eatims"; grep -oiE 'href="[^"]*(xls|csv|descarg|export|eatim)[^"]*"' /tmp/r.html | sort -u | head -10
-          curl -sS -m 60 -L -A "$UA" -o /tmp/r2.html -w "HTTP %{http_code} %{size_download}b %{url_effective}\n" "https://ssweb.seap.minhap.es/REL/"; grep -oiE 'href="[^"]*"' /tmp/r2.html | grep -iE "xls|csv|descarg|export|eatim|consulta" | sort -u | head -15
