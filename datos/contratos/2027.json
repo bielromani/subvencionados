@@ -1,0 +1,3 @@
+[
+{"id":"rpc-0811920002-x2026001114-1","expediente":"X2026001114","titulo":"ACTUACIÓ NAMINA & THE BARBARIANS 19 ABRIL MSBE 2026","estado":"ADJ","menor":true,"actualizado":"2027-03-09","enlace":null,"organo":{"nombre":"Ajuntament de Masquefa","dir3":null,"nif":null,"ciudad":null,"codigoPostal":null,"web":null,"jerarquia":["Barcelona","Cataluña"]},"tipoContrato":null,"procedimiento":null,"importe":null,"importeConIva":null,"cpv":[],"lugar":{"nuts":"ES51","nombre":"Barcelona"},"finPlazo":null,"ejecucion":{"inicio":null,"fin":null},"adjudicaciones":[{"adjudicatario":"MUSTRAMIT, S.L.","nif":null,"personaFisica":false,"importe":3425,"importeConIva":null,"fecha":"2027-03-09","ofertas":null,"lote":null}],"documentos":[]}
+]
