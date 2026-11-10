@@ -388,6 +388,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       email: p?.email ?? m.cultura.email ?? m.ayuntamiento.email,
       telefono: p?.telefono ?? m.cultura.telefono ?? m.ayuntamiento.telefono,
       deCultura: !!(p?.email || p?.telefono || m.cultura.email || m.cultura.telefono),
+      poblacion: m.poblacion,
     };
   };
   // Prospección y seguimiento (CRM) de cada cuenta, con los datos públicos de la app.

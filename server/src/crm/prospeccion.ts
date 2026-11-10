@@ -45,7 +45,7 @@ export interface PropuestaPreparada {
 /** Lo que la prospección necesita de los datos públicos. */
 export interface FuentesProspeccion {
   programadores: () => (Programador & { codigoIne: string | null })[];
-  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean } | null;
+  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null } | null;
   /** Ayudas útiles para quien contrata, vigentes (se filtran por territorio aquí). */
   ayudasProgramadores: () => Convocatoria[];
   /** Todas las licitaciones de música con plazo abierto (se reparten por programador aquí, una sola vez). */
@@ -166,7 +166,7 @@ export function prepararPropuestas(
     if (opciones.ccaa?.length && !(p.ccaa && opciones.ccaa.includes(p.ccaa))) continue;
     const c = f.contacto(p.codigoIne);
     const destinatario = c?.email?.split(/[;,\s]+/).find((x) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x));
-    if (!destinatario) continue;
+    if (!destinatario || excluir.has(`@${destinatario.toLowerCase()}`)) continue;
     const motivos: string[] = [];
     let puntos = 0;
     // Lo que ha programado de los estilos del catálogo.
@@ -191,7 +191,15 @@ export function prepararPropuestas(
     if (senalesGestion.length) puntos += 2;
     // Hace falta una razón concreta: historial del estilo, una ayuda o una licitación.
     if (!conciertos && !suyas.length && !licitaciones.length) continue;
-    const espectaculos = elegirEspectaculos(disponibles, p, ajustes, hoy);
+    // Capacidad de pago: tamaño del municipio y lo que ya paga por concierto.
+    const poblacion = c?.poblacion ?? null;
+    if (poblacion != null && poblacion < 1000 && !licitaciones.length) continue;
+    if (poblacion != null) puntos += poblacion >= 50_000 ? 3 : poblacion >= 20_000 ? 2 : poblacion >= 5_000 ? 1 : 0;
+    const paga = Math.max(p.rango?.max ?? 0, ...Object.values(p.rangos ?? {}).map((r) => r.max));
+    const aSuAlcance = puedeFormatoGrande(poblacion, paga) ? disponibles : disponibles.filter((e) => !FORMATO_GRANDE.has(e.tipo) || (e.precioMin != null && e.precioMin <= paga));
+    if (!aSuAlcance.length) continue;
+    const espectaculos = elegirEspectaculos(aSuAlcance, p, ajustes, hoy);
+    if (!espectaculos.length) continue;
     const idioma: 'es' | 'ca' = p.ccaa && CATALAN.test(p.ccaa) ? 'ca' : 'es';
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
@@ -220,7 +228,34 @@ export function prepararPropuestas(
       gestion: senalesGestion.slice(0, 2),
       historial,
     };
-    candidatos.push({ ...base, motivos, puntos, ...redactarPropuesta(base, ajustes, disponibles) });
+    candidatos.push({ ...base, motivos, puntos, ...redactarPropuesta(base, ajustes, aSuAlcance) });
   }
-  return candidatos.sort((a, b) => b.puntos - a.puntos).slice(0, opciones.limite);
+  // Un correo, una propuesta: la de más puntos.
+  const porEmail = new Map<string, PropuestaPreparada>();
+  for (const x of candidatos) {
+    const k = x.destinatario.toLowerCase();
+    if ((porEmail.get(k)?.puntos ?? -Infinity) < x.puntos) porEmail.set(k, x);
+  }
+  return repartirPorComunidad([...porEmail.values()], opciones.limite);
+}
+
+/** Ópera, sinfónico y grandes obras corales (la Pasión, el Réquiem): no para un pueblo pequeño que paga poco. */
+const FORMATO_GRANDE = new Set<TipoEspectaculo>(['opera', 'sinfonico_coral', 'sinfonica', 'religiosa']);
+const puedeFormatoGrande = (poblacion: number | null, paga: number) => (poblacion ?? 0) >= 20_000 || paga >= 8_000;
+
+/** Las mejores, pero repartidas por comunidades: ninguna se lleva la tanda si hay buenas de otras. */
+export function repartirPorComunidad<T extends { puntos: number; ccaa: string | null }>(xs: T[], limite: number): T[] {
+  const orden = [...xs].sort((a, b) => b.puntos - a.puntos);
+  const tope = Math.max(2, Math.ceil(limite / 5));
+  const porCcaa = new Map<string, number>();
+  const elegidas = new Set<T>();
+  // Por rondas: en cada una, cada comunidad puede sumar hasta `tope` más.
+  for (let ronda = 1; elegidas.size < Math.min(limite, orden.length); ronda++)
+    for (const x of orden) {
+      const k = x.ccaa ?? '';
+      if (elegidas.size >= limite || elegidas.has(x) || (porCcaa.get(k) ?? 0) >= ronda * tope) continue;
+      elegidas.add(x);
+      porCcaa.set(k, (porCcaa.get(k) ?? 0) + 1);
+    }
+  return [...elegidas].sort((a, b) => b.puntos - a.puntos);
 }

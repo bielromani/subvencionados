@@ -23,7 +23,7 @@ type ProgramadorConContacto = Programador & { codigoIne: string | null };
 /** Lo que el CRM necesita de los datos públicos de la app. */
 export interface ContextoCrm {
   programador: (id: string) => ProgramadorConContacto | undefined;
-  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean } | null;
+  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null } | null;
   convocatoria: (id: string) => Convocatoria | null;
   contrato: (id: string) => ContratoVista | undefined;
   /** Ayudas útiles para quien contrata, vigentes y que cubren el territorio de la entidad. */

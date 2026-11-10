@@ -836,11 +836,12 @@ export class AlmacenCrm {
 
   /** Sitios que no hay que volver a proponer: pendientes, aceptados, o descartados hace menos de 90 días. */
   async refsBloqueadas(u: string): Promise<Set<string>> {
-    const filas = await this.q<{ ref: string }>(
-      "select ref from crm_propuestas where usuario = $1 and (estado in ('pendiente', 'aceptada') or (estado = 'descartada' and actualizado > now() - interval '90 days'))",
+    const filas = await this.q<{ ref: string; destinatario: string | null }>(
+      "select ref, datos->>'destinatario' as destinatario from crm_propuestas where usuario = $1 and (estado in ('pendiente', 'aceptada') or (estado = 'descartada' and actualizado > now() - interval '90 days'))",
       [u],
     );
-    return new Set(filas.map((f) => f.ref));
+    // También el email: dos órganos del mismo ayuntamiento no deben dar dos propuestas al mismo correo.
+    return new Set(filas.flatMap((f) => [f.ref, ...(f.destinatario ? [`@${f.destinatario.toLowerCase()}`] : [])]));
   }
 
   async guardarPropuestas(u: string, ps: PropuestaPreparada[]) {
