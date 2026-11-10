@@ -1,5 +1,5 @@
-# Diagnóstico manual (solo lee y escribe en el registro): formato de los CSV de contratos menores de Madrid y de las
-# listas de pedanías con su municipio.
+# Diagnóstico manual (solo lee y escribe en el registro): primeras filas de los CSV de contratos menores de Madrid
+# de 2022 y 2025.
 name: Explorar fuentes
 
 on:
@@ -8,26 +8,13 @@ on:
 jobs:
   explorar:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     defaults:
       run:
         shell: bash {0}
-    env:
-      UA: "Mozilla/5.0 (compatible; subvencionados-exploracion)"
     steps:
-      - name: Madrid (cabeceras de cada CSV)
-        continue-on-error: true
+      - name: Madrid 2022 y 2025
         run: |
-          curl -sS -m 60 -A "$UA" -G "https://datos.madrid.es/api/3/action/package_show" --data-urlencode "id=300253-0-contratos-actividad-menores" | jq -r '.result.resources[] | select(.format|test("CSV";"i")) | "\(.name)\t\(.description // "" | .[0:80])\t\(.url)"' > /tmp/l.tsv
-          while IFS=$'\t' read -r n d u; do printf "%s | %s | " "$n" "$d"; curl -sS -m 60 -L -A "$UA" "$u" | head -c 400 | head -1 | iconv -f latin1 -t utf8 | cut -c1-330; done < /tmp/l.tsv
-      - name: Pedanías
-        continue-on-error: true
-        run: |
-          echo "=== Cataluña EMD"; curl -sS -m 60 "https://analisi.transparenciacatalunya.cat/resource/cum6-qrjz.json?\$limit=3"; echo; curl -sS -m 60 "https://analisi.transparenciacatalunya.cat/resource/cum6-qrjz.json?\$select=count(*)"; echo
-          echo "=== CLM"; curl -sS -m 60 -L -A "$UA" "https://datosabiertos.castillalamancha.es/sites/datosabiertos.castillalamancha.es/files/Listado%20EATIMS%20CLM.csv" -o /tmp/c.csv; wc -l /tmp/c.csv; file /tmp/c.csv; head -4 /tmp/c.csv | iconv -f latin1 -t utf8 | cut -c1-400
-          echo "=== Alicante"; curl -sS -m 60 -L -A "$UA" "https://datosabiertos.diputacionalicante.es/resource/csv/entidades-locales-menores-y-pedanias" -o /tmp/a.csv; wc -l /tmp/a.csv; head -4 /tmp/a.csv | cut -c1-400
-          echo "=== Euskadi"; curl -sS -m 60 -L -A "$UA" "https://opendata.euskadi.eus/contenidos/ds_registros/registro_entidades_locales/opendata/entidades.json" -o /tmp/e.json; wc -c /tmp/e.json; head -c 1500 /tmp/e.json; echo; jq -r '.[]? | .tipoEntidad // .entityType // empty' /tmp/e.json 2>/dev/null | sort | uniq -c | head
-          echo "=== Más listas (datos.gob.es)"
-          for t in "pedanias" "juntas%20vecinales" "entidades%20locales%20autonomas" "concejos"; do
-            curl -sS -m 60 -A "$UA" "https://datos.gob.es/apidata/catalog/dataset/title/$t.json?_pageSize=8" | jq -r '.result.items[]? | "\(.title | if type=="array" then .[0]._value else . end) · \([.distribution[]? | (.accessURL // "")] | .[0:1] | join(" ; "))"' 2>/dev/null | head -6
+          for u in https://datos.madrid.es/dataset/300253-0-contratos-actividad-menores/resource/300253-23-contratos-actividad-menores-csv/download/300253-23-contratos-actividad-menores-csv.csv https://datos.madrid.es/dataset/300253-0-contratos-actividad-menores/resource/300253-27-contratos-actividad-menores-csv/download/300253-27-contratos-actividad-menores-csv.csv; do
+            curl -sS -m 120 -L -A "Mozilla/5.0" "$u" -o /tmp/x.csv; file /tmp/x.csv; head -c 1500 /tmp/x.csv | od -c | head -3; head -4 /tmp/x.csv | cut -c1-900; grep -ic concierto /tmp/x.csv
           done
