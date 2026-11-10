@@ -1,4 +1,5 @@
 import { clasificar, normalizar } from '../clasificacion/musica.js';
+import { type Formacion, formacionesDe } from './formacion.js';
 import { PROVINCIAS_INE } from '../referencias.js';
 import { CCAA_POR_NUTS2, ccaaDesdeNombre, PROVINCIA_POR_NUTS3 } from '../regiones.js';
 import type { Estilo } from '../tipos.js';
@@ -10,6 +11,8 @@ export interface ContratoVista extends Contrato {
   codigoProvincia: string | null;
   ccaa: string | null;
   estilos: Estilo[];
+  /** Formación que nombra el título (cuarteto, coro, sinfónica, ópera, jazz…). */
+  formaciones: Formacion[];
   /** Suma de lo adjudicado (sin IVA) en todos sus lotes. */
   adjudicado: number | null;
   /** Fecha de la última adjudicación. */
@@ -48,6 +51,7 @@ export function enriquecer(c: Contrato): ContratoVista {
     codigoProvincia,
     ccaa,
     estilos: clasificar({ texto: c.titulo }).estilosExplicitos,
+    formaciones: formacionesDe(c.titulo),
     adjudicado: importes.length ? importes.reduce((s, x) => s + x, 0) : null,
     fechaAdjudicacion: fechas.at(-1) ?? null,
   };

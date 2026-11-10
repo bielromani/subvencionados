@@ -325,6 +325,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     rango: null,
     proveedores: [],
     recientesEstilo: [],
+    formaciones: {},
+    rangos: {},
   });
   const tieneContactoCultura = (m: ContactoMunicipio | null) => !!m && (m.personas.length > 0 || !!m.cultura.email || !!m.cultura.telefono);
   const dir = () => {

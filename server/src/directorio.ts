@@ -1,4 +1,5 @@
 import { clasificar, normalizar } from './clasificacion/musica.js';
+import { type Formacion, FORMACIONES } from './contratos/formacion.js';
 import type { ContratoVista } from './contratos/vista.js';
 import { claveNombreFestival, type FestivalExterno } from './festivalesExternos.js';
 import type { Convocatoria, Estilo } from './tipos.js';
@@ -60,6 +61,10 @@ export interface Programador {
   recientes: Fuente[];
   /** Rango habitual de lo que paga por concierto (percentiles 25 y 75), de sus contratos de jazz, clásica u ópera si hay 3 o más. */
   rango: { min: number; max: number; deEstilo: boolean } | null;
+  /** Contratos por formación (cámara, coral, sinfónico, ópera, jazz…). */
+  formaciones: Partial<Record<Formacion, number>>;
+  /** Lo que paga por formación (percentiles 25 y 75), con 2 o más contratos de esa formación. */
+  rangos: Partial<Record<Formacion, { min: number; max: number; contratos: number }>>;
   /** Agencias y empresas que más le venden conciertos (sin personas físicas). */
   proveedores: { nombre: string; contratos: number; importe: number }[];
   /** Sus últimos contratos de jazz, clásica u ópera. */
@@ -123,6 +128,21 @@ export function programadores(contratos: ContratoVista[]): Programador[] {
         const min = percentil(base, 0.25);
         const max = percentil(base, 0.75);
         return min != null && max != null ? { min, max, deEstilo: base === deEstilo } : null;
+      })(),
+      formaciones: (() => {
+        const n: Partial<Record<Formacion, number>> = {};
+        for (const c of lista) for (const f of c.formaciones) n[f] = (n[f] ?? 0) + 1;
+        return n;
+      })(),
+      rangos: (() => {
+        const r: Partial<Record<Formacion, { min: number; max: number; contratos: number }>> = {};
+        for (const f of FORMACIONES) {
+          const xs = lista.filter((c) => c.formaciones.includes(f)).map((c) => c.adjudicado).filter((x): x is number => x != null && x > 0);
+          const min = percentil(xs, 0.25);
+          const max = percentil(xs, 0.75);
+          if (xs.length >= 2 && min != null && max != null) r[f] = { min, max, contratos: xs.length };
+        }
+        return r;
       })(),
       proveedores: (() => {
         const porNombre = new Map<string, { nombre: string; contratos: number; importe: number }>();

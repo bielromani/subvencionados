@@ -394,6 +394,9 @@ export interface Programador {
   /** En la ficha: ayudas que convoca su ayuntamiento. */
   ayudas?: Convocatoria[];
   rango?: { min: number; max: number; deEstilo: boolean } | null;
+  /** Contratos por formación y lo que paga por cada una (con 2 o más contratos). */
+  formaciones?: Partial<Record<Formacion, number>>;
+  rangos?: Partial<Record<Formacion, { min: number; max: number; contratos: number }>>;
   proveedores?: { nombre: string; contratos: number; importe: number }[];
   recientesEstilo?: FuenteDirectorio[];
   /** En la ficha: sus licitaciones con plazo abierto. */
@@ -492,3 +495,14 @@ export interface Circuito {
   anios: number[];
   fuentes: FuenteDirectorio[];
 }
+
+export type Formacion = 'opera' | 'religiosa' | 'sinfonica' | 'coral' | 'camara' | 'jazz' | 'banda';
+export const NOMBRE_FORMACION: Record<Formacion, string> = {
+  opera: 'Ópera y zarzuela',
+  religiosa: 'Música sacra',
+  sinfonica: 'Sinfónico',
+  coral: 'Coral',
+  camara: 'Cámara y recital',
+  jazz: 'Jazz',
+  banda: 'Banda',
+};

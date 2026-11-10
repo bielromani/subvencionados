@@ -6,6 +6,7 @@
 //   entidad (o el usuario enlaza la resolución); «revisada» la marca el usuario.
 
 import { normalizar } from '../clasificacion/musica.js';
+import { type Formacion, FORMACIONES_DE_TIPO, NOMBRE_FORMACION } from '../contratos/formacion.js';
 import type { ContratoVista } from '../contratos/vista.js';
 import type { Programador } from '../directorio.js';
 import type { Convocatoria, Estilo } from '../tipos.js';
@@ -74,7 +75,23 @@ const euros = (n: number) => `${Math.round(n).toLocaleString('es-ES')} €`;
 export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, hoy = new Date(), opciones: { afines?: boolean } = {}): { amplio: boolean; propuestas: Encaje[] } {
   const historial = p ? (Object.entries(p.estilos) as [Estilo, number][]).filter(([, n]) => n > 0) : [];
   const tiposConocidos = new Map<TipoEspectaculo, number>();
-  for (const [estilo, n] of historial) for (const t of TIPOS_DE_ESTILO[estilo]) tiposConocidos.set(t, (tiposConocidos.get(t) ?? 0) + n);
+  // «Clásica» es demasiado amplio: si se sabe la formación (cuarteto, coro, sinfónica…), cuenta esa.
+  const formaciones = p?.formaciones ?? {};
+  const detalleClasica = (['camara', 'sinfonica', 'coral', 'religiosa'] as Formacion[]).some((f) => (formaciones[f] ?? 0) > 0);
+  const deFormacion = new Map<TipoEspectaculo, Formacion>();
+  for (const [estilo, n] of historial) {
+    if (estilo === 'clasica' && detalleClasica) continue;
+    for (const t of TIPOS_DE_ESTILO[estilo]) tiposConocidos.set(t, (tiposConocidos.get(t) ?? 0) + n);
+  }
+  if (detalleClasica)
+    for (const t of TIPOS_DE_ESTILO.clasica) {
+      const fs = (FORMACIONES_DE_TIPO[t] ?? []).filter((f) => (formaciones[f] ?? 0) > 0).sort((a, b) => formaciones[b]! - formaciones[a]!);
+      const n = fs.reduce((s, f) => s + formaciones[f]!, 0);
+      if (n) {
+        tiposConocidos.set(t, n);
+        deFormacion.set(t, fs[0]!);
+      }
+    }
   // Afines: el tipo del que viene (para explicarlo), solo si no lo programa ya.
   const afinDe = new Map<TipoEspectaculo, TipoEspectaculo>();
   if (opciones.afines) for (const t of tiposConocidos.keys()) for (const a of AFINES[t] ?? []) if (!tiposConocidos.has(a) && !afinDe.has(a)) afinDe.set(a, t);
@@ -87,7 +104,8 @@ export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, ho
     if (n) {
       // Pesa cuánto lo programa: a quien hace mucha ópera, primero las óperas.
       puntos += 3 + Math.min(n, 40) / 10;
-      motivos.push(`Ha contratado ${n} ${n === 1 ? 'concierto' : 'conciertos'} de este estilo`);
+      const f = deFormacion.get(e.tipo);
+      motivos.push(`Ha contratado ${n} ${n === 1 ? 'concierto' : 'conciertos'} ${f ? `de ${NOMBRE_FORMACION[f]}` : 'de este estilo'}`);
     } else if (afinDe.has(e.tipo)) {
       // Por detrás de lo que programa: solo completa el correo si faltan propuestas.
       puntos += 1.5;
@@ -101,11 +119,16 @@ export function encajeEntidad(catalogo: Espectaculo[], p: Programador | null, ho
       puntos += 1;
       motivos.push(`Programa con regularidad (${p.contratos} contratos de música)`);
     }
-    if (p?.rango && e.precioMin != null) {
-      if (e.precioMin <= p.rango.max) {
+    // El precio se compara con lo que paga por la misma formación; si no hay datos, con lo que paga en general.
+    const rangos = p?.rangos ?? {};
+    const fPrecio = (FORMACIONES_DE_TIPO[e.tipo] ?? []).filter((f) => rangos[f]).sort((a, b) => rangos[b]!.contratos - rangos[a]!.contratos)[0];
+    const rango = fPrecio ? rangos[fPrecio]! : p?.rango;
+    const que = fPrecio ? `por ${NOMBRE_FORMACION[fPrecio]}` : 'en general';
+    if (rango && e.precioMin != null) {
+      if (e.precioMin <= rango.max) {
         puntos += 1;
-        motivos.push(`Precio dentro de lo que suele pagar (${euros(p.rango.min)}–${euros(p.rango.max)})`);
-      } else avisos.push(`Por encima de lo que suele pagar (${euros(p.rango.min)}–${euros(p.rango.max)}): valorar con ayudas o coproducción`);
+        motivos.push(`Precio dentro de lo que suele pagar ${que} (${euros(rango.min)}–${euros(rango.max)})`);
+      } else avisos.push(`Por encima de lo que suele pagar ${que} (${euros(rango.min)}–${euros(rango.max)}): valorar con ayudas o coproducción`);
     }
     if (e.estadoInfo === 'pendiente') puntos -= 0.5;
     // La prioridad que le da el usuario reordena entre las que ya encajan; no hace encajar a las demás.

@@ -8,7 +8,7 @@ import { FilaConvocatoria } from '../components/FilaConvocatoria';
 import { aniosTexto, Fuentes, mesesTexto } from '../components/Directorio';
 import { Etiqueta } from '../components/TarjetaConvocatoria';
 import { enlace } from '../ruta';
-import { type ConcesionRecibida, NOMBRE_ESTILO, type Estilo, type Festival, type Programador, type SubvencionesRecibidas } from '../tipos';
+import { type ConcesionRecibida, NOMBRE_ESTILO, NOMBRE_FORMACION, type Estilo, type Formacion, type Festival, type Programador, type SubvencionesRecibidas } from '../tipos';
 
 const euros = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
 const fecha = (iso: string | null) => (iso ? new Date(`${iso}T00:00:00`).toLocaleDateString('es-ES') : '—');
@@ -87,6 +87,7 @@ export function PaginaProgramador({ id }: { id: string }) {
   if (error) return <p className="error">{error}</p>;
   if (!p) return <p className="ayuda">Cargando…</p>;
   const estilos = (Object.entries(p.estilos) as [Estilo, number][]).sort((a, b) => b[1] - a[1]);
+  const formaciones = (Object.entries(p.formaciones ?? {}) as [Formacion, number][]).filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]);
   const nombre = p.contacto && /ayuntamiento|ajuntament|concello|junta de gobierno|alcald/i.test(p.nombre) && !/instituto|patronato|fundaci|consorcio|organismo/i.test(p.nombre) ? `Ayuntamiento de ${p.contacto.municipio}` : p.nombre;
   return (
     <section className="pagina">
@@ -108,7 +109,7 @@ export function PaginaProgramador({ id }: { id: string }) {
           </div>
           {p.rango ? (
             <div>
-              <dt>Paga normalmente{p.rango.deEstilo ? ' (jazz, clásica, ópera)' : ''}</dt>
+              <dt>Paga normalmente{p.rango.deEstilo ? ' (jazz, clásica, ópera)' : ' (todo tipo de música)'}</dt>
               <dd>{p.rango.min === p.rango.max ? euros.format(p.rango.min) : `${euros.format(p.rango.min)} – ${euros.format(p.rango.max)}`}</dd>
             </div>
           ) : (
@@ -129,6 +130,22 @@ export function PaginaProgramador({ id }: { id: string }) {
             <dt>Estilos</dt>
             <dd>{estilos.length ? estilos.map(([e, n]) => `${NOMBRE_ESTILO[e]} (${n})`).join(', ') : 'Otros géneros'}</dd>
           </div>
+          {formaciones.length > 0 && (
+            <div>
+              <dt>Por formación</dt>
+              <dd>
+                {formaciones.map(([f, n]) => {
+                  const r = p.rangos?.[f];
+                  return (
+                    <span key={f} className="linea-formacion">
+                      {NOMBRE_FORMACION[f]} ({n}){r ? ` · paga ${r.min === r.max ? euros.format(r.min) : `${euros.format(r.min)} – ${euros.format(r.max)}`}` : ''}
+                      <br />
+                    </span>
+                  );
+                })}
+              </dd>
+            </div>
+          )}
           <div>
             <dt>Grupos distintos contratados</dt>
             <dd>{p.empresas}</dd>
