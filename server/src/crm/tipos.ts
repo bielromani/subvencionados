@@ -33,7 +33,36 @@ export interface Espectaculo {
   textoCartaCa?: string;
   /** Con qué frecuencia proponerla frente a las del mismo estilo (la decide el usuario). */
   prioridad?: 'alta' | 'normal' | 'baja';
+  /** Se ofrece en las cartas (false: se queda en el catálogo pero no sale en los correos). */
+  enCartas?: boolean;
+  /** Su página en el dossier PDF que acompaña a la carta (castellano y catalán; sin catalán, el castellano). */
+  dossier?: FichaDossier;
+  dossierCa?: FichaDossier;
 }
+
+/** Lo que se cuenta de una producción en el dossier. Todo es texto libre; lo vacío no sale. */
+export interface FichaDossier {
+  /** Título en el dossier si no es el nombre de la ficha («LA FLAUTA MÁGICA · Mozart»). */
+  titulo: string;
+  /** Rótulo pequeño encima del título («Nuevo espectáculo musical», «Fusión»). */
+  etiqueta: string;
+  subtitulo: string;
+  /** Dirección, intérpretes... */
+  equipo: string;
+  /** Párrafos separados por una línea en blanco; «• » al principio de línea, lista; «### », subtítulo. */
+  descripcion: string;
+  /** Una línea por dato («Duración: 90 minutos»). */
+  fichaTecnica: string;
+  disponibilidad: string;
+  /** Una línea por precio («Caché por función: 30.000 €»). */
+  precio: string;
+  /** Filas del cuadro resumen, una por línea: Producción | Características | Disponibilidad | Precio. */
+  resumen: string;
+  /** Nota al pie del cuadro («¹ Oferta especial de gira...»). */
+  nota: string;
+}
+
+export const DOSSIER_VACIO: FichaDossier = { titulo: '', etiqueta: '', subtitulo: '', equipo: '', descripcion: '', fichaTecnica: '', disponibilidad: '', precio: '', resumen: '', nota: '' };
 
 /** Peso de la prioridad en el encaje (solo entre las que ya encajan por algún motivo). */
 export const PESO_PRIORIDAD = { alta: 2, normal: 0, baja: -2 } as const;

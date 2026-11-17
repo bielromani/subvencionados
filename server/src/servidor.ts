@@ -51,6 +51,7 @@ export function montarApp(rutaDb: string, rutaDatos: string) {
     cuentas,
     crm: cuentas ? new AlmacenCrm(cuentas) : null,
     enviar: enviadorDesdeEntorno(),
+    rutaFuentes: join(rutaDatos, 'fuentes'),
     // Privada salvo que se pida lo contrario (WEB_PUBLICA=si); sin base de datos no hay cuentas con que entrar.
     privado: !!cuentas && process.env.WEB_PUBLICA !== 'si',
   });

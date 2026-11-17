@@ -8,10 +8,12 @@ import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
-import { completarPlantillas, FIRMA_ARSVIA, type PlantillasCarta, PLANTILLAS_ARSVIA, PLANTILLAS_GENERICAS, plantillasDe, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartas.js';
+import { completarPlantillas, LINEAS, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
+import { type DatosDossier, dossierDeCorreo, dossierDeLinea, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
+import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
-import { type AjustesCrm, AJUSTES_POR_DEFECTO, cupoDiario, type Entidad, type Espectaculo, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
+import { type AjustesCrm, AJUSTES_POR_DEFECTO, cupoDiario, DOSSIER_VACIO, type Entidad, type Espectaculo, type FichaDossier, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
 import type { Programador } from './directorio.js';
 import type { Enviar } from './email.js';
 import { usuarioDeSesion } from './rutasCuenta.js';
@@ -22,6 +24,8 @@ type ProgramadorConContacto = Programador & { codigoIne: string | null };
 
 /** Lo que el CRM necesita de los datos públicos de la app. */
 export interface ContextoCrm {
+  /** Tipografías del dossier en PDF (datos/fuentes). */
+  rutaFuentes?: string;
   programador: (id: string) => ProgramadorConContacto | undefined;
   /** Email y teléfono genéricos de un festival (de FestClásica, Redescena…). */
   contactoFestival?: (id: string) => { email: string | null; telefono: string | null } | undefined;
@@ -47,6 +51,14 @@ export interface ContextoCrm {
 const texto = (x: unknown, max = 2000) => (typeof x === 'string' ? x.slice(0, max) : '');
 const numero = (x: unknown) => (typeof x === 'number' && Number.isFinite(x) && x >= 0 ? x : null);
 
+/** Dossier de una ficha: solo los campos conocidos, como texto; si todo está vacío, no se guarda. */
+function validarDossier(x: unknown): FichaDossier | null {
+  if (!x || typeof x !== 'object') return null;
+  const o = x as Record<string, unknown>;
+  const d = Object.fromEntries(Object.keys(DOSSIER_VACIO).map((k) => [k, texto(o[k], 8000)])) as unknown as FichaDossier;
+  return Object.values(d).some((v) => v.trim()) ? d : null;
+}
+
 function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'> {
   const nombre = texto(b.nombre, 200).trim();
   if (!nombre) throw new ErrorCrm('Falta el nombre del espectáculo', 400);
@@ -68,6 +80,9 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
     textoCarta: texto(b.textoCarta, 4000),
     textoCartaCa: texto(b.textoCartaCa, 4000),
     ...((b.prioridad === 'alta' || b.prioridad === 'baja') && { prioridad: b.prioridad }),
+    ...(typeof b.enCartas === 'boolean' && { enCartas: b.enCartas }),
+    ...(validarDossier(b.dossier) && { dossier: validarDossier(b.dossier)! }),
+    ...(validarDossier(b.dossierCa) && { dossierCa: validarDossier(b.dossierCa)! }),
     // Lo que viene de una importación se conserva al editar la ficha.
     ...(typeof b.origen === 'string' && /^[a-z0-9.-]+#\d+$/.test(b.origen) && { origen: b.origen }),
     ...(typeof b.enWeb === 'boolean' && { enWeb: b.enWeb }),
@@ -203,24 +218,49 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     }),
   );
 
-  // Preajuste ArsVia: las cartas modelo de Joan (plantillas, firma) y el texto de cada producción en sus fichas
-  // (solo en las que aún no tienen texto). Después se vuelven a redactar las propuestas pendientes.
+  // Preajuste ArsVia: las cartas modelo de Joan (plantillas por líneas, firmas) y, en cada producción, su texto en las
+  // cartas, su página del dossier y su precio, solo donde la ficha aún no los tiene (o tiene los de un preajuste
+  // anterior). Crea las producciones de las cartas que no están en el catálogo y aparta de las cartas las que Joan no
+  // ofrece ahora. Después se vuelven a redactar las propuestas pendientes.
   r.post(
     '/plantillas/arsvia',
     ruta(async (_q, _r, u, c) => {
       const a = await c.ajustes(u.id);
-      await c.guardarAjustes(u.id, { ...a, plantillas: PLANTILLAS_ARSVIA, firma: a.firma.trim() ? a.firma : FIRMA_ARSVIA, cargo: a.cargo || 'Coordinación de proyectos y giras' });
+      const firmaVieja = !a.firma.trim() || FIRMAS_ANTERIORES_ARSVIA.includes(a.firma.trim());
+      await c.guardarAjustes(u.id, { ...a, plantillas: PLANTILLAS_ARSVIA, firma: firmaVieja ? FIRMA_ARSVIA : a.firma, cargo: a.cargo || 'Coordinación de proyectos y giras' });
+      let catalogo = await c.espectaculos(u.id);
+      let creadas = 0;
+      for (const n of FICHAS_NUEVAS_ARSVIA) {
+        const ya = catalogo.some((e) => e.origen === n.origen || TEXTOS_PRODUCCIONES_ARSVIA.some((t) => t.patron.test(n.nombre) && t.patron.test(e.nombre)));
+        if (ya) continue;
+        await c.guardarEspectaculo(u.id, n);
+        creadas++;
+      }
+      if (creadas) catalogo = await c.espectaculos(u.id);
       let textos = 0;
-      for (const e of await c.espectaculos(u.id)) {
+      let apartadas = 0;
+      for (const e of catalogo) {
         const t = TEXTOS_PRODUCCIONES_ARSVIA.find((x) => x.patron.test(e.nombre));
-        if (!t || e.textoCarta) continue;
+        const propio = (x: string | undefined) => !!x?.trim() && !TEXTOS_ANTERIORES_ARSVIA.includes(x.trim());
         const { id, ...resto } = e;
-        await c.guardarEspectaculo(u.id, { ...resto, textoCarta: t.es, textoCartaCa: t.ca }, id);
-        textos++;
+        const nueva: Omit<Espectaculo, 'id'> = { ...resto };
+        if (t) {
+          if (!propio(e.textoCarta)) nueva.textoCarta = t.es;
+          if (!propio(e.textoCartaCa)) nueva.textoCartaCa = t.ca;
+          if (!e.dossier) nueva.dossier = t.dossier;
+          if (e.precioMin == null && t.precioMin != null) nueva.precioMin = t.precioMin;
+          if (e.precioMax == null && t.precioMax != null) nueva.precioMax = t.precioMax;
+        } else if (e.enCartas === undefined && FUERA_DE_CARTAS_ARSVIA.some((x) => x.test(e.nombre))) {
+          nueva.enCartas = false;
+          apartadas++;
+        }
+        if (JSON.stringify(nueva) === JSON.stringify(resto)) continue;
+        await c.guardarEspectaculo(u.id, nueva, id);
+        if (t) textos++;
       }
       const ajustes = await c.ajustes(u.id);
-      const catalogo = await c.espectaculos(u.id);
-      return { textos, ...(await c.reescribirPropuestas(u.id, rehacer(ajustes, catalogo))) };
+      catalogo = await c.espectaculos(u.id);
+      return { textos, creadas, apartadas, ...(await c.reescribirPropuestas(u.id, rehacer(ajustes, catalogo))) };
     }),
   );
   r.post(
@@ -241,6 +281,55 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       return { espectaculos, ...redactarPropuesta({ ...p, espectaculos }, ajustes, catalogo) };
     };
   }
+
+  // Dossier en PDF: el de una línea con todo lo que entra en las cartas, o el que lleva un correo concreto.
+  const mandarPdf = async (res: Response, d: DatosDossier, organizacion: string, descargar: boolean) => {
+    if (!ctx.rutaFuentes) throw new ErrorCrm('El dossier en PDF no está disponible en este servidor', 503);
+    const pdf = await pdfDossier(d, ctx.rutaFuentes);
+    const nombre = nombreArchivoDossier(d, organizacion);
+    res
+      .set({ 'Content-Type': 'application/pdf', 'Cache-Control': 'no-store', 'Content-Disposition': `${descargar ? 'attachment' : 'inline'}; filename="${nombre}"` })
+      .send(pdf);
+  };
+  // Estas rutas se abren en una pestaña nueva: el aviso, en texto legible y no en JSON.
+  const sinDossier = (res: Response, motivo: string) => {
+    res.status(404).type('text/plain; charset=utf-8').send(`${motivo}. Rellena «En el dossier PDF» en la ficha de la producción (Catálogo).`);
+  };
+  r.get(
+    '/dossier/:linea',
+    ruta(async (q, res, u, c) => {
+      const linea = q.params.linea as Linea;
+      if (!LINEAS.includes(linea)) return sinDossier(res, 'Esa línea no existe');
+      const idioma = q.query.idioma === 'ca' ? 'ca' : 'es';
+      const [catalogo, a] = await Promise.all([c.espectaculos(u.id), c.ajustes(u.id)]);
+      const d = dossierDeLinea(linea, idioma, catalogo, a);
+      if (!d.producciones.length) return sinDossier(res, 'No hay producciones de esta línea en las cartas');
+      await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
+    }),
+  );
+  r.get(
+    '/mensajes/:id/dossier',
+    ruta(async (q, res, u, c) => {
+      const [x, a] = await Promise.all([c.paraDossier(u.id, String(q.params.id)), c.ajustes(u.id)]);
+      if (!x) return sinDossier(res, 'No existe ese correo');
+      const d = dossierDeCorreo(x.espectaculos, x.idioma, a);
+      if (!d) return sinDossier(res, 'Las producciones de este correo no tienen dossier preparado');
+      await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
+    }),
+  );
+
+  r.get(
+    '/propuestas/:id/dossier',
+    ruta(async (q, res, u, c) => {
+      const [propuestas, catalogo, a] = await Promise.all([c.propuestas(u.id), c.espectaculos(u.id), c.ajustes(u.id)]);
+      const p = propuestas.find((x) => x.id === q.params.id);
+      if (!p) return sinDossier(res, 'No existe esa propuesta');
+      const porId = new Map(catalogo.map((e) => [e.id, e]));
+      const d = dossierDeCorreo(p.espectaculos.map((x) => porId.get(x.id)).filter((e): e is Espectaculo => !!e), p.idioma, a);
+      if (!d) return sinDossier(res, 'Las producciones de esta propuesta no tienen dossier preparado');
+      await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
+    }),
+  );
 
   r.get('/catalogo', ruta(async (_q, _r, u, c) => ({ items: await c.espectaculos(u.id) })));
   r.post('/catalogo', ruta(async (req, _r, u, c) => ({ id: await c.guardarEspectaculo(u.id, validarEspectaculo(req.body ?? {})) })));

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { crm, enlaceCorreo, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada } from '../crm';
+import { crm, enlaceCorreo, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada, urlDossierPropuesta } from '../crm';
 import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
@@ -150,6 +150,14 @@ function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p
           </footer>
         </div>
         <CopiarCorreo para={destinatario} asunto={asunto} cuerpo={cuerpo} />
+        <p className="ayuda adjunto-dossier">
+          📎 Con el envío automático, este correo lleva adjunto el dossier en PDF de su línea.{' '}
+          <a href={urlDossierPropuesta(p.id)} target="_blank" rel="noreferrer">
+            Verlo
+          </a>{' '}
+          ·{' '}
+          <a href={urlDossierPropuesta(p.id, true)}>Descargarlo</a> (para adjuntarlo si lo envías tú desde tu correo)
+        </p>
         {error && <p className="error">{error}</p>}
         <p className="atajos-teclado ayuda">
           <kbd>J</kbd>/<kbd>K</kbd> siguiente y anterior

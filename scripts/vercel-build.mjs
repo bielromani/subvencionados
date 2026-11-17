@@ -45,7 +45,7 @@ writeFileSync(
 // 4. Datos que lee la API.
 cpSync(rutaDb, join(funcion, 'subvencionados.db'));
 const datos = join(funcion, 'datos');
-for (const d of ['fichas', 'contratos', 'festivales', 'bdns/documentos']) {
+for (const d of ['fichas', 'contratos', 'festivales', 'bdns/documentos', 'fuentes']) {
   if (existsSync(join(raiz, 'datos', d))) cpSync(join(raiz, 'datos', d), join(datos, d), { recursive: true });
 }
 mkdirSync(join(datos, 'directorio'), { recursive: true });

@@ -36,22 +36,35 @@ describe('plantillas', () => {
     expect(c.cuerpo).toContain('Atentament,');
   });
 
-  it('cartas modelo de ArsVia: presentación de la línea, texto de cada producción y firma', async () => {
+  it('cartas modelo de ArsVia: una línea por correo, con su presentación, sus producciones, su invitación y su firma', async () => {
     const { PLANTILLAS_ARSVIA, FIRMA_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } = await import('../src/crm/cartas.js');
-    const requiem = TEXTOS_PRODUCCIONES_ARSVIA.find((t) => t.patron.test('Réquiem alemán – Brahms'))!;
-    expect(TEXTOS_PRODUCCIONES_ARSVIA.find((t) => t.patron.test('La flauta mágica – Mozart'))).toBeDefined();
-    const c = generarCarta({
-      ...base,
-      paso: 1,
-      espectaculos: [{ ...base.espectaculos[0]!, textoCarta: requiem.es }],
-      ajustes: { ...base.ajustes, plantillas: PLANTILLAS_ARSVIA, firma: FIRMA_ARSVIA },
-    });
-    expect(c.cuerpo).toContain('Òpera Popular de Barcelona, Orquestra Simfònica Segle XXI, Jeloudoli S.L. y ArsVia');
-    expect(c.cuerpo).toContain('Avance de programación · 2027-2029');
-    expect(c.cuerpo).toContain('Jordi Mora, discípulo directo de Sergiu Celibidache');
-    expect(c.cuerpo).toContain('me gustaría proponerle una breve entrevista');
-    expect(c.cuerpo).toMatch(/Coordinación de proyectos y giras/);
+    const texto = (n: string) => TEXTOS_PRODUCCIONES_ARSVIA.find((t) => t.patron.test(n))!.es;
+    const ajustes = { ...base.ajustes, remitente: 'Joan Romaní', web: 'arsvia.org', plantillas: PLANTILLAS_ARSVIA, firma: FIRMA_ARSVIA };
+    const opera = [
+      { nombre: 'La flauta mágica – Mozart', tipo: 'opera' as const, enlace: '', estadoInfo: 'vigente' as const, textoCarta: texto('La flauta mágica') },
+      { nombre: 'Fidelio – Beethoven', tipo: 'opera' as const, enlace: '', estadoInfo: 'vigente' as const, textoCarta: texto('Fidelio') },
+      { nombre: 'Oriol Romaní & Friends', tipo: 'jazz' as const, enlace: '', estadoInfo: 'vigente' as const },
+    ];
+    const c = generarCarta({ ...base, paso: 1, espectaculos: opera, ajustes, entidad: { ...base.entidad, persona: 'Marta' } });
+    expect(c.asunto).toMatch(/^La flauta mágica, años 2027 y 2028/);
+    expect(c.cuerpo).toMatch(/^Hola, Marta:/);
+    expect(c.cuerpo).toContain('para la programación de Olot');
+    expect(c.cuerpo).toContain('Soy Joan Romaní y te escribo en representación de la alianza de producción');
+    expect(c.cuerpo).toContain('• La flauta mágica, de Mozart · Una producción ágil');
+    expect(c.cuerpo).toContain('• Fidelio, de Beethoven');
+    // La otra línea, en una frase; sin su producción en la lista.
+    expect(c.cuerpo).toContain('También tenemos propuestas de jazz, rock y fusión');
+    expect(c.cuerpo).not.toContain('• Oriol');
+    expect(c.cuerpo).toMatch(/Ópera Popular de Barcelona · Orquesta Sinfónica Siglo XXI · ArsVia – Music Projects\nTel\./);
+    // La invitación al Palau: con ópera y sinfónico-coral, hasta la última función.
+    const conFecha = (hoy: string) => generarCarta({ ...base, paso: 1, espectaculos: opera, ajustes, hoy: new Date(hoy) }).cuerpo;
+    expect(conFecha('2026-11-20')).toContain('Palau de la Música Catalana');
+    expect(conFecha('2027-02-01')).not.toContain('Palau de la Música Catalana');
+    const jazz = generarCarta({ ...base, paso: 1, espectaculos: [opera[2]!], ajustes });
+    expect(jazz.cuerpo).not.toContain('Palau de la Música');
+    expect(jazz.cuerpo).toMatch(/\nArsVia – Music Projects\nTel\./);
   });
+
 });
 
 const url = process.env.TEST_DATABASE_URL;

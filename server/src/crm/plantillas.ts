@@ -3,7 +3,7 @@
 // las condiciones se concretan en la conversación.
 
 import type { Estilo } from '../tipos.js';
-import { componerCarta, componerSeguimiento } from './cartas.js';
+import { componerCarta, componerSeguimiento, lineaPrincipal } from './cartas.js';
 import type { AjustesCrm, Certeza, Entidad, Espectaculo, TipoEspectaculo, TipoOportunidad } from './tipos.js';
 
 export interface DatosCarta {
@@ -18,6 +18,8 @@ export interface DatosCarta {
   asuntoInicial?: string;
   /** Estilos que ha programado la entidad. */
   historial?: Estilo[];
+  /** Fecha de la carta (para las invitaciones con fecha límite). */
+  hoy?: Date;
 }
 
 export const NOMBRE_TIPO: Record<'es' | 'ca', Record<TipoEspectaculo, string>> = {
@@ -94,8 +96,9 @@ export function firmaDe(a: AjustesCrm, idioma: 'es' | 'ca'): string {
  */
 export function generarCarta(d: DatosCarta): { asunto: string; cuerpo: string } {
   const lugar = d.entidad.municipio ?? d.entidad.nombre;
-  if (d.paso > 1) return componerSeguimiento(d.paso, { idioma: d.entidad.idioma, lugar, persona: d.entidad.persona, ajustes: d.ajustes }, d.asuntoInicial ?? lugar);
-  return componerCarta({
+  if (d.paso > 1)
+    return componerSeguimiento(d.paso, { idioma: d.entidad.idioma, lugar, persona: d.entidad.persona, ajustes: d.ajustes, linea: lineaPrincipal(d.espectaculos, d.historial ?? []) }, d.asuntoInicial ?? lugar);
+  const carta = componerCarta({
     idioma: d.entidad.idioma,
     lugar,
     persona: d.entidad.persona,
@@ -105,5 +108,7 @@ export function generarCarta(d: DatosCarta): { asunto: string; cuerpo: string } 
     ayudas: d.ayuda ? [{ titulo: d.ayuda.titulo }] : [],
     gestion: d.oportunidad.tipo === 'gestion_festival',
     ajustes: d.ajustes,
+    ...(d.hoy && { hoy: d.hoy }),
   });
+  return { asunto: carta.asunto, cuerpo: carta.cuerpo };
 }

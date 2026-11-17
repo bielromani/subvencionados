@@ -1,3 +1,4 @@
+import { dossierDeCorreo, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
 import express, { type Request } from 'express';
 import { accion } from './accion.js';
 import { emailAviso } from './avisos.js';
@@ -116,6 +117,8 @@ export interface OpcionesApp {
   enviar?: Enviar | null;
   /** Prospección y seguimiento de cada cuenta (necesita las cuentas). */
   crm?: AlmacenCrm | null;
+  /** Tipografías del dossier en PDF (datos/fuentes); sin ellas no se genera ni se adjunta. */
+  rutaFuentes?: string;
   /** Web privada: toda la información pide sesión de una persona autorizada (ver acceso.ts). */
   privado?: boolean;
 }
@@ -449,6 +452,7 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
         programadores: () => dir().programadores,
         ayudasProgramadores: () => repo.listarConvocatorias().filter((c) => utilParaManager(c) && c.clasificacion.destino === 'programadores' && vigente(c)),
         gestionDe: (id) => oportunidadesDeGestion().find((o) => o.programador === id),
+        rutaFuentes: opciones.rutaFuentes,
   };
   app.use('/api/crm', rutasCrm(opciones.cuentas ?? null, crm, ctxCrm, opciones.enviar ?? null));
 
@@ -947,6 +951,20 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
   }
 
+  async function adjuntoDossier(usuario: string, mensaje: string, a: AjustesCrm) {
+    if (!crm || !opciones.rutaFuentes) return null;
+    try {
+      const x = await crm.paraDossier(usuario, mensaje);
+      if (!x || x.paso !== 1) return null;
+      const d = dossierDeCorreo(x.espectaculos, x.idioma, a);
+      if (!d) return null;
+      return [{ nombre: nombreArchivoDossier(d, a.organizacion), contenido: await pdfDossier(d, opciones.rutaFuentes) }];
+    } catch {
+      // Sin dossier, la carta sale igual: es un complemento.
+      return null;
+    }
+  }
+
   // Envío de los correos programados del CRM (tarea programada cada hora). Solo salen los que tienen el visto bueno
   // y siguen programados (si se cancelan antes, ya no están). Cada envío cuenta como efectivo al salir.
   app.get('/api/crm-envios', async (req, res) => {
@@ -968,7 +986,10 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       if (!a.email) return fallidos.push(m.id);
       // En el envío automático: una forma clara de pedir no recibir más, y copia oculta para el buzón del remitente.
       const cuerpo = automatico ? `${m.cuerpo}\n\n${PIE_BAJA}` : m.cuerpo;
+      // El primer correo lleva el dossier de su línea en PDF (si las producciones tienen dossier preparado).
+      const adjuntos = await adjuntoDossier(usuario, m.id, a);
       const ok = await enviar({
+        ...(adjuntos && { adjuntos }),
         para: m.destinatario,
         asunto: m.asunto,
         texto: cuerpo,

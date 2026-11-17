@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { type AjustesCrm, crm, type Espectaculo, type LineaCarta, NOMBRE_TIPO, type TextosIdioma, type TipoEspectaculo } from '../crm';
+import { type AjustesCrm, crm, DOSSIER_VACIO, type Espectaculo, type FichaDossier, type LineaCarta, NOMBRE_LINEA_CARTA, NOMBRE_TIPO, type TextoLinea, type TextosIdioma, type TipoEspectaculo, urlDossierLinea } from '../crm';
 import { useCuenta } from '../sincronizar';
 
 const VACIO: Omit<Espectaculo, 'id'> = {
@@ -109,7 +109,16 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
               ))}
             </div>
             <p className="ayuda">Frente a las otras del mismo estilo, en los sitios donde encaja. No la propone donde no encaja (una ópera, solo a quien programa ópera).</p>
+            <label className="casilla">
+              <input type="checkbox" checked={e.enCartas !== false} onChange={(x) => campo('enCartas', x.target.checked)} />
+              Incluirla en las cartas y en el dossier
+            </label>
           </fieldset>
+          <EditorDossier
+            es={e.dossier}
+            ca={e.dossierCa}
+            cambiar={(idioma, f) => campo(idioma === 'ca' ? 'dossierCa' : 'dossier', f)}
+          />
           <fieldset>
             <legend>Condiciones</legend>
             <div className="fila-campos">
@@ -311,10 +320,10 @@ function Remitente() {
   );
 }
 
-const NOMBRE_LINEA: Record<LineaCarta, string> = { lirica: 'Ópera y sinfónico-coral', camara: 'Música de cámara', popular: 'Jazz, rock y festivo', navidad: 'Navidad y Año Nuevo' };
+const NOMBRE_LINEA = NOMBRE_LINEA_CARTA;
 
 /** Editor de los textos de las cartas en un idioma, ordenado como se lee el correo. Entre llaves, lo que se rellena solo. */
-function EditorTextos({ t, cambiar }: { t: TextosIdioma; cambiar: (t: TextosIdioma) => void }) {
+function EditorTextos({ t, cambiar, idioma }: { t: TextosIdioma; cambiar: (t: TextosIdioma) => void; idioma: 'es' | 'ca' }) {
   const area = (etiqueta: string, valor: string, poner: (v: string) => void, filas = 3, pista?: string) => (
     <label>
       <span>
@@ -323,7 +332,7 @@ function EditorTextos({ t, cambiar }: { t: TextosIdioma; cambiar: (t: TextosIdio
       <textarea rows={filas} value={valor} onChange={(e) => poner(e.target.value)} />
     </label>
   );
-  const linea = (l: LineaCarta, k: 'titulo' | 'intro' | 'texto', v: string) => cambiar({ ...t, lineas: { ...t.lineas, [l]: { ...t.lineas[l], [k]: v } } });
+  const linea = (l: LineaCarta, k: keyof TextoLinea, v: string) => cambiar({ ...t, lineas: { ...t.lineas, [l]: { ...t.lineas[l], [k]: v } } });
   return (
     <div className="editor-cartas">
       <section className="bloque formulario" id="bloque-inicio">
@@ -340,24 +349,51 @@ function EditorTextos({ t, cambiar }: { t: TextosIdioma; cambiar: (t: TextosIdio
         <h3>
           <span className="numero-paso">2</span> Presentación
         </h3>
-        {area('Cuando el correo junta varias líneas', t.introVarias, (v) => cambiar({ ...t, introVarias: v }), 3, '{lugar}')}
         {area('Lo que ha programado el sitio', t.historial, (v) => cambiar({ ...t, historial: v }), 3, '{lugar} {estilos}')}
       </section>
       <section className="bloque formulario" id="bloque-lineas">
         <h3>
-          <span className="numero-paso">3</span> Una sección por línea
+          <span className="numero-paso">3</span> La carta de cada línea
         </h3>
-        <p className="ayuda">La línea principal del sitio va completa; las demás, solo con el título y la lista de producciones.</p>
+        <p className="ayuda">
+          Cada correo presenta una sola línea (la que más encaja con el sitio), con la lista de sus producciones a su alcance. Las demás líneas que le pueden interesar se nombran en una frase. Al primer correo se le adjunta el dossier en PDF de su línea.
+        </p>
         {(Object.keys(NOMBRE_LINEA) as LineaCarta[]).map((l) => (
           <details key={l} className="linea-carta">
             <summary>
               <strong>{NOMBRE_LINEA[l]}</strong> <span className="ayuda">{t.lineas[l].titulo}</span>
             </summary>
-            {area('Título de la sección', t.lineas[l].titulo, (v) => linea(l, 'titulo', v), 1)}
-            {area('Presentación si es la línea principal', t.lineas[l].intro, (v) => linea(l, 'intro', v))}
-            {area('Texto de la sección', t.lineas[l].texto, (v) => linea(l, 'texto', v), 6)}
+            <div className="fila-campos">
+              {area('Nombre de la línea', t.lineas[l].titulo, (v) => linea(l, 'titulo', v), 1)}
+              {area('Asunto propio (vacío: el general)', t.lineas[l].asunto, (v) => linea(l, 'asunto', v), 1, '{lugar}')}
+            </div>
+            {area('Presentación', t.lineas[l].intro, (v) => linea(l, 'intro', v), 4, '{lugar}')}
+            {area('Quién escribe y frase antes de la lista de producciones', t.lineas[l].texto, (v) => linea(l, 'texto', v), 4, '{remitente}')}
+            {area('Después de la lista', t.lineas[l].cierre, (v) => linea(l, 'cierre', v), 3, '{web}')}
+            <div className="fila-campos">
+              {area('Invitación a una función (vacía: no hay)', t.lineas[l].invitacion, (v) => linea(l, 'invitacion', v), 3)}
+              <label>
+                <span>Se deja de incluir después del</span>
+                <input type="date" value={t.lineas[l].invitacionHasta} onChange={(e) => linea(l, 'invitacionHasta', e.target.value)} />
+              </label>
+            </div>
+            {area('Firma propia de la línea (vacía: la de la cuenta)', t.lineas[l].firma, (v) => linea(l, 'firma', v), 5)}
+            <h4>Dossier en PDF</h4>
+            <div className="fila-campos">
+              {area('Título', t.lineas[l].dossierTitulo, (v) => linea(l, 'dossierTitulo', v), 1)}
+              {area('Subtítulo (entidades)', t.lineas[l].dossierSubtitulo, (v) => linea(l, 'dossierSubtitulo', v), 1)}
+            </div>
+            {area('Condiciones generales', t.lineas[l].condiciones, (v) => linea(l, 'condiciones', v), 6)}
+            {area('Nota final', t.lineas[l].notaFinal, (v) => linea(l, 'notaFinal', v), 2)}
+            <p>
+              <a className="boton-secundario" href={urlDossierLinea(l, idioma)} target="_blank" rel="noreferrer">
+                Ver el dossier de esta línea (PDF)
+              </a>{' '}
+              <span className="ayuda">Con lo que está guardado; guarda antes los cambios.</span>
+            </p>
           </details>
         ))}
+        {area('Las demás líneas, en una frase', t.otrasLineas, (v) => cambiar({ ...t, otrasLineas: v }), 2, '{lineas}')}
       </section>
       <section className="bloque formulario" id="bloque-oportunidades">
         <h3>
@@ -381,6 +417,7 @@ function EditorTextos({ t, cambiar }: { t: TextosIdioma; cambiar: (t: TextosIdio
         {t.seguimientos.map((x, i) => (
           <span key={i}>{area(`${i + 2}.º correo`, x, (v) => cambiar({ ...t, seguimientos: t.seguimientos.map((y, j) => (j === i ? v : y)) as TextosIdioma['seguimientos'] }), 3, '{lugar}')}</span>
         ))}
+        {area('Despedida de los seguimientos', t.despedidaBreve, (v) => cambiar({ ...t, despedidaBreve: v }), 2)}
       </section>
     </div>
   );
@@ -396,7 +433,12 @@ function Plantillas({ alCambiarCatalogo }: { alCambiarCatalogo: () => void }) {
     const r = await crm.cargarPlantillasArsvia();
     await cargar();
     alCambiarCatalogo();
-    setAviso(`Plantillas de ArsVia cargadas. ${r.textos} fichas con texto nuevo; ${r.reescritas} propuestas vueltas a redactar.`);
+    setAviso(
+      `Cartas de ArsVia cargadas: ${r.textos} fichas completadas` +
+        (r.creadas ? `, ${r.creadas} producción nueva en el catálogo` : '') +
+        (r.apartadas ? `, ${r.apartadas} producciones apartadas de las cartas (se pueden volver a incluir en su ficha)` : '') +
+        `; ${r.reescritas} propuestas vueltas a redactar. Para preparar la tanda con las cartas nuevas, pulsa «Rehacer la tanda» en Propuestas.`,
+    );
   };
   return (
     <div className="plantillas">
@@ -419,13 +461,63 @@ function Plantillas({ alCambiarCatalogo }: { alCambiarCatalogo: () => void }) {
         </button>
       </div>
       {aviso && <p className="llamada">{aviso}</p>}
-      <EditorTextos key={idioma} t={a.plantillas[idioma]} cambiar={(t) => setA({ ...a, plantillas: { ...a.plantillas, [idioma]: t } })} />
+      <EditorTextos key={idioma} idioma={idioma} t={a.plantillas[idioma]} cambiar={(t) => setA({ ...a, plantillas: { ...a.plantillas, [idioma]: t } })} />
       <BarraGuardar cambiado={cambiado} guardar={guardar} texto="Guardar y volver a redactar las propuestas" />
     </div>
   );
 }
 
 type Pestana = 'producciones' | 'cartas' | 'firma';
+/** La página de la producción en el dossier PDF que se adjunta al primer correo. Sin catalán, se usa la castellana. */
+function EditorDossier({ es, ca, cambiar }: { es?: FichaDossier; ca?: FichaDossier; cambiar: (idioma: 'es' | 'ca', f: FichaDossier | undefined) => void }) {
+  const [idioma, setIdioma] = useState<'es' | 'ca'>('es');
+  const f = (idioma === 'ca' ? ca : es) ?? DOSSIER_VACIO;
+  const poner = (k: keyof FichaDossier, v: string) => {
+    const nueva = { ...f, [k]: v };
+    cambiar(idioma, Object.values(nueva).some((x) => x.trim()) ? nueva : undefined);
+  };
+  const texto = (k: keyof FichaDossier, etiqueta: string, filas = 1, ayuda?: string) => (
+    <label>
+      {etiqueta}
+      {filas === 1 ? <input value={f[k]} onChange={(x) => poner(k, x.target.value)} /> : <textarea rows={filas} value={f[k]} onChange={(x) => poner(k, x.target.value)} />}
+      {ayuda && <span className="ayuda">{ayuda}</span>}
+    </label>
+  );
+  return (
+    <fieldset>
+      <legend>En el dossier PDF</legend>
+      <div className="segmentado segmentado-corto" role="tablist" aria-label="Idioma del dossier">
+        {(
+          [
+            ['es', 'Castellano'],
+            ['ca', 'Catalán'],
+          ] as ['es' | 'ca', string][]
+        ).map(([v, n]) => (
+          <button key={v} type="button" role="tab" aria-selected={idioma === v} className={idioma === v ? 'activa' : ''} onClick={() => setIdioma(v)}>
+            {n}
+          </button>
+        ))}
+      </div>
+      {idioma === 'ca' && !ca && <p className="ayuda">Sin texto en catalán, el dossier de Cataluña usa el castellano.</p>}
+      {!es && idioma === 'es' && <p className="ayuda">Sin rellenar, el dossier usa el texto de la carta, el formato y el precio de la ficha.</p>}
+      <div className="fila-campos">
+        {texto('etiqueta', 'Etiqueta (sobre el título)')}
+        {texto('titulo', 'Título')}
+      </div>
+      {texto('subtitulo', 'Subtítulo')}
+      {texto('equipo', 'Equipo artístico', 2)}
+      {texto('descripcion', 'Descripción', 8, 'Una línea en blanco separa párrafos; «• » al inicio hace una viñeta y «### » un subtítulo.')}
+      {texto('fichaTecnica', 'Ficha técnica', 4, 'Una línea por dato: «Duración: 90 minutos».')}
+      <div className="fila-campos">
+        {texto('disponibilidad', 'Disponibilidad', 2)}
+        {texto('precio', 'Caché', 2, 'La primera línea sale destacada.')}
+      </div>
+      {texto('resumen', 'Fila del cuadro resumen', 2, 'Producción | Características | Disponibilidad | Precio (una fila por línea).')}
+      {texto('nota', 'Nota al pie', 2)}
+    </fieldset>
+  );
+}
+
 type FiltroCatalogo = 'todas' | 'completas' | 'incompletas' | 'fuera';
 
 /** Tarjeta de una producción: qué es, cómo se presenta y qué le falta. */
@@ -438,6 +530,8 @@ function TarjetaProduccion({ e, editar, borrar }: { e: Espectaculo; editar: () =
         <span className="etiquetas">
           <span className="etiqueta etiqueta-acento">{NOMBRE_TIPO[e.tipo].charAt(0).toUpperCase() + NOMBRE_TIPO[e.tipo].slice(1)}</span>
           {e.enWeb === false && <span className="etiqueta etiqueta-aviso">Ya no está en la web</span>}
+          {e.enCartas === false && <span className="etiqueta">Fuera de las cartas</span>}
+          {e.dossier && <span className="etiqueta">Con dossier</span>}
         </span>
         <h3>
           <button type="button" className="enlace-titulo" onClick={editar}>

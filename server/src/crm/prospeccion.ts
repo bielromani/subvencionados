@@ -12,7 +12,7 @@ import type { Convocatoria, Estilo } from '../tipos.js';
 import { avisosFicha, encajeAyuda, encajeEntidad, encajeLicitacion, type Encaje } from './encaje.js';
 import { idProgramador } from '../directorio.js';
 import { normalizar } from '../clasificacion/musica.js';
-import { componerCarta } from './cartas.js';
+import { componerCarta, LINEA_DE_TIPO, type Linea } from './cartas.js';
 import type { AjustesCrm, Espectaculo, TipoEspectaculo } from './tipos.js';
 
 export interface PropuestaPreparada {
@@ -37,6 +37,9 @@ export interface PropuestaPreparada {
   gestion: string[];
   /** Estilos que ha programado (para volver a redactar el correo si cambian las plantillas). */
   historial: Estilo[];
+  /** Línea que presenta el correo (con su dossier) y las demás que le encajan (se nombran en una frase). */
+  linea?: Linea | null;
+  otrasLineas?: Linea[];
   asunto: string;
   cuerpo: string;
   puntos: number;
@@ -92,6 +95,17 @@ export function elegirEspectaculos(disponibles: Espectaculo[], p: Programador, a
   return variadas(encajeEntidad(disponibles, p, hoy, { afines: ajustes.afines ?? true }).propuestas, n, p.id, porTipo).map((x) => ({ id: x.espectaculo.id, nombre: x.espectaculo.nombre, tipo: x.espectaculo.tipo, motivos: x.motivos, avisos: avisosFicha(x.espectaculo, hoy) }));
 }
 
+/** Todas las producciones de una línea a su alcance (hasta ocho): primero las que mejor encajan, después el resto. */
+export function deLaLinea(catalogo: Espectaculo[], linea: Linea, elegidas: PropuestaPreparada['espectaculos'], p: Programador, hoy = new Date()): PropuestaPreparada['espectaculos'] {
+  const encaje = new Map(encajeEntidad(catalogo, p, hoy, { afines: true }).propuestas.map((x) => [x.espectaculo.id, x]));
+  const peso = { alta: 0, normal: 1, baja: 2 } as const;
+  const resto = catalogo
+    .filter((e) => LINEA_DE_TIPO[e.tipo] === linea && !elegidas.some((x) => x.id === e.id))
+    .sort((a, b) => peso[a.prioridad ?? 'normal'] - peso[b.prioridad ?? 'normal'] || (encaje.get(b.id)?.puntos ?? 0) - (encaje.get(a.id)?.puntos ?? 0))
+    .map((e) => ({ id: e.id, nombre: e.nombre, tipo: e.tipo, motivos: encaje.get(e.id)?.motivos ?? [], avisos: avisosFicha(e, hoy) }));
+  return [...elegidas.filter((x) => LINEA_DE_TIPO[x.tipo] === linea), ...resto].slice(0, 8);
+}
+
 /** Número estable a partir de un texto (FNV-1a): el mismo sitio recibe siempre el mismo sorteo. */
 function huella(s: string): number {
   let h = 2166136261;
@@ -101,22 +115,24 @@ function huella(s: string): number {
 
 /** El correo de la propuesta, por bloques con las plantillas de la cuenta (ver cartas.ts). */
 export function redactarPropuesta(
-  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial'>,
+  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial' | 'otrasLineas'>,
   ajustes: AjustesCrm,
   catalogo: Espectaculo[],
 ): { asunto: string; cuerpo: string } {
   const porId = new Map(catalogo.map((e) => [e.id, e]));
-  return componerCarta({
+  const carta = componerCarta({
     idioma: p.idioma,
     lugar: p.municipio ?? p.nombre,
     persona: p.persona,
     historial: p.historial,
     espectaculos: p.espectaculos.map((e) => porId.get(e.id) ?? { id: e.id, nombre: e.nombre, tipo: e.tipo, enlace: '' }),
+    ...(p.otrasLineas && { otrasLineas: p.otrasLineas }),
     licitaciones: p.licitaciones,
     ayudas: p.ayudas,
     gestion: p.gestion.length > 0,
     ajustes,
   });
+  return { asunto: carta.asunto, cuerpo: carta.cuerpo };
 }
 
 /**
@@ -145,7 +161,7 @@ export function prepararPropuestas(
   opciones: { limite: number; ccaa?: string[]; hoy?: Date } = { limite: 20 },
 ): PropuestaPreparada[] {
   const hoy = opciones.hoy ?? new Date();
-  const disponibles = catalogo.filter((e) => e.enWeb !== false);
+  const disponibles = catalogo.filter((e) => e.enWeb !== false && e.enCartas !== false);
   if (!disponibles.length) return [];
   const estilosCatalogo = new Set(disponibles.map((e) => ESTILO_DE_TIPO[e.tipo]).filter((x): x is Estilo => !!x));
   // Solo ayudas que puede pedir el propio ayuntamiento (no las de asociaciones) y que encajan con el catálogo: una
@@ -198,8 +214,13 @@ export function prepararPropuestas(
     const paga = Math.max(p.rango?.max ?? 0, ...Object.values(p.rangos ?? {}).map((r) => r.max));
     const aSuAlcance = puedeFormatoGrande(poblacion, paga) ? disponibles : disponibles.filter((e) => !FORMATO_GRANDE.has(e.tipo) || (e.precioMin != null && e.precioMin <= paga));
     if (!aSuAlcance.length) continue;
-    const espectaculos = elegirEspectaculos(aSuAlcance, p, ajustes, hoy);
-    if (!espectaculos.length) continue;
+    const elegidas = elegirEspectaculos(aSuAlcance, p, ajustes, hoy);
+    if (!elegidas.length) continue;
+    // El correo presenta una línea (la de la producción que mejor encaja) con todas las suyas a su alcance; las demás
+    // líneas que le encajan se nombran en una frase.
+    const linea = LINEA_DE_TIPO[elegidas[0]!.tipo];
+    const espectaculos = deLaLinea(aSuAlcance, linea, elegidas, p, hoy);
+    const otrasLineas = [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => l !== linea);
     const idioma: 'es' | 'ca' = p.ccaa && CATALAN.test(p.ccaa) ? 'ca' : 'es';
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
@@ -227,6 +248,8 @@ export function prepararPropuestas(
       licitaciones: licitaciones.slice(0, 2).map((l) => ({ id: l.id, titulo: l.titulo, fin: l.finPlazo })),
       gestion: senalesGestion.slice(0, 2),
       historial,
+      linea,
+      otrasLineas,
     };
     candidatos.push({ ...base, motivos, puntos, ...redactarPropuesta(base, ajustes, aSuAlcance) });
   }

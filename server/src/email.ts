@@ -14,6 +14,8 @@ export interface Email {
   responderA?: string;
   /** Copia oculta (el remitente guarda constancia en su buzón). */
   copiaOculta?: string;
+  /** Archivos adjuntos (el dossier en PDF del primer correo). */
+  adjuntos?: { nombre: string; contenido: Buffer }[];
 }
 
 export type Enviar = (e: Email) => Promise<boolean>;
@@ -35,6 +37,7 @@ export function enviadorDesdeEntorno(env = process.env): Enviar | null {
           subject: e.asunto,
           htmlContent: e.html,
           textContent: e.texto,
+          ...(e.adjuntos?.length && { attachment: e.adjuntos.map((a) => ({ name: a.nombre, content: a.contenido.toString('base64') })) }),
         }),
       });
       return r.ok;
@@ -54,6 +57,7 @@ export function enviadorDesdeEntorno(env = process.env): Enviar | null {
           subject: e.asunto,
           html: e.html,
           text: e.texto,
+          ...(e.adjuntos?.length && { attachments: e.adjuntos.map((a) => ({ filename: a.nombre, content: a.contenido.toString('base64') })) }),
         }),
       });
       return r.ok;

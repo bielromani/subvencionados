@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { crm, enlaceCorreo, type EstadoMensaje, type MensajeBandeja, NOMBRE_OPORTUNIDAD } from '../crm';
+import { crm, enlaceCorreo, type EstadoMensaje, type MensajeBandeja, NOMBRE_OPORTUNIDAD, urlDossierMensaje } from '../crm';
 import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
@@ -124,6 +124,15 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
           </footer>
         </div>
         {m.estado !== 'programado' && <CopiarCorreo para={m.destinatario} asunto={asunto} cuerpo={cuerpo} />}
+        {m.paso === 1 && (
+          <p className="ayuda adjunto-dossier">
+            📎 Lleva adjunto el dossier en PDF de su línea.{' '}
+            <a href={urlDossierMensaje(m.id)} target="_blank" rel="noreferrer">
+              Verlo
+            </a>{' '}
+            · <a href={urlDossierMensaje(m.id, true)}>Descargarlo</a> (para adjuntarlo si lo envías tú desde tu correo)
+          </p>
+        )}
         {error && <p className="error">{error}</p>}
         {envioConectado && editable && (
           <div className="programar-envio">

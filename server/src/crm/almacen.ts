@@ -653,6 +653,18 @@ export class AlmacenCrm {
     );
   }
 
+  /** Lo que hace falta para el dossier de un correo: el paso, el idioma de la entidad y las producciones ofrecidas (en su orden). */
+  async paraDossier(u: string, mensaje: string): Promise<{ paso: number; idioma: 'es' | 'ca'; espectaculos: Espectaculo[] } | null> {
+    const [f] = await this.q<{ paso: number; entidad: string; oportunidad: string }>(
+      'select m.paso, s.entidad, s.oportunidad from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.id = $1 and m.usuario = $2',
+      [mensaje, u],
+    );
+    if (!f) return null;
+    const [e, o] = await Promise.all([this.entidad(u, f.entidad), this.oportunidad(u, f.oportunidad)]);
+    const porId = new Map((await this.espectaculos(u)).map((x) => [x.id, x]));
+    return { paso: f.paso, idioma: e.idioma, espectaculos: o.espectaculos.map((id) => porId.get(id)).filter((x): x is Espectaculo => !!x) };
+  }
+
   /** Programados que ya toca enviar (para la tarea automática, si hay envío conectado). */
   async programadosPendientes(hasta = new Date()) {
     return this.q<FilaMensaje & { usuario: string; destinatario: string }>(

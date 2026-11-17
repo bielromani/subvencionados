@@ -36,7 +36,26 @@ export interface Espectaculo {
   textoCarta?: string;
   textoCartaCa?: string;
   prioridad?: 'alta' | 'normal' | 'baja';
+  /** false: no se ofrece en las cartas (sigue en el catálogo). */
+  enCartas?: boolean;
+  dossier?: FichaDossier;
+  dossierCa?: FichaDossier;
 }
+
+/** La página de una producción en el dossier PDF. */
+export interface FichaDossier {
+  titulo: string;
+  etiqueta: string;
+  subtitulo: string;
+  equipo: string;
+  descripcion: string;
+  fichaTecnica: string;
+  disponibilidad: string;
+  precio: string;
+  resumen: string;
+  nota: string;
+}
+export const DOSSIER_VACIO: FichaDossier = { titulo: '', etiqueta: '', subtitulo: '', equipo: '', descripcion: '', fichaTecnica: '', disponibilidad: '', precio: '', resumen: '', nota: '' };
 
 export type TipoEntidad = 'ayuntamiento' | 'auditorio' | 'teatro' | 'festival' | 'otro';
 export type EstadoRelacion = 'nueva' | 'en_secuencia' | 'respondio' | 'llamada' | 'reunion' | 'interesado' | 'no_interesado' | 'recontactar' | 'sin_respuesta';
@@ -191,15 +210,31 @@ export interface FichaEntidad {
 
 export interface TextoLinea {
   titulo: string;
+  asunto: string;
   intro: string;
   texto: string;
+  cierre: string;
+  invitacion: string;
+  invitacionHasta: string;
+  firma: string;
+  dossierTitulo: string;
+  dossierSubtitulo: string;
+  condiciones: string;
+  notaFinal: string;
 }
-export type LineaCarta = 'lirica' | 'camara' | 'popular' | 'navidad';
+export type LineaCarta = 'opera' | 'sinfonico' | 'camara' | 'popular' | 'navidad';
+export const NOMBRE_LINEA_CARTA: Record<LineaCarta, string> = {
+  opera: 'Ópera',
+  sinfonico: 'Sinfónico-coral y sacra',
+  camara: 'Música de cámara',
+  popular: 'Jazz, rock y fusión',
+  navidad: 'Navidad y Año Nuevo',
+};
 export interface TextosIdioma {
   saludo: string;
   saludoPersona: string;
-  introVarias: string;
   historial: string;
+  otrasLineas: string;
   lineas: Record<LineaCarta, TextoLinea>;
   licitacion: string;
   ayudas: string;
@@ -207,8 +242,13 @@ export interface TextosIdioma {
   colaboracion: string;
   despedida: string;
   seguimientos: [string, string, string, string];
+  despedidaBreve: string;
   asunto: string;
 }
+/** Enlace al dossier PDF de una línea (todo lo que entra en las cartas) o de un correo concreto. */
+export const urlDossierLinea = (l: LineaCarta, idioma: 'es' | 'ca' = 'es', descargar = false) => `/api/crm/dossier/${l}?idioma=${idioma}${descargar ? '&descargar=1' : ''}`;
+export const urlDossierMensaje = (id: string, descargar = false) => `/api/crm/mensajes/${id}/dossier${descargar ? '?descargar=1' : ''}`;
+export const urlDossierPropuesta = (id: string, descargar = false) => `/api/crm/propuestas/${id}/dossier${descargar ? '?descargar=1' : ''}`;
 export interface PlantillasCarta {
   es: TextosIdioma;
   ca: TextosIdioma;
@@ -328,7 +368,7 @@ export const crm = {
   anotar: (id: string, a: { tipo: TipoHistorial; texto?: string; oportunidad?: string | null; vence?: string | null }) => pedir(`/entidades/${id}/anotar`, 'POST', a),
   corregirEstado: (id: string, c: { estadoRelacion?: EstadoRelacion; noContactar?: boolean }) => pedir(`/entidades/${id}/estado`, 'POST', c),
   propuestas: () => pedir<{ items: PropuestaPreparada[] }>('/propuestas'),
-  cargarPlantillasArsvia: () => pedir<{ textos: number; reescritas: number; aMano: number }>('/plantillas/arsvia', 'POST', {}),
+  cargarPlantillasArsvia: () => pedir<{ textos: number; creadas: number; apartadas: number; reescritas: number; aMano: number }>('/plantillas/arsvia', 'POST', {}),
   reescribirPropuestas: () => pedir<{ reescritas: number; aMano: number }>('/propuestas/reescribir', 'POST', {}),
   rehacerPropuestas: (limite: number) => pedir<{ borradas: number; nuevas: number }>('/propuestas/rehacer', 'POST', { limite }),
   prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
