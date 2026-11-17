@@ -84,7 +84,7 @@ const linea = (titulo: string, intro: string, dossierTitulo: string): TextoLinea
   titulo,
   asunto: '',
   intro,
-  texto: '',
+  texto: '{producciones}',
   cierre: '',
   invitacion: '',
   invitacionHasta: '',
@@ -154,6 +154,7 @@ export const PLANTILLAS_GENERICAS: PlantillasCarta = {
 };
 
 export { FIRMA_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './cartasArsvia.js';
+import { FIRMA_ARSVIA as FIRMA_MODELO, FIRMAS_ANTERIORES_ARSVIA, TEXTOS_LINEA_SIN_LISTA } from './cartasArsvia.js';
 
 // ---------- Composición ----------
 
@@ -215,7 +216,10 @@ export function completarPlantillas(x: unknown): PlantillasCarta {
     return { ...o, lineas: { opera: lirica, sinfonico: lirica, ...resto } };
   };
   const y = (x && typeof x === 'object' ? x : {}) as Record<string, unknown>;
-  return completar({ es: migrar(y.es), ca: migrar(y.ca) }, PLANTILLAS_GENERICAS) as PlantillasCarta;
+  const t = completar({ es: migrar(y.es), ca: migrar(y.ca) }, PLANTILLAS_GENERICAS) as PlantillasCarta;
+  // Las cartas modelo de ArsVia ya llevan la lista de producciones dentro del texto de cada línea.
+  for (const m of TEXTOS_LINEA_SIN_LISTA) if (t[m.idioma].lineas[m.linea].texto === m.antes) t[m.idioma].lineas[m.linea].texto = m.ahora;
+  return t;
 }
 
 export function plantillasDe(a: AjustesCrm): PlantillasCarta {
@@ -235,12 +239,13 @@ export function invitacionVigente(t: TextoLinea, hoy = new Date()): string | nul
   return t.invitacion.trim();
 }
 
-/** Texto de una producción en la lista: el de su ficha (una viñeta por línea) o, si no tiene, su nombre. */
-function vinetas(e: EspectaculoCarta, idioma: 'es' | 'ca', web: string): string[] {
-  const texto = (idioma === 'ca' ? e.textoCartaCa || e.textoCarta : e.textoCarta)?.trim();
-  const propio = e.enlace && e.enlace.replace(/\/$/, '') !== web.replace(/\/$/, '') ? ` (${e.enlace})` : '';
-  const ls = (texto || e.nombre).split(/\n+/).map((x) => x.trim().replace(/^[•·-]\s*/, '')).filter(Boolean);
-  return ls.map((x, i) => `• ${x}${i === ls.length - 1 ? propio : ''}`);
+/**
+ * La firma de una línea (otra alianza de producción) solo sustituye a la de la cuenta si esta no es propia: vacía o la
+ * de las cartas modelo. Quien ha escrito su firma la ve en todos los correos.
+ */
+function firmaDeLinea(tl: TextoLinea | null, a: AjustesCrm, idioma: 'es' | 'ca'): string {
+  const propia = a.firma.trim() && a.firma.trim() !== FIRMA_MODELO.trim() && !FIRMAS_ANTERIORES_ARSVIA.includes(a.firma.trim());
+  return (!propia && tl?.firma.trim()) || firmaCarta(a, idioma);
 }
 
 /** Primera carta: presenta una línea con sus producciones; las demás líneas que encajan, en una frase. */
@@ -261,9 +266,10 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   const p: string[] = [d.persona ? rellenar(t.saludoPersona, v) : t.saludo];
   if (tl?.intro.trim()) p.push(rellenar(tl.intro, v));
   if (d.historial.length && t.historial.trim()) p.push(rellenar(t.historial, { ...v, estilos: lista(d.historial.map((e) => NOMBRE_ESTILO[d.idioma][e]), y) }));
-  const lista_ = deLinea.flatMap((e) => vinetas(e, d.idioma, d.ajustes.web)).join('\n\n');
-  if (tl?.texto.trim()) p.push(`${rellenar(tl.texto, v)}${lista_ ? `\n\n${lista_}` : ''}`);
-  else if (lista_) p.push(lista_);
+  // El texto de la línea es el de la plantilla tal cual (con su lista de producciones escrita ahí). Con {producciones},
+  // la app pone los nombres de las de esta línea que encajan con el sitio.
+  const producciones = deLinea.map((e) => `• ${e.nombre}`).join('\n');
+  if (tl?.texto.trim()) p.push(rellenar(tl.texto, { ...v, producciones }));
   if (tl?.cierre.trim()) p.push(rellenar(tl.cierre, v));
   for (const l of d.licitaciones.slice(0, 1)) {
     const f = fechaLarga(l.fin, d.idioma);
@@ -282,7 +288,7 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   if (d.gestion) p.push(rellenar(t.gestion, v));
   if (otras.length && t.otrasLineas.trim()) p.push(rellenar(t.otrasLineas, { ...v, lineas: lista(otras.map((l) => NOMBRE_LINEA[d.idioma][l]), y) }));
   if (t.colaboracion.trim()) p.push(rellenar(t.colaboracion, v));
-  p.push(`${rellenar(t.despedida, v)}\n\n${tl?.firma.trim() || firmaCarta(d.ajustes, d.idioma)}`);
+  p.push(`${rellenar(t.despedida, v)}\n\n${firmaDeLinea(tl, d.ajustes, d.idioma)}`);
   const general = rellenar(t.asunto, { ...v, propuestas: principal ? NOMBRE_LINEA[d.idioma][principal] : d.idioma === 'ca' ? 'programació' : 'programación' });
   return { asunto: tl?.asunto.trim() ? rellenar(tl.asunto, v) : general, cuerpo: p.join('\n\n'), linea: principal };
 }
@@ -296,7 +302,7 @@ export function componerSeguimiento(
   const t = plantillasDe(d.ajustes)[d.idioma];
   const v = { lugar: d.lugar, organizacion: d.ajustes.organizacion, persona: d.persona ?? '' };
   const texto = t.seguimientos[Math.min(Math.max(paso - 2, 0), 3)]!;
-  const firma = (d.linea && t.lineas[d.linea].firma.trim()) || firmaCarta(d.ajustes, d.idioma);
+  const firma = firmaDeLinea(d.linea ? t.lineas[d.linea] : null, d.ajustes, d.idioma);
   return {
     asunto: `Re: ${asuntoInicial}`,
     cuerpo: [d.persona ? rellenar(t.saludoPersona, v) : t.saludo, rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),

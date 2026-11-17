@@ -60,3 +60,28 @@ describe('adjuntos', () => {
     expect(JSON.parse(llamadas[0]!.body).attachment).toEqual([{ name: 'd.pdf', content: Buffer.from('hola').toString('base64') }]);
   });
 });
+
+describe('las cartas salen solo de las plantillas', async () => {
+  const { componerCarta, PLANTILLAS_GENERICAS } = await import('../src/crm/cartas.js');
+  const base = { idioma: 'es' as const, lugar: 'Lleida', persona: null, historial: [], licitaciones: [], ayudas: [], gestion: false };
+  const ficha = { id: '1', nombre: 'Fidelio – Beethoven', tipo: 'opera' as const, enlace: '', textoCarta: '👉 Resumen copiado de la web\nCon varias líneas' };
+  it('el texto de la ficha no entra en el correo; la lista es la de la plantilla', () => {
+    const c = componerCarta({ ...base, espectaculos: [ficha], ajustes: { ...ajustes, plantillas: PLANTILLAS_ARSVIA } });
+    expect(c.cuerpo).not.toContain('Resumen copiado');
+    expect(c.cuerpo).toContain('• Fidelio, de Beethoven · Con dirección musical de Salvador Brotons');
+  });
+  it('con {producciones}, los nombres de las de la línea', () => {
+    const c = componerCarta({ ...base, espectaculos: [ficha], ajustes: { ...ajustes, firma: 'Mi firma', plantillas: PLANTILLAS_GENERICAS } });
+    expect(c.cuerpo).toContain('• Fidelio – Beethoven');
+    expect(c.cuerpo).not.toContain('Resumen copiado');
+    expect(c.cuerpo.endsWith('Mi firma')).toBe(true);
+  });
+  it('las plantillas guardadas con el texto anterior de ArsVia reciben la lista', async () => {
+    const { completarPlantillas } = await import('../src/crm/cartas.js');
+    const { TEXTOS_LINEA_SIN_LISTA } = await import('../src/crm/cartasArsvia.js');
+    const m = TEXTOS_LINEA_SIN_LISTA.find((x) => x.idioma === 'es' && x.linea === 'opera')!;
+    const viejas = JSON.parse(JSON.stringify(PLANTILLAS_ARSVIA));
+    viejas.es.lineas.opera.texto = m.antes;
+    expect(completarPlantillas(viejas).es.lineas.opera.texto).toBe(m.ahora);
+  });
+});

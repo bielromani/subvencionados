@@ -26,7 +26,6 @@ function pendientes(e: Espectaculo): string[] {
   if (!e.revisado || Date.parse(e.revisado) < Date.now() - 180 * 86_400_000) xs.push('Revisar los datos');
   if (e.precioMin == null && e.precioMax == null) xs.push('Precio orientativo');
   if (!e.requisitos.trim()) xs.push('Requisitos técnicos');
-  if (!e.textoCarta?.trim()) xs.push('Texto para las cartas');
   return xs;
 }
 
@@ -86,14 +85,7 @@ function FormEspectaculo({ inicial, id, alGuardar, alCancelar }: { inicial: Omit
           </fieldset>
           <fieldset>
             <legend>En las cartas</legend>
-            <label>
-              Cómo se presenta en los correos
-              <textarea rows={5} value={e.textoCarta ?? ''} onChange={(x) => campo('textoCarta', x.target.value)} placeholder="Fidelio, de Beethoven. Producción operística…" />
-            </label>
-            <label>
-              En catalán (opcional, para Cataluña)
-              <textarea rows={4} value={e.textoCartaCa ?? ''} onChange={(x) => campo('textoCartaCa', x.target.value)} />
-            </label>
+            <p className="ayuda">El texto de los correos se escribe en «Plantillas de las cartas», en la línea de esta producción.</p>
             <span className="etiqueta-campo">Con qué frecuencia proponerla</span>
             <div className="segmentado" role="radiogroup" aria-label="Con qué frecuencia proponerla">
               {(
@@ -368,7 +360,10 @@ function EditorTextos({ t, cambiar, idioma }: { t: TextosIdioma; cambiar: (t: Te
               {area('Asunto propio (vacío: el general)', t.lineas[l].asunto, (v) => linea(l, 'asunto', v), 1, '{lugar}')}
             </div>
             {area('Presentación', t.lineas[l].intro, (v) => linea(l, 'intro', v), 4, '{lugar}')}
-            {area('Quién escribe y frase antes de la lista de producciones', t.lineas[l].texto, (v) => linea(l, 'texto', v), 4, '{remitente}')}
+            {area('Texto principal con la lista de producciones (tal como sale en el correo)', t.lineas[l].texto, (v) => linea(l, 'texto', v), 14, '{remitente} {producciones}')}
+            <p className="ayuda">
+              La lista se escribe aquí, no se toma de las fichas. Si en lugar de escribirla pones {'{producciones}'}, se ponen solo los nombres de las producciones de esta línea que encajan con cada sitio.
+            </p>
             {area('Después de la lista', t.lineas[l].cierre, (v) => linea(l, 'cierre', v), 3, '{web}')}
             <div className="fila-campos">
               {area('Invitación a una función (vacía: no hay)', t.lineas[l].invitacion, (v) => linea(l, 'invitacion', v), 3)}
@@ -377,7 +372,7 @@ function EditorTextos({ t, cambiar, idioma }: { t: TextosIdioma; cambiar: (t: Te
                 <input type="date" value={t.lineas[l].invitacionHasta} onChange={(e) => linea(l, 'invitacionHasta', e.target.value)} />
               </label>
             </div>
-            {area('Firma propia de la línea (vacía: la de la cuenta)', t.lineas[l].firma, (v) => linea(l, 'firma', v), 5)}
+            {area('Firma de la línea (otra alianza). Solo se usa si en «Remitente y firma» no has escrito una firma propia', t.lineas[l].firma, (v) => linea(l, 'firma', v), 5)}
             <h4>Dossier en PDF</h4>
             <div className="fila-campos">
               {area('Título', t.lineas[l].dossierTitulo, (v) => linea(l, 'dossierTitulo', v), 1)}
@@ -523,7 +518,7 @@ type FiltroCatalogo = 'todas' | 'completas' | 'incompletas' | 'fuera';
 /** Tarjeta de una producción: qué es, cómo se presenta y qué le falta. */
 function TarjetaProduccion({ e, editar, borrar }: { e: Espectaculo; editar: () => void; borrar: () => void }) {
   const falta = pendientes(e);
-  const total = 5;
+  const total = 4;
   return (
     <article className="produccion">
       <header>
@@ -539,7 +534,7 @@ function TarjetaProduccion({ e, editar, borrar }: { e: Espectaculo; editar: () =
           </button>
         </h3>
       </header>
-      <p className="produccion-texto">{e.textoCarta || e.formato || <span className="ayuda">Sin texto para las cartas.</span>}</p>
+      <p className="produccion-texto">{e.formato || <span className="ayuda">Sin formato.</span>}</p>
       <dl className="produccion-datos">
         <div>
           <dt>Precio</dt>

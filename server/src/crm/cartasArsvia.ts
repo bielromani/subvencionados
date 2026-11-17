@@ -470,8 +470,8 @@ export const TEXTOS_PRODUCCIONES_ARSVIA: ProduccionArsvia[] = [
   },
   {
     patron: /a[ñn]o nuevo|any nou|valses vieneses/i,
-    es: 'Formato sinfónico · Con la Orquesta Sinfónica Siglo XXI, soprano solista y narrador, bajo la dirección de Francesc Minguella.\nFormato de cámara · Con el Cuarteto Calders (dos violines, viola y violonchelo) y la soprano Aseel Massoud.',
-    ca: 'Format simfònic · Amb l’Orquestra Simfònica Segle XXI, soprano solista i narrador, sota la direcció de Francesc Minguella.\nFormat de cambra · Amb el Quartet Calders (dos violins, viola i violoncel) i la soprano Aseel Massoud.',
+    es: 'Concierto de Valses Vieneses para el Año Nuevo, en dos formatos:\n- Formato sinfónico · Con la Orquesta Sinfónica Siglo XXI, soprano solista y narrador, bajo la dirección de Francesc Minguella.\n- Formato de cámara · Con el Cuarteto Calders (dos violines, viola y violonchelo) y la soprano Aseel Massoud.',
+    ca: 'Concert de Valsos Vienesos per a l’Any Nou, en dos formats:\n- Format simfònic · Amb l’Orquestra Simfònica Segle XXI, soprano solista i narrador, sota la direcció de Francesc Minguella.\n- Format de cambra · Amb el Quartet Calders (dos violins, viola i violoncel) i la soprano Aseel Massoud.',
     precioMin: 2500,
     precioMax: 15000,
     dossier: d({
@@ -511,6 +511,8 @@ export const FUERA_DE_CARTAS_ARSVIA: RegExp[] = [/professor cunningham/i, /barce
 
 /** Textos de las cartas de preajustes anteriores: una ficha con uno de estos aún no lo ha cambiado su dueño. */
 export const TEXTOS_ANTERIORES_ARSVIA: string[] = [
+  'Formato sinfónico · Con la Orquesta Sinfónica Siglo XXI, soprano solista y narrador, bajo la dirección de Francesc Minguella.\nFormato de cámara · Con el Cuarteto Calders (dos violines, viola y violonchelo) y la soprano Aseel Massoud.',
+  'Format simfònic · Amb l’Orquestra Simfònica Segle XXI, soprano solista i narrador, sota la direcció de Francesc Minguella.\nFormat de cambra · Amb el Quartet Calders (dos violins, viola i violoncel) i la soprano Aseel Massoud.',
   "Fidelio, de Beethoven. Producción operística con un lenguaje escénico contemporáneo, austero y de gran densidad dramática. Dirección musical de Salvador Brotons y dirección escénica de Jaume Villanueva. Temporada 2027 · Bicentenario de Beethoven. Disponibilidad de gira: a partir del último trimestre de 2027, con posibilidad de estudiar otras fechas según calendario.",
   "Fidelio, de Beethoven. Producció operística amb un llenguatge escènic contemporani, auster i de gran densitat dramàtica. Direcció musical de Salvador Brotons i direcció escènica de Jaume Villanueva. Temporada 2027 · Bicentenari de Beethoven. Disponibilitat de gira: a partir de l’últim trimestre de 2027, amb possibilitat d’estudiar altres dates segons calendari.",
   "Ein deutsches Requiem (Un réquiem alemán), de Brahms. Gran producción sinfónico-coral bajo la dirección de Jordi Mora, discípulo directo de Sergiu Celibidache, al frente de la Orquestra Simfònica Segle XXI, junto a las formaciones corales participantes. Disponibilidad de gira: a partir de julio de 2027.",
@@ -526,3 +528,44 @@ export const TEXTOS_ANTERIORES_ARSVIA: string[] = [
   "La Historia del Rock. Un espectáculo festivo que propone un viaje cronológico por las décadas doradas de la música moderna. A través de la interpretación de los temas más icónicos de la historia del rock, el concierto combina la potencia de la banda en directo con comentarios y contextualización de cada época, resultando ideal tanto para audiencias familiares como para grandes eventos al aire libre.",
   "La Història del Rock. Un espectacle festiu que proposa un viatge cronològic per les dècades daurades de la música moderna. A través de la interpretació dels temes més icònics de la història del rock, el concert combina la potència de la banda en directe amb comentaris i contextualització de cada època, i resulta ideal tant per a públics familiars com per a grans esdeveniments a l’aire lliure.",
 ];
+
+// ---------- La lista de producciones, dentro de la plantilla de cada línea ----------
+// La carta sale entera de las plantillas: la lista de cada línea se escribe ahí (como en las cartas de Joan) y no se
+// toma de las fichas. Aquí se añade a la frase que la abre.
+
+const LINEA_DE_PRODUCCION: [string, Linea][] = [
+  ['flauta', 'opera'],
+  ['fidelio', 'opera'],
+  ['quiem', 'sinfonico'],
+  ['pasi', 'sinfonico'],
+  ['integral', 'camara'],
+  ['aidos', 'camara'],
+  ['crossroads', 'popular'],
+  ['athrodeel', 'popular'],
+  ['historia del rock', 'popular'],
+  ['creedence', 'popular'],
+  ['ella fitzgerald', 'popular'],
+  ['goodman', 'popular'],
+  ['oriol', 'popular'],
+  ['valses vieneses', 'navidad'],
+];
+
+const comoVineta = (t: string) => {
+  const [cabeza, ...resto] = t.split('\n').filter((x) => x.trim());
+  return [`• ${cabeza}`, ...resto.map((x) => `   – ${x.replace(/^[-–•]\s*/, '')}`)].join('\n');
+};
+
+/** Textos de las líneas antes de llevar la lista dentro: si una cuenta los tiene guardados, se cambian por los nuevos. */
+export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea; antes: string; ahora: string }[] = [];
+for (const [idioma, lineas] of [
+  ['es', LINEAS_ES],
+  ['ca', LINEAS_CA],
+] as const) {
+  for (const l of Object.keys(lineas) as Linea[]) {
+    const vinetas = TEXTOS_PRODUCCIONES_ARSVIA.filter((p) => LINEA_DE_PRODUCCION.find(([k]) => p.patron.source.includes(k))?.[1] === l).map((p) => comoVineta(p[idioma]));
+    if (!vinetas.length) continue;
+    const antes = lineas[l].texto;
+    lineas[l].texto = `${antes}\n\n${vinetas.join('\n\n')}`;
+    TEXTOS_LINEA_SIN_LISTA.push({ idioma, linea: l, antes, ahora: lineas[l].texto });
+  }
+}
