@@ -935,8 +935,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     const imap = configImapDesdeEntorno();
     if (!crm || !imap) return null;
     try {
-      const usuarios = await crm.usuariosConRemitente(imap.usuario);
-      if (!usuarios.length) return { error: `Ninguna cuenta tiene ${imap.usuario} como email del remitente` };
+      const usuarios = [...new Set((await Promise.all(imap.remitentes.map((r) => crm.usuariosConRemitente(r)))).flat())];
+      if (!usuarios.length) return { error: `Ninguna cuenta tiene ${imap.remitentes.join(' o ')} como email del remitente` };
       const recibidos = await leerBuzon(imap, new Date(Date.now() - 3 * 86_400_000));
       let anotadas = 0;
       for (const u of usuarios) {

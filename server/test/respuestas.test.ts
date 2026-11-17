@@ -26,3 +26,13 @@ describe('respuestas en el buzón', () => {
     expect(detectarRespuestas([correo({ texto: 'Si us plau, doneu-nos de baixa' }), correo({ texto: 'Gracias' })], activos)[0]!.tipo).toBe('optout');
   });
 });
+
+describe('configuración del buzón', () => {
+  it('un Gmail personal que envía como la dirección de la empresa', async () => {
+    const { configImapDesdeEntorno } = await import('../src/crm/respuestas.js');
+    expect(configImapDesdeEntorno({ IMAP_HOST: 'imap.gmail.com', IMAP_USUARIO: 'yo@gmail.com', IMAP_CLAVE: 'x' })!.remitentes).toEqual(['yo@gmail.com']);
+    const c = configImapDesdeEntorno({ IMAP_HOST: 'imap.gmail.com', IMAP_USUARIO: 'yo@gmail.com', IMAP_CLAVE: 'x', IMAP_REMITENTES: 'yo@empresa.org, yo@gmail.com' })!;
+    expect(c.remitentes).toEqual(['yo@empresa.org', 'yo@gmail.com']);
+    expect(c.puerto).toBe(993);
+  });
+});

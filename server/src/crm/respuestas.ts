@@ -63,11 +63,20 @@ export interface ConfigImap {
   puerto: number;
   usuario: string;
   clave: string;
+  /**
+   * Remitentes de las cuentas cuyas respuestas llegan a este buzón. Por defecto, el propio usuario; con IMAP_REMITENTES
+   * (separados por comas) se cubre el caso de un Gmail personal que envía «como» otra dirección (p. ej. la de la empresa).
+   */
+  remitentes: string[];
 }
 
 export function configImapDesdeEntorno(env = process.env): ConfigImap | null {
   if (!env.IMAP_HOST || !env.IMAP_USUARIO || !env.IMAP_CLAVE) return null;
-  return { host: env.IMAP_HOST, puerto: Number(env.IMAP_PUERTO) || 993, usuario: env.IMAP_USUARIO, clave: env.IMAP_CLAVE };
+  const remitentes = (env.IMAP_REMITENTES ?? '')
+    .split(',')
+    .map((x) => x.trim())
+    .filter(Boolean);
+  return { host: env.IMAP_HOST, puerto: Number(env.IMAP_PUERTO) || 993, usuario: env.IMAP_USUARIO, clave: env.IMAP_CLAVE, remitentes: remitentes.length ? remitentes : [env.IMAP_USUARIO] };
 }
 
 /** Lee (sin marcar como leído) lo recibido en la bandeja de entrada desde una fecha. */
