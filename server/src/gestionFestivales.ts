@@ -96,7 +96,20 @@ export function oportunidadesGestion(
   const porProgramador = new Map<string, ContratoVista[]>();
   for (const c of contratos) {
     const id = idProgramador(c);
-    porProgramador.set(id, [...(porProgramador.get(id) ?? []), c]);
+    const xs = porProgramador.get(id);
+    if (xs) xs.push(c);
+    else porProgramador.set(id, [c]);
+  }
+  // Festivales por organizador (nombre normalizado), una sola vez: comparar cada programador con cada festival era lo lento.
+  const festivalesDe = new Map<string, Festival[]>();
+  for (const f of festivales) {
+    // Nombres mal recortados del texto del contrato («Festival y la contratación de los artistas...») no sirven.
+    if (/contratacion|artistas|seleccionad|servicio/.test(normalizar(f.nombre))) continue;
+    for (const o of new Set(f.organizadores.map((x) => normalizar(x)))) {
+      const xs = festivalesDe.get(o);
+      if (xs) xs.push(f);
+      else festivalesDe.set(o, [f]);
+    }
   }
   const salida: OportunidadGestion[] = [];
   for (const p of programadores) {
@@ -130,12 +143,8 @@ export function oportunidadesGestion(
         });
       }
     }
-    for (const f of festivales) {
-      // Nombres mal recortados del texto del contrato («Festival y la contratación de los artistas...») no sirven.
-      if (/contratacion|artistas|seleccionad|servicio/.test(normalizar(f.nombre))) continue;
-      if (f.organizadores.some((o) => normalizar(o) === normalizar(p.nombre))) {
-        senales.push({ tipo: 'festival_propio', texto: `Organiza «${f.nombre}» (${f.anios.join(', ')})`, fecha: f.anios.length ? `${Math.max(...f.anios)}` : null, ref: f.id, importe: f.dinero || null });
-      }
+    for (const f of festivalesDe.get(normalizar(p.nombre)) ?? []) {
+      senales.push({ tipo: 'festival_propio', texto: `Organiza «${f.nombre}» (${f.anios.join(', ')})`, fecha: f.anios.length ? `${Math.max(...f.anios)}` : null, ref: f.id, importe: f.dinero || null });
     }
     if (!senales.length) continue;
     // Ayudas para festivales que cubren su territorio: refuerzan, no bastan por sí solas.

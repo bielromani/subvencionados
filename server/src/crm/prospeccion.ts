@@ -176,7 +176,9 @@ export function prepararPropuestas(
     const id = idProgramador(l);
     licitacionesPorProgramador.set(id, [...(licitacionesPorProgramador.get(id) ?? []), l]);
   }
-  const candidatos: PropuestaPreparada[] = [];
+  // Primero se puntúan todos los sitios; la lista completa de la línea y la carta, solo para los que entran en la tanda.
+  type Candidato = Omit<PropuestaPreparada, 'asunto' | 'cuerpo'> & { completar: () => PropuestaPreparada };
+  const candidatos: Candidato[] = [];
   for (const p of f.programadores()) {
     if (excluir.has(p.id)) continue;
     if (opciones.ccaa?.length && !(p.ccaa && opciones.ccaa.includes(p.ccaa))) continue;
@@ -219,7 +221,6 @@ export function prepararPropuestas(
     // El correo presenta una línea (la de la producción que mejor encaja) con todas las suyas a su alcance; las demás
     // líneas que le encajan se nombran en una frase.
     const linea = LINEA_DE_TIPO[elegidas[0]!.tipo];
-    const espectaculos = deLaLinea(aSuAlcance, linea, elegidas, p, hoy);
     const otrasLineas = [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => l !== linea);
     const idioma: 'es' | 'ca' = p.ccaa && CATALAN.test(p.ccaa) ? 'ca' : 'es';
     const municipio = c?.municipio ?? p.ciudad ?? '';
@@ -243,7 +244,7 @@ export function prepararPropuestas(
       telefono: c?.telefono ?? null,
       revisarEmail,
       idioma,
-      espectaculos,
+      espectaculos: elegidas,
       ayudas: suyas.map((a) => ({ id: a.id, titulo: tituloCortoDe(a.titulo), fin: a.fechaFinSolicitud })),
       licitaciones: licitaciones.slice(0, 2).map((l) => ({ id: l.id, titulo: l.titulo, fin: l.finPlazo })),
       gestion: senalesGestion.slice(0, 2),
@@ -251,15 +252,23 @@ export function prepararPropuestas(
       linea,
       otrasLineas,
     };
-    candidatos.push({ ...base, motivos, puntos, ...redactarPropuesta(base, ajustes, aSuAlcance) });
+    candidatos.push({
+      ...base,
+      motivos,
+      puntos,
+      completar: () => {
+        const completa = { ...base, espectaculos: deLaLinea(aSuAlcance, linea, elegidas, p, hoy) };
+        return { ...completa, motivos, puntos, ...redactarPropuesta(completa, ajustes, aSuAlcance) };
+      },
+    });
   }
   // Un correo, una propuesta: la de más puntos.
-  const porEmail = new Map<string, PropuestaPreparada>();
+  const porEmail = new Map<string, Candidato>();
   for (const x of candidatos) {
     const k = x.destinatario.toLowerCase();
     if ((porEmail.get(k)?.puntos ?? -Infinity) < x.puntos) porEmail.set(k, x);
   }
-  return repartirPorComunidad([...porEmail.values()], opciones.limite);
+  return repartirPorComunidad([...porEmail.values()], opciones.limite).map((x) => x.completar());
 }
 
 /** Ópera, sinfónico y grandes obras corales (la Pasión, el Réquiem): no para un pueblo pequeño que paga poco. */
