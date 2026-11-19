@@ -4,7 +4,7 @@
 
 import { join } from 'node:path';
 import PDFDocument from 'pdfkit';
-import { LINEA_DE_TIPO, type Linea, lineaPrincipal, plantillasDe } from './cartas.js';
+import { LINEA_DE_TIPO, type Linea, lineaPrincipal, lineasCarta, plantillasDe } from './cartas.js';
 import type { AjustesCrm, Espectaculo, FichaDossier } from './tipos.js';
 
 export interface ProduccionDossier {
@@ -81,12 +81,18 @@ export function datosDossier(linea: Linea, idioma: 'es' | 'ca', espectaculos: Es
  * El dossier que acompaña a un correo: el de la línea principal de lo que se ofrece, con sus producciones. Solo si
  * alguna tiene dossier preparado (sin él, el PDF diría poco más que la carta).
  */
-export function dossierDeCorreo(espectaculos: Espectaculo[], idioma: 'es' | 'ca', ajustes: AjustesCrm): DatosDossier | null {
-  const linea = lineaPrincipal(espectaculos);
+export function dossierDeCorreo(espectaculos: Espectaculo[], idioma: 'es' | 'ca', ajustes: AjustesCrm, linea = lineaPrincipal(espectaculos)): DatosDossier | null {
   if (!linea) return null;
   const deLinea = espectaculos.filter((e) => LINEA_DE_TIPO[e.tipo] === linea);
   if (!deLinea.some((e) => e.dossier)) return null;
   return datosDossier(linea, idioma, deLinea, ajustes);
+}
+
+/** Los dossieres de un correo: uno por cada línea que presenta (la carta combinada lleva varios). */
+export function dossieresDeCorreo(espectaculos: Espectaculo[], idioma: 'es' | 'ca', ajustes: AjustesCrm): DatosDossier[] {
+  return lineasCarta(espectaculos)
+    .map((l) => dossierDeCorreo(espectaculos, idioma, ajustes, l))
+    .filter((d): d is DatosDossier => !!d);
 }
 
 /** El dossier de una línea con todo el catálogo que entra en las cartas (para descargarlo o revisarlo). */

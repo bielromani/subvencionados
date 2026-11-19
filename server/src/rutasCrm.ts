@@ -11,7 +11,7 @@ import { enviarMensaje, inicioDiaMadrid, pieBaja } from './crm/envio.js';
 import { enZona, idiomaDe } from './crm/idioma.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
-import { acortarSaludo, completarPlantillas, LINEAS, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
+import { acortarSaludo, completarPlantillas, LINEAS, lineaPrincipal, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
 import { type DatosDossier, dossierDeCorreo, dossierDeLinea, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
 import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMA_ARSVIA_CA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
@@ -298,6 +298,8 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       .set({ 'Content-Type': 'application/pdf', 'Cache-Control': 'no-store', 'Content-Disposition': `${descargar ? 'attachment' : 'inline'}; filename="${nombre}"` })
       .send(pdf);
   };
+  // ?linea=opera: el dossier de esa línea (la carta combinada lleva uno por línea).
+  const lineaPedida = (x: unknown) => (typeof x === 'string' && LINEAS.includes(x as Linea) ? (x as Linea) : null);
   // Estas rutas se abren en una pestaña nueva: el aviso, en texto legible y no en JSON.
   const sinDossier = (res: Response, motivo: string) => {
     res.status(404).type('text/plain; charset=utf-8').send(`${motivo}. Rellena «En el dossier PDF» en la ficha de la producción (Catálogo).`);
@@ -319,7 +321,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     ruta(async (q, res, u, c) => {
       const [x, a] = await Promise.all([c.paraDossier(u.id, String(q.params.id)), c.ajustes(u.id)]);
       if (!x) return sinDossier(res, 'No existe ese correo');
-      const d = dossierDeCorreo(x.espectaculos, x.idioma, a);
+      const d = dossierDeCorreo(x.espectaculos, x.idioma, a, lineaPedida(q.query.linea) ?? lineaPrincipal(x.espectaculos));
       if (!d) return sinDossier(res, 'Las producciones de este correo no tienen dossier preparado');
       await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
     }),
@@ -332,7 +334,8 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       const p = propuestas.find((x) => x.id === q.params.id);
       if (!p) return sinDossier(res, 'No existe esa propuesta');
       const porId = new Map(catalogo.map((e) => [e.id, e]));
-      const d = dossierDeCorreo(p.espectaculos.map((x) => porId.get(x.id)).filter((e): e is Espectaculo => !!e), p.idioma, a);
+      const es = p.espectaculos.map((x) => porId.get(x.id)).filter((e): e is Espectaculo => !!e);
+      const d = dossierDeCorreo(es, p.idioma, a, lineaPedida(q.query.linea) ?? lineaPrincipal(es));
       if (!d) return sinDossier(res, 'Las producciones de esta propuesta no tienen dossier preparado');
       await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
     }),

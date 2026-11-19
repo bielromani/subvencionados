@@ -399,6 +399,14 @@ function EditorTextos({ t, cambiar, idioma }: { t: TextosIdioma; cambiar: (t: Te
           </details>
         ))}
         {area('Las demás líneas, en una frase', t.otrasLineas, (v) => cambiar({ ...t, otrasLineas: v }), 2, '{lineas}')}
+        <h4>Carta combinada (sitios que programan varios estilos)</h4>
+        <p className="ayuda">
+          Cuando un sitio ha programado varios estilos de tu catálogo (por ejemplo ópera, clásica y jazz), el correo presenta todas esas líneas: esta presentación, tu párrafo «Soy…» de la
+          línea principal, el bloque de cada línea (su texto, con su título) y este cierre. Lleva adjunto el dossier de cada línea.
+        </p>
+        {area('Título del correo', t.tituloVarias, (v) => cambiar({ ...t, tituloVarias: v }), 1, '{lineas}')}
+        {area('Presentación', t.introVarias, (v) => cambiar({ ...t, introVarias: v }), 3, '{lugar}, {lineas}')}
+        {area('Cierre (los dossieres adjuntos)', t.cierreVarias, (v) => cambiar({ ...t, cierreVarias: v }), 3, '{web}')}
       </section>
       <section className="bloque formulario" id="bloque-oportunidades">
         <h3>

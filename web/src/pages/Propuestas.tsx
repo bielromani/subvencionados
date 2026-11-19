@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CuerpoCorreo } from '../components/CuerpoCorreo';
-import { crm, enlaceCorreo, enZona, ZONAS, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada, urlDossierPropuesta } from '../crm';
+import { crm, enlaceCorreo, enZona, ZONAS, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada, lineasDe, NOMBRE_LINEA_CARTA, urlDossierPropuesta } from '../crm';
 import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
@@ -180,12 +180,28 @@ function DetallePropuesta({
         </div>
         <CopiarCorreo para={destinatario} asunto={asunto} cuerpo={cuerpo} />
         <p className="ayuda adjunto-dossier">
-          📎 Al enviarlo desde la web, lleva adjunto el dossier en PDF de su línea.{' '}
-          <a href={urlDossierPropuesta(p.id)} target="_blank" rel="noreferrer">
-            Verlo
-          </a>{' '}
-          ·{' '}
-          <a href={urlDossierPropuesta(p.id, true)}>Descargarlo</a> (para adjuntarlo si lo envías tú desde tu correo)
+          {lineasDe(p.espectaculos).length > 1 ? (
+            <>
+              📎 Al enviarlo desde la web, lleva adjunto el dossier en PDF de cada línea:{' '}
+              {lineasDe(p.espectaculos).map((l, i) => (
+                <span key={l}>
+                  {i > 0 && ' · '}
+                  <a href={urlDossierPropuesta(p.id, false, l)} target="_blank" rel="noreferrer">
+                    {NOMBRE_LINEA_CARTA[l]}
+                  </a>{' '}
+                  (<a href={urlDossierPropuesta(p.id, true, l)}>descargar</a>)
+                </span>
+              ))}
+            </>
+          ) : (
+            <>
+              📎 Al enviarlo desde la web, lleva adjunto el dossier en PDF de su línea.{' '}
+              <a href={urlDossierPropuesta(p.id)} target="_blank" rel="noreferrer">
+                Verlo
+              </a>{' '}
+              · <a href={urlDossierPropuesta(p.id, true)}>Descargarlo</a> (para adjuntarlo si lo envías tú desde tu correo)
+            </>
+          )}
         </p>
         {error && <p className="error">{error}</p>}
         <p className="atajos-teclado ayuda">

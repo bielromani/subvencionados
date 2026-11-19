@@ -59,6 +59,12 @@ export interface TextosIdioma {
   historial: string;
   /** Las demás líneas que le pueden encajar, en una frase; {lineas}. */
   otrasLineas: string;
+  /** Carta combinada (el sitio programa varios estilos): presentación; {lugar} y {lineas}. */
+  introVarias: string;
+  /** Carta combinada: cierre, tras los bloques de cada línea (los dossieres adjuntos). */
+  cierreVarias: string;
+  /** Carta combinada: título del correo (arriba, en grande); {lineas}. */
+  tituloVarias: string;
   lineas: Record<Linea, TextoLinea>;
   /** {titulo} y {fecha} (puede ir vacía). */
   licitacion: string;
@@ -102,6 +108,9 @@ export const PLANTILLAS_GENERICAS: PlantillasCarta = {
     saludoPersona: 'Estimado/a {persona}:',
     historial: 'Hemos visto que en {lugar} han programado {estilos} en los últimos años, por lo que creemos que estas propuestas pueden resultarle de interés.',
     otrasLineas: 'También tenemos propuestas de {lineas}; si le interesan, se las enviamos.',
+    introVarias: 'Le escribo en representación de {organizacion} para presentarle varias de nuestras propuestas para la programación de {lugar}: {lineas}.',
+    cierreVarias: 'Le adjuntamos los dosieres con la información de cada propuesta.',
+    tituloVarias: 'Nuestras propuestas',
     lineas: {
       opera: linea('Ópera', 'Le escribo en representación de {organizacion} para presentarle nuestras producciones de ópera para la programación de {lugar}.', 'Propuestas de ópera'),
       sinfonico: linea('Sinfónico-coral y sacra', 'Le escribo en representación de {organizacion} para presentarle nuestras propuestas sinfónico-corales y de música sacra para la programación de {lugar}.', 'Propuestas sinfónico-corales y sacras'),
@@ -129,6 +138,9 @@ export const PLANTILLAS_GENERICAS: PlantillasCarta = {
     saludoPersona: 'Benvolgut/da {persona},',
     historial: 'Hem vist que a {lugar} han programat {estilos} en els darrers anys, per això creiem que aquestes propostes li poden interessar.',
     otrasLineas: 'També tenim propostes de {lineas}; si li interessen, les hi enviem.',
+    introVarias: 'Li escric en representació de {organizacion} per presentar-li diverses de les nostres propostes per a la programació de {lugar}: {lineas}.',
+    cierreVarias: 'Li adjuntem els dossiers amb la informació de cada proposta.',
+    tituloVarias: 'Les nostres propostes',
     lineas: {
       opera: linea('Òpera', 'Li escric en representació de {organizacion} per presentar-li les nostres produccions d’òpera per a la programació de {lugar}.', 'Propostes d’òpera'),
       sinfonico: linea('Simfònico-coral i sacra', 'Li escric en representació de {organizacion} per presentar-li les nostres propostes simfònico-corals i de música sacra per a la programació de {lugar}.', 'Propostes simfònico-corals i sacres'),
@@ -154,7 +166,7 @@ export const PLANTILLAS_GENERICAS: PlantillasCarta = {
 };
 
 export { FIRMA_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './cartasArsvia.js';
-import { FIRMA_ARSVIA as FIRMA_MODELO, FIRMA_ARSVIA_CA as FIRMA_MODELO_CA, FIRMAS_ANTERIORES_ARSVIA, TEXTOS_LINEA_SIN_LISTA } from './cartasArsvia.js';
+import { FIRMA_ARSVIA as FIRMA_MODELO, FIRMA_ARSVIA_CA as FIRMA_MODELO_CA, FIRMAS_ANTERIORES_ARSVIA, TEXTOS_LINEA_SIN_LISTA, VARIAS_ARSVIA } from './cartasArsvia.js';
 
 // ---------- Composición ----------
 
@@ -199,6 +211,45 @@ export function lineaPrincipal(espectaculos: Pick<Espectaculo, 'tipo'>[], histor
   return orden[0] ?? null;
 }
 
+/** Estilo de lo programado que corresponde a cada línea (para ordenar los bloques de la carta combinada). */
+const ESTILO_DE_LINEA: Record<Linea, Estilo | null> = { opera: 'opera', sinfonico: 'clasica', camara: 'clasica', popular: 'jazz', navidad: null };
+
+/**
+ * Las líneas que presenta una carta. Una sola, salvo que sus producciones sean de varias: entonces la carta combinada,
+ * con un bloque por línea, primero la del estilo que más programa el sitio. Navidad va siempre sola (es de temporada).
+ */
+export function lineasCarta(espectaculos: Pick<Espectaculo, 'tipo'>[], historial: Estilo[] = []): Linea[] {
+  const principal = lineaPrincipal(espectaculos, historial);
+  if (!principal) return [];
+  const todas = [...new Set(espectaculos.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => l !== 'navidad');
+  if (principal === 'navidad' || todas.length < 2) return [principal];
+  const n = (l: Linea) => espectaculos.filter((e) => LINEA_DE_TIPO[e.tipo] === l).length;
+  const pos = (l: Linea) => {
+    const i = historial.indexOf(ESTILO_DE_LINEA[l]!);
+    return i < 0 ? 9 : i;
+  };
+  return todas.sort((a, b) => pos(a) - pos(b) || n(b) - n(a) || LINEAS.indexOf(a) - LINEAS.indexOf(b));
+}
+
+/** «ópera, música de cámara y jazz, rock y fusión»: los nombres de las líneas (el que lleva «y» propia, al final). */
+export function nombresLineas(ls: Linea[], idioma: 'es' | 'ca'): string {
+  const orden = [...ls.filter((l) => l !== 'popular'), ...ls.filter((l) => l === 'popular')];
+  return lista(
+    orden.map((l) => NOMBRE_LINEA[idioma][l]),
+    idioma === 'ca' ? 'i' : 'y',
+  );
+}
+
+/**
+ * El bloque de una línea en la carta combinada: su texto sin el párrafo de presentación («Soy {remitente}…», que va
+ * una sola vez) y con el nombre de la línea como título.
+ */
+function bloqueDeLinea(tl: TextoLinea): string {
+  const parrafos = tl.texto.split(/\n\s*\n/).filter((x) => x.trim() && !x.includes('{remitente}'));
+  if (parrafos[0] && /^##\s/.test(parrafos[0])) parrafos.shift();
+  return [`## ${tl.titulo}`, ...parrafos].join('\n\n');
+}
+
 /** Completa unas plantillas guardadas con las genéricas (textos que falten o secciones añadidas después). */
 export function completarPlantillas(x: unknown): PlantillasCarta {
   const completar = (v: unknown, base: unknown): unknown => {
@@ -216,7 +267,14 @@ export function completarPlantillas(x: unknown): PlantillasCarta {
     return { ...o, lineas: { opera: lirica, sinfonico: lirica, ...resto } };
   };
   const y = (x && typeof x === 'object' ? x : {}) as Record<string, unknown>;
-  const t = completar({ es: migrar(y.es), ca: migrar(y.ca) }, PLANTILLAS_GENERICAS) as PlantillasCarta;
+  // Las plantillas de ArsVia guardadas antes de la carta combinada: sus textos para ella, no los genéricos.
+  const deArsvia = JSON.stringify(y).includes('ArsVia');
+  const conVarias = (v: unknown, idioma: 'es' | 'ca') => {
+    if (!deArsvia || !v || typeof v !== 'object') return v;
+    const o = v as Record<string, unknown>;
+    return { ...Object.fromEntries(Object.entries(VARIAS_ARSVIA[idioma]).filter(([k]) => typeof o[k] !== 'string')), ...o };
+  };
+  const t = completar({ es: conVarias(migrar(y.es), 'es'), ca: conVarias(migrar(y.ca), 'ca') }, PLANTILLAS_GENERICAS) as PlantillasCarta;
   // Las cartas modelo de ArsVia ya llevan la lista de producciones dentro del texto de cada línea.
   // Y los títulos en catalán de las líneas catalanas.
   for (const m of TEXTOS_LINEA_SIN_LISTA) {
@@ -278,8 +336,10 @@ export function acortarSaludo(cuerpo: string): string {
 
 /** El título del primer correo (el de su línea): «Propuestas de Ópera Escenificada · Temporadas 2027 y 2028». */
 export function tituloCorreo(espectaculos: Pick<Espectaculo, 'tipo'>[], idioma: 'es' | 'ca', a: AjustesCrm): string | null {
-  const l = lineaPrincipal(espectaculos);
+  const ls = lineasCarta(espectaculos);
+  const l = ls[0];
   if (!l) return null;
+  if (ls.length > 1) return rellenar(plantillasDe(a)[idioma].tituloVarias, { lineas: nombresLineas(ls, idioma) }).trim() || null;
   const t = plantillasDe(a)[idioma].lineas[l];
   return t.dossierTitulo.trim() || t.titulo.trim() || null;
 }
@@ -317,18 +377,36 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
     web: d.ajustes.web || '',
   };
   const y = d.idioma === 'ca' ? 'i' : 'y';
-  const principal = lineaPrincipal(d.espectaculos, d.historial);
-  const deLinea = d.espectaculos.filter((e) => principal && LINEA_DE_TIPO[e.tipo] === principal);
-  const otras = (d.otrasLineas ?? [...new Set(d.espectaculos.map((e) => LINEA_DE_TIPO[e.tipo]))]).filter((l) => l !== principal);
+  const lineas = lineasCarta(d.espectaculos, d.historial);
+  const varias = lineas.length > 1;
+  const principal = lineas[0] ?? null;
+  const otras = (d.otrasLineas ?? [...new Set(d.espectaculos.map((e) => LINEA_DE_TIPO[e.tipo]))]).filter((l) => !lineas.includes(l));
   const tl = principal ? t.lineas[principal] : null;
+  // Con {producciones}, la app pone los nombres de las producciones de la línea que encajan con el sitio.
+  const producciones = (l: Linea) =>
+    d.espectaculos
+      .filter((e) => LINEA_DE_TIPO[e.tipo] === l)
+      .map((e) => `• ${e.nombre}`)
+      .join('\n');
   const p: string[] = [v.persona ? rellenar(t.saludoPersona, v) : t.saludo];
-  if (tl?.intro.trim()) p.push(rellenar(tl.intro, v));
-  if (d.historial.length && t.historial.trim()) p.push(rellenar(t.historial, { ...v, estilos: lista(d.historial.map((e) => NOMBRE_ESTILO[d.idioma][e]), y) }));
-  // El texto de la línea es el de la plantilla tal cual (con su lista de producciones escrita ahí). Con {producciones},
-  // la app pone los nombres de las de esta línea que encajan con el sitio.
-  const producciones = deLinea.map((e) => `• ${e.nombre}`).join('\n');
-  if (tl?.texto.trim()) p.push(rellenar(tl.texto, { ...v, producciones }));
-  if (tl?.cierre.trim()) p.push(rellenar(tl.cierre, v));
+  const historial = () => {
+    if (d.historial.length && t.historial.trim()) p.push(rellenar(t.historial, { ...v, estilos: lista(d.historial.map((e) => NOMBRE_ESTILO[d.idioma][e]), y) }));
+  };
+  if (varias) {
+    // Carta combinada: una presentación, el párrafo «Soy…» de la línea principal y un bloque por línea.
+    if (t.introVarias.trim()) p.push(rellenar(t.introVarias, { ...v, lineas: nombresLineas(lineas, d.idioma) }));
+    historial();
+    const presentacion = tl?.texto.split(/\n\s*\n/).find((x) => x.includes('{remitente}'));
+    if (presentacion) p.push(rellenar(presentacion, v));
+    for (const l of lineas) p.push(rellenar(bloqueDeLinea(t.lineas[l]), { ...v, producciones: producciones(l) }));
+    if (t.cierreVarias.trim()) p.push(rellenar(t.cierreVarias, v));
+  } else {
+    if (tl?.intro.trim()) p.push(rellenar(tl.intro, v));
+    historial();
+    // El texto de la línea es el de la plantilla tal cual (con su lista de producciones escrita ahí).
+    if (tl?.texto.trim() && principal) p.push(rellenar(tl.texto, { ...v, producciones: producciones(principal) }));
+    if (tl?.cierre.trim()) p.push(rellenar(tl.cierre, v));
+  }
   for (const l of d.licitaciones.slice(0, 1)) {
     const f = fechaLarga(l.fin, d.idioma);
     p.push(rellenar(t.licitacion, { ...v, titulo: l.titulo, fecha: f ? (d.idioma === 'ca' ? ` (ofertes fins al ${f})` : ` (ofertas hasta el ${f})`) : '' }));
@@ -348,8 +426,8 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   if (otras.length && t.otrasLineas.trim()) p.push(rellenar(t.otrasLineas, { ...v, lineas: lista(otras.map((l) => NOMBRE_LINEA[d.idioma][l]), y) }));
   if (t.colaboracion.trim()) p.push(rellenar(t.colaboracion, v));
   p.push(`${rellenar(t.despedida, v)}\n\n${firmaDeLinea(tl, d.ajustes, d.idioma)}`);
-  const general = rellenar(t.asunto, { ...v, propuestas: principal ? NOMBRE_LINEA[d.idioma][principal] : d.idioma === 'ca' ? 'programació' : 'programación' });
-  return { asunto: tl?.asunto.trim() ? rellenar(tl.asunto, v) : general, cuerpo: p.join('\n\n'), linea: principal };
+  const general = rellenar(t.asunto, { ...v, propuestas: principal ? nombresLineas(lineas, d.idioma) : d.idioma === 'ca' ? 'programació' : 'programación' });
+  return { asunto: !varias && tl?.asunto.trim() ? rellenar(tl.asunto, v) : general, cuerpo: p.join('\n\n'), linea: principal };
 }
 
 /** Seguimientos (2.º a 5.º): breves, con el saludo y la firma de la cuenta (la de la línea, si la tiene). */

@@ -201,11 +201,28 @@ const LINEAS_CA: Record<Linea, TextoLinea> = {
 };
 for (const l of Object.keys(LINEAS_CA) as Linea[]) LINEAS_CA[l].notaFinal = NOTA_CA;
 
+/** Textos de la carta combinada (varias líneas en un correo), en la voz de las cartas de Joan. */
+export const VARIAS_ARSVIA: Record<'es' | 'ca', Pick<TextosIdioma, 'introVarias' | 'cierreVarias' | 'tituloVarias'>> = {
+  es: {
+    introVarias:
+      'Te presento varias de nuestras propuestas para la programación de {lugar}: **{lineas}**. Son producciones pensadas para espacios y públicos muy distintos, que pueden programarse por separado o combinarse a lo largo de la temporada.',
+    cierreVarias: 'En los **dossieres adjuntos** encontrarás la descripción artística de cada propuesta, las fechas disponibles y las condiciones económicas. Si te interesa conocer otras de nuestras producciones, puedes consultarlas en {web}.',
+    tituloVarias: 'Nuestras propuestas · Temporadas 2027 y 2028',
+  },
+  ca: {
+    introVarias:
+      'Et presento diverses de les nostres propostes per a la programació de {lugar}: **{lineas}**. Són produccions pensades per a espais i públics molt diferents, que es poden programar per separat o combinar al llarg de la temporada.',
+    cierreVarias: 'Als **dossiers adjunts** trobaràs la descripció artística de cada proposta, les dates disponibles i les condicions econòmiques. Si t’interessa conèixer altres produccions nostres, pots consultar-les a {web}.',
+    tituloVarias: 'Les nostres propostes · Temporades 2027 i 2028',
+  },
+};
+
 const ARSVIA_ES: TextosIdioma = {
   saludo: 'Hola:',
   saludoPersona: 'Hola, {persona}:',
   historial: 'He visto que en {lugar} habéis programado {estilos} en los últimos años, y por eso creo que estas propuestas pueden interesarte.',
   otrasLineas: 'También tenemos propuestas de {lineas}. Si te interesan, te envío el dossier.',
+  ...VARIAS_ARSVIA.es,
   lineas: LINEAS_ES,
   licitacion: 'He visto también que tenéis abierta la licitación «{titulo}»{fecha}; si lo veis oportuno, estaremos encantados de presentar una propuesta.',
   ayudas: 'Además, he visto {convocatorias} que podría facilitar la programación de estas propuestas; si te parece, lo estudiamos juntos.',
@@ -227,6 +244,7 @@ const ARSVIA_CA: TextosIdioma = {
   saludoPersona: 'Hola, {persona},',
   historial: 'He vist que a {lugar} heu programat {estilos} en els darrers anys, i per això crec que aquestes propostes et poden interessar.',
   otrasLineas: 'També tenim propostes de {lineas}. Si t’interessen, t’envio el dossier.',
+  ...VARIAS_ARSVIA.ca,
   lineas: LINEAS_CA,
   licitacion: 'He vist també que teniu oberta la licitació «{titulo}»{fecha}; si ho veieu oportú, estarem encantats de presentar-hi una proposta.',
   ayudas: 'A més, he vist {convocatorias} que podria facilitar la programació d’aquestes propostes; si et sembla bé, ho estudiem junts.',

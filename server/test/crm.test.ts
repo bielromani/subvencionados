@@ -45,16 +45,18 @@ describe('plantillas', () => {
       { nombre: 'Fidelio – Beethoven', tipo: 'opera' as const, enlace: '', estadoInfo: 'vigente' as const, textoCarta: texto('Fidelio') },
       { nombre: 'Oriol Romaní & Friends', tipo: 'jazz' as const, enlace: '', estadoInfo: 'vigente' as const },
     ];
-    const c = generarCarta({ ...base, paso: 1, espectaculos: opera, ajustes, entidad: { ...base.entidad, persona: 'Marta' } });
+    const c = generarCarta({ ...base, paso: 1, espectaculos: opera.slice(0, 2), ajustes, entidad: { ...base.entidad, persona: 'Marta' } });
     expect(c.asunto).toMatch(/^La flauta mágica, años 2027 y 2028/);
     expect(c.cuerpo).toMatch(/^Hola, Marta:/);
     expect(c.cuerpo).toContain('para la programación de Olot');
     expect(c.cuerpo).toContain('Soy Joan Romaní y te escribo en representación de la alianza de producción');
     expect(c.cuerpo).toContain('• La flauta mágica, de Mozart · Una producción ágil');
     expect(c.cuerpo).toContain('• Fidelio, de Beethoven');
-    // La otra línea, en una frase; sin su producción en la lista.
-    expect(c.cuerpo).toContain('También tenemos propuestas de jazz, rock y fusión');
-    expect(c.cuerpo).not.toContain('• Oriol');
+    // Con producciones de dos líneas, la carta combinada: un bloque por línea y el asunto general.
+    const dos = generarCarta({ ...base, paso: 1, espectaculos: opera, ajustes });
+    expect(dos.asunto).toMatch(/^Propuestas de ópera y jazz, rock y fusión para Olot/);
+    expect(dos.cuerpo).toContain('## Ópera escenificada');
+    expect(dos.cuerpo).toContain('## Jazz, rock clásico y fusión');
     expect(c.cuerpo).toMatch(/Ópera Popular de Barcelona · Orquesta Sinfónica Siglo XXI · ArsVia – Music Projects\nTel\./);
     // La invitación al Palau: con ópera y sinfónico-coral, hasta la última función.
     const conFecha = (hoy: string) => generarCarta({ ...base, paso: 1, espectaculos: opera, ajustes, hoy: new Date(hoy) }).cuerpo;

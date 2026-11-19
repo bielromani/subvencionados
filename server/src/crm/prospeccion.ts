@@ -221,10 +221,17 @@ export function prepararPropuestas(
     if (!aSuAlcance.length) continue;
     const elegidas = elegirEspectaculos(aSuAlcance, p, ajustes, hoy);
     if (!elegidas.length) continue;
-    // El correo presenta una línea (la de la producción que mejor encaja) con todas las suyas a su alcance; las demás
-    // líneas que le encajan se nombran en una frase.
+    // El correo presenta la línea de la producción que mejor encaja, con todas las suyas a su alcance. Si el sitio ha
+    // programado otros estilos del catálogo, también sus líneas (la carta combinada, un bloque por línea; Navidad va
+    // sola). Las demás líneas que le encajan se nombran en una frase.
     const linea = LINEA_DE_TIPO[elegidas[0]!.tipo];
-    const otrasLineas = [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => l !== linea);
+    const lineas =
+      linea === 'navidad'
+        ? [linea]
+        : [linea, ...new Set(aSuAlcance.filter((e) => ESTILO_DE_TIPO[e.tipo] && historial.includes(ESTILO_DE_TIPO[e.tipo]!)).map((e) => LINEA_DE_TIPO[e.tipo]))].filter(
+            (l, i, xs) => l !== 'navidad' && xs.indexOf(l) === i,
+          );
+    const otrasLineas = [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => !lineas.includes(l));
     const idioma = idiomaDe(p.ccaa, c?.partido);
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
@@ -260,7 +267,7 @@ export function prepararPropuestas(
       motivos,
       puntos,
       completar: () => {
-        const completa = { ...base, espectaculos: deLaLinea(aSuAlcance, linea, elegidas, p, hoy) };
+        const completa = { ...base, espectaculos: lineas.flatMap((l) => deLaLinea(aSuAlcance, l, elegidas, p, hoy)) };
         return { ...completa, motivos, puntos, ...redactarPropuesta(completa, ajustes, aSuAlcance) };
       },
     });

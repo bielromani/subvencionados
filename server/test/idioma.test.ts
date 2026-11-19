@@ -38,3 +38,24 @@ describe('saludo de correos ya redactados', () => {
     expect(acortarSaludo('Hola:\n\nNuria Escamilla Belizón: x')).toBe('Hola:\n\nNuria Escamilla Belizón: x');
   });
 });
+
+describe('carta combinada', () => {
+  it('un bloque por línea cuando el sitio programa varios estilos; una sola línea si no', async () => {
+    const { componerCarta, lineasCarta } = await import('../src/crm/cartas.js');
+    const { PLANTILLAS_ARSVIA } = await import('../src/crm/cartasArsvia.js');
+    const a = { remitente: 'Joan', organizacion: 'ArsVia', email: '', telefono: '', web: '', firma: '', diasEntreEnvios: 10, plantillas: PLANTILLAS_ARSVIA } as never;
+    const esp = [
+      { id: '1', nombre: 'Dúo', tipo: 'camara', enlace: '' },
+      { id: '2', nombre: 'Flauta', tipo: 'opera', enlace: '' },
+    ] as never[];
+    expect(lineasCarta(esp, ['opera', 'clasica'])).toEqual(['opera', 'camara']);
+    const c = componerCarta({ idioma: 'es', lugar: 'Sant Cugat', persona: null, historial: ['clasica', 'opera'], espectaculos: esp, licitaciones: [], ayudas: [], gestion: false, ajustes: a });
+    expect(c.cuerpo).toContain('## Música de cámara');
+    expect(c.cuerpo).toContain('## Ópera escenificada');
+    expect(c.cuerpo.indexOf('## Música de cámara')).toBeLessThan(c.cuerpo.indexOf('## Ópera'));
+    expect(c.cuerpo.match(/Soy Joan/g)).toHaveLength(1);
+    expect(c.cuerpo).toContain('dossieres adjuntos');
+    expect(lineasCarta([esp[0]!])).toEqual(['camara']);
+    expect(lineasCarta([...esp, { tipo: 'navidad' }] as never[])).not.toContain('navidad');
+  });
+});

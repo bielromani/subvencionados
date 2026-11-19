@@ -235,6 +235,9 @@ export interface TextosIdioma {
   saludoPersona: string;
   historial: string;
   otrasLineas: string;
+  introVarias: string;
+  cierreVarias: string;
+  tituloVarias: string;
   lineas: Record<LineaCarta, TextoLinea>;
   licitacion: string;
   ayudas: string;
@@ -248,7 +251,26 @@ export interface TextosIdioma {
 /** Enlace al dossier PDF de una línea (todo lo que entra en las cartas) o de un correo concreto. */
 export const urlDossierLinea = (l: LineaCarta, idioma: 'es' | 'ca' = 'es', descargar = false) => `/api/crm/dossier/${l}?idioma=${idioma}${descargar ? '&descargar=1' : ''}`;
 export const urlDossierMensaje = (id: string, descargar = false) => `/api/crm/mensajes/${id}/dossier${descargar ? '?descargar=1' : ''}`;
-export const urlDossierPropuesta = (id: string, descargar = false) => `/api/crm/propuestas/${id}/dossier${descargar ? '?descargar=1' : ''}`;
+export const urlDossierPropuesta = (id: string, descargar = false, linea?: LineaCarta) =>
+  `/api/crm/propuestas/${id}/dossier?${linea ? `linea=${linea}&` : ''}${descargar ? 'descargar=1' : ''}`;
+const LINEA_DE_TIPO: Record<TipoEspectaculo, LineaCarta> = {
+  opera: 'opera',
+  sinfonico_coral: 'sinfonico',
+  religiosa: 'sinfonico',
+  sinfonica: 'sinfonico',
+  camara: 'camara',
+  fusion: 'popular',
+  jazz: 'popular',
+  rock: 'popular',
+  navidad: 'navidad',
+  festivales: 'popular',
+  otro: 'popular',
+};
+/** Las líneas de un correo (la carta combinada presenta varias, con un dossier cada una). Navidad va sola. */
+export function lineasDe(espectaculos: { tipo: TipoEspectaculo }[]): LineaCarta[] {
+  const ls = [...new Set(espectaculos.map((e) => LINEA_DE_TIPO[e.tipo]))];
+  return ls.length > 1 ? ls.filter((l) => l !== 'navidad') : ls;
+}
 export interface PlantillasCarta {
   es: TextosIdioma;
   ca: TextosIdioma;
