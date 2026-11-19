@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { CuerpoCorreo } from '../components/CuerpoCorreo';
 import { crm, enlaceCorreo, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada, urlDossierPropuesta } from '../crm';
 import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
@@ -84,7 +85,7 @@ function DetallePropuesta({
   const aceptar = () =>
     hacer(async () => {
       await asegurarAprobado();
-      alTerminar(`Aceptada. El correo a ${p.nombre} saldrá solo en el próximo envío (de lunes a viernes, de 9 a 18 h).`);
+      alTerminar(`Aceptada. El correo a ${p.nombre} saldrá solo en el próximo envío (todos los días, de 9 a 21 h).`);
     });
   // Enviar ahora desde la web: sale al momento, con el dossier, y desde hoy cuentan los días del siguiente correo.
   const enviarAhora = () =>
@@ -122,7 +123,7 @@ function DetallePropuesta({
             {conectado ? (
               <>
                 {automatico && (
-                  <button type="button" className="accion" disabled={ocupado} onClick={() => void aceptar()} title="Sale solo en el próximo envío automático (de lunes a viernes, de 9 a 18 h)">
+                  <button type="button" className="accion" disabled={ocupado} onClick={() => void aceptar()} title="Sale solo en el próximo envío automático (todos los días, de 9 a 21 h)">
                     Aceptar para el envío automático
                   </button>
                 )}
@@ -153,14 +154,7 @@ function DetallePropuesta({
             <span>Asunto</span>
             <input className="correo-asunto" value={asunto} onChange={(e) => setAsunto(e.target.value)} disabled={!!aprobado} />
           </label>
-          <textarea
-            className="correo-cuerpo"
-            value={cuerpo}
-            onChange={(e) => setCuerpo(e.target.value)}
-            rows={Math.max(14, cuerpo.split('\n').length + 2)}
-            aria-label="Texto del correo"
-            disabled={!!aprobado}
-          />
+          <CuerpoCorreo cuerpo={cuerpo} cambiar={setCuerpo} editable={!aprobado} origen={{ propuesta: p.id }} filas={Math.max(14, cuerpo.split('\n').length + 2)} />
           <footer className="correo-pie">
             {aprobado ? (
               <span>Correo abierto en tu programa de correo. Aún no cuenta como enviado: queda en la Bandeja como «Aprobado, falta enviarlo» hasta que pulses «Ya lo he enviado».</span>

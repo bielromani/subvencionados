@@ -963,15 +963,16 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       else fallidos.push(m.id);
     };
     for (const m of await crm.programadosPendientes()) await mandar(m.usuario, m, await crm.ajustes(m.usuario), false);
-    // Envío automático: de lunes a viernes de 9 a 18 h (hora de Madrid), repartido por horas y sin pasar del tope del día.
+    // Envío automático: todos los días de 9 a 21 h (hora de Madrid), repartido por horas y sin pasar del tope del día.
     const ahora = new Date();
     const h = horaMadrid(ahora);
-    if (h.laborable && h.hora >= 9 && h.hora < 18) {
+    // La tarea va cada hora en punto: de las 9 a las 20 h son 12 tandas, y la última termina antes de las 21 h.
+    if (h.hora >= 9 && h.hora < 21) {
       const inicioDia = new Date(ahora.getTime() - (h.hora * 3600 + h.minuto * 60) * 1000);
       for (const u of await crm.usuariosConEnvioAutomatico()) {
         const a = await crm.ajustes(u);
         const cupo = cupoDiario(a, ahora);
-        const quedan = Math.min(cupo - (await crm.enviadosDesde(u, inicioDia)), Math.ceil(cupo / 9));
+        const quedan = Math.min(cupo - (await crm.enviadosDesde(u, inicioDia)), Math.ceil(cupo / 12));
         if (quedan <= 0) continue;
         for (const m of await crm.colaAutomatica(u, quedan, ahora)) await mandar(u, m, a, true);
       }

@@ -218,7 +218,8 @@ export function completarPlantillas(x: unknown): PlantillasCarta {
   const y = (x && typeof x === 'object' ? x : {}) as Record<string, unknown>;
   const t = completar({ es: migrar(y.es), ca: migrar(y.ca) }, PLANTILLAS_GENERICAS) as PlantillasCarta;
   // Las cartas modelo de ArsVia ya llevan la lista de producciones dentro del texto de cada línea.
-  for (const m of TEXTOS_LINEA_SIN_LISTA) if (t[m.idioma].lineas[m.linea].texto === m.antes) t[m.idioma].lineas[m.linea].texto = m.ahora;
+  // Y los títulos en catalán de las líneas catalanas.
+  for (const m of TEXTOS_LINEA_SIN_LISTA) if (t[m.idioma].lineas[m.linea][m.campo] === m.antes) t[m.idioma].lineas[m.linea][m.campo] = m.ahora;
   return t;
 }
 
@@ -230,6 +231,38 @@ export function firmaCarta(a: AjustesCrm, idioma: 'es' | 'ca'): string {
   if (a.firma.trim()) return a.firma.trim();
   const lineas = [a.remitente, a.cargo, a.organizacion, a.telefono, a.email, a.web].filter((x) => x?.trim());
   return lineas.length ? lineas.join('\n') : idioma === 'ca' ? '[La teva signatura]' : '[Tu firma]';
+}
+
+/** Segundos nombres habituales: «Juan Ignacio», «María José», «Josep Maria»... van juntos en el saludo. */
+const SEGUNDOS = new Set(
+  'josé jose josep maría maria mª carmen luis lluís lluis carlos carles antonio antoni manuel jesús jesus pilar ángel angel ángeles angeles isabel teresa dolores rosa elena francisco francesc javier xavier miguel ignacio ramón ramon vicente vicent pablo eugenia victoria cristina belén belen lourdes mercedes montserrat'.split(' '),
+);
+
+/**
+ * El nombre de pila para el saludo («Hola, Nuria:»), sin apellidos ni tratamientos: «Nuria Escamilla Belizón» → «Nuria»,
+ * «Juan Ignacio Trelis Sempere» → «Juan Ignacio», «María del Mar López» → «María del Mar», «López García, Ana» → «Ana».
+ */
+export function nombrePila(nombre: string | null | undefined): string {
+  let n = (nombre ?? '').replace(/\([^)]*\)/g, ' ').trim();
+  if (n.includes(',')) n = n.split(',').slice(1).join(' ').trim() || n.split(',')[0]!.trim();
+  const t = n
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((x, i) => !(i === 0 && /^(d\.?|dña\.?|dª|don|doña|sr\.?|sra\.?|excmo\.?|excma\.?|ilmo\.?|ilma\.?)$/i.test(x)));
+  if (t.length <= 2) return t[0] ?? '';
+  const [a, b, c, d] = t as [string, string, string, string | undefined];
+  if (/^(del|de)$/i.test(b) && t.length >= 4) return /^(los|las|la)$/i.test(c) && d && t.length >= 5 ? `${a} ${b} ${c} ${d}` : `${a} ${b} ${c}`;
+  // «Jana Vicente i Marqués»: tras una «i» o «y» vienen apellidos, así que el segundo también lo es.
+  if (SEGUNDOS.has(b.toLowerCase()) && !/^(i|y)$/i.test(c)) return `${a} ${b}`;
+  return a;
+}
+
+/** El título del primer correo (el de su línea): «Propuestas de Ópera Escenificada · Temporadas 2027 y 2028». */
+export function tituloCorreo(espectaculos: Pick<Espectaculo, 'tipo'>[], idioma: 'es' | 'ca', a: AjustesCrm): string | null {
+  const l = lineaPrincipal(espectaculos);
+  if (!l) return null;
+  const t = plantillasDe(a)[idioma].lineas[l];
+  return t.dossierTitulo.trim() || t.titulo.trim() || null;
 }
 
 /** La invitación de la línea, si la hay y sigue vigente. */
@@ -254,7 +287,7 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   const v = {
     lugar: d.lugar,
     organizacion: d.ajustes.organizacion || 'nuestra compañía',
-    persona: d.persona ?? '',
+    persona: nombrePila(d.persona),
     remitente: d.ajustes.remitente || d.ajustes.organizacion || '',
     web: d.ajustes.web || '',
   };
@@ -263,7 +296,7 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   const deLinea = d.espectaculos.filter((e) => principal && LINEA_DE_TIPO[e.tipo] === principal);
   const otras = (d.otrasLineas ?? [...new Set(d.espectaculos.map((e) => LINEA_DE_TIPO[e.tipo]))]).filter((l) => l !== principal);
   const tl = principal ? t.lineas[principal] : null;
-  const p: string[] = [d.persona ? rellenar(t.saludoPersona, v) : t.saludo];
+  const p: string[] = [v.persona ? rellenar(t.saludoPersona, v) : t.saludo];
   if (tl?.intro.trim()) p.push(rellenar(tl.intro, v));
   if (d.historial.length && t.historial.trim()) p.push(rellenar(t.historial, { ...v, estilos: lista(d.historial.map((e) => NOMBRE_ESTILO[d.idioma][e]), y) }));
   // El texto de la línea es el de la plantilla tal cual (con su lista de producciones escrita ahí). Con {producciones},
@@ -284,7 +317,8 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
     p.push(rellenar(t.ayudas, { ...v, convocatorias }));
   }
   const invitacion = tl ? invitacionVigente(tl, d.hoy) : null;
-  if (invitacion) p.push(rellenar(invitacion, v));
+  // La invitación va en un solo bloque (sus párrafos, en líneas seguidas): en el correo sale entera en un recuadro.
+  if (invitacion) p.push(rellenar(invitacion, v).replace(/\n\s*\n/g, '\n'));
   if (d.gestion) p.push(rellenar(t.gestion, v));
   if (otras.length && t.otrasLineas.trim()) p.push(rellenar(t.otrasLineas, { ...v, lineas: lista(otras.map((l) => NOMBRE_LINEA[d.idioma][l]), y) }));
   if (t.colaboracion.trim()) p.push(rellenar(t.colaboracion, v));
@@ -300,11 +334,11 @@ export function componerSeguimiento(
   asuntoInicial: string,
 ): { asunto: string; cuerpo: string } {
   const t = plantillasDe(d.ajustes)[d.idioma];
-  const v = { lugar: d.lugar, organizacion: d.ajustes.organizacion, persona: d.persona ?? '' };
+  const v = { lugar: d.lugar, organizacion: d.ajustes.organizacion, persona: nombrePila(d.persona) };
   const texto = t.seguimientos[Math.min(Math.max(paso - 2, 0), 3)]!;
   const firma = firmaDeLinea(d.linea ? t.lineas[d.linea] : null, d.ajustes, d.idioma);
   return {
     asunto: `Re: ${asuntoInicial}`,
-    cuerpo: [d.persona ? rellenar(t.saludoPersona, v) : t.saludo, rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),
+    cuerpo: [v.persona ? rellenar(t.saludoPersona, v) : t.saludo, rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),
   };
 }

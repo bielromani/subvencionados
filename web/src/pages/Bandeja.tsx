@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { CuerpoCorreo } from '../components/CuerpoCorreo';
 import { crm, enlaceCorreo, type EstadoMensaje, type MensajeBandeja, NOMBRE_OPORTUNIDAD, urlDossierMensaje } from '../crm';
 import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
@@ -123,7 +124,7 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
             <span>Asunto</span>
             <input className="correo-asunto" value={asunto} onChange={(e) => setAsunto(e.target.value)} disabled={!editable} />
           </label>
-          <textarea className="correo-cuerpo" value={cuerpo} onChange={(e) => setCuerpo(e.target.value)} rows={Math.max(12, cuerpo.split('\n').length + 2)} aria-label="Texto del correo" disabled={!editable} />
+          <CuerpoCorreo cuerpo={cuerpo} cambiar={setCuerpo} editable={editable} origen={{ mensaje: m.id }} filas={Math.max(12, cuerpo.split('\n').length + 2)} />
           <footer className="correo-pie">
             {m.estado === 'programado' && m.programadoPara ? (
               <span>Saldrá el {fechaHora(m.programadoPara)}. Puedes cancelarlo hasta entonces.</span>
@@ -367,7 +368,7 @@ function PorEnviar() {
     <div className="bandeja">
       {datos.automatico && (
         <p className="llamada" role="note">
-          El envío automático está activado: los seguimientos y los primeros correos aceptados salen solos desde tu correo, de lunes a viernes de 9 a 18 h. No hace falta enviarlos a mano; si
+          El envío automático está activado: los seguimientos y los primeros correos aceptados salen solos desde tu correo, todos los días de 9 a 21 h. No hace falta enviarlos a mano; si
           quieres que uno no salga, descártalo o pausa su seguimiento en la ficha.
         </p>
       )}

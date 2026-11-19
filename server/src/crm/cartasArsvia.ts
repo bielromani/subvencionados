@@ -137,6 +137,7 @@ const LINEAS_CA: Record<Linea, TextoLinea> = {
   opera: {
     ...LINEAS_ES.opera,
     titulo: 'Òpera escenificada',
+    dossierTitulo: 'Propostes d’Òpera Escenificada · Temporades 2027 i 2028',
     asunto: 'La flauta màgica, anys 2027 i 2028. Fidelio (Bicentenari de la mort de Beethoven), entre octubre i desembre de 2027',
     intro: 'Et presento dues grans produccions d’òpera escenificada per a la programació de {lugar}, pensades tant per atraure el gran públic com per oferir fites artístiques de primer nivell.',
     texto: `${PRESENTACION_ALIANZA_CA}\n\nAquestes són les nostres dues apostes líriques:`,
@@ -148,6 +149,7 @@ const LINEAS_CA: Record<Linea, TextoLinea> = {
   sinfonico: {
     ...LINEAS_ES.sinfonico,
     titulo: 'Música simfònico-coral i sacra',
+    dossierTitulo: 'Propostes Simfònico-Corals i Sacres · Temporades 2027 i 2028',
     asunto: 'Propostes simfònico-corals i sacres · Un rèquiem alemany (Brahms) a partir de juliol de 2027 i Passió segons sant Joan escenificada (Bach) tot el 2028',
     intro:
       'Et presento dues grans produccions del repertori simfònico-coral i sacre per a la programació de {lugar}. Són dues propostes concebudes tant per a auditoris com per a esglésies, monestirs i festivals de música religiosa o cicles de Setmana Santa, amb formats flexibles que en faciliten la viabilitat.',
@@ -160,6 +162,7 @@ const LINEAS_CA: Record<Linea, TextoLinea> = {
   camara: {
     ...LINEAS_ES.camara,
     titulo: 'Música de cambra',
+    dossierTitulo: 'Propostes de Música de Cambra · Temporades 2027 i 2028',
     asunto: 'Propostes de música de cambra 2027-2028 · Integral de Brahms i Romanticisme alemany (Duo Aidos)',
     intro:
       'Et presento dues propostes de música de cambra per a la programació de {lugar} entre gener de 2027 i desembre de 2028. Dos projectes pensats per a cicles estables, ateneus, fundacions i sales de format íntim que busquin excel·lència interpretativa i proximitat amb el públic.',
@@ -172,6 +175,7 @@ const LINEAS_CA: Record<Linea, TextoLinea> = {
   popular: {
     ...LINEAS_ES.popular,
     titulo: 'Jazz, rock clàssic i fusió',
+    dossierTitulo: 'Propostes de Jazz, Rock Clàssic i Fusió · Anys 2027 i 2028',
     asunto: 'Propostes de jazz, rock clàssic i fusió 2027-2028 · De The Crossroads als clàssics del swing i el rock',
     intro:
       'Et presento les nostres propostes de jazz, rock clàssic, músiques d’arrel i fusió per a la programació de {lugar} entre gener de 2027 i desembre de 2028. Un catàleg pensat per a festivals, programacions d’estiu, cicles de club i teatres que busquin concerts amb energia, rigor musical i una connexió directa amb públics de totes les edats.',
@@ -182,6 +186,7 @@ const LINEAS_CA: Record<Linea, TextoLinea> = {
   navidad: {
     ...LINEAS_ES.navidad,
     titulo: 'Nadal i Any Nou',
+    dossierTitulo: 'Propostes de Nadal i Any Nou · Cada any, del 15 de desembre al 15 de gener',
     asunto: 'Proposta per a Nadal i Any Nou · Concert d’Any Nou a l’estil de l’1 de gener vienès (en format simfònic o de cambra)',
     intro:
       'De cara a la programació nadalenca de {lugar}, et presento la nostra proposta de Concert d’Any Nou, disponible cada temporada entre el 15 de desembre i el 15 de gener i inspirada en la tradició vienesa de l’1 de gener: valsos, polques i marxes de la família Strauss, melodies de La vídua alegre, opereta de Lehár, i una selecció de nadales per a tots els públics.',
@@ -556,7 +561,10 @@ const comoVineta = (t: string) => {
 };
 
 /** Textos de las líneas antes de llevar la lista dentro: si una cuenta los tiene guardados, se cambian por los nuevos. */
-export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea; antes: string; ahora: string }[] = [];
+export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea; campo: 'texto' | 'dossierTitulo'; antes: string; ahora: string }[] = [];
+// Los títulos en catalán (antes, las líneas catalanas tenían el de la castellana).
+for (const l of Object.keys(LINEAS_CA) as Linea[])
+  if (LINEAS_CA[l].dossierTitulo !== LINEAS_ES[l].dossierTitulo) TEXTOS_LINEA_SIN_LISTA.push({ idioma: 'ca', linea: l, campo: 'dossierTitulo', antes: LINEAS_ES[l].dossierTitulo, ahora: LINEAS_CA[l].dossierTitulo });
 for (const [idioma, lineas] of [
   ['es', LINEAS_ES],
   ['ca', LINEAS_CA],
@@ -566,6 +574,6 @@ for (const [idioma, lineas] of [
     if (!vinetas.length) continue;
     const antes = lineas[l].texto;
     lineas[l].texto = `${antes}\n\n${vinetas.join('\n\n')}`;
-    TEXTOS_LINEA_SIN_LISTA.push({ idioma, linea: l, antes, ahora: lineas[l].texto });
+    TEXTOS_LINEA_SIN_LISTA.push({ idioma, linea: l, campo: 'texto', antes, ahora: lineas[l].texto });
   }
 }

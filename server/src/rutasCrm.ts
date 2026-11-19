@@ -6,10 +6,11 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
-import { enviarMensaje, inicioDiaMadrid } from './crm/envio.js';
+import { correoHtml } from './crm/correoHtml.js';
+import { enviarMensaje, inicioDiaMadrid, PIE_BAJA } from './crm/envio.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
-import { completarPlantillas, LINEAS, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
+import { completarPlantillas, LINEAS, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
 import { type DatosDossier, dossierDeCorreo, dossierDeLinea, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
 import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
@@ -537,6 +538,25 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
   r.post('/mensajes/:id/descartar', ruta(async (req, _r, u, c) => c.descartar(u.id, String(req.params.id))));
   /** El usuario confirma que lo ha enviado desde su correo: es el envío efectivo. */
   r.get('/enviados', ruta(async (_q, _r, u, c) => ({ items: await c.enviados(u.id) })));
+  /** Cómo llegará el correo: el texto maquetado en HTML, como sale al enviarlo desde la web. */
+  r.post(
+    '/vista-previa',
+    ruta(async (req, _r, u, c) => {
+      const cuerpo = typeof req.body?.cuerpo === 'string' ? req.body.cuerpo.slice(0, 50_000) : '';
+      const a = await c.ajustes(u.id);
+      // El título de la línea, en el primer correo (de una propuesta o de la Bandeja).
+      let titulo: string | null = null;
+      if (typeof req.body?.propuesta === 'string') {
+        const [ps, catalogo] = await Promise.all([c.propuestas(u.id), c.espectaculos(u.id)]);
+        const p = ps.find((x) => x.id === req.body.propuesta);
+        if (p) titulo = tituloCorreo(catalogo.filter((e) => p.espectaculos.some((x) => x.id === e.id)), p.idioma, a);
+      } else if (typeof req.body?.mensaje === 'string') {
+        const x = await c.paraDossier(u.id, req.body.mensaje).catch(() => null);
+        if (x?.paso === 1) titulo = tituloCorreo(x.espectaculos, x.idioma, a);
+      }
+      return { html: correoHtml(cuerpo, { cabecera: a.organizacion, titulo, pie: PIE_BAJA }) };
+    }),
+  );
   /** Enviar ahora desde la web (con el dossier en el primero): cuenta como envío efectivo y en el tope del día. */
   r.post(
     '/mensajes/:id/enviar',

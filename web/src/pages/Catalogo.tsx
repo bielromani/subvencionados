@@ -288,7 +288,7 @@ function Remitente() {
               <input type="number" min={5} max={300} value={a.limiteDiario ?? 30} onChange={(e) => setA({ ...a, limiteDiario: Number(e.target.value) })} />
             </label>
             <p className="ayuda">
-              Salen desde {a.email || 'tu email'} de lunes a viernes, de 9 a 18 h, repartidos a lo largo del día. Para no caer en spam, el primer día salen como mucho 20 y el tope sube 10 cada
+              Salen desde {a.email || 'tu email'} todos los días, de 9 a 21 h, repartidos a lo largo del día. Para no caer en spam, el primer día salen como mucho 20 y el tope sube 10 cada
               semana hasta tu máximo{a.envioAutomatico && !cambiado ? ` (hoy: ${envio.cupoHoy})` : ''}. Recibes una copia oculta de cada correo y las respuestas te llegan a tu buzón.
               Cada correo lleva al final una línea para pedir no recibir más.
             </p>

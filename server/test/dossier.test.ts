@@ -79,9 +79,35 @@ describe('las cartas salen solo de las plantillas', async () => {
   it('las plantillas guardadas con el texto anterior de ArsVia reciben la lista', async () => {
     const { completarPlantillas } = await import('../src/crm/cartas.js');
     const { TEXTOS_LINEA_SIN_LISTA } = await import('../src/crm/cartasArsvia.js');
-    const m = TEXTOS_LINEA_SIN_LISTA.find((x) => x.idioma === 'es' && x.linea === 'opera')!;
+    const m = TEXTOS_LINEA_SIN_LISTA.find((x) => x.idioma === 'es' && x.linea === 'opera' && x.campo === 'texto')!;
     const viejas = JSON.parse(JSON.stringify(PLANTILLAS_ARSVIA));
     viejas.es.lineas.opera.texto = m.antes;
     expect(completarPlantillas(viejas).es.lineas.opera.texto).toBe(m.ahora);
+  });
+});
+
+describe('correo en HTML y saludo', async () => {
+  const { nombrePila } = await import('../src/crm/cartas.js');
+  const { correoHtml, textoPlano } = await import('../src/crm/correoHtml.js');
+  it('el saludo lleva solo el nombre de pila', () => {
+    expect(nombrePila('Nuria Escamilla Belizón')).toBe('Nuria');
+    expect(nombrePila('Juan Ignacio Trelis Sempere')).toBe('Juan Ignacio');
+    expect(nombrePila('María del Mar López García')).toBe('María del Mar');
+    expect(nombrePila('Jana Vicente i Marqués')).toBe('Jana');
+    expect(nombrePila('Marta Rovira Martínez (erc)')).toBe('Marta');
+    expect(nombrePila('López García, Ana')).toBe('Ana');
+    expect(nombrePila(null)).toBe('');
+  });
+  it('viñetas con el nombre en negrita, invitación destacada, firma y título', () => {
+    const cuerpo = 'Hola, Nuria:\n\nEstas son nuestras propuestas:\n\n• Fidelio, de Beethoven · Ópera.\n   – Formato reducido\n\n• Otra <b>\n\nTE INVITO A VERNOS EN ESCENA. En el **Palau**.\n\nUn saludo,\n\nJoan Romaní\nTel. 600 000 000\njoan@arsvia.example';
+    const h = correoHtml(cuerpo, { cabecera: 'ArsVia', titulo: 'Propuestas de Ópera · 2027', pie: 'Baja' });
+    expect(h).toContain('<strong style="color:#1d2433">Fidelio, de Beethoven</strong> · Ópera.');
+    expect(h).toContain('Formato reducido</li></ul>');
+    expect(h).toContain('Otra &lt;b&gt;');
+    expect(h).toContain('>Te invito a vernos en escena.</strong>');
+    expect(h).toContain('<strong>Palau</strong>');
+    expect(h).toContain('href="mailto:joan@arsvia.example"');
+    expect(h).toContain('Propuestas de Ópera</div>');
+    expect(textoPlano('En el **Palau**.\n## Título')).toBe('En el Palau.\nTítulo');
   });
 });
