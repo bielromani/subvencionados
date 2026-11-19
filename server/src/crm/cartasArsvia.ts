@@ -561,7 +561,7 @@ const comoVineta = (t: string) => {
 };
 
 /** Textos de las líneas antes de llevar la lista dentro: si una cuenta los tiene guardados, se cambian por los nuevos. */
-export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea; campo: 'texto' | 'dossierTitulo'; antes: string; ahora: string }[] = [];
+export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea | null; campo: string; antes: string; ahora: string }[] = [];
 // Los títulos en catalán (antes, las líneas catalanas tenían el de la castellana).
 for (const l of Object.keys(LINEAS_CA) as Linea[])
   if (LINEAS_CA[l].dossierTitulo !== LINEAS_ES[l].dossierTitulo) TEXTOS_LINEA_SIN_LISTA.push({ idioma: 'ca', linea: l, campo: 'dossierTitulo', antes: LINEAS_ES[l].dossierTitulo, ahora: LINEAS_CA[l].dossierTitulo });
@@ -576,4 +576,62 @@ for (const [idioma, lineas] of [
     lineas[l].texto = `${antes}\n\n${vinetas.join('\n\n')}`;
     TEXTOS_LINEA_SIN_LISTA.push({ idioma, linea: l, campo: 'texto', antes, ahora: lineas[l].texto });
   }
+}
+
+// ---------- Formato para el correo en HTML ----------
+// Los mismos textos, con negritas en lo importante y un título sobre la lista de producciones (ver correoHtml.ts).
+// Cada cambio queda anotado: las cuentas con el texto anterior sin tocar reciben el nuevo.
+
+type Cambios = [string, string][];
+function formatear(idioma: 'es' | 'ca', linea: Linea | null, obj: Record<string, unknown>, campo: string, cambios: Cambios) {
+  const antes = obj[campo] as string;
+  let ahora = antes;
+  for (const [de, a] of cambios) ahora = ahora.replace(de, a);
+  if (ahora === antes) return;
+  obj[campo] = ahora;
+  TEXTOS_LINEA_SIN_LISTA.push({ idioma, linea, campo, antes, ahora });
+}
+const negrita = (...xs: string[]): Cambios => xs.map((x) => [x, `**${x}**`]);
+
+const FORMATO: Record<'es' | 'ca', Record<Linea, { intro: Cambios; texto: Cambios; cierre: Cambios }>> = {
+  es: {
+    opera: { intro: negrita('dos grandes producciones de ópera escenificada'), texto: [['Estas son nuestras dos apuestas líricas:', '## Nuestras dos apuestas líricas']], cierre: negrita('dossier adjunto') },
+    sinfonico: { intro: negrita('dos grandes producciones del repertorio sinfónico-coral y sacro'), texto: [['Estas son nuestras dos propuestas:', '## Nuestras dos propuestas']], cierre: negrita('dossier adjunto') },
+    camara: {
+      intro: negrita('dos propuestas de música de cámara', 'entre enero de 2027 y diciembre de 2028'),
+      texto: [['Estas son nuestras dos propuestas de cámara:', '## Nuestras dos propuestas de cámara']],
+      cierre: negrita('dossier adjunto'),
+    },
+    popular: {
+      intro: negrita('jazz, rock clásico, músicas de raíz y fusión', 'entre enero de 2027 y diciembre de 2028'),
+      texto: [['Estas son nuestras propuestas:', '## Nuestras propuestas']],
+      cierre: negrita('dossier adjunto'),
+    },
+    navidad: { intro: negrita('Concierto de Año Nuevo', 'entre el 15 de diciembre y el 15 de enero'), texto: negrita('dos formatos cerrados'), cierre: negrita('dossier adjunto') },
+  },
+  ca: {
+    opera: { intro: negrita('dues grans produccions d’òpera escenificada'), texto: [['Aquestes són les nostres dues apostes líriques:', '## Les nostres dues apostes líriques']], cierre: negrita('dossier adjunt') },
+    sinfonico: { intro: negrita('dues grans produccions del repertori simfònico-coral i sacre'), texto: [['Aquestes són les nostres dues propostes:', '## Les nostres dues propostes']], cierre: negrita('dossier adjunt') },
+    camara: {
+      intro: negrita('dues propostes de música de cambra', 'entre gener de 2027 i desembre de 2028'),
+      texto: [['Aquestes són les nostres dues propostes de cambra:', '## Les nostres dues propostes de cambra']],
+      cierre: negrita('dossier adjunt'),
+    },
+    popular: {
+      intro: negrita('jazz, rock clàssic, músiques d’arrel i fusió', 'entre gener de 2027 i desembre de 2028'),
+      texto: [['Aquestes són les nostres propostes:', '## Les nostres propostes']],
+      cierre: negrita('dossier adjunt'),
+    },
+    navidad: { intro: negrita('Concert d’Any Nou', 'entre el 15 de desembre i el 15 de gener'), texto: negrita('dos formats tancats'), cierre: negrita('dossier adjunt') },
+  },
+};
+for (const [idioma, textos] of [
+  ['es', ARSVIA_ES],
+  ['ca', ARSVIA_CA],
+] as const) {
+  for (const l of Object.keys(FORMATO[idioma]) as Linea[])
+    for (const campo of ['intro', 'texto', 'cierre'] as const) formatear(idioma, l, textos.lineas[l] as unknown as Record<string, unknown>, campo, FORMATO[idioma][l][campo]);
+  const general = textos as unknown as Record<string, unknown>;
+  formatear(idioma, null, general, 'gestion', idioma === 'es' ? negrita('festivales y ciclos completos') : negrita('festivals i cicles complets'));
+  formatear(idioma, null, general, 'colaboracion', idioma === 'es' ? negrita('me acerco yo a visitarte') : negrita('m’acosto jo a visitar-te'));
 }

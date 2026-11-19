@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { sinFormato } from '../crm';
 
 /**
  * Copiar el correo por partes, para pegarlo en Gmail, Outlook web o donde sea. «Abrir en mi correo» depende del
@@ -25,7 +26,7 @@ export function CopiarCorreo({ para, asunto, cuerpo }: { para: string; asunto: s
       <span className="botones-fila">
         {boton('para', 'Copiar dirección', para)}
         {boton('asunto', 'Copiar asunto', asunto)}
-        {boton('cuerpo', 'Copiar texto', cuerpo)}
+        {boton('cuerpo', 'Copiar texto', sinFormato(cuerpo))}
       </span>
     </div>
   );

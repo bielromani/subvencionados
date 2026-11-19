@@ -401,4 +401,7 @@ export const crm = {
 };
 
 /** mailto con el correo ya redactado: se envía desde el programa de correo del usuario. */
-export const enlaceCorreo = (para: string, asunto: string, cuerpo: string) => `mailto:${encodeURIComponent(para)}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+/** El texto sin las marcas de formato (**negrita**, «## título»): para abrirlo o copiarlo en otro programa de correo. */
+export const sinFormato = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/^##\s+/gm, '');
+export const enlaceCorreo = (para: string, asunto: string, cuerpo: string) =>
+  `mailto:${encodeURIComponent(para)}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(sinFormato(cuerpo))}`;

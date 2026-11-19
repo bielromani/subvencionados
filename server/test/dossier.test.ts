@@ -81,8 +81,18 @@ describe('las cartas salen solo de las plantillas', async () => {
     const { TEXTOS_LINEA_SIN_LISTA } = await import('../src/crm/cartasArsvia.js');
     const m = TEXTOS_LINEA_SIN_LISTA.find((x) => x.idioma === 'es' && x.linea === 'opera' && x.campo === 'texto')!;
     const viejas = JSON.parse(JSON.stringify(PLANTILLAS_ARSVIA));
-    viejas.es.lineas.opera.texto = m.antes;
-    expect(completarPlantillas(viejas).es.lineas.opera.texto).toBe(m.ahora);
+    // Sin lista y con lista sin formato: las dos versiones anteriores llegan al texto actual, con su formato.
+    for (const antes of [m.antes, m.ahora]) {
+      viejas.es.lineas.opera.texto = antes;
+      viejas.es.gestion = antes === m.antes ? viejas.es.gestion.replace(/\*\*/g, '') : viejas.es.gestion;
+      const t = completarPlantillas(viejas).es;
+      expect(t.lineas.opera.texto).toBe(PLANTILLAS_ARSVIA.es.lineas.opera.texto);
+      expect(t.lineas.opera.texto).toContain('## Nuestras dos apuestas líricas\n\n• La flauta mágica');
+      expect(t.gestion).toContain('**festivales y ciclos completos**');
+    }
+    // Lo retocado a mano no se toca.
+    viejas.es.lineas.opera.texto = 'Mi texto';
+    expect(completarPlantillas(viejas).es.lineas.opera.texto).toBe('Mi texto');
   });
 });
 

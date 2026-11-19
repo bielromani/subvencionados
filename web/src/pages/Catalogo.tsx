@@ -450,7 +450,9 @@ function Plantillas({ alCambiarCatalogo }: { alCambiarCatalogo: () => void }) {
             </button>
           ))}
         </div>
-        <span className="ayuda">Cada correo se monta con estos bloques, en este orden. Entre llaves, lo que se rellena solo. El catalán se usa para las entidades de Cataluña.</span>
+        <span className="ayuda">
+          Cada correo se monta con estos bloques, en este orden. Entre llaves, lo que se rellena solo. El catalán se usa para las entidades de Cataluña. Formato: **así** sale en negrita, «## » al empezar hace un título, «• » una viñeta (lo que va antes de « · » en negrita) y un párrafo que empieza en MAYÚSCULAS sale en un recuadro. En Propuestas, «Cómo llegará» enseña el resultado.
+        </span>
         <button type="button" className="accion" onClick={() => void arsvia()}>
           Cargar las cartas modelo de ArsVia
         </button>

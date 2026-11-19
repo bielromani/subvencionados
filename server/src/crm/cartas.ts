@@ -219,7 +219,10 @@ export function completarPlantillas(x: unknown): PlantillasCarta {
   const t = completar({ es: migrar(y.es), ca: migrar(y.ca) }, PLANTILLAS_GENERICAS) as PlantillasCarta;
   // Las cartas modelo de ArsVia ya llevan la lista de producciones dentro del texto de cada línea.
   // Y los títulos en catalán de las líneas catalanas.
-  for (const m of TEXTOS_LINEA_SIN_LISTA) if (t[m.idioma].lineas[m.linea][m.campo] === m.antes) t[m.idioma].lineas[m.linea][m.campo] = m.ahora;
+  for (const m of TEXTOS_LINEA_SIN_LISTA) {
+    const o = (m.linea ? t[m.idioma].lineas[m.linea] : t[m.idioma]) as unknown as Record<string, unknown>;
+    if (o[m.campo] === m.antes) o[m.campo] = m.ahora;
+  }
   return t;
 }
 
