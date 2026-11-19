@@ -382,6 +382,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
       telefono: p?.telefono ?? m.cultura.telefono ?? m.ayuntamiento.telefono,
       deCultura: !!(p?.email || p?.telefono || m.cultura.email || m.cultura.telefono),
       poblacion: m.poblacion,
+      // Quién gobierna: el partido de la alcaldía o, si no consta, el de la concejalía de cultura (que es del gobierno).
+      partido: m.alcaldia?.partido ?? m.personas.find((x) => x.partido)?.partido ?? null,
     };
   };
   /** Un festival también se puede seguir y recibir propuestas: como cliente, con su estilo y su web. */

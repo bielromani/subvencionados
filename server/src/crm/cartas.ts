@@ -154,7 +154,7 @@ export const PLANTILLAS_GENERICAS: PlantillasCarta = {
 };
 
 export { FIRMA_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './cartasArsvia.js';
-import { FIRMA_ARSVIA as FIRMA_MODELO, FIRMAS_ANTERIORES_ARSVIA, TEXTOS_LINEA_SIN_LISTA } from './cartasArsvia.js';
+import { FIRMA_ARSVIA as FIRMA_MODELO, FIRMA_ARSVIA_CA as FIRMA_MODELO_CA, FIRMAS_ANTERIORES_ARSVIA, TEXTOS_LINEA_SIN_LISTA } from './cartasArsvia.js';
 
 // ---------- Composición ----------
 
@@ -231,6 +231,7 @@ export function plantillasDe(a: AjustesCrm): PlantillasCarta {
 }
 
 export function firmaCarta(a: AjustesCrm, idioma: 'es' | 'ca'): string {
+  if (idioma === 'ca' && a.firmaCa?.trim()) return a.firmaCa.trim();
   if (a.firma.trim()) return a.firma.trim();
   const lineas = [a.remitente, a.cargo, a.organizacion, a.telefono, a.email, a.web].filter((x) => x?.trim());
   return lineas.length ? lineas.join('\n') : idioma === 'ca' ? '[La teva signatura]' : '[Tu firma]';
@@ -280,6 +281,12 @@ export function invitacionVigente(t: TextoLinea, hoy = new Date()): string | nul
  * de las cartas modelo. Quien ha escrito su firma la ve en todos los correos.
  */
 function firmaDeLinea(tl: TextoLinea | null, a: AjustesCrm, idioma: 'es' | 'ca'): string {
+  // En catalán, la firma en catalán de la cuenta si es propia; si no, la de la línea (en catalán).
+  if (idioma === 'ca') {
+    const ca = a.firmaCa?.trim();
+    if (ca && ca !== FIRMA_MODELO_CA.trim()) return ca;
+    return tl?.firma.trim() || ca || firmaCarta(a, idioma);
+  }
   const propia = a.firma.trim() && a.firma.trim() !== FIRMA_MODELO.trim() && !FIRMAS_ANTERIORES_ARSVIA.includes(a.firma.trim());
   return (!propia && tl?.firma.trim()) || firmaCarta(a, idioma);
 }

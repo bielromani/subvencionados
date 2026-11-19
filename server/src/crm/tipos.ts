@@ -176,6 +176,10 @@ export interface AjustesCrm {
   telefono: string;
   web: string;
   firma: string;
+  /** Firma en catalán (correos a Cataluña y, según el ayuntamiento, a Baleares y la Comunitat Valenciana). */
+  firmaCa?: string;
+  /** Zona de las propuestas: '' toda España, 'resto' (sin Cataluña), 'cataluna' o una comunidad autónoma. */
+  zona?: string;
   /** Cargo que figura en la firma («Coordinación de proyectos y giras»). */
   cargo?: string;
   /** Días entre envíos de la secuencia (orientativo, desde el envío efectivo del anterior). */

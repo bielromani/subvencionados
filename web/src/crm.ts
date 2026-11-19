@@ -261,6 +261,8 @@ export interface AjustesCrm {
   telefono: string;
   web: string;
   firma: string;
+  firmaCa?: string;
+  zona?: string;
   cargo?: string;
   diasEntreEnvios: number;
   plantillas: PlantillasCarta;
@@ -370,6 +372,7 @@ export const crm = {
   propuestas: () => pedir<{ items: PropuestaPreparada[] }>('/propuestas'),
   cargarPlantillasArsvia: () => pedir<{ textos: number; creadas: number; apartadas: number; reescritas: number; aMano: number }>('/plantillas/arsvia', 'POST', {}),
   reescribirPropuestas: () => pedir<{ reescritas: number; aMano: number }>('/propuestas/reescribir', 'POST', {}),
+  guardarZona: (zona: string) => pedir<{ zona: string }>('/zona', 'PUT', { zona }),
   rehacerPropuestas: (limite: number) => pedir<{ borradas: number; nuevas: number }>('/propuestas/rehacer', 'POST', { limite }),
   prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
   guardarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) => pedir(`/propuestas/${id}`, 'PUT', c),
@@ -405,3 +408,15 @@ export const crm = {
 export const sinFormato = (t: string) => t.replace(/\*\*(.+?)\*\*/g, '$1').replace(/^##\s+/gm, '');
 export const enlaceCorreo = (para: string, asunto: string, cuerpo: string) =>
   `mailto:${encodeURIComponent(para)}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(sinFormato(cuerpo))}`;
+
+/** Zonas para las propuestas: «resto» es toda España menos Cataluña; también vale una comunidad concreta. */
+export const ZONAS = [
+  { valor: '', nombre: 'Toda España' },
+  { valor: 'resto', nombre: 'Resto de España (sin Cataluña)' },
+  { valor: 'cataluna', nombre: 'Cataluña' },
+];
+/** Si una comunidad cae en la zona elegida (mismo criterio que el servidor). */
+export function enZona(ccaa: string | null | undefined, zona: string): boolean {
+  const cat = /catalu/i.test(ccaa ?? '');
+  return !zona ? true : zona === 'resto' ? !cat : zona === 'cataluna' ? cat : ccaa === zona;
+}

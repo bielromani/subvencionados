@@ -12,6 +12,8 @@ const firmaCa = (entidades: string) => `Joan Romaní\nCoordinació de projectes 
 
 /** Firma de la cuenta (las líneas con otra alianza llevan la suya). */
 export const FIRMA_ARSVIA = firma(ARSVIA);
+/** La misma firma en catalán, para las cartas en catalán. */
+export const FIRMA_ARSVIA_CA = firmaCa(ARSVIA);
 /** Firmas de preajustes anteriores: si la cuenta aún tiene una, se cambia por la nueva. */
 export const FIRMAS_ANTERIORES_ARSVIA = [
   'Joan Romaní\nCoordinación de proyectos y giras\nÒpera Popular de Barcelona · Orquestra Simfònica Segle XXI · Jeloudoli S.L. · ArsVia – Music Projects\nTel. +34 613 11 23 83\njoanromani@arsvia.org | arsvia.org',

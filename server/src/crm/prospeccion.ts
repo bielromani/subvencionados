@@ -3,6 +3,7 @@
 // integral de festivales) y deja UN correo por sitio, a la persona adecuada, con todas las propuestas que encajan.
 // Nada se envía: el usuario lo revisa, lo retoca y lo aprueba. Todo lo que dice el correo sale de datos públicos.
 
+import { enZona, idiomaDe } from './idioma.js';
 import type { ContratoVista } from '../contratos/vista.js';
 import type { Programador } from '../directorio.js';
 import type { OportunidadGestion } from '../gestionFestivales.js';
@@ -48,7 +49,9 @@ export interface PropuestaPreparada {
 /** Lo que la prospección necesita de los datos públicos. */
 export interface FuentesProspeccion {
   programadores: () => (Programador & { codigoIne: string | null })[];
-  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null } | null;
+  contacto: (
+    codigoIne: string | null,
+  ) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null; partido?: string | null } | null;
   /** Ayudas útiles para quien contrata, vigentes (se filtran por territorio aquí). */
   ayudasProgramadores: () => Convocatoria[];
   /** Todas las licitaciones de música con plazo abierto (se reparten por programador aquí, una sola vez). */
@@ -62,7 +65,6 @@ const NOMBRE_ESTILO: Record<'es' | 'ca', Record<Estilo, string>> = {
   ca: { jazz: 'jazz', clasica: 'música clàssica', opera: 'òpera' },
 };
 const ES_AYUNTAMIENTO = /ayuntamiento|ajuntament|concello|alcald|junta de gobierno|udala/i;
-const CATALAN = /catalu/i;
 
 /**
  * Las mejores propuestas: por orden de encaje (pesa más el estilo que más programa el sitio), como mucho dos del mismo
@@ -158,7 +160,7 @@ export function prepararPropuestas(
   catalogo: Espectaculo[],
   ajustes: AjustesCrm,
   excluir: Set<string>,
-  opciones: { limite: number; ccaa?: string[]; hoy?: Date } = { limite: 20 },
+  opciones: { limite: number; ccaa?: string[]; zona?: string; hoy?: Date } = { limite: 20 },
 ): PropuestaPreparada[] {
   const hoy = opciones.hoy ?? new Date();
   const disponibles = catalogo.filter((e) => e.enWeb !== false && e.enCartas !== false);
@@ -182,6 +184,7 @@ export function prepararPropuestas(
   for (const p of f.programadores()) {
     if (excluir.has(p.id)) continue;
     if (opciones.ccaa?.length && !(p.ccaa && opciones.ccaa.includes(p.ccaa))) continue;
+    if (!enZona(p.ccaa, opciones.zona)) continue;
     const c = f.contacto(p.codigoIne);
     const destinatario = c?.email?.split(/[;,\s]+/).find((x) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x));
     if (!destinatario || excluir.has(`@${destinatario.toLowerCase()}`)) continue;
@@ -222,7 +225,7 @@ export function prepararPropuestas(
     // líneas que le encajan se nombran en una frase.
     const linea = LINEA_DE_TIPO[elegidas[0]!.tipo];
     const otrasLineas = [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => l !== linea);
-    const idioma: 'es' | 'ca' = p.ccaa && CATALAN.test(p.ccaa) ? 'ca' : 'es';
+    const idioma = idiomaDe(p.ccaa, c?.partido);
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
     const palabras = normalizar(municipio).split(/[^a-z0-9]+/).filter((x) => x.length > 3);

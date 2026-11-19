@@ -10,6 +10,8 @@ import { dossierDeCorreo, nombreArchivoDossier, pdfDossier } from './dossier.js'
 import type { AjustesCrm } from './tipos.js';
 
 export const PIE_BAJA = 'Si no desea recibir más correos nuestros, responda a este mensaje indicándolo y no volveremos a escribirle.';
+export const PIE_BAJA_CA = 'Si no vol rebre més correus nostres, respongui a aquest missatge indicant-ho i no li tornarem a escriure.';
+export const pieBaja = (idioma: 'es' | 'ca') => (idioma === 'ca' ? PIE_BAJA_CA : PIE_BAJA);
 
 /** Hora, minuto y si es día laborable en Madrid. */
 export function horaMadrid(d: Date) {
@@ -28,15 +30,16 @@ export function inicioDiaMadrid(ahora = new Date()): Date {
 /** Lo que lleva el primer correo: el título de su línea y el dossier en PDF (si las producciones tienen dossier). */
 async function extrasPrimerCorreo(crm: AlmacenCrm, usuario: string, mensaje: string, a: AjustesCrm, rutaFuentes?: string) {
   const x = await crm.paraDossier(usuario, mensaje).catch(() => null);
-  if (!x || x.paso !== 1) return { titulo: null, adjuntos: null };
+  const idioma = x?.idioma ?? 'es';
+  if (!x || x.paso !== 1) return { idioma, titulo: null, adjuntos: null };
   const titulo = tituloCorreo(x.espectaculos, x.idioma, a);
-  if (!rutaFuentes) return { titulo, adjuntos: null };
+  if (!rutaFuentes) return { idioma, titulo, adjuntos: null };
   try {
     const d = dossierDeCorreo(x.espectaculos, x.idioma, a);
-    return { titulo, adjuntos: d ? [{ nombre: nombreArchivoDossier(d, a.organizacion), contenido: await pdfDossier(d, rutaFuentes) }] : null };
+    return { idioma, titulo, adjuntos: d ? [{ nombre: nombreArchivoDossier(d, a.organizacion), contenido: await pdfDossier(d, rutaFuentes) }] : null };
   } catch {
     // Sin dossier, la carta sale igual: es un complemento.
-    return { titulo, adjuntos: null };
+    return { idioma, titulo, adjuntos: null };
   }
 }
 
@@ -53,14 +56,14 @@ export async function enviarMensaje(
   opciones: { completo: boolean; rutaFuentes?: string },
 ): Promise<boolean> {
   if (!a.email) return false;
-  const pie = opciones.completo ? PIE_BAJA : null;
-  const { titulo, adjuntos } = await extrasPrimerCorreo(crm, usuario, m.id, a, opciones.rutaFuentes);
+  const { idioma, titulo, adjuntos } = await extrasPrimerCorreo(crm, usuario, m.id, a, opciones.rutaFuentes);
+  const pie = opciones.completo ? pieBaja(idioma) : null;
   const ok = await enviar({
     ...(adjuntos && { adjuntos }),
     para: m.destinatario,
     asunto: m.asunto,
     texto: pie ? `${textoPlano(m.cuerpo)}\n\n${pie}` : textoPlano(m.cuerpo),
-    html: correoHtml(m.cuerpo, { cabecera: a.organizacion, titulo, pie }),
+    html: correoHtml(m.cuerpo, { cabecera: a.organizacion, titulo, pie, idioma }),
     de: { email: a.email, nombre: a.remitente || a.organizacion || a.email },
     responderA: a.email,
     ...(opciones.completo && { copiaOculta: a.email }),

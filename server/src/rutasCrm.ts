@@ -7,12 +7,13 @@ import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
 import { correoHtml } from './crm/correoHtml.js';
-import { enviarMensaje, inicioDiaMadrid, PIE_BAJA } from './crm/envio.js';
+import { enviarMensaje, inicioDiaMadrid, pieBaja } from './crm/envio.js';
+import { enZona, idiomaDe } from './crm/idioma.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
 import { completarPlantillas, LINEAS, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
 import { type DatosDossier, dossierDeCorreo, dossierDeLinea, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
-import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
+import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMA_ARSVIA_CA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
 import { type AjustesCrm, AJUSTES_POR_DEFECTO, cupoDiario, DOSSIER_VACIO, type Entidad, type Espectaculo, type FichaDossier, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
@@ -31,7 +32,9 @@ export interface ContextoCrm {
   programador: (id: string) => ProgramadorConContacto | undefined;
   /** Email y teléfono genéricos de un festival (de FestClásica, Redescena…). */
   contactoFestival?: (id: string) => { email: string | null; telefono: string | null } | undefined;
-  contacto: (codigoIne: string | null) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null } | null;
+  contacto: (
+    codigoIne: string | null,
+  ) => { municipio: string; nombre: string | null; cargo: string | null; email: string | null; telefono: string | null; deCultura?: boolean; poblacion?: number | null; partido?: string | null } | null;
   convocatoria: (id: string) => Convocatoria | null;
   contrato: (id: string) => ContratoVista | undefined;
   /** Ayudas útiles para quien contrata, vigentes y que cubren el territorio de la entidad. */
@@ -92,8 +95,6 @@ function validarEspectaculo(b: Record<string, unknown>): Omit<Espectaculo, 'id'>
   };
 }
 
-const IDIOMA_CATALAN = /catalu|catalunya/i;
-
 /** Plantillas que manda el navegador: misma forma que las genéricas, solo textos (los que falten, los genéricos). */
 const validarPlantillas = (x: unknown): PlantillasCarta => completarPlantillas(x);
 
@@ -148,12 +149,14 @@ async function excluidas(crm: AlmacenCrm, u: string): Promise<Set<string>> {
 /** Prepara hasta `limite` propuestas nuevas para la cuenta y las guarda. */
 export async function prepararParaCuenta(crm: AlmacenCrm, ctx: ContextoCrm, u: string, opciones: { limite: number; ccaa?: string[] }): Promise<number> {
   const [catalogo, ajustes, fuera] = await Promise.all([crm.espectaculos(u), crm.ajustes(u), excluidas(crm, u)]);
+  // Sin comunidad concreta, la zona de la cuenta («Resto de España», «Cataluña»...): también en la tanda diaria.
+  const zona = opciones.ccaa?.length ? undefined : ajustes.zona;
   const nuevas = prepararPropuestas(
     { programadores: ctx.programadores, contacto: ctx.contacto, ayudasProgramadores: ctx.ayudasProgramadores, licitacionesAbiertas: ctx.licitacionesAbiertas, gestionDe: ctx.gestionDe },
     catalogo,
     ajustes,
     fuera,
-    opciones,
+    { ...opciones, zona },
   );
   await crm.guardarPropuestas(u, nuevas);
   return nuevas.length;
@@ -204,6 +207,8 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         telefono: texto(b.telefono, 100),
         web: texto(b.web, 300),
         firma: texto(b.firma, 1000),
+        firmaCa: texto(b.firmaCa, 1000),
+        zona: typeof b.zona === 'string' ? texto(b.zona, 80) : (previo.zona ?? ''),
         cargo: texto(b.cargo, 200),
         ...(b.plantillas && { plantillas: validarPlantillas(b.plantillas) }),
         diasEntreEnvios: Math.min(60, Math.max(3, Math.round(Number(b.diasEntreEnvios) || 10))),
@@ -229,7 +234,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     ruta(async (_q, _r, u, c) => {
       const a = await c.ajustes(u.id);
       const firmaVieja = !a.firma.trim() || FIRMAS_ANTERIORES_ARSVIA.includes(a.firma.trim());
-      await c.guardarAjustes(u.id, { ...a, plantillas: PLANTILLAS_ARSVIA, firma: firmaVieja ? FIRMA_ARSVIA : a.firma, cargo: a.cargo || 'Coordinación de proyectos y giras' });
+      await c.guardarAjustes(u.id, { ...a, plantillas: PLANTILLAS_ARSVIA, firma: firmaVieja ? FIRMA_ARSVIA : a.firma, firmaCa: a.firmaCa?.trim() ? a.firmaCa : FIRMA_ARSVIA_CA, cargo: a.cargo || 'Coordinación de proyectos y giras' });
       let catalogo = await c.espectaculos(u.id);
       let creadas = 0;
       for (const n of FICHAS_NUEVAS_ARSVIA) {
@@ -418,7 +423,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         persona: texto(b.persona, 200) || contacto?.nombre || null,
         email: texto(b.email, 200) || contacto?.email?.split(/[;,\s]+/)[0] || deFestival?.email || null,
         telefono: texto(b.telefono, 100) || contacto?.telefono || deFestival?.telefono || null,
-        idioma: b.idioma === 'ca' || b.idioma === 'es' ? b.idioma : ccaa && IDIOMA_CATALAN.test(ccaa) ? 'ca' : 'es',
+        idioma: b.idioma === 'ca' || b.idioma === 'es' ? b.idioma : idiomaDe(ccaa, contacto?.partido),
         notas: texto(b.notas),
       });
     }),
@@ -546,15 +551,20 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       const a = await c.ajustes(u.id);
       // El título de la línea, en el primer correo (de una propuesta o de la Bandeja).
       let titulo: string | null = null;
+      let idioma: 'es' | 'ca' = 'es';
       if (typeof req.body?.propuesta === 'string') {
         const [ps, catalogo] = await Promise.all([c.propuestas(u.id), c.espectaculos(u.id)]);
         const p = ps.find((x) => x.id === req.body.propuesta);
-        if (p) titulo = tituloCorreo(catalogo.filter((e) => p.espectaculos.some((x) => x.id === e.id)), p.idioma, a);
+        if (p) {
+          idioma = p.idioma;
+          titulo = tituloCorreo(catalogo.filter((e) => p.espectaculos.some((x) => x.id === e.id)), p.idioma, a);
+        }
       } else if (typeof req.body?.mensaje === 'string') {
         const x = await c.paraDossier(u.id, req.body.mensaje).catch(() => null);
+        if (x) idioma = x.idioma;
         if (x?.paso === 1) titulo = tituloCorreo(x.espectaculos, x.idioma, a);
       }
-      return { html: correoHtml(cuerpo, { cabecera: a.organizacion, titulo, pie: PIE_BAJA }) };
+      return { html: correoHtml(cuerpo, { cabecera: a.organizacion, titulo, pie: pieBaja(idioma), idioma }) };
     }),
   );
   /** Enviar ahora desde la web (con el dossier en el primero): cuenta como envío efectivo y en el tope del día. */
@@ -591,12 +601,23 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       return { nuevas: await prepararParaCuenta(c, ctx, u.id, { limite, ccaa }) };
     }),
   );
+  /** La zona de las propuestas («Resto de España», «Cataluña», una comunidad o toda España): se guarda en la cuenta. */
+  r.put(
+    '/zona',
+    ruta(async (req, _r, u, c) => {
+      const zona = typeof req.body?.zona === 'string' ? texto(req.body.zona, 80) : '';
+      await c.guardarAjustes(u.id, { ...(await c.ajustes(u.id)), zona });
+      return { zona };
+    }),
+  );
   /** Rehacer la tanda: borra las pendientes sin retocar y prepara otras con las reglas de hoy. */
   r.post(
     '/propuestas/rehacer',
     ruta(async (req, _r, u, c) => {
       if (!(await c.espectaculos(u.id)).length) throw new ErrorCrm('Primero añade tu catálogo de espectáculos', 400);
-      const borradas = await c.borrarPendientes(u.id);
+      // Solo las de la zona elegida: las de otras zonas se quedan como están.
+      const zona = (await c.ajustes(u.id)).zona;
+      const borradas = await c.borrarPendientes(u.id, (ccaa) => enZona(ccaa, zona));
       const limite = Math.min(Math.max(Math.round(Number(req.body?.limite) || 20), 1), 100);
       return { borradas, nuevas: await prepararParaCuenta(c, ctx, u.id, { limite }) };
     }),

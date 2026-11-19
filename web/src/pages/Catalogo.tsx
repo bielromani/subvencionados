@@ -254,6 +254,10 @@ function Remitente() {
           Firma completa (si la dejas vacía se monta con los datos de arriba)
           <textarea rows={6} value={a.firma} onChange={(e) => setA({ ...a, firma: e.target.value })} />
         </label>
+        <label>
+          Firma en catalán (la de los correos en catalán; si la dejas vacía, se usa la de arriba)
+          <textarea rows={6} value={a.firmaCa ?? ''} onChange={(e) => setA({ ...a, firmaCa: e.target.value })} />
+        </label>
         <h3>Pauta de seguimiento</h3>
         {campo('diasEntreEnvios', 'Días entre un correo y el siguiente (desde que envías el anterior)', 'number')}
         <p className="ayuda">Cinco correos como máximo; tras el 2.º y el 4.º, la app te recuerda llamar.</p>
@@ -306,6 +310,12 @@ function Remitente() {
       <section className="bloque vista-firma">
         <h3>Así se verá la firma</h3>
         <p className="texto-lineas">{firma || 'Aún sin datos.'}</p>
+        {a.firmaCa?.trim() && (
+          <>
+            <h3>En catalán</h3>
+            <p className="texto-lineas">{a.firmaCa.trim()}</p>
+          </>
+        )}
       </section>
       <BarraGuardar cambiado={cambiado} guardar={guardar} />
     </div>

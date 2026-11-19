@@ -80,7 +80,7 @@ export function textoPlano(cuerpo: string): string {
 }
 
 /** El correo en HTML. `cabecera`: el nombre de quien escribe, arriba; `pie`: una nota pequeña al final (la baja). */
-export function correoHtml(cuerpo: string, opciones: { cabecera?: string; titulo?: string | null; pie?: string | null } = {}): string {
+export function correoHtml(cuerpo: string, opciones: { cabecera?: string; titulo?: string | null; pie?: string | null; idioma?: 'es' | 'ca' } = {}): string {
   const bloques = cuerpo
     .replace(/\r/g, '')
     .split(/\n\s*\n/)
@@ -113,7 +113,7 @@ export function correoHtml(cuerpo: string, opciones: { cabecera?: string; titulo
   const pie = opciones.pie?.trim()
     ? `<tr><td style="padding:14px 36px 24px;font-family:${LETRA};font-size:11.5px;line-height:1.5;color:#9ca3af">${enLinea(opciones.pie.trim())}</td></tr>`
     : '';
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
+  return `<!doctype html><html lang="${opciones.idioma ?? 'es'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
 <body style="margin:0;padding:0;background:#efeae2">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#efeae2"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;background:#ffffff;border-top:4px solid ${DORADO};border-radius:2px">

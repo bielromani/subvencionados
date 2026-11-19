@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { CuerpoCorreo } from '../components/CuerpoCorreo';
-import { crm, enlaceCorreo, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada, urlDossierPropuesta } from '../crm';
+import { crm, enlaceCorreo, enZona, ZONAS, type Mensaje, NOMBRE_TIPO, type PropuestaPreparada, urlDossierPropuesta } from '../crm';
 import { CopiarCorreo, confirmarEnviado } from '../components/CopiarCorreo';
 import { enlace } from '../ruta';
 import { useCuenta } from '../sincronizar';
@@ -273,12 +273,14 @@ export function Propuestas({ meta }: { meta: Meta }) {
     if (!usuario) return;
     void cargar();
     crm.ajustes().then(
-      (r) => (setConectado(r.envioConectado && !!r.ajustes.email), setAutomatico(r.envioConectado && !!r.ajustes.envioAutomatico)),
+      (r) => (
+        setConectado(r.envioConectado && !!r.ajustes.email), setAutomatico(r.envioConectado && !!r.ajustes.envioAutomatico), setCcaa(r.ajustes.zona ?? '')
+      ),
       () => undefined,
     );
   }, [usuario?.email]);
 
-  const visibles = (items ?? []).filter((p) => (filtro === 'ayuda' ? p.ayudas.length > 0 : filtro === 'licitacion' ? p.licitaciones.length > 0 : true));
+  const visibles = (items ?? []).filter((p) => enZona(p.ccaa, ccaa)).filter((p) => (filtro === 'ayuda' ? p.ayudas.length > 0 : filtro === 'licitacion' ? p.licitaciones.length > 0 : true));
   const indice = Math.max(0, visibles.findIndex((p) => p.id === actual));
   const seleccionada = visibles[indice] ?? null;
 
@@ -303,7 +305,7 @@ export function Propuestas({ meta }: { meta: Meta }) {
     setPreparando(true);
     setAviso(null);
     try {
-      const r = await crm.prepararPropuestas(cuantas, ccaa);
+      const r = await crm.prepararPropuestas(cuantas, '');
       setAviso(r.nuevas ? `${r.nuevas} propuestas nuevas preparadas.` : 'No hay más sitios que encajen con estos filtros (o ya están en seguimiento o descartados).');
       await cargar();
     } catch (e) {
@@ -312,8 +314,15 @@ export function Propuestas({ meta }: { meta: Meta }) {
       setPreparando(false);
     }
   };
+  const nombreZona = ccaa === 'resto' ? 'el resto de España (sin Cataluña)' : ccaa === 'cataluna' ? 'Cataluña' : ccaa || 'toda España';
+  // La zona se recuerda en la cuenta: también la usa la tanda diaria automática.
+  const cambiarZona = (z: string) => {
+    setCcaa(z);
+    setActual(null);
+    crm.guardarZona(z).catch((e: Error) => setAviso(e.message));
+  };
   const rehacer = async () => {
-    if (!window.confirm('¿Rehacer la tanda? Se borran las propuestas pendientes que no has retocado y se preparan otras nuevas para toda España. Las que ya aceptaste o enviaste no cambian.')) return;
+    if (!window.confirm(`¿Rehacer la tanda? Se borran las propuestas pendientes que no has retocado y se preparan otras nuevas para ${nombreZona}. Las que ya aceptaste o enviaste no cambian.`)) return;
     setPreparando(true);
     setAviso(null);
     try {
@@ -352,12 +361,18 @@ export function Propuestas({ meta }: { meta: Meta }) {
     <div className="propuestas">
       <div className="barra-herramientas">
         <label>
-          <span className="sr-only">Comunidad</span>
-          <select value={ccaa} onChange={(e) => setCcaa(e.target.value)} aria-label="Comunidad">
-            <option value="">Toda España</option>
-            {meta.ccaa.map((c) => (
-              <option key={c}>{c}</option>
+          <span className="sr-only">Zona</span>
+          <select value={ccaa} onChange={(e) => cambiarZona(e.target.value)} aria-label="Zona">
+            {ZONAS.map((z) => (
+              <option key={z.valor} value={z.valor}>
+                {z.nombre}
+              </option>
             ))}
+            <optgroup label="Una comunidad">
+              {meta.ccaa.map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </optgroup>
           </select>
         </label>
         <label>
