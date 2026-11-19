@@ -26,7 +26,21 @@ function Chips({ p }: { p: PropuestaPreparada }) {
 }
 
 /** El correo de una propuesta, editable, con las acciones: descartar, abrir en el correo y marcar como enviado. */
-function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p: PropuestaPreparada; posicion: string; automatico: boolean; alTerminar: (texto: string) => void; alVolver: () => void }) {
+function DetallePropuesta({
+  p,
+  posicion,
+  automatico,
+  conectado,
+  alTerminar,
+  alVolver,
+}: {
+  p: PropuestaPreparada;
+  posicion: string;
+  automatico: boolean;
+  conectado: boolean;
+  alTerminar: (texto: string) => void;
+  alVolver: () => void;
+}) {
   const [asunto, setAsunto] = useState(p.asunto);
   const [cuerpo, setCuerpo] = useState(p.cuerpo);
   const [destinatario, setDestinatario] = useState(p.destinatario);
@@ -72,6 +86,20 @@ function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p
       await asegurarAprobado();
       alTerminar(`Aceptada. El correo a ${p.nombre} saldrá solo en el próximo envío (de lunes a viernes, de 9 a 18 h).`);
     });
+  // Enviar ahora desde la web: sale al momento, con el dossier, y desde hoy cuentan los días del siguiente correo.
+  const enviarAhora = () =>
+    hacer(async () => {
+      const m = await asegurarAprobado();
+      try {
+        const r = await crm.enviarAhora(m.id);
+        alTerminar(
+          `Enviado a ${p.nombre}${r.cupo ? ` (${r.hoy} de ${r.cupo} hoy)` : ''}. Queda en seguimiento: el próximo correo aparecerá en la Bandeja cuando toque.`,
+        );
+      } catch (e) {
+        // La propuesta ya está aceptada: el correo queda en la Bandeja para enviarlo desde allí.
+        alTerminar(`No se ha enviado: ${(e as Error).message} El correo a ${p.nombre} queda aprobado en la Bandeja.`);
+      }
+    });
   const descartar = () => hacer(async () => (await crm.descartarPropuesta(p.id), alTerminar(`Descartada la propuesta a ${p.nombre}.`)));
 
   return (
@@ -91,10 +119,17 @@ function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p
             <button type="button" className="accion" disabled={ocupado || !!aprobado} onClick={() => void descartar()}>
               Descartar
             </button>
-            {automatico ? (
-              <button type="button" className="boton" disabled={ocupado} onClick={() => void aceptar()}>
-                Aceptar y enviar
-              </button>
+            {conectado ? (
+              <>
+                {automatico && (
+                  <button type="button" className="accion" disabled={ocupado} onClick={() => void aceptar()} title="Sale solo en el próximo envío automático (de lunes a viernes, de 9 a 18 h)">
+                    Aceptar para el envío automático
+                  </button>
+                )}
+                <button type="button" className="boton" disabled={ocupado} onClick={() => void enviarAhora()}>
+                  Enviar ahora
+                </button>
+              </>
             ) : (
               <>
                 <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
@@ -151,7 +186,7 @@ function DetallePropuesta({ p, posicion, automatico, alTerminar, alVolver }: { p
         </div>
         <CopiarCorreo para={destinatario} asunto={asunto} cuerpo={cuerpo} />
         <p className="ayuda adjunto-dossier">
-          📎 Con el envío automático, este correo lleva adjunto el dossier en PDF de su línea.{' '}
+          📎 Al enviarlo desde la web, lleva adjunto el dossier en PDF de su línea.{' '}
           <a href={urlDossierPropuesta(p.id)} target="_blank" rel="noreferrer">
             Verlo
           </a>{' '}
@@ -237,12 +272,16 @@ export function Propuestas({ meta }: { meta: Meta }) {
   const [aviso, setAviso] = useState<string | null>(null);
   const [preparando, setPreparando] = useState(false);
   const [automatico, setAutomatico] = useState(false);
+  const [conectado, setConectado] = useState(false);
   const lista = useRef<HTMLDivElement>(null);
   const cargar = () => crm.propuestas().then((r) => setItems(r.items), (e: Error) => setAviso(e.message));
   useEffect(() => {
     if (!usuario) return;
     void cargar();
-    crm.ajustes().then((r) => setAutomatico(r.envioConectado && !!r.ajustes.envioAutomatico), () => undefined);
+    crm.ajustes().then(
+      (r) => (setConectado(r.envioConectado && !!r.ajustes.email), setAutomatico(r.envioConectado && !!r.ajustes.envioAutomatico)),
+      () => undefined,
+    );
   }, [usuario?.email]);
 
   const visibles = (items ?? []).filter((p) => (filtro === 'ayuda' ? p.ayudas.length > 0 : filtro === 'licitacion' ? p.licitaciones.length > 0 : true));
@@ -394,7 +433,7 @@ export function Propuestas({ meta }: { meta: Meta }) {
               ))}
             </div>
           </section>
-          {seleccionada && <DetallePropuesta key={seleccionada.id} p={seleccionada} posicion={`Propuesta ${indice + 1} de ${visibles.length}`} automatico={automatico} alTerminar={terminar(seleccionada.id)} alVolver={() => setDetalleMovil(false)} />}
+          {seleccionada && <DetallePropuesta key={seleccionada.id} p={seleccionada} posicion={`Propuesta ${indice + 1} de ${visibles.length}`} automatico={automatico} conectado={conectado} alTerminar={terminar(seleccionada.id)} alVolver={() => setDetalleMovil(false)} />}
         </div>
       )}
     </div>

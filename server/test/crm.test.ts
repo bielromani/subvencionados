@@ -291,3 +291,43 @@ describe.skipIf(!url)('festivales en el seguimiento', async () => {
     expect((await request(app).get(`/api/crm/ref/${id}`).set('Cookie', cookie).expect(200)).body.entidad.id).toBe(e.id);
   });
 });
+
+describe.skipIf(!url)('enviar ahora desde la web', async () => {
+  const { default: request } = await import('supertest');
+  const { crearApp } = await import('../src/app.js');
+  const { Repositorio } = await import('../src/db.js');
+  const cuentas = url ? AlmacenCuentas.desdeUrl(url) : null!;
+  const salidos: { para: string; copiaOculta?: string; texto: string }[] = [];
+  let acepta = true;
+  const enviar = async (e: { para: string; copiaOculta?: string; texto: string }) => (acepta && salidos.push(e), acepta);
+  const app = crearApp(new Repositorio(':memory:'), { cuentas, crm: url ? new AlmacenCrm(cuentas) : null, enviar });
+  afterAll(() => cuentas?.cerrar());
+
+  it('sale al momento, queda enviado y aparece el siguiente; respeta el tope del día', async () => {
+    const r = await request(app).post('/api/cuenta/registro').send({ email: `ahora-${Date.now()}@example.com`, clave: 'una clave larga' }).expect(201);
+    const cookie = r.headers['set-cookie']![0]!.split(';')[0]!;
+    const pedir = (m: 'get' | 'post' | 'put', ruta: string, cuerpo?: object) => request(app)[m](`/api/crm${ruta}`).set('Cookie', cookie).send(cuerpo);
+    const { ajustes } = (await pedir('get', '/ajustes')).body;
+    await pedir('put', '/ajustes', { ...ajustes, email: 'yo@compania.example', limiteDiario: 20 }).expect(200);
+    const { id: esp } = (await pedir('post', '/catalogo', { nombre: 'Réquiem de Brahms', tipo: 'sinfonico_coral' }).expect(200)).body;
+    const nueva = async (n: number) => {
+      const e = (await pedir('post', '/entidades', { nombre: `Auditorio ${n}`, tipo: 'auditorio', email: `prog${n}@auditorio.example` }).expect(200)).body;
+      const o = (await pedir('post', '/oportunidades', { entidad: e.id, tipo: 'propuesta', titulo: 'Temporada', espectaculos: [esp] }).expect(200)).body;
+      return { e, s: (await pedir('post', '/secuencias', { oportunidad: o.id, destinatario: `prog${n}@auditorio.example` }).expect(200)).body };
+    };
+    const { e, s } = await nueva(1);
+    // Un borrador sin aprobar también sale: enviar ahora es el visto bueno.
+    expect((await pedir('post', `/mensajes/${s.mensaje.id}/enviar`, {}).expect(200)).body).toMatchObject({ enviado: true, hoy: 1, cupo: 20 });
+    expect(salidos[0]).toMatchObject({ para: 'prog1@auditorio.example', copiaOculta: 'yo@compania.example' });
+    const ficha = (await pedir('get', `/entidades/${e.id}`)).body;
+    expect(ficha.secuencias[0].mensajes.map((m: { paso: number; estado: string }) => [m.paso, m.estado])).toEqual([
+      [1, 'enviado'],
+      [2, 'borrador'],
+    ]);
+    // Si el servicio no lo acepta, no cuenta como enviado.
+    acepta = false;
+    const otro = await nueva(2);
+    expect((await pedir('post', `/mensajes/${otro.s.mensaje.id}/enviar`, {})).status).toBe(502);
+    expect((await pedir('get', `/entidades/${otro.e.id}`)).body.secuencias[0].mensajes[0].estado).not.toBe('enviado');
+  });
+});

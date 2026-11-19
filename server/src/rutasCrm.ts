@@ -6,6 +6,7 @@ import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
 import { type AlmacenCrm, ErrorCrm } from './crm/almacen.js';
 import { descargarCatalogoArsvia } from './crm/importar.js';
+import { enviarMensaje, inicioDiaMadrid } from './crm/envio.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
 import { completarPlantillas, LINEAS, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
@@ -536,6 +537,26 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
   r.post('/mensajes/:id/descartar', ruta(async (req, _r, u, c) => c.descartar(u.id, String(req.params.id))));
   /** El usuario confirma que lo ha enviado desde su correo: es el envío efectivo. */
   r.get('/enviados', ruta(async (_q, _r, u, c) => ({ items: await c.enviados(u.id) })));
+  /** Enviar ahora desde la web (con el dossier en el primero): cuenta como envío efectivo y en el tope del día. */
+  r.post(
+    '/mensajes/:id/enviar',
+    ruta(async (req, _r, u, c) => {
+      if (!enviar) throw new ErrorCrm('El envío desde la web no está conectado: envíalo desde tu correo y marca «Ya lo he enviado»', 409);
+      const a = await c.ajustes(u.id);
+      if (!a.email) throw new ErrorCrm('Falta el email del remitente en «Remitente y firma»', 409);
+      const m = await c.paraEnviar(u.id, String(req.params.id));
+      if (m.estado === 'enviado') return { enviado: true };
+      if (m.sec_estado !== 'activa') throw new ErrorCrm('El seguimiento de este sitio está parado: no se envía', 409);
+      if (m.no_contactar) throw new ErrorCrm('Este sitio está marcado como «no contactar»', 409);
+      const cupo = cupoDiario(a);
+      const hoy = await c.enviadosDesde(u.id, inicioDiaMadrid());
+      if (hoy >= cupo)
+        throw new ErrorCrm(`Hoy ya han salido ${hoy} correos y el tope de hoy es ${cupo} (sube 10 cada semana hasta tu límite diario). Mañana podrás enviar más.`, 409);
+      const ok = await enviarMensaje(c, enviar, u.id, m, a, { completo: true, rutaFuentes: ctx.rutaFuentes });
+      if (!ok) throw new ErrorCrm('El servicio de correo no ha aceptado el envío. Vuelve a intentarlo en unos minutos.', 502);
+      return { enviado: true, hoy: hoy + 1, cupo };
+    }),
+  );
   r.post('/mensajes/:id/enviado', ruta(async (req, _r, u, c) => c.registrarEnvio(u.id, String(req.params.id))));
 
   // ---------- Propuestas preparadas ----------

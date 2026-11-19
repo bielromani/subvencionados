@@ -500,6 +500,17 @@ export class AlmacenCrm {
     return f;
   }
 
+  /** Lo que hace falta para enviar un correo desde la web: el destinatario y si se puede (secuencia activa, sin «no contactar»). */
+  async paraEnviar(u: string, id: string) {
+    const [f] = await this.q<FilaMensaje & { sec_estado: Secuencia['estado']; destinatario: string; no_contactar: boolean }>(
+      `select m.*, s.estado as sec_estado, s.destinatario, e.no_contactar from crm_mensajes m
+       join crm_secuencias s on s.id = m.secuencia join crm_entidades e on e.id = s.entidad where m.id = $1 and m.usuario = $2`,
+      [id, u],
+    );
+    if (!f) throw new ErrorCrm('Mensaje no encontrado', 404);
+    return f;
+  }
+
   async editar(u: string, id: string, cambios: { asunto: string; cuerpo: string }) {
     const m = await this.mensajeConSecuencia(u, id);
     if (m.estado === 'enviado') throw new ErrorCrm('Ya se ha enviado', 409);

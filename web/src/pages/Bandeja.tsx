@@ -52,6 +52,11 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
       await aprobarSiHace();
       await crm.enviado(m.id);
     }, `Enviado el ${m.paso}.º correo a ${m.entidad.nombre}.${m.paso === 2 || m.paso === 4 ? ' Te avisaremos para llamar.' : ''}`);
+  const enviarAhora = () =>
+    hacer(async () => {
+      await aprobarSiHace();
+      await crm.enviarAhora(m.id);
+    }, `Enviado el ${m.paso}.º correo a ${m.entidad.nombre}.${m.paso === 2 || m.paso === 4 ? ' Te avisaremos para llamar.' : ''}`);
   const llamada = m.paso === 2 || m.paso === 4;
 
   return (
@@ -85,13 +90,26 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
                     Volver a borrador
                   </button>
                 )}
-                <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
-                  <span className="solo-escritorio">Abrir en mi correo</span>
-                  <span className="solo-movil">Abrir correo</span>
-                </button>
-                <button type="button" className="boton" disabled={ocupado} onClick={() => void enviado()}>
-                  Ya lo he enviado
-                </button>
+                {envioConectado ? (
+                  <>
+                    <button type="button" className="accion" disabled={ocupado} onClick={() => void enviado()} title="Si lo has enviado tú desde tu correo">
+                      Ya lo envié yo
+                    </button>
+                    <button type="button" className="boton" disabled={ocupado} onClick={() => void enviarAhora()}>
+                      Enviar ahora
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button type="button" className="accion" disabled={ocupado} onClick={() => void abrirCorreo()}>
+                      <span className="solo-escritorio">Abrir en mi correo</span>
+                      <span className="solo-movil">Abrir correo</span>
+                    </button>
+                    <button type="button" className="boton" disabled={ocupado} onClick={() => void enviado()}>
+                      Ya lo he enviado
+                    </button>
+                  </>
+                )}
               </>
             )}
           </div>

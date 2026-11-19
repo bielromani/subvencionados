@@ -393,6 +393,8 @@ export const crm = {
   cancelar: (id: string) => pedir(`/mensajes/${id}/cancelar`, 'POST', {}),
   descartar: (id: string) => pedir(`/mensajes/${id}/descartar`, 'POST', {}),
   enviado: (id: string) => pedir(`/mensajes/${id}/enviado`, 'POST', {}),
+  /** Lo envía la web al momento (con el dossier en el primero) y empiezan a contar los días del siguiente. */
+  enviarAhora: (id: string) => pedir<{ enviado: boolean; hoy?: number; cupo?: number }>(`/mensajes/${id}/enviar`, 'POST', {}),
   encajeConvocatoria: (id: string) => pedir<{ espectaculos: Encaje[] }>(`/encaje/convocatoria/${encodeURIComponent(id)}`),
   encajeContrato: (id: string) => pedir<{ espectaculos: (Encaje & { viabilidad: 'viable' | 'ajustada' | 'pendiente'; motivoViabilidad: string })[] }>(`/encaje/contrato/${encodeURIComponent(id)}`),
 };

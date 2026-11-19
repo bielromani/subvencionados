@@ -1,4 +1,4 @@
-import { dossierDeCorreo, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
+import { enviarMensaje, horaMadrid } from './crm/envio.js';
 import express, { type Request } from 'express';
 import { accion } from './accion.js';
 import { emailAviso } from './avisos.js';
@@ -146,16 +146,6 @@ const filtroContratos = (q: Request['query']) => ({
   menor: (q.menor === 'si' || q.menor === 'no' ? q.menor : '') as 'si' | 'no' | '',
   desde: typeof q.desde === 'string' ? q.desde : undefined,
 });
-
-const PIE_BAJA = 'Si no desea recibir más correos nuestros, responda a este mensaje indicándolo y no volveremos a escribirle.';
-
-/** Hora, minuto y si es día laborable en Madrid. */
-function horaMadrid(d: Date) {
-  const p = Object.fromEntries(
-    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit', weekday: 'short', hourCycle: 'h23' }).formatToParts(d).map((x) => [x.type, x.value]),
-  );
-  return { hora: Number(p.hour), minuto: Number(p.minute), laborable: !['Sat', 'Sun'].includes(p.weekday!) };
-}
 
 export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
   const app = express();
@@ -951,20 +941,6 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     }
   }
 
-  async function adjuntoDossier(usuario: string, mensaje: string, a: AjustesCrm) {
-    if (!crm || !opciones.rutaFuentes) return null;
-    try {
-      const x = await crm.paraDossier(usuario, mensaje);
-      if (!x || x.paso !== 1) return null;
-      const d = dossierDeCorreo(x.espectaculos, x.idioma, a);
-      if (!d) return null;
-      return [{ nombre: nombreArchivoDossier(d, a.organizacion), contenido: await pdfDossier(d, opciones.rutaFuentes) }];
-    } catch {
-      // Sin dossier, la carta sale igual: es un complemento.
-      return null;
-    }
-  }
-
   // Envío de los correos programados del CRM (tarea programada cada hora). Solo salen los que tienen el visto bueno
   // y siguen programados (si se cancelan antes, ya no están). Cada envío cuenta como efectivo al salir.
   app.get('/api/crm-envios', async (req, res) => {
@@ -983,25 +959,8 @@ export function crearApp(repo: Repositorio, opciones: OpcionesApp = {}) {
     let enviados = 0;
     const fallidos: string[] = [];
     const mandar = async (usuario: string, m: { id: string; asunto: string; cuerpo: string; destinatario: string; estado: string }, a: AjustesCrm, automatico: boolean) => {
-      if (!a.email) return fallidos.push(m.id);
-      // En el envío automático: una forma clara de pedir no recibir más, y copia oculta para el buzón del remitente.
-      const cuerpo = automatico ? `${m.cuerpo}\n\n${PIE_BAJA}` : m.cuerpo;
-      // El primer correo lleva el dossier de su línea en PDF (si las producciones tienen dossier preparado).
-      const adjuntos = await adjuntoDossier(usuario, m.id, a);
-      const ok = await enviar({
-        ...(adjuntos && { adjuntos }),
-        para: m.destinatario,
-        asunto: m.asunto,
-        texto: cuerpo,
-        html: `<div style="font-family:system-ui,sans-serif;white-space:pre-wrap">${escaparHtml(cuerpo)}</div>`,
-        de: { email: a.email, nombre: a.remitente || a.organizacion || a.email },
-        responderA: a.email,
-        ...(automatico && { copiaOculta: a.email }),
-      });
-      if (!ok) return fallidos.push(m.id);
-      if (m.estado === 'borrador') await crm.aprobar(usuario, m.id);
-      await crm.registrarEnvio(usuario, m.id);
-      enviados++;
+      if (await enviarMensaje(crm, enviar, usuario, m, a, { completo: automatico, rutaFuentes: opciones.rutaFuentes })) enviados++;
+      else fallidos.push(m.id);
     };
     for (const m of await crm.programadosPendientes()) await mandar(m.usuario, m, await crm.ajustes(m.usuario), false);
     // Envío automático: de lunes a viernes de 9 a 18 h (hora de Madrid), repartido por horas y sin pasar del tope del día.
