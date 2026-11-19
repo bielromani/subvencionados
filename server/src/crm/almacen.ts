@@ -6,6 +6,7 @@
 
 import type pg from 'pg';
 import type { AlmacenCuentas } from '../cuentas.js';
+import { acortarSaludo } from './cartas.js';
 import { generarCarta } from './plantillas.js';
 import type { PropuestaPreparada } from './prospeccion.js';
 import {
@@ -468,7 +469,7 @@ export class AlmacenCrm {
     );
     const entidades = new Map((await this.entidades(u)).map((e) => [e.id, e]));
     const oportunidades = new Map((await this.oportunidades(u)).map((o) => [o.id, o]));
-    return filas.map((f) => ({ ...aMensaje(f), entidad: entidades.get(f.entidad_id)!, oportunidad: oportunidades.get(f.oportunidad_id)!, destinatario: f.destinatario, secuenciaEstado: f.sec_estado }));
+    return filas.map((f) => ({ ...aMensaje(f), cuerpo: acortarSaludo(f.cuerpo), entidad: entidades.get(f.entidad_id)!, oportunidad: oportunidades.get(f.oportunidad_id)!, destinatario: f.destinatario, secuenciaEstado: f.sec_estado }));
   }
 
   /** Correos marcados como enviados, del más reciente al más antiguo: la constancia de lo que ha salido. */
@@ -508,7 +509,7 @@ export class AlmacenCrm {
       [id, u],
     );
     if (!f) throw new ErrorCrm('Mensaje no encontrado', 404);
-    return f;
+    return { ...f, cuerpo: acortarSaludo(f.cuerpo) };
   }
 
   async editar(u: string, id: string, cambios: { asunto: string; cuerpo: string }) {
@@ -731,7 +732,7 @@ export class AlmacenCrm {
 
   async propuestas(u: string): Promise<(PropuestaPreparada & { id: string; creado: string })[]> {
     const filas = await this.q<{ id: string; datos: PropuestaPreparada; creado: Date }>("select id, datos, creado from crm_propuestas where usuario = $1 and estado = 'pendiente' order by puntos desc, creado", [u]);
-    return filas.map((f) => ({ ...f.datos, id: f.id, creado: f.creado.toISOString() }));
+    return filas.map((f) => ({ ...f.datos, cuerpo: acortarSaludo(f.datos.cuerpo), id: f.id, creado: f.creado.toISOString() }));
   }
 
   async contarPropuestas(u: string): Promise<number> {

@@ -261,6 +261,21 @@ export function nombrePila(nombre: string | null | undefined): string {
   return a;
 }
 
+/**
+ * Los correos redactados antes de usar el nombre de pila llevan el nombre completo en el saludo («Hola, Nuria
+ * Escamilla Belizón:»): se deja solo el nombre de pila. Solo toca la primera línea si es un saludo.
+ */
+export function acortarSaludo(cuerpo: string): string {
+  return cuerpo.replace(
+    /^(\s*(?:Hola|Estimad[oa](?:\/a)?|Benvolgut(?:\/da)?|Benvolguda|Querid[oa](?:\/a)?|Bon dia|Buenos días),?\s+)([^\n:,]+?)(\s*[:,])/,
+    (todo, antes: string, nombre: string, despues: string) => {
+      if (nombre.trim().split(/\s+/).length < 2) return todo;
+      const corto = nombrePila(nombre);
+      return corto ? `${antes}${corto}${despues}` : todo;
+    },
+  );
+}
+
 /** El título del primer correo (el de su línea): «Propuestas de Ópera Escenificada · Temporadas 2027 y 2028». */
 export function tituloCorreo(espectaculos: Pick<Espectaculo, 'tipo'>[], idioma: 'es' | 'ca', a: AjustesCrm): string | null {
   const l = lineaPrincipal(espectaculos);

@@ -4,7 +4,7 @@
 
 import type { Enviar } from '../email.js';
 import type { AlmacenCrm } from './almacen.js';
-import { tituloCorreo } from './cartas.js';
+import { acortarSaludo, tituloCorreo } from './cartas.js';
 import { correoHtml, textoPlano } from './correoHtml.js';
 import { dossierDeCorreo, nombreArchivoDossier, pdfDossier } from './dossier.js';
 import type { AjustesCrm } from './tipos.js';
@@ -56,6 +56,8 @@ export async function enviarMensaje(
   opciones: { completo: boolean; rutaFuentes?: string },
 ): Promise<boolean> {
   if (!a.email) return false;
+  // Los redactados antes del nombre de pila, con el saludo corto («Hola, Nuria:»).
+  m = { ...m, cuerpo: acortarSaludo(m.cuerpo) };
   const { idioma, titulo, adjuntos } = await extrasPrimerCorreo(crm, usuario, m.id, a, opciones.rutaFuentes);
   const pie = opciones.completo ? pieBaja(idioma) : null;
   const ok = await enviar({

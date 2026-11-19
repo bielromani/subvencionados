@@ -11,7 +11,7 @@ import { enviarMensaje, inicioDiaMadrid, pieBaja } from './crm/envio.js';
 import { enZona, idiomaDe } from './crm/idioma.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
-import { completarPlantillas, LINEAS, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
+import { acortarSaludo, completarPlantillas, LINEAS, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
 import { type DatosDossier, dossierDeCorreo, dossierDeLinea, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
 import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMA_ARSVIA_CA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
@@ -547,7 +547,7 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
   r.post(
     '/vista-previa',
     ruta(async (req, _r, u, c) => {
-      const cuerpo = typeof req.body?.cuerpo === 'string' ? req.body.cuerpo.slice(0, 50_000) : '';
+      const cuerpo = acortarSaludo(typeof req.body?.cuerpo === 'string' ? req.body.cuerpo.slice(0, 50_000) : '');
       const a = await c.ajustes(u.id);
       // El título de la línea, en el primer correo (de una propuesta o de la Bandeja).
       let titulo: string | null = null;

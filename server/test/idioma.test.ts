@@ -27,3 +27,14 @@ describe('idioma de la carta', () => {
     expect(pieBaja('ca')).toMatch(/^Si no vol rebre/);
   });
 });
+
+describe('saludo de correos ya redactados', () => {
+  it('deja solo el nombre de pila', async () => {
+    const { acortarSaludo } = await import('../src/crm/cartas.js');
+    expect(acortarSaludo('Hola, Nuria Escamilla Belizón:\n\nTexto')).toBe('Hola, Nuria:\n\nTexto');
+    expect(acortarSaludo('Estimado/a Juan Ignacio Trelis Sempere:\n\nX')).toBe('Estimado/a Juan Ignacio:\n\nX');
+    expect(acortarSaludo('Benvolgut/da Joaquim Pons i Casadesús,\n\nX')).toBe('Benvolgut/da Joaquim,\n\nX');
+    expect(acortarSaludo('Hola, Nuria:\n\nX')).toBe('Hola, Nuria:\n\nX');
+    expect(acortarSaludo('Hola:\n\nNuria Escamilla Belizón: x')).toBe('Hola:\n\nNuria Escamilla Belizón: x');
+  });
+});
