@@ -344,7 +344,7 @@ function EditorTextos({ t, cambiar, idioma }: { t: TextosIdioma; cambiar: (t: Te
         {area('Asunto', t.asunto, (v) => cambiar({ ...t, asunto: v }), 1, '{propuestas} {lugar}')}
         <div className="fila-campos">
           {area('Saludo', t.saludo, (v) => cambiar({ ...t, saludo: v }), 1)}
-          {area('Saludo con nombre', t.saludoPersona, (v) => cambiar({ ...t, saludoPersona: v }), 1, '{persona}')}
+          {area('Saludo con nombre', t.saludoPersona, (v) => cambiar({ ...t, saludoPersona: v }), 1, '{persona}, {cargo} (si no se sabe el cargo, se quita solo)')}
         </div>
       </section>
       <section className="bloque formulario" id="bloque-presentacion">

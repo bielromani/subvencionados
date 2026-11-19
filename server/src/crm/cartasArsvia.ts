@@ -219,7 +219,7 @@ export const VARIAS_ARSVIA: Record<'es' | 'ca', Pick<TextosIdioma, 'introVarias'
 
 const ARSVIA_ES: TextosIdioma = {
   saludo: 'Hola:',
-  saludoPersona: 'Hola, {persona}:',
+  saludoPersona: 'A la atención de {persona}, {cargo}:',
   historial: 'He visto que en {lugar} habéis programado {estilos} en los últimos años, y por eso creo que estas propuestas pueden interesarte.',
   otrasLineas: 'También tenemos propuestas de {lineas}. Si te interesan, te envío el dossier.',
   ...VARIAS_ARSVIA.es,
@@ -241,7 +241,7 @@ const ARSVIA_ES: TextosIdioma = {
 
 const ARSVIA_CA: TextosIdioma = {
   saludo: 'Hola,',
-  saludoPersona: 'Hola, {persona},',
+  saludoPersona: 'A l’atenció de {persona}, {cargo}:',
   historial: 'He vist que a {lugar} heu programat {estilos} en els darrers anys, i per això crec que aquestes propostes et poden interessar.',
   otrasLineas: 'També tenim propostes de {lineas}. Si t’interessen, t’envio el dossier.',
   ...VARIAS_ARSVIA.ca,
@@ -581,7 +581,11 @@ const comoVineta = (t: string) => {
 };
 
 /** Textos de las líneas antes de llevar la lista dentro: si una cuenta los tiene guardados, se cambian por los nuevos. */
-export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea | null; campo: string; antes: string; ahora: string }[] = [];
+export const TEXTOS_LINEA_SIN_LISTA: { idioma: 'es' | 'ca'; linea: Linea | null; campo: string; antes: string; ahora: string }[] = [
+  // El saludo con la persona: «A la atención de Antonio, concejal de Cultura:» en vez de «Hola, Antonio:».
+  { idioma: 'es', linea: null, campo: 'saludoPersona', antes: 'Hola, {persona}:', ahora: ARSVIA_ES.saludoPersona },
+  { idioma: 'ca', linea: null, campo: 'saludoPersona', antes: 'Hola, {persona},', ahora: ARSVIA_CA.saludoPersona },
+];
 // Los títulos en catalán (antes, las líneas catalanas tenían el de la castellana).
 for (const l of Object.keys(LINEAS_CA) as Linea[])
   if (LINEAS_CA[l].dossierTitulo !== LINEAS_ES[l].dossierTitulo) TEXTOS_LINEA_SIN_LISTA.push({ idioma: 'ca', linea: l, campo: 'dossierTitulo', antes: LINEAS_ES[l].dossierTitulo, ahora: LINEAS_CA[l].dossierTitulo });

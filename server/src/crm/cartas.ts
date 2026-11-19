@@ -53,7 +53,7 @@ export interface TextoLinea {
 
 export interface TextosIdioma {
   saludo: string;
-  /** Con la persona de contacto conocida; {persona} se sustituye. */
+  /** Con la persona de contacto conocida; {persona} (nombre de pila) y {cargo} («concejala de Cultura»; si no se sabe, se quita). */
   saludoPersona: string;
   /** Lo que el sitio ha programado; {lugar} y {estilos}. */
   historial: string;
@@ -186,6 +186,8 @@ export interface DatosComposicion {
   idioma: 'es' | 'ca';
   lugar: string;
   persona: string | null;
+  /** Cargo de la persona, tal como viene en los datos (se resume para el saludo, ver cargoSaludo). */
+  cargo?: string | null;
   /** Estilos que el sitio ha programado (contratos públicos), de más a menos. */
   historial: Estilo[];
   /** Producciones que se presentan; la carta presenta la línea principal (ver lineaPrincipal). */
@@ -334,6 +336,34 @@ export function acortarSaludo(cuerpo: string): string {
   );
 }
 
+/**
+ * El cargo para el saludo, resumido y en el idioma de la carta: «concejala de Cultura», «regidor de Cultura», «técnico
+ * de Cultura»… Los datos traen cosas como «1a Tinent d'Alcalde» o «Regidora» con una lista de áreas; la persona es la
+ * responsable de cultura del ayuntamiento, así que basta con eso. Sin cargo conocido, nada.
+ */
+export function cargoSaludo(cargo: string | null | undefined, idioma: 'es' | 'ca'): string {
+  const c = (cargo ?? '').toLowerCase();
+  if (!c.trim()) return '';
+  const ella = /regidora|concejala|tinenta|alcaldes|t[eéè]cnica|conseller?a|consejera|president[a]|delegada|diputada|^\s*\d+\s*a\b|primera|segunda|tercera|cuarta|quinta|sexta|s[eè]ptima|setena|vuitena|octava|teniente de alcalde, concejala/.test(c);
+  const g = (m: string, f: string) => (ella ? f : m);
+  if (/t[eéè]cnic/.test(c)) return idioma === 'ca' ? g('tècnic de Cultura', 'tècnica de Cultura') : g('técnico de Cultura', 'técnica de Cultura');
+  if (/conseller|consejer/.test(c)) return idioma === 'ca' ? g('conseller de Cultura', 'consellera de Cultura') : g('consejero de Cultura', 'consejera de Cultura');
+  if (/alcald/.test(c) && !/tinent|teniente/.test(c)) return idioma === 'ca' ? g('alcalde', 'alcaldessa') : g('alcalde', 'alcaldesa');
+  if (/regidor|concejal|tinent|teniente|delegad|edil|diputad|vicepresident/.test(c)) return idioma === 'ca' ? g('regidor de Cultura', 'regidora de Cultura') : g('concejal de Cultura', 'concejala de Cultura');
+  return '';
+}
+
+/** El saludo: con la persona, la plantilla con {persona} y {cargo} (sin cargo, sin su coma); si no, el genérico. */
+function saludoDe(t: TextosIdioma, persona: string, cargo: string, idioma: 'es' | 'ca'): string {
+  if (!persona) return t.saludo;
+  // Sin cargo, fuera «, {cargo}» (o «{cargo}» suelto).
+  const plantilla = cargo ? t.saludoPersona : t.saludoPersona.replace(/,?\s*\{cargo\}/g, '');
+  let s = rellenar(plantilla, { persona, cargo });
+  // En catalán, «de Antoni» → «d’Antoni».
+  if (idioma === 'ca') s = s.replace(/(^|\s)de (?=[AEIOUÀÈÉÍÏÒÓÚÜaeiouàèéíòóúH])/g, '$1d’');
+  return s;
+}
+
 /** El título del primer correo (el de su línea): «Propuestas de Ópera Escenificada · Temporadas 2027 y 2028». */
 export function tituloCorreo(espectaculos: Pick<Espectaculo, 'tipo'>[], idioma: 'es' | 'ca', a: AjustesCrm): string | null {
   const ls = lineasCarta(espectaculos);
@@ -423,7 +453,7 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
       .filter((e) => LINEA_DE_TIPO[e.tipo] === l)
       .map((e) => `• ${e.nombre}`)
       .join('\n');
-  const p: string[] = [v.persona ? rellenar(t.saludoPersona, v) : t.saludo];
+  const p: string[] = [saludoDe(t, v.persona, cargoSaludo(d.cargo, d.idioma), d.idioma)];
   const historial = () => {
     if (d.historial.length && t.historial.trim()) p.push(rellenar(t.historial, { ...v, estilos: lista(d.historial.map((e) => NOMBRE_ESTILO[d.idioma][e]), y) }));
   };
@@ -472,7 +502,7 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
 /** Seguimientos (2.º a 5.º): breves, con el saludo y la firma de la cuenta (la de la línea, si la tiene). */
 export function componerSeguimiento(
   paso: number,
-  d: Pick<DatosComposicion, 'idioma' | 'lugar' | 'persona' | 'ajustes'> & { linea?: Linea | null },
+  d: Pick<DatosComposicion, 'idioma' | 'lugar' | 'persona' | 'ajustes'> & { linea?: Linea | null; cargo?: string | null },
   asuntoInicial: string,
 ): { asunto: string; cuerpo: string } {
   const t = plantillasDe(d.ajustes)[d.idioma];
@@ -481,6 +511,6 @@ export function componerSeguimiento(
   const firma = firmaDeLinea(d.linea ? t.lineas[d.linea] : null, d.ajustes, d.idioma);
   return {
     asunto: `Re: ${asuntoInicial}`,
-    cuerpo: [v.persona ? rellenar(t.saludoPersona, v) : t.saludo, rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),
+    cuerpo: [saludoDe(t, v.persona, cargoSaludo(d.cargo, d.idioma), d.idioma), rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),
   };
 }

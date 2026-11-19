@@ -117,7 +117,7 @@ function huella(s: string): number {
 
 /** El correo de la propuesta, por bloques con las plantillas de la cuenta (ver cartas.ts). */
 export function redactarPropuesta(
-  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial' | 'otrasLineas'>,
+  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'cargo' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial' | 'otrasLineas'>,
   ajustes: AjustesCrm,
   catalogo: Espectaculo[],
 ): { asunto: string; cuerpo: string } {
@@ -126,6 +126,7 @@ export function redactarPropuesta(
     idioma: p.idioma,
     lugar: p.municipio ?? p.nombre,
     persona: p.persona,
+    cargo: p.cargo,
     historial: p.historial,
     espectaculos: p.espectaculos.map((e) => porId.get(e.id) ?? { id: e.id, nombre: e.nombre, tipo: e.tipo, enlace: '' }),
     ...(p.otrasLineas && { otrasLineas: p.otrasLineas }),

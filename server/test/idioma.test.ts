@@ -73,3 +73,22 @@ describe('invitaciones juntas', () => {
     expect(juntarInvitaciones([], 'es')).toBeNull();
   });
 });
+
+describe('saludo con el cargo', () => {
+  it('«A la atención de Antonio, concejal de Cultura:» y en catalán con apóstrofo', async () => {
+    const { cargoSaludo, componerSeguimiento } = await import('../src/crm/cartas.js');
+    const { PLANTILLAS_ARSVIA } = await import('../src/crm/cartasArsvia.js');
+    expect(cargoSaludo('Regidora', 'ca')).toBe('regidora de Cultura');
+    expect(cargoSaludo("1a Tinent d'Alcalde", 'ca')).toBe('regidora de Cultura');
+    expect(cargoSaludo("2n Tinent d'Alcalde", 'es')).toBe('concejal de Cultura');
+    expect(cargoSaludo('Técnica de cultura', 'es')).toBe('técnica de Cultura');
+    expect(cargoSaludo('Concejal: Cultura', 'es')).toBe('concejal de Cultura');
+    expect(cargoSaludo('Alcaldessa Presidenta', 'ca')).toBe('alcaldessa');
+    expect(cargoSaludo(null, 'es')).toBe('');
+    const a = { remitente: '', organizacion: '', email: '', telefono: '', web: '', firma: 'J', diasEntreEnvios: 10, plantillas: PLANTILLAS_ARSVIA } as never;
+    const s = (idioma: 'es' | 'ca', persona: string, cargo: string | null) => componerSeguimiento(2, { idioma, lugar: 'X', persona, cargo, ajustes: a }, 'A').cuerpo.split('\n')[0];
+    expect(s('es', 'Antonio Pérez', 'Concejal delegado')).toBe('A la atención de Antonio, concejal de Cultura:');
+    expect(s('ca', 'Antoni Puig', 'Regidor')).toBe('A l’atenció d’Antoni, regidor de Cultura:');
+    expect(s('ca', 'Montserrat Alba', null)).toBe('A l’atenció de Montserrat:');
+  });
+});

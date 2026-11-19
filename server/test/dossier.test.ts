@@ -111,13 +111,15 @@ describe('correo en HTML y saludo', async () => {
   it('viñetas con el nombre en negrita, invitación destacada, firma y título', () => {
     const cuerpo = 'Hola, Nuria:\n\nEstas son nuestras propuestas:\n\n• Fidelio, de Beethoven · Ópera.\n   – Formato reducido\n\n• Otra <b>\n\nTE INVITO A VERNOS EN ESCENA. En el **Palau**.\n\nUn saludo,\n\nJoan Romaní\nTel. 600 000 000\njoan@arsvia.example';
     const h = correoHtml(cuerpo, { cabecera: 'ArsVia', titulo: 'Propuestas de Ópera · 2027', pie: 'Baja' });
-    expect(h).toContain('<strong style="color:#1d2433">Fidelio, de Beethoven</strong> · Ópera.');
+    expect(h).toContain('<strong>Fidelio, de Beethoven</strong> · Ópera.');
     expect(h).toContain('Formato reducido</li></ul>');
     expect(h).toContain('Otra &lt;b&gt;');
     expect(h).toContain('>Te invito a vernos en escena.</strong>');
     expect(h).toContain('<strong>Palau</strong>');
     expect(h).toContain('href="mailto:joan@arsvia.example"');
-    expect(h).toContain('Propuestas de Ópera</div>');
+    // Sin membrete ni título: parece un correo escrito a mano.
+    expect(h).not.toContain('Propuestas de Ópera');
+    expect(h).not.toContain('>ArsVia<');
     expect(textoPlano('En el **Palau**.\n## Título')).toBe('En el Palau.\nTítulo');
   });
 });
