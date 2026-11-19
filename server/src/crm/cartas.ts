@@ -344,6 +344,41 @@ export function tituloCorreo(espectaculos: Pick<Espectaculo, 'tipo'>[], idioma: 
   return t.dossierTitulo.trim() || t.titulo.trim() || null;
 }
 
+// El titular en mayúsculas con que empieza una invitación («TE INVITO A VERNOS EN ESCENA.»).
+const TITULAR = /^((?:[A-ZÁÉÍÓÚÑÇÀÈÒÏÜ’'-]+[ ,]+){2,}[A-ZÁÉÍÓÚÑÇÀÈÒÏÜ’'-]+)([.:!]?)\s*/;
+const palabrasDe = (x: string) => new Set(x.toLowerCase().match(/[\p{L}]{5,}/gu) ?? []);
+
+/**
+ * Una invitación o varias en un solo bloque (en el correo, un recuadro). Varias: un titular común y cada invitación
+ * en una viñeta; si dos hablan de la misma función (ópera y sinfónico invitan las dos a La flauta mágica), solo una.
+ */
+export function juntarInvitaciones(textos: string[], idioma: 'es' | 'ca'): string | null {
+  const unicas: string[] = [];
+  for (const x of textos) {
+    const w = palabrasDe(x);
+    const repetida = unicas.some((u) => {
+      const v = palabrasDe(u);
+      const comunes = [...w].filter((p) => v.has(p)).length;
+      return comunes / Math.max(1, Math.min(w.size, v.size)) > 0.4;
+    });
+    if (!repetida) unicas.push(x);
+  }
+  const enLineas = (x: string) => x.trim().replace(/\n\s*\n/g, '\n');
+  if (unicas.length <= 1) return unicas[0] ? enLineas(unicas[0]) : null;
+  // El titular común: el de la primera invitación que lo tiene como frase («… EN ESCENA.»); si no, uno fijo.
+  const conFrase = unicas.map((x) => x.match(TITULAR)).find((m) => m?.[2]);
+  const titular = conFrase ? `${conFrase[1]}${conFrase[2]}` : idioma === 'ca' ? 'ET CONVIDO A VEURE’NS EN ESCENA.' : 'TE INVITO A VERNOS EN ESCENA.';
+  const items = unicas.map((x) => {
+    const m = x.match(TITULAR);
+    if (!m) return enLineas(x);
+    const resto = x.slice(m[0].length);
+    // «TE INVITO A VERNOS EN ESCENA. Presentamos…» → «Presentamos…»; «TE INVITO A CONOCERNOS el 18…» → «Te invito a conocernos el 18…».
+    const frase = m[2] ? resto : `${m[1]!.charAt(0)}${m[1]!.slice(1).toLowerCase()} ${resto}`;
+    return enLineas(frase.charAt(0).toUpperCase() + frase.slice(1));
+  });
+  return [titular, ...items.map((x) => `• ${x}`)].join('\n');
+}
+
 /** La invitación de la línea, si la hay y sigue vigente. */
 export function invitacionVigente(t: TextoLinea, hoy = new Date()): string | null {
   if (!t.invitacion.trim()) return null;
@@ -419,9 +454,13 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
     const convocatorias = d.idioma === 'ca' ? `${d.ayudas.length > 1 ? 'les convocatòries' : 'la convocatòria'} ${nombres},` : `${d.ayudas.length > 1 ? 'las convocatorias' : 'la convocatoria'} ${nombres},`;
     p.push(rellenar(t.ayudas, { ...v, convocatorias }));
   }
-  const invitacion = tl ? invitacionVigente(tl, d.hoy) : null;
-  // La invitación va en un solo bloque (sus párrafos, en líneas seguidas): en el correo sale entera en un recuadro.
-  if (invitacion) p.push(rellenar(invitacion, v).replace(/\n\s*\n/g, '\n'));
+  // Las invitaciones vigentes de las líneas que se presentan (en la carta combinada, todas), en un solo recuadro.
+  // Ópera primero: si ópera y sinfónico invitan a la misma función, queda la invitación de ópera (la más concreta).
+  const invitaciones = [...lineas.filter((l) => l === 'opera'), ...lineas.filter((l) => l !== 'opera')]
+    .map((l) => invitacionVigente(t.lineas[l], d.hoy))
+    .filter((x): x is string => !!x);
+  const invitacion = juntarInvitaciones(invitaciones.map((x) => rellenar(x, v)), d.idioma);
+  if (invitacion) p.push(invitacion);
   if (d.gestion) p.push(rellenar(t.gestion, v));
   if (otras.length && t.otrasLineas.trim()) p.push(rellenar(t.otrasLineas, { ...v, lineas: lista(otras.map((l) => NOMBRE_LINEA[d.idioma][l]), y) }));
   if (t.colaboracion.trim()) p.push(rellenar(t.colaboracion, v));

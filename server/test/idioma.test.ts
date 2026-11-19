@@ -59,3 +59,17 @@ describe('carta combinada', () => {
     expect(lineasCarta([...esp, { tipo: 'navidad' }] as never[])).not.toContain('navidad');
   });
 });
+
+describe('invitaciones juntas', () => {
+  it('un titular común, una viñeta por invitación y sin repetir la misma función', async () => {
+    const { juntarInvitaciones } = await import('../src/crm/cartas.js');
+    const opera = 'TE INVITO A VERNOS EN ESCENA. Presentamos La flauta mágica en el Palau de la Música Catalana los días 7 de diciembre y 15 de enero.';
+    const sinf = 'TE INVITO A VERNOS EN ESCENA. Si te interesa, presentamos La flauta mágica en el Palau de la Música Catalana los días 7 de diciembre y 15 de enero.';
+    const camara = 'TE INVITO A CONOCERNOS el 18 de enero en Terrassa.\n\nEl Romanticismo apasionado · Brahms.';
+    expect(juntarInvitaciones([opera], 'es')).toBe(opera);
+    expect(juntarInvitaciones([opera, sinf, camara], 'es')).toBe(
+      'TE INVITO A VERNOS EN ESCENA.\n• Presentamos La flauta mágica en el Palau de la Música Catalana los días 7 de diciembre y 15 de enero.\n• Te invito a conocernos el 18 de enero en Terrassa.\nEl Romanticismo apasionado · Brahms.',
+    );
+    expect(juntarInvitaciones([], 'es')).toBeNull();
+  });
+});

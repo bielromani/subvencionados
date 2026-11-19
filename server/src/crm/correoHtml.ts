@@ -61,9 +61,16 @@ function destacado(bloque: string): string {
     const i = l.indexOf(' · ');
     return i > 0 && i < 90 ? `<strong style="color:${TINTA}">${enLinea(l.slice(0, i))}</strong> · ${enLinea(l.slice(i + 3))}` : enLinea(l);
   };
-  const lineas = [`<strong style="font-family:${TITULOS};font-size:16.5px;color:${ACENTO}">${enLinea(bonito)}</strong>${enLinea(primera)}`, ...otras.map(conTitulo)];
+  // Varias invitaciones juntas: cada una empieza por «• » (una raya separa una de otra); las líneas que siguen son suyas.
+  const primeraVineta = otras.find((l) => VINETA.test(l));
+  const cuerpo = (l: string, i: number) => {
+    if (VINETA.test(l))
+      return `<div style="font-family:${LETRA};font-size:15px;line-height:1.6;color:${TEXTO};${l === primeraVineta ? 'margin:12px 0 0' : 'margin:14px 0 0;padding-top:12px;border-top:1px solid #e4ddd0'}"><span style="color:${DORADO}">●</span>&nbsp; ${conTitulo(l.replace(VINETA, ''))}</div>`;
+    return `<div style="font-family:${LETRA};font-size:15px;line-height:1.6;color:${TEXTO};margin:${i ? '10px' : '0'} 0 0">${i ? conTitulo(l) : l}</div>`;
+  };
+  const lineas = [`<strong style="font-family:${TITULOS};font-size:16.5px;color:${ACENTO}">${enLinea(bonito)}</strong>${enLinea(primera)}`, ...otras];
   return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:4px 0 20px"><tr><td style="background:${FONDO};border-left:3px solid ${DORADO};padding:16px 18px">
-${lineas.map((l, i) => `<div style="font-family:${LETRA};font-size:15px;line-height:1.6;color:${TEXTO};margin:${i ? '10px' : '0'} 0 0">${l}</div>`).join('')}</td></tr></table>`;
+${lineas.map(cuerpo).join('')}</td></tr></table>`;
 }
 
 function firma(bloque: string): string {
