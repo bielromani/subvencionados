@@ -11,6 +11,8 @@
 const TEXTO = '#222222';
 const SUAVE = '#5f6368';
 const ENLACE = '#1a5fb4';
+const ACENTO = '#8c2f39';
+const LINEA = '#dcdcdc';
 const LETRA = 'Arial,Helvetica,sans-serif';
 const BASE = `font-family:${LETRA};font-size:14.5px;line-height:1.55;color:${TEXTO}`;
 
@@ -52,13 +54,17 @@ function lista(lineas: string[]): string {
   return `<ul style="margin:0 0 14px;padding-left:22px">${li}</ul>`;
 }
 
-/** La invitación: la frase en mayúsculas pasa a negrita normal; si son varias (viñetas), una lista. */
+/**
+ * La invitación: entre dos rayas finas, con la frase en mayúsculas en negrita y en color; si son varias (viñetas), una
+ * lista. Destaca sin dejar de parecer un correo escrito a mano.
+ */
 function destacado(bloque: string): string {
   const [, titular = ''] = bloque.match(MAYUSCULAS) ?? [];
   const bonito = titular.charAt(0) + titular.slice(1).toLowerCase();
   const [primera = '', ...otras] = bloque.slice(titular.length).split(/\n+/);
-  const cabeza = `<strong>${enLinea(bonito)}</strong>${enLinea(primera)}`;
-  if (!otras.some((l) => VINETA.test(l))) return [p(cabeza, '0 0 10px'), ...otras.map((l) => p(conNombre(l), '0 0 10px'))].join('') + '<div style="height:4px"></div>';
+  const cabeza = `<strong style="color:${ACENTO};font-size:15.5px">${enLinea(bonito)}</strong>${enLinea(primera)}`;
+  const entreRayas = (html: string) => `<div style="margin:22px 0;padding:16px 0 4px;border-top:1px solid ${LINEA};border-bottom:1px solid ${LINEA}">${html}</div>`;
+  if (!otras.some((l) => VINETA.test(l))) return entreRayas([p(cabeza, '0 0 12px'), ...otras.map((l) => p(conNombre(l), '0 0 12px'))].join(''));
   // Varias invitaciones: cada viñeta con las líneas que la siguen.
   const items: string[][] = [];
   for (const l of otras) {
@@ -66,12 +72,12 @@ function destacado(bloque: string): string {
     else items.at(-1)!.push(l);
   }
   const li = items.map(([a = '', ...resto]) => `<li style="margin:0 0 10px;${BASE}">${enLinea(a)}${resto.map((l) => `<br>${conNombre(l)}`).join('')}</li>`).join('');
-  return p(cabeza, '0 0 8px') + `<ul style="margin:0 0 14px;padding-left:22px">${li}</ul>`;
+  return entreRayas(p(cabeza, '0 0 10px') + `<ul style="margin:0 0 12px;padding-left:22px">${li}</ul>`);
 }
 
 function firma(bloque: string): string {
   const [nombre = '', ...resto] = bloque.split('\n').filter((l) => l.trim());
-  return `<div style="margin:4px 0 0;${BASE}"><strong>${enLinea(nombre)}</strong>${resto.map((l) => `<br><span style="font-size:13px;color:${SUAVE}">${enLinea(l)}</span>`).join('')}</div>`;
+  return `<div style="margin:26px 0 0;${BASE}"><strong>${enLinea(nombre)}</strong>${resto.map((l) => `<br><span style="font-size:13px;color:${SUAVE}">${enLinea(l)}</span>`).join('')}</div>`;
 }
 
 /** El texto sin las marcas de formato, para la versión en texto plano del correo. */
