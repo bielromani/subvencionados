@@ -1,21 +1,21 @@
 # Informe del nicho: subvenciones públicas para música en España
 
-Generado el 2026-11-21 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
+Generado el 2026-11-22 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
 Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por reglas (ver
 `server/src/clasificacion/musica.ts`); la precisión medida está en `docs/evaluacion-clasificador.md`.
 
 ## Resumen
 
-- Periodo cubierto: 2014-01-15 a 2026-11-20.
-- Convocatorias de música: **16.682**; compatibles con jazz, clásica u ópera: **12.034**
-  (2.596 concursos y 9.438 concesiones directas o nominativas).
-- Importe concedido registrado en las compatibles: **867.782.239 €**
-  (526.154.718 € en concursos y 341.627.521 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
+- Periodo cubierto: 2014-01-15 a 2026-11-21.
+- Convocatorias de música: **16.683**; compatibles con jazz, clásica u ópera: **12.035**
+  (2.596 concursos y 9.439 concesiones directas o nominativas).
+- Importe concedido registrado en las compatibles: **867.800.239 €**
+  (526.154.718 € en concursos y 341.645.521 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
 - Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.157 convocatorias y 652.711.839 € concedidos.
 - Mencionan expresamente el estilo: jazz 429, clásica 3.300, ópera y lírica 432. El resto son ayudas de música en general.
 - Concursos con el plazo abierto hoy: **10**; por abrir: **11**.
 - Convocatorias que se repiten año tras año (series): 1.926; previstas en los próximos 3 meses según su
-  historial (estimación): 289.
+  historial (estimación): 290.
 - Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.349.
 
 ## Por año (compatibles con jazz, clásica u ópera)
@@ -34,7 +34,7 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
 | 2023 | 1.337 | 308 | 1.029 | 194.535.516 € | 164.137.166 € |
 | 2024 | 1.405 | 329 | 1.076 | 219.492.455 € | 191.026.791 € |
 | 2025 | 1.469 | 316 | 1.153 | 258.694.941 € | 216.539.310 € |
-| 2026 (en curso) | 1.288 | 300 | 988 | 188.698.433 € | 85.963.626 € |
+| 2026 (en curso) | 1.289 | 300 | 989 | 188.716.433 € | 85.981.626 € |
 
 El concedido de los años recientes crece con el tiempo: las concesiones se registran meses después de la convocatoria.
 
@@ -43,7 +43,7 @@ El concedido de los años recientes crece con el tiempo: las concesiones se regi
 | Actividad | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
 | Sin especificar | 7.751 | 713 | 368.197.037 € |
-| Formación (escuelas, conservatorios, becas) | 1.877 | 1.026 | 215.070.400 € |
+| Formación (escuelas, conservatorios, becas) | 1.878 | 1.026 | 215.088.400 € |
 | Festivales, ciclos y programación | 1.774 | 586 | 198.618.618 € |
 | Producción y creación | 609 | 519 | 143.712.190 € |
 | Internacionalización | 494 | 218 | 63.389.039 € |
@@ -60,7 +60,7 @@ importes altos pero no es una oportunidad para el promotor.
 | Ámbito | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
 | Cataluña | 2.644 | 523 | 289.691.291 € |
-| Comunitat Valenciana | 2.335 | 490 | 146.366.469 € |
+| Comunitat Valenciana | 2.336 | 490 | 146.384.469 € |
 | Canarias | 931 | 84 | 79.356.644 € |
 | Andalucía | 827 | 125 | 32.139.541 € |
 | Galicia | 773 | 209 | 32.703.206 € |
@@ -84,7 +84,7 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Administración | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| local | 10.071 | 1.756 | 291.052.767 € |
+| local | 10.072 | 1.756 | 291.070.767 € |
 | autonomica | 1.689 | 751 | 487.330.393 € |
 | estatal | 192 | 36 | 89.078.440 € |
 | otra | 82 | 53 | 320.639 € |
@@ -103,7 +103,7 @@ Un concurso puede admitir varios tipos de beneficiario.
 ## Importes típicos
 
 - Mediana del presupuesto declarado de los concursos: 50.000 €.
-- Mediana de lo concedido a una entidad en una convocatoria: 5.873 €.
+- Mediana de lo concedido a una entidad en una convocatoria: 5.875 €.
 
 ## Mes en que abren los concursos
 
