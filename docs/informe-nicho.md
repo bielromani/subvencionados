@@ -1,21 +1,21 @@
 # Informe del nicho: subvenciones públicas para música en España
 
-Generado el 2026-11-22 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
+Generado el 2026-11-23 con `npm run informe` a partir de `datos/bdns/`. Fuente: Base de
 Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por reglas (ver
 `server/src/clasificacion/musica.ts`); la precisión medida está en `docs/evaluacion-clasificador.md`.
 
 ## Resumen
 
-- Periodo cubierto: 2014-01-15 a 2026-11-21.
-- Convocatorias de música: **16.683**; compatibles con jazz, clásica u ópera: **12.035**
-  (2.596 concursos y 9.439 concesiones directas o nominativas).
+- Periodo cubierto: 2014-01-15 a 2026-11-23.
+- Convocatorias de música: **16.696**; compatibles con jazz, clásica u ópera: **12.045**
+  (2.598 concursos y 9.447 concesiones directas o nominativas).
 - Importe concedido registrado en las compatibles: **867.800.239 €**
   (526.154.718 € en concursos y 341.645.521 € en concesiones directas). Concesiones registradas desde 2022-01-01: la BDNS solo publica las de los últimos cuatro años.
-- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.157 convocatorias y 652.711.839 € concedidos.
-- Mencionan expresamente el estilo: jazz 429, clásica 3.300, ópera y lírica 432. El resto son ayudas de música en general.
-- Concursos con el plazo abierto hoy: **10**; por abrir: **11**.
-- Convocatorias que se repiten año tras año (series): 1.926; previstas en los próximos 3 meses según su
-  historial (estimación): 290.
+- Sin contar formación (escuelas de música, conservatorios, becas), que no es para el promotor: 10.167 convocatorias y 652.711.839 € concedidos.
+- Mencionan expresamente el estilo: jazz 430, clásica 3.301, ópera y lírica 433. El resto son ayudas de música en general.
+- Concursos con el plazo abierto hoy: **10**; por abrir: **12**.
+- Convocatorias que se repiten año tras año (series): 1.928; previstas en los próximos 3 meses según su
+  historial (estimación): 293.
 - Concursos generales de cultura (desde 2023) en los que un concierto puede encajar: 1.349.
 
 ## Por año (compatibles con jazz, clásica u ópera)
@@ -34,7 +34,7 @@ Datos Nacional de Subvenciones (BDNS). Las convocatorias se clasifican por regla
 | 2023 | 1.337 | 308 | 1.029 | 194.535.516 € | 164.137.166 € |
 | 2024 | 1.405 | 329 | 1.076 | 219.492.455 € | 191.026.791 € |
 | 2025 | 1.469 | 316 | 1.153 | 258.694.941 € | 216.539.310 € |
-| 2026 (en curso) | 1.289 | 300 | 989 | 188.716.433 € | 85.981.626 € |
+| 2026 (en curso) | 1.299 | 302 | 997 | 189.082.433 € | 85.981.626 € |
 
 El concedido de los años recientes crece con el tiempo: las concesiones se registran meses después de la convocatoria.
 
@@ -42,12 +42,12 @@ El concedido de los años recientes crece con el tiempo: las concesiones se regi
 
 | Actividad | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| Sin especificar | 7.751 | 713 | 368.197.037 € |
+| Sin especificar | 7.757 | 714 | 368.197.037 € |
 | Formación (escuelas, conservatorios, becas) | 1.878 | 1.026 | 215.088.400 € |
-| Festivales, ciclos y programación | 1.774 | 586 | 198.618.618 € |
-| Producción y creación | 609 | 519 | 143.712.190 € |
+| Festivales, ciclos y programación | 1.778 | 587 | 198.618.618 € |
+| Producción y creación | 610 | 520 | 143.712.190 € |
 | Internacionalización | 494 | 218 | 63.389.039 € |
-| Equipamiento e inversiones | 406 | 196 | 65.970.615 € |
+| Equipamiento e inversiones | 407 | 197 | 65.970.615 € |
 | Giras y circulación | 267 | 224 | 80.798.558 € |
 | Grabación | 191 | 170 | 20.219.748 € |
 | Composición y encargos | 102 | 88 | 47.226.891 € |
@@ -59,16 +59,16 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Ámbito | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| Cataluña | 2.644 | 523 | 289.691.291 € |
-| Comunitat Valenciana | 2.336 | 490 | 146.384.469 € |
-| Canarias | 931 | 84 | 79.356.644 € |
-| Andalucía | 827 | 125 | 32.139.541 € |
-| Galicia | 773 | 209 | 32.703.206 € |
+| Cataluña | 2.645 | 523 | 289.691.291 € |
+| Comunitat Valenciana | 2.337 | 491 | 146.384.469 € |
+| Canarias | 932 | 85 | 79.356.644 € |
+| Andalucía | 829 | 125 | 32.139.541 € |
+| Galicia | 777 | 209 | 32.703.206 € |
 | Castilla y León | 561 | 110 | 9.444.100 € |
 | Castilla-La Mancha | 560 | 67 | 9.805.494 € |
 | País Vasco | 531 | 132 | 35.415.192 € |
 | Aragón | 464 | 124 | 7.798.511 € |
-| Sin restricción territorial | 380 | 128 | 94.433.855 € |
+| Sin restricción territorial | 381 | 128 | 94.433.855 € |
 | Región de Murcia | 356 | 38 | 14.292.022 € |
 | Illes Balears | 324 | 97 | 18.788.696 € |
 | Principado de Asturias | 291 | 76 | 29.671.590 € |
@@ -84,8 +84,8 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Administración | Convocatorias | Concursos | Concedido registrado |
 |---|---:|---:|---:|
-| local | 10.072 | 1.756 | 291.070.767 € |
-| autonomica | 1.689 | 751 | 487.330.393 € |
+| local | 10.081 | 1.758 | 291.070.767 € |
+| autonomica | 1.690 | 751 | 487.330.393 € |
 | estatal | 192 | 36 | 89.078.440 € |
 | otra | 82 | 53 | 320.639 € |
 
@@ -93,9 +93,9 @@ importes altos pero no es una oportunidad para el promotor.
 
 | Beneficiarios admitidos | Concursos |
 |---|---:|
-| Autónomos y empresas | 670 |
+| Autónomos y empresas | 671 |
 | Asociaciones y fundaciones | 1.151 |
-| Personas físicas (músicos: premios, concursos, becas) | 992 |
+| Personas físicas (músicos: premios, concursos, becas) | 993 |
 | Ayuntamientos y entidades locales | 246 |
 
 Un concurso puede admitir varios tipos de beneficiario.
@@ -128,19 +128,19 @@ Un concurso puede admitir varios tipos de beneficiario.
 |---|---|---:|---|---:|
 | SECRETARÍA AUTONÓMICA DE EDUCACIÓN | COMUNITAT VALENCIANA | 54 | 2016-2026 | 85.056.120 € |
 | INSTITUTO NACIONAL DE LAS ARTES ESCÉNICAS Y DE LA MÚSICA | MINISTERIO DE CULTURA | 100 | 2014-2025 | 75.009.017 € |
-| INSTITUT CATALÀ DE LES EMPRESES CULTURALS (ICEC) | CATALUÑA | 205 | 2016-2026 | 71.701.994 € |
+| INSTITUT CATALÀ DE LES EMPRESES CULTURALS (ICEC) | CATALUÑA | 206 | 2016-2026 | 71.701.994 € |
 | OFICINA DE SUPORT A LA INICIATIVA CULTURAL | CATALUÑA | 120 | 2018-2026 | 68.183.771 € |
 | DEPARTAMENT D'EDUCACIÓ I FORMACIÓ PROFESSIONAL | CATALUÑA | 34 | 2017-2026 | 66.506.097 € |
 | CABILDO INSULAR DE GRAN CANARIA | CABILDO INSULAR DE GRAN CANARIA | 355 | 2016-2026 | 46.658.300 € |
 | DEPARTAMENT DE CULTURA | CATALUÑA | 38 | 2017-2026 | 42.119.713 € |
 | DEPARTAMENTO DE EDUCACION | COMUNIDAD FORAL DE NAVARRA | 27 | 2016-2026 | 18.869.370 € |
 | FUNDACIÓN MUNICIPAL DE CULTURA | OVIEDO | 25 | 2016-2026 | 17.775.000 € |
-| DIPUTACIÓN PROVINCIAL DE CORUÑA, A | DIPUTACIÓN PROV. DE A CORUÑA | 75 | 2016-2026 | 17.108.959 € |
+| DIPUTACIÓN PROVINCIAL DE CORUÑA, A | DIPUTACIÓN PROV. DE A CORUÑA | 76 | 2016-2026 | 17.108.959 € |
 | DIPUTACIÓN PROVINCIAL DE VALENCIA | DIPUTACIÓN PROV. DE VALENCIA | 81 | 2016-2026 | 16.997.666 € |
 | AYUNTAMIENTO DE BILBAO | BILBAO | 82 | 2017-2026 | 16.557.257 € |
 | CONSEJERÍA DE CULTURA Y DEPORTE | ANDALUCÍA | 18 | 2021-2026 | 14.799.875 € |
 | DIPUTACIÓN PROVINCIAL DE TARRAGONA | DIPUTACIÓN PROV. DE TARRAGONA | 93 | 2016-2026 | 14.595.216 € |
-| CABILDO INSULAR DE TENERIFE | CABILDO INSULAR DE TENERIFE | 71 | 2016-2026 | 13.304.717 € |
+| CABILDO INSULAR DE TENERIFE | CABILDO INSULAR DE TENERIFE | 72 | 2016-2026 | 13.304.717 € |
 | DIPUTACIÓN PROVINCIAL DE ALACANT/ALICANTE | DIPUTACIÓN PROV. DE ALICANTE | 98 | 2016-2026 | 12.785.901 € |
 | SECRETARÍA GENERAL DE CULTURA | EXTREMADURA | 73 | 2020-2026 | 11.853.296 € |
 | ÁREA DE GOBIERNO DE CULTURA, TURISMO Y DEPORTE | MADRID | 4 | 2021-2025 | 9.507.976 € |
