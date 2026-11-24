@@ -53,7 +53,7 @@ export interface TextoLinea {
 
 export interface TextosIdioma {
   saludo: string;
-  /** Con la persona de contacto conocida; {persona} (nombre de pila) y {cargo} («concejala de Cultura»; si no se sabe, se quita). */
+  /** Con la persona de contacto conocida: {nombreApellido} («José López»), {persona} (nombre de pila) y {cargo} («concejala de Cultura»; si no se sabe, se quita). */
   saludoPersona: string;
   /** Lo que el sitio ha programado; {lugar} y {estilos}. */
   historial: string;
@@ -339,6 +339,31 @@ export function acortarSaludo(cuerpo: string): string {
 }
 
 /**
+ * El nombre de pila y el primer apellido, para «A la atención de José López»: «Nuria Escamilla Belizón» → «Nuria
+ * Escamilla», «María del Mar López García» → «María del Mar López», «López García, Ana» → «Ana López», «Francisco
+ * Javier Toquero del Vado» → «Francisco Javier Toquero».
+ */
+export function nombreYApellido(nombre: string | null | undefined): string {
+  const limpio = (nombre ?? '').replace(/\([^)]*\)/g, ' ').trim();
+  const pila = nombrePila(limpio);
+  if (!pila) return '';
+  // Los apellidos: lo que va tras el nombre de pila (o, en «Apellidos, Nombre», lo que va antes de la coma).
+  let resto: string[];
+  if (limpio.includes(',')) resto = limpio.split(',')[0]!.trim().split(/\s+/);
+  else {
+    const t = limpio.split(/\s+/).filter((x, i) => !(i === 0 && /^(d\.?|dña\.?|dª|don|doña|sr\.?|sra\.?|excmo\.?|excma\.?|ilmo\.?|ilma\.?)$/i.test(x)));
+    resto = t.slice(pila.split(/\s+/).length);
+  }
+  // El primer apellido, con sus partículas («de la Fuente», «del Vado»).
+  const apellido: string[] = [];
+  for (const x of resto) {
+    apellido.push(x);
+    if (!/^(de|del|la|las|los|y|i|d['’]?)$/i.test(x)) break;
+  }
+  return [pila, ...apellido].join(' ');
+}
+
+/**
  * El cargo para el saludo, resumido y en el idioma de la carta: «concejala de Cultura», «regidor de Cultura», «técnico
  * de Cultura»… Los datos traen cosas como «1a Tinent d'Alcalde» o «Regidora» con una lista de áreas; la persona es la
  * responsable de cultura del ayuntamiento, así que basta con eso. Sin cargo conocido, nada.
@@ -356,11 +381,18 @@ export function cargoSaludo(cargo: string | null | undefined, idioma: 'es' | 'ca
 }
 
 /** El saludo: con la persona, la plantilla con {persona} y {cargo} (sin cargo, sin su coma); si no, el genérico. */
-function saludoDe(t: TextosIdioma, persona: string, cargo: string, idioma: 'es' | 'ca'): string {
+function saludoDe(t: TextosIdioma, nombre: string | null | undefined, cargo: string, idioma: 'es' | 'ca'): string {
+  const persona = nombrePila(nombre);
   if (!persona) return t.saludo;
   // Sin cargo, fuera «, {cargo}» (o «{cargo}» suelto).
-  const plantilla = cargo ? t.saludoPersona : t.saludoPersona.replace(/,?\s*\{cargo\}/g, '');
-  let s = rellenar(plantilla, { persona, cargo });
+  let plantilla = cargo ? t.saludoPersona : t.saludoPersona.replace(/,?\s*\{cargo\}/g, '');
+  // Sin apellido conocido, la línea «A la atención de…» diría lo mismo que «Buenos días, José:»: fuera, si hay otra.
+  const completo = nombreYApellido(nombre);
+  if (completo === persona) {
+    const otras = plantilla.split(/\n\s*\n/).filter((x) => !x.includes('{nombreApellido}'));
+    if (otras.length) plantilla = otras.join('\n\n');
+  }
+  let s = rellenar(plantilla, { persona, nombreApellido: completo || persona, cargo });
   // En catalán, «de Antoni» → «d’Antoni».
   if (idioma === 'ca') s = s.replace(/(^|\s)de (?=[AEIOUÀÈÉÍÏÒÓÚÜaeiouàèéíòóúH])/g, '$1d’');
   return s;
@@ -456,7 +488,7 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
       .filter((e) => LINEA_DE_TIPO[e.tipo] === l)
       .map((e) => `• ${e.nombre}`)
       .join('\n');
-  const p: string[] = [saludoDe(t, v.persona, cargoSaludo(d.cargo, d.idioma), d.idioma)];
+  const p: string[] = [saludoDe(t, d.persona, cargoSaludo(d.cargo, d.idioma), d.idioma)];
   const historial = () => {
     if (d.historial.length && t.historial.trim()) p.push(rellenar(t.historial, { ...v, estilos: lista(d.historial.map((e) => NOMBRE_ESTILO[d.idioma][e]), y) }));
   };
@@ -525,6 +557,6 @@ export function componerSeguimiento(
   const firma = firmaDeLinea(d.linea ? t.lineas[d.linea] : null, d.ajustes, d.idioma);
   return {
     asunto: `Re: ${asuntoInicial}`,
-    cuerpo: [saludoDe(t, v.persona, cargoSaludo(d.cargo, d.idioma), d.idioma), rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),
+    cuerpo: [saludoDe(t, d.persona, cargoSaludo(d.cargo, d.idioma), d.idioma), rellenar(texto, v), `${t.despedidaBreve}\n\n${firma}`].join('\n\n'),
   };
 }

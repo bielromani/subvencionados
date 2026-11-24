@@ -370,28 +370,31 @@ export function Propuestas({ meta }: { meta: Meta }) {
   return (
     <div className="propuestas">
       <div className="barra-herramientas">
-        {campanas.length > 0 && (
-          <label>
-            <span className="sr-only">Carta</span>
-            <select
-              value={campana}
-              onChange={(e) => {
-                setCampana(e.target.value);
-                setActual(null);
-              }}
-              aria-label="Carta general o campaña"
-            >
-              <option value="">Carta general</option>
-              <optgroup label="Campañas">
-                {campanas.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.nombre}
-                  </option>
-                ))}
-              </optgroup>
-            </select>
-          </label>
-        )}
+        <label>
+          <span className="sr-only">Carta</span>
+          <select
+            value={campana}
+            onChange={(e) => {
+              if (e.target.value === 'nueva') {
+                window.location.hash = '#/cartas?pestana=campanas';
+                return;
+              }
+              setCampana(e.target.value);
+              setActual(null);
+            }}
+            aria-label="Carta general o campaña"
+          >
+            <option value="">Carta general</option>
+            <optgroup label="Campañas">
+              {campanas.map((c) => (
+                <option key={c.id} value={c.id}>
+                  Campaña: {c.nombre}
+                </option>
+              ))}
+              <option value="nueva">{campanas.length ? 'Crear o editar campañas…' : 'Crear una campaña…'}</option>
+            </optgroup>
+          </select>
+        </label>
         {!campana && (
         <label>
           <span className="sr-only">Zona</span>

@@ -47,7 +47,7 @@ describe('plantillas', () => {
     ];
     const c = generarCarta({ ...base, paso: 1, espectaculos: opera.slice(0, 2), ajustes, entidad: { ...base.entidad, persona: 'Marta' } });
     expect(c.asunto).toMatch(/^La flauta mágica, años 2027 y 2028/);
-    expect(c.cuerpo).toMatch(/^A la atención de Marta:/);
+    expect(c.cuerpo).toMatch(/^Buenos días, Marta:/);
     expect(c.cuerpo).toContain('para la programación de Olot');
     expect(c.cuerpo).toContain('Soy Joan Romaní y te escribo en representación de la alianza de producción');
     expect(c.cuerpo).toContain('• La flauta mágica, de Mozart · Una producción ágil');

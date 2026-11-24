@@ -86,9 +86,23 @@ describe('saludo con el cargo', () => {
     expect(cargoSaludo('Alcaldessa Presidenta', 'ca')).toBe('alcaldessa');
     expect(cargoSaludo(null, 'es')).toBe('');
     const a = { remitente: '', organizacion: '', email: '', telefono: '', web: '', firma: 'J', diasEntreEnvios: 10, plantillas: PLANTILLAS_ARSVIA } as never;
-    const s = (idioma: 'es' | 'ca', persona: string, cargo: string | null) => componerSeguimiento(2, { idioma, lugar: 'X', persona, cargo, ajustes: a }, 'A').cuerpo.split('\n')[0];
-    expect(s('es', 'Antonio Pérez', 'Concejal delegado')).toBe('A la atención de Antonio, concejal de Cultura:');
-    expect(s('ca', 'Antoni Puig', 'Regidor')).toBe('A l’atenció d’Antoni, regidor de Cultura:');
-    expect(s('ca', 'Montserrat Alba', null)).toBe('A l’atenció de Montserrat:');
+    const s = (idioma: 'es' | 'ca', persona: string, cargo: string | null) => componerSeguimiento(2, { idioma, lugar: 'X', persona, cargo, ajustes: a }, 'A').cuerpo.split('\n\n').slice(0, persona.includes(' ') ? 2 : 1).join('\n\n');
+    expect(s('es', 'Antonio Pérez García', 'Concejal delegado')).toBe('A la atención de Antonio Pérez, concejal de Cultura:\n\nBuenos días, Antonio:');
+    expect(s('ca', 'Antoni Puig', 'Regidor')).toBe('A l’atenció d’Antoni Puig, regidor de Cultura:\n\nBon dia, Antoni:');
+    expect(s('ca', 'Montserrat Alba', null)).toBe('A l’atenció de Montserrat Alba:\n\nBon dia, Montserrat:');
+    // Sin apellido, solo «Buenos días, Marta:».
+    expect(s('es', 'Marta', 'Regidora')).toBe('Buenos días, Marta:');
+  });
+});
+
+describe('nombre y primer apellido', () => {
+  it('para «A la atención de…»', async () => {
+    const { nombreYApellido } = await import('../src/crm/cartas.js');
+    expect(nombreYApellido('Nuria Escamilla Belizón')).toBe('Nuria Escamilla');
+    expect(nombreYApellido('María del Mar López García')).toBe('María del Mar López');
+    expect(nombreYApellido('Francisco Javier Toquero del Vado')).toBe('Francisco Javier Toquero');
+    expect(nombreYApellido('López García, Ana')).toBe('Ana López');
+    expect(nombreYApellido('Marta Rovira Martínez (erc)')).toBe('Marta Rovira');
+    expect(nombreYApellido('Marta')).toBe('Marta');
   });
 });

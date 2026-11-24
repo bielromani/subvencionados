@@ -345,7 +345,7 @@ function EditorTextos({ t, cambiar, idioma }: { t: TextosIdioma; cambiar: (t: Te
         {area('Asunto', t.asunto, (v) => cambiar({ ...t, asunto: v }), 1, '{propuestas} {lugar}')}
         <div className="fila-campos">
           {area('Saludo', t.saludo, (v) => cambiar({ ...t, saludo: v }), 1)}
-          {area('Saludo con nombre', t.saludoPersona, (v) => cambiar({ ...t, saludoPersona: v }), 1, '{persona}, {cargo} (si no se sabe el cargo, se quita solo)')}
+          {area('Saludo con nombre', t.saludoPersona, (v) => cambiar({ ...t, saludoPersona: v }), 3, '{nombreApellido} (nombre y primer apellido), {persona} (solo el nombre), {cargo} (si no se sabe, se quita solo)')}
         </div>
       </section>
       <section className="bloque formulario" id="bloque-presentacion">
@@ -602,7 +602,9 @@ export function Catalogo({ modo = 'producciones' }: { modo?: 'producciones' | 'c
   const usuario = useCuenta().cuenta?.usuario;
   const [items, setItems] = useState<Espectaculo[] | null>(null);
   const [editando, setEditando] = useState<string | 'nuevo' | null>(null);
-  const [pestana, setPestana] = useState<Pestana>(modo === 'cartas' ? 'cartas' : 'producciones');
+  // #/cartas?pestana=campanas abre directamente esa pestaña (el enlace de Propuestas).
+  const pedida = new URLSearchParams(window.location.hash.split('?')[1] ?? '').get('pestana') as Pestana | null;
+  const [pestana, setPestana] = useState<Pestana>(modo === 'cartas' ? (pedida && ['cartas', 'firma', 'anexos', 'campanas'].includes(pedida) ? pedida : 'cartas') : 'producciones');
   const [filtro, setFiltro] = useState<FiltroCatalogo>('todas');
   const [tipo, setTipo] = useState<TipoEspectaculo | ''>('');
   const cargar = () => crm.catalogo().then((r) => setItems(r.items));
