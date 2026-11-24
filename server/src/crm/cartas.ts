@@ -5,7 +5,7 @@
 // invitación de esa línea (si sigue vigente), las demás líneas en una frase, la propuesta de colaboración y la firma.
 // El preajuste «ArsVia» (cartasArsvia.ts) reproduce las cartas modelo de Joan Romaní.
 
-import type { AjustesCrm, Espectaculo, TipoEspectaculo } from './tipos.js';
+import type { AjustesCrm, CartaCampana, Espectaculo, TipoEspectaculo } from './tipos.js';
 import type { Estilo } from '../tipos.js';
 
 export type Linea = 'opera' | 'sinfonico' | 'camara' | 'popular' | 'navidad';
@@ -188,6 +188,8 @@ export interface DatosComposicion {
   persona: string | null;
   /** Cargo de la persona, tal como viene en los datos (se resume para el saludo, ver cargoSaludo). */
   cargo?: string | null;
+  /** La carta de una campaña (en el idioma de la carta): sus textos sustituyen a los de la línea. */
+  campana?: CartaCampana | null;
   /** Estilos que el sitio ha programado (contratos públicos), de más a menos. */
   historial: Estilo[];
   /** Producciones que se presentan; la carta presenta la línea principal (ver lineaPrincipal). */
@@ -443,7 +445,8 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   };
   const y = d.idioma === 'ca' ? 'i' : 'y';
   const lineas = lineasCarta(d.espectaculos, d.historial);
-  const varias = lineas.length > 1;
+  const c = d.campana ?? null;
+  const varias = !c && lineas.length > 1;
   const principal = lineas[0] ?? null;
   const otras = (d.otrasLineas ?? [...new Set(d.espectaculos.map((e) => LINEA_DE_TIPO[e.tipo]))]).filter((l) => !lineas.includes(l));
   const tl = principal ? t.lineas[principal] : null;
@@ -465,6 +468,16 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
     if (presentacion) p.push(rellenar(presentacion, v));
     for (const l of lineas) p.push(rellenar(bloqueDeLinea(t.lineas[l]), { ...v, producciones: producciones(l) }));
     if (t.cierreVarias.trim()) p.push(rellenar(t.cierreVarias, v));
+  } else if (c) {
+    // Campaña: su carta (lo que esté vacío, de la línea); {producciones}, todas las de la campaña.
+    const todas = d.espectaculos.map((e) => `• ${e.nombre}`).join('\n');
+    const intro = c.intro.trim() || tl?.intro || '';
+    if (intro.trim()) p.push(rellenar(intro, v));
+    historial();
+    const texto = c.texto.trim() || tl?.texto || '';
+    if (texto.trim()) p.push(rellenar(texto, { ...v, producciones: todas }));
+    const cierre = c.cierre.trim() || tl?.cierre || '';
+    if (cierre.trim()) p.push(rellenar(cierre, v));
   } else {
     if (tl?.intro.trim()) p.push(rellenar(tl.intro, v));
     historial();
@@ -496,7 +509,8 @@ export function componerCarta(d: DatosComposicion): { asunto: string; cuerpo: st
   if (t.colaboracion.trim()) p.push(rellenar(t.colaboracion, v));
   p.push(`${rellenar(t.despedida, v)}\n\n${firmaDeLinea(tl, d.ajustes, d.idioma)}`);
   const general = rellenar(t.asunto, { ...v, propuestas: principal ? nombresLineas(lineas, d.idioma) : d.idioma === 'ca' ? 'programació' : 'programación' });
-  return { asunto: !varias && tl?.asunto.trim() ? rellenar(tl.asunto, v) : general, cuerpo: p.join('\n\n'), linea: principal };
+  const asunto = c?.asunto.trim() ? rellenar(c.asunto, v) : !varias && tl?.asunto.trim() ? rellenar(tl.asunto, v) : general;
+  return { asunto, cuerpo: p.join('\n\n'), linea: principal };
 }
 
 /** Seguimientos (2.º a 5.º): breves, con el saludo y la firma de la cuenta (la de la línea, si la tiene). */

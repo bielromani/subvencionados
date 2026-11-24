@@ -107,6 +107,8 @@ export interface Oportunidad {
   enlaceConfirmacion: string | null;
   estado: 'abierta' | 'cerrada';
   notas: string;
+  /** Campaña de la que sale (su carta y su anexo), si sale de una. */
+  campana?: string | null;
   creado: string;
 }
 
@@ -198,6 +200,51 @@ export interface AjustesCrm {
   limiteDiario?: number;
   /** Día en que se activó el envío automático: el tope sube poco a poco desde aquí para no caer en spam. */
   automaticoDesde?: string | null;
+  /** Anexos a medida: dossieres en PDF con producciones de líneas distintas. */
+  anexos?: Anexo[];
+  /** Campañas: unas producciones, a un territorio, con su propia carta. */
+  campanas?: Campana[];
+}
+
+/** Textos de la portada y el final de un anexo a medida, en un idioma; vacío, el de la línea principal. */
+export interface TextosAnexo {
+  titulo: string;
+  subtitulo: string;
+  condiciones: string;
+  notaFinal: string;
+}
+
+/** Un dossier a medida («Propuestas Sinfónico-Corales y de Ópera»): las producciones elegidas, en su orden. */
+export interface Anexo {
+  id: string;
+  nombre: string;
+  espectaculos: string[];
+  es: TextosAnexo;
+  ca: TextosAnexo;
+}
+
+/** La carta propia de una campaña, en un idioma; vacío, el texto de la línea. {producciones}: sus producciones. */
+export interface CartaCampana {
+  asunto: string;
+  intro: string;
+  texto: string;
+  cierre: string;
+}
+
+/**
+ * Una campaña: solo estas producciones, solo a este territorio (comunidades o provincias) y con su carta. Los sitios
+ * que entran en una campaña reciben solo la carta de la campaña.
+ */
+export interface Campana {
+  id: string;
+  nombre: string;
+  espectaculos: string[];
+  ccaa: string[];
+  provincias: string[];
+  /** El anexo a medida que se adjunta; sin él, un dossier con las producciones de la campaña. */
+  anexo: string | null;
+  es: CartaCampana;
+  ca: CartaCampana;
 }
 
 /** El tope del día: empieza en 20 y sube 10 por semana hasta el límite elegido. */

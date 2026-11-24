@@ -112,6 +112,8 @@ create table if not exists crm_propuestas (
 create unique index if not exists crm_propuesta_pendiente on crm_propuestas (usuario, ref) where estado = 'pendiente';
 -- Retocado a mano: los seguimientos sin retocar se vuelven a escribir con la plantilla de la cuenta.
 alter table crm_mensajes add column if not exists editado boolean not null default false;
+-- La campaña de la que sale una oportunidad (su anexo va en el primer correo).
+alter table crm_oportunidades add column if not exists campana text;
 create table if not exists crm_alertas_vistas (
   usuario uuid not null references usuarios(id) on delete cascade,
   entidad uuid not null references crm_entidades(id) on delete cascade,
@@ -139,7 +141,7 @@ const sumarDias = (fecha: Date, n: number) => new Date(fecha.getTime() + n * 86_
 type FilaEntidad = { id: string; ref: string | null; datos: Omit<Entidad, 'id' | 'ref' | 'estadoRelacion' | 'noContactar' | 'motivoNoContactar'>; estado_relacion: EstadoRelacion; no_contactar: boolean; motivo_no_contactar: string | null };
 const aEntidad = (f: FilaEntidad): Entidad => ({ ...f.datos, id: f.id, ref: f.ref, estadoRelacion: f.estado_relacion, noContactar: f.no_contactar, motivoNoContactar: f.motivo_no_contactar });
 
-type FilaOportunidad = { id: string; entidad: string; tipo: Oportunidad['tipo']; ref: string | null; titulo: string; espectaculos: string[]; certeza: Oportunidad['certeza']; enlace_confirmacion: string | null; estado: Oportunidad['estado']; notas: string; creado: Date };
+type FilaOportunidad = { id: string; entidad: string; tipo: Oportunidad['tipo']; ref: string | null; titulo: string; espectaculos: string[]; certeza: Oportunidad['certeza']; enlace_confirmacion: string | null; estado: Oportunidad['estado']; notas: string; campana?: string | null; creado: Date };
 const aOportunidad = (f: FilaOportunidad): Oportunidad => ({
   id: f.id,
   entidad: f.entidad,
@@ -151,6 +153,7 @@ const aOportunidad = (f: FilaOportunidad): Oportunidad => ({
   enlaceConfirmacion: f.enlace_confirmacion,
   estado: f.estado,
   notas: f.notas,
+  campana: f.campana ?? null,
   creado: iso(f.creado)!,
 });
 
@@ -357,9 +360,9 @@ export class AlmacenCrm {
   async crearOportunidad(u: string, o: Omit<Oportunidad, 'id' | 'creado' | 'estado'>): Promise<Oportunidad> {
     await this.entidad(u, o.entidad);
     const [f] = await this.q<FilaOportunidad>(
-      `insert into crm_oportunidades (usuario, entidad, tipo, ref, titulo, espectaculos, certeza, enlace_confirmacion, notas)
-       values ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`,
-      [u, o.entidad, o.tipo, o.ref, o.titulo, o.espectaculos, o.certeza, o.enlaceConfirmacion, o.notas],
+      `insert into crm_oportunidades (usuario, entidad, tipo, ref, titulo, espectaculos, certeza, enlace_confirmacion, notas, campana)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *`,
+      [u, o.entidad, o.tipo, o.ref, o.titulo, o.espectaculos, o.certeza, o.enlaceConfirmacion, o.notas, o.campana ?? null],
     );
     return aOportunidad(f!);
   }
@@ -697,15 +700,16 @@ export class AlmacenCrm {
   }
 
   /** Lo que hace falta para el dossier de un correo: el paso, el idioma de la entidad y las producciones ofrecidas (en su orden). */
-  async paraDossier(u: string, mensaje: string): Promise<{ paso: number; idioma: 'es' | 'ca'; espectaculos: Espectaculo[] } | null> {
+  async paraDossier(u: string, mensaje: string): Promise<{ paso: number; idioma: 'es' | 'ca'; espectaculos: Espectaculo[]; campana: string | null; catalogo: Espectaculo[] } | null> {
     const [f] = await this.q<{ paso: number; entidad: string; oportunidad: string }>(
       'select m.paso, s.entidad, s.oportunidad from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.id = $1 and m.usuario = $2',
       [mensaje, u],
     );
     if (!f) return null;
     const [e, o] = await Promise.all([this.entidad(u, f.entidad), this.oportunidad(u, f.oportunidad)]);
-    const porId = new Map((await this.espectaculos(u)).map((x) => [x.id, x]));
-    return { paso: f.paso, idioma: e.idioma, espectaculos: o.espectaculos.map((id) => porId.get(id)).filter((x): x is Espectaculo => !!x) };
+    const catalogo = await this.espectaculos(u);
+    const porId = new Map(catalogo.map((x) => [x.id, x]));
+    return { paso: f.paso, idioma: e.idioma, espectaculos: o.espectaculos.map((id) => porId.get(id)).filter((x): x is Espectaculo => !!x), campana: o.campana ?? null, catalogo };
   }
 
   /** Programados que ya toca enviar (para la tarea automática, si hay envío conectado). */
@@ -904,6 +908,12 @@ export class AlmacenCrm {
     return new Set(filas.flatMap((f) => [f.ref, ...(f.destinatario ? [`@${f.destinatario.toLowerCase()}`] : [])]));
   }
 
+  /** Sitios con una propuesta de campaña pendiente: la tanda general no les escribe («solo la campaña»). */
+  async refsDeCampana(u: string): Promise<Set<string>> {
+    const filas = await this.q<{ ref: string }>("select ref from crm_propuestas where usuario = $1 and estado = 'pendiente' and coalesce(datos->>'campana', '') <> ''", [u]);
+    return new Set(filas.map((f) => f.ref));
+  }
+
   async guardarPropuestas(u: string, ps: PropuestaPreparada[]) {
     for (const p of ps) {
       await this.q("insert into crm_propuestas (usuario, ref, datos, puntos) values ($1, $2, $3, $4) on conflict (usuario, ref) where estado = 'pendiente' do nothing", [
@@ -946,12 +956,12 @@ export class AlmacenCrm {
   }
 
   /** Borra las pendientes sin tocar (no las retocadas a mano): vuelven a poder salir con las reglas nuevas. */
-  async borrarPendientes(u: string, deZona: (ccaa: string | null) => boolean = () => true): Promise<number> {
-    const filas = await this.q<{ id: string; ccaa: string | null }>(
-      "select id, datos->>'ccaa' as ccaa from crm_propuestas where usuario = $1 and estado = 'pendiente' and coalesce((datos->>'editadaAMano')::boolean, false) = false",
+  async borrarPendientes(u: string, deZona: (ccaa: string | null, campana: string | null, ref: string) => boolean = () => true): Promise<number> {
+    const filas = await this.q<{ id: string; ccaa: string | null; campana: string | null; ref: string }>(
+      "select id, ref, datos->>'ccaa' as ccaa, datos->>'campana' as campana from crm_propuestas where usuario = $1 and estado = 'pendiente' and coalesce((datos->>'editadaAMano')::boolean, false) = false",
       [u],
     );
-    const ids = filas.filter((f) => deZona(f.ccaa)).map((f) => f.id);
+    const ids = filas.filter((f) => deZona(f.ccaa, f.campana, f.ref)).map((f) => f.id);
     if (ids.length) await this.q('delete from crm_propuestas where usuario = $1 and id = any($2::uuid[])', [u, ids]);
     return ids.length;
   }
@@ -978,6 +988,7 @@ export class AlmacenCrm {
       certeza: 'potencial',
       enlaceConfirmacion: null,
       notas: p.motivos.join('\n'),
+      campana: p.campana ?? null,
     });
     const r = await this.abrirSecuencia(u, o.id, carta.destinatario, 'nueva', { carta, aprobada: true });
     await this.q("update crm_propuestas set estado = 'aceptada', actualizado = now() where id = $1", [id]);

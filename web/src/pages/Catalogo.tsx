@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Anexos, Campanas } from '../components/CampanasAnexos';
 import { type AjustesCrm, crm, DOSSIER_VACIO, type Espectaculo, type FichaDossier, type LineaCarta, NOMBRE_LINEA_CARTA, NOMBRE_TIPO, type TextoLinea, type TextosIdioma, type TipoEspectaculo, urlDossierLinea } from '../crm';
 import { useCuenta } from '../sincronizar';
 
@@ -469,7 +470,7 @@ function Plantillas({ alCambiarCatalogo }: { alCambiarCatalogo: () => void }) {
           ))}
         </div>
         <span className="ayuda">
-          Cada correo se monta con estos bloques, en este orden. Entre llaves, lo que se rellena solo. El catalán se usa para las entidades de Cataluña. Formato: **así** sale en negrita, «## » al empezar hace un título, «• » una viñeta (lo que va antes de « · » en negrita) y un párrafo que empieza en MAYÚSCULAS sale en un recuadro. En Propuestas, «Cómo llegará» enseña el resultado.
+          Cada correo se monta con estos bloques, en este orden. Entre llaves, lo que se rellena solo. El catalán se usa para las entidades de Cataluña. Formato: **así** sale en negrita, «## » al empezar hace un título, «• » una viñeta (lo que va antes de « · » en negrita) y un párrafo que empieza en MAYÚSCULAS (la invitación) sale destacado entre dos rayas. En Propuestas, «Cómo llegará» enseña el resultado.
         </span>
         <button type="button" className="accion" onClick={() => void arsvia()}>
           Cargar las cartas modelo de ArsVia
@@ -482,7 +483,13 @@ function Plantillas({ alCambiarCatalogo }: { alCambiarCatalogo: () => void }) {
   );
 }
 
-type Pestana = 'producciones' | 'cartas' | 'firma';
+/** Las campañas necesitan las plantillas (para empezar su carta con la de la línea). */
+function CampanasConPlantillas({ catalogo }: { catalogo: Espectaculo[] }) {
+  const { a } = useAjustes();
+  return <Campanas catalogo={catalogo} plantillas={a?.plantillas ?? null} />;
+}
+
+type Pestana = 'producciones' | 'cartas' | 'firma' | 'anexos' | 'campanas';
 /** La página de la producción en el dossier PDF que se adjunta al primer correo. Sin catalán, se usa la castellana. */
 function EditorDossier({ es, ca, cambiar }: { es?: FichaDossier; ca?: FichaDossier; cambiar: (idioma: 'es' | 'ca', f: FichaDossier | undefined) => void }) {
   const [idioma, setIdioma] = useState<'es' | 'ca'>('es');
@@ -641,6 +648,8 @@ export function Catalogo({ modo = 'producciones' }: { modo?: 'producciones' | 'c
             [
               ['cartas', 'Plantillas de las cartas'],
               ['firma', 'Remitente y firma'],
+              ['anexos', 'Anexos a medida'],
+              ['campanas', 'Campañas'],
             ] as [Pestana, string][]
           ).map(([v, n]) => (
             <button key={v} type="button" role="tab" aria-selected={pestana === v} className={pestana === v ? 'activa' : ''} onClick={() => setPestana(v)}>
@@ -652,6 +661,8 @@ export function Catalogo({ modo = 'producciones' }: { modo?: 'producciones' | 'c
 
       {pestana === 'cartas' && <Plantillas alCambiarCatalogo={() => void cargar()} />}
       {pestana === 'firma' && <Remitente />}
+      {pestana === 'anexos' && <Anexos catalogo={items} />}
+      {pestana === 'campanas' && <CampanasConPlantillas catalogo={items} />}
       {pestana === 'producciones' && (
         <>
           <div className="resumen-catalogo">

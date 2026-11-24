@@ -4,8 +4,8 @@
 
 import { join } from 'node:path';
 import PDFDocument from 'pdfkit';
-import { LINEA_DE_TIPO, type Linea, lineaPrincipal, lineasCarta, plantillasDe } from './cartas.js';
-import type { AjustesCrm, Espectaculo, FichaDossier } from './tipos.js';
+import { LINEA_DE_TIPO, type Linea, lineaPrincipal, lineasCarta, nombresLineas, plantillasDe } from './cartas.js';
+import type { AjustesCrm, Anexo, Campana, Espectaculo, FichaDossier } from './tipos.js';
 
 export interface ProduccionDossier {
   nombre: string;
@@ -59,7 +59,13 @@ export function produccionesDeLinea(catalogo: Espectaculo[], ids: string[], line
   return ids.map((id) => porId.get(id)).filter((e): e is Espectaculo => !!e && LINEA_DE_TIPO[e.tipo] === linea);
 }
 
-export function datosDossier(linea: Linea, idioma: 'es' | 'ca', espectaculos: Espectaculo[], ajustes: AjustesCrm): DatosDossier {
+export function datosDossier(
+  linea: Linea,
+  idioma: 'es' | 'ca',
+  espectaculos: Espectaculo[],
+  ajustes: AjustesCrm,
+  portada: Partial<Pick<DatosDossier, 'titulo' | 'subtitulo' | 'condiciones' | 'notaFinal'>> = {},
+): DatosDossier {
   const t = plantillasDe(ajustes)[idioma].lineas[linea];
   const producciones = espectaculos.map((e) => ({ nombre: e.nombre, ficha: fichaDossierDe(e, idioma) }));
   const resumen: DatosDossier['resumen'] = [];
@@ -74,7 +80,18 @@ export function datosDossier(linea: Linea, idioma: 'es' | 'ca', espectaculos: Es
     if (p.ficha.nota.trim()) notas.push(p.ficha.nota.trim());
   }
   const pie = [ajustes.organizacion, ajustes.email, ajustes.telefono, ajustes.web].filter((x) => x?.trim()).join(' · ');
-  return { linea, idioma, titulo: t.dossierTitulo || t.titulo, subtitulo: t.dossierSubtitulo || ajustes.organizacion, condiciones: t.condiciones, producciones, resumen, notas, notaFinal: t.notaFinal, pie };
+  return {
+    linea,
+    idioma,
+    titulo: portada.titulo?.trim() || t.dossierTitulo || t.titulo,
+    subtitulo: portada.subtitulo?.trim() || t.dossierSubtitulo || ajustes.organizacion,
+    condiciones: portada.condiciones?.trim() || t.condiciones,
+    producciones,
+    resumen,
+    notas,
+    notaFinal: portada.notaFinal?.trim() || t.notaFinal,
+    pie,
+  };
 }
 
 /**
@@ -88,11 +105,63 @@ export function dossierDeCorreo(espectaculos: Espectaculo[], idioma: 'es' | 'ca'
   return datosDossier(linea, idioma, deLinea, ajustes);
 }
 
-/** Los dossieres de un correo: uno por cada línea que presenta (la carta combinada lleva varios). */
-export function dossieresDeCorreo(espectaculos: Espectaculo[], idioma: 'es' | 'ca', ajustes: AjustesCrm): DatosDossier[] {
-  return lineasCarta(espectaculos)
-    .map((l) => dossierDeCorreo(espectaculos, idioma, ajustes, l))
-    .filter((d): d is DatosDossier => !!d);
+/** Las entidades de varias portadas, sin repetir: «Ópera Popular de Barcelona · Orquesta… · ArsVia». */
+function unirEntidades(subtitulos: string[]): string {
+  const vistas: string[] = [];
+  for (const s of subtitulos) for (const x of s.split(' · ').map((y) => y.trim())) if (x && !vistas.includes(x)) vistas.push(x);
+  return vistas.join(' · ');
+}
+
+/**
+ * Un solo dossier con las producciones de varias líneas (la carta combinada): el título de la carta combinada, las
+ * entidades de todas las líneas y las condiciones de la principal. Sin ninguna ficha de dossier preparada, nada.
+ */
+export function dossierConjunto(espectaculos: Espectaculo[], idioma: 'es' | 'ca', ajustes: AjustesCrm, lineas = lineasCarta(espectaculos)): DatosDossier | null {
+  const [principal] = lineas;
+  if (!principal) return null;
+  const orden = espectaculos.filter((e) => lineas.includes(LINEA_DE_TIPO[e.tipo])).sort((a, b) => lineas.indexOf(LINEA_DE_TIPO[a.tipo]) - lineas.indexOf(LINEA_DE_TIPO[b.tipo]));
+  if (!orden.some((e) => e.dossier)) return null;
+  const t = plantillasDe(ajustes)[idioma];
+  return datosDossier(principal, idioma, orden, ajustes, {
+    titulo: t.tituloVarias.replace(/\{lineas\}/g, nombresLineas(lineas, idioma)),
+    subtitulo: unirEntidades(lineas.map((l) => t.lineas[l].dossierSubtitulo)),
+  });
+}
+
+/** Un anexo a medida: sus producciones (las que siguen en el catálogo), con su portada; lo que esté vacío, de la línea principal. */
+export function dossierDeAnexo(anexo: Anexo, idioma: 'es' | 'ca', catalogo: Espectaculo[], ajustes: AjustesCrm): DatosDossier | null {
+  const porId = new Map(catalogo.map((e) => [e.id, e]));
+  const es = anexo.espectaculos.map((id) => porId.get(id)).filter((e): e is Espectaculo => !!e);
+  const lineas = lineasCarta(es);
+  const principal = lineas[0] ?? (es[0] ? LINEA_DE_TIPO[es[0].tipo] : null);
+  if (!principal) return null;
+  const t = plantillasDe(ajustes)[idioma];
+  const propios = idioma === 'ca' && Object.values(anexo.ca).some((x) => x.trim()) ? anexo.ca : anexo.es;
+  return datosDossier(principal, idioma, es, ajustes, {
+    ...(lineas.length > 1 && { subtitulo: unirEntidades(lineas.map((l) => t.lineas[l].dossierSubtitulo)) }),
+    ...Object.fromEntries(Object.entries(propios).filter(([, v]) => v.trim())),
+  });
+}
+
+/**
+ * El dossier de un correo, siempre uno: el anexo de su campaña (o uno con las producciones de la campaña), el
+ * conjunto de la carta combinada o el de su línea.
+ */
+export function dossierDelCorreo(
+  espectaculos: Espectaculo[],
+  idioma: 'es' | 'ca',
+  ajustes: AjustesCrm,
+  opciones: { campana?: Campana | null; catalogo?: Espectaculo[] } = {},
+): DatosDossier | null {
+  const { campana } = opciones;
+  if (campana) {
+    const anexo = campana.anexo ? ajustes.anexos?.find((a) => a.id === campana.anexo) : undefined;
+    if (anexo) return dossierDeAnexo(anexo, idioma, opciones.catalogo ?? espectaculos, ajustes);
+    const lineas = lineasCarta(espectaculos);
+    return lineas.length > 1 ? dossierConjunto(espectaculos, idioma, ajustes, lineas) : dossierDeCorreo(espectaculos, idioma, ajustes);
+  }
+  const lineas = lineasCarta(espectaculos);
+  return lineas.length > 1 ? dossierConjunto(espectaculos, idioma, ajustes, lineas) : dossierDeCorreo(espectaculos, idioma, ajustes);
 }
 
 /** El dossier de una línea con todo el catálogo que entra en las cartas (para descargarlo o revisarlo). */

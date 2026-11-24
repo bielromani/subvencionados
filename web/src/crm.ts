@@ -251,9 +251,10 @@ export interface TextosIdioma {
 /** Enlace al dossier PDF de una línea (todo lo que entra en las cartas) o de un correo concreto. */
 export const urlDossierLinea = (l: LineaCarta, idioma: 'es' | 'ca' = 'es', descargar = false) => `/api/crm/dossier/${l}?idioma=${idioma}${descargar ? '&descargar=1' : ''}`;
 export const urlDossierMensaje = (id: string, descargar = false) => `/api/crm/mensajes/${id}/dossier${descargar ? '?descargar=1' : ''}`;
+export const urlDossierAnexo = (id: string, idioma: 'es' | 'ca' = 'es', descargar = false) => `/api/crm/anexos/${id}/dossier?idioma=${idioma}${descargar ? '&descargar=1' : ''}`;
 export const urlDossierPropuesta = (id: string, descargar = false, linea?: LineaCarta) =>
   `/api/crm/propuestas/${id}/dossier?${linea ? `linea=${linea}&` : ''}${descargar ? 'descargar=1' : ''}`;
-const LINEA_DE_TIPO: Record<TipoEspectaculo, LineaCarta> = {
+export const LINEA_DE_TIPO: Record<TipoEspectaculo, LineaCarta> = {
   opera: 'opera',
   sinfonico_coral: 'sinfonico',
   religiosa: 'sinfonico',
@@ -294,6 +295,42 @@ export interface AjustesCrm {
   envioAutomatico?: boolean;
   limiteDiario?: number;
   automaticoDesde?: string | null;
+  anexos?: Anexo[];
+  campanas?: Campana[];
+}
+
+/** Portada y final de un anexo a medida en un idioma; lo vacío sale de la línea principal. */
+export interface TextosAnexo {
+  titulo: string;
+  subtitulo: string;
+  condiciones: string;
+  notaFinal: string;
+}
+/** Dossier a medida con producciones de líneas distintas. */
+export interface Anexo {
+  id: string;
+  nombre: string;
+  espectaculos: string[];
+  es: TextosAnexo;
+  ca: TextosAnexo;
+}
+/** La carta de una campaña en un idioma; lo vacío sale de la carta de la línea. */
+export interface CartaCampana {
+  asunto: string;
+  intro: string;
+  texto: string;
+  cierre: string;
+}
+/** Unas producciones, a un territorio, con su carta y su anexo. */
+export interface Campana {
+  id: string;
+  nombre: string;
+  espectaculos: string[];
+  ccaa: string[];
+  provincias: string[];
+  anexo: string | null;
+  es: CartaCampana;
+  ca: CartaCampana;
 }
 
 export type MensajeBandeja = Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string; secuenciaEstado?: string };
@@ -329,6 +366,8 @@ export interface PropuestaPreparada {
   ayudas: { id: string; titulo: string; fin: string | null }[];
   licitaciones: { id: string; titulo: string; fin: string | null }[];
   gestion: string[];
+  /** Campaña de la que sale, si sale de una. */
+  campana?: string | null;
   asunto: string;
   cuerpo: string;
   puntos: number;
@@ -395,8 +434,11 @@ export const crm = {
   cargarPlantillasArsvia: () => pedir<{ textos: number; creadas: number; apartadas: number; reescritas: number; aMano: number }>('/plantillas/arsvia', 'POST', {}),
   reescribirPropuestas: () => pedir<{ reescritas: number; aMano: number }>('/propuestas/reescribir', 'POST', {}),
   guardarZona: (zona: string) => pedir<{ zona: string }>('/zona', 'PUT', { zona }),
-  rehacerPropuestas: (limite: number) => pedir<{ borradas: number; nuevas: number }>('/propuestas/rehacer', 'POST', { limite }),
-  prepararPropuestas: (limite: number, ccaa: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa }),
+  rehacerPropuestas: (limite: number, campana?: string) => pedir<{ borradas: number; nuevas: number }>('/propuestas/rehacer', 'POST', { limite, campana }),
+  prepararPropuestas: (limite: number, ccaa: string, campana?: string) => pedir<{ nuevas: number }>('/propuestas/preparar', 'POST', { limite, ccaa, campana }),
+  guardarAnexos: (anexos: Anexo[]) => pedir<{ anexos: Anexo[] }>('/anexos', 'PUT', { anexos }),
+  guardarCampanas: (campanas: Campana[]) => pedir<{ campanas: Campana[] }>('/campanas', 'PUT', { campanas }),
+  territorio: () => pedir<{ items: { ccaa: string; provincias: string[] }[] }>('/territorio'),
   guardarPropuesta: (id: string, c: { asunto: string; cuerpo: string; destinatario: string }) => pedir(`/propuestas/${id}`, 'PUT', c),
   aceptarTodas: (ids: string[]) => pedir<{ aceptadas: number; porRevisar: number }>('/propuestas/aceptar-todas', 'POST', { ids }),
   descartarPropuesta: (id: string) => pedir(`/propuestas/${id}/descartar`, 'POST', {}),

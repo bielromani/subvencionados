@@ -1,6 +1,7 @@
 // API del CRM (/api/crm): catálogo, entidades, oportunidades, secuencias, bandeja de aprobación, historial, panel de
 // trabajo y encaje con ayudas y licitaciones. Todo es de la cuenta que ha iniciado sesión.
 
+import { randomUUID } from 'node:crypto';
 import express, { type NextFunction, type Request, type Response } from 'express';
 import type { ContratoVista } from './contratos/vista.js';
 import type { AlmacenCuentas, Usuario } from './cuentas.js';
@@ -11,12 +12,12 @@ import { enviarMensaje, inicioDiaMadrid, pieBaja } from './crm/envio.js';
 import { enZona, idiomaDe } from './crm/idioma.js';
 import { configImapDesdeEntorno } from './crm/respuestas.js';
 import { elegirEspectaculos, noEncaja, prepararPropuestas, type PropuestaPreparada, redactarPropuesta } from './crm/prospeccion.js';
-import { acortarSaludo, completarPlantillas, LINEAS, lineaPrincipal, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
-import { type DatosDossier, dossierDeCorreo, dossierDeLinea, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
+import { acortarSaludo, completarPlantillas, LINEAS, tituloCorreo, type Linea, type PlantillasCarta, PLANTILLAS_GENERICAS, plantillasDe } from './crm/cartas.js';
+import { type DatosDossier, dossierDeAnexo, dossierDeCorreo, dossierDeLinea, dossierDelCorreo, nombreArchivoDossier, pdfDossier } from './crm/dossier.js';
 import { FICHAS_NUEVAS_ARSVIA, FIRMA_ARSVIA, FIRMA_ARSVIA_CA, FIRMAS_ANTERIORES_ARSVIA, FUERA_DE_CARTAS_ARSVIA, PLANTILLAS_ARSVIA, TEXTOS_ANTERIORES_ARSVIA, TEXTOS_PRODUCCIONES_ARSVIA } from './crm/cartasArsvia.js';
 import type { OportunidadGestion } from './gestionFestivales.js';
 import { certezaAyuda, encajeAyuda, encajeEntidad, encajeLicitacion } from './crm/encaje.js';
-import { type AjustesCrm, AJUSTES_POR_DEFECTO, cupoDiario, DOSSIER_VACIO, type Entidad, type Espectaculo, type FichaDossier, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
+import { type AjustesCrm, AJUSTES_POR_DEFECTO, type Anexo, type Campana, cupoDiario, DOSSIER_VACIO, type Entidad, type Espectaculo, type FichaDossier, type TipoHistorial, TIPOS_ESPECTACULO } from './crm/tipos.js';
 import type { Programador } from './directorio.js';
 import type { Enviar } from './email.js';
 import { usuarioDeSesion } from './rutasCuenta.js';
@@ -54,6 +55,7 @@ export interface ContextoCrm {
 }
 
 const texto = (x: unknown, max = 2000) => (typeof x === 'string' ? x.slice(0, max) : '');
+const ids = (x: unknown) => (Array.isArray(x) ? x.filter((y): y is string => typeof y === 'string' && /^[\w-]{1,60}$/.test(y)).slice(0, 30) : []);
 const numero = (x: unknown) => (typeof x === 'number' && Number.isFinite(x) && x >= 0 ? x : null);
 
 /** Dossier de una ficha: solo los campos conocidos, como texto; si todo está vacío, no se guarda. */
@@ -147,17 +149,28 @@ async function excluidas(crm: AlmacenCrm, u: string): Promise<Set<string>> {
 }
 
 /** Prepara hasta `limite` propuestas nuevas para la cuenta y las guarda. */
-export async function prepararParaCuenta(crm: AlmacenCrm, ctx: ContextoCrm, u: string, opciones: { limite: number; ccaa?: string[] }): Promise<number> {
-  const [catalogo, ajustes, fuera] = await Promise.all([crm.espectaculos(u), crm.ajustes(u), excluidas(crm, u)]);
+export async function prepararParaCuenta(crm: AlmacenCrm, ctx: ContextoCrm, u: string, opciones: { limite: number; ccaa?: string[]; campana?: string }): Promise<number> {
+  const [catalogo, ajustes, fuera, deCampana] = await Promise.all([crm.espectaculos(u), crm.ajustes(u), excluidas(crm, u), crm.refsDeCampana(u)]);
+  const campana = opciones.campana ? ajustes.campanas?.find((x) => x.id === opciones.campana) : undefined;
+  if (opciones.campana && !campana) throw new ErrorCrm('Esa campaña ya no existe', 404);
+  if (campana && !campana.espectaculos.length) throw new ErrorCrm('La campaña no tiene producciones', 400);
+  if (campana && !campana.ccaa.length && !campana.provincias.length) throw new ErrorCrm('La campaña no tiene territorio: elige comunidades o provincias', 400);
+  // La tanda general no escribe a quien ya tiene una propuesta de campaña pendiente.
+  if (!campana) for (const r of deCampana) fuera.add(r);
   // Sin comunidad concreta, la zona de la cuenta («Resto de España», «Cataluña»...): también en la tanda diaria.
-  const zona = opciones.ccaa?.length ? undefined : ajustes.zona;
+  const zona = opciones.ccaa?.length || campana ? undefined : ajustes.zona;
   const nuevas = prepararPropuestas(
     { programadores: ctx.programadores, contacto: ctx.contacto, ayudasProgramadores: ctx.ayudasProgramadores, licitacionesAbiertas: ctx.licitacionesAbiertas, gestionDe: ctx.gestionDe },
     catalogo,
     ajustes,
     fuera,
-    { ...opciones, zona },
+    { limite: opciones.limite, ...(opciones.ccaa && { ccaa: opciones.ccaa }), zona, ...(campana && { campana }) },
   );
+  // Solo la campaña: sus sitios dejan la propuesta general pendiente (si no se ha retocado a mano).
+  if (campana) {
+    const refs = new Set(nuevas.map((p) => p.ref));
+    await crm.borrarPendientes(u, (_ccaa, c, ref) => !c && refs.has(ref));
+  }
   await crm.guardarPropuestas(u, nuevas);
   return nuevas.length;
 }
@@ -219,6 +232,9 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
         limiteDiario: Math.min(300, Math.max(5, Math.round(Number(b.limiteDiario) || 30))),
         // Al activarlo empieza la subida gradual; si ya estaba activo, se mantiene la fecha.
         automaticoDesde: automatico ? (previo.envioAutomatico && previo.automaticoDesde ? previo.automaticoDesde : new Date().toISOString().slice(0, 10)) : null,
+        // Anexos y campañas se guardan aparte (PUT /anexos y /campanas).
+        ...(previo.anexos && { anexos: previo.anexos }),
+        ...(previo.campanas && { campanas: previo.campanas }),
       };
       await c.guardarAjustes(u.id, a);
       return { ajustes: a };
@@ -284,7 +300,10 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     const disponibles = catalogo.filter((e) => e.enWeb !== false);
     return (p: PropuestaPreparada) => {
       const prog = ctx.programador(p.ref);
-      const espectaculos = prog && disponibles.length ? elegirEspectaculos(disponibles, prog, ajustes) : p.espectaculos;
+      // Se conservan las producciones (la carta combinada y las campañas llevan más que las elegidas), salvo las que
+      // ya no están en el catálogo; si no queda ninguna, se vuelven a elegir.
+      const siguen = p.espectaculos.filter((x) => catalogo.some((e) => e.id === x.id));
+      const espectaculos = siguen.length ? siguen : prog && disponibles.length ? elegirEspectaculos(disponibles, prog, ajustes) : p.espectaculos;
       return { espectaculos, ...redactarPropuesta({ ...p, espectaculos }, ajustes, catalogo) };
     };
   }
@@ -317,11 +336,24 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     }),
   );
   r.get(
+    '/anexos/:id/dossier',
+    ruta(async (q, res, u, c) => {
+      const [catalogo, a] = await Promise.all([c.espectaculos(u.id), c.ajustes(u.id)]);
+      const anexo = a.anexos?.find((x) => x.id === q.params.id);
+      if (!anexo) return sinDossier(res, 'Ese anexo no existe (guárdalo antes de verlo)');
+      const d = dossierDeAnexo(anexo, q.query.idioma === 'ca' ? 'ca' : 'es', catalogo, a);
+      if (!d?.producciones.length) return sinDossier(res, 'El anexo no tiene producciones');
+      await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
+    }),
+  );
+  r.get(
     '/mensajes/:id/dossier',
     ruta(async (q, res, u, c) => {
       const [x, a] = await Promise.all([c.paraDossier(u.id, String(q.params.id)), c.ajustes(u.id)]);
       if (!x) return sinDossier(res, 'No existe ese correo');
-      const d = dossierDeCorreo(x.espectaculos, x.idioma, a, lineaPedida(q.query.linea) ?? lineaPrincipal(x.espectaculos));
+      const campana = x.campana ? (a.campanas?.find((k) => k.id === x.campana) ?? null) : null;
+      const linea = lineaPedida(q.query.linea);
+      const d = linea ? dossierDeCorreo(x.espectaculos, x.idioma, a, linea) : dossierDelCorreo(x.espectaculos, x.idioma, a, { campana, catalogo: x.catalogo });
       if (!d) return sinDossier(res, 'Las producciones de este correo no tienen dossier preparado');
       await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
     }),
@@ -335,7 +367,9 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
       if (!p) return sinDossier(res, 'No existe esa propuesta');
       const porId = new Map(catalogo.map((e) => [e.id, e]));
       const es = p.espectaculos.map((x) => porId.get(x.id)).filter((e): e is Espectaculo => !!e);
-      const d = dossierDeCorreo(es, p.idioma, a, lineaPedida(q.query.linea) ?? lineaPrincipal(es));
+      const campana = p.campana ? (a.campanas?.find((k) => k.id === p.campana) ?? null) : null;
+      const linea = lineaPedida(q.query.linea);
+      const d = linea ? dossierDeCorreo(es, p.idioma, a, linea) : dossierDelCorreo(es, p.idioma, a, { campana, catalogo });
       if (!d) return sinDossier(res, 'Las producciones de esta propuesta no tienen dossier preparado');
       await mandarPdf(res, d, a.organizacion, q.query.descargar === '1');
     }),
@@ -600,8 +634,70 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     ruta(async (req, _r, u, c) => {
       const limite = Math.min(Math.max(Math.round(Number(req.body?.limite) || 20), 1), 100);
       const ccaa = Array.isArray(req.body?.ccaa) ? req.body.ccaa.filter((x: unknown) => typeof x === 'string') : typeof req.body?.ccaa === 'string' && req.body.ccaa ? [req.body.ccaa] : [];
+      const campana = typeof req.body?.campana === 'string' && req.body.campana ? req.body.campana : undefined;
       if (!(await c.espectaculos(u.id)).length) throw new ErrorCrm('Primero añade tu catálogo de espectáculos', 400);
-      return { nuevas: await prepararParaCuenta(c, ctx, u.id, { limite, ccaa }) };
+      return { nuevas: await prepararParaCuenta(c, ctx, u.id, { limite, ccaa, ...(campana && { campana }) }) };
+    }),
+  );
+  /** Comunidades y sus provincias, tal como vienen en los datos (para el territorio de las campañas). */
+  r.get(
+    '/territorio',
+    ruta(async () => {
+      const m = new Map<string, Set<string>>();
+      for (const p of ctx.programadores()) if (p.ccaa) (m.get(p.ccaa) ?? m.set(p.ccaa, new Set()).get(p.ccaa)!).add(p.provincia ?? '');
+      return {
+        items: [...m]
+          .map(([ccaa, ps]) => ({ ccaa, provincias: [...ps].filter(Boolean).sort((a, b) => a.localeCompare(b, 'es')) }))
+          .sort((a, b) => a.ccaa.localeCompare(b.ccaa, 'es')),
+      };
+    }),
+  );
+  /** Anexos a medida (dossieres con producciones de varias líneas). */
+  r.put(
+    '/anexos',
+    ruta(async (req, _r, u, c) => {
+      const xs = Array.isArray(req.body?.anexos) ? req.body.anexos.slice(0, 30) : [];
+      const textosAnexo = (x: Record<string, unknown> | undefined) => ({
+        titulo: texto(x?.titulo, 200),
+        subtitulo: texto(x?.subtitulo, 300),
+        condiciones: texto(x?.condiciones, 6000),
+        notaFinal: texto(x?.notaFinal, 2000),
+      });
+      const anexos: Anexo[] = xs.map((x: Record<string, unknown>) => ({
+        id: texto(x.id, 60) || randomUUID(),
+        nombre: texto(x.nombre, 120) || 'Anexo',
+        espectaculos: ids(x.espectaculos),
+        es: textosAnexo(x.es as Record<string, unknown>),
+        ca: textosAnexo(x.ca as Record<string, unknown>),
+      }));
+      await c.guardarAjustes(u.id, { ...(await c.ajustes(u.id)), anexos });
+      return { anexos };
+    }),
+  );
+  /** Campañas: producciones, territorio y su carta. */
+  r.put(
+    '/campanas',
+    ruta(async (req, _r, u, c) => {
+      const xs = Array.isArray(req.body?.campanas) ? req.body.campanas.slice(0, 30) : [];
+      const carta = (x: Record<string, unknown> | undefined) => ({
+        asunto: texto(x?.asunto, 300),
+        intro: texto(x?.intro, 4000),
+        texto: texto(x?.texto, 12000),
+        cierre: texto(x?.cierre, 4000),
+      });
+      const lista = (x: unknown) => (Array.isArray(x) ? x.filter((y): y is string => typeof y === 'string').map((y) => y.slice(0, 80)).slice(0, 60) : []);
+      const campanas: Campana[] = xs.map((x: Record<string, unknown>) => ({
+        id: texto(x.id, 60) || randomUUID(),
+        nombre: texto(x.nombre, 120) || 'Campaña',
+        espectaculos: ids(x.espectaculos),
+        ccaa: lista(x.ccaa),
+        provincias: lista(x.provincias),
+        anexo: typeof x.anexo === 'string' && x.anexo ? x.anexo.slice(0, 60) : null,
+        es: carta(x.es as Record<string, unknown>),
+        ca: carta(x.ca as Record<string, unknown>),
+      }));
+      await c.guardarAjustes(u.id, { ...(await c.ajustes(u.id)), campanas });
+      return { campanas };
     }),
   );
   /** La zona de las propuestas («Resto de España», «Cataluña», una comunidad o toda España): se guarda en la cuenta. */
@@ -618,11 +714,12 @@ export function rutasCrm(cuentas: AlmacenCuentas | null, crm: AlmacenCrm | null,
     '/propuestas/rehacer',
     ruta(async (req, _r, u, c) => {
       if (!(await c.espectaculos(u.id)).length) throw new ErrorCrm('Primero añade tu catálogo de espectáculos', 400);
-      // Solo las de la zona elegida: las de otras zonas se quedan como están.
+      // Una campaña: solo sus propuestas. Si no, las generales de la zona elegida; las demás se quedan como están.
+      const campana = typeof req.body?.campana === 'string' && req.body.campana ? req.body.campana : undefined;
       const zona = (await c.ajustes(u.id)).zona;
-      const borradas = await c.borrarPendientes(u.id, (ccaa) => enZona(ccaa, zona));
+      const borradas = await c.borrarPendientes(u.id, (ccaa, cp) => (campana ? cp === campana : !cp && enZona(ccaa, zona)));
       const limite = Math.min(Math.max(Math.round(Number(req.body?.limite) || 20), 1), 100);
-      return { borradas, nuevas: await prepararParaCuenta(c, ctx, u.id, { limite }) };
+      return { borradas, nuevas: await prepararParaCuenta(c, ctx, u.id, { limite, ...(campana && { campana }) }) };
     }),
   );
   const cartaDe = (b: Record<string, unknown> | undefined) => {

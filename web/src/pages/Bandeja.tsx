@@ -145,7 +145,7 @@ function DetalleMensaje({ m, envioConectado, alCambiar, alVolver }: { m: Mensaje
         {m.estado !== 'programado' && <CopiarCorreo para={m.destinatario} asunto={asunto} cuerpo={cuerpo} />}
         {m.paso === 1 && (
           <p className="ayuda adjunto-dossier">
-            📎 Lleva adjunto el dossier en PDF de su línea.{' '}
+            📎 Lleva adjunto el dossier en PDF.{' '}
             <a href={urlDossierMensaje(m.id)} target="_blank" rel="noreferrer">
               Verlo
             </a>{' '}

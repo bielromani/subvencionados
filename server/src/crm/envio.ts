@@ -6,7 +6,7 @@ import type { Enviar } from '../email.js';
 import type { AlmacenCrm } from './almacen.js';
 import { acortarSaludo, tituloCorreo } from './cartas.js';
 import { correoHtml, textoPlano } from './correoHtml.js';
-import { dossieresDeCorreo, nombreArchivoDossier, pdfDossier } from './dossier.js';
+import { dossierDelCorreo, nombreArchivoDossier, pdfDossier } from './dossier.js';
 import type { AjustesCrm } from './tipos.js';
 
 export const PIE_BAJA = 'Si no desea recibir más correos nuestros, responda a este mensaje indicándolo y no volveremos a escribirle.';
@@ -35,10 +35,10 @@ async function extrasPrimerCorreo(crm: AlmacenCrm, usuario: string, mensaje: str
   const titulo = tituloCorreo(x.espectaculos, x.idioma, a);
   if (!rutaFuentes) return { idioma, titulo, adjuntos: null };
   try {
-    // Uno por línea: la carta combinada lleva el dossier de cada una.
-    const ds = dossieresDeCorreo(x.espectaculos, x.idioma, a);
-    const adjuntos = await Promise.all(ds.map(async (d) => ({ nombre: nombreArchivoDossier(d, a.organizacion), contenido: await pdfDossier(d, rutaFuentes) })));
-    return { idioma, titulo, adjuntos: adjuntos.length ? adjuntos : null };
+    // Un solo PDF: el anexo de su campaña, el conjunto de la carta combinada o el de su línea.
+    const campana = x.campana ? (a.campanas?.find((c) => c.id === x.campana) ?? null) : null;
+    const d = dossierDelCorreo(x.espectaculos, x.idioma, a, { campana, catalogo: x.catalogo });
+    return { idioma, titulo, adjuntos: d ? [{ nombre: nombreArchivoDossier(d, a.organizacion), contenido: await pdfDossier(d, rutaFuentes) }] : null };
   } catch {
     // Sin dossier, la carta sale igual: es un complemento.
     return { idioma, titulo, adjuntos: null };

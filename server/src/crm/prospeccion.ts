@@ -14,7 +14,7 @@ import { avisosFicha, encajeAyuda, encajeEntidad, encajeLicitacion, type Encaje 
 import { idProgramador } from '../directorio.js';
 import { normalizar } from '../clasificacion/musica.js';
 import { componerCarta, LINEA_DE_TIPO, type Linea } from './cartas.js';
-import type { AjustesCrm, Espectaculo, TipoEspectaculo } from './tipos.js';
+import type { AjustesCrm, Campana, CartaCampana, Espectaculo, TipoEspectaculo } from './tipos.js';
 
 export interface PropuestaPreparada {
   /** Programador del directorio (p-...). */
@@ -41,6 +41,8 @@ export interface PropuestaPreparada {
   /** Línea que presenta el correo (con su dossier) y las demás que le encajan (se nombran en una frase). */
   linea?: Linea | null;
   otrasLineas?: Linea[];
+  /** Campaña de la que sale (su carta y su anexo). */
+  campana?: string | null;
   asunto: string;
   cuerpo: string;
   puntos: number;
@@ -115,9 +117,21 @@ function huella(s: string): number {
   return h >>> 0;
 }
 
+/** La carta de la campaña en un idioma (sin textos en catalán, los de la línea en catalán). */
+function cartaDeCampana(ajustes: AjustesCrm, id: string | null | undefined, idioma: 'es' | 'ca'): CartaCampana | null {
+  const c = id ? ajustes.campanas?.find((x) => x.id === id) : undefined;
+  if (!c) return null;
+  return idioma === 'ca' && !Object.values(c.ca).some((x) => x.trim()) ? { asunto: '', intro: '', texto: '', cierre: '' } : c[idioma];
+}
+
+/** Si un sitio está en el territorio de una campaña: sus comunidades o sus provincias. */
+export function enTerritorio(c: Pick<Campana, 'ccaa' | 'provincias'>, ccaa: string | null, provincia: string | null): boolean {
+  return (!!ccaa && c.ccaa.includes(ccaa)) || (!!provincia && c.provincias.includes(provincia));
+}
+
 /** El correo de la propuesta, por bloques con las plantillas de la cuenta (ver cartas.ts). */
 export function redactarPropuesta(
-  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'cargo' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial' | 'otrasLineas'>,
+  p: Pick<PropuestaPreparada, 'idioma' | 'municipio' | 'nombre' | 'persona' | 'cargo' | 'campana' | 'espectaculos' | 'licitaciones' | 'ayudas' | 'gestion' | 'historial' | 'otrasLineas'>,
   ajustes: AjustesCrm,
   catalogo: Espectaculo[],
 ): { asunto: string; cuerpo: string } {
@@ -127,6 +141,7 @@ export function redactarPropuesta(
     lugar: p.municipio ?? p.nombre,
     persona: p.persona,
     cargo: p.cargo,
+    campana: cartaDeCampana(ajustes, p.campana, p.idioma),
     historial: p.historial,
     espectaculos: p.espectaculos.map((e) => porId.get(e.id) ?? { id: e.id, nombre: e.nombre, tipo: e.tipo, enlace: '' }),
     ...(p.otrasLineas && { otrasLineas: p.otrasLineas }),
@@ -161,10 +176,12 @@ export function prepararPropuestas(
   catalogo: Espectaculo[],
   ajustes: AjustesCrm,
   excluir: Set<string>,
-  opciones: { limite: number; ccaa?: string[]; zona?: string; hoy?: Date } = { limite: 20 },
+  opciones: { limite: number; ccaa?: string[]; zona?: string; campana?: Campana; hoy?: Date } = { limite: 20 },
 ): PropuestaPreparada[] {
   const hoy = opciones.hoy ?? new Date();
-  const disponibles = catalogo.filter((e) => e.enWeb !== false && e.enCartas !== false);
+  const { campana } = opciones;
+  // En una campaña, solo sus producciones (aunque no estén en las cartas generales).
+  const disponibles = campana ? catalogo.filter((e) => campana.espectaculos.includes(e.id)) : catalogo.filter((e) => e.enWeb !== false && e.enCartas !== false);
   if (!disponibles.length) return [];
   const estilosCatalogo = new Set(disponibles.map((e) => ESTILO_DE_TIPO[e.tipo]).filter((x): x is Estilo => !!x));
   // Solo ayudas que puede pedir el propio ayuntamiento (no las de asociaciones) y que encajan con el catálogo: una
@@ -184,8 +201,12 @@ export function prepararPropuestas(
   const candidatos: Candidato[] = [];
   for (const p of f.programadores()) {
     if (excluir.has(p.id)) continue;
-    if (opciones.ccaa?.length && !(p.ccaa && opciones.ccaa.includes(p.ccaa))) continue;
-    if (!enZona(p.ccaa, opciones.zona)) continue;
+    if (campana) {
+      if (!enTerritorio(campana, p.ccaa, p.provincia)) continue;
+    } else {
+      if (opciones.ccaa?.length && !(p.ccaa && opciones.ccaa.includes(p.ccaa))) continue;
+      if (!enZona(p.ccaa, opciones.zona)) continue;
+    }
     const c = f.contacto(p.codigoIne);
     const destinatario = c?.email?.split(/[;,\s]+/).find((x) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x));
     if (!destinatario || excluir.has(`@${destinatario.toLowerCase()}`)) continue;
@@ -226,13 +247,15 @@ export function prepararPropuestas(
     // programado otros estilos del catálogo, también sus líneas (la carta combinada, un bloque por línea; Navidad va
     // sola). Las demás líneas que le encajan se nombran en una frase.
     const linea = LINEA_DE_TIPO[elegidas[0]!.tipo];
-    const lineas =
-      linea === 'navidad'
+    // Campaña: todas sus producciones a su alcance, con su carta.
+    const lineas = campana
+      ? [...new Set(aSuAlcance.map((e) => LINEA_DE_TIPO[e.tipo]))]
+      : linea === 'navidad'
         ? [linea]
         : [linea, ...new Set(aSuAlcance.filter((e) => ESTILO_DE_TIPO[e.tipo] && historial.includes(ESTILO_DE_TIPO[e.tipo]!)).map((e) => LINEA_DE_TIPO[e.tipo]))].filter(
             (l, i, xs) => l !== 'navidad' && xs.indexOf(l) === i,
           );
-    const otrasLineas = [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => !lineas.includes(l));
+    const otrasLineas = campana ? [] : [...new Set(elegidas.map((e) => LINEA_DE_TIPO[e.tipo]))].filter((l) => !lineas.includes(l));
     const idioma = idiomaDe(p.ccaa, c?.partido);
     const municipio = c?.municipio ?? p.ciudad ?? '';
     const dominio = normalizar(destinatario.split('@')[1] ?? '').replace(/[^a-z0-9]/g, '');
@@ -262,6 +285,7 @@ export function prepararPropuestas(
       historial,
       linea,
       otrasLineas,
+      campana: campana?.id ?? null,
     };
     candidatos.push({
       ...base,
