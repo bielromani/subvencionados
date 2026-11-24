@@ -110,6 +110,8 @@ create table if not exists crm_propuestas (
   actualizado timestamptz not null default now()
 );
 create unique index if not exists crm_propuesta_pendiente on crm_propuestas (usuario, ref) where estado = 'pendiente';
+-- Retocado a mano: los seguimientos sin retocar se vuelven a escribir con la plantilla de la cuenta.
+alter table crm_mensajes add column if not exists editado boolean not null default false;
 create table if not exists crm_alertas_vistas (
   usuario uuid not null references usuarios(id) on delete cascade,
   entidad uuid not null references crm_entidades(id) on delete cascade,
@@ -460,6 +462,7 @@ export class AlmacenCrm {
 
   /** Bandeja: borradores ya disponibles, aprobados pendientes de enviar y programados. */
   async bandeja(u: string, hoy = new Date()): Promise<(Mensaje & { entidad: Entidad; oportunidad: Oportunidad; destinatario: string; secuenciaEstado: Secuencia['estado'] })[]> {
+    await this.refrescarSeguimientos(u);
     const filas = await this.q<FilaMensaje & { sec_estado: Secuencia['estado']; destinatario: string; oportunidad_id: string; entidad_id: string }>(
       `select m.*, s.estado as sec_estado, s.destinatario, s.oportunidad as oportunidad_id, s.entidad as entidad_id
        from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
@@ -515,7 +518,28 @@ export class AlmacenCrm {
   async editar(u: string, id: string, cambios: { asunto: string; cuerpo: string }) {
     const m = await this.mensajeConSecuencia(u, id);
     if (m.estado === 'enviado') throw new ErrorCrm('Ya se ha enviado', 409);
-    await this.q('update crm_mensajes set asunto = $2, cuerpo = $3 where id = $1', [id, cambios.asunto, cambios.cuerpo]);
+    await this.q('update crm_mensajes set asunto = $2, cuerpo = $3, editado = true where id = $1', [id, cambios.asunto, cambios.cuerpo]);
+  }
+
+  /**
+   * Los seguimientos pendientes (2.º a 5.º) se escriben cuando sale el anterior, con la plantilla de ese día. Para que
+   * sigan la plantilla actual de «Cartas y firma», se vuelven a escribir los que no se han retocado a mano.
+   */
+  async refrescarSeguimientos(u: string): Promise<number> {
+    const filas = await this.q<FilaMensaje>(
+      `select m.* from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
+       where m.usuario = $1 and m.paso > 1 and not m.editado and m.estado in ('borrador', 'aprobado', 'programado') and s.estado in ('activa', 'pausada')`,
+      [u],
+    );
+    let cambiados = 0;
+    for (const m of filas) {
+      const [s] = await this.q<FilaSecuencia>('select * from crm_secuencias where id = $1', [m.secuencia]);
+      const carta = await this.cartaDePaso((t, v) => this.q(t, v), u, s!, m.paso);
+      if (carta.asunto === m.asunto && carta.cuerpo === m.cuerpo) continue;
+      await this.q('update crm_mensajes set asunto = $2, cuerpo = $3 where id = $1 and not editado', [m.id, carta.asunto, carta.cuerpo]);
+      cambiados++;
+    }
+    return cambiados;
   }
 
   /** Visto bueno: queda listo para enviar desde el correo propio, o programado (solo con el envío conectado). */
@@ -562,6 +586,12 @@ export class AlmacenCrm {
   }
 
   private async prepararPaso(q: Q, u: string, s: FilaSecuencia, paso: number, disponible: string) {
+    const carta = await this.cartaDePaso(q, u, s, paso);
+    await q('insert into crm_mensajes (usuario, secuencia, paso, asunto, cuerpo, disponible_desde) values ($1, $2, $3, $4, $5, $6)', [u, s.id, paso, carta.asunto, carta.cuerpo, disponible]);
+  }
+
+  /** El correo de un paso de la secuencia, con la plantilla actual de la cuenta. */
+  private async cartaDePaso(q: Q, u: string, s: FilaSecuencia, paso: number) {
     const [o] = await q<FilaOportunidad>('select * from crm_oportunidades where id = $1', [s.oportunidad]);
     const [e] = await q<FilaEntidad>('select * from crm_entidades where id = $1', [s.entidad]);
     const catalogo = await this.espectaculos(u);
@@ -576,7 +606,7 @@ export class AlmacenCrm {
       ajustes: await this.ajustes(u),
       asuntoInicial: primera?.asunto.replace(/^Re:\s*/i, ''),
     });
-    await q('insert into crm_mensajes (usuario, secuencia, paso, asunto, cuerpo, disponible_desde) values ($1, $2, $3, $4, $5, $6)', [u, s.id, paso, carta.asunto, carta.cuerpo, disponible]);
+    return carta;
   }
 
   /**
@@ -655,6 +685,7 @@ export class AlmacenCrm {
    * seguimientos que ya tocan. Primero los seguimientos (tienen fecha), después los primeros, del más antiguo al nuevo.
    */
   async colaAutomatica(u: string, limite: number, hoy = new Date()) {
+    await this.refrescarSeguimientos(u);
     return this.q<FilaMensaje & { destinatario: string }>(
       `select m.*, s.destinatario from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
        join crm_entidades e on e.id = s.entidad
@@ -679,6 +710,11 @@ export class AlmacenCrm {
 
   /** Programados que ya toca enviar (para la tarea automática, si hay envío conectado). */
   async programadosPendientes(hasta = new Date()) {
+    const usuarios = await this.q<{ usuario: string }>(
+      `select distinct m.usuario from crm_mensajes m join crm_secuencias s on s.id = m.secuencia where m.estado = 'programado' and m.programado_para <= $1 and s.estado = 'activa'`,
+      [hasta],
+    );
+    for (const { usuario } of usuarios) await this.refrescarSeguimientos(usuario);
     return this.q<FilaMensaje & { usuario: string; destinatario: string }>(
       `select m.*, s.destinatario from crm_mensajes m join crm_secuencias s on s.id = m.secuencia
        where m.estado = 'programado' and m.programado_para <= $1 and s.estado = 'activa'`,

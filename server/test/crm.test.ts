@@ -77,6 +77,28 @@ describe.skipIf(!url)('secuencias con Postgres', () => {
   let u = '';
   const entidadBase = { ref: null, nombre: 'Ayuntamiento de Olot', tipo: 'ayuntamiento' as const, municipio: 'Olot', provincia: 'Girona', ccaa: 'Cataluña', persona: null, email: 'cultura@olot.example', telefono: null, idioma: 'ca' as const, notas: '' };
 
+  it('los seguimientos pendientes siguen la plantilla actual, salvo los retocados a mano', async () => {
+    u = (await cuentas.crear(`crm-seg-${Date.now()}@example.com`, 'una clave larga'))!.id;
+    const e = await crm.guardarEntidad(u, entidadBase);
+    const o = await crm.crearOportunidad(u, { entidad: e.id, tipo: 'propuesta', ref: null, titulo: 'Temporada 2027', espectaculos: [], certeza: 'potencial', enlaceConfirmacion: null, notas: '' });
+    const { secuencia, mensaje } = await crm.abrirSecuencia(u, o.id, 'cultura@olot.example');
+    await crm.aprobar(u, mensaje.id);
+    await crm.registrarEnvio(u, mensaje.id, new Date('2026-11-03T09:00:00Z'));
+    const { completarPlantillas } = await import('../src/crm/cartas.js');
+    const t = completarPlantillas(undefined);
+    t.es.seguimientos[0] = t.ca.seguimientos[0] = 'Texto nuevo del segundo correo para {lugar}.';
+    await crm.guardarAjustes(u, { ...(await crm.ajustes(u)), plantillas: t });
+    const hoy = new Date('2026-12-01');
+    const segundo = (await crm.bandeja(u, hoy)).find((m) => m.secuencia === secuencia.id)!;
+    expect(segundo.paso).toBe(2);
+    expect(segundo.cuerpo).toContain('Texto nuevo del segundo correo para Olot.');
+    // Retocado a mano: ya no se toca.
+    await crm.editar(u, segundo.id, { asunto: segundo.asunto, cuerpo: 'A mano' });
+    t.es.seguimientos[0] = t.ca.seguimientos[0] = 'Otro texto';
+    await crm.guardarAjustes(u, { ...(await crm.ajustes(u)), plantillas: t });
+    expect((await crm.bandeja(u, hoy)).find((m) => m.id === segundo.id)!.cuerpo).toBe('A mano');
+  });
+
   it('cinco envíos efectivos con llamadas tras el 2.º y el 4.º, y archivo sin respuesta', async () => {
     u = (await cuentas.crear(`crm-${Date.now()}@example.com`, 'una clave larga'))!.id;
     const e = await crm.guardarEntidad(u, entidadBase);
